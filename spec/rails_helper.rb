@@ -28,9 +28,18 @@ ActiveRecord::Migration.maintain_test_schema!
 module Features
   # Extend this module in spec/support/features/*.rb
 end
+module Controllers
+  # Extend this module in spec/support/controllers/*.rb
+end
 
 RSpec.configure do |config|
-  config.include Features, type: :feature  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  config.include Features, type: :feature
+  config.include Controllers, type: :controller
+  config.before(:each, type: :feature) do
+    create(:site_setting_name)
+    create(:site_setting_email)
+  end
+  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
