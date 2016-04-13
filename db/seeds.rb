@@ -13,6 +13,11 @@ Banner.create(title: "Banner", image: File.open(File.join(Rails.root, "spec/supp
 Banner.create(title: "Banner with summary", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Summary text")
 Banner.create(title: "Banner with link", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), link: "http://www.google.co.uk")
 
+8.times do
+  EmployerQuickLink.create(link: "http://www.google.co.uk", link_text: "Read more")
+  EmployeeQuickLink.create(link: "http://www.google.co.uk", link_text: "Read more")
+end
+
 lower_back_intro = <<-RUBY
 <h1 class="subtitle">If you suffer from lower back pain, there is no reason why you have to stay in pain. In fact, we have designed this portion of our site with you in mind.</h1>
 <p>&nbsp;</p>

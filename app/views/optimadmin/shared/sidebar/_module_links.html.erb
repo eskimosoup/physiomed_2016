@@ -24,6 +24,8 @@
       </div>
 
       <ul id="modules" class="content-category-list">
+<%= module_link(content: "Employee Quick Links", model: EmployeeQuickLink, path: employee_quick_links_path) %>
+<%= module_link(content: "Employer Quick Links", model: EmployerQuickLink, path: employer_quick_links_path) %>
 <%= module_link(content: "Banners", model: Banner, path: banners_path) %>
 <%= module_link(content: "Body Parts", model: BodyPart, path: body_parts_path) %>
         <% if can? :manage, Optimadmin::MenuItem %>

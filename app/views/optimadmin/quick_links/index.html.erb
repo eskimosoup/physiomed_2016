@@ -1,0 +1,37 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Employee Quick Links' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <% if params[:controller].include?("employer") %>
+      <%= render 'optimadmin/shared/module/index/new_item', title: 'Employer Quick Link', object: EmployerQuickLink, path: new_employer_quick_link_path %>
+    <% else %>
+      <%= render 'optimadmin/shared/module/index/new_item', title: 'Employee Quick Link', object: EmployeeQuickLink, path: new_employee_quick_link_path %>
+    <% end %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @quick_links.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    
+    <%= list_item 'large-5 small-8' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Title
+    <% end %>
+    
+    <%= list_item { 'Display' } %>
+    <%= list_item("large-3 small-4") { 'View' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+
+  <div class="module-sortable" data-module="<%= params[:controller].include?("employer") ? "Employer" : "Employee" %>QuickLink">
+    <%= render(
+      partial: 'optimadmin/quick_links/quick_link',
+      collection: @quick_links,
+      as: :quick_link
+    ) %>
+  </div>
+  
+</div>

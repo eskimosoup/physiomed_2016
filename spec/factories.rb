@@ -1,4 +1,18 @@
 FactoryGirl.define do
+  factory :employer_quick_link, class: EmployerQuickLink do
+    link "MyString"
+    link_text "MyString"
+    position 1
+    display true
+  end
+  
+  factory :employee_quick_link, class: EmployeeQuickLink do
+    link "MyString"
+    link_text "MyString"
+    position 1
+    display true
+  end
+
   factory :administrator, class: Optimadmin::Administrator do
     username 'optimised'
     email 'support@optimised.today'

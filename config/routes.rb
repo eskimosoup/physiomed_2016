@@ -23,13 +23,9 @@ Optimadmin::Engine.routes.draw do
       get 'toggle'
     end
   end
+
   resources :banners, concerns: [:imageable, :orderable, :toggleable], except: [:show]
-  resources :body_parts, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
+  resources :body_parts, concerns: [:orderable, :toggleable], except: [:show]
+  resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]
+  resources :employer_quick_links, concerns: [:orderable, :toggleable], except: [:show]
 end
