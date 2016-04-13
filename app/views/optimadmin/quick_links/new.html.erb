@@ -1,0 +1,13 @@
+<% if params[:controller].include?("employee") %>
+  <%= render 'optimadmin/shared/header/main_title', title: 'New Employee Quick Link' %>
+<% else %>
+  <%= render 'optimadmin/shared/header/main_title', title: 'New Employer Quick Link' %>
+<% end %>
+<div class="main-content">
+  <% if params[:controller].include?("employee") %>
+    <%= render 'optimadmin/shared/module/form/back', path: employee_quick_links_path, title: 'Employee Quick Link' %>
+  <% else %>
+    <%= render 'optimadmin/shared/module/form/back', path: employer_quick_links_path, title: 'Employer Quick Link' %>
+  <% end %>
+  <%= render 'optimadmin/quick_links/form' %>
+</div>

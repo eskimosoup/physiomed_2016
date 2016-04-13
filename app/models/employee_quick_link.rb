@@ -1,0 +1,2 @@
+class EmployeeQuickLink < QuickLink
+end
