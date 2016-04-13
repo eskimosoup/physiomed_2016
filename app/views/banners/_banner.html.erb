@@ -1,0 +1,10 @@
+<div class="banner">
+  <% present banner do |banner_presenter| %>
+    <%= banner_presenter.show_image %>
+    <div class="banner-content">
+      <%= banner_presenter.title %>
+      <%= banner_presenter.summary %>
+      <%= banner_presenter.link %>
+    </div>
+  <% end %>
+</div>
