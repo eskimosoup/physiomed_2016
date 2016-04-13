@@ -10,7 +10,7 @@ feature "Body part management" do
     fill_body_part_form(name: "Shoulder", introduction: "My head intro")
     click_on "Save"
 
-    expect(page).to have_css ".module-list-index", text: "Shoulder"
+    expect(page).to have_admin_index "Shoulder"
   end
 
   it "editing a body part", js: true do
@@ -23,7 +23,7 @@ feature "Body part management" do
     fill_body_part_form(name: "Shoulder", introduction: "My head intro")
     click_on "Save"
 
-    expect(page).to have_css ".module-list-index", text: "Shoulder"
+    expect(page).to have_admin_index "Shoulder"
   end
 
   it "destroying a body part" do
@@ -34,7 +34,7 @@ feature "Body part management" do
     click_on "Body Parts"
     click_href_destroy(optimadmin.body_part_path(body_part))
 
-    expect(page).not_to have_css ".module-list-index", text: "Knee"
+    expect(page).not_to have_admin_index "Knee"
   end
 
   def fill_body_part_form(attrs = {})

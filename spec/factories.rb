@@ -7,6 +7,22 @@ FactoryGirl.define do
     role 'master'
   end
 
+  factory :banner do
+    title "MyString"
+    image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    position 1
+    display true
+    summary "MyText"
+    link "http://www.google.co.uk"
+  end
+
+  factory :body_part do
+    name { BodyPart::BODY_PARTS.sample }
+    introduction "MyText"
+    display true
+    sequence(:mobile_position) {|n| n }
+  end
+
   factory :site_setting, class: Optimadmin::SiteSetting do
     environment "test"
     trait :name do
@@ -20,12 +36,5 @@ FactoryGirl.define do
     end
     factory :site_setting_name, traits: [:name]
     factory :site_setting_email, traits: [:email]
-  end
-
-  factory :body_part do
-    name { BodyPart::BODY_PARTS.sample }
-    introduction "MyText"
-    display true
-    sequence(:mobile_position) {|n| n }
   end
 end

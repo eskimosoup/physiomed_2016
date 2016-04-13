@@ -5,6 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Optimadmin::Administrator.create(
+  username: 'optimised', email: 'support@optimised.today',
+  password: 'optipoipoip', password_confirmation: 'optipoipoip', role: 'master')
+
+Banner.create(title: "Banner", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")))
+Banner.create(title: "Banner with summary", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Summary text")
+Banner.create(title: "Banner with link", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), link: "http://www.google.co.uk")
+
 lower_back_intro = <<-RUBY
 <h1 class="subtitle">If you suffer from lower back pain, there is no reason why you have to stay in pain. In fact, we have designed this portion of our site with you in mind.</h1>
 <p>&nbsp;</p>

@@ -5,4 +5,8 @@ module Features
     fill_in "Password", with: admin.password
     click_button "Log In"
   end
+
+  def have_admin_index(content)
+    have_css ".module-list-index", text: content
+  end
 end

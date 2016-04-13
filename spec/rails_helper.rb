@@ -35,6 +35,7 @@ end
 RSpec.configure do |config|
   config.include Features, type: :feature
   config.include Controllers, type: :controller
+  config.include ActionView::TestCase::Behavior, type: :presenter
   config.before(:each, type: :feature) do
     create(:site_setting_name)
     create(:site_setting_email)
