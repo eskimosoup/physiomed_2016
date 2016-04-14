@@ -12,8 +12,4 @@ class QuickLink < ActiveRecord::Base
   def employee?
     type == "EmployeeQuickLink"
   end
-
-  def self.presenter
-    QuickLinkPresenter
-  end
 end

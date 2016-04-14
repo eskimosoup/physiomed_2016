@@ -1,0 +1,26 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Health Zones' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Health Zone', object: HealthZone, path: new_health_zone_path %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @health_zones.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-4 small-8' do %>
+    <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Title
+    <% end %>
+    
+    <%= list_item('large-2 hide-for-medium-down') { 'Home Image' } %>
+    <%= list_item('large-2 hide-for-medium-down') { 'Image' } %>
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+
+  <div class="module-sortable" data-module="HealthZone">
+    <%= render partial: 'health_zone', collection: @health_zones, as: :health_zone %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<% if @health_zones.any? %>
+  <%= render(
+    partial: "health_zones/health_zone",
+    collection: @health_zones,
+    as: :health_zone
+  ) %>
+<% else %>
+  We currently have no well being content
+<% end %>
