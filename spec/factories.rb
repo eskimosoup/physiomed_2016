@@ -67,4 +67,10 @@ FactoryGirl.define do
     factory :site_setting_name, traits: [:name]
     factory :site_setting_email, traits: [:email]
   end
+
+  factory :video do
+    title "My Video"
+    youtube_identifier "tIdIqbv7SPo"
+    display true
+  end
 end
