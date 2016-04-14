@@ -30,4 +30,5 @@ Optimadmin::Engine.routes.draw do
   resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :employer_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :health_zones, concerns: [:imageable, :orderable, :toggleable], except: [:show]
+  resources :videos, concerns: [:toggleable], except: [:show]
 end
