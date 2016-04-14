@@ -1,18 +1,4 @@
 FactoryGirl.define do
-  factory :employer_quick_link, class: EmployerQuickLink do
-    link "MyString"
-    link_text "MyString"
-    position 1
-    display true
-  end
-  
-  factory :employee_quick_link, class: EmployeeQuickLink do
-    link "MyString"
-    link_text "MyString"
-    position 1
-    display true
-  end
-
   factory :administrator, class: Optimadmin::Administrator do
     username 'optimised'
     email 'support@optimised.today'
@@ -36,6 +22,36 @@ FactoryGirl.define do
     display true
     sequence(:mobile_position) {|n| n }
   end
+  
+  factory :employee_quick_link, class: EmployeeQuickLink do
+    link "MyString"
+    link_text "MyString"
+    position 1
+    display true
+  end
+
+  factory :employer_quick_link, class: EmployerQuickLink do
+    link "MyString"
+    link_text "MyString"
+    position 1
+    display true
+  end
+
+  factory :health_zone do
+    title "MyString"
+    home_image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    hover_text "MyText"
+    sequence(:link){|n| "http://localhost:3000/#{ n }" }
+    position 1
+    display true
+    content "MyText"
+    trait :image do
+      image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    end
+
+    factory :health_zone_with_image, traits: [:image]
+  end
+
 
   factory :site_setting, class: Optimadmin::SiteSetting do
     environment "test"

@@ -1,3 +1,8 @@
 <header>
   <%= image_tag "logo.jpg", alt: "Physio Med", title: "Physio Med", id: "physiomed-logo" %>
+  <nav>
+    <ul id="header-navigation">
+      <%= nested_menu_items(menu_items: header_menu.menu_items) %>
+    </ul>
+  </nav>
 </header>

@@ -16,4 +16,8 @@ class HomeFacade
     @quick_links ||= QuickLink.displayed.ordered_by_position
   end
 
+  def health_zones
+    @health_zones ||= HealthZone.displayed.ordered_by_position
+  end
+
 end

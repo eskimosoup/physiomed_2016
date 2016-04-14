@@ -1,0 +1,10 @@
+<div class="health-zone">
+  <% present health_zone do |health_zone_presenter| %>
+    <h2>
+      <%= health_zone_presenter.title %>
+    </h2>
+    <%= health_zone_presenter.show_image %>
+    <%= health_zone_presenter.content %>
+    <%= health_zone_presenter.read_more_link %>
+  <% end %>
+</div>

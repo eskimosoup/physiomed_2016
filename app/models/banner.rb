@@ -8,10 +8,6 @@ class Banner < ActiveRecord::Base
   scope :displayed, -> { where(display: true) }
   scope :ordered_by_position, -> { order(position: :asc) }
 
-  def self.presenter
-    BannerPresenter
-  end
-
   private
 
   def image_width

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/wellbeing-zone", to: "wellbeings#index", as: :wellbeing
   mount Optimadmin::Engine => "/admin"
   root to: "homes#show"
 end
@@ -28,4 +29,5 @@ Optimadmin::Engine.routes.draw do
   resources :body_parts, concerns: [:orderable, :toggleable], except: [:show]
   resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :employer_quick_links, concerns: [:orderable, :toggleable], except: [:show]
+  resources :health_zones, concerns: [:imageable, :orderable, :toggleable], except: [:show]
 end

@@ -73,5 +73,25 @@ describe HomeFacade do
     end
   end
 
-  
+  describe "#health_zones" do
+    it "gets displayed health zones" do
+      displayed_health_zone = create(:health_zone, display: true)
+      not_displayed_health_zone = create(:health_zone, display: false)
+
+      facade = HomeFacade.new
+
+      expect(facade.health_zones).to include(displayed_health_zone)
+      expect(facade.health_zones).not_to include(not_displayed_health_zone)
+    end
+
+    it "orders the health zones" do
+      first = create(:health_zone, display: true, position: 0)
+      last = create(:health_zone, display: true, position: 1)
+
+      facade = HomeFacade.new
+
+      expect(facade.health_zones.first).to eq(first)
+      expect(facade.health_zones.last).to eq(last)
+    end
+  end
 end

@@ -1,23 +1,40 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# The data can then be loaded with the rake db:seed (or create!d alongside the db with db:setup).
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-Optimadmin::Administrator.create(
+#   cities = City.create!([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create!(name: 'Emanuel', city: cities.first)
+#
+puts "Creating Admin"
+Optimadmin::Administrator.create!(
   username: 'optimised', email: 'support@optimised.today',
   password: 'optipoipoip', password_confirmation: 'optipoipoip', role: 'master')
 
-Banner.create(title: "Banner", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")))
-Banner.create(title: "Banner with summary", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Summary text")
-Banner.create(title: "Banner with link", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), link: "http://www.google.co.uk")
+puts "Creating main navigation"
+wellbeing_zone = Optimadmin::ModulePage.create!(name: "WellBeing Zone", route: "wellbeing_path")
+wellbeing_zone_link = Optimadmin::Link.create!(menu_resource: wellbeing_zone)
+wellbeing_menu_item = Optimadmin::MenuItem.create!(link: wellbeing_zone_link, name: "Wellbeing Zone", menu_name: "header")
 
+
+puts "Creating banners"
+Banner.create!(title: "Banner", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")))
+Banner.create!(title: "Banner with summary", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Summary text")
+Banner.create!(title: "Banner with link", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), link: "http://www.google.co.uk")
+
+puts "Creating Quick Links"
 8.times do
-  EmployerQuickLink.create(link: "http://www.google.co.uk", link_text: "Read more")
-  EmployeeQuickLink.create(link: "http://www.google.co.uk", link_text: "Read more")
+  EmployerQuickLink.create!(link: "http://www.google.co.uk", link_text: "Read more")
+  EmployeeQuickLink.create!(link: "http://www.google.co.uk", link_text: "Read more")
 end
 
+puts "Creating health zones"
+HealthZone.create!(title: "Know your body", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our know your body section", link: "http://www.google.co.uk")
+HealthZone.create!(title: "Feeling Fab exercises", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our exercises section", link: "http://www.google.com")
+HealthZone.create!(title: "Managing Conditions", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk")
+HealthZone.create!(title: "Other", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk/sport")
+
+puts "Creating body parts"
 lower_back_intro = <<-RUBY
 <h1 class="subtitle">If you suffer from lower back pain, there is no reason why you have to stay in pain. In fact, we have designed this portion of our site with you in mind.</h1>
 <p>&nbsp;</p>
