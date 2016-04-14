@@ -24,4 +24,8 @@ class HomeFacade
     @additional_contents ||= AdditionalHomeContent.displayed.ordered_by_position
   end
 
+  def service_standards
+    @service_standards ||= ServiceStandard.displayed.ordered_by_position
+  end
+
 end

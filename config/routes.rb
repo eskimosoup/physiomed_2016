@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   root to: "homes#show"
 end
 Optimadmin::Engine.routes.draw do
+resources :service_standards, except: [:show] do
+  collection do
+    post 'order'
+  end
+  member do
+    get 'toggle'
+  end
+end
 
   concern :imageable do
     member do

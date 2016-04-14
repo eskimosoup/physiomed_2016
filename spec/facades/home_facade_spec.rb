@@ -116,4 +116,26 @@ describe HomeFacade do
       expect(facade.additional_contents.last).to eq(last)
     end
   end
+
+  describe "#service_standards" do
+    it "gets displayed only" do
+      displayed = create(:service_standard, display: true)
+      not_displayed = create(:service_standard, display: false)
+
+      facade = HomeFacade.new
+
+      expect(facade.service_standards).to include(displayed)
+      expect(facade.service_standards).not_to include(not_displayed)
+    end
+
+    it "orders them correctly" do
+      last = create(:service_standard, display: true, position: 1)
+      first = create(:service_standard, display: true, position: 0)
+
+      facade = HomeFacade.new
+
+      expect(facade.service_standards.first).to eq(first)
+      expect(facade.service_standards.last).to eq(last)
+    end
+  end
 end

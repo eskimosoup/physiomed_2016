@@ -102,3 +102,9 @@
     <%= render @homepage_facade.additional_contents %>
   </div>
 <% end %>
+
+<% if @homepage_facade.service_standards.any? %>
+  <div class="service-standards">
+    <%= render @homepage_facade.service_standards %>
+  </div>
+<% end %>

@@ -1,0 +1,55 @@
+<%= form_for(@service_standard) do |f| %>
+  <% if @service_standard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@service_standard.errors.count, "error") %> prohibited this service standard from being saved:</h2>
+
+      <ul>
+        <% @service_standard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <li><a href="#tabs-2">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+      <div class="field">
+        <%= f.label :icon %><br>
+        <%= f.select :icon, ServiceStandard::ICONS.map{|x| [x.titleize, x] } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :content %><br>
+        <%= f.text_area :content %>
+      </div>
+
+      <div class="field">
+        <%= f.label :hover_content %><br>
+        <%= f.text_area :hover_content %>
+      </div>
+    <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-2' do %>
+      <div class="field">
+        <%= f.label :display %><br>
+        <%= f.check_box :display %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+    <%= f.submit 'Save and continue editing' %>
+  </div>
+<% end %>
