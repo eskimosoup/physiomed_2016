@@ -1,4 +1,31 @@
 FactoryGirl.define do
+  factory :text_additional_home_content, class: AdditionalHomeContent do
+    title "MyString"
+    content_type "text_content"
+    video nil
+    content "MyText"
+    position 1
+    display true
+  end
+
+  factory :video_additional_home_content, class: AdditionalHomeContent do
+    title "MyString"
+    content_type "video_content"
+    video nil
+    content nil
+    position 1
+    display true
+  end
+
+  factory :savings_calculator_additional_home_content, class: AdditionalHomeContent do
+    title "MyString"
+    content_type "savings_calculator"
+    video nil
+    content nil
+    position 1
+    display true
+  end
+
   factory :administrator, class: Optimadmin::Administrator do
     username 'optimised'
     email 'support@optimised.today'
@@ -52,6 +79,13 @@ FactoryGirl.define do
     factory :health_zone_with_image, traits: [:image]
   end
 
+  factory :service_standard do
+    icon { ServiceStandard::ICONS.sample }
+    content "MyText"
+    hover_content "MyText"
+    position 1
+    display true
+  end
 
   factory :site_setting, class: Optimadmin::SiteSetting do
     environment "test"

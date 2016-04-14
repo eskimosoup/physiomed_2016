@@ -16,6 +16,20 @@ wellbeing_zone = Optimadmin::ModulePage.create!(name: "WellBeing Zone", route: "
 wellbeing_zone_link = Optimadmin::Link.create!(menu_resource: wellbeing_zone)
 wellbeing_menu_item = Optimadmin::MenuItem.create!(link: wellbeing_zone_link, name: "Wellbeing Zone", menu_name: "header")
 
+puts "creating videos"
+video = Video.create!(title: "Ain't no sunshine", youtube_identifier: "tIdIqbv7SPo") # used in additional home content
+
+puts "creating additional home content"
+text_content = <<-RUBY
+  <ul>
+    <li>We prevent people going off work</li>
+    <li>Getting people back to work</li>
+    <li>Keeping people fit and well</li>
+  </ul>
+RUBY
+AdditionalHomeContent.create!(title: "What we do", content_type: "text_content", content: text_content)
+AdditionalHomeContent.create!(title: "b", video: video, content_type: "video_content")
+AdditionalHomeContent.create!(title: "ROI Savings Calculator", content_type: "savings_calculator")
 
 puts "Creating banners"
 Banner.create!(title: "Banner", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")))
@@ -33,6 +47,15 @@ HealthZone.create!(title: "Know your body", home_image: File.open(File.join(Rail
 HealthZone.create!(title: "Feeling Fab exercises", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our exercises section", link: "http://www.google.com")
 HealthZone.create!(title: "Managing Conditions", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk")
 HealthZone.create!(title: "Other", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk/sport")
+
+puts "Creating service standards"
+ServiceStandard.create!(icon: "clock", content: "Patients receive personal attention within four hours", hover_content: "We provide a single point of contact for the provision of physiotherapy care")
+ServiceStandard.create!(icon: "calendar", content: "Guaranteed treatment within three days", hover_content: "Much quicker than the national average of 12 weeks")
+ServiceStandard.create!(icon: "map_pin", content: "Easy to access clinics within 30 minutes travelling", hover_content: "700 clinics and 2,500 chartered physiotherapists nationwide")
+ServiceStandard.create!(icon: "flexible", content: "Flexible treatment options to suit each patient",hover_content: "Hands on treatment, support and condition management")
+ServiceStandard.create!(icon: "document", content: "High quality patient support resources", hover_content: "Online patient treatment centre.  Narrated videos for specific injuries.  Illustrated exercise guides")
+ServiceStandard.create!(icon: "stopwatch", content: "Fast and safe patient recovery time", hover_content: "On average patients are fit to return to work in ten days")
+ServiceStandard.create!(icon: "heart", content: "Post injury care", hover_content: "After care health and wellbeing support includes access to educational and exercise material")
 
 puts "Creating body parts"
 lower_back_intro = <<-RUBY

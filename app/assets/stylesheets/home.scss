@@ -1,0 +1,27 @@
+// Savings calculator
+#amount {
+  width: 40px;
+  text-align: center;
+}
+
+.slider-wrap {
+  width: 80%;
+  margin: 0 auto;
+
+  .slider {
+    margin: 0 auto !important;
+  }
+}
+
+.data {
+  margin: 25px 0 12px;
+}
+
+.total_save {
+  margin: 8px 0;
+}
+
+#total_saving {
+  font-weight: bold;
+  font-size: 18px;
+}

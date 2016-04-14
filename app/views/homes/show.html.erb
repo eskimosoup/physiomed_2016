@@ -1,6 +1,8 @@
 <%= content_for :head do %>
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
   <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+  <%= javascript_include_tag "roi_savings/jquery.simpleslider.min.js" %>
+  <%= javascript_include_tag "roi_savings/slider.js" %>
 <% end %>
 
 <% if @homepage_facade.banners.any? %>
@@ -92,5 +94,17 @@
       collection: @homepage_facade.health_zones,
       as: :health_zone
     ) %>
+  </div>
+<% end %>
+
+<% if @homepage_facade.additional_contents.any? %>
+  <div class="additional-contents">
+    <%= render @homepage_facade.additional_contents %>
+  </div>
+<% end %>
+
+<% if @homepage_facade.service_standards.any? %>
+  <div class="service-standards">
+    <%= render @homepage_facade.service_standards %>
   </div>
 <% end %>
