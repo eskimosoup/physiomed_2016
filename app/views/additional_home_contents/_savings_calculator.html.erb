@@ -1,0 +1,19 @@
+<div class="additional-home-content savings-calculator">
+  <h3><%= savings_calculator.title %></h3>
+  <div class="slider_form">
+    <div class="data">
+      <label for="amount">Number of employees:</label>
+      <input type="text" id="amount" onChange="updateSliderAndCosts();" value="1,000" data-value="1000" />
+    </div>
+
+    <div class="slider-wrap">
+      <% # if changing this max val, also change roi_savings/slider.js %>
+      <input type="text" id="slider_amount" onChange="updateSliderAndCosts();" data-slider="true" data-slider-step="1" data-slider-range="1000,50000" data-slider-highlight="true" />
+    </div>
+
+    <button type="button" onChange="updateSliderAndCosts();" class="hidden"> </button>
+  </div>
+
+  <div class="total_save">You will save: <span id="total_saving"></span></div>
+
+</div>

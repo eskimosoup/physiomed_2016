@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414114702) do
+ActiveRecord::Schema.define(version: 20160414124006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "additional_home_contents", force: :cascade do |t|
+    t.string   "title",                       null: false
+    t.string   "content_type",                null: false
+    t.integer  "video_id"
+    t.text     "content"
+    t.integer  "position",     default: 0,    null: false
+    t.boolean  "display",      default: true, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "additional_home_contents", ["video_id"], name: "index_additional_home_contents_on_video_id", using: :btree
 
   create_table "banners", force: :cascade do |t|
     t.string   "title",                     null: false
@@ -170,4 +183,5 @@ ActiveRecord::Schema.define(version: 20160414114702) do
     t.datetime "updated_at",                        null: false
   end
 
+  add_foreign_key "additional_home_contents", "videos"
 end

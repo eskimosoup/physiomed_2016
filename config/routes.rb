@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "homes#show"
 end
 Optimadmin::Engine.routes.draw do
+
   concern :imageable do
     member do
       get 'edit_images'
@@ -25,6 +26,7 @@ Optimadmin::Engine.routes.draw do
     end
   end
 
+  resources :additional_home_contents, concerns: [:orderable, :toggleable], except: [:show]
   resources :banners, concerns: [:imageable, :orderable, :toggleable], except: [:show]
   resources :body_parts, concerns: [:orderable, :toggleable], except: [:show]
   resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]

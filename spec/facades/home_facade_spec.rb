@@ -94,4 +94,26 @@ describe HomeFacade do
       expect(facade.health_zones.last).to eq(last)
     end
   end
+
+  describe "#additional_contents" do
+    it "gets displayed only" do
+      displayed = create(:text_additional_home_content, display: true)
+      not_displayed = create(:text_additional_home_content, display: false)
+
+      facade = HomeFacade.new
+
+      expect(facade.additional_contents).to include(displayed)
+      expect(facade.additional_contents).not_to include(not_displayed)
+    end
+
+    it "orders them correctly" do
+      last = create(:text_additional_home_content, display: true, position: 1)
+      first = create(:text_additional_home_content, display: true, position: 0)
+
+      facade = HomeFacade.new
+
+      expect(facade.additional_contents.first).to eq(first)
+      expect(facade.additional_contents.last).to eq(last)
+    end
+  end
 end

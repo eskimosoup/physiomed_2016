@@ -20,4 +20,8 @@ class HomeFacade
     @health_zones ||= HealthZone.displayed.ordered_by_position
   end
 
+  def additional_contents
+    @additional_contents ||= AdditionalHomeContent.displayed.ordered_by_position
+  end
+
 end
