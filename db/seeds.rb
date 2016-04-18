@@ -57,6 +57,9 @@ ServiceStandard.create!(icon: "document", content: "High quality patient support
 ServiceStandard.create!(icon: "stopwatch", content: "Fast and safe patient recovery time", hover_content: "On average patients are fit to return to work in ten days")
 ServiceStandard.create!(icon: "heart", content: "Post injury care", hover_content: "After care health and wellbeing support includes access to educational and exercise material")
 
+puts "Creating practices"
+Practice.create!(name: "Hull", post_code: "HU1 1NQ")
+
 puts "Creating body parts"
 lower_back_intro = <<-RUBY
 <h1 class="subtitle">If you suffer from lower back pain, there is no reason why you have to stay in pain. In fact, we have designed this portion of our site with you in mind.</h1>

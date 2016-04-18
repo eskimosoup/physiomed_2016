@@ -1,0 +1,4 @@
+<%= form_for physio_search, url: physio_search_path do |f| %>
+  <%= f.text_field :post_code %>
+  <%= f.submit "Search", id: "physio-search" %>
+<% end %>

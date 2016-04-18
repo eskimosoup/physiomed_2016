@@ -1,0 +1,9 @@
+<% if @results.present? %>
+  <%= render(
+    partial: "physio_searches/result",
+    collection: @results,
+    as: :practice
+  ) %>
+<% else %>
+  Found 0 results
+<% end %>

@@ -9,4 +9,5 @@ class Practice < ActiveRecord::Base
 
   scope :order_by, ->(order_param){ order(order_param || "name asc") }
   scope :search, ->(keywords){ where("name ILIKE ?", "%#{ keywords }%") if keywords.present? }
+  scope :displayed, ->{ where(display: true) }
 end

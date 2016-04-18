@@ -108,3 +108,11 @@
     <%= render @homepage_facade.service_standards %>
   </div>
 <% end %>
+
+<%= render(
+  partial: "physio_searches/form",
+  locals:
+  { 
+    physio_search: @homepage_facade.physio_search
+  }
+) %>

@@ -28,4 +28,7 @@ class HomeFacade
     @service_standards ||= ServiceStandard.displayed.ordered_by_position
   end
 
+  def physio_search
+    @physio_search ||= PhysioSearch.new
+  end
 end
