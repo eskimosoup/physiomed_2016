@@ -4,15 +4,6 @@ Rails.application.routes.draw do
   root to: "homes#show"
 end
 Optimadmin::Engine.routes.draw do
-resources :service_standards, except: [:show] do
-  collection do
-    post 'order'
-  end
-  member do
-    get 'toggle'
-  end
-end
-
   concern :imageable do
     member do
       get 'edit_images'
@@ -40,5 +31,7 @@ end
   resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :employer_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :health_zones, concerns: [:imageable, :orderable, :toggleable], except: [:show]
+  resources :practices, concerns: [:toggleable], except: [:show]
+  resources :service_standards, concerns: [:orderable, :toggleable], except: [:show]
   resources :videos, concerns: [:toggleable], except: [:show]
 end

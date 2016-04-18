@@ -79,6 +79,17 @@ FactoryGirl.define do
     factory :health_zone_with_image, traits: [:image]
   end
 
+  factory :practice do
+    name "MyString"
+    address "MyString"
+    town "MyString"
+    county "MyString"
+    post_code "HU1 1NQ"
+    latitude 53.7457
+    longitude 0.3367
+    display true
+  end
+
   factory :service_standard do
     icon { ServiceStandard::ICONS.sample }
     content "MyText"
