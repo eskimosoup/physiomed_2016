@@ -138,4 +138,10 @@ describe HomeFacade do
       expect(facade.service_standards.last).to eq(last)
     end
   end
+
+  it "#physio_search" do
+    facade = HomeFacade.new
+    
+    expect(facade.physio_search).to be_an_instance_of(PhysioSearch)
+  end
 end
