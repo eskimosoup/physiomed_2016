@@ -60,6 +60,14 @@ ServiceStandard.create!(icon: "heart", content: "Post injury care", hover_conten
 puts "Creating practices"
 Practice.create!(name: "Hull", post_code: "HU1 1NQ")
 
+puts "Creating clients"
+client = Client.create!(name: "Client 1", logo: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), display: true)
+Client.create!(name: "Client 2", logo: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), display: true)
+
+puts "Creating case studies"
+CaseStudy.create!(title: "Case Study #1", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Some content", content: "Some more content", display: true, date: Date.yesterday) 
+CaseStudy.create!(title: "Case Study #2", summary: "A longer summary... let's shorten me because I am going to be way too long blah blah blah blah blah blah", content: "Some content", display: true, date: Date.today)
+
 puts "Creating body parts"
 lower_back_intro = <<-RUBY
 <h1 class="subtitle">If you suffer from lower back pain, there is no reason why you have to stay in pain. In fact, we have designed this portion of our site with you in mind.</h1>

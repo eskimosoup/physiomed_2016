@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418113548) do
+ActiveRecord::Schema.define(version: 20160419082906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,35 @@ ActiveRecord::Schema.define(version: 20160418113548) do
 
   add_index "body_parts", ["name"], name: "index_body_parts_on_name", unique: true, using: :btree
   add_index "body_parts", ["slug"], name: "index_body_parts_on_slug", unique: true, using: :btree
+
+  create_table "case_studies", force: :cascade do |t|
+    t.string   "title",                         null: false
+    t.string   "image"
+    t.text     "summary",                       null: false
+    t.text     "content",                       null: false
+    t.date     "date",                          null: false
+    t.integer  "client_id"
+    t.boolean  "display",        default: true, null: false
+    t.boolean  "home_highlight", default: true, null: false
+    t.string   "slug"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "case_studies", ["client_id"], name: "index_case_studies_on_client_id", using: :btree
+  add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", using: :btree
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.string   "logo",                      null: false
+    t.string   "slug"
+    t.integer  "position",   default: 0,    null: false
+    t.boolean  "display",    default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "clients", ["slug"], name: "index_clients_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -207,4 +236,5 @@ ActiveRecord::Schema.define(version: 20160418113548) do
   end
 
   add_foreign_key "additional_home_contents", "videos"
+  add_foreign_key "case_studies", "clients", on_delete: :cascade
 end

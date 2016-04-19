@@ -1,0 +1,6 @@
+<h1><%= @case_study.title %></h1>
+
+<%= image_tag @case_study.image.show, alt: @case_study.title if @case_study.image? %>
+<%= raw @case_study.content %>
+
+<%= link_to "View All", case_studies_path %>

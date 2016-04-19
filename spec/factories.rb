@@ -49,6 +49,27 @@ FactoryGirl.define do
     display true
     sequence(:mobile_position) {|n| n }
   end
+
+  factory :case_study do
+    sequence(:title) {|n| "Title #{ n }" }
+    trait :image do
+      image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    end
+    summary "MyText"
+    content "MyText"
+    date { Date.today }
+    client nil
+    display true
+    home_highlight true
+    factory :case_study_with_image, traits: [:image]
+  end
+
+  factory :client do
+    sequence(:name) {|n| "Name #{ n }" }
+    logo { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    position 1
+    display true
+  end
   
   factory :employee_quick_link, class: EmployeeQuickLink do
     link "MyString"

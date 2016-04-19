@@ -1,0 +1,6 @@
+<div class="home case-study">
+  <%= image_tag case_study.image.thumb if case_study.image? %>
+  <%= link_to case_study.title, case_study %>
+  <%= simple_format truncate(case_study.summary, length: 50) %>
+  <%= link_to "Read More", case_study %>
+</div>
