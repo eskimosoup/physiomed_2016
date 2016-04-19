@@ -8,6 +8,7 @@ class CreateCaseStudies < ActiveRecord::Migration
       t.date :date, null: false
       t.belongs_to :client, index: true, foreign_key: { on_delete: :cascade }
       t.boolean :display, default: true, null: false
+      t.boolean :home_highlight, default: true, null: false
       t.string :slug
 
       t.timestamps null: false

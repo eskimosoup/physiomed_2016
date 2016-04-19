@@ -1,0 +1,11 @@
+<h1>Case Studies</h1>
+
+<% if @case_studies.any? %>
+  <%= render(
+    partial: "case_studies/case_study",
+    collection: @case_studies,
+    as: :case_study
+  ) %>
+<% else %>
+  We currently have no case studies available to view.
+<% end %>

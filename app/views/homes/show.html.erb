@@ -116,3 +116,28 @@
     physio_search: @homepage_facade.physio_search
   }
 ) %>
+
+<% if @homepage_facade.case_studies.any? %>
+  <%= content_for :head do %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".case-studies").slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: false,
+          arrows: true
+        });
+      });
+    </script>
+  <% end %>
+  <div class="case-studies-container">
+    <h3>Case Studies</h3>
+    <div class="case-studies">
+      <%= render(
+        partial: "case_studies/home_case_study",
+        collection: @homepage_facade.case_studies,
+        as: :case_study
+      ) %>
+    </div>
+  </div>
+<% end %>

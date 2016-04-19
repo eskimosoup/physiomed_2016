@@ -31,4 +31,8 @@ class HomeFacade
   def physio_search
     @physio_search ||= PhysioSearch.new
   end
+
+  def case_studies
+    @case_studies ||= CaseStudy.order_by(date: :desc).displayed.for_home.limit(10)
+  end
 end

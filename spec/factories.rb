@@ -59,6 +59,8 @@ FactoryGirl.define do
     content "MyText"
     date { Date.today }
     client nil
+    display true
+    home_highlight true
     factory :case_study_with_image, traits: [:image]
   end
 

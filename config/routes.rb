@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get "/wellbeing-zone", to: "wellbeings#index", as: :wellbeing
+  resources :case_studies, only: [:index, :show], path: "case-studies"
   resource :physio_search, only: [:create, :show], path: "find-a-physio"
+  get "/wellbeing-zone", to: "wellbeings#index", as: :wellbeing
+  
   mount Optimadmin::Engine => "/admin"
   root to: "homes#show"
 end

@@ -54,16 +54,17 @@ ActiveRecord::Schema.define(version: 20160419082906) do
   add_index "body_parts", ["slug"], name: "index_body_parts_on_slug", unique: true, using: :btree
 
   create_table "case_studies", force: :cascade do |t|
-    t.string   "title",                     null: false
+    t.string   "title",                         null: false
     t.string   "image"
-    t.text     "summary",                   null: false
-    t.text     "content",                   null: false
-    t.date     "date",                      null: false
+    t.text     "summary",                       null: false
+    t.text     "content",                       null: false
+    t.date     "date",                          null: false
     t.integer  "client_id"
-    t.boolean  "display",    default: true, null: false
+    t.boolean  "display",        default: true, null: false
+    t.boolean  "home_highlight", default: true, null: false
     t.string   "slug"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "case_studies", ["client_id"], name: "index_case_studies_on_client_id", using: :btree
