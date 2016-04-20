@@ -141,3 +141,29 @@
     </div>
   </div>
 <% end %>
+
+<% if @homepage_facade.testimonials.any? %>
+  <%= content_for :head do %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".testimonials").slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          arrows: false
+        });
+      });
+    </script>
+  <% end %>
+  <div class="testimonials-container">
+    <h3>What People Say</h3>
+    <div class="testimonials">
+      <%= render(
+        partial: "testimonials/home_testimonial",
+        collection: @homepage_facade.testimonials,
+        as: :testimonial
+      ) %>
+    </div>
+    <%= link_to "View All", testimonials_path %>
+  </div>
+<% end %>

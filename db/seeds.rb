@@ -68,6 +68,10 @@ puts "Creating case studies"
 CaseStudy.create!(title: "Case Study #1", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Some content", content: "Some more content", display: true, date: Date.yesterday) 
 CaseStudy.create!(title: "Case Study #2", summary: "A longer summary... let's shorten me because I am going to be way too long blah blah blah blah blah blah", content: "Some content", display: true, date: Date.today)
 
+puts "Creating testimonials"
+Testimonial.create!(title: "My title", content: "Some content", author: "John Simms")
+Testimonial.create!(title: "Testimonial 2", content: "Some content", author: "Beth Norman")
+
 puts "Creating body parts"
 lower_back_intro = <<-RUBY
 <h1 class="subtitle">If you suffer from lower back pain, there is no reason why you have to stay in pain. In fact, we have designed this portion of our site with you in mind.</h1>

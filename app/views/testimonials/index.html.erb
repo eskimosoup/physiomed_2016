@@ -1,0 +1,11 @@
+<h1>What People Say</h1>
+
+<% if @testimonials.any? %>
+  <%= render(
+    partial: "testimonials/testimonial",
+    collection: @testimonials,
+    as: :testimonial
+  ) %>
+<% else %>
+  We currently have no testimonials to display.
+<% end %>

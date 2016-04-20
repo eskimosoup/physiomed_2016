@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419082906) do
+ActiveRecord::Schema.define(version: 20160420100143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,19 @@ ActiveRecord::Schema.define(version: 20160419082906) do
     t.datetime "updated_at",                   null: false
   end
 
+  create_table "testimonials", force: :cascade do |t|
+    t.string   "title",                        null: false
+    t.text     "content",                      null: false
+    t.string   "author",                       null: false
+    t.string   "role"
+    t.integer  "case_study_id"
+    t.boolean  "display",       default: true, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "testimonials", ["case_study_id"], name: "index_testimonials_on_case_study_id", using: :btree
+
   create_table "videos", force: :cascade do |t|
     t.string   "title",                             null: false
     t.string   "youtube_identifier",                null: false
@@ -237,4 +250,5 @@ ActiveRecord::Schema.define(version: 20160419082906) do
 
   add_foreign_key "additional_home_contents", "videos"
   add_foreign_key "case_studies", "clients", on_delete: :cascade
+  add_foreign_key "testimonials", "case_studies", on_delete: :cascade
 end

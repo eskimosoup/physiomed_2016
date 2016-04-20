@@ -134,6 +134,15 @@ FactoryGirl.define do
     factory :site_setting_email, traits: [:email]
   end
 
+  factory :testimonial do
+    title "MyString"
+    content "MyText"
+    role "MyString"
+    author "MyString"
+    case_study nil
+    display true
+  end
+
   factory :video do
     title "My Video"
     youtube_identifier "tIdIqbv7SPo"

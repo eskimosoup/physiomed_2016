@@ -155,4 +155,14 @@ describe HomeFacade do
 
     expect(facade.case_studies).to eq([first, last])
   end
+
+  it "#testimonials" do
+    displayed = create(:testimonial, display: true)
+    not_displayed = create(:testimonial, display: false)
+
+    facade = HomeFacade.new
+
+    expect(facade.testimonials).to include(displayed)
+    expect(facade.testimonials).not_to include(not_displayed)
+  end
 end

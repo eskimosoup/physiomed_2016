@@ -1,0 +1,6 @@
+<div class="testimonial">
+  <%= link_to testimonial.title, testimonials_path(anchor: "testimonial-#{ testimonial.id }") %>
+  <%= simple_format testimonial.content %>
+  <%= testimonial.author %>
+  <%= testimonial.role %>
+</div>
