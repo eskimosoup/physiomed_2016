@@ -134,6 +134,21 @@ FactoryGirl.define do
     factory :site_setting_email, traits: [:email]
   end
 
+  factory :team_member do
+    forename "MyString"
+    surname "MyString"
+    bio "MyText"
+    email "example@example.com"
+    phone "01234 567 890"
+    role "MyString"
+
+    trait :image do
+      image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    end
+
+    factory :team_member_with_image, traits: [:image]
+  end
+
   factory :testimonial do
     title "MyString"
     content "MyText"
