@@ -39,4 +39,8 @@ class HomeFacade
   def testimonials
     @testimonials ||= Testimonial.displayed.random_order.limit(10)
   end
+
+  def clients
+    @cients ||= Client.displayed.ordered_by_position
+  end
 end

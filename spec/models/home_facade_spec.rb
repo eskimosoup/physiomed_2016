@@ -165,4 +165,15 @@ describe HomeFacade do
     expect(facade.testimonials).to include(displayed)
     expect(facade.testimonials).not_to include(not_displayed)
   end
+
+  it "#clients" do
+    first = create(:client, position: 0, display: true)
+    second = create(:client, position: 1, display: true)
+    not_displayed = create(:client, display: false)
+
+    facade = HomeFacade.new
+
+    expect(facade.clients).to eq([first, second])
+    expect(facade.clients).not_to include(not_displayed)
+  end
 end

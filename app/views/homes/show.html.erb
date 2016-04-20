@@ -167,3 +167,13 @@
     <%= link_to "View All", testimonials_path %>
   </div>
 <% end %>
+
+<% if @homepage_facade.clients.any? %>
+  <div class="clients">
+    <%= render(
+      partial: "clients/home_client",
+      collection: @homepage_facade.clients,
+      as: :client
+    ) %>
+  </div>
+<% end %>

@@ -8,5 +8,7 @@ class Client < ActiveRecord::Base
   validates :logo, presence: true
 
   scope :ordered_by_name, ->{ order(name: :asc) }
+  scope :displayed, ->{ where(display: true) }
+  scope :ordered_by_position, ->{ order(position: :asc) }
 
 end
