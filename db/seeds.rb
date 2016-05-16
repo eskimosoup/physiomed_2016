@@ -72,6 +72,16 @@ puts "Creating testimonials"
 Testimonial.create!(title: "My title", content: "Some content", author: "John Simms")
 Testimonial.create!(title: "Testimonial 2", content: "Some content", author: "Beth Norman")
 
+puts "Creating team members"
+team_member = TeamMember.create!(forename: "Joe", surname: "Bloggs", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), bio: "Biography", email: "joe.bloggs@example.com", phone: "01234 567890", role: "Some role")
+TeamMember.create!(forename: "Jane", surname: "Bloggs", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), bio: "Biography", email: "jane.bloggs@example.com", phone: "01234 567890", role: "Some role")
+
+puts "Creating articles"
+Article.create!(title: "Article 1", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Summary", content: "Content", date: Date.today, author: team_member)
+Article.create!(title: "Article 2", summary: "Summary", content: "Content", date: Date.today)
+Article.create!(title: "Article 3", summary: "Summary", content: "Content", date: Date.today)
+Article.create!(title: "Article 4", summary: "Summary", content: "Content", date: Date.today)
+
 puts "Creating body parts"
 lower_back_intro = <<-RUBY
 <h1 class="subtitle">If you suffer from lower back pain, there is no reason why you have to stay in pain. In fact, we have designed this portion of our site with you in mind.</h1>

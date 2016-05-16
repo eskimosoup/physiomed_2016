@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles, only: [:index, :show]
   resources :case_studies, only: [:index, :show], path: "case-studies"
   resources :testimonials, only: [:index]
   resource :physio_search, only: [:create, :show], path: "find-a-physio"

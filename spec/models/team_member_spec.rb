@@ -8,6 +8,11 @@ describe TeamMember, type: :model do
   end
 
   describe "associations" do
-    skip { should have_many(:articles) }
+    it { should have_many(:articles).with_foreign_key(:author_id) }
+  end
+
+  it "#name" do
+    team_member = build(:team_member, forename: "Joe", surname: "Bloggs")
+    expect(team_member.name).to eq("Joe Bloggs")
   end
 end

@@ -12,7 +12,5 @@ class CreateOptimadminAdministrators < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    Optimadmin::Administrator.create(username: 'optimised', email: 'support@optimised.today',
-                                     password: 'optipoipoip', password_confirmation: 'optipoipoip', role: 'master')
   end
 end

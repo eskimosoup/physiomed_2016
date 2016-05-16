@@ -5,6 +5,9 @@ class Article < ActiveRecord::Base
 
   mount_uploader :image, ArticleUploader
 
+  scope :displayed, -> { where(display: true) }
+  scope :home, -> { where(home_highlight: true) }
+
   belongs_to :author, class_name: "TeamMember"
 
   validates :content, presence: true

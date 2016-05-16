@@ -35,7 +35,7 @@ FactoryGirl.define do
   end
 
   factory :article do
-    title "MyString"
+    sequence(:title){|n| "MyString #{ n }" }
     summary "MyText"
     content "MyText"
     image "MyString"

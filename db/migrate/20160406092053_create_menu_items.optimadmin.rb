@@ -10,6 +10,7 @@ class CreateMenuItems < ActiveRecord::Migration
       t.string :title_attribute, limit: 100
       t.integer :position, default: 0
       t.integer :link_id
+      t.boolean :display, default: true, null: false
 
       t.timestamps null: false
     end

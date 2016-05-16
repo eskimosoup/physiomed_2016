@@ -14,6 +14,6 @@ class CreateArticles < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :articles, :team_members, column: :author_id
+    add_foreign_key :articles, :team_members, column: :author_id, on_delete: :cascade
   end
 end

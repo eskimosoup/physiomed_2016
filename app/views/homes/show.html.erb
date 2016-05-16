@@ -177,3 +177,25 @@
     ) %>
   </div>
 <% end %>
+
+<% if @homepage_facade.articles.any? %>
+  <%= content_for :head do %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".articles").slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: false,
+          arrows: true
+        });
+      });
+    </script>
+  <% end %>
+  <div class="articles">
+    <%= render(
+      partial: "articles/home_article",
+      collection: @homepage_facade.articles,
+      as: :article
+    ) %>
+  </div>
+<% end %>

@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 20160420161501) do
     t.string   "title_attribute", limit: 100
     t.integer  "position",                    default: 0
     t.integer  "link_id"
+    t.boolean  "display",                     default: true,  null: false
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
   end
@@ -281,7 +282,7 @@ ActiveRecord::Schema.define(version: 20160420161501) do
   end
 
   add_foreign_key "additional_home_contents", "videos"
-  add_foreign_key "articles", "team_members", column: "author_id"
+  add_foreign_key "articles", "team_members", column: "author_id", on_delete: :cascade
   add_foreign_key "case_studies", "clients", on_delete: :cascade
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade
 end
