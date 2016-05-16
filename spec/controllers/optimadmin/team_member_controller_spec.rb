@@ -11,7 +11,7 @@ describe Optimadmin::TeamMembersController, type: :controller, team_member: true
       it 'redirects to index on normal save' do
         team_member = stub_valid_team_member
 
-        process :create, method: :post, params: {
+        post :create, {
           team_member: team_member.attributes,
           commit: 'Save'
         }
@@ -23,7 +23,7 @@ describe Optimadmin::TeamMembersController, type: :controller, team_member: true
       it 'redirects to edit on save and continue editing' do
         team_member = stub_valid_team_member
 
-        process :create, method: :post, params: {
+        post :create, {
           team_member: team_member.attributes,
           commit: 'Save and continue editing'
         }
@@ -37,7 +37,7 @@ describe Optimadmin::TeamMembersController, type: :controller, team_member: true
       it 'does not redirect' do
         team_member = stub_invalid_team_member
 
-        process :create, method: :post, params: {
+        post :create, {
           team_member: team_member.attributes,
           commit: 'Save'
         }
@@ -52,7 +52,7 @@ describe Optimadmin::TeamMembersController, type: :controller, team_member: true
       it 'redirects to index on normal save' do
         team_member = stub_valid_team_member
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: team_member.id,
           team_member: team_member.attributes,
           commit: 'Save'
@@ -65,7 +65,7 @@ describe Optimadmin::TeamMembersController, type: :controller, team_member: true
       it 'redirects to edit on save and continue editing' do
         team_member = stub_valid_team_member
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: team_member.id,
           team_member: team_member.attributes,
           commit: 'Save and continue editing'
@@ -80,7 +80,7 @@ describe Optimadmin::TeamMembersController, type: :controller, team_member: true
       it 'does not redirect' do
         team_member = stub_invalid_team_member
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: team_member.id,
           team_member: team_member.attributes,
           commit: 'Save'
@@ -95,7 +95,7 @@ describe Optimadmin::TeamMembersController, type: :controller, team_member: true
     team_member = build_stubbed(:team_member)
     allow(TeamMember).to receive(:new).and_return(team_member)
     allow(team_member).to receive(:save).and_return(true)
-    allow(TeamMember).to receive_message_chain(:friendly, :find).and_return(team_member)
+    allow(TeamMember).to receive(:find).and_return(team_member)
     allow(team_member).to receive(:update).and_return(true)
     team_member
   end
@@ -104,7 +104,7 @@ describe Optimadmin::TeamMembersController, type: :controller, team_member: true
     team_member = build_stubbed(:team_member)
     allow(TeamMember).to receive(:new).and_return(team_member)
     allow(team_member).to receive(:save).and_return(false)
-    allow(TeamMember).to receive_message_chain(:friendly, :find).and_return(team_member)
+    allow(TeamMember).to receive(:find).and_return(team_member)
     allow(team_member).to receive(:update).and_return(false)
     team_member
   end

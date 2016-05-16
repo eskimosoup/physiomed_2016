@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420151341) do
+ActiveRecord::Schema.define(version: 20160420161501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 20160420151341) do
   end
 
   add_index "additional_home_contents", ["video_id"], name: "index_additional_home_contents_on_video_id", using: :btree
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title",                                   null: false
+    t.text     "summary",                                 null: false
+    t.text     "content",                                 null: false
+    t.string   "image"
+    t.date     "date",                                    null: false
+    t.boolean  "display",                  default: true, null: false
+    t.boolean  "home_highlight",           default: true, null: false
+    t.integer  "author_id"
+    t.string   "slug"
+    t.string   "url_originally_posted_on"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  add_index "articles", ["author_id"], name: "index_articles_on_author_id", using: :btree
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
+  add_index "articles", ["title"], name: "index_articles_on_title", unique: true, using: :btree
 
   create_table "banners", force: :cascade do |t|
     t.string   "title",                     null: false
@@ -262,6 +281,7 @@ ActiveRecord::Schema.define(version: 20160420151341) do
   end
 
   add_foreign_key "additional_home_contents", "videos"
+  add_foreign_key "articles", "team_members", column: "author_id"
   add_foreign_key "case_studies", "clients", on_delete: :cascade
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade
 end

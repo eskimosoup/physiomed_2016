@@ -34,6 +34,17 @@ FactoryGirl.define do
     role 'master'
   end
 
+  factory :article do
+    title "MyString"
+    summary "MyText"
+    content "MyText"
+    image "MyString"
+    date { Date.today }
+    display true
+    home_highlight true
+    author nil
+  end
+
   factory :banner do
     title "MyString"
     image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }

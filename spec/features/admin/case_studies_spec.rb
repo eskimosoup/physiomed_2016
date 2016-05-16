@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "case study admin" do
-  it "creation", js: true do
+  scenario "creation", js: true do
     admin = create(:administrator)
 
     login_to_admin_as(admin)
@@ -18,7 +18,7 @@ feature "case study admin" do
     expect(page).to have_admin_index "Title"
   end
 
-  it "editing", js: true do
+  scenario "editing" do
     admin = create(:administrator)
     case_study = create(:case_study, title: "Old Title")
 
@@ -34,7 +34,7 @@ feature "case study admin" do
     expect(page).to have_admin_index "New Title"
   end
   
-  it "destroying" do
+  scenario "destroying" do
     admin = create(:administrator)
     case_study = create(:case_study, title: "Old Title")
 
