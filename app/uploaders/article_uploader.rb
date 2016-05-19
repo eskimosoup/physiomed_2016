@@ -1,6 +1,7 @@
 class ArticleUploader < Optimadmin::ImageUploader
+  # index currently used on home
   version :index do
-    process resize_to_fill: [300, 300]
+    process resize_to_fill: [325, 145]
   end
 
   version :show do

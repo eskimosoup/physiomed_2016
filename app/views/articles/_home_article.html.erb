@@ -1,6 +1,6 @@
 <div class="article home">
   <%= image_tag article.image.index, title: article.title if article.image.present? %>
-  <%= link_to article.title, article %>
+  <%= link_to article.title, article, class: "title" %>
   <%= render(
     partial: "team_members/author",
     locals: { 

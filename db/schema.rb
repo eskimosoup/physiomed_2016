@@ -59,19 +59,6 @@ ActiveRecord::Schema.define(version: 20160420161501) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "body_parts", force: :cascade do |t|
-    t.string   "name"
-    t.text     "introduction"
-    t.boolean  "display",         default: true, null: false
-    t.integer  "mobile_position", default: 0,    null: false
-    t.string   "slug"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
-  add_index "body_parts", ["name"], name: "index_body_parts_on_name", unique: true, using: :btree
-  add_index "body_parts", ["slug"], name: "index_body_parts_on_slug", unique: true, using: :btree
-
   create_table "case_studies", force: :cascade do |t|
     t.string   "title",                         null: false
     t.string   "image"
@@ -113,21 +100,6 @@ ActiveRecord::Schema.define(version: 20160420161501) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
-
-  create_table "health_zones", force: :cascade do |t|
-    t.string   "title",                     null: false
-    t.string   "image"
-    t.string   "home_image",                null: false
-    t.text     "hover_text",                null: false
-    t.string   "link",                      null: false
-    t.integer  "position",   default: 0,    null: false
-    t.boolean  "display",    default: true, null: false
-    t.text     "content"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "health_zones", ["link"], name: "index_health_zones_on_link", unique: true, using: :btree
 
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false

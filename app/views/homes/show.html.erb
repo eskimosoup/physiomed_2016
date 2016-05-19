@@ -1,12 +1,10 @@
-<%= content_for :head do %>
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+<%= content_for :javascript do %>
   <%= javascript_include_tag "roi_savings/jquery.simpleslider.min.js" %>
   <%= javascript_include_tag "roi_savings/slider.js" %>
 <% end %>
 
 <% if @homepage_facade.banners.any? %>
-  <%= content_for :head do %>
+  <%= content_for :javascript do %>
     <script type="text/javascript">
       $(document).ready(function() {
         $(".banners").slick({
@@ -76,7 +74,7 @@
 <% end %>
 
 <% if @homepage_facade.health_zones.any? %>
-  <%= content_for :head do %>
+  <%= content_for :javascript do %>
     <script type="text/javascript">
       $(document).ready(function() {
         $(".health-zones").slick({
@@ -88,114 +86,141 @@
       });
     </script>
   <% end %>
-  <div class="health-zones">
-    <%= render(
-      partial: "health_zones/home_health_zone",
-      collection: @homepage_facade.health_zones,
-      as: :health_zone
-    ) %>
-  </div>
+  <section>
+    <div class="health-wellbeing-zone">
+      <h2 class="green-border-bottom text-center">Health and well-being zone</h2>
+      <div class="health-zones">
+        <%= render(
+          partial: "health_zones/home_health_zone",
+          collection: @homepage_facade.health_zones,
+          as: :health_zone
+        ) %>
+      </div>
+    </div>
+  </section>
 <% end %>
 
-<% if @homepage_facade.additional_contents.any? %>
-  <div class="additional-contents">
-    <%= render @homepage_facade.additional_contents %>
-  </div>
-<% end %>
-
-<% if @homepage_facade.service_standards.any? %>
-  <div class="service-standards">
-    <%= render @homepage_facade.service_standards %>
-  </div>
-<% end %>
-
-<%= render(
-  partial: "physio_searches/form",
-  locals:
-  { 
-    physio_search: @homepage_facade.physio_search
-  }
-) %>
-
-<% if @homepage_facade.case_studies.any? %>
-  <%= content_for :head do %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $(".case-studies").slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplay: false,
-          arrows: true
-        });
-      });
-    </script>
+<div class="home content">
+  <% if @homepage_facade.additional_contents.any? %>
+    <section class="flexbox-wrap">
+      <%= render @homepage_facade.additional_contents %>
+    </section>
   <% end %>
-  <div class="case-studies-container">
-    <h3>Case Studies</h3>
-    <div class="case-studies">
+
+  <% if @homepage_facade.service_standards.any? %>
+    <section class="box-wrap">
+      <div class="service-standards">
+        <h2 class="text-center">Service Standards</h2>
+        <div class="service-standard-wrap">
+          <%= render @homepage_facade.service_standards %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+
+  <section class="flexbox-wrap">
+    <div class="physio-search brown-background">
+      <h2 class="white">
+        Find a Physiotherapist<br>
+        <span class="green">Near you</span>
+      </h2>
       <%= render(
-        partial: "case_studies/home_case_study",
-        collection: @homepage_facade.case_studies,
-        as: :case_study
+        partial: "physio_searches/form",
+        locals:
+        { 
+          physio_search: @homepage_facade.physio_search
+        }
       ) %>
     </div>
-  </div>
-<% end %>
 
-<% if @homepage_facade.testimonials.any? %>
-  <%= content_for :head do %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $(".testimonials").slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplay: true,
-          arrows: false
-        });
-      });
-    </script>
+    <% if @homepage_facade.case_studies.any? %>
+      <%= content_for :javascript do %>
+        <%= javascript_include_tag "components/case_studies/home" %>
+      <% end %>
+      <div class="case-studies-container white-background">
+        <h2 class="green-border-bottom">Case Studies</h2>
+
+        <div class="slick-controls">
+          <%= button_tag(type: 'button', class: "slick-case-studies slick-prev") do %>
+            <
+          <% end %>
+          <%= button_tag(type: 'button', class: "slick-case-studies slick-next") do %>
+            >
+          <% end %>
+        </div>
+
+        <div class="case-studies">
+          <%= render(
+            partial: "case_studies/home_case_study",
+            collection: @homepage_facade.case_studies,
+            as: :case_study
+          ) %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @homepage_facade.testimonials.any? %>
+      <%= content_for :javascript do %>
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $(".testimonials").slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              autoplay: true,
+              arrows: false
+            });
+          });
+        </script>
+      <% end %>
+      <div class="testimonials-container white-background">
+        <h2 class="green-border-bottom">What People Say</h2>
+        <div class="testimonials">
+          <%= render(
+            partial: "testimonials/home_testimonial",
+            collection: @homepage_facade.testimonials,
+            as: :testimonial
+          ) %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+
+  <% if @homepage_facade.clients.any? %>
+    <section class="box-wrap">
+      <div class="clients">
+        <h2 class="green-border-bottom text-center">Some of our happy clients</h2>
+        <div class="client-container">
+          <%= render(
+            partial: "clients/home_client",
+            collection: @homepage_facade.clients,
+            as: :client
+          ) %>
+        </div>
+      </div>
+    </section>
   <% end %>
-  <div class="testimonials-container">
-    <h3>What People Say</h3>
-    <div class="testimonials">
-      <%= render(
-        partial: "testimonials/home_testimonial",
-        collection: @homepage_facade.testimonials,
-        as: :testimonial
-      ) %>
-    </div>
-    <%= link_to "View All", testimonials_path %>
-  </div>
-<% end %>
 
-<% if @homepage_facade.clients.any? %>
-  <div class="clients">
-    <%= render(
-      partial: "clients/home_client",
-      collection: @homepage_facade.clients,
-      as: :client
-    ) %>
-  </div>
-<% end %>
-
-<% if @homepage_facade.articles.any? %>
-  <%= content_for :head do %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $(".articles").slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          autoplay: false,
-          arrows: true
-        });
-      });
-    </script>
+  <% if @homepage_facade.articles.any? %>
+    <%= content_for :javascript do %>
+      <%= javascript_include_tag "components/articles/home.js" %>
+    <% end %>
+    <section class="box-wrap">
+      <div class="articles-container">
+        <h2 class="green-border-bottom text-center">Latest health and well-being news</h2>
+        <%= button_tag(type: 'button', class: "slick-articles slick-prev") do %>
+          <
+        <% end %>
+        <div class="articles">
+          <%= render(
+            partial: "articles/home_article",
+            collection: @homepage_facade.articles,
+            as: :article
+          ) %>
+        </div>
+        <%= button_tag(type: 'button', class: "slick-articles slick-next") do %>
+          >
+        <% end %>
+      </div>
+    </section>
   <% end %>
-  <div class="articles">
-    <%= render(
-      partial: "articles/home_article",
-      collection: @homepage_facade.articles,
-      as: :article
-    ) %>
-  </div>
-<% end %>
+</div>

@@ -1,0 +1,9 @@
+.service-standard {
+  border-right: 2px solid $white;
+  background-color: $green;
+  padding: rem-calc(5px);
+
+  &:last-child {
+    border-right: 0;
+  }
+}

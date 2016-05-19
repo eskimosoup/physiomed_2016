@@ -1,0 +1,15 @@
+footer {
+  background-color: $mud-brown;
+  color: $white;
+  .awards-container {
+    width: 100%;
+    background-color: $white;
+  }
+  .footer-container {
+    h2 {
+      width: 100%;
+    }
+    @include flex-grid-row;
+    text-align: center;
+  }
+}

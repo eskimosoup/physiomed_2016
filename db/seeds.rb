@@ -42,12 +42,6 @@ puts "Creating Quick Links"
   EmployeeQuickLink.create!(link: "http://www.google.co.uk", link_text: "Read more")
 end
 
-puts "Creating health zones"
-HealthZone.create!(title: "Know your body", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our know your body section", link: "http://www.google.co.uk")
-HealthZone.create!(title: "Feeling Fab exercises", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our exercises section", link: "http://www.google.com")
-HealthZone.create!(title: "Managing Conditions", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk")
-HealthZone.create!(title: "Other", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk/sport")
-
 puts "Creating service standards"
 ServiceStandard.create!(icon: "clock", content: "Patients receive personal attention within four hours", hover_content: "We provide a single point of contact for the provision of physiotherapy care")
 ServiceStandard.create!(icon: "calendar", content: "Guaranteed treatment within three days", hover_content: "Much quicker than the national average of 12 weeks")

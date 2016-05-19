@@ -1,0 +1,20 @@
+.article.home {
+  padding: rem-calc(15px);
+  .title {
+    margin: rem-calc(25px) auto;
+    display: block;
+    text-align: center;
+  }
+
+  .author {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    .image {
+      margin-right: rem-calc(20px);
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+}

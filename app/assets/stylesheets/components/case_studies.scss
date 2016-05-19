@@ -1,0 +1,17 @@
+.home.case-study {
+  text-align: center;
+
+  .main-content {
+    text-align: left;
+    display: flex;
+    margin-bottom: rem-calc(25px);
+  }
+
+  .image {
+    margin-right: rem-calc(15px);
+    img {
+      border: 1px solid $mud-brown;
+    }
+  }
+
+}

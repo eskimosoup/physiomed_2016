@@ -24,20 +24,18 @@
       </div>
 
       <ul id="modules" class="content-category-list">
-<%= module_link(content: "Articles", model: Article, path: articles_path) %>
-<%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
-<%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
-<%= module_link(content: "Case Studies", model: CaseStudy, path: case_studies_path) %>
-<%= module_link(content: "Clients", model: Client, path: clients_path) %>
-<%= module_link(content: "Practices", model: Practice, path: practices_path) %>
-<%= module_link(content: "Service Standards", model: ServiceStandard, path: service_standards_path) %>
-<%= module_link(content: "Additional Home Contents", model: AdditionalHomeContent, path: additional_home_contents_path) %>
-<%= module_link(content: "Videos", model: Video, path: videos_path) %>
-<%= module_link(content: "Health Zones", model: HealthZone, path: health_zones_path) %>
-<%= module_link(content: "Employee Quick Links", model: EmployeeQuickLink, path: employee_quick_links_path) %>
-<%= module_link(content: "Employer Quick Links", model: EmployerQuickLink, path: employer_quick_links_path) %>
-<%= module_link(content: "Banners", model: Banner, path: banners_path) %>
-<%= module_link(content: "Body Parts", model: BodyPart, path: body_parts_path) %>
+        <%= module_link(content: "Articles", model: Article, path: articles_path) %>
+        <%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
+        <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
+        <%= module_link(content: "Case Studies", model: CaseStudy, path: case_studies_path) %>
+        <%= module_link(content: "Clients", model: Client, path: clients_path) %>
+        <%= module_link(content: "Practices", model: Practice, path: practices_path) %>
+        <%= module_link(content: "Service Standards", model: ServiceStandard, path: service_standards_path) %>
+        <%= module_link(content: "Additional Home Contents", model: AdditionalHomeContent, path: additional_home_contents_path) %>
+        <%= module_link(content: "Videos", model: Video, path: videos_path) %>
+        <%= module_link(content: "Employee Quick Links", model: EmployeeQuickLink, path: employee_quick_links_path) %>
+        <%= module_link(content: "Employer Quick Links", model: EmployerQuickLink, path: employer_quick_links_path) %>
+        <%= module_link(content: "Banners", model: Banner, path: banners_path) %>
         <% if can? :manage, Optimadmin::MenuItem %>
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>

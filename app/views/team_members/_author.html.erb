@@ -1,5 +1,15 @@
 <div class="author">
-  <%= image_tag team_member.image.author, title: team_member.name if team_member.image.present? %>
-  <%= team_member.name %>
-  <%= team_member.role %>
+  <% if team_member.image? %>
+    <div class="image">
+      <%= image_tag team_member.image.author, title: team_member.name %>
+    </div>
+  <% end %>
+  <div class="basic-details">
+    <div class="name">
+      <%= team_member.name %>
+    </div>
+    <div class="role">
+      <%= team_member.role %>
+    </div>
+  </div>
 </div>

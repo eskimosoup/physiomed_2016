@@ -1,4 +1,6 @@
 <%= form_for physio_search, url: physio_search_path do |f| %>
-  <%= f.text_field :post_code %>
-  <%= f.submit "Search", id: "physio-search" %>
+  <div class="input-add-on">
+    <%= f.text_field :post_code, placeholder: "Enter postcode", class: "input-add-on-field" %>
+    <%= f.submit "", id: "physio-search", class: "input-add-on-item" %>
+  </div>
 <% end %>

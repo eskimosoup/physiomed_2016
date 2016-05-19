@@ -1,0 +1,182 @@
+@mixin home-border-radius-with-box-shadow {
+  border-radius: 6px;
+  box-shadow: 3px 3px 8px 4px #ccc;
+}
+
+.home.content {
+  background-color: $beige;
+  padding: rem-calc(5px) 0;
+
+  section.box-wrap {
+    @include flex-grid-row;
+  }
+  
+  section.flexbox-wrap {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: $grid-row-width;
+  }
+
+  section.box-wrap, section.flexbox-wrap {
+    margin: rem-calc(20px) auto;
+  }
+
+  .service-standards {
+    @include flex-grid-column(12);
+    h2 {
+      text-align: center;
+    }
+  }
+
+  .service-standard-wrap {
+    display: flex;
+    @include flex-grid-layout(7, '.service-standard');
+  }
+
+  .additional-home-content {
+    background-color: $white;
+  }
+
+  .additional-home-content, .physio-search, .case-studies-container, .testimonials-container {
+    width: 32%;
+    padding: rem-calc(20px);
+    @include home-border-radius-with-box-shadow;
+  }
+
+  .physio-search {
+    .input-add-on {
+      display: flex;
+    }
+
+    .input-add-on-field {
+      flex: 1;
+    }
+
+    .input-add-on-field:not(:first-child) {
+      border-left: 0;
+    }
+
+    .input-add-on-field:not(:last-child) {
+      border-right: 0;
+    }
+
+    .input-add-on-item {
+      background-color: rgba(147, 128, 108, 0.1);
+      color: #666666;
+      font: inherit;
+      font-weight: normal;
+    }
+
+    .input-add-on-field,
+    .input-add-on-item {
+      border: 1px solid rgba(147, 128, 108, 0.25);
+      padding: 0.5em 0.75em;
+    }
+    .input-add-on-field:first-child,
+    .input-add-on-item:first-child {
+      border-radius: 2px 0 0 2px;
+    }
+    .input-add-on-field:last-child,
+    .input-add-on-item:last-child {
+      border-radius: 0 2px 2px 0;
+    }
+    input-add-on {
+      display: flex;
+    }
+
+    .input-add-on-field {
+      flex: 1;
+    }
+
+    .input-add-on-field:not(:first-child) {
+      border-left: 0;
+    }
+
+    .input-add-on-field:not(:last-child) {
+      border-right: 0;
+    }
+
+    .input-add-on-item {
+      background-color: rgba(147, 128, 108, 0.1);
+      color: #666666;
+      font: inherit;
+      font-weight: normal;
+    }
+
+    .input-add-on-field,
+    .input-add-on-item {
+      border: 1px solid rgba(147, 128, 108, 0.25);
+      padding: 0.5em 0.75em;
+    }
+    .input-add-on-field:first-child,
+    .input-add-on-item:first-child {
+      border-radius: 2px 0 0 2px;
+    }
+    .input-add-on-field:last-child,
+    .input-add-on-item:last-child {
+      border-radius: 0 2px 2px 0;
+    }
+  }
+
+  .case-studies-container {
+    position: relative;
+    .slick-controls {
+      position: absolute;
+      top: rem-calc(45px);
+      right: rem-calc(25px);
+    }
+  }
+
+  .articles-container {
+    position: relative;
+    @include home-border-radius-with-box-shadow;
+    @include flex-grid-column(12);
+    background-color: $white;
+    .articles {
+      width: 91%;
+      margin: 0 auto;
+    }
+    padding-top: rem-calc(20px);
+    padding-bottom: rem-calc(20px);
+  }
+
+  .clients {
+    background-color: $white;
+    padding: rem-calc(20px);
+    @include home-border-radius-with-box-shadow;
+    @include flex-grid-column(12);
+    .client-container {
+      @include flex-grid-row;
+    }
+  }
+}
+
+// Savings calculator
+#amount {
+  width: 40px;
+  text-align: center;
+}
+
+.slider-wrap {
+  width: 80%;
+  margin: 0 auto;
+
+  .slider {
+    margin: 0 auto !important;
+  }
+}
+
+.data {
+  margin: 25px 0 12px;
+}
+
+.total_save {
+  margin: 8px 0;
+}
+
+#total_saving {
+  font-weight: bold;
+  font-size: 18px;
+}

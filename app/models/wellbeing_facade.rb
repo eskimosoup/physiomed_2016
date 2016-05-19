@@ -1,0 +1,3 @@
+class WellbeingFacade
+
+end

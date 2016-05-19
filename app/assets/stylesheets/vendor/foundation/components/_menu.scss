@@ -36,6 +36,7 @@ $menu-icon-spacing: 0.25rem !default;
   list-style-type: none;
 
   @if $global-flexbox {
+    width: 100%;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -72,7 +73,10 @@ $menu-icon-spacing: 0.25rem !default;
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
   @if $global-flexbox {
-    > li { flex: 1 1 0px; }
+    // scss-lint:disable ZeroUnit
+    > li {
+      flex: 1 1 0px;
+    }
   }
   @else {
     width: 100%;
@@ -105,6 +109,11 @@ $menu-icon-spacing: 0.25rem !default;
       > li {
         flex: 0 0 100%;
         max-width: 100%;
+      }
+
+      > li  > a {
+        align-items: flex-start;
+        justify-content: flex-start;
       }
     }
     @else {
@@ -144,20 +153,19 @@ $menu-icon-spacing: 0.25rem !default;
   @if $base {
     @if $global-flexbox {
       > li > a {
-        display: block;
-        align-items: center;
-        justify-content: center;
+        display: flex;
       }
     }
     @else {
       > li > a {
-        > img,
-        > i {
+        img,
+        i,
+        svg {
           vertical-align: middle;
-        }
 
-        > span {
-          vertical-align: middle;
+          + span {
+            vertical-align: middle;
+          }
         }
       }
     }
@@ -165,24 +173,42 @@ $menu-icon-spacing: 0.25rem !default;
 
   @if $position == side {
     > li > a {
-      @if $global-flexbox { flex-flow: row nowrap; }
+      @if $global-flexbox {
+        flex-flow: row nowrap;
+      }
 
-      > img,
-      > i {
-        @if not $global-flexbox { display: inline-block; }
+      img,
+      i,
+      svg {
         margin-#{$global-right}: $menu-icon-spacing;
+
+        @if not $global-flexbox {
+          display: inline-block;
+        }
       }
     }
   }
   @else if $position == top {
     > li > a {
-      @if $global-flexbox { flex-flow: column nowrap; }
-      @else { text-align: center; }
+      @if $global-flexbox {
+        flex-flow: column nowrap;
+      }
+      @else {
+        text-align: center;
+      }
 
-      > img,
-      > i {
-        @if not $global-flexbox { display: block; }
-        margin: 0 auto $menu-icon-spacing;
+      img,
+      i,
+      svg {
+        @if not $global-flexbox {
+          display: block;
+          margin: 0 auto $menu-icon-spacing;
+        }
+        @else {
+          align-self: stretch;
+          text-align: center;
+          margin-bottom: $menu-icon-spacing;
+        }
       }
     }
   }
@@ -210,7 +236,7 @@ $menu-icon-spacing: 0.25rem !default;
     }
 
     @each $size in $breakpoint-classes {
-      @if $size != small {
+      @if $size != $-zf-zero-breakpoint {
         @include breakpoint($size) {
           &.#{$size}-horizontal {
             @include menu-direction(horizontal);
@@ -234,6 +260,8 @@ $menu-icon-spacing: 0.25rem !default;
         justify-content: flex-end;
       }
       @else {
+        @include clearfix;
+
         > li {
           float: $global-right;
         }
@@ -260,7 +288,7 @@ $menu-icon-spacing: 0.25rem !default;
     }
 
     // Active state
-    .is-active > a {
+    .active > a {
       color: $menu-item-color-active;
       background: $menu-item-background-active;
     }
@@ -268,6 +296,15 @@ $menu-icon-spacing: 0.25rem !default;
 
   .menu-text {
     @include menu-text;
+  }
+
+  // Align center
+  .menu-centered {
+    text-align: center;
+
+    > .menu {
+      display: inline-block;
+    }
   }
 
   // Prevent FOUC when using the Responsive Menu plugin

@@ -1,0 +1,5 @@
+.home {
+  .testimonials-container {
+    @include flex-grid-column(4);
+  }
+}
