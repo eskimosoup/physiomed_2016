@@ -1,0 +1,41 @@
+<div class="home wellbeing content">
+  <% if @wellbeing_facade.body_parts.any? %>
+    <section class="flexbox-wrap">
+      <div class="body-parts-container">
+        <div class="body-parts">
+          <%= render(
+            partial: "body_parts/body_part",
+            collection: @wellbeing_facade.body_parts,
+            as: :body_part
+          ) %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+
+  <% if @wellbeing_facade.team_members.any? %>
+    <%= content_for :javascript do %>
+      <%= javascript_include_tag "components/team_members/wellbeing_zone.js" %>
+    <% end %>
+    <section class="box-wrap">
+      <div class="team-members-container">
+        <h2 class="text-center">
+          Meet your specialists: <span class="green">clinical team</span>
+        </h2>
+        <%= button_tag(type: 'button', class: "slick-team-members slick-prev") do %>
+          <
+        <% end %>
+        <div class="team-members">
+          <%= render(
+            partial: "team_members/wellbeing_team_member",
+            collection: @wellbeing_facade.team_members,
+            as: :team_member
+          ) %>
+        </div>
+        <%= button_tag(type: 'button', class: "slick-team-members slick-next") do %>
+          >
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+</div>

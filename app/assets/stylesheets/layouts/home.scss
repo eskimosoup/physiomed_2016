@@ -1,8 +1,3 @@
-@mixin home-border-radius-with-box-shadow {
-  border-radius: 6px;
-  box-shadow: 3px 3px 8px 4px #ccc;
-}
-
 .home.content {
   background-color: $beige;
   padding: rem-calc(5px) 0;
@@ -42,7 +37,7 @@
   .additional-home-content, .physio-search, .case-studies-container, .testimonials-container {
     width: 32%;
     padding: rem-calc(20px);
-    @include home-border-radius-with-box-shadow;
+    @include border-radius-with-box-shadow;
   }
 
   .physio-search {
@@ -131,7 +126,7 @@
 
   .articles-container {
     position: relative;
-    @include home-border-radius-with-box-shadow;
+    @include border-radius-with-box-shadow;
     @include flex-grid-column(12);
     background-color: $white;
     .articles {
@@ -145,7 +140,7 @@
   .clients {
     background-color: $white;
     padding: rem-calc(20px);
-    @include home-border-radius-with-box-shadow;
+    @include border-radius-with-box-shadow;
     @include flex-grid-column(12);
     .client-container {
       @include flex-grid-row;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519123234) do
+ActiveRecord::Schema.define(version: 20160519130724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(version: 20160519123234) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "body_parts", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.string   "tagline"
+    t.integer  "position",   default: 0,    null: false
+    t.boolean  "display",    default: true, null: false
+    t.string   "slug"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "body_parts", ["name"], name: "index_body_parts_on_name", unique: true, using: :btree
+  add_index "body_parts", ["slug"], name: "index_body_parts_on_slug", unique: true, using: :btree
 
   create_table "case_studies", force: :cascade do |t|
     t.string   "title",                         null: false

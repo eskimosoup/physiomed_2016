@@ -7,6 +7,8 @@ class TeamMember < ActiveRecord::Base
   validates :surname, presence: true
   validates :role, presence: true
 
+  scope :displayed, ->{ where(display: true) }
+
   def name
     [forename, surname].join(" ")
   end

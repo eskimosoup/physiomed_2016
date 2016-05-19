@@ -9,4 +9,4 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( optimadmin/* roi_savings/* components/articles/home.js components/case_studies/home.js )
+Rails.application.config.assets.precompile += %w( optimadmin/* roi_savings/* components/articles/home.js components/case_studies/home.js components/team_members/wellbeing_zone.js )

@@ -1,0 +1,25 @@
+.wellbeing.content {
+  .body-parts-container {
+    background-color: $white;
+    @include border-radius-with-box-shadow;
+    @include flex-grid-column(12);
+    
+    .body-parts {
+      width: 100%;
+      @include flex-grid-row;
+    }
+  }
+
+  .team-members-container {
+    position: relative;
+    @include border-radius-with-box-shadow;
+    @include flex-grid-column(12);
+    background-color: $white;
+    .team-members {
+      width: 91%;
+      margin: 0 auto;
+    }
+    padding-top: rem-calc(20px);
+    padding-bottom: rem-calc(20px);
+  }
+}

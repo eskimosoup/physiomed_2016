@@ -1,0 +1,33 @@
+<%= form_for(@body_part) do |f| %>
+  <% if @body_part.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@body_part.errors.count, "error") %> prohibited this body part from being saved:</h2>
+
+      <ul>
+        <% @body_part.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.select :name, BodyPart::BODY_PARTS %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tagline %><br>
+    <%= f.text_field :tagline %>
+  </div>
+
+  <div class="field">
+    <%= f.label :display %><br>
+    <%= f.check_box :display %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+    <%= f.submit 'Save and continue editing' %>
+  </div>
+<% end %>

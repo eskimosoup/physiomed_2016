@@ -1,0 +1,11 @@
+.body-part {
+  @include flex-grid-column(4);
+  margin: rem-calc(20px) auto;
+  .name {
+    color: $white;
+    padding: rem-calc(25px);
+  }
+  .tagline {
+    background-color: $beige;
+  }
+}

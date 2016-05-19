@@ -1,0 +1,13 @@
+.team-member.wellbeing {
+  padding: rem-calc(10px);
+
+  .name {
+    padding: rem-calc(10px) 0;
+    border-bottom: 1px solid $brown;
+  }
+
+  .role {
+    margin: rem-calc(5px) auto;
+    color: $green;
+  }
+}

@@ -1,0 +1,11 @@
+<div class="body-part">
+  <div class="name text-center green-background">
+    <%= body_part.name %>
+  </div>
+  <%= image_tag body_part.image %>
+  <% if body_part.tagline.present? %>
+    <div class="tagline text-center">
+      <%= body_part.tagline %>
+    </div>
+  <% end %>
+</div>

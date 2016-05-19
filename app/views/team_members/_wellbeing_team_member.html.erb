@@ -1,0 +1,10 @@
+<div class="wellbeing team-member text-center">
+  <%= image_tag team_member.image.index, title: team_member.name if team_member.image? %>
+  <div class="name">
+    <%= team_member.forename %><br>
+    <%= team_member.surname %>
+  </div>
+  <div class="role">
+    <%= team_member.role %>
+  </div>
+</div>

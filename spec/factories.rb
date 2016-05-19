@@ -54,6 +54,13 @@ FactoryGirl.define do
     link "http://www.google.co.uk"
   end
 
+  factory :body_part do
+    name { BodyPart::BODY_PARTS.sample }
+    tagline "MyString"
+    position 1
+    display true
+  end
+
   factory :case_study do
     sequence(:title) {|n| "Title #{ n }" }
     trait :image do
