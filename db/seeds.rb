@@ -16,6 +16,12 @@ wellbeing_zone = Optimadmin::ModulePage.create!(name: "WellBeing Zone", route: "
 wellbeing_zone_link = Optimadmin::Link.create!(menu_resource: wellbeing_zone)
 wellbeing_menu_item = Optimadmin::MenuItem.create!(link: wellbeing_zone_link, name: "Wellbeing Zone", menu_name: "header")
 
+puts "Creating health zones"
+HealthZone.create!(title: "Know your body", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our know your body section", link: "http://www.google.co.uk")
+HealthZone.create!(title: "Feeling Fab exercises", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our exercises section", link: "http://www.google.com")
+HealthZone.create!(title: "Managing Conditions", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk")
+HealthZone.create!(title: "Other", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk/sport")
+
 puts "creating videos"
 video = Video.create!(title: "Ain't no sunshine", youtube_identifier: "tIdIqbv7SPo") # used in additional home content
 

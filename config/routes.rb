@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :case_studies, only: [:index, :show], path: "case-studies"
   resources :testimonials, only: [:index]
   resource :physio_search, only: [:create, :show], path: "find-a-physio"
-  get "/health-and-well-being-zone", to: "wellbeings#show", as: :wellbeing
+  namespace :wellbeing_zone, path: "well-being-zone" do
+    root to: "wellbeings#show"
+  end
   
   mount Optimadmin::Engine => "/admin"
   root to: "homes#show"
