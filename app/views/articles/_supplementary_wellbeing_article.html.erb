@@ -1,0 +1,10 @@
+<div class="article wellbeing supplementary">
+  <%= link_to article, class: "beige-background" do %>
+    <div class="date">
+      <%= l article.date, format: :slashes %>
+    </div>
+    <div class="title">
+      <%= article.title %>
+    </div>
+  <% end %>
+</div>

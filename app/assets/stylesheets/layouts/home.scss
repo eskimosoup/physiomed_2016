@@ -2,22 +2,6 @@
   background-color: $beige;
   padding: rem-calc(5px) 0;
 
-  section.box-wrap {
-    @include flex-grid-row;
-  }
-  
-  section.flexbox-wrap {
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    width: $grid-row-width;
-  }
-
-  section.box-wrap, section.flexbox-wrap {
-    margin: rem-calc(20px) auto;
-  }
-
   .service-standards {
     @include flex-grid-column(12);
     h2 {

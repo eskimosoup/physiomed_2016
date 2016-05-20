@@ -1,4 +1,4 @@
-<div class="home wellbeing content">
+<div class="wellbeing content">
   <% if @wellbeing_facade.body_parts.any? %>
     <section class="flexbox-wrap">
       <div class="body-parts-container">
@@ -38,4 +38,22 @@
       </div>
     </section>
   <% end %>
+
+  <section class="flexbox-wrap">
+    <% if @wellbeing_facade.articles.any? %>
+      <div class="articles-container">
+        <%= link_to "See more", articles_path, class: "button brown-background" %>
+        <h2 class="green-border-bottom">
+          Latest News
+        </h2>
+        <% @wellbeing_facade.articles.each_with_index do |article, i| %>
+          <%= wellbeing_article_partial(article, i) %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="twitter-container brown-background">
+      <%= image_tag "twitter-brown" %>
+      TWITTER GOES HERE
+    </div>
+  </section>
 </div>

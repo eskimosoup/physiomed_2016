@@ -15,6 +15,10 @@ h2 {
   background-color: $brown;
 }
 
+.beige-background {
+  background-color: $beige;
+}
+
 .white-background {
   background-color: $white;
 }
@@ -45,4 +49,22 @@ a.button {
 
 a.button.brown-background:hover {
   background-color: lighten($brown, 10%);
+}
+
+.content {
+  section.box-wrap {
+    @include flex-grid-row;
+  }
+  
+  section.flexbox-wrap {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: $grid-row-width;
+  }
+
+  section.box-wrap, section.flexbox-wrap {
+    margin: rem-calc(20px) auto;
+  }
 }

@@ -1,0 +1,21 @@
+<div class="article wellbeing main">
+  <% if article.image? %>
+    <div class="image">
+      <%= image_tag article.image.index, title: article.title %>
+    </div>
+    <div class="basic-details">
+      <div class="date">
+        <%= l article.date, format: :slashes %>
+      </div>
+      <div class="title">
+        <%= link_to article.title, article %>
+      </div>
+      <div class="summary">
+        <%= simple_format article.summary %>
+      </div>
+      <div class="read-more">
+        <%= link_to "Read more >", article %>
+      </div>
+    </div>
+  <% end %>
+</div>
