@@ -1,7 +1,8 @@
 .service-standard {
+  text-align: center;
   border-right: 2px solid $white;
   background-color: $green;
-  padding: rem-calc(5px);
+  padding: rem-calc(20px 5px);
 
   &:last-child {
     border-right: 0;

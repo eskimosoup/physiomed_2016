@@ -7,4 +7,8 @@ class ServiceStandard < ActiveRecord::Base
 
   scope :ordered_by_position, -> { order(position: :asc) }
   scope :displayed, -> { where(display: true) }
+
+  def icon_image
+    "icons/#{ icon }.png"
+  end
 end
