@@ -1,8 +1,24 @@
 .service-standard {
   text-align: center;
   border-right: 2px solid $white;
-  background-color: $green;
-  padding: rem-calc(20px 5px);
+  padding: rem-calc(20px 10px);
+  color: $white;
+  transition: background-color 500ms linear;
+
+  .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid $white;
+    margin: rem-calc(5px) auto;
+  }
+
+  &:hover {
+    background-color: $brown;
+    transition: background-color 500ms linear;
+    cursor: pointer;
+  }
 
   &:last-child {
     border-right: 0;

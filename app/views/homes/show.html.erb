@@ -108,6 +108,20 @@
   <% end %>
 
   <% if @homepage_facade.service_standards.any? %>
+    <%= content_for :javascript do %>
+      <script type="text/javascript">
+        $(document).ready(function () {
+          $(".service-standard").mouseenter(function() {
+            $(this).children(".main-content").slideUp(500);
+            $(this).children(".hover-content").slideDown(500);
+          })
+          $(".service-standard").mouseleave(function() {
+            $(this).children(".main-content").slideDown(500);
+            $(this).children(".hover-content").slideUp(500);
+          })
+        });
+      </script>
+    <% end %>
     <section class="box-wrap">
       <div class="service-standards">
         <h2 class="text-center">Service Standards</h2>
