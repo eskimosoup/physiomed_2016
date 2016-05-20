@@ -94,3 +94,7 @@ BodyPart::BODY_PARTS.each_with_index do |name, i|
   end
 end
 
+puts "Creating FAQs"
+6.times do
+  FrequentlyAskedQuestion.create!(question: "Really?", answer: "Sure")
+end

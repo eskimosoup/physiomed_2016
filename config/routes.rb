@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :case_studies, only: [:index, :show], path: "case-studies"
+  resources :frequently_asked_questions, only: [:index], path: "frequently-asked-questions"
   resources :testimonials, only: [:index]
   resource :physio_search, only: [:create, :show], path: "find-a-physio"
   namespace :wellbeing_zone, path: "well-being-zone" do
@@ -40,6 +41,7 @@ Optimadmin::Engine.routes.draw do
   resources :clients, concerns: [:imageable, :orderable, :toggleable], except: [:show]
   resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :employer_quick_links, concerns: [:orderable, :toggleable], except: [:show]
+  resources :frequently_asked_questions, concerns: [:orderable, :toggleable]
   resources :health_zones, concerns: [:orderable, :toggleable], except: [:show]
   resources :practices, concerns: [:toggleable], except: [:show]
   resources :service_standards, concerns: [:orderable, :toggleable], except: [:show]

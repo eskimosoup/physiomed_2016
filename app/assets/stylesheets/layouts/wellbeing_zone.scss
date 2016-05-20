@@ -39,4 +39,14 @@
     width: 33%;
     color: $white;
   }
+  
+  .faqs-container {
+    @include flex-grid-column(12);
+    @include border-radius-with-box-shadow;
+    background-color: $white;
+
+    .faqs {
+      @include flex-grid-row;
+    }
+  }
 }

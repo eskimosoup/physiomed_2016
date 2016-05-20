@@ -7,6 +7,10 @@ class WellbeingFacade
     @body_parts ||= BodyPart.ordered_by_position.displayed
   end
 
+  def faqs
+    @faqs ||= FrequentlyAskedQuestion.order(position: :asc).displayed.limit(6)
+  end
+
   def team_members
     @team_members ||= TeamMember.displayed.limit(18)
   end

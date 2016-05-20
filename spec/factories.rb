@@ -96,6 +96,13 @@ FactoryGirl.define do
     display true
   end
 
+  factory :frequently_asked_question do
+    question "MyString"
+    answer "MyText"
+    display true
+    position 1
+  end
+
   factory :health_zone do
     title "MyString"
     home_image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }

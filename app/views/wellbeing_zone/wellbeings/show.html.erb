@@ -56,4 +56,21 @@
       TWITTER GOES HERE
     </div>
   </section>
+
+  <% if @wellbeing_facade.faqs.any? %>
+    <section class="box-wrap">
+      <div class="faqs-container">
+        <%= link_to "See more", frequently_asked_questions_path, class: "button brown-background" %>
+        <h2 class="green-border-bottom">
+          Frequently Asked Questions
+        </h2>
+        <div class="faqs">
+          <%= render(
+            partial: "frequently_asked_questions/frequently_asked_question",
+            collection: @wellbeing_facade.faqs
+          ) %>
+        </div>
+      </div>
+    </section>
+  <% end %>
 </div>
