@@ -18,20 +18,20 @@
 <% if @homepage_facade.quick_links.any? %>
   <div class="banner-quick-link-navigation">
     <div class="banner-quick-link-type">
-      <ul>
+      <ul class="tabs">
         <% if @homepage_facade.employer_quick_links.any? %>
-          <li>
+          <li class="brown-background">
             <%= link_to "Employer", "#",
-              class: "hover-toggle active",
+              class: "hover-toggle active employer",
               data: {
                 container: "employer-quick-links"
               } %>
           </li>
         <% end %>
         <% if @homepage_facade.employee_quick_links.any? %>
-          <li>
+          <li class="green-background">
             <%= link_to "Employee", "#",
-              class: "hover-toggle",
+              class: "hover-toggle employee",
               data: {
                 container: "employee-quick-links"
               } %>
@@ -39,7 +39,7 @@
         <% end %>
       </ul>
 
-      <div>
+      <div class="quick-links-container">
         <% if @homepage_facade.employer_quick_links.any? %>
           <%= render(
             partial: "homes/quick_links",

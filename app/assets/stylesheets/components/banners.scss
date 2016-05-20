@@ -1,0 +1,51 @@
+.banner-quick-link-navigation {
+  width: 270px;
+  color: $white;
+  a {
+    color: $white;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .banner-quick-link-type {
+    ul.tabs {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+
+      li {
+        margin: 0 rem-calc(5px);
+        padding: rem-calc(10px);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+    }
+  }
+
+  .quick-links-container {
+    position: relative;
+    
+    .employer-quick-links, .employee-quick-links {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 5px;
+    }
+  }
+
+  ul.banner-quick-link-list {
+  }
+
+  .employer-quick-links {
+    background-color: $brown;
+  }
+
+  .employee-quick-links {
+    background-color: $green;
+  }
+}
