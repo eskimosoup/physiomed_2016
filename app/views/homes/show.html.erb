@@ -5,17 +5,7 @@
 
 <% if @homepage_facade.banners.any? %>
   <%= content_for :javascript do %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $(".banners").slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 8000,
-          arrows: false
-        });
-      });
-    </script>
+    <%= javascript_include_tag "components/banners.js" %>
   <% end %>
   <div class="banners">
     <%= render(
@@ -75,16 +65,7 @@
 
 <% if @homepage_facade.health_zones.any? %>
   <%= content_for :javascript do %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $(".health-zones").slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          autoplay: false,
-          arrows: true
-        });
-      });
-    </script>
+    <%= javascript_include_tag "components/health_zones.js" %>
   <% end %>
   <section>
     <div class="health-wellbeing-zone">
@@ -175,16 +156,7 @@
 
     <% if @homepage_facade.testimonials.any? %>
       <%= content_for :javascript do %>
-        <script type="text/javascript">
-          $(document).ready(function() {
-            $(".testimonials").slick({
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              autoplay: true,
-              arrows: false
-            });
-          });
-        </script>
+        <%= javascript_include_tag "components/testimonials/home" %>
       <% end %>
       <div class="testimonials-container white-background">
         <h2 class="green-border-bottom">What People Say</h2>
