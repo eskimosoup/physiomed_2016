@@ -187,6 +187,8 @@ FactoryGirl.define do
 
   factory :video do
     title "My Video"
+    subtitle "Some subtitle"
+    content "some content"
     youtube_identifier "tIdIqbv7SPo"
     display true
   end

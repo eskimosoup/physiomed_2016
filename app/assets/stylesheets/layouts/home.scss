@@ -18,6 +18,10 @@
     background-color: $white;
   }
 
+  .additional-home-content.video {
+    padding: 0;
+  }
+
   .additional-home-content, .physio-search, .case-studies-container, .testimonials-container {
     width: 32%;
     padding: rem-calc(20px);

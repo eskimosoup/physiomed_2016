@@ -7,8 +7,12 @@ feature "Video admin" do
     login_to_admin_as(admin)
     click_link "Videos"
     click_link "New Video"
-    fill_in "video_title", with: "Blah"
-    fill_in "video_youtube_identifier", with: "tbt"
+    fill_video_form(
+      title: "Blah",
+      subtitle: "some subtitle",
+      content: "blah",
+      youtube_identifier: "tbt"
+    )
     click_button "Save"
     
     expect(page).to have_admin_index "Blah"
@@ -21,8 +25,9 @@ feature "Video admin" do
     login_to_admin_as(admin)
     click_link "Videos"
     find(:href, optimadmin.edit_video_path(video)).click
-    fill_in "video_title", with: "Blah"
-    fill_in "video_youtube_identifier", with: "tbt"
+    fill_video_form(
+      title: "Blah",
+    )
     click_button "Save"
     
     expect(page).to have_admin_index "Blah"
@@ -34,5 +39,11 @@ feature "Video admin" do
 
     click_href_destroy(optimadmin.video_path(video))
     expect(page).not_to have_admin_index "Video 1"
+  end
+
+  def fill_video_form(attrs = {})
+    attrs.each do |attr, value|
+      fill_in "video_#{ attr }", with: value
+    end
   end
 end

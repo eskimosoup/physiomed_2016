@@ -1,0 +1,6 @@
+.video {
+  @include flex-grid-row;
+  .video-iframe, .basic-details {
+    @include flex-grid-column(6);
+  }
+}

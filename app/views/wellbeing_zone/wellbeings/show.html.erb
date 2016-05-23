@@ -53,9 +53,14 @@
       </div>
     <% end %>
 
-    <div class="video-section">
-      Video section
-    </div>
+    <% @wellbeing_facade.video_section do |video| %>
+      <div class="video-section">
+        <%= render(
+          partial: "videos/video",
+          object: video
+        ) %>
+      </div>
+    <% end %>
   </section>
 
   <section class="flexbox-wrap">
