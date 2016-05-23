@@ -25,6 +25,19 @@
     padding-top: rem-calc(20px);
     padding-bottom: rem-calc(20px);
   }
+
+  .people-helped-section {
+    @include border-radius-with-box-shadow;
+    width: 33%;
+    padding: rem-calc(15px);
+  }
+
+  .video-section {
+    @include border-radius-with-box-shadow;
+    width: 65.5%;
+    background-color: $white;
+    padding: rem-calc(15px);
+  }
   
   .articles-container {
     @include border-radius-with-box-shadow;

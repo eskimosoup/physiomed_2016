@@ -40,6 +40,25 @@
   <% end %>
 
   <section class="flexbox-wrap">
+    <% @wellbeing_facade.people_helped do |people_helped_section| %>
+      <div class="people-helped-section">
+        <h2><%= people_helped_section.title %></h2>
+        <div class="number">
+          <%= people_helped_section.number %>
+        </div>
+        <div class="basic-details">
+          <%= simple_format people_helped_section.content if people_helped_section.content? %>
+          <%= link_to "Find out how", people_helped_section.link, class: "button brown-background" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="video-section">
+      Video section
+    </div>
+  </section>
+
+  <section class="flexbox-wrap">
     <% if @wellbeing_facade.articles.any? %>
       <div class="articles-container">
         <%= link_to "See more", articles_path, class: "button brown-background" %>
