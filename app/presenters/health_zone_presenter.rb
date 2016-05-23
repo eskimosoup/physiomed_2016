@@ -6,8 +6,8 @@ class HealthZonePresenter < BasePresenter
   delegate :hover_text, to: :health_zone, prefix: true
   delegate :content, to: :health_zone, prefix: true
 
-  def title_link
-    h.link_to title, link
+  def title_link(options = {})
+    h.link_to title, link, options
   end
 
   def hover_text
@@ -16,12 +16,12 @@ class HealthZonePresenter < BasePresenter
 
   def content
     return nil unless health_zone_content
-    h.content_tag :div, class: "content" do
+    h.content_tag :div, class: 'content' do
       h.raw health_zone_content
     end
   end
 
   def read_more_link
-    h.link_to "Read more", link
+    h.link_to 'Read more', link
   end
 end

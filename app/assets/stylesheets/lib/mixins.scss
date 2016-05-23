@@ -3,6 +3,16 @@
   box-shadow: 3px 3px 8px 4px #ccc;
 }
 
+@mixin content-box-title {
+  border-bottom: 1px solid $green;
+  font-size: rem(21px);
+  color: $brown;
+  font-weight: $open-sans-light;
+  margin: rem(15px 5px 25px);
+  padding: rem(0 20px 10px);
+  text-transform: uppercase;
+}
+
 // Functions
 // Lazy man's rem-calc, requires Foundation
 @function rem($num) {
