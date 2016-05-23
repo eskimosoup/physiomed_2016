@@ -98,3 +98,9 @@ puts "Creating FAQs"
 6.times do
   FrequentlyAskedQuestion.create!(question: "Really?", answer: "Sure")
 end
+
+puts "Creating people helped sections"
+PeopleHelpedSection::SECTIONS.each do |section|
+  PeopleHelpedSection.create!(section: section, title: "Some title", number: 7,
+                              content: "some content", link: "http://www.google.co.uk")
+end

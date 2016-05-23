@@ -7,11 +7,23 @@ class WellbeingFacade
     @body_parts ||= BodyPart.ordered_by_position.displayed
   end
 
+  def case_studies
+    @case_studies ||= CaseStudy.order(date: :desc).displayed.limit(3)
+  end
+
   def faqs
     @faqs ||= FrequentlyAskedQuestion.order(position: :asc).displayed.limit(6)
   end
 
+  def people_helped_section
+    @people_helped_section ||= PeopleHelpedSection.find_by(section: "Wellbeing Zone")
+  end
+
   def team_members
     @team_members ||= TeamMember.displayed.limit(18)
+  end
+
+  def testimonials
+    @testimonials ||= Testimonial.displayed.limit(8)
   end
 end

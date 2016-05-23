@@ -1,6 +1,8 @@
 class BodyPart < ActiveRecord::Base
-  BODY_PARTS = ["Ankle", "Elbow", "Foot", "Hip", "Knee",
-                "Lower Back", "Lower Leg", "Neck", "Shoulder", "Wrist"].freeze
+  BODY_PARTS = [
+    "Ankle", "Elbow", "Foot", "Hip", "Knee",
+    "Lower Back", "Lower Leg", "Neck", "Shoulder", "Wrist"
+  ].freeze
 
   extend FriendlyId
   friendly_id :name, use: :slugged

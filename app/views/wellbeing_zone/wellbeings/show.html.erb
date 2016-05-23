@@ -57,6 +57,34 @@
     </div>
   </section>
 
+  <section class="flexbox-wrap">
+    <% if @wellbeing_facade.case_studies.any? %>
+      <div class="case-studies-container">
+        <%= link_to "See more", case_studies_path, class: "button brown-background" %>
+        <h2 class="green-border-bottom">
+          Case Studies
+        </h2>
+        <% @wellbeing_facade.case_studies.each_with_index do |case_study, i| %>
+          <%= wellbeing_case_study_partial(case_study, i) %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @wellbeing_facade.testimonials.any? %>
+      <div class="testimonials-container green-background">
+      <%= content_for :javascript do %>
+        <%= javascript_include_tag "components/testimonials/wellbeing_zone" %>
+      <% end %>
+        <div class="testimonials">
+          <%= render(
+            partial: "testimonials/testimonial",
+            collection: @wellbeing_facade.testimonials
+          ) %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+
   <% if @wellbeing_facade.faqs.any? %>
     <section class="box-wrap">
       <div class="faqs-container">

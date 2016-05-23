@@ -49,4 +49,17 @@
       @include flex-grid-row;
     }
   }
+
+  .case-studies-container {
+    @include border-radius-with-box-shadow;
+    background-color: $white;
+    width: 65.5%;
+    padding: rem-calc(15px);
+  }
+
+  .testimonials-container {
+    @include border-radius-with-box-shadow;
+    width: 33%;
+    padding: rem-calc(15px);
+  }
 }

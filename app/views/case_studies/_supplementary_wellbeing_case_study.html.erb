@@ -1,0 +1,10 @@
+<div class="case-study wellbeing supplementary">
+  <%= link_to case_study, class: "beige-background" do %>
+    <div class="date">
+      <%= l case_study.date, format: :slashes %>
+    </div>
+    <div class="title">
+      <%= case_study.title %>
+    </div>
+  <% end %>
+</div>

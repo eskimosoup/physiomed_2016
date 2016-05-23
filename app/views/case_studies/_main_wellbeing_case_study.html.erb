@@ -1,0 +1,18 @@
+<div class="case-study wellbeing main">
+  <% if case_study.image? %>
+    <div class="image">
+      <%= image_tag case_study.image.index, title: case_study.title %>
+    </div>
+  <% end %>
+  <div class="basic-details">
+    <div class="date">
+      <%= l case_study.date, format: :slashes %>
+    </div>
+    <div class="title">
+      <%= link_to case_study.title, case_study %>
+    </div>
+    <div class="summary">
+      <%= simple_format case_study.summary %>
+    </div>
+  </div>
+</div>

@@ -13,5 +13,42 @@
       border: 1px solid $mud-brown;
     }
   }
+}
+
+.wellbeing.case-study {
+  @include flex-grid-row;
+
+  a:hover {
+    color: $green;
+  }
+  
+  &.main {
+    margin-bottom: rem-calc(15px);
+    .image {
+      @include flex-grid-column(5);
+    }
+    .basic-details {
+      @include flex-grid-column(7)
+    }
+  }
+
+  &.supplementary {
+    @include flex-grid-column(12);
+    a {
+      padding: rem-calc(20px);
+      margin-bottom: rem-calc(5px);
+      display: block;
+      width: 100%;
+      @include flex-grid-row;
+
+      .date {
+        @include flex-grid-column(2);
+      }
+
+      .title {
+        @include flex-grid-column(10);
+      }
+    }
+  }
 
 }

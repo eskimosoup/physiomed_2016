@@ -118,6 +118,15 @@ FactoryGirl.define do
     factory :health_zone_with_image, traits: [:image]
   end
 
+  factory :people_helped_section do
+    sequence(:title) {|n| "MyString #{ n }" }
+    section { PeopleHelpedSection::SECTIONS.sample }
+    number 1
+    content "MyText"
+    link "http://www.google.co.uk"
+    display true
+  end
+
   factory :practice do
     name "MyString"
     address "MyString"

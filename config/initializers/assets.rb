@@ -19,4 +19,5 @@ Rails.application.config.assets.precompile += %w(
   components/service_standards.js
   components/team_members/wellbeing_zone.js 
   components/testimonials/home.js 
+  components/testimonials/wellbeing_zone.js 
 )

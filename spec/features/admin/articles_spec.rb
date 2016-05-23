@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "articles admin" do
-  it "creation", js: true do
+  scenario "creation", js: true do
     admin = create(:administrator)
 
     login_to_admin_as(admin)

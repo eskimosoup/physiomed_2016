@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520111234) do
+ActiveRecord::Schema.define(version: 20160523101543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,6 +223,19 @@ ActiveRecord::Schema.define(version: 20160520111234) do
     t.string "value"
     t.string "environment"
   end
+
+  create_table "people_helped_sections", force: :cascade do |t|
+    t.string   "title",                     null: false
+    t.string   "section",                   null: false
+    t.integer  "number",                    null: false
+    t.text     "content"
+    t.string   "link"
+    t.boolean  "display",    default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "people_helped_sections", ["section"], name: "index_people_helped_sections_on_section", unique: true, using: :btree
 
   create_table "practices", force: :cascade do |t|
     t.string   "name",                      null: false

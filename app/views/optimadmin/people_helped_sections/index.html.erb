@@ -1,0 +1,25 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage People Helped Sections' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'People Helped Section', object: PeopleHelpedSection, path: new_people_helped_section_path %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!-- <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Displayed', 'display DESC'], ['Hidden', 'display ASC']] %> -->
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @people_helped_sections.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-8 small-8' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Title
+    <% end %>
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+
+  <%= render partial: 'people_helped_section', collection: @people_helped_sections, as: :people_helped_section %>
+  
+  <%= paginate @people_helped_sections %>
+</div>
