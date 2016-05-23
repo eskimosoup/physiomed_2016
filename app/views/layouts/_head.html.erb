@@ -1,9 +1,18 @@
 <head>
   <title>Physiomed2016</title>
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
+
   <%= javascript_include_tag 'application' %>
+
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+
   <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
   <%= yield :head %>
+
   <%= csrf_meta_tags %>
+
+  <script src="https://use.typekit.net/qmb4xev.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>

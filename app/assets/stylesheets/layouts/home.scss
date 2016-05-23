@@ -1,6 +1,6 @@
 .home.content {
   background-color: $beige;
-  padding: rem-calc(5px) 0;
+  padding: rem(220px 0 0);
 
   .service-standards {
     @include flex-grid-column(12);

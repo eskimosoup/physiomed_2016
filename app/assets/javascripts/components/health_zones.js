@@ -3,6 +3,8 @@ $(document).ready(function() {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
-    arrows: true
+    arrows: true,
+    prevArrow: '.slick-health-zone.slick-prev',
+    nextArrow: '.slick-health-zone.slick-next'
   });
 });

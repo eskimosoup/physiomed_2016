@@ -14,8 +14,8 @@ class BannerPresenter < BasePresenter
     h.simple_format banner_summary
   end
 
-  def link
+  def link(options = {})
     return nil unless banner_link
-    h.link_to "Read More", banner_link
+    h.link_to 'Read More', banner_link, options
   end
 end

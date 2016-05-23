@@ -1,0 +1,26 @@
+.health-wellbeing-zone-wrap {
+  @include flex-grid-row;
+  @include border-radius-with-box-shadow;
+  background: $white;
+  bottom: -180px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0);
+
+  h2 {
+    color: $dark-brown;
+    font-size: rem(18px);
+    font-weight: 400;
+    margin: rem(31px 0);
+    padding: rem(0 0 20px);
+    text-transform: uppercase;
+  }
+}
+
+.health-wellbeing-zone {
+  @include flex-grid-column(12);
+}
+
+.health-zones-wrap {
+  margin: rem(0 55px);
+}

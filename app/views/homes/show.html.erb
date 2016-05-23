@@ -7,79 +7,102 @@
   <%= content_for :javascript do %>
     <%= javascript_include_tag "components/banners.js" %>
   <% end %>
-  <div class="banners">
-    <%= render(
-      partial: "banners/banner",
-      collection: @homepage_facade.banners
-    ) %>
+  <div class="banners-wrap">
+    <%= image_tag 'banner/mask.png', alt: '', class: 'banner-mask' %>
+    <%= image_tag 'banner/mask.png', alt: '', class: 'banner-mask' %>
+
+    <div class="banners">
+      <%= render(
+        partial: "banners/banner",
+        collection: @homepage_facade.banners
+      ) %>
+    </div>
+
+
+
+    <% if @homepage_facade.quick_links.any? %>
+      <div class="banner-quick-link-navigation-wrap">
+        <div class="banner-quick-link-navigation">
+          <div class="banner-quick-link-type">
+            <ul class="tabs">
+              <% if @homepage_facade.employer_quick_links.any? %>
+                <li class="brown-background">
+                  <%= link_to "Employer", "#",
+                    class: "hover-toggle active employer",
+                    data: {
+                      container: "employer-quick-links"
+                    } %>
+                </li>
+              <% end %>
+              <% if @homepage_facade.employee_quick_links.any? %>
+                <li class="green-background">
+                  <%= link_to "Employee", "#",
+                    class: "hover-toggle employee",
+                    data: {
+                      container: "employee-quick-links"
+                    } %>
+                </li>
+              <% end %>
+            </ul>
+
+            <div class="quick-links-container">
+              <% if @homepage_facade.employer_quick_links.any? %>
+                <%= render(
+                  partial: "homes/quick_links",
+                  locals: {
+                    quick_link_type: "employer",
+                    quick_links: @homepage_facade.employer_quick_links
+                    }
+                ) %>
+              <% end %>
+              <% if @homepage_facade.employee_quick_links.any? %>
+                <%= render(
+                  partial: "homes/quick_links",
+                  locals: {
+                    quick_link_type: "employee",
+                    quick_links: @homepage_facade.employee_quick_links
+                    }
+                ) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
+    <% if @homepage_facade.health_zones.any? %>
+      <%= content_for :javascript do %>
+        <%= javascript_include_tag "components/health_zones.js" %>
+      <% end %>
+      <section class="health-wellbeing-zone-wrap">
+        <div class="health-wellbeing-zone">
+          <h2 class="green-border-bottom text-center">Health and well-being zone</h2>
+
+          <div class="slick-controls">
+            <%= button_tag(type: 'button', class: "slick-health-zone slick-prev") do %>
+              <
+            <% end %>
+            <%= button_tag(type: 'button', class: "slick-health-zone slick-next") do %>
+              >
+            <% end %>
+          </div>
+
+          <div class="health-zones-wrap">
+            <div class="health-zones">
+              <%= render(
+                partial: "health_zones/home_health_zone",
+                collection: @homepage_facade.health_zones,
+                as: :health_zone
+              ) %>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% end %>
   </div>
 <% end %>
 
-<% if @homepage_facade.quick_links.any? %>
-  <div class="banner-quick-link-navigation">
-    <div class="banner-quick-link-type">
-      <ul class="tabs">
-        <% if @homepage_facade.employer_quick_links.any? %>
-          <li class="brown-background">
-            <%= link_to "Employer", "#",
-              class: "hover-toggle active employer",
-              data: {
-                container: "employer-quick-links"
-              } %>
-          </li>
-        <% end %>
-        <% if @homepage_facade.employee_quick_links.any? %>
-          <li class="green-background">
-            <%= link_to "Employee", "#",
-              class: "hover-toggle employee",
-              data: {
-                container: "employee-quick-links"
-              } %>
-          </li>
-        <% end %>
-      </ul>
-
-      <div class="quick-links-container">
-        <% if @homepage_facade.employer_quick_links.any? %>
-          <%= render(
-            partial: "homes/quick_links",
-            locals: {
-              quick_link_type: "employer",
-              quick_links: @homepage_facade.employer_quick_links
-              }
-          ) %>
-        <% end %>
-        <% if @homepage_facade.employee_quick_links.any? %>
-          <%= render(
-            partial: "homes/quick_links",
-            locals: {
-              quick_link_type: "employee",
-              quick_links: @homepage_facade.employee_quick_links
-              }
-          ) %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<% if @homepage_facade.health_zones.any? %>
-  <%= content_for :javascript do %>
-    <%= javascript_include_tag "components/health_zones.js" %>
-  <% end %>
-  <section>
-    <div class="health-wellbeing-zone">
-      <h2 class="green-border-bottom text-center">Health and well-being zone</h2>
-      <div class="health-zones">
-        <%= render(
-          partial: "health_zones/home_health_zone",
-          collection: @homepage_facade.health_zones,
-          as: :health_zone
-        ) %>
-      </div>
-    </div>
-  </section>
-<% end %>
 
 <div class="home content">
   <% if @homepage_facade.additional_contents.any? %>
@@ -111,7 +134,7 @@
       <%= render(
         partial: "physio_searches/form",
         locals:
-        { 
+        {
           physio_search: @homepage_facade.physio_search
         }
       ) %>

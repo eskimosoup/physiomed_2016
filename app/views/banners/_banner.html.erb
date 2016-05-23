@@ -1,10 +1,13 @@
 <div class="banner">
   <% present banner do |banner_presenter| %>
-    <%= banner_presenter.show_image %>
-    <div class="banner-content">
-      <%= banner_presenter.title %>
-      <%= banner_presenter.summary %>
-      <%= banner_presenter.link %>
+    <div class="banner-content-wrap">
+      <div class="banner-content">
+        <%= banner_presenter.title %>
+        <%= banner_presenter.summary %>
+        <%= banner_presenter.link(class: 'banner-read-more') %>
+      </div>
     </div>
+    <%#= banner_presenter.show_image %>
+    <%= image_tag banner.image %>
   <% end %>
 </div>
