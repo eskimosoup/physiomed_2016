@@ -1,5 +1,22 @@
+.slick-case-studies {
+  display: inline-block;
+  height: 18px;
+  text-indent: -9999px;
+  padding: 0 rem(10px);
+  width: 10px;
+
+  &.slick-prev {
+    background: image-url('slick/arrow-left.png') center no-repeat;
+  }
+
+  &.slick-next {
+    background: image-url('slick/arrow-right.png') center no-repeat;
+  }
+}
+
 .home.case-study {
   text-align: center;
+  margin: 0 rem(10px);
 
   .main-content {
     text-align: left;
@@ -21,7 +38,7 @@
   a:hover {
     color: $green;
   }
-  
+
   &.main {
     margin-bottom: rem-calc(15px);
     .image {
@@ -51,4 +68,9 @@
     }
   }
 
+}
+
+
+.home-case-study-title {
+  font-weight: $open-sans-bold;
 }

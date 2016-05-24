@@ -1,6 +1,11 @@
+body {
+  font-size: rem(14px);
+}
+
 a {
-  text-decoration: none;
   color: $brown;
+  text-decoration: none;
+  transition: color .25s ease, background .25s ease;
 }
 
 h2 {
@@ -55,7 +60,7 @@ a.button.brown-background:hover {
   section.box-wrap {
     @include flex-grid-row;
   }
-  
+
   section.flexbox-wrap {
     margin: 0 auto;
     display: flex;
@@ -69,3 +74,6 @@ a.button.brown-background:hover {
   }
 }
 
+.content-box-title {
+  @include content-box-title;
+}

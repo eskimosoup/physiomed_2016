@@ -1,0 +1,63 @@
+.health-wellbeing-zone-wrap {
+  @include flex-grid-row;
+  @include border-radius-with-box-shadow;
+  background: $white;
+  bottom: -180px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0);
+
+  h2 {
+    color: $dark-brown;
+    font-size: rem(18px);
+    font-weight: 400;
+    margin: rem(31px 0);
+    padding: rem(0 0 20px);
+    text-transform: uppercase;
+  }
+}
+
+.health-wellbeing-zone {
+  @include flex-grid-column(12);
+  padding-bottom: rem(30px);
+}
+
+.health-zones-wrap {
+  margin: rem(0 55px);
+}
+
+.home-health-zone {
+  padding: 0 rem(15px);
+}
+
+.home-health-zone-link {
+  background: image-url('health-zone/light-mini-arrow.png') 20px center no-repeat,
+              image-url('health-zone/link-background.jpg') right center no-repeat,
+              $green;
+  color: $white;
+  display: block;
+  font-weight: $open-sans-bold;
+  padding: rem(18px) rem(18px) rem(18px) rem(38px);
+
+  &:hover {
+    background: image-url('health-zone/dark-mini-arrow.png') 20px center no-repeat,
+                $beige;
+    color: $brown;
+  }
+}
+
+.home-health-zone-content {
+  position: relative;
+}
+
+.home-health-zone-hover {
+  background: rgba($green, .75);
+  color: $white;
+  display: none;
+  height: 100%;
+  left: 0;
+  padding: rem(25px);
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

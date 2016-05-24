@@ -1,15 +1,45 @@
 footer {
   background-color: $mud-brown;
   color: $white;
+
   .awards-container {
     width: 100%;
     background-color: $white;
   }
+
+  .awards-title {
+    font-size: rem(18px);
+    font-weight: 400;
+  }
+
   .footer-container {
+
+    &.small-print {
+      padding: rem(55px 0);
+    }
+
     h2 {
       width: 100%;
     }
+
     @include flex-grid-row;
     text-align: center;
+
+    p {
+      display: block;
+      margin: 0 auto rem(10px);
+      text-align: center;
+      width: 900px;
+
+      &.physiotherapists-small-print {
+        font-size: rem(13px);
+        margin: rem(46px auto 0);
+      }
+    }
   }
+}
+
+.awards-container {
+  padding: rem(50px 0);
+  text-align: center;
 }

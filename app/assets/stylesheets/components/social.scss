@@ -1,0 +1,46 @@
+.social-links-wrap {
+  background: $beige;
+  padding: rem(100px 0 0);
+}
+
+.social-links {
+  @include flex-grid-row;
+}
+
+.social-links-list {
+  @include flex-grid-column(6);
+  list-style: none;
+}
+
+.social-methods {
+  @include flex-grid-column(6);
+  text-align: right;
+}
+
+.contact-action {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: $white;
+  display: inline-block;
+  font-family: $ubuntu;
+  font-size: rem(13px);
+  font-weight: $ubuntu-light;
+  padding: rem(14px 44px 14px 14px);
+  margin: rem(10px 0 0);
+}
+
+.get-in-touch-action {
+  background: $brown image-url('icons/footer-social/speech-bubble.png') 92% 50% no-repeat;
+
+  &:hover {
+    background-color: lighten($brown, 10%);
+  }
+}
+
+.find-a-physio-action {
+  background: $green image-url('icons/footer-social/search-icon.png') 92% 50% no-repeat;
+
+  &:hover {
+    background-color: lighten($green, 10%);
+  }
+}

@@ -1,0 +1,24 @@
+.primary-header-cta {
+  margin: rem(25px 0 0);
+
+  a {
+    color: $green;
+    display: inline-block;
+    font-family: $open-sans;
+    font-size: rem(13px);
+    font-weight: $open-sans-bold;
+    line-height: 24px;
+    min-height: 24px;
+  }
+}
+
+.primary-header-call-us {
+  background: image-url('icons/phone.png') right center no-repeat;
+  padding-right: rem(26px);
+}
+
+.primary-header-find-us {
+  background: image-url('icons/location.png') right center no-repeat;
+  margin-left: rem(7px);
+  padding-right: rem(26px);
+}

@@ -1,6 +1,80 @@
-.banner-quick-link-navigation {
-  width: 270px;
+.banners-wrap {
+  position: relative;
+}
+
+.banner-mask {
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, 0);
+  z-index: 3;
+}
+
+.banner {
+  position: relative;
+
+  img {
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: rem(38px);
+    font-weight: $open-sans-bold;
+    line-height: 1.25;
+  }
+
+  p {
+    font-weight: $open-sans-semibold;
+  }
+}
+
+.banner-read-more {
+  &:link,
+  &:visited {
+    background: $brown;
+    border-radius: 2px;
+    color: $white;
+    display: inline-block;
+    font-size: rem(15px);
+    padding: rem(10px 40px);
+    text-transform: uppercase;
+  }
+
+  &:hover,
+  &:active {
+    background: $green;
+  }
+}
+
+.banner-content-wrap {
+  @include flex-grid-row;
+  position: relative;
+}
+
+.banner-content {
+  background: rgba($green, .75);
   color: $white;
+  left: 0;
+  max-width: 524px;
+  padding: rem(136px 63px 60px);
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+.banner-quick-link-navigation-wrap {
+  bottom: 700px; // FIXME this should be dynamic
+  margin: 0 auto;
+  max-width: 75rem;
+  position: relative;
+}
+
+.banner-quick-link-navigation {
+  color: $white;
+  position: absolute;
+  right: 0;
+  width: 270px;
+
   a {
     color: $white;
   }
@@ -28,7 +102,7 @@
 
   .quick-links-container {
     position: relative;
-    
+
     .employer-quick-links, .employee-quick-links {
       width: 100%;
       position: absolute;
@@ -47,5 +121,40 @@
 
   .employee-quick-links {
     background-color: $green;
+  }
+}
+
+.employer-quick-links {
+  .banner-quick-link-title {
+    border-color: $green;
+    color: $light-mud-brown;
+  }
+}
+
+.employee-quick-links {
+  .banner-quick-link-title {
+    border-color: $light-mud-brown;
+    color: $white;
+  }
+}
+
+.banner-quick-link-title {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  font-size: rem(21px);
+  font-weight: $open-sans-light;
+  margin: rem(23px 20px 0);
+  padding: rem(0 40px 11px);
+}
+
+.banner-quick-link-list {
+  margin: rem(10px 10px 10px 60px);
+
+  li {
+    margin: rem(10px 0);
+  }
+
+  a {
+    font-weight: $open-sans-semibold;
   }
 }

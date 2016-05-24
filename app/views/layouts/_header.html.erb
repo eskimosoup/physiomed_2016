@@ -1,8 +1,24 @@
-<header>
-  <%= image_tag "logo.jpg", alt: "Physio Med", title: "Physio Med", id: "physiomed-logo" %>
-  <nav>
-    <ul id="header-navigation">
-      <%= nested_menu_items(menu_items: header_menu.menu_items) %>
-    </ul>
-  </nav>
+<header class="primary-header">
+  <div class="primary-header-content-wrap">
+    <div class="primary-header-content">
+      <%= link_to 'Client Area', '#', class: 'client-area-button' %>
+    </div>
+  </div>
+
+  <div class="primary-header-content-wrap">
+    <div class="primary-header-branding">
+      <%= image_tag "logo.jpg", alt: "Physio Med", title: "Physio Med", id: "physiomed-logo" %>
+    </div>
+
+    <nav class="primary-header-navigation-wrap">
+      <ul class="primary-header-navigation" id="header-navigation">
+        <%= nested_menu_items(menu_items: header_menu.menu_items) %>
+      </ul>
+    </nav>
+
+    <div class="primary-header-cta">
+      <%= link_to 'Call Us', '#', class: 'primary-header-call-us' %>
+      <%= link_to 'Find Us', '#', class: 'primary-header-find-us' %>
+    </div>
+  </div>
 </header>

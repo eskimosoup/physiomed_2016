@@ -6,9 +6,9 @@
       </div>
     <% end %>
     <div class="basic-details">
-      <%= link_to case_study.title, case_study %>
+      <%= link_to case_study.title, case_study, class: 'home-case-study-title' %>
       <%= simple_format truncate(case_study.summary, length: 50) %>
+      <%= link_to "Read More", case_study, class: "button brown-background" %>
     </div>
   </div>
-  <%= link_to "Read More", case_study, class: "button brown-background" %>
 </div>
