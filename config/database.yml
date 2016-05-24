@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: physiomed_2016_production
-  username: physiomed_2016
+  username: physiomed
   password: <%= ENV['PHYSIOMED_2016_DATABASE_PASSWORD'] %>
