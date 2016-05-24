@@ -1,0 +1,14 @@
+.menu-container {
+  color: $white;
+  background-color: $green;
+  border-radius: 5px;
+  ul.secondary-navigation {
+    list-style-type: none;
+
+    li:hover {
+      background-color: $white;
+      color: $green;
+      opacity: 0.5;
+    }
+  }
+}

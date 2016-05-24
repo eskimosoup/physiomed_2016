@@ -1,4 +1,8 @@
 <% present @page do |page_presenter| %>
-  <%= page_presenter.title %>
-  <%= page_presenter.content %>
+  <div class="title">
+    <h1 class="green-border-bottom"><%= page_presenter.title %></h1>
+  </div>
+  <div class="content">
+    <%= page_presenter.content %>
+  </div>
 <% end %>

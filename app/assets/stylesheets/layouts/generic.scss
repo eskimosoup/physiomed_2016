@@ -80,4 +80,15 @@ a.button.brown-background:hover {
 
 .content-wrap {
   @include flex-grid-row;
+
+  aside.side-nav-container {
+    @include flex-grid-column(2);
+  }
+  .module-content {
+    @include flex-grid-column(8);
+  }
+  aside.call-to-action {
+    @include flex-grid-column(2);
+  }
+
 }
