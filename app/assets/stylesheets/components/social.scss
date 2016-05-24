@@ -10,6 +10,12 @@
 .social-links-list {
   @include flex-grid-column(6);
   list-style: none;
+
+  li {
+    display: inline-block;
+    margin: rem(0 5px);
+    padding: rem(0 15px);
+  }
 }
 
 .social-methods {
