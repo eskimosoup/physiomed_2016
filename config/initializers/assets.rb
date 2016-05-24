@@ -13,12 +13,5 @@ Rails.application.config.assets.precompile += %w(
   optimadmin/*
   roi_savings/*
   tinymce/*
-  components/articles/home.js
-  components/banners.js
-  components/case_studies/home.js
-  components/health_zones.js
-  components/service_standards.js
-  components/team_members/wellbeing_zone.js 
-  components/testimonials/home.js 
-  components/testimonials/wellbeing_zone.js 
+  components/*
 )
