@@ -8,10 +8,14 @@ class ApplicationController < ActionController::Base
 
   before_action :global_site_settings
 
+  def wellbeing
+    render layout: nil
+  end
+
   private
 
   def header_menu
-    @header_menu ||= Optimadmin::Menu.new(name: "header")
+    @header_menu ||= Optimadmin::Menu.new(name: 'header')
   end
   helper_method :header_menu
 
