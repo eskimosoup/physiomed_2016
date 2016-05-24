@@ -2,11 +2,11 @@
   <div class="social-links-wrap">
     <div class="social-links">
       <ul class="social-links-list">
-        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/facebook.png', alt: 'Facebook'), site_settings['Facebook'], title: 'Facebook') if site_settings['Facebook'] %>
-        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/twitter.png', alt: 'Twitter'), site_settings['Twitter'], title: 'Twitter') if site_settings['Twitter'] %>
-        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/pinterest.png', alt: 'Pinterest'), site_settings['Pinterest'], title: 'Pinterest') if site_settings['Pinterest'] %>
-        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/linked-in.png', alt: 'LinkedIn'), site_settings['LinkedIn'], title: 'LinkedIn') if site_settings['LinkedIn'] %>
-        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/youtube.png', alt: 'YouTube'), site_settings['YouTube'], title: 'YouTube') if site_settings['YouTube'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/facebook.png', alt: 'Facebook'), global_site_settings['Facebook'], title: 'Facebook') if global_site_settings['Facebook'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/twitter.png', alt: 'Twitter'), global_site_settings['Twitter'], title: 'Twitter') if global_site_settings['Twitter'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/pinterest.png', alt: 'Pinterest'), global_site_settings['Pinterest'], title: 'Pinterest') if global_site_settings['Pinterest'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/linked-in.png', alt: 'LinkedIn'), global_site_settings['LinkedIn'], title: 'LinkedIn') if global_site_settings['LinkedIn'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/youtube.png', alt: 'YouTube'), global_site_settings['YouTube'], title: 'YouTube') if global_site_settings['YouTube'] %>
       </ul>
 
       <div class="social-methods">

@@ -1,2 +1,14 @@
-<%= inline_editable @page %>
-<%= render @page.style %>
+<div class="content-wrap page-content-wrap">
+  <aside class="side-nav-container">
+    <%= render(
+      partial: "menus/menu",
+      collection: @page.side_menus
+    ) %>
+  </aside>
+  <article class="module-content page-content">
+    <%= inline_editable @page %>
+    <%= render @page.style %>
+  </article>
+  <aside class="call-to-action">
+  </aside>
+</div>

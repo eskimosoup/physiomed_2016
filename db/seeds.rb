@@ -11,10 +11,15 @@ Optimadmin::Administrator.create!(
   username: 'optimised', email: 'support@optimised.today',
   password: 'optipoipoip', password_confirmation: 'optipoipoip', role: 'master')
 
+puts "Creating pages"
+page = Page.create!(title: "page 1", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), content: "Content", style: "basic", layout: "application")
+
 puts "Creating main navigation"
 wellbeing_zone = Optimadmin::ModulePage.create!(name: "WellBeing Zone", route: "wellbeing_path")
 wellbeing_zone_link = Optimadmin::Link.create!(menu_resource: wellbeing_zone)
 wellbeing_menu_item = Optimadmin::MenuItem.create!(link: wellbeing_zone_link, name: "Wellbeing Zone", menu_name: "header")
+page_link = Optimadmin::Link.create!(menu_resource: page)
+page_menu_item = Optimadmin::MenuItem.create!(link: page_link, name: "Page", menu_name: "header")
 
 puts "Creating health zones"
 HealthZone.create!(title: "Know your body", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our know your body section", link: "http://www.google.co.uk")
@@ -106,3 +111,4 @@ PeopleHelpedSection::SECTIONS.each do |section|
   PeopleHelpedSection.create!(section: section, title: "Some title", number: 7,
                               content: "some content", link: "http://www.google.co.uk")
 end
+

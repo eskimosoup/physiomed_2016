@@ -77,3 +77,7 @@ a.button.brown-background:hover {
 .content-box-title {
   @include content-box-title;
 }
+
+.content-wrap {
+  @include flex-grid-row;
+}
