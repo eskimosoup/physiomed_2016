@@ -22,8 +22,10 @@ HealthZone.create!(title: "Feeling Fab exercises", home_image: File.open(File.jo
 HealthZone.create!(title: "Managing Conditions", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk")
 HealthZone.create!(title: "Other", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk/sport")
 
-puts "creating videos"
-video = Video.create!(title: "Ain't no sunshine", youtube_identifier: "tIdIqbv7SPo") # used in additional home content
+puts "creating videos" #used in additional home content and in wellbeing zone
+video = Video.create!(title: "Ain't no sunshine", youtube_identifier: "tIdIqbv7SPo",
+                     subtitle: "Some subtitle", content: "Some content")
+video = Video.create!(title: "Ain't no sunshine", youtube_identifier: "tIdIqbv7SPo")
 
 puts "creating additional home content"
 text_content = <<-RUBY
