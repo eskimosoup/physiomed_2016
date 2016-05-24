@@ -24,7 +24,6 @@ default: &default
 development:
   <<: *default
   database: physiomed_2016_development
-  host: 192.168.0.41
   username: postgres
   password: tmedia
 
