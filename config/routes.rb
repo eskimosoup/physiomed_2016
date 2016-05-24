@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
+  get 'wellbeing', to: 'application#wellbeing'
 
   resources :pages, only: :show
 
   resources :articles, only: [:index, :show]
-  resources :case_studies, only: [:index, :show], path: "case-studies"
-  resources :frequently_asked_questions, only: [:index], path: "frequently-asked-questions"
+  resources :case_studies, only: [:index, :show], path: 'case-studies'
+  resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
   resources :testimonials, only: [:index]
-  resource :physio_search, only: [:create, :show], path: "find-a-physio"
-  namespace :wellbeing_zone, path: "well-being-zone" do
-    root to: "wellbeings#show"
+  resource :physio_search, only: [:create, :show], path: 'find-a-physio'
+  namespace :wellbeing_zone, path: 'well-being-zone' do
+    root to: 'wellbeings#show'
   end
-  
-  mount Optimadmin::Engine => "/admin"
-  root to: "homes#show"
+
+  mount Optimadmin::Engine => '/admin'
+  root to: 'homes#show'
 end
 Optimadmin::Engine.routes.draw do
   concern :imageable do
@@ -23,7 +24,7 @@ Optimadmin::Engine.routes.draw do
       post 'update_image_fit'
     end
   end
-  
+
   concern :orderable do
     collection do
       post 'order'
