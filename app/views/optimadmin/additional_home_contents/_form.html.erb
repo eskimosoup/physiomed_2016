@@ -35,7 +35,7 @@
 
       <div class="field">
         <%= f.label :video_id %><br>
-        <%= f.select :video_id, Video.ordered_by_title %>
+        <%= f.select :video_id, Video.ordered_by_title.pluck(:title, :id) %>
       </div>
 
       <div class="field">
