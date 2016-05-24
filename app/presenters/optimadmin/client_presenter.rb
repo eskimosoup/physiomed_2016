@@ -5,6 +5,10 @@ module Optimadmin
     presents :client
     delegate :id, :title, to: :client
 
+    def title
+      name
+    end
+
     def toggle_title
       inline_detail_toggle_link(title)
     end
