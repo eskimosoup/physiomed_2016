@@ -3,7 +3,11 @@ module Optimadmin
     include Optimadmin::PresenterMethods
 
     presents :client
-    delegate :id, :title, to: :client
+    delegate :id, :name, to: :client
+
+    def title
+      name
+    end
 
     def toggle_title
       inline_detail_toggle_link(title)
