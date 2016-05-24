@@ -13,5 +13,5 @@ Rails.application.config.assets.precompile += %w(
   optimadmin/*
   roi_savings/*
   tinymce/*
-  components/*
+  components/*.js
 )
