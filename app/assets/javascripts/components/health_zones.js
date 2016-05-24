@@ -8,3 +8,12 @@ $(document).ready(function() {
     nextArrow: '.slick-health-zone.slick-next'
   });
 });
+
+$(document).on({
+  mouseenter: function (e) {
+    $(this).closest('div').find('.home-health-zone-hover').slideToggle();
+  },
+  mouseleave: function () {
+    $(this).closest('div').find('.home-health-zone-hover').slideToggle();
+  }
+}, '.home-health-zone-link');

@@ -2,4 +2,21 @@
   .testimonials-container {
     @include flex-grid-column(4);
   }
+
+  .testimonial-title {
+    color: $green;
+    font-weight: $open-sans-extrabold;
+  }
+
+  .testimonial-author-role {
+    font-weight: $open-sans-semibold;
+  }
+}
+
+.testimonials-title {
+  background: image-url('icons/testimonial.png') 95% 0 no-repeat;
+}
+
+.testimonials.slick-slider {
+  margin: 0 rem(20px);
 }

@@ -1,15 +1,35 @@
 <footer>
-  <div class="footer-container">
-    <h2 class="text-center">Awards & accreditations</h2>
+  <div class="social-links-wrap">
+    <div class="social-links">
+      <ul class="social-links-list">
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/facebook.png', alt: 'Facebook'), site_settings['Facebook'], title: 'Facebook') if site_settings['Facebook'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/twitter.png', alt: 'Twitter'), site_settings['Twitter'], title: 'Twitter') if site_settings['Twitter'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/pinterest.png', alt: 'Pinterest'), site_settings['Pinterest'], title: 'Pinterest') if site_settings['Pinterest'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/linked-in.png', alt: 'LinkedIn'), site_settings['LinkedIn'], title: 'LinkedIn') if site_settings['LinkedIn'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/youtube.png', alt: 'YouTube'), site_settings['YouTube'], title: 'YouTube') if site_settings['YouTube'] %>
+      </ul>
+
+      <div class="social-methods">
+        <%= link_to 'Get in Touch', '#', class: 'get-in-touch-action contact-action' %>
+        <%= link_to 'Find a Physio', '#', class: 'find-a-physio-action contact-action' %>
+      </div>
+    </div>
   </div>
+
+
+  <div class="footer-container">
+    <h2 class="text-center awards-title">Awards & accreditations</h2>
+  </div>
+
   <div class="awards-container">
-    AWARDS BE HERE
+    <%= image_tag 'placeholders/awards-and-accreditations.jpg', alt: '' %>
   </div>
-  <div class="footer-container">
+
+  <div class="footer-container small-print">
     <p>
       &copy; <%= Date.today.year %> Physio Med Limited
     </p>
-    <p>
+    <p class="physiotherapists-small-print">
       All of our Physiotherapists are registered with the health and Care Professional Council
       and meet their standards.  Our Physiotherapists are registered with the Chartered Society
       of Physiotherapy and meet their standards.

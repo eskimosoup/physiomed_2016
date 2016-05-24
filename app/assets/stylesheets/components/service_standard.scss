@@ -1,9 +1,21 @@
+.service-standards-wrap {
+  background: image-url('service-standards/background.jpg') center no-repeat;
+  // box-shadow: 0 4px 10px 0 rgba($black ,0.36);
+  margin: rem(50px 0);
+  padding: rem(60px 0 70px);
+}
+
+.service-standard-wrap {
+  box-shadow: 0 1px 10px 0 rgba($black ,0.36);
+}
+
 .service-standard {
-  text-align: center;
-  border-right: 2px solid $white;
-  padding: rem-calc(20px 10px);
+  background: $green linear-gradient(to bottom, $green 0%, $dark-green 100%);
+  border-right: 1px solid $white;
   color: $white;
   transition: background-color 500ms linear;
+  padding: rem-calc(20px 10px);
+  text-align: center;
 
   .arrow-down {
     width: 0;
@@ -23,4 +35,11 @@
   &:last-child {
     border-right: 0;
   }
+}
+
+.service-standards-title {
+  color: $white;
+  font-size: rem(18px);
+  font-weight: 400;
+  margin: rem(0 0 45px);
 }

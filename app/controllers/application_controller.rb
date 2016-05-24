@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
     @header_menu ||= Optimadmin::Menu.new(name: "header")
   end
   helper_method :header_menu
+
+  def site_settings
+    @site_settings ||= Optimadmin::SiteSetting.current_environment
+  end
+  helper_method :site_settings
 end

@@ -115,14 +115,16 @@
     <%= content_for :javascript do %>
       <%= javascript_include_tag "components/service_standards" %>
     <% end %>
-    <section class="box-wrap">
-      <div class="service-standards">
-        <h2 class="text-center">Service Standards</h2>
-        <div class="service-standard-wrap">
-          <%= render @homepage_facade.service_standards %>
+    <div class="service-standards-wrap">
+      <section class="box-wrap">
+        <div class="service-standards">
+          <h2 class="service-standards-title text-center">Service Standards</h2>
+          <div class="service-standard-wrap">
+            <%= render @homepage_facade.service_standards %>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   <% end %>
 
   <section class="flexbox-wrap">
@@ -145,8 +147,6 @@
         <%= javascript_include_tag "components/case_studies/home" %>
       <% end %>
       <div class="case-studies-container white-background">
-        <h2 class="green-border-bottom content-box-title">Case Studies</h2>
-
         <div class="slick-controls">
           <%= button_tag(type: 'button', class: "slick-case-studies slick-prev") do %>
             <
@@ -156,6 +156,7 @@
           <% end %>
         </div>
 
+        <h2 class="green-border-bottom content-box-title">Case Studies</h2>
         <div class="case-studies">
           <%= render(
             partial: "case_studies/home_case_study",
@@ -171,7 +172,7 @@
         <%= javascript_include_tag "components/testimonials/home" %>
       <% end %>
       <div class="testimonials-container white-background">
-        <h2 class="green-border-bottom content-box-title">What People Say</h2>
+        <h2 class="green-border-bottom content-box-title testimonials-title">What People Say</h2>
         <div class="testimonials">
           <%= render(
             partial: "testimonials/home_testimonial",

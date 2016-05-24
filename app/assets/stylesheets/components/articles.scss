@@ -1,9 +1,12 @@
 .article.home {
   padding: rem-calc(15px);
+
   .title {
-    margin: rem-calc(25px) auto;
     display: block;
-    text-align: center;
+    font-size: rem(16px);
+    font-weight: $open-sans-bold;
+    margin: rem-calc(25px) auto;
+    width: 90%;
   }
 
   .author {
@@ -16,6 +19,18 @@
         border-radius: 50%;
       }
     }
+  }
+
+  .name {
+    font-size: rem(13px);
+    font-weight: $open-sans-extrabold;
+    line-height: 1;
+    padding: rem(10px) 0 0; 
+  }
+
+  .role {
+    font-size: rem(13px);
+    margin: rem(4px) 0;
   }
 }
 

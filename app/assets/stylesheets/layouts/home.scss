@@ -1,6 +1,6 @@
 .home.content {
   background-color: $beige;
-  padding: rem(220px 0 0);
+  padding: rem(220px 0 1px);
 
   .service-standards {
     @include flex-grid-column(12);
@@ -10,8 +10,8 @@
   }
 
   .service-standard-wrap {
-    display: flex;
     @include flex-grid-layout(7, '.service-standard');
+    display: flex;
   }
 
   .additional-home-content {
@@ -107,9 +107,11 @@
   .case-studies-container {
     position: relative;
     .slick-controls {
-      position: absolute;
-      top: rem-calc(45px);
-      right: rem-calc(25px);
+      float: right;
+      margin: rem(20px 10px 0 15px);
+      //position: absolute;
+      //top: rem-calc(45px);
+      //right: rem-calc(25px);
     }
   }
 
@@ -135,32 +137,4 @@
       @include flex-grid-row;
     }
   }
-}
-
-// Savings calculator
-#amount {
-  width: 40px;
-  text-align: center;
-}
-
-.slider-wrap {
-  width: 80%;
-  margin: 0 auto;
-
-  .slider {
-    margin: 0 auto !important;
-  }
-}
-
-.data {
-  margin: 25px 0 12px;
-}
-
-.total_save {
-  margin: 8px 0;
-}
-
-#total_saving {
-  font-weight: bold;
-  font-size: 18px;
 }
