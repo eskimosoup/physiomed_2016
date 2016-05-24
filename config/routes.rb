@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'wellbeing-list', to: 'application#wellbeing_list'
   get 'wellbeing', to: 'application#wellbeing'
 
   resources :pages, only: :show

@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     render layout: nil
   end
 
+  def wellbeing_list
+    render layout: nil
+  end
+
   private
 
   def header_menu
