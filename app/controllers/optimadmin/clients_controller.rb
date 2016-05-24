@@ -3,14 +3,7 @@ module Optimadmin
     before_action :set_client, only: [:show, :edit, :update, :destroy]
 
     def index
-              @pagination_helper = Client.field_order(params[:order])
-                                              .field_search(params[:search], "#{attributes.first.name}")
-                                              .pagination(params[:page], params[:per_page])
-            
-      @clients = Optimadmin::BaseCollectionPresenter.new(
-        collection: @pagination_helper,
-        view_template: view_context,
-        presenter: Optimadmin::ClientPresenter)
+      @clients = Client.all
     end
 
     def show

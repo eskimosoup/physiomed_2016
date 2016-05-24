@@ -1,37 +1,39 @@
-<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= client_presenter.id %>">
-  
+<%= present client do |client_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= client_presenter.id %>">
+
     <div class="large-1 hide-for-medium-down columns" data-equalizer-watch="module-list">
       <span class="drag-helper"></span>
     </div>
-  
 
-      <div class="large-5 small-8 columns" data-equalizer-watch="module-list">
+
+    <div class="large-5 small-8 columns" data-equalizer-watch="module-list">
       <%= client_presenter.toggle_title %>
-  </div>
+    </div>
 
-      <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
+    <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
       <%= client_presenter.edit_image(:image) %>
     </div>
-  
-  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-    <%= client_presenter.toggle_link %>
-  </div>
 
-  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-    <%= client_presenter.view_link %>
-  </div>
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= client_presenter.toggle_link %>
+    </div>
 
-  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-    <%= client_presenter.edit_link %>
-  </div>
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= client_presenter.view_link %>
+    </div>
 
-  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
-    <%= client_presenter.delete_link %>
-  </div>
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= client_presenter.edit_link %>
+    </div>
 
-  <div class="row module-list-detail hide" id="index-list-<%= client_presenter.id %>">
-    <div class="small-12 columns module-list-summary last">
-      <%= client_presenter.optimadmin_summary %>
+    <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+      <%= client_presenter.delete_link %>
+    </div>
+
+    <div class="row module-list-detail hide" id="index-list-<%= client_presenter.id %>">
+      <div class="small-12 columns module-list-summary last">
+        <%= client_presenter.optimadmin_summary %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
