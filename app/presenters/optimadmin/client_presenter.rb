@@ -3,7 +3,7 @@ module Optimadmin
     include Optimadmin::PresenterMethods
 
     presents :client
-    delegate :id, :title, to: :client
+    delegate :id, :name, to: :client
 
     def title
       name
