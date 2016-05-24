@@ -185,10 +185,13 @@
   </section>
 
   <% if @homepage_facade.clients.any? %>
+    <%= content_for :javascript do %>
+      <%= javascript_include_tag "components/clients/home" %>
+    <% end %>
     <section class="box-wrap">
-      <div class="clients">
+      <div class="clients-container">
         <h2 class="green-border-bottom text-center  content-box-title">Some of our happy clients</h2>
-        <div class="client-container">
+        <div class="clients">
           <%= render(
             partial: "clients/home_client",
             collection: @homepage_facade.clients,

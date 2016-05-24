@@ -140,13 +140,10 @@
     padding-bottom: rem-calc(20px);
   }
 
-  .clients {
+  .clients-container {
     background-color: $white;
     padding: rem-calc(20px);
     @include border-radius-with-box-shadow;
     @include flex-grid-column(12);
-    .client-container {
-      @include flex-grid-row;
-    }
   }
 }
