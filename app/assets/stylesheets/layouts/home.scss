@@ -16,6 +16,14 @@
 
   .additional-home-content {
     background-color: $white;
+
+    li {
+      font-size: rem(16px);
+      font-weight: $open-sans-bold;
+      line-height: 1.5;
+      list-style-image: image-url('tick.png');
+      margin: rem(10px 0);
+    }
   }
 
   .additional-home-content.video {
