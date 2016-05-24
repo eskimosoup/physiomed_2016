@@ -12,6 +12,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( 
   optimadmin/*
   roi_savings/*
+  tinymce/*
   components/articles/home.js
   components/banners.js
   components/case_studies/home.js
