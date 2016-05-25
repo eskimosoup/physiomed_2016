@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     render layout: nil
   end
 
+  def standard_page
+    render layout: nil
+  end
+
   private
 
   def header_menu
