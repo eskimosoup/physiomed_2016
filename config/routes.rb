@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'what-we-do', to: 'application#what_we_do'
   get 'wellbeing-list', to: 'application#wellbeing_list'
   get 'wellbeing', to: 'application#wellbeing'
+  get 'standard-page', to: 'application#standard_page'
 
   resources :pages, only: :show
 
