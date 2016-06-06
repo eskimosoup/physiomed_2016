@@ -1,0 +1,16 @@
+<div class="content">
+  <h1><%= @article.title %></h1>
+
+  <%= render(
+    partial: "team_members/author",
+    locals: {
+      team_member: @article.author
+    }
+  ) if @article.author %>
+
+  <%= image_tag @article.image.show if @article.image? %>
+
+  <%= raw @article.content %>
+
+  <%= link_to "View All", articles_path, class: "button brown-background" %>
+</div>

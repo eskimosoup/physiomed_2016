@@ -1,0 +1,11 @@
+<div class="article">
+  <%= image_tag article.image.index, title: article.title if article.image.present? %>
+  <%= link_to article.title, article, class: "title" %>
+  <%= render(
+    partial: "team_members/author",
+    locals: {
+      team_member: article.author
+    }
+  ) if article.author %>
+  <%= simple_format article.summary %>
+</div>

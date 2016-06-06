@@ -43,6 +43,12 @@ FactoryGirl.define do
     display true
     home_highlight true
     author nil
+
+    trait :with_image do
+      image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    end
+
+    factory :article_with_image, traits: [:with_image]
   end
 
   factory :banner do
