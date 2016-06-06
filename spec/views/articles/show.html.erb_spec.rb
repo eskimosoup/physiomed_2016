@@ -29,4 +29,5 @@ RSpec.describe "articles/show", type: :view do
 
     expect(rendered).to have_css(".author")
   end
+
 end

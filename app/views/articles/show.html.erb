@@ -1,3 +1,9 @@
+<% if @article.url_originally_on.present? %>
+  <%= content_for :head do %>
+    <link rel="canonical" href="<%= @article.url_originally_on %>" />
+  <% end %>
+<% end %>
+
 <div class="content">
   <h1><%= @article.title %></h1>
 
