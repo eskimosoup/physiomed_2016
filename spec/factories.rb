@@ -67,6 +67,16 @@ FactoryGirl.define do
     display true
   end
 
+  factory :body_part_section do
+    body_part nil
+    title "MyString"
+    sub_title "MyString"
+    content "MyText"
+    image "MyString"
+    display true
+    position 0
+  end
+
   factory :case_study do
     sequence(:title) {|n| "Title #{ n }" }
     trait :image do

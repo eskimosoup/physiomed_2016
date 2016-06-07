@@ -1,0 +1,7 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Edit Body Part Section' %>
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back',
+    path: body_part_body_part_sections_path(@body_part_section.body_part),
+    title: 'Body Part Section' %>
+  <%= render 'form' %>
+</div>

@@ -1,0 +1,29 @@
+<%= present body_part_section do |body_part_section_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= body_part_section_presenter.id %>">
+    <div class="large-8 small-8 columns" data-equalizer-watch="module-list">
+      <%= body_part_section_presenter.toggle_title %>
+    </div>
+  
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= body_part_section_presenter.toggle_link %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= body_part_section_presenter.view_link %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= body_part_section_presenter.edit_link %>
+    </div>
+
+    <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+      <%= body_part_section_presenter.delete_link %>
+    </div>
+
+    <div class="row module-list-detail hide" id="index-list-<%= body_part_section_presenter.id %>">
+      <div class="small-12 columns module-list-summary last">
+        <%= body_part_section_presenter.optimadmin_summary %>
+      </div>
+    </div>
+  </div>
+<% end %>

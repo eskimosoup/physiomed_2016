@@ -7,6 +7,8 @@ class BodyPart < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  has_many :body_part_sections
+
   validates :name, presence: true, uniqueness: true, inclusion: { in: BODY_PARTS }
 
   scope :ordered_by_position, -> { order(position: :asc) }

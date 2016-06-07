@@ -1,7 +1,13 @@
-<%= present body_part do |body_part_presenter| %>
+<% present body_part do |body_part_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= body_part_presenter.id %>">
-    <div class="large-8 small-8 columns" data-equalizer-watch="module-list">
+    <div class="large-7 small-7 columns" data-equalizer-watch="module-list">
       <%= body_part_presenter.toggle_title %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= link_to optimadmin.body_part_body_part_sections_path(body_part) do %>
+        <%= pluralize body_part.body_part_sections_count, 'Section' %>
+      <% end %>
     </div>
   
     <div class="large-1 small-4 columns" data-equalizer-watch="module-list">

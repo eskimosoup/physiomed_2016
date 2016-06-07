@@ -10,6 +10,10 @@ RSpec.describe BodyPart, type: :model do
     it { should validate_inclusion_of(:name).in_array(BodyPart::BODY_PARTS) }
   end
 
+  describe "associations" do
+    it { should have_many(:body_part_sections) }
+  end
+
   it "#image" do
     body_part = build(:body_part, name: "Lower Leg")
 

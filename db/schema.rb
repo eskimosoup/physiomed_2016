@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607132606) do
+ActiveRecord::Schema.define(version: 20160607141754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,15 +59,30 @@ ActiveRecord::Schema.define(version: 20160607132606) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "body_part_sections", force: :cascade do |t|
+    t.integer  "body_part_id"
+    t.string   "title",                       null: false
+    t.string   "sub_title"
+    t.text     "content",                     null: false
+    t.string   "image"
+    t.integer  "position",     default: 0,    null: false
+    t.boolean  "display",      default: true, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "body_part_sections", ["body_part_id"], name: "index_body_part_sections_on_body_part_id", using: :btree
+
   create_table "body_parts", force: :cascade do |t|
-    t.string   "name",                      null: false
+    t.string   "name",                                    null: false
     t.string   "tagline"
-    t.integer  "position",   default: 0,    null: false
-    t.boolean  "display",    default: true, null: false
+    t.integer  "position",                 default: 0,    null: false
+    t.boolean  "display",                  default: true, null: false
     t.string   "slug"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.text     "summary"
+    t.integer  "body_part_sections_count", default: 0,    null: false
   end
 
   add_index "body_parts", ["name"], name: "index_body_parts_on_name", unique: true, using: :btree
@@ -322,6 +337,7 @@ ActiveRecord::Schema.define(version: 20160607132606) do
 
   add_foreign_key "additional_home_contents", "videos"
   add_foreign_key "articles", "team_members", column: "author_id", on_delete: :cascade
+  add_foreign_key "body_part_sections", "body_parts", on_delete: :cascade
   add_foreign_key "case_studies", "clients", on_delete: :cascade
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade
 end

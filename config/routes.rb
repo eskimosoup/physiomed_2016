@@ -45,7 +45,9 @@ Optimadmin::Engine.routes.draw do
   resources :additional_home_contents, concerns: [:orderable, :toggleable], except: [:show]
   resources :articles, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   resources :banners, concerns: [:imageable, :orderable, :toggleable], except: [:show]
-  resources :body_parts, concerns: [:orderable, :toggleable], except: [:show]
+  resources :body_parts, concerns: [:orderable, :toggleable], except: [:show] do
+    resources :body_part_sections, shallow: true, concerns: [:orderable, :toggleable, :imageable], except: [:show]
+  end
   resources :case_studies, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   resources :clients, concerns: [:imageable, :orderable, :toggleable], except: [:show]
   resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]

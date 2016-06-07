@@ -1,0 +1,23 @@
+<%= render 'optimadmin/shared/header/main_title', title: "#{ @body_part.name } - Manage Body Part Sections" %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Body Part Section', object: BodyPartSection, path: new_body_part_body_part_section_path(@body_part) %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @body_part_sections.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-8 small-8' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Title
+    <% end %>
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+
+  <div class="module-sortable" data-module="BodyPartSection">
+    <%= render partial: 'body_part_section', collection: @body_part_sections, as: :body_part_section %>
+  </div>
+</div>
