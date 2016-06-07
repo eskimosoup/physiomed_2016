@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :case_studies, only: [:index, :show], path: 'case-studies'
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
+  resources :team_members, only: [:index, :show]
   resources :testimonials, only: [:index]
   resource :physio_search, only: [:create, :show], path: 'find-a-physio'
   namespace :wellbeing_zone, path: 'well-being-zone' do

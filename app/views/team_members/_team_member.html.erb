@@ -1,0 +1,9 @@
+<div class="team-member text-center">
+  <%= image_tag team_member.image.index, title: team_member.name if team_member.image? %>
+  <div class="name">
+    <%= link_to team_member.name, team_member %>
+  </div>
+  <div class="role">
+    <%= team_member.role %>
+  </div>
+</div>

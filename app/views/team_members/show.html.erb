@@ -1,0 +1,8 @@
+<div class="content">
+  <h1><%= @team_member.name %></h1>
+  <%= @team_member.role %>
+
+  <%= image_tag @team_member.image.show, title: @team_member.name if @team_member.image? %>
+
+  <%= raw @team_member.bio %>
+</div>
