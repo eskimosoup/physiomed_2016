@@ -17,6 +17,7 @@ Bundler.require(*Rails.groups)
 
 module Physiomed2016
   class Application < Rails::Application
+    config.autoload_paths << Rails.root.join('lib')
     config.time_zone = 'London'
     config.active_record.default_timezone = :local
     config.quiet_assets = true
@@ -27,7 +28,7 @@ module Physiomed2016
       generate.routing_specs false
       generate.stylesheets false
       generate.test_framework :rspec
-      generate.view_specs false
+      generate.view_specs true
     end
 
     # Settings in config/environments/* take precedence over those specified here.

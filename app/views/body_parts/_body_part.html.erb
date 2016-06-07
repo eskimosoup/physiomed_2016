@@ -1,11 +1,13 @@
 <div class="body-part">
-  <div class="name text-center green-background">
-    <%= body_part.name %>
-  </div>
-  <%= image_tag body_part.image %>
-  <% if body_part.tagline.present? %>
-    <div class="tagline text-center">
-      <%= body_part.tagline %>
+  <%= link_to wellbeing_zone_body_part_path(body_part) do %> 
+    <div class="name text-center green-background">
+      <%= body_part.name %>
     </div>
+    <%= image_tag body_part.image %>
+    <% if body_part.tagline.present? %>
+      <div class="tagline text-center">
+        <%= body_part.tagline %>
+      </div>
+    <% end %>
   <% end %>
 </div>

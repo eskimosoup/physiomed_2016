@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "body parts admin" do
-  it "creation" do
+describe "body parts admin", type: :feature do
+  it "creation", js: true do
     admin = create(:administrator)
 
     login_to_admin_as(admin)
@@ -9,6 +9,7 @@ describe "body parts admin" do
     click_link "New Body Part"
     select "Knee", from: "body_part_name"
     fill_in "body_part_tagline", with: "Some tagline"
+    tiny_mce_fill_in "body_part_summary", with: "Some text"
     click_button "Save"
 
     expect(page).to have_admin_index "Knee"
@@ -24,7 +25,7 @@ describe "body parts admin" do
     select BodyPart::BODY_PARTS.last, from: "body_part_name"
     click_button "Save"
 
-    expect(page).to have_admin_index BodyPart::BodyParts.last
+    expect(page).to have_admin_index BodyPart::BODY_PARTS.last
   end
 
   it "destroying" do
