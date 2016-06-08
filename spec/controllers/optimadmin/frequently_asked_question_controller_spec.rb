@@ -11,7 +11,7 @@ describe Optimadmin::FrequentlyAskedQuestionsController, type: :controller, freq
       it 'redirects to index on normal save' do
         frequently_asked_question = stub_valid_frequently_asked_question
 
-        process :create, method: :post, params: {
+        post :create, {
           frequently_asked_question: frequently_asked_question.attributes,
           commit: 'Save'
         }
@@ -23,7 +23,7 @@ describe Optimadmin::FrequentlyAskedQuestionsController, type: :controller, freq
       it 'redirects to edit on save and continue editing' do
         frequently_asked_question = stub_valid_frequently_asked_question
 
-        process :create, method: :post, params: {
+        post :create, {
           frequently_asked_question: frequently_asked_question.attributes,
           commit: 'Save and continue editing'
         }
@@ -37,7 +37,7 @@ describe Optimadmin::FrequentlyAskedQuestionsController, type: :controller, freq
       it 'does not redirect' do
         frequently_asked_question = stub_invalid_frequently_asked_question
 
-        process :create, method: :post, params: {
+        post :create, {
           frequently_asked_question: frequently_asked_question.attributes,
           commit: 'Save'
         }
@@ -52,7 +52,7 @@ describe Optimadmin::FrequentlyAskedQuestionsController, type: :controller, freq
       it 'redirects to index on normal save' do
         frequently_asked_question = stub_valid_frequently_asked_question
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: frequently_asked_question.id,
           frequently_asked_question: frequently_asked_question.attributes,
           commit: 'Save'
@@ -65,7 +65,7 @@ describe Optimadmin::FrequentlyAskedQuestionsController, type: :controller, freq
       it 'redirects to edit on save and continue editing' do
         frequently_asked_question = stub_valid_frequently_asked_question
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: frequently_asked_question.id,
           frequently_asked_question: frequently_asked_question.attributes,
           commit: 'Save and continue editing'
@@ -80,7 +80,7 @@ describe Optimadmin::FrequentlyAskedQuestionsController, type: :controller, freq
       it 'does not redirect' do
         frequently_asked_question = stub_invalid_frequently_asked_question
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: frequently_asked_question.id,
           frequently_asked_question: frequently_asked_question.attributes,
           commit: 'Save'
@@ -95,7 +95,7 @@ describe Optimadmin::FrequentlyAskedQuestionsController, type: :controller, freq
     frequently_asked_question = build_stubbed(:frequently_asked_question)
     allow(FrequentlyAskedQuestion).to receive(:new).and_return(frequently_asked_question)
     allow(frequently_asked_question).to receive(:save).and_return(true)
-    allow(FrequentlyAskedQuestion).to receive_message_chain(:friendly, :find).and_return(frequently_asked_question)
+    allow(FrequentlyAskedQuestion).to receive(:find).and_return(frequently_asked_question)
     allow(frequently_asked_question).to receive(:update).and_return(true)
     frequently_asked_question
   end
@@ -104,7 +104,7 @@ describe Optimadmin::FrequentlyAskedQuestionsController, type: :controller, freq
     frequently_asked_question = build_stubbed(:frequently_asked_question)
     allow(FrequentlyAskedQuestion).to receive(:new).and_return(frequently_asked_question)
     allow(frequently_asked_question).to receive(:save).and_return(false)
-    allow(FrequentlyAskedQuestion).to receive_message_chain(:friendly, :find).and_return(frequently_asked_question)
+    allow(FrequentlyAskedQuestion).to receive(:find).and_return(frequently_asked_question)
     allow(frequently_asked_question).to receive(:update).and_return(false)
     frequently_asked_question
   end

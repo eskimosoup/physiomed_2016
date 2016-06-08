@@ -25,7 +25,7 @@ describe WellbeingZoneHelper, type: :helper do
 
   describe "#wellbeing_case_study_partial" do
     it "first case study" do
-      case_study = CaseStudy.new
+      case_study = CaseStudy.new(date: Date.today)
 
       rendering = render(
         partial: "case_studies/main_wellbeing_case_study",
@@ -35,7 +35,7 @@ describe WellbeingZoneHelper, type: :helper do
     end
 
     it "other case studies" do
-      case_study = CaseStudy.new
+      case_study = CaseStudy.new(date: Date.today)
 
       rendering = render(
         partial: "case_studies/supplementary_wellbeing_case_study",

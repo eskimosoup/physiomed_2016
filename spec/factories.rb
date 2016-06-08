@@ -52,7 +52,7 @@ FactoryGirl.define do
   end
 
   factory :banner do
-    title "MyString"
+    sequence(:title) { |n| "Banner #{ n }" }
     image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
     position 1
     display true
@@ -110,7 +110,7 @@ FactoryGirl.define do
   end
 
   factory :health_zone do
-    title "MyString"
+    sequence(:title) { |n| "Health Zone #{ n }" }
     home_image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
     hover_text "MyText"
     sequence(:link){|n| "http://localhost:3000/#{ n }" }

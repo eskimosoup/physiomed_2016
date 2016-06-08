@@ -11,7 +11,7 @@ describe Optimadmin::PeopleHelpedSectionsController, type: :controller, people_h
       it 'redirects to index on normal save' do
         people_helped_section = stub_valid_people_helped_section
 
-        process :create, method: :post, params: {
+        post :create, {
           people_helped_section: people_helped_section.attributes,
           commit: 'Save'
         }
@@ -23,7 +23,7 @@ describe Optimadmin::PeopleHelpedSectionsController, type: :controller, people_h
       it 'redirects to edit on save and continue editing' do
         people_helped_section = stub_valid_people_helped_section
 
-        process :create, method: :post, params: {
+        post :create, {
           people_helped_section: people_helped_section.attributes,
           commit: 'Save and continue editing'
         }
@@ -37,7 +37,7 @@ describe Optimadmin::PeopleHelpedSectionsController, type: :controller, people_h
       it 'does not redirect' do
         people_helped_section = stub_invalid_people_helped_section
 
-        process :create, method: :post, params: {
+        post :create, {
           people_helped_section: people_helped_section.attributes,
           commit: 'Save'
         }
@@ -52,7 +52,7 @@ describe Optimadmin::PeopleHelpedSectionsController, type: :controller, people_h
       it 'redirects to index on normal save' do
         people_helped_section = stub_valid_people_helped_section
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: people_helped_section.id,
           people_helped_section: people_helped_section.attributes,
           commit: 'Save'
@@ -65,7 +65,7 @@ describe Optimadmin::PeopleHelpedSectionsController, type: :controller, people_h
       it 'redirects to edit on save and continue editing' do
         people_helped_section = stub_valid_people_helped_section
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: people_helped_section.id,
           people_helped_section: people_helped_section.attributes,
           commit: 'Save and continue editing'
@@ -80,7 +80,7 @@ describe Optimadmin::PeopleHelpedSectionsController, type: :controller, people_h
       it 'does not redirect' do
         people_helped_section = stub_invalid_people_helped_section
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: people_helped_section.id,
           people_helped_section: people_helped_section.attributes,
           commit: 'Save'
@@ -95,7 +95,7 @@ describe Optimadmin::PeopleHelpedSectionsController, type: :controller, people_h
     people_helped_section = build_stubbed(:people_helped_section)
     allow(PeopleHelpedSection).to receive(:new).and_return(people_helped_section)
     allow(people_helped_section).to receive(:save).and_return(true)
-    allow(PeopleHelpedSection).to receive_message_chain(:friendly, :find).and_return(people_helped_section)
+    allow(PeopleHelpedSection).to receive(:find).and_return(people_helped_section)
     allow(people_helped_section).to receive(:update).and_return(true)
     people_helped_section
   end
@@ -104,7 +104,7 @@ describe Optimadmin::PeopleHelpedSectionsController, type: :controller, people_h
     people_helped_section = build_stubbed(:people_helped_section)
     allow(PeopleHelpedSection).to receive(:new).and_return(people_helped_section)
     allow(people_helped_section).to receive(:save).and_return(false)
-    allow(PeopleHelpedSection).to receive_message_chain(:friendly, :find).and_return(people_helped_section)
+    allow(PeopleHelpedSection).to receive(:find).and_return(people_helped_section)
     allow(people_helped_section).to receive(:update).and_return(false)
     people_helped_section
   end

@@ -11,7 +11,7 @@ describe Optimadmin::BodyPartsController, type: :controller, body_part: true do
       it 'redirects to index on normal save' do
         body_part = stub_valid_body_part
 
-        process :create, method: :post, params: {
+        post :create, {
           body_part: body_part.attributes,
           commit: 'Save'
         }
@@ -23,7 +23,7 @@ describe Optimadmin::BodyPartsController, type: :controller, body_part: true do
       it 'redirects to edit on save and continue editing' do
         body_part = stub_valid_body_part
 
-        process :create, method: :post, params: {
+        post :create, {
           body_part: body_part.attributes,
           commit: 'Save and continue editing'
         }
@@ -37,7 +37,7 @@ describe Optimadmin::BodyPartsController, type: :controller, body_part: true do
       it 'does not redirect' do
         body_part = stub_invalid_body_part
 
-        process :create, method: :post, params: {
+        post :create, {
           body_part: body_part.attributes,
           commit: 'Save'
         }
@@ -52,7 +52,7 @@ describe Optimadmin::BodyPartsController, type: :controller, body_part: true do
       it 'redirects to index on normal save' do
         body_part = stub_valid_body_part
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: body_part.id,
           body_part: body_part.attributes,
           commit: 'Save'
@@ -65,7 +65,7 @@ describe Optimadmin::BodyPartsController, type: :controller, body_part: true do
       it 'redirects to edit on save and continue editing' do
         body_part = stub_valid_body_part
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: body_part.id,
           body_part: body_part.attributes,
           commit: 'Save and continue editing'
@@ -80,7 +80,7 @@ describe Optimadmin::BodyPartsController, type: :controller, body_part: true do
       it 'does not redirect' do
         body_part = stub_invalid_body_part
 
-        process :update, method: :patch, params: {
+        patch :update, {
           id: body_part.id,
           body_part: body_part.attributes,
           commit: 'Save'

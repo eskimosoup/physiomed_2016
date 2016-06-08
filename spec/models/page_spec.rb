@@ -45,9 +45,4 @@ RSpec.describe Page, type: :model do
       expect(page.should_generate_new_friendly_id?).to be false
     end
   end
-
-  context 'callbacks' do
-    let(:page) { create(:page) }
-    it { expect(page).to callback(:set_slug).before(:validation) }
-  end
 end

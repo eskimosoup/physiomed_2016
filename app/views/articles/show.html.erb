@@ -1,6 +1,6 @@
-<% if @article.url_originally_on.present? %>
+<% if @article.url_originally_posted_on.present? %>
   <%= content_for :head do %>
-    <link rel="canonical" href="<%= @article.url_originally_on %>" />
+    <link rel="canonical" href="<%= @article.url_originally_posted_on %>" />
   <% end %>
 <% end %>
 
