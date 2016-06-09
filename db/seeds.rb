@@ -6,13 +6,15 @@
 #   cities = City.create!([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create!(name: 'Emanuel', city: cities.first)
 #
+image = File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg"))
+
 puts "Creating Admin"
 Optimadmin::Administrator.create!(
   username: 'optimised', email: 'support@optimised.today',
   password: 'optipoipoip', password_confirmation: 'optipoipoip', role: 'master')
 
 puts "Creating pages"
-page = Page.create!(title: "page 1", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), content: "Content", style: "basic", layout: "application")
+page = Page.create!(title: "page 1", image: image, content: "Content", style: "basic", layout: "application")
 
 puts "Creating main navigation"
 wellbeing_zone = Optimadmin::ModulePage.create!(name: "WellBeing Zone", route: "wellbeing_path")
@@ -22,10 +24,10 @@ page_link = Optimadmin::Link.create!(menu_resource: page)
 page_menu_item = Optimadmin::MenuItem.create!(link: page_link, name: "Page", menu_name: "header")
 
 puts "Creating health zones"
-HealthZone.create!(title: "Know your body", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our know your body section", link: "http://www.google.co.uk")
-HealthZone.create!(title: "Feeling Fab exercises", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Visit our exercises section", link: "http://www.google.com")
-HealthZone.create!(title: "Managing Conditions", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk")
-HealthZone.create!(title: "Other", home_image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk/sport")
+HealthZone.create!(title: "Know your body", home_image: image, hover_text: "Visit our know your body section", link: "http://www.google.co.uk")
+HealthZone.create!(title: "Feeling Fab exercises", home_image: image, hover_text: "Visit our exercises section", link: "http://www.google.com")
+HealthZone.create!(title: "Managing Conditions", home_image: image, hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk")
+HealthZone.create!(title: "Other", home_image: image, hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk/sport")
 
 puts "creating videos" #used in additional home content and in wellbeing zone
 video = Video.create!(title: "Ain't no sunshine", youtube_identifier: "tIdIqbv7SPo",
@@ -45,9 +47,9 @@ AdditionalHomeContent.create!(title: "b", video: video, content_type: "video_con
 AdditionalHomeContent.create!(title: "ROI Savings Calculator", content_type: "savings_calculator")
 
 puts "Creating banners"
-Banner.create!(title: "Banner", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")))
-Banner.create!(title: "Banner with summary", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Summary text")
-Banner.create!(title: "Banner with link", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), link: "http://www.google.co.uk")
+Banner.create!(title: "Banner", image: image)
+Banner.create!(title: "Banner with summary", image: image, summary: "Summary text")
+Banner.create!(title: "Banner with link", image: image, link: "http://www.google.co.uk")
 
 puts "Creating Quick Links"
 8.times do
@@ -68,11 +70,11 @@ puts "Creating practices"
 Practice.create!(name: "Hull", post_code: "HU1 1NQ")
 
 puts "Creating clients"
-client = Client.create!(name: "Client 1", logo: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), display: true)
-Client.create!(name: "Client 2", logo: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), display: true)
+client = Client.create!(name: "Client 1", logo: image, display: true)
+Client.create!(name: "Client 2", logo: image, display: true)
 
 puts "Creating case studies"
-CaseStudy.create!(title: "Case Study #1", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Some content", content: "Some more content", display: true, date: Date.yesterday) 
+CaseStudy.create!(title: "Case Study #1", image: image, summary: "Some content", content: "Some more content", display: true, date: Date.yesterday) 
 CaseStudy.create!(title: "Case Study #2", summary: "A longer summary... let's shorten me because I am going to be way too long blah blah blah blah blah blah", content: "Some content", display: true, date: Date.today)
 
 puts "Creating testimonials"
@@ -80,26 +82,32 @@ Testimonial.create!(title: "My title", content: "Some content", author: "John Si
 Testimonial.create!(title: "Testimonial 2", content: "Some content", author: "Beth Norman")
 
 puts "Creating team members"
-team_member = TeamMember.create!(forename: "Joe", surname: "Bloggs", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), bio: "Biography", email: "joe.bloggs@example.com", phone: "01234 567890", role: "Some role")
+team_member = TeamMember.create!(forename: "Joe", surname: "Bloggs", image: image, bio: "Biography", email: "joe.bloggs@example.com", phone: "01234 567890", role: "Some role")
 8.times do
-  TeamMember.create!(forename: "Jane", surname: "Bloggs", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), bio: "Biography", email: "jane.bloggs@example.com", phone: "01234 567890", role: "Some role")
+  TeamMember.create!(forename: "Jane", surname: "Bloggs", image: image, bio: "Biography", email: "jane.bloggs@example.com", phone: "01234 567890", role: "Some role")
 end
 TeamMember.create!(forename: "Jane", surname: "Has no image", bio: "Biography", email: "jane.bloggs@example.com", phone: "01234 567890", role: "Some role")
   
 puts "Creating articles"
-Article.create!(title: "Article 1", image: File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")), summary: "Summary", content: "Content", date: Date.today, author: team_member)
+Article.create!(title: "Article 1", image: image, summary: "Summary", content: "Content", date: Date.today, author: team_member)
 Article.create!(title: "Article 2", summary: "Summary", content: "Content", date: Date.today)
 Article.create!(title: "Article 3", summary: "Summary", content: "Content", date: Date.today)
 Article.create!(title: "Article 4", summary: "Summary", content: "Content", date: Date.today)
 
 puts "Creating body parts"
+body_parts = []
 BodyPart::BODY_PARTS.each_with_index do |name, i|
-  if i % 2 == 0
+  body_parts << if i % 2 == 0
     BodyPart.create!(name: name, tagline: "Some tagline")
   else
     BodyPart.create!(name: name)
   end
 end
+
+BodyPartSection.create!(title: "Some title", sub_title: "Some subtitle",
+                        content: "blah", body_part: body_parts.first)
+BodyPartSection.create!(title: "Some title", image: image,
+                        content: "blah", body_part: body_parts.first)
 
 puts "Creating FAQs"
 6.times do
@@ -112,3 +120,4 @@ PeopleHelpedSection::SECTIONS.each do |section|
                               content: "some content", link: "http://www.google.co.uk")
 end
 
+image.close

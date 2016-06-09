@@ -1,7 +1,27 @@
 <div class="content">
-  <h1><%= @body_part.name %></h1>
+  <h1><%= @body_part_facade.name %></h1>
   <h2>Health and Wellbeing Zone</h2>
   <div class="body-part-summary">
-    <%= raw @body_part.summary %>
+    <%= raw @body_part_facade.summary %>
   </div>
+
+  <% if @body_part_facade.body_part_sections.any? %>
+    <%= content_for :javascript do %>
+      <%= javascript_include_tag "components/body_part_sections" %>
+    <% end %>
+    <section class="body-part-sections">
+      <ul id="tabs">
+        <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
+          <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
+            <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
+          <% end %>
+        <% end %>
+      </ul>
+      <%= render(
+        partial: "wellbeing_zone/body_part_sections/body_part_section",
+        collection: @body_part_facade.body_part_sections,
+        as: :body_part_section
+      ) %>
+    </section>
+  <% end %>
 </div>

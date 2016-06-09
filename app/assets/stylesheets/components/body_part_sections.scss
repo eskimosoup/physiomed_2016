@@ -1,0 +1,30 @@
+section.body-part-sections {
+  ul#tabs {
+    list-style-type: none;
+  }
+
+  ul#tabs li {
+    display: inline;
+    background-color: $beige;
+    padding: rem-calc(5px 8px);
+    margin: 0 rem-calc(5px);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    &:hover, &.current {
+      background: $green;
+      a {
+        color: $white;
+      }
+    }
+  }
+
+  .body-part-section {
+    display: none;
+    width: 100%;
+  }
+
+  .body-part-section.current {
+    display: initial;
+  }
+}
