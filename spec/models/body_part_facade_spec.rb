@@ -33,4 +33,12 @@ describe BodyPartFacade do
     facade = BodyPartFacade.new(body_part)
     expect(facade.people_helped_section).to eq(people_helped_section)
   end
+
+  it '#articles' do
+    body_part = BodyPart.new
+    article = create(:article)
+
+    facade = BodyPartFacade.new(body_part)
+    expect(facade.articles).to include(article)
+  end
 end

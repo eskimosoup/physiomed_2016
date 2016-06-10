@@ -36,4 +36,20 @@
       object: @body_part_facade.people_helped_section
     ) %>
   <% end %>
+  # VIDEO
+  # TEAM
+  # CASE STUDIES
+  <% if @body_part_facade.articles.any? %>
+    <div class="articles-container">
+      <%= link_to "See more", articles_path, class: "button brown-background" %>
+      <h2 class="green-border-bottom">
+        Latest News
+      </h2>
+      <% @body_part_facade.articles.each_with_index do |article, i| %>
+        <%= wellbeing_article_partial(article, i) %>
+      <% end %>
+    </div>
+  <% end %>
+  # FAQs
+  # TESTIMONIALS
 </div>

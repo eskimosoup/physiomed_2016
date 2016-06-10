@@ -14,6 +14,10 @@ class BodyPartFacade
     @people_helped_section ||= PeopleHelpedSection.find_by(section: name)
   end
 
+  def articles
+    @articles ||= Article.displayed.order(date: :desc).limit(3)
+  end
+
   private
 
   attr_reader :body_part
