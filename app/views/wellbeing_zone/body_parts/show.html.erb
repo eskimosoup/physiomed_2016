@@ -69,7 +69,7 @@
       <% end %>
     </div>
   <% end %>
-  # FAQs
+
   <% if @body_part_facade.faqs.any? %>
     <div class="faqs-container">
       <%= link_to "See more", frequently_asked_questions_path, class: "button brown-background" %>
@@ -84,5 +84,18 @@
     </div>
     </div>
   <% end %>
-  # TESTIMONIALS
+
+  <% if @body_part_facade.testimonials.any? %>
+    <div class="testimonials-container green-background">
+      <%= content_for :javascript do %>
+        <%= javascript_include_tag "components/testimonials/wellbeing_zone" %>
+      <% end %>
+      <div class="testimonials">
+        <%= render(
+          partial: "testimonials/testimonial",
+          collection: @body_part_facade.testimonials
+        ) %>
+    </div>
+    </div>
+  <% end %>
 </div>

@@ -26,6 +26,10 @@ class BodyPartFacade
     @faqs ||= FrequentlyAskedQuestion.order("RANDOM()").displayed.limit(6)
   end
 
+  def testimonials
+    @testimonials ||= Testimonial.order("RANDOM()").displayed.limit(8)
+  end
+
   private
 
   attr_reader :body_part
