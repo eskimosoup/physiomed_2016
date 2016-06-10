@@ -1,0 +1,10 @@
+<div class="people-helped-section">
+  <h2><%= people_helped_section.title %></h2>
+  <div class="number">
+    <%= people_helped_section.number %>
+  </div>
+  <div class="basic-details">
+    <%= simple_format people_helped_section.content if people_helped_section.content? %>
+    <%= link_to "Find out how", people_helped_section.link, class: "button brown-background" %>
+  </div>
+</div>

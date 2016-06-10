@@ -15,16 +15,12 @@ class WellbeingFacade
     @faqs ||= FrequentlyAskedQuestion.order(position: :asc).displayed.limit(6)
   end
 
-  def video_section
-    return nil if video.nil?
-    yield video if block_given?
-    video
+  def video
+    @video ||= Video.order(created_at: :desc).first
   end
 
-  def people_helped
-    return nil if people_helped_section.nil?
-    yield people_helped_section if block_given?
-    people_helped_section
+  def people_helped_section
+    @people_helped_section ||= PeopleHelpedSection.displayed.find_by(section: "Wellbeing Zone")
   end
 
   def team_members
@@ -33,15 +29,5 @@ class WellbeingFacade
 
   def testimonials
     @testimonials ||= Testimonial.displayed.limit(8)
-  end
-
-  private
-
-  def people_helped_section
-    @people_helped_section ||= PeopleHelpedSection.displayed.find_by(section: "Wellbeing Zone")
-  end
-
-  def video
-    @video ||= Video.order(created_at: :desc).first
   end
 end

@@ -40,24 +40,19 @@
   <% end %>
 
   <section class="flexbox-wrap">
-    <% @wellbeing_facade.people_helped do |people_helped_section| %>
-      <div class="people-helped-section">
-        <h2><%= people_helped_section.title %></h2>
-        <div class="number">
-          <%= people_helped_section.number %>
-        </div>
-        <div class="basic-details">
-          <%= simple_format people_helped_section.content if people_helped_section.content? %>
-          <%= link_to "Find out how", people_helped_section.link, class: "button brown-background" %>
-        </div>
-      </div>
+
+    <% if @wellbeing_facade.people_helped_section %>
+      <%= render(
+        partial: "people_helped_sections/people_helped_section",
+        object: @wellbeing_facade.people_helped_section
+      ) %>
     <% end %>
 
-    <% @wellbeing_facade.video_section do |video| %>
+    <% if @wellbeing_facade.video %>
       <div class="video-section">
         <%= render(
           partial: "videos/video",
-          object: video
+          object: @wellbeing_facade.video
         ) %>
       </div>
     <% end %>
