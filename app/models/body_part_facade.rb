@@ -22,6 +22,10 @@ class BodyPartFacade
     @case_studies ||= CaseStudy.order(date: :desc).displayed.limit(3)
   end
 
+  def faqs
+    @faqs ||= FrequentlyAskedQuestion.order("RANDOM()").displayed.limit(6)
+  end
+
   private
 
   attr_reader :body_part

@@ -49,4 +49,12 @@ describe BodyPartFacade do
     facade = BodyPartFacade.new(body_part)
     expect(facade.case_studies).to include(case_study)
   end
+
+  it '#faqs' do
+    body_part = BodyPart.new
+    faq = create(:frequently_asked_question)
+
+    facade = BodyPartFacade.new(body_part)
+    expect(facade.faqs).to include(faq)
+  end
 end

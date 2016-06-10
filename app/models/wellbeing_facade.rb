@@ -12,7 +12,7 @@ class WellbeingFacade
   end
 
   def faqs
-    @faqs ||= FrequentlyAskedQuestion.order(position: :asc).displayed.limit(6)
+    @faqs ||= FrequentlyAskedQuestion.order("RANDOM()").displayed.limit(6)
   end
 
   def video
