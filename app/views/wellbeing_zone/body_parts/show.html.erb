@@ -9,19 +9,24 @@
     <%= content_for :javascript do %>
       <%= javascript_include_tag "components/body_part_sections" %>
     <% end %>
-    <section class="body-part-sections">
-      <ul id="tabs">
-        <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
-          <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
-            <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
+    <section class="box-wrap">
+      <div class="body-part-sections-container">
+        <ul id="tabs">
+          <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
+            <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
+              <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
-      <%= render(
-        partial: "wellbeing_zone/body_part_sections/body_part_section",
-        collection: @body_part_facade.body_part_sections,
-        as: :body_part_section
-      ) %>
+        </ul>
+
+        <div class="body-part-sections">
+          <%= render(
+            partial: "wellbeing_zone/body_part_sections/body_part_section",
+            collection: @body_part_facade.body_part_sections,
+            as: :body_part_section
+          ) %>
+        </div>
+      </div>
     </section>
   <% end %>
 </div>

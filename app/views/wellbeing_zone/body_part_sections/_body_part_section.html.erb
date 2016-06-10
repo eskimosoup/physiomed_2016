@@ -1,8 +1,11 @@
 <div id="body-part-section-<%= body_part_section.id %>" class="body-part-section <%= body_part_section_counter.zero? ? "current" : nil %>">
+
   <h2><%= body_part_section.title %></h2>
   <% if body_part_section.sub_title %>
     <h3><%= body_part_section.sub_title %></h3>
   <% end %>
   <%= raw body_part_section.content %>
+  <%= image_tag body_part_section.image_url(:show), alt: body_part_section.title,
+    title: body_part_section.title if body_part_section.image? %>
 </div>
 

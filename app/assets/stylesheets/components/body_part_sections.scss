@@ -1,6 +1,8 @@
-section.body-part-sections {
+.body-part-sections-container {
+  @include flex-grid-column(12);
   ul#tabs {
     list-style-type: none;
+    margin-bottom: 4px;
   }
 
   ul#tabs li {
@@ -21,10 +23,22 @@ section.body-part-sections {
 
   .body-part-section {
     display: none;
-    width: 100%;
+    @include border-radius-with-box-shadow;
+    border-top: 5px solid $green;
+    padding: rem-calc(20px);
   }
 
   .body-part-section.current {
-    display: initial;
+    display: block;
+  }
+
+  .body-part-section h2 {
+    color: $green;
+    border-bottom: 2px solid $green;
+    margin: rem-calc(5px 0);
+  }
+
+  .body-part-section h3 {
+    color: $green;
   }
 }
