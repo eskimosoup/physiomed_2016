@@ -88,7 +88,11 @@
           Case Studies
         </h2>
         <% @wellbeing_facade.case_studies.each_with_index do |case_study, i| %>
-          <%= wellbeing_case_study_partial(case_study, i) %>
+          <%= render(
+            partial: wellbeing_case_study_partial_path(i),
+            object: case_study,
+            as: :case_study
+          ) %>
         <% end %>
       </div>
     <% end %>
