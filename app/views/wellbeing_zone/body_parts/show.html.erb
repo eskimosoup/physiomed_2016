@@ -38,7 +38,22 @@
   <% end %>
   # VIDEO
   # TEAM
-  # CASE STUDIES
+  <% if @body_part_facade.case_studies.any? %>
+    <div class="case-studies-container">
+      <%= link_to "See more", case_studies_path, class: "button brown-background" %>
+      <h2 class="green-border-bottom">
+        Case Studies
+      </h2>
+      <% @body_part_facade.case_studies.each_with_index do |case_study, i| %>
+        <%= render(
+          partial: wellbeing_case_study_partial_path(i),
+          object: case_study,
+          as: :case_study
+        ) %>
+    <% end %>
+    </div>
+  <% end %>
+
   <% if @body_part_facade.articles.any? %>
     <div class="articles-container">
       <%= link_to "See more", articles_path, class: "button brown-background" %>

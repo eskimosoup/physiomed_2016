@@ -18,6 +18,10 @@ class BodyPartFacade
     @articles ||= Article.displayed.order(date: :desc).limit(3)
   end
 
+  def case_studies
+    @case_studies ||= CaseStudy.order(date: :desc).displayed.limit(3)
+  end
+
   private
 
   attr_reader :body_part
