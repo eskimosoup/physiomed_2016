@@ -29,4 +29,11 @@
       </div>
     </section>
   <% end %>
+
+  <% if @body_part_facade.people_helped_section %>
+    <%= render(
+      partial: "people_helped_sections/people_helped_section",
+      object: @body_part_facade.people_helped_section
+    ) %>
+  <% end %>
 </div>
