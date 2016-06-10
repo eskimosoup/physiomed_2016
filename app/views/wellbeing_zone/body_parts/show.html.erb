@@ -46,7 +46,11 @@
         Latest News
       </h2>
       <% @body_part_facade.articles.each_with_index do |article, i| %>
-        <%= wellbeing_article_partial(article, i) %>
+        <%= render(
+          partial: wellbeing_article_partial_path(i),
+          object: article,
+          as: :article
+        ) %>
       <% end %>
     </div>
   <% end %>

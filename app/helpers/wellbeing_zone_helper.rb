@@ -1,11 +1,10 @@
 module WellbeingZoneHelper
-  def wellbeing_article_partial(article, index)
-    partial_path = if index.zero?
-                     "articles/main_wellbeing_article"
-                   else
-                     "articles/supplementary_wellbeing_article"
-                   end
-    render(partial: partial_path, locals: { article: article })
+  def wellbeing_article_partial_path(index)
+    if index.zero?
+      "articles/main_wellbeing_article"
+    else
+      "articles/supplementary_wellbeing_article"
+    end
   end
 
   def wellbeing_case_study_partial(case_study, index)
