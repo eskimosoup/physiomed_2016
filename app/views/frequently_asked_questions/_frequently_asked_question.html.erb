@@ -1,8 +1,11 @@
 <div class="faq">
   <div class="question">
-    <%= frequently_asked_question.question %>
+    <%= image_tag "question.png" %>
+    <div class="text">
+      <%= frequently_asked_question.question %>
+    </div>
   </div>
   <div class="answer">
-    <%= frequently_asked_question.answer %>
+    <%= raw frequently_asked_question.answer %>
   </div>
 </div>
