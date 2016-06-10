@@ -1,8 +1,6 @@
 class PeopleHelpedSection < ActiveRecord::Base
   SECTIONS = [
-    "Ankle", "Elbow", "Foot", "Hip", "Knee",
-    "Lower Back", "Lower Leg", "Neck", "Shoulder",
-    "Wellbeing Zone", "Wrist"
+    *BodyPart::BODY_PARTS, "Wellbeing Zone"
   ].freeze
 
   validates :number, presence: true, numericality: { only_integer: true, greater_than: 0 }

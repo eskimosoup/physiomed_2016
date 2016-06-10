@@ -4,7 +4,6 @@ module Optimadmin
 
     def index
       @people_helped_sections = PeopleHelpedSection.order(params[:order])
-        .page(params[:page]).per(params.fetch(:per_page, 10))
     end
 
     def show
