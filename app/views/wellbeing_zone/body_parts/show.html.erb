@@ -37,65 +37,48 @@
     ) %>
   <% end %>
   # VIDEO
-  # TEAM
+  <% if @body_part_facade.team_members.any? %>
+    <%= render(
+      partial: "wellbeing_zone/shared/team_member_section.html.erb",
+      locals: {
+        team_members: @body_part_facade.team_members
+      }
+    ) %>
+  <% end %>
+
   <% if @body_part_facade.case_studies.any? %>
-    <div class="case-studies-container">
-      <%= link_to "See more", case_studies_path, class: "button brown-background" %>
-      <h2 class="green-border-bottom">
-        Case Studies
-      </h2>
-      <% @body_part_facade.case_studies.each_with_index do |case_study, i| %>
-        <%= render(
-          partial: wellbeing_case_study_partial_path(i),
-          object: case_study,
-          as: :case_study
-        ) %>
-    <% end %>
-    </div>
+    <%= render(
+      partial: "wellbeing_zone/shared/case_studies_section",
+      locals: {
+        case_studies: @body_part_facade.case_studies
+      }
+    ) %>
   <% end %>
 
   <% if @body_part_facade.articles.any? %>
-    <div class="articles-container">
-      <%= link_to "See more", articles_path, class: "button brown-background" %>
-      <h2 class="green-border-bottom">
-        Latest News
-      </h2>
-      <% @body_part_facade.articles.each_with_index do |article, i| %>
-        <%= render(
-          partial: wellbeing_article_partial_path(i),
-          object: article,
-          as: :article
-        ) %>
-      <% end %>
-    </div>
+    <%= render(
+      partial: "wellbeing_zone/shared/articles_section",
+      locals: {
+        articles: @body_part_facade.articles
+      }
+    ) %>
   <% end %>
 
   <% if @body_part_facade.faqs.any? %>
-    <div class="faqs-container">
-      <%= link_to "See more", frequently_asked_questions_path, class: "button brown-background" %>
-      <h2 class="green-border-bottom">
-        Frequently Asked Questions
-      </h2>
-      <div class="faqs">
-        <%= render(
-          partial: "frequently_asked_questions/frequently_asked_question",
-          collection: @body_part_facade.faqs
-        ) %>
-    </div>
-    </div>
+    <%= render(
+      partial: "wellbeing_zone/shared/faqs_section",
+      locals: {
+        faqs: @body_part_facade.faqs
+      }
+    ) %>
   <% end %>
 
   <% if @body_part_facade.testimonials.any? %>
-    <div class="testimonials-container green-background">
-      <%= content_for :javascript do %>
-        <%= javascript_include_tag "components/testimonials/wellbeing_zone" %>
-      <% end %>
-      <div class="testimonials">
-        <%= render(
-          partial: "testimonials/testimonial",
-          collection: @body_part_facade.testimonials
-        ) %>
-    </div>
-    </div>
+    <%= render(
+      partial: "wellbeing_zone/shared/testimonials_section",
+      locals: {
+        testimonials: @body_part_facade.testimonials
+      }
+    ) %>
   <% end %>
 </div>

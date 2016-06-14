@@ -26,6 +26,10 @@ class BodyPartFacade
     @faqs ||= FrequentlyAskedQuestion.order("RANDOM()").displayed.limit(6)
   end
 
+  def team_members
+    @team_members ||= TeamMember.order("RANDOM()").displayed.limit(12)
+  end
+
   def testimonials
     @testimonials ||= Testimonial.order("RANDOM()").displayed.limit(8)
   end

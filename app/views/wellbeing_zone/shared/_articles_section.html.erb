@@ -1,0 +1,13 @@
+<div class="articles-container">
+  <%= link_to "See more", articles_path, class: "button brown-background" %>
+  <h2 class="green-border-bottom">
+    Latest News
+  </h2>
+  <% articles.each_with_index do |article, i| %>
+    <%= render(
+      partial: wellbeing_article_partial_path(i),
+      object: article,
+      as: :article
+    ) %>
+  <% end %>
+</div>

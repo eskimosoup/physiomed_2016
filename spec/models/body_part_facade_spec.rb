@@ -65,4 +65,12 @@ describe BodyPartFacade do
     facade = BodyPartFacade.new(body_part)
     expect(facade.testimonials).to include(testimonial)
   end
+
+  it '#team_members' do
+    body_part = BodyPart.new
+    team_member = create(:team_member)
+
+    facade = BodyPartFacade.new(body_part)
+    expect(facade.team_members).to include(team_member)
+  end
 end
