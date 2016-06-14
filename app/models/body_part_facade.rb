@@ -34,6 +34,10 @@ class BodyPartFacade
     @testimonials ||= Testimonial.order("RANDOM()").displayed.limit(8)
   end
 
+  def video
+    @video ||= Video.displayed.order(created_at: :desc).first
+  end
+
   private
 
   attr_reader :body_part

@@ -4,19 +4,19 @@ class WellbeingFacade
   end
 
   def body_parts
-    @body_parts ||= BodyPart.ordered_by_position.displayed
+    @body_parts ||= BodyPart.displayed.order(position: :asc)
   end
 
   def case_studies
-    @case_studies ||= CaseStudy.order(date: :desc).displayed.limit(3)
+    @case_studies ||= CaseStudy.displayed.order(date: :desc).limit(3)
   end
 
   def faqs
-    @faqs ||= FrequentlyAskedQuestion.order("RANDOM()").displayed.limit(6)
+    @faqs ||= FrequentlyAskedQuestion.displayed.order("RANDOM()").limit(6)
   end
 
   def video
-    @video ||= Video.order(created_at: :desc).first
+    @video ||= Video.displayed.order(created_at: :desc).first
   end
 
   def people_helped_section
@@ -24,10 +24,10 @@ class WellbeingFacade
   end
 
   def team_members
-    @team_members ||= TeamMember.displayed.limit(18)
+    @team_members ||= TeamMember.displayed.order("RANDOM()").limit(18)
   end
 
   def testimonials
-    @testimonials ||= Testimonial.displayed.limit(8)
+    @testimonials ||= Testimonial.displayed.order("RANDOM()").limit(8)
   end
 end
