@@ -19,7 +19,6 @@
   ) %>
 
   <section class="flexbox-wrap">
-
     <% if @wellbeing_facade.people_helped_section %>
       <%= render(
         partial: "people_helped_sections/people_helped_section",
@@ -38,11 +37,10 @@
   </section>
 
   <section class="flexbox-wrap">
-      <%= render(
-        "wellbeing_zone/shared/articles_section",
-        articles: @wellbeing_facade.articles
-      ) %>
-    <% end %>
+    <%= render(
+      "wellbeing_zone/shared/articles_section",
+      articles: @wellbeing_facade.articles
+    ) %>
     <div class="twitter-container brown-background">
       <%= image_tag "twitter-brown" %>
       TWITTER GOES HERE
@@ -59,7 +57,6 @@
       "wellbeing_zone/shared/testimonials_section",
       testimonials: @wellbeing_facade.testimonials
     ) %>
-    <% end %>
   </section>
 
   <% if @wellbeing_facade.faqs.any? %>

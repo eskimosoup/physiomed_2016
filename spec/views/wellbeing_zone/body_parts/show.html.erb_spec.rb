@@ -1,35 +1,66 @@
 require "rails_helper"
 
 describe "wellbeing_zone/body_parts/show.html.erb" do
-  describe "body part sections" do
-    context "has body part sections" do
-      it 'renders body part section container' do
-        facade = BodyPartFacade.new(BodyPart.new)
-        body_part_section = build_stubbed(:body_part_section)
-        allow(facade).to receive(:body_part_sections).and_return([body_part_section])
-        assign(:body_part_facade, facade)
+  context "has body part sections" do
+    it 'renders body part section container' do
+      facade = build_facade
+      body_part_section = build_stubbed(:body_part_section)
+      allow(facade).to receive(:body_part_sections).and_return([body_part_section])
 
-        render
+      render
 
-        expect(rendered).to have_body_part_section_container
-      end
+      expect(rendered).to have_body_part_section_container
     end
+  end
 
-    context "has no body part sections" do
-      it 'does not render the body part section container' do
-        facade = BodyPartFacade.new(BodyPart.new)
-        allow(facade).to receive(:body_part_sections).and_return([])
-        assign(:body_part_facade, facade)
+  context "has no body part sections" do
+    it 'does not render the body part section container' do
+      facade = build_facade
+      allow(facade).to receive(:body_part_sections).and_return([])
 
-        render
+      render
 
-        expect(rendered).not_to have_body_part_section_container
-      end
+      expect(rendered).not_to have_body_part_section_container
     end
+  end
 
-    def have_body_part_section_container
-      have_css ".body-part-sections-container"
+  context 'has guides' do
+    it 'renders the guide section' do
+      facade = build_facade
+      create(:guide, title: "Guide", content: "some content", display: true)
+
+      render
+
+      expect(rendered).to have_guides_section_container
+      expect(rendered).to have_css "h2", text: "Guide"
+      expect(rendered).to have_css ".guide h3", text: "Guide"
+      expect(rendered).to have_css ".guide", text: "some content"
+      expect(rendered).to have_css ".guide a", text: "Download"
     end
+  end
+
+  context 'does not have guides' do
+    it 'does not render the guides section' do
+      facade = build_facade
+
+      render
+
+      expect(rendered).not_to have_guides_section_container
+    end
+  end
+
+  def build_facade(body_part: BodyPart.new)
+    facade = BodyPartFacade.new(body_part)
+    assign(:body_part_facade, facade)
+    facade
+  end
+
+  def have_body_part_section_container
+    have_css ".body-part-sections-container"
+  end
+
+  def have_guides_section_container
+    have_css ".guides-container"
   end
 end
 

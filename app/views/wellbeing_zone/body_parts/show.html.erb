@@ -5,6 +5,17 @@
     <%= raw @body_part_facade.summary %>
   </div>
 
+  <% if @body_part_facade.guides.any? %>
+   <section class="box-wrap">
+     <div class="guides-container">
+       <h2>Guides</h2>
+       <div class="guides">
+         <%= render @body_part_facade.guides %>
+       </div>
+     </div>
+   </section>
+  <% end %>
+
   <% if @body_part_facade.body_part_sections.any? %>
     <%= content_for :javascript do %>
       <%= javascript_include_tag "components/body_part_sections" %>
