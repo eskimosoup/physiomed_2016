@@ -47,20 +47,14 @@
   <% end %>
 
   <%= render(
-    partial: "wellbeing_zone/shared/team_member_section.html.erb",
-    locals: {
-      team_members: @body_part_facade.team_members
-    }
+    "wellbeing_zone/shared/team_member_section.html.erb",
+    team_members: @body_part_facade.team_members
   ) %>
 
-  <% if @body_part_facade.case_studies.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/case_studies_section",
-      locals: {
-        case_studies: @body_part_facade.case_studies
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/case_studies_section",
+    case_studies: @body_part_facade.case_studies
+  ) %>
 
   <% if @body_part_facade.articles.any? %>
     <%= render(
