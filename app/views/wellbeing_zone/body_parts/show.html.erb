@@ -56,14 +56,10 @@
     case_studies: @body_part_facade.case_studies
   ) %>
 
-  <% if @body_part_facade.articles.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/articles_section",
-      locals: {
-        articles: @body_part_facade.articles
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/articles_section",
+    articles: @body_part_facade.articles
+  ) %>
 
   <% if @body_part_facade.faqs.any? %>
     <%= render(
