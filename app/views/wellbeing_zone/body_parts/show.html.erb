@@ -61,14 +61,10 @@
     articles: @body_part_facade.articles
   ) %>
 
-  <% if @body_part_facade.faqs.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/faqs_section",
-      locals: {
-        faqs: @body_part_facade.faqs
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/faqs_section",
+    faqs: @body_part_facade.faqs
+  ) %>
 
   <% if @body_part_facade.testimonials.any? %>
     <%= render(

@@ -68,10 +68,8 @@
   <% if @wellbeing_facade.faqs.any? %>
     <section class="box-wrap">
       <%= render(
-        partial: "wellbeing_zone/shared/faqs_section",
-        locals: {
-          faqs: @wellbeing_facade.faqs
-        }
+        "wellbeing_zone/shared/faqs_section",
+        faqs: @wellbeing_facade.faqs
       ) %>
     </section>
   <% end %>
