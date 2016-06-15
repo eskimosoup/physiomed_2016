@@ -13,14 +13,12 @@
     </section>
   <% end %>
 
-  <% if @wellbeing_facade.team_members.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/team_member_section.html.erb",
-      locals: {
-        team_members: @wellbeing_facade.team_members
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    partial: "wellbeing_zone/shared/team_member_section.html.erb",
+    locals: {
+      team_members: @wellbeing_facade.team_members
+    }
+  ) %>
 
   <section class="flexbox-wrap">
 

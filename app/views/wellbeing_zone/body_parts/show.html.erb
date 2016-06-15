@@ -46,14 +46,12 @@
     </div>
   <% end %>
 
-  <% if @body_part_facade.team_members.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/team_member_section.html.erb",
-      locals: {
-        team_members: @body_part_facade.team_members
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    partial: "wellbeing_zone/shared/team_member_section.html.erb",
+    locals: {
+      team_members: @body_part_facade.team_members
+    }
+  ) %>
 
   <% if @body_part_facade.case_studies.any? %>
     <%= render(
