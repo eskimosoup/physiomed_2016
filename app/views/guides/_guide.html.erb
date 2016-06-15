@@ -1,0 +1,6 @@
+<div class="guide">
+  <%= image_tag guide.image_url(:index), alt: guide.title, title: guide.title if guide.image? %>
+  <h3><%= guide.title %></h3>
+  <%= raw guide.content %>
+  <%= link_to "Download", guide.file.url %>
+</div>
