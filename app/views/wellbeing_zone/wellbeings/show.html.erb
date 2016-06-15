@@ -1,17 +1,30 @@
-<div class="wellbeing content">
-  <% if @wellbeing_facade.body_parts.any? %>
-    <section class="flexbox-wrap">
-      <div class="body-parts-container">
-        <div class="body-parts">
-          <%= render(
-            partial: "body_parts/body_part",
-            collection: @wellbeing_facade.body_parts,
-            as: :body_part
-          ) %>
+<div class="hero-section">
+  <h1 class="hero-section-title">
+    Health and Well-Being Zone
+  </h1>
+
+  <% # TODO Link this %>
+  <%= link_to 'General Well-Being', '#', class: 'hero-section-button' %>
+
+  <div class="wellbeing content">
+    <% if @wellbeing_facade.body_parts.any? %>
+      <section class="flexbox-wrap">
+        <div class="body-parts-container">
+          <div class="body-parts">
+            <%= render(
+              partial: "body_parts/body_part",
+              collection: @wellbeing_facade.body_parts,
+              as: :body_part
+            ) %>
+          </div>
         </div>
-      </div>
-    </section>
-  <% end %>
+      </section>
+    <% end %>
+  </div>
+</div>
+
+<div class="wellbeing content section">
+
 
   <% if @wellbeing_facade.team_members.any? %>
     <%= render(

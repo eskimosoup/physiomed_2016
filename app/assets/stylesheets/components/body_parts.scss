@@ -1,11 +1,22 @@
 .body-part {
   @include flex-grid-column(4);
   margin: rem-calc(20px) auto;
+  position: relative;
+  min-height: 204px;
+
   .name {
     color: $white;
     padding: rem-calc(25px);
   }
+
   .tagline {
-    background-color: $beige;
+    background-color: rgba($beige, .75);
+    bottom: 0;
+    color: $brown;
+    font-size: rem(16px);
+    font-weight: $open-sans-semibold;
+    padding: rem(20px) 0;
+    position: absolute;
+    width: calc(100% - 30px);
   }
 }

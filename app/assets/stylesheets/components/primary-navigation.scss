@@ -1,12 +1,19 @@
 .primary-header-navigation {
   list-style: none;
   margin: rem(25px 0 0);
+  position: relative;
 
   li {
     display: inline-block;
+
+    &:hover .dropdown {
+      display: block;
+    }
   }
 
   .menu-link {
+    display: block;
+
     &:link,
     &:visited {
       padding: rem(0 5px 7px);
@@ -23,6 +30,30 @@
 
     &.active {
       border-bottom: 4px solid $green;
+    }
+  }
+}
+
+.dropdown {
+  background: $brown;
+  background: linear-gradient(to bottom,  $mud-brown 0%, $brown 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  box-shadow: 8px 11px 12px 0px rgba($black, .6);
+  display: none;
+  padding: rem(40px) rem(25px);
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+
+  .menu-link {
+    &:link,
+    &:visited {
+      color: $white;
+    }
+
+    &:hover,
+    &:active {
+      color: $white;
+      text-decoration: underline;
     }
   }
 }

@@ -1,12 +1,15 @@
 .wellbeing.content {
-  background-color: $beige;
   padding: rem-calc(5px) 0;
+
+  &.section {
+    background-color: $beige;
+  }
 
   .body-parts-container {
     background-color: $white;
     @include border-radius-with-box-shadow;
     @include flex-grid-column(12);
-    
+
     .body-parts {
       width: 100%;
       @include flex-grid-row;
@@ -38,7 +41,7 @@
     background-color: $white;
     padding: rem-calc(15px);
   }
-  
+
   .articles-container {
     @include border-radius-with-box-shadow;
     width: 65.5%;
@@ -52,7 +55,7 @@
     width: 33%;
     color: $white;
   }
-  
+
   .faqs-container {
     @include flex-grid-column(12);
     @include border-radius-with-box-shadow;

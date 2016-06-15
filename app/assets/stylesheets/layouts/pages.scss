@@ -3,3 +3,45 @@
     @include flex-grid-column(8);
   }
 }
+
+.hero-section {
+  background: image-url('layout/mask.png') no-repeat top center,
+              image-url('layout/photography/wellbeing-zone.jpg') no-repeat top center,
+              $beige;
+  margin: 0 auto;
+  padding: rem(140px) 0 0;
+  text-align: center;
+}
+
+.hero-section-title {
+  color: $white;
+  font-family: $open-sans;
+  font-size: rem(38px);
+  font-weight: $open-sans-bold;
+  text-shadow: 1px 1px 9px rgba($black, .5);
+}
+
+.hero-section-button,
+.wellbeing-full-section-button {
+  background: $green;
+  background: linear-gradient(to right, $dark-green 0%, $pale-green 100%);
+  display: inline-block;
+  font-size: rem(16px);
+  font-weight: $open-sans-bold;
+  padding: rem(23px 90px);
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:active {
+    background: linear-gradient(to right, $dark-green 0%, $green 100%);
+    color: $white;
+  }
+
+  &.wellbeing-full-section-button {
+    display: block;
+  }
+}
