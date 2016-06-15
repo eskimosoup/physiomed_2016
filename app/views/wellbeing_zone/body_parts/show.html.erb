@@ -36,7 +36,16 @@
       object: @body_part_facade.people_helped_section
     ) %>
   <% end %>
-  # VIDEO
+
+  <% if @body_part_facade.video %>
+    <div class="video-section">
+      <%= render(
+        partial: "videos/video",
+        object: @body_part_facade.video
+      ) %>
+    </div>
+  <% end %>
+
   <% if @body_part_facade.team_members.any? %>
     <%= render(
       partial: "wellbeing_zone/shared/team_member_section.html.erb",

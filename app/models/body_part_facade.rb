@@ -11,7 +11,7 @@ class BodyPartFacade
   end
 
   def people_helped_section
-    @people_helped_section ||= PeopleHelpedSection.find_by(section: name)
+    @people_helped_section ||= PeopleHelpedSection.displayed.find_by(section: name)
   end
 
   def articles

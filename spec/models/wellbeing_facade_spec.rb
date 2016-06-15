@@ -119,11 +119,18 @@ describe WellbeingFacade do
       expect(facade.people_helped_section).not_to eq(incorrect_section)
     end
 
-    it 'gets a displayed section' do
+    it 'as no section if not displayed' do
       section = create(:people_helped_section, section: "Wellbeing Zone", display: false)
       facade = WellbeingFacade.new
 
       expect(facade.people_helped_section).to be nil
+    end
+
+    it 'gets a displayed section' do
+      section = create(:people_helped_section, section: "Wellbeing Zone", display: true)
+      facade = WellbeingFacade.new
+
+      expect(facade.people_helped_section).to eq(section)
     end
   end
 
@@ -162,5 +169,4 @@ describe WellbeingFacade do
       expect(facade.testimonials.size).to eq(8)
     end
   end
-
 end
