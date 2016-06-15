@@ -119,6 +119,19 @@ FactoryGirl.define do
     position 1
   end
 
+  factory :guide do
+    title "MyString"
+    content "MyText"
+    file { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    display true
+
+    trait :image do
+      image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    end
+
+    factory :guide_with_image, traits: [:image]
+  end
+
   factory :health_zone do
     sequence(:title) { |n| "Health Zone #{ n }" }
     home_image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
