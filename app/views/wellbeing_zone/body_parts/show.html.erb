@@ -66,12 +66,8 @@
     faqs: @body_part_facade.faqs
   ) %>
 
-  <% if @body_part_facade.testimonials.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/testimonials_section",
-      locals: {
-        testimonials: @body_part_facade.testimonials
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/testimonials_section",
+    testimonials: @body_part_facade.testimonials
+  ) %>
 </div>

@@ -55,13 +55,10 @@
       case_studies: @wellbeing_facade.case_studies
     ) %>
 
-    <% if @wellbeing_facade.testimonials.any? %>
-      <%= render(
-        partial: "wellbeing_zone/shared/testimonials_section",
-        locals: {
-          testimonials: @wellbeing_facade.testimonials
-        }
-      ) %>
+    <%= render(
+      "wellbeing_zone/shared/testimonials_section",
+      testimonials: @wellbeing_facade.testimonials
+    ) %>
     <% end %>
   </section>
 
