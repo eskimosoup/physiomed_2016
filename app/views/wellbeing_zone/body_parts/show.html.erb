@@ -46,48 +46,28 @@
     </div>
   <% end %>
 
-  <% if @body_part_facade.team_members.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/team_member_section.html.erb",
-      locals: {
-        team_members: @body_part_facade.team_members
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/team_member_section.html.erb",
+    team_members: @body_part_facade.team_members
+  ) %>
 
-  <% if @body_part_facade.case_studies.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/case_studies_section",
-      locals: {
-        case_studies: @body_part_facade.case_studies
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/case_studies_section",
+    case_studies: @body_part_facade.case_studies
+  ) %>
 
-  <% if @body_part_facade.articles.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/articles_section",
-      locals: {
-        articles: @body_part_facade.articles
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/articles_section",
+    articles: @body_part_facade.articles
+  ) %>
 
-  <% if @body_part_facade.faqs.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/faqs_section",
-      locals: {
-        faqs: @body_part_facade.faqs
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/faqs_section",
+    faqs: @body_part_facade.faqs
+  ) %>
 
-  <% if @body_part_facade.testimonials.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/testimonials_section",
-      locals: {
-        testimonials: @body_part_facade.testimonials
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/testimonials_section",
+    testimonials: @body_part_facade.testimonials
+  ) %>
 </div>

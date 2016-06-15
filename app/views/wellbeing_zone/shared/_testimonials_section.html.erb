@@ -1,11 +1,13 @@
-<%= content_for :javascript do %>
-  <%= javascript_include_tag "components/testimonials/wellbeing_zone" %>
-<% end %>
-<div class="testimonials-container green-background">
-  <div class="testimonials">
-    <%= render(
-      partial: "testimonials/testimonial",
-      collection: testimonials
-    ) %>
+<% if testimonials.present? %>
+  <%= content_for :javascript do %>
+    <%= javascript_include_tag "components/testimonials/wellbeing_zone" %>
+  <% end %>
+  <div class="testimonials-container green-background">
+    <div class="testimonials">
+      <%= render(
+        partial: "testimonials/testimonial",
+        collection: testimonials
+      ) %>
+    </div>
   </div>
-</div>
+<% end %>

@@ -26,14 +26,10 @@
 <div class="wellbeing content section">
 
 
-  <% if @wellbeing_facade.team_members.any? %>
-    <%= render(
-      partial: "wellbeing_zone/shared/team_member_section.html.erb",
-      locals: {
-        team_members: @wellbeing_facade.team_members
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    "wellbeing_zone/shared/team_member_section.html.erb",
+    team_members: @wellbeing_facade.team_members
+  ) %>
 
   <section class="flexbox-wrap">
 
@@ -55,12 +51,9 @@
   </section>
 
   <section class="flexbox-wrap">
-    <% if @wellbeing_facade.articles.any? %>
       <%= render(
-        partial: "wellbeing_zone/shared/articles_section",
-        locals: {
-          articles: @wellbeing_facade.articles
-        }
+        "wellbeing_zone/shared/articles_section",
+        articles: @wellbeing_facade.articles
       ) %>
     <% end %>
     <div class="twitter-container brown-background">
@@ -70,32 +63,23 @@
   </section>
 
   <section class="flexbox-wrap">
-    <% if @wellbeing_facade.case_studies.any? %>
-      <%= render(
-        partial: "wellbeing_zone/shared/case_studies_section",
-        locals: {
-          case_studies: @wellbeing_facade.case_studies
-        }
-      ) %>
-    <% end %>
+    <%= render(
+      "wellbeing_zone/shared/case_studies_section",
+      case_studies: @wellbeing_facade.case_studies
+    ) %>
 
-    <% if @wellbeing_facade.testimonials.any? %>
-      <%= render(
-        partial: "wellbeing_zone/shared/testimonials_section",
-        locals: {
-          testimonials: @wellbeing_facade.testimonials
-        }
-      ) %>
+    <%= render(
+      "wellbeing_zone/shared/testimonials_section",
+      testimonials: @wellbeing_facade.testimonials
+    ) %>
     <% end %>
   </section>
 
   <% if @wellbeing_facade.faqs.any? %>
     <section class="box-wrap">
       <%= render(
-        partial: "wellbeing_zone/shared/faqs_section",
-        locals: {
-          faqs: @wellbeing_facade.faqs
-        }
+        "wellbeing_zone/shared/faqs_section",
+        faqs: @wellbeing_facade.faqs
       ) %>
     </section>
   <% end %>
