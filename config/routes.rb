@@ -20,19 +20,8 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
   root to: 'homes#show'
 end
+
 Optimadmin::Engine.routes.draw do
-resources :guides, except: [:show] do
-  collection do
-    post 'order'
-  end
-  member do
-    get 'toggle'
-    get 'edit_images'
-    post 'update_image_default'
-    post 'update_image_fill'
-    post 'update_image_fit'
-  end
-end
   concern :imageable do
     member do
       get 'edit_images'
@@ -61,10 +50,12 @@ end
     resources :body_part_sections, shallow: true, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   end
   resources :case_studies, concerns: [:orderable, :toggleable, :imageable], except: [:show]
+  resources :categories, except: [:show]
   resources :clients, concerns: [:imageable, :orderable, :toggleable], except: [:show]
   resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :employer_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :frequently_asked_questions, concerns: [:orderable, :toggleable]
+  resources :guides, concerns: [:orderable, :imageable, :orderable], except: [:show]
   resources :health_zones, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   resources :pages, concerns: [:toggleable, :imageable], except: :show
   resources :people_helped_sections, concerns: [:toggleable], except: [:show]
