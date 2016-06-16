@@ -63,6 +63,7 @@
       </div>
     <% end %>
 
+    <% # This is the weird rendering culprit fyi %>
     <%= render(
       "wellbeing_zone/shared/team_member_section.html.erb",
       team_members: @body_part_facade.team_members
