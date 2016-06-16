@@ -4,7 +4,9 @@ class CaseStudy < ActiveRecord::Base
   mount_uploader :image, CaseStudyUploader
 
   belongs_to :client
-  
+  has_many :categories_case_studies, class_name: "Categories::CaseStudy"
+  has_many :categories, through: :categories_case_studies
+
   validates :content, presence: true
   validates :summary, presence: true
   validates :title, presence: true, uniqueness: true

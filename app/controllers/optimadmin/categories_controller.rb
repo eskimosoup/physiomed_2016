@@ -43,7 +43,8 @@ module Optimadmin
 
     def category_params
       params.require(:category)
-            .permit(:name)
+            .permit(:name, article_ids: [], case_study_ids: [], guide_ids: [],
+                   testimonial_ids: [], video_ids: [])
     end
   end
 end

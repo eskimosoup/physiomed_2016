@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.select :name, BodyPart::BODY_PARTS %>
+    <%= f.label :category_id, "Category" %><br>
+    <%= f.select :category_id, Category.order(:name).pluck(:name, :id) %>
   </div>
 
   <div class="field">

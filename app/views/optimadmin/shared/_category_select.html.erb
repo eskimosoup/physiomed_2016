@@ -1,0 +1,5 @@
+<div class="field">
+  <%= f.label :category_ids, 'Categories' %><br>
+  <%= f.select :category_ids, Category.order(:name).pluck(:name, :id),
+    {}, { class: 'multiselect', multiple: true } %>
+</div>

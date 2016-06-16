@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616102903) do
+ActiveRecord::Schema.define(version: 20160617095444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 20160616102903) do
   add_index "body_part_sections", ["body_part_id"], name: "index_body_part_sections_on_body_part_id", using: :btree
 
   create_table "body_parts", force: :cascade do |t|
-    t.string   "name",                                    null: false
     t.string   "tagline"
     t.integer  "position",                 default: 0,    null: false
     t.boolean  "display",                  default: true, null: false
@@ -83,9 +82,10 @@ ActiveRecord::Schema.define(version: 20160616102903) do
     t.datetime "updated_at",                              null: false
     t.text     "summary"
     t.integer  "body_part_sections_count", default: 0,    null: false
+    t.integer  "category_id"
   end
 
-  add_index "body_parts", ["name"], name: "index_body_parts_on_name", unique: true, using: :btree
+  add_index "body_parts", ["category_id"], name: "index_body_parts_on_category_id", unique: true, using: :btree
   add_index "body_parts", ["slug"], name: "index_body_parts_on_slug", unique: true, using: :btree
 
   create_table "case_studies", force: :cascade do |t|
@@ -112,6 +112,56 @@ ActiveRecord::Schema.define(version: 20160616102903) do
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
+  create_table "categories_articles", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "article_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categories_articles", ["article_id"], name: "index_categories_articles_on_article_id", using: :btree
+  add_index "categories_articles", ["category_id"], name: "index_categories_articles_on_category_id", using: :btree
+
+  create_table "categories_case_studies", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "case_study_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "categories_case_studies", ["case_study_id"], name: "index_categories_case_studies_on_case_study_id", using: :btree
+  add_index "categories_case_studies", ["category_id"], name: "index_categories_case_studies_on_category_id", using: :btree
+
+  create_table "categories_guides", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "guide_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categories_guides", ["category_id"], name: "index_categories_guides_on_category_id", using: :btree
+  add_index "categories_guides", ["guide_id"], name: "index_categories_guides_on_guide_id", using: :btree
+
+  create_table "categories_testimonials", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "testimonial_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "categories_testimonials", ["category_id"], name: "index_categories_testimonials_on_category_id", using: :btree
+  add_index "categories_testimonials", ["testimonial_id"], name: "index_categories_testimonials_on_testimonial_id", using: :btree
+
+  create_table "categories_videos", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "video_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categories_videos", ["category_id"], name: "index_categories_videos_on_category_id", using: :btree
+  add_index "categories_videos", ["video_id"], name: "index_categories_videos_on_video_id", using: :btree
 
   create_table "clients", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -272,17 +322,17 @@ ActiveRecord::Schema.define(version: 20160616102903) do
   end
 
   create_table "people_helped_sections", force: :cascade do |t|
-    t.string   "title",                     null: false
-    t.string   "section",                   null: false
-    t.integer  "number",                    null: false
+    t.string   "title",                      null: false
+    t.integer  "number",                     null: false
     t.text     "content"
     t.string   "link"
-    t.boolean  "display",    default: true, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "display",     default: true, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "category_id"
   end
 
-  add_index "people_helped_sections", ["section"], name: "index_people_helped_sections_on_section", unique: true, using: :btree
+  add_index "people_helped_sections", ["category_id"], name: "index_people_helped_sections_on_category_id", unique: true, using: :btree
 
   create_table "practices", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -356,6 +406,18 @@ ActiveRecord::Schema.define(version: 20160616102903) do
   add_foreign_key "additional_home_contents", "videos"
   add_foreign_key "articles", "team_members", column: "author_id", on_delete: :cascade
   add_foreign_key "body_part_sections", "body_parts", on_delete: :cascade
+  add_foreign_key "body_parts", "categories"
   add_foreign_key "case_studies", "clients", on_delete: :cascade
+  add_foreign_key "categories_articles", "articles", on_delete: :cascade
+  add_foreign_key "categories_articles", "categories", on_delete: :cascade
+  add_foreign_key "categories_case_studies", "case_studies", on_delete: :cascade
+  add_foreign_key "categories_case_studies", "categories", on_delete: :cascade
+  add_foreign_key "categories_guides", "categories", on_delete: :cascade
+  add_foreign_key "categories_guides", "guides", on_delete: :cascade
+  add_foreign_key "categories_testimonials", "categories", on_delete: :cascade
+  add_foreign_key "categories_testimonials", "testimonials", on_delete: :cascade
+  add_foreign_key "categories_videos", "categories", on_delete: :cascade
+  add_foreign_key "categories_videos", "videos", on_delete: :cascade
+  add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade
 end

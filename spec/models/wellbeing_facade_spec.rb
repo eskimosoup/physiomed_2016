@@ -31,14 +31,13 @@ describe WellbeingFacade do
 
   describe "#body_parts" do
     it 'gets displayed body parts ordered by position' do
-      body_parts = [
-        create(:body_part, name: "Elbow", display: true, position: 0),
-        create(:body_part, name: "Ankle", display: true, position: 1),
-      ]
-      non_display_body_part = create(:body_part, name: "Foot", display: false)
+      elbow = create(:category, name: "Elbow")
+      foot = create(:category, name: "Foot")
+      body_part = create(:body_part, category: elbow, display: true, position: 0)
+      non_display_body_part = create(:body_part, category: foot, display: false)
       facade = WellbeingFacade.new
 
-      expect(facade.body_parts).to eq(body_parts)
+      expect(facade.body_parts).to include(body_part)
       expect(facade.body_parts).not_to include(non_display_body_part)
     end
   end
@@ -111,8 +110,10 @@ describe WellbeingFacade do
 
   describe '#people_helped_section' do
     it 'gets one with a section of wellbeing zone' do
-      correct_section = create(:people_helped_section, section: "Wellbeing Zone", display: true)
-      incorrect_section = create(:people_helped_section, section: "Ankle", display: true)
+      category = create(:category, name: "Wellbeing Zone Overview")
+      correct_section = create(:people_helped_section, category: category, display: true)
+      incorrect_category = create(:category, name: "Ankle")
+      incorrect_section = create(:people_helped_section, category: incorrect_category, display: true)
       facade = WellbeingFacade.new
 
       expect(facade.people_helped_section).to eq(correct_section)
@@ -120,14 +121,16 @@ describe WellbeingFacade do
     end
 
     it 'as no section if not displayed' do
-      section = create(:people_helped_section, section: "Wellbeing Zone", display: false)
+      category = create(:category, name: "Wellbeing Zone Overview")
+      section = create(:people_helped_section, category: category, display: false)
       facade = WellbeingFacade.new
 
       expect(facade.people_helped_section).to be nil
     end
 
     it 'gets a displayed section' do
-      section = create(:people_helped_section, section: "Wellbeing Zone", display: true)
+      category = create(:category, name: "Wellbeing Zone Overview")
+      section = create(:people_helped_section, category: category, display: true)
       facade = WellbeingFacade.new
 
       expect(facade.people_helped_section).to eq(section)

@@ -4,7 +4,8 @@ describe SlugConstraint do
   describe "#matches?" do
     context "when request has an id that matches a slug" do
       it "returns true if not using friendly id history" do
-        body_part = create(:body_part)
+        category = create(:category)
+        body_part = create(:body_part, category: category)
         request = stub_request_with_id(body_part.slug)
 
         expect(SlugConstraint.new(BodyPart).matches?(request)).to be true

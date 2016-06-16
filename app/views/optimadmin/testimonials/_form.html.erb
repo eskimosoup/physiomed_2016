@@ -42,14 +42,16 @@
         <%= f.label :role %><br>
         <%= f.text_field :role %>
       </div>
+    <% end %>
 
+    <%= field_set_tag nil, id: 'tabs-2' do %>
       <div class="field">
         <%= f.label :case_study_id %><br>
         <%= f.text_field :case_study_id %>
       </div>
-    <% end %>
 
-    <%= field_set_tag nil, id: 'tabs-2' do %>
+      <%= render 'optimadmin/shared/category_select', f: f %>
+
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>

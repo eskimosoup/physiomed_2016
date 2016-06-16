@@ -4,6 +4,9 @@ class Guide < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
 
+  has_many :categories_guides, class_name: "Categories::Guide"
+  has_many :categories, through: :categories_guides
+
   validates :title, presence: true
   validates :file, presence: true
 end

@@ -55,6 +55,8 @@
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
+      <%= render 'optimadmin/shared/category_select', f: f %>
+
       <div class="field">
         <%= f.label :date %><br>
         <%= f.text_field :date, class: "datepicker" %>

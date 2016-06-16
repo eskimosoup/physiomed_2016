@@ -48,7 +48,9 @@ module Optimadmin
 
     def article_params
       params.require(:article)
-            .permit(:title, :summary, :content, :image, :date, :display, :home_highlight, :author_id, :url_originallly_posted_on, :remove_image, :remote_image_url, :image_cache)
+            .permit(:title, :summary, :content, :image, :date, :display,
+                    :home_highlight, :author_id, :url_originallly_posted_on, 
+                    :remove_image, :remote_image_url, :image_cache, category_ids: [])
     end
   end
 end

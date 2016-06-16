@@ -47,7 +47,8 @@ module Optimadmin
 
     def testimonial_params
       params.require(:testimonial)
-            .permit(:title, :author, :content, :role, :case_study_id, :display)
+            .permit(:title, :author, :content, :role, :case_study_id,
+              :display, category_ids: [])
     end
   end
 end

@@ -50,6 +50,8 @@
         <%= f.select :client_id, Client.ordered_by_name.pluck(:name, :id) %>
       </div>
 
+      <%= render 'optimadmin/shared/category_select', f: f %>
+
       <div class="field">
         <%= f.label :date %><br>
         <%= f.date_select :date, discard_day: true %>

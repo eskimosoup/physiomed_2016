@@ -61,7 +61,7 @@ FactoryGirl.define do
   end
 
   factory :body_part do
-    name { BodyPart::BODY_PARTS.sample }
+    category nil
     tagline "MyString"
     position 1
     display true
@@ -153,7 +153,7 @@ FactoryGirl.define do
 
   factory :people_helped_section do
     sequence(:title) {|n| "MyString #{ n }" }
-    section { PeopleHelpedSection::SECTIONS.sample }
+    category nil
     number 1
     content "MyText"
     link "http://www.google.co.uk"
