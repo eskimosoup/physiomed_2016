@@ -21,6 +21,18 @@
   text-shadow: 1px 1px 9px rgba($black, .5);
 }
 
+
+.hero-section-subtitle {
+  color: $white;
+  font-family: $open-sans;
+  font-size: rem(18px);
+  font-weight: $open-sans-bold;
+  text-shadow: 1px 1px 9px rgba($black, .5);
+  margin: 0;
+}
+
+
+
 .hero-section-button,
 .wellbeing-full-section-button {
   background: $green;

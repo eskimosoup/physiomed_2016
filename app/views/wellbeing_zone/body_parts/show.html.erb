@@ -1,73 +1,80 @@
-<div class="content">
-  <h1><%= @body_part_facade.name %></h1>
-  <h2>Health and Wellbeing Zone</h2>
-  <div class="body-part-summary">
-    <%= raw @body_part_facade.summary %>
-  </div>
+<div class="hero-section">
+  <h1 class="hero-section-title">
+    <%= @body_part_facade.name %>
+  </h1>
+  <h2 class="hero-section-subtitle">
+    Health and Well-Being Zone
+  </h2>
 
-  <% if @body_part_facade.body_part_sections.any? %>
-    <%= content_for :javascript do %>
-      <%= javascript_include_tag "components/body_part_sections" %>
-    <% end %>
-    <section class="box-wrap">
-      <div class="body-part-sections-container">
-        <ul id="tabs">
-          <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
-            <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
-              <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
-            <% end %>
-          <% end %>
-        </ul>
-
-        <div class="body-part-sections">
-          <%= render(
-            partial: "wellbeing_zone/body_part_sections/body_part_section",
-            collection: @body_part_facade.body_part_sections,
-            as: :body_part_section
-          ) %>
-        </div>
-      </div>
-    </section>
-  <% end %>
-
-  <% if @body_part_facade.people_helped_section %>
-    <%= render(
-      partial: "people_helped_sections/people_helped_section",
-      object: @body_part_facade.people_helped_section
-    ) %>
-  <% end %>
-
-  <% if @body_part_facade.video %>
-    <div class="video-section">
-      <%= render(
-        partial: "videos/video",
-        object: @body_part_facade.video
-      ) %>
+  <div class="content">
+    <div class="body-part-summary">
+      <%= raw @body_part_facade.summary %>
     </div>
-  <% end %>
 
-  <%= render(
-    "wellbeing_zone/shared/team_member_section.html.erb",
-    team_members: @body_part_facade.team_members
-  ) %>
+    <% if @body_part_facade.body_part_sections.any? %>
+      <%= content_for :javascript do %>
+        <%= javascript_include_tag "components/body_part_sections" %>
+      <% end %>
+      <section class="box-wrap">
+        <div class="body-part-sections-container">
+          <ul id="tabs">
+            <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
+              <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
+                <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
+              <% end %>
+            <% end %>
+          </ul>
 
-  <%= render(
-    "wellbeing_zone/shared/case_studies_section",
-    case_studies: @body_part_facade.case_studies
-  ) %>
+          <div class="body-part-sections">
+            <%= render(
+              partial: "wellbeing_zone/body_part_sections/body_part_section",
+              collection: @body_part_facade.body_part_sections,
+              as: :body_part_section
+            ) %>
+          </div>
+        </div>
+      </section>
+    <% end %>
 
-  <%= render(
-    "wellbeing_zone/shared/articles_section",
-    articles: @body_part_facade.articles
-  ) %>
+    <% if @body_part_facade.people_helped_section %>
+      <%= render(
+        partial: "people_helped_sections/people_helped_section",
+        object: @body_part_facade.people_helped_section
+      ) %>
+    <% end %>
 
-  <%= render(
-    "wellbeing_zone/shared/faqs_section",
-    faqs: @body_part_facade.faqs
-  ) %>
+    <% if @body_part_facade.video %>
+      <div class="video-section">
+        <%= render(
+          partial: "videos/video",
+          object: @body_part_facade.video
+        ) %>
+      </div>
+    <% end %>
 
-  <%= render(
-    "wellbeing_zone/shared/testimonials_section",
-    testimonials: @body_part_facade.testimonials
-  ) %>
+    <%= render(
+      "wellbeing_zone/shared/team_member_section.html.erb",
+      team_members: @body_part_facade.team_members
+    ) %>
+
+    <%= render(
+      "wellbeing_zone/shared/case_studies_section",
+      case_studies: @body_part_facade.case_studies
+    ) %>
+
+    <%= render(
+      "wellbeing_zone/shared/articles_section",
+      articles: @body_part_facade.articles
+    ) %>
+
+    <%= render(
+      "wellbeing_zone/shared/faqs_section",
+      faqs: @body_part_facade.faqs
+    ) %>
+
+    <%= render(
+      "wellbeing_zone/shared/testimonials_section",
+      testimonials: @body_part_facade.testimonials
+    ) %>
+  </div>
 </div>
