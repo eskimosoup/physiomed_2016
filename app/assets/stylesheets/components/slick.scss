@@ -23,6 +23,13 @@ button.slick-prev.slick-health-zone,
 button.slick-prev.slick-team-members {
   @include beige-box;
   @include prev-button;
+  background-image: image-url('icons/slider/left.png');
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &:before {
+    content: '';
+  }
 }
 
 button.slick-next.slick-articles,
@@ -30,4 +37,11 @@ button.slick-next.slick-health-zone,
 button.slick-next.slick-team-members {
   @include beige-box;
   @include next-button;
+  background-image: image-url('icons/slider/right.png');
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &:before {
+    content: '';
+  }
 }

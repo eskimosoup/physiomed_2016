@@ -23,7 +23,7 @@
   @include flex-grid-column(12);
 
   .beige-background {
-    background: $offset-white;
+    background: $offset-white image-url('icons/module-item-right-arrow.png') no-repeat 97% 50%;
   }
 
   a {
