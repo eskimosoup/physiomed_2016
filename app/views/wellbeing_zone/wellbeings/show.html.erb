@@ -55,10 +55,31 @@
         "wellbeing_zone/shared/articles_section",
         articles: @wellbeing_facade.articles
       ) %>
-    <% end %>
     <div class="twitter-container brown-background">
-      <%= image_tag "twitter-brown" %>
-      TWITTER GOES HERE
+      <% twitter = 'optimisedhq' %>
+
+      <%= link_to "https://twitter.com/#{twitter}", title: 'Twitter', class: 'twitter-link' do %>
+        <%= image_tag "icons/twitter-brown.png", class: 'twitter-icon' %>
+      <% end %>
+
+      <% tweets = twitter_timeline(twitter, 3) %>
+      <% tweets.each do |tweet| %>
+        <div class="tweet">
+          <p class="tweet-text">
+            <%= raw tweet_text(tweet.text) %>
+          </p>
+
+          <!--
+            <p class="tweet-time">
+              <%= tweet_time(tweet.created_at) %>
+            </p>
+          -->
+        </div>
+      <% end %>
+
+      <div class="twitter-follow-button">
+        <a href="https://twitter.com/<%= twitter %>" class="twitter-follow-button" data-show-count="false">Follow @<%= twitter %></a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
     </div>
   </section>
 
@@ -72,7 +93,6 @@
       "wellbeing_zone/shared/testimonials_section",
       testimonials: @wellbeing_facade.testimonials
     ) %>
-    <% end %>
   </section>
 
   <% if @wellbeing_facade.faqs.any? %>

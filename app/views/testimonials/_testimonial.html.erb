@@ -1,6 +1,15 @@
 <div class="testimonial">
-  <%= link_to testimonial.title, testimonials_path(anchor: "testimonial-#{ testimonial.id }") %>
-  <%= simple_format testimonial.content %>
-  <%= testimonial.author %>
-  <%= testimonial.role %>
+  <%#= link_to testimonial.title, testimonials_path(anchor: "testimonial-#{ testimonial.id }") %>
+
+  <div class="testimonial-content">
+    <%= simple_format testimonial.content %>
+  </div>
+
+  <div class="testimonial-author">
+    <%= testimonial.author %>
+  </div>
+
+  <div class="testimonial-role">
+    <%= testimonial.role %>
+  </div>
 </div>

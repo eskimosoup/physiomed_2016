@@ -1,8 +1,8 @@
 .body-part {
   @include flex-grid-column(4);
   margin: rem-calc(20px) auto;
-  position: relative;
   min-height: 204px;
+  position: relative;
 
   .name {
     color: $white;

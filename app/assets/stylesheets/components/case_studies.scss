@@ -41,6 +41,42 @@
 
   &.main {
     margin-bottom: rem-calc(15px);
+
+    .date {
+      font-family: $ubuntu;
+      font-size: rem(12px);
+      font-weight: $ubuntu-light;
+      margin: 0 0 rem(9px);
+    }
+
+    .title {
+      a {
+        display: block;
+        font-family: $montserrat;
+        font-weight: $montserrat-bold;
+        padding: rem(9px) 0 rem(11px);
+      }
+    }
+
+    .summary {
+      p {
+        font-family: $montserrat;
+        font-size: rem(12px);
+        margin: 0 0 rem(10px);
+      }
+    }
+
+    .read-more {
+      a {
+        display: block;
+        font-family: $montserrat;
+        font-size: rem(12px);
+        font-weight: $montserrat-light;
+        padding: rem(10px) 0 0;
+        text-transform: uppercase;
+      }
+    }
+
     .image {
       @include flex-grid-column(5);
     }
@@ -50,22 +86,7 @@
   }
 
   &.supplementary {
-    @include flex-grid-column(12);
-    a {
-      padding: rem-calc(20px);
-      margin-bottom: rem-calc(5px);
-      display: block;
-      width: 100%;
-      @include flex-grid-row;
-
-      .date {
-        @include flex-grid-column(2);
-      }
-
-      .title {
-        @include flex-grid-column(10);
-      }
-    }
+    @include supplementary-module-item;
   }
 
 }
@@ -73,4 +94,9 @@
 
 .home-case-study-title {
   font-weight: $open-sans-bold;
+}
+
+
+.case-studies-container-title {
+  @include module-container-title;
 }

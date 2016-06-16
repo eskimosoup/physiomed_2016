@@ -20,3 +20,44 @@
 .testimonials.slick-slider {
   margin: 0 rem(20px);
 }
+
+.testimonials-container.wellbeing.green-background {
+  background: $green image-url('icons/testimonial-white.png') 50% 40px no-repeat;
+  padding: rem(100px);
+
+  .slick-dots {
+    margin: rem(50px) 0;
+    position: static;
+    
+    li button:before {
+      color: $white;
+      font-size: 11px;
+      opacity: 1;
+    }
+
+    li.slick-active button:before {
+      color: $brown;
+    }
+  }
+}
+
+.testimonials.wellbeing {
+
+  .testimonial-content {
+    p {
+      color: $white;
+      font-family: $montserrat;
+      font-weight: 400;
+      font-size: rem(14px);
+      text-align: center;
+    }
+  }
+
+  .testimonial-author {
+    color: $white;
+    font-family: $montserrat;
+    font-size: rem(12px);
+    font-weight: $montserrat-bold;
+    text-align: center;
+  }
+}

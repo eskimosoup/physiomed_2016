@@ -24,7 +24,10 @@
 .hero-section-button,
 .wellbeing-full-section-button {
   background: $green;
-  background: linear-gradient(to right, $dark-green 0%, $pale-green 100%);
+  background:
+  image-url('icons/button-arrow.png') no-repeat 95% 50%,
+  linear-gradient(to right, $dark-green 0%, $pale-green 100%),
+  $green;
   display: inline-block;
   font-size: rem(16px);
   font-weight: $open-sans-bold;

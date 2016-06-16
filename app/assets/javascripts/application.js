@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require components/quick-links
+//= require components/toggle-class

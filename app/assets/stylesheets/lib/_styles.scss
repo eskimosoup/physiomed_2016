@@ -1,0 +1,48 @@
+@mixin module-container-title {
+  @include clearfix;
+  border-bottom: 1px solid $green;
+  margin-bottom: rem(15px);
+
+  @include media('>768px') {
+    h2 {
+      float: left;
+      font-size: rem(18px);
+      font-weight: 400;
+      margin: rem(15px) rem(10px) 0;
+      padding: 0 0 rem(10px);
+    }
+
+    .button {
+      float: right;
+      padding: rem(12px) rem(20px);
+    }
+  }
+}
+
+@mixin supplementary-module-item {
+  @include flex-grid-column(12);
+
+  .beige-background {
+    background: $offset-white;
+  }
+
+  a {
+    padding: rem-calc(20px);
+    margin-bottom: rem-calc(5px);
+    display: block;
+    width: 100%;
+    @include flex-grid-row;
+
+    .date {
+      @include flex-grid-column(2);
+      color: $light-brown-offset;
+      font-family: $montserrat;
+    }
+
+    .title {
+      @include flex-grid-column(10);
+      font-family: $montserrat;
+      font-weight: $montserrat-bold;
+    }
+  }
+}

@@ -26,6 +26,7 @@ gem 'lograge', '~> 0.3.5'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
 gem 'friendly_id', '~> 5.1'
 gem 'geocoder', '~> 1.3', '>= 1.3.4'
+gem 'twitter'
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'

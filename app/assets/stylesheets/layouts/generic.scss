@@ -45,8 +45,10 @@ h2 {
 }
 
 a.button {
-  display: inline-block;
   color: $white;
+  display: inline-block;
+  font-family: $ubuntu;
+  font-weight: $ubuntu-light;
   padding: rem-calc(5px 10px);
   border-radius: rem-calc(3px);
   text-align: center;

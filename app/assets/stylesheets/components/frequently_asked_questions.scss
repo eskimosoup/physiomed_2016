@@ -1,11 +1,22 @@
 .wellbeing .faqs .faq {
   @include flex-grid-column(4);
+
+  .anwser {
+    margin: rem(5px);
+  }
 }
 
 .faq .question {
   display: flex;
   align-items: center;
+  padding: rem(10px) 0;
+
   .text {
     padding-left: rem-calc(5px);
   }
+}
+
+.faqs-container-title {
+  @include module-container-title;
+  margin: rem(15px) 0;
 }

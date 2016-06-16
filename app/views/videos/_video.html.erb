@@ -1,13 +1,17 @@
 <div class="video">
   <div class="video-iframe">
-    <%= raw iframe_for video %>
+    <%= raw iframe_for(video, width: 345, height: 248) %>
   </div>
 
-  <div class"basic-details">
+  <div class="basic-details">
     <h2 class="green-border-bottom">
       <%= video.title %>
     </h2>
-    <%= video.subtitle %>
+
+    <div class="video-subtitle">
+      <%= video.subtitle %>
+    </div>
+
     <%= simple_format video.content %>
   </div>
 </div>

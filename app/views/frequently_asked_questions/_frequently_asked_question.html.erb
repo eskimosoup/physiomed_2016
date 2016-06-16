@@ -2,10 +2,13 @@
   <div class="question">
     <%= image_tag "question.png" %>
     <div class="text">
-      <%= frequently_asked_question.question %>
+      <%= link_to frequently_asked_question.question,
+                  '#',
+                  class: 'toggle-class', data: { class: 'hide', container: ".faq-answer-#{frequently_asked_question.id}", return: false }
+      %>
     </div>
   </div>
-  <div class="answer">
+  <div class="answer faq-answer-<%= frequently_asked_question.id %> hide">
     <%= raw frequently_asked_question.answer %>
   </div>
 </div>
