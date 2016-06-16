@@ -6,6 +6,7 @@
     Health and Well-Being Zone
   </h2>
 
+<<<<<<< HEAD
   <div class="content">
     <div class="body-part-summary">
       <%= raw @body_part_facade.summary %>
@@ -22,6 +23,29 @@
               <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
                 <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
               <% end %>
+=======
+  <% if @body_part_facade.guides.any? %>
+   <section class="box-wrap">
+     <div class="guides-container">
+       <h2>Guides</h2>
+       <div class="guides">
+         <%= render @body_part_facade.guides %>
+       </div>
+     </div>
+   </section>
+  <% end %>
+
+  <% if @body_part_facade.body_part_sections.any? %>
+    <%= content_for :javascript do %>
+      <%= javascript_include_tag "components/body_part_sections" %>
+    <% end %>
+    <section class="box-wrap">
+      <div class="body-part-sections-container">
+        <ul id="tabs">
+          <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
+            <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
+              <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
+>>>>>>> upstream/master
             <% end %>
           </ul>
 

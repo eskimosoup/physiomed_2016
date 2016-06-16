@@ -91,6 +91,10 @@ FactoryGirl.define do
     factory :case_study_with_image, traits: [:image]
   end
 
+  factory :category do
+    name { Category::NAMES.sample }
+  end
+
   factory :client do
     sequence(:name) {|n| "Name #{ n }" }
     logo { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
@@ -117,6 +121,19 @@ FactoryGirl.define do
     answer "MyText"
     display true
     position 1
+  end
+
+  factory :guide do
+    title "MyString"
+    content "MyText"
+    file { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    display true
+
+    trait :image do
+      image { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
+    end
+
+    factory :guide_with_image, traits: [:image]
   end
 
   factory :health_zone do

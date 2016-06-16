@@ -16,12 +16,14 @@ feature "visiting wellbeing zone body parts" do
     create(:body_part_section, body_part: body_part, title: "common condition",
            sub_title: "sub title common", position: 0)
     create(:body_part_section, body_part: body_part, title: "anatomy",
-           sub_title: "sub title anatomy", position: 1)
+           sub_title: "sub title anatomy", content: "some content", position: 1)
 
     visit wellbeing_zone_body_part_path(body_part)
     click_link "anatomy"
 
     expect(page).to have_css ".body-part-section h2", text: "anatomy".upcase
+    expect(page).to have_css ".body-part-section h3", text: "sub title anatomy"
+    expect(page).to have_css ".body-part-section", text: "some content"
     expect(page).not_to have_css ".body-part-section h2", text: "common condition".upcase
   end
 end

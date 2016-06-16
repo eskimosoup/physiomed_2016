@@ -9,4 +9,8 @@ module Features
   def have_admin_index(content)
     have_css ".module-list-index", text: content
   end
+
+  def disable_tabs
+    page.execute_script("$('.tabs').tabs('destroy')")
+  end
 end
