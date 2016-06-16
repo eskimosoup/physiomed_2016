@@ -1,7 +1,4 @@
 FactoryGirl.define do
-  factory :category do
-    name "MyString"
-  end
   factory :text_additional_home_content, class: AdditionalHomeContent do
     title "MyString"
     content_type "text_content"
@@ -92,6 +89,10 @@ FactoryGirl.define do
     display true
     home_highlight true
     factory :case_study_with_image, traits: [:image]
+  end
+
+  factory :category do
+    name { Category::NAMES.sample }
   end
 
   factory :client do
