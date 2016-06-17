@@ -19,9 +19,11 @@ describe BodyPartFacade do
 
   describe '#people_helped_section' do
     it 'gets one with a section of wellbeing zone' do
-      incorrect_section = create(:people_helped_section, section: "Wellbeing Zone", display: true)
-      correct_section = create(:people_helped_section, section: "Ankle", display: true)
-      body_part = create(:body_part, name: "Ankle")
+      incorrect_category = create(:category, name: "Wellbeing Zone Overview")
+      incorrect_section = create(:people_helped_section, category: incorrect_category, display: true)
+      correct_category = create(:category, name: "Ankle")
+      correct_section = create(:people_helped_section, category: correct_category, display: true)
+      body_part = create(:body_part, category: correct_category)
       facade = build_facade(body_part: body_part)
 
       expect(facade.people_helped_section).to eq(correct_section)
@@ -29,16 +31,18 @@ describe BodyPartFacade do
     end
 
     it 'has no section if not displayed' do
-      section = create(:people_helped_section, section: "Ankle", display: false)
-      body_part = create(:body_part, name: "Ankle")
+      category = create(:category, name: "Ankle")
+      section = create(:people_helped_section, category: category, display: false)
+      body_part = create(:body_part, category: category)
       facade = build_facade(body_part: body_part)
 
       expect(facade.people_helped_section).to be nil
     end
 
     it 'gets a displayed section' do
-      section = create(:people_helped_section, section: "Ankle", display: true)
-      body_part = create(:body_part, name: "Ankle")
+      category = create(:category, name: "Ankle")
+      section = create(:people_helped_section, category: category, display: true)
+      body_part = create(:body_part, category: category)
       facade = build_facade(body_part: body_part)
 
       expect(facade.people_helped_section).to eq(section)

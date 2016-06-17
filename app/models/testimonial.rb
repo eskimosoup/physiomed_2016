@@ -9,4 +9,7 @@ class Testimonial < ActiveRecord::Base
   scope :search, ->(keywords) { where("title ILIKE ?", "%#{ keywords }%") if keywords.present? }
   scope :displayed, ->{ where(display: true) }
   scope :random_order, ->{ order_by("random()") }
+
+  has_many :categories_testimonials, class_name: "Categories::Testimonial"
+  has_many :categories, through: :categories_testimonials
 end

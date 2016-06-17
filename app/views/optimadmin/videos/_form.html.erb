@@ -45,6 +45,8 @@
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
+      <%= render 'optimadmin/shared/category_select', f: f %>
+
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>

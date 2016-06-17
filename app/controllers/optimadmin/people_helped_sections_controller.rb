@@ -46,7 +46,7 @@ module Optimadmin
 
     def people_helped_section_params
       params.require(:people_helped_section)
-            .permit(:title, :section, :number, :content, :link, :display)
+            .permit(:title, :category_id, :number, :content, :link, :display)
     end
   end
 end

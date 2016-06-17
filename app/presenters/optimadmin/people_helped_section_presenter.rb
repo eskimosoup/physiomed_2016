@@ -3,7 +3,7 @@ module Optimadmin
     include Optimadmin::PresenterMethods
 
     presents :people_helped_section
-    delegate :id, :title, :section, to: :people_helped_section
+    delegate :id, :title, :category_name, to: :people_helped_section
 
     def toggle_title
       inline_detail_toggle_link(title)

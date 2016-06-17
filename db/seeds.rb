@@ -94,13 +94,20 @@ Article.create!(title: "Article 2", summary: "Summary", content: "Content", date
 Article.create!(title: "Article 3", summary: "Summary", content: "Content", date: Date.today)
 Article.create!(title: "Article 4", summary: "Summary", content: "Content", date: Date.today)
 
+puts "Creating Categories and people helped sections"
+Category::NAMES.each do |name|
+  category = Category.create!(name: name)
+  PeopleHelpedSection.create!(category: category, title: "Some title", number: 7,
+                              content: "some content", link: "http://www.google.co.uk")
+end
+
 puts "Creating body parts"
 body_parts = []
 BodyPart::BODY_PARTS.each_with_index do |name, i|
   body_parts << if i % 2 == 0
-    BodyPart.create!(name: name, tagline: "Some tagline")
+    BodyPart.create!(category: Category.find_by(name: name), tagline: "Some tagline")
   else
-    BodyPart.create!(name: name)
+    BodyPart.create!(category: Category.find_by(name: name))
   end
 end
 
@@ -114,10 +121,5 @@ puts "Creating FAQs"
   FrequentlyAskedQuestion.create!(question: "Really?", answer: "Sure")
 end
 
-puts "Creating people helped sections"
-PeopleHelpedSection::SECTIONS.each do |section|
-  PeopleHelpedSection.create!(section: section, title: "Some title", number: 7,
-                              content: "some content", link: "http://www.google.co.uk")
-end
 
 image.close

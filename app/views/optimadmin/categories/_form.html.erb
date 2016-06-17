@@ -16,7 +16,37 @@
     <%= f.select :name, Category::NAMES %>
   </div>
 
-   <div class="actions">
+  <div class="field">
+    <%= f.label :article_ids, 'Articles' %><br>
+    <%= f.select :article_ids, Article.order(:title).pluck(:title, :id),
+      {}, { class: 'multiselect', multiple: true } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :case_study_ids, 'Case Studies' %><br>
+    <%= f.select :case_study_ids, CaseStudy.order(:title).pluck(:title, :id),
+      {}, { class: 'multiselect', multiple: true } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :guide_ids, 'Guides' %><br>
+    <%= f.select :guide_ids, Guide.order(:title).pluck(:title, :id),
+      {}, { class: 'multiselect', multiple: true } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :testimonial_ids, 'Testimonials' %><br>
+    <%= f.select :testimonial_ids, Testimonial.order(:title).pluck(:title, :id),
+      {}, { class: 'multiselect', multiple: true } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :video_ids, 'Videos' %><br>
+    <%= f.select :video_ids, Video.order(:title).pluck(:title, :id),
+      {}, { class: 'multiselect', multiple: true } %>
+  </div>
+
+  <div class="actions">
     <%= f.submit 'Save' %>
     <%= f.submit 'Save and continue editing' %>
   </div>

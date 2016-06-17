@@ -2,7 +2,8 @@ require "rails_helper"
 
 feature "visiting wellbeing zone body parts" do
   scenario "clicking through from the main wellbeing zone" do
-    create(:body_part, name: "Ankle", summary: "Some summary")
+    category = create(:category, name: "Ankle")
+    create(:body_part, category: category, summary: "Some summary")
 
     visit wellbeing_zone_root_path
     click_link "Ankle"
@@ -12,7 +13,8 @@ feature "visiting wellbeing zone body parts" do
   end
 
   scenario "clicking between body part sections by tab", js: true do
-    body_part = create(:body_part, name: "Ankle", summary: "Some summary")
+    category = create(:category, name: "Ankle")
+    body_part = create(:body_part, category: category, summary: "Some summary")
     create(:body_part_section, body_part: body_part, title: "common condition",
            sub_title: "sub title common", position: 0)
     create(:body_part_section, body_part: body_part, title: "anatomy",

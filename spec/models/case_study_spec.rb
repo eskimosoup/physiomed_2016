@@ -13,5 +13,7 @@ describe CaseStudy, type: :model do
 
   describe "associations" do
     it { should belong_to(:client) }
+    it { should have_many(:categories_case_studies).class_name("Categories::CaseStudy") }
+    it { should have_many(:categories).through(:categories_case_studies) }
   end
 end

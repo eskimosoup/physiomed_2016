@@ -20,7 +20,7 @@ class WellbeingFacade
   end
 
   def people_helped_section
-    @people_helped_section ||= PeopleHelpedSection.displayed.find_by(section: "Wellbeing Zone")
+    @people_helped_section ||= PeopleHelpedSection.joins(:category).displayed.merge( Category.by_name("Wellbeing Zone Overview") ).first
   end
 
   def team_members

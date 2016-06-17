@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_body_part, only: [:show, :edit, :update, :destroy]
 
     def index
-      @body_parts = BodyPart.ordered_by_position
+      @body_parts = BodyPart.order(position: :asc)
     end
 
     def show
@@ -46,7 +46,8 @@ module Optimadmin
 
     def body_part_params
       params.require(:body_part)
-            .permit(:name, :image, :tagline, :display, :remove_image, :remote_image_url, :image_cache)
+            .permit(:category_id, :image, :tagline, :display, 
+                    :remove_image, :remote_image_url, :image_cache)
     end
   end
 end

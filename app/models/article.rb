@@ -9,6 +9,8 @@ class Article < ActiveRecord::Base
   scope :home, -> { where(home_highlight: true) }
 
   belongs_to :author, class_name: "TeamMember"
+  has_many :categories_articles, class_name: "Categories::Article"
+  has_many :categories, through: :categories_articles
 
   validates :content, presence: true
   validates :date, presence: true

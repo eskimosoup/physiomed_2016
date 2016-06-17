@@ -14,5 +14,7 @@ describe Article do
 
   describe "associations" do
     it { should belong_to(:author).class_name("TeamMember") }
+    it { should have_many(:categories_articles).class_name("Categories::Article") }
+    it { should have_many(:categories).through(:categories_articles) }
   end
 end
