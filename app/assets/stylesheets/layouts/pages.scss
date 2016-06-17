@@ -10,12 +10,27 @@
               $beige;
   margin: 0 auto;
   padding: rem(140px) 0 0;
+  position: relative;
 
   &.body-part-background {
     background: image-url('layout/mask.png') no-repeat top center,
                 image-url('layout/photography/wellbeing-body-part.jpg') no-repeat top center,
                 $beige;
   }
+
+  &.what-we-do-background {
+    background: image-url('layout/photography/what-we-do.jpg') no-repeat top center,
+                $beige;
+    padding: 0;
+  }
+}
+
+.hero-section-overlay-mask {
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, 0);
+  z-index: 1;
 }
 
 .hero-section-header {

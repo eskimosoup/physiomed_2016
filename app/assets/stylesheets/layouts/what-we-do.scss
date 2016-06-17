@@ -1,0 +1,71 @@
+.what-we-do-content-wrap {
+  @include flex-grid-row;
+}
+
+.what-we-do-content {
+  @include flex-grid-column(6, $gutter: (medium: 60));
+  background: rgba($green, .75);
+  color: $white;
+  padding: rem(140px) 0 rem(40px);
+
+  p {
+    font-size: rem(16px);
+    font-weight: $open-sans-semibold;
+  }
+}
+
+.what-we-do-title {
+  font-size: rem(38px);
+  line-height: 1.25;
+}
+
+.what-we-do-summary-wrap {
+  @include border-radius-with-dark-box-shadow;
+  background: $white;
+  padding: rem(25px) rem(15px);
+  width: 100%;
+}
+
+.what-we-do-summary-title {
+  @include module-container-title;
+
+  h2 {
+    float: none;
+    text-align: center;
+  }
+}
+
+.what-we-do-container {
+  padding: rem(1);
+}
+
+.what-we-do-sections {
+  @include flex-grid-row;
+}
+
+.what-we-do-item {
+  @include flex-grid-column(3);
+}
+
+.what-we-do-item-list {
+  font-weight: $open-sans-semibold;
+  list-style: disc inside image-url('icons/green-arrow.png');
+  margin: 0 rem(10px);
+  padding: 0;
+
+  li {
+    margin: rem(6px) 0;
+  }
+}
+
+.what-we-do-item-title {
+  // TODO: Make this nice, rather than a BG image.
+  background: $white image-url('what-we-do/title-background.jpg') no-repeat center;
+  color: $white;
+  font-size: rem(18px);
+  font-weight: $open-sans-extrabold;
+  line-height: 1.25;
+  min-height: 127px;
+  padding: rem(35px);
+  text-align: center;
+}

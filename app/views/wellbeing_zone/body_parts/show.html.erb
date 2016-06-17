@@ -16,9 +16,9 @@
 
       function buildStickyNavigation() {
         var visibleLis = $('.body-part-section-navigation-links').html();
-        var contactMethods = $('.body-part-contact-method-links').html();
+        var contactMethods = $('.page-contact-method-links').html();
         $('.sticky-body-part-navigation-links').html(visibleLis);
-        $('.sticky-body-part-contact-methods').html(contactMethods);
+        $('.sticky-page-contact-methods').html(contactMethods);
       }
 
       $(window).load(function() {
@@ -43,7 +43,7 @@
     <ul class="sticky-body-part-navigation-links">
     </ul>
 
-    <ul class="sticky-body-part-contact-methods">
+    <ul class="sticky-page-contact-methods">
     </ul>
   </div>
 </div>
@@ -98,25 +98,14 @@
       </div>
     </div>
 
-    <div class="body-part-contact-methods-wrap">
-      <div class="body-part-contact-methods">
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
         <h4>
           Talk to our clinical team
         </h4>
 
-        <ul class="body-part-contact-method-links">
-          <li>
-            <%= link_to 'Call us', '#', class: 'contact-method call-us' %>
-          </li>
-          <li>
-            <%= link_to 'Request a callback', '#', class: 'contact-method callback' %>
-          </li>
-          <li>
-            <%= link_to 'Email us', '#', class: 'contact-method email' %>
-          </li>
-          <li>
-            <%= link_to 'Find a Physio', '#', class: 'contact-method find-a-physio' %>
-          </li>
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
         </ul>
       </div>
     </div>
