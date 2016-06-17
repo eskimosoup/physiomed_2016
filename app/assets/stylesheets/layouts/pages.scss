@@ -11,6 +11,12 @@
   margin: 0 auto;
   padding: rem(140px) 0 0;
   text-align: center;
+
+  &.body-part-background {
+    background: image-url('layout/mask.png') no-repeat top center,
+                image-url('layout/photography/wellbeing-body-part.jpg') no-repeat top center,
+                $beige;
+  }
 }
 
 .hero-section-title {

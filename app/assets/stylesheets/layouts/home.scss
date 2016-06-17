@@ -4,6 +4,7 @@
 
   .service-standards {
     @include flex-grid-column(12);
+
     h2 {
       text-align: center;
     }
@@ -30,7 +31,7 @@
     padding: 0;
   }
 
-  .additional-home-content, .physio-search, .case-studies-container, .testimonials-container {
+  .additional-home-content,.physio-search,.case-studies-container,.testimonials-container {
     width: 32%;
     padding: rem-calc(20px);
     @include border-radius-with-box-shadow;
@@ -59,23 +60,20 @@
     }
 
     .input-add-on-item {
-      background-color: rgba(147, 128, 108, 0.1);
-      color: #666666;
+      background-color: rgba(147, 128, 108, .1);
+      color: #666;
       font: inherit;
       font-weight: normal;
     }
 
-    .input-add-on-field,
-    .input-add-on-item {
-      border: 1px solid rgba(147, 128, 108, 0.25);
-      padding: 0.5em 0.75em;
+    .input-add-on-field,.input-add-on-item {
+      border: 1px solid rgba(147, 128, 108, .25);
+      padding: .5em .75em;
     }
-    .input-add-on-field:first-child,
-    .input-add-on-item:first-child {
+    .input-add-on-field:first-child,.input-add-on-item:first-child {
       border-radius: 2px 0 0 2px;
     }
-    .input-add-on-field:last-child,
-    .input-add-on-item:last-child {
+    .input-add-on-field:last-child,.input-add-on-item:last-child {
       border-radius: 0 2px 2px 0;
     }
     input-add-on {
@@ -95,23 +93,20 @@
     }
 
     .input-add-on-item {
-      background-color: rgba(147, 128, 108, 0.1);
-      color: #666666;
+      background-color: rgba(147, 128, 108, .1);
+      color: #666;
       font: inherit;
       font-weight: normal;
     }
 
-    .input-add-on-field,
-    .input-add-on-item {
-      border: 1px solid rgba(147, 128, 108, 0.25);
-      padding: 0.5em 0.75em;
+    .input-add-on-field,.input-add-on-item {
+      border: 1px solid rgba(147, 128, 108, .25);
+      padding: .5em .75em;
     }
-    .input-add-on-field:first-child,
-    .input-add-on-item:first-child {
+    .input-add-on-field:first-child,.input-add-on-item:first-child {
       border-radius: 2px 0 0 2px;
     }
-    .input-add-on-field:last-child,
-    .input-add-on-item:last-child {
+    .input-add-on-field:last-child,.input-add-on-item:last-child {
       border-radius: 0 2px 2px 0;
     }
   }

@@ -1,16 +1,76 @@
-<div class="hero-section">
+<div class="hero-section body-part-background">
   <h1 class="hero-section-title">
     <%= @body_part_facade.name %>
   </h1>
-  <h2 class="hero-section-subtitle">
-    Health and Well-Being Zone
-  </h2>
 
+  <!--
+    <h2 class="hero-section-subtitle">
+      Health and Well-Being Zone
+    </h2>
+  -->
+
+  <div class="hero-section-primary-content">
+    <div class="body-part-navigation-wrap">
+      <div class="body-part-navigation">
+        <ul class="body-part-navigation-links">
+          <li class="body-part-navigation-top-level">
+            <%= link_to @body_part_facade.name, @body_part, class: 'current-body-part' %>
+
+            <ul class="body-part-navigation-links-dropdown">
+              <li>
+                <% # TODO: List body parts %>
+                <%#= link_to 'Lower Back', '#', class: 'body-part-link' %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="body-part-section-navigation-links">
+          <% # TODO: Link to page sections %>
+          <li>
+            <%#= link_to 'Feeling Fab', '#' %>
+          </li>
+          <li>
+            <%#= link_to 'Guides', '#' %>
+          </li>
+          <li>
+            <%#= link_to "Know your #{@body_part_facade.name.downcase}", '#' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="body-part-summary-wrap">
+      <div class="body-part-summary">
+        <%= raw @body_part_facade.summary %>
+      </div>
+    </div>
+
+    <div class="body-part-contact-methods-wrap">
+      <div class="body-part-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="body-part-contact-method-links">
+          <li>
+            <%= link_to 'Call us', '#', class: 'contact-method call-us' %>
+          </li>
+          <li>
+            <%= link_to 'Request a callback', '#', class: 'contact-method callback' %>
+          </li>
+          <li>
+            <%= link_to 'Email us', '#', class: 'contact-method email' %>
+          </li>
+          <li>
+            <%= link_to 'Find a Physio', '#', class: 'contact-method find-a-physio' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <div class="content">
-    <div class="body-part-summary">
-      <%= raw @body_part_facade.summary %>
-    </div>
 
     <% if @body_part_facade.body_part_sections.any? %>
       <%= content_for :javascript do %>

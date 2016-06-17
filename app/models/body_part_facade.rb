@@ -1,5 +1,4 @@
 class BodyPartFacade
-
   delegate :name, :summary, to: :body_part
 
   def initialize(body_part)
@@ -23,7 +22,7 @@ class BodyPartFacade
   end
 
   def faqs
-    @faqs ||= FrequentlyAskedQuestion.order("RANDOM()").displayed.limit(6)
+    @faqs ||= FrequentlyAskedQuestion.order('RANDOM()').displayed.limit(6)
   end
 
   def guides
@@ -31,11 +30,11 @@ class BodyPartFacade
   end
 
   def team_members
-    @team_members ||= TeamMember.order("RANDOM()").displayed.limit(12)
+    @team_members ||= TeamMember.order('RANDOM()').displayed.limit(12)
   end
 
   def testimonials
-    @testimonials ||= Testimonial.order("RANDOM()").displayed.limit(8)
+    @testimonials ||= Testimonial.order('RANDOM()').displayed.limit(8)
   end
 
   def video
@@ -46,4 +45,3 @@ class BodyPartFacade
 
   attr_reader :body_part
 end
-
