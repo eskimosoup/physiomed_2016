@@ -5,6 +5,9 @@
 
 .body-part-navigation-wrap {
   @include flex-grid-column(3);
+  @media screen {
+    padding-left: 0;
+  }
 }
 
 .body-part-navigation {
@@ -81,6 +84,9 @@
 
 .body-part-contact-methods-wrap {
   @include flex-grid-column(3);
+  @media screen {
+    padding-right: 0;
+  }
 }
 
 .body-part-contact-methods {

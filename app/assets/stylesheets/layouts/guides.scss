@@ -1,0 +1,44 @@
+.guides-container {
+  @include border-radius-with-dark-box-shadow;
+  background: $white;
+  padding: rem(10px) rem(25px) rem(25px);
+  text-align: left;
+  width: 100%;
+}
+
+.guides-container-title {
+  @include content-box-title;
+  text-align: center;
+}
+
+.guides {
+  @include flex-grid-row;
+
+  &.wellbeing .guide {
+    @include flex-grid-column(6, $gutter: (small: 0));
+  }
+}
+
+.guide-content-wrap {
+  @include flex-grid-row;
+}
+
+.guide-image {
+  @include flex-grid-column(4);
+}
+
+.guide-content {
+  @include flex-grid-column(8);
+  @include clearfix;
+}
+
+.guide-title {
+  color: $green;
+  font-size: rem(19px);
+  font-weight: $open-sans-extrabold;
+  margin: 0 0 rem(19px);
+}
+
+.guide-download-button {
+  float: right;
+}

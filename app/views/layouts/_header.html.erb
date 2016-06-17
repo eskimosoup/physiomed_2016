@@ -7,7 +7,9 @@
 
   <div class="primary-header-content-wrap">
     <div class="primary-header-branding">
-      <%= image_tag "logo.jpg", alt: "Physio Med", title: "Physio Med", id: "physiomed-logo" %>
+      <%= link_to root_url do %>
+        <%= image_tag "logo.jpg", alt: "Physio Med", title: "Physio Med", id: "physiomed-logo" %>
+      <% end %>
     </div>
 
     <nav class="primary-header-navigation-wrap">

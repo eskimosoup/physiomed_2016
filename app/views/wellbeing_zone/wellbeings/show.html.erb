@@ -1,10 +1,12 @@
 <div class="hero-section">
-  <h1 class="hero-section-title">
-    Health and Well-Being Zone
-  </h1>
+  <div class="hero-section-header">
+    <h1 class="hero-section-title">
+      Health and Well-Being Zone
+    </h1>
 
-  <% # TODO Link this %>
-  <%= link_to 'General Well-Being', '#', class: 'hero-section-button' %>
+    <% # TODO Link this %>
+    <%= link_to 'General Well-Being', '#', class: 'hero-section-button' %>
+  </div>
 
   <div class="wellbeing content">
     <% if @wellbeing_facade.body_parts.any? %>
