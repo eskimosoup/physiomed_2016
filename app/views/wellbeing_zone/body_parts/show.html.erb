@@ -1,28 +1,138 @@
-<div class="content">
-  <h1><%= @body_part_facade.name %></h1>
-  <h2>Health and Wellbeing Zone</h2>
-  <div class="body-part-summary">
-    <%= raw @body_part_facade.summary %>
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
+  <%= javascript_include_tag 'vendor/jquery.viewport' %>
+  <script>
+    // http://craftedpixelz.co.uk/blog/conditional-js-with-modernizr-mq/
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      var $bodyPartNavigation, $stickyBodyPartNavigation;
+
+      function setStickyNavigation() {
+        if($('.body-part-navigation:in-viewport').length === 1) {
+          $stickyBodyPartNavigation.hide();
+        } else {
+          $stickyBodyPartNavigation.show();
+        }
+      }
+
+      function buildStickyNavigation() {
+        var visibleLis = $('.body-part-section-navigation-links').html();
+        var contactMethods = $('.page-contact-method-links').html();
+        $('.sticky-body-part-navigation-links').html(visibleLis);
+        $('.sticky-page-contact-methods').html(contactMethods);
+      }
+
+      $(window).load(function() {
+        $bodyPartNavigation = $('.body-part-navigation');
+        $stickyBodyPartNavigation = $('.sticky-body-part-navigation');
+        buildStickyNavigation();
+      });
+
+      $(window).scroll(function() {
+        setStickyNavigation();
+      });
+    }
+  </script>
+<% end %>
+
+<div class="sticky-body-part-navigation">
+  <div class="sticky-body-part-navigation-content">
+    <span class="sticky-body-part-name">
+      <%= @body_part_facade.name %>
+    </span>
+
+    <ul class="sticky-body-part-navigation-links">
+    </ul>
+
+    <ul class="sticky-page-contact-methods">
+    </ul>
+  </div>
+</div>
+
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title">
+      <%= @body_part_facade.name %>
+    </h1>
   </div>
 
-  <% if @body_part_facade.guides.any? %>
-   <section class="box-wrap">
-     <div class="guides-container">
-       <h2>Guides</h2>
-       <div class="guides">
-         <%= render @body_part_facade.guides %>
-       </div>
-     </div>
-   </section>
-  <% end %>
+  <!--
+    <h2 class="hero-section-subtitle">
+      Health and Well-Being Zone
+    </h2>
+  -->
 
-  <% if @body_part_facade.body_part_sections.any? %>
-    <%= content_for :javascript do %>
-      <%= javascript_include_tag "components/body_part_sections" %>
+  <div class="hero-section-primary-content">
+    <div class="body-part-navigation-wrap">
+      <div class="body-part-navigation">
+        <ul class="body-part-navigation-links">
+          <li class="body-part-navigation-top-level">
+            <%= link_to @body_part_facade.name, @body_part, class: 'current-body-part' %>
+
+            <ul class="body-part-navigation-links-dropdown">
+              <li>
+                <% # TODO: List body parts %>
+                <%= link_to 'Lower Back', '#', class: 'body-part-link' %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="body-part-section-navigation-links">
+          <% # TODO: Link to page sections %>
+          <li>
+            <%= link_to 'Feeling Fab', '#' %>
+          </li>
+          <li>
+            <%= link_to 'Guides', '#' %>
+          </li>
+          <li>
+            <%= link_to "Know your #{@body_part_facade.name.downcase}", '#' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="body-part-summary-wrap">
+      <div class="body-part-summary">
+        <%= raw @body_part_facade.summary %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <% if @body_part_facade.guides.any? %>
+     <section class="box-wrap">
+       <div class="guides-container">
+         <h2 class="guides-container-title">Guides</h2>
+         <div class="guides wellbeing">
+           <%= render partial: 'guides/guide', collection: @body_part_facade.guides, as: :guide %>
+         </div>
+       </div>
+     </section>
     <% end %>
+
+    <% if @body_part_facade.body_part_sections.any? %>
+      <%= content_for :javascript do %>
+        <%= javascript_include_tag "components/body_part_sections" %>
+      <% end %>
+    <% end %>
+
     <section class="box-wrap">
       <div class="body-part-sections-container">
-        <ul id="tabs">
+        <ul id="tabs" class="body-part-tabs">
           <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
             <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
               <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
@@ -39,46 +149,60 @@
         </div>
       </div>
     </section>
-  <% end %>
 
-  <% if @body_part_facade.people_helped_section %>
-    <%= render(
-      partial: "people_helped_sections/people_helped_section",
-      object: @body_part_facade.people_helped_section
-    ) %>
-  <% end %>
+    <div class="content wellbeing section">
+      <section class="flexbox-wrap">
+        <% if @body_part_facade.people_helped_section %>
+          <%= render(
+            partial: "people_helped_sections/people_helped_section",
+            object: @body_part_facade.people_helped_section
+          ) %>
+        <% end %>
 
-  <% if @body_part_facade.video %>
-    <div class="video-section">
-      <%= render(
-        partial: "videos/video",
-        object: @body_part_facade.video
-      ) %>
+        <% if @body_part_facade.video %>
+          <div class="video-section">
+            <%= render(
+              partial: "videos/video",
+              object: @body_part_facade.video
+            ) %>
+          </div>
+        <% end %>
+      </section>
+
+      <section class="flexbox-wrap">
+        <%= render(
+          "wellbeing_zone/shared/team_member_section.html.erb",
+          team_members: @body_part_facade.team_members
+        ) %>
+      </section>
+
+      <section class="flexbox-wrap">
+        <%= render(
+          "wellbeing_zone/shared/case_studies_section",
+          case_studies: @body_part_facade.case_studies
+        ) %>
+
+        <%= render(
+          "wellbeing_zone/shared/testimonials_section",
+          testimonials: @body_part_facade.testimonials
+        ) %>
+      </section>
+
+      <!--
+        <section class="flexbox-wrap">
+          <%#= render(
+            "wellbeing_zone/shared/articles_section",
+            articles: @body_part_facade.articles
+          ) %>
+        </section>
+      -->
+
+      <section class="flexbox-wrap">
+        <%= render(
+          "wellbeing_zone/shared/faqs_section",
+          faqs: @body_part_facade.faqs
+        ) %>
+      </section>
     </div>
-  <% end %>
-
-  <%= render(
-    "wellbeing_zone/shared/team_member_section.html.erb",
-    team_members: @body_part_facade.team_members
-  ) %>
-
-  <%= render(
-    "wellbeing_zone/shared/case_studies_section",
-    case_studies: @body_part_facade.case_studies
-  ) %>
-
-  <%= render(
-    "wellbeing_zone/shared/articles_section",
-    articles: @body_part_facade.articles
-  ) %>
-
-  <%= render(
-    "wellbeing_zone/shared/faqs_section",
-    faqs: @body_part_facade.faqs
-  ) %>
-
-  <%= render(
-    "wellbeing_zone/shared/testimonials_section",
-    testimonials: @body_part_facade.testimonials
-  ) %>
+  </div>
 </div>

@@ -1,0 +1,83 @@
+.hero-section-primary-content {
+  @include flex-grid-row;
+  text-align: left;
+}
+
+.body-part-navigation-wrap {
+  @include flex-grid-column(3);
+  @media screen {
+    padding-left: 0;
+  }
+}
+
+.body-part-navigation {
+  @include border-radius-with-dark-box-shadow;
+  background: $white;
+  padding: rem(23px) 0;
+}
+
+.body-part-navigation-links {
+  background: $dark-brown-offset image-url('health-zone/body-part/body-part-navigation-background.jpg') repeat-x top left;
+  list-style: none;
+  margin: 0 0 rem(20px);
+  padding: rem(22px) 0;
+
+  a {
+    color: $white;
+    display: block;
+    font-size: rem(16px);
+    font-weight: $open-sans-bold;
+    padding: 0 rem(22px);
+
+    &:hover {
+      color: $beige;
+    }
+  }
+
+  li:hover .body-part-navigation-links-dropdown {
+    display: block;
+  }
+}
+
+.body-part-navigation-links-dropdown {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.body-part-section-navigation-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    display: block;
+    font-size: rem(15px);
+    font-weight: $open-sans-bold;
+    padding: rem(4px) rem(22px);
+
+    &:hover {
+      color: $black;
+    }
+  }
+}
+
+.body-part-summary-wrap {
+  @include flex-grid-column(6);
+}
+
+.body-part-summary {
+  @include border-radius-with-dark-box-shadow;
+  background: $white;
+  padding: rem(15px) rem(30px);
+
+  p:first-of-type strong {
+    font-size: rem(16px);
+    line-height: 1.25;
+  }
+
+  strong {
+    font-weight: $open-sans-extrabold;
+  }
+}

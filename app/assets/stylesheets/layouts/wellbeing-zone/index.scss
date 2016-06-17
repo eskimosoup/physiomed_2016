@@ -1,0 +1,82 @@
+.wellbeing.content {
+  padding: rem-calc(5px) 0;
+
+  &.section {
+    background-color: $beige;
+  }
+
+  .body-parts-container {
+    @include border-radius-with-box-shadow;
+    @include flex-grid-column(12);
+    background-color: $white;
+
+    .body-parts {
+      width: 100%;
+      @include flex-grid-row;
+    }
+  }
+
+  .team-members-container {
+    @include border-radius-with-box-shadow;
+    @include flex-grid-column(12);
+    background-color: $white;
+    padding-top: rem-calc(20px);
+    padding-bottom: rem-calc(20px);
+    position: relative;
+
+    .team-members {
+      margin: 0 auto;
+      width: 91%;
+    }
+  }
+
+  .people-helped-section {
+    @include border-radius-with-box-shadow;
+    width: 33%;
+    padding: rem-calc(15px);
+  }
+
+  .video-section {
+    @include border-radius-with-box-shadow;
+    background-color: $white;
+    padding: rem-calc(15px);
+    width: 65.5%;
+  }
+
+  .articles-container {
+    @include border-radius-with-box-shadow;
+    background-color: $white;
+    padding: rem-calc(15px);
+    width: 65.5%;
+  }
+
+  .twitter-container {
+    @include border-radius-with-box-shadow;
+    color: $white;
+    padding: rem-calc(15px);
+    width: 33%;
+  }
+
+  .faqs-container {
+    @include flex-grid-column(12);
+    @include border-radius-with-box-shadow;
+    background-color: $white;
+
+    .faqs {
+      @include flex-grid-row;
+    }
+  }
+
+  .case-studies-container {
+    @include border-radius-with-box-shadow;
+    background-color: $white;
+    padding: rem-calc(15px);
+    width: 65.5%;
+  }
+
+  .testimonials-container {
+    @include border-radius-with-box-shadow;
+    padding: rem-calc(15px);
+    width: 33%;
+  }
+}

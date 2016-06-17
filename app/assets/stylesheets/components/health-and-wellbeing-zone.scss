@@ -19,8 +19,8 @@
 
 .health-wellbeing-zone {
   @include flex-grid-column(12);
-  padding-bottom: rem(30px);
   min-width: 1200px;
+  padding-bottom: rem(30px);
 }
 
 .health-zones-wrap {

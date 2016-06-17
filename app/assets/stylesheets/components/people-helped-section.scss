@@ -1,0 +1,24 @@
+.people-helped-section {
+  background-color: $green;
+  color: $white;
+  text-align: center;
+
+  h2 {
+    border-bottom: 1px solid $white;
+    font-size: rem(18px);
+    font-weight: 400;
+    padding: 0 0 rem(10px);
+  }
+
+  .button {
+    font-family: $ubuntu;
+    font-weight: $ubuntu-light;
+    margin: rem(12px) 0 0;
+    padding: rem(12px) rem(18px);
+  }
+
+  .number {
+    font-size: rem(37px);
+    font-weight: $open-sans-extrabold;
+  }
+}

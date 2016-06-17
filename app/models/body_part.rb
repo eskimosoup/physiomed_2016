@@ -20,5 +20,4 @@ class BodyPart < ActiveRecord::Base
   def image
     "body_parts/#{ name.downcase.gsub(" ", "_") }.jpg"
   end
-
 end

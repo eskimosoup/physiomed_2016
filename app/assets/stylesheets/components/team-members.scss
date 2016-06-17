@@ -11,3 +11,14 @@
     color: $green;
   }
 }
+
+.team-members-container {
+  h2 {
+    font-size: rem(18px);
+    font-weight: 400;
+  }
+
+  span {
+    font-weight: $open-sans-bold;
+  }
+}

@@ -1,7 +1,115 @@
-<!DOCTYPE html>
-<html>
-  <%= render "layouts/head" %>
-  <body style="text-align: center;">
-    <%= link_to (image_tag 'placeholders/what-we-do.jpg'), '/standard_page' %>
-  </body>
-</html>
+<div class="hero-section what-we-do-background">
+  <div class="what-we-do-content-wrap">
+    <div class="what-we-do-content">
+      <h1 class="what-we-do-title">
+        We look after your staff, so your business looks after itself.
+      </h1>
+
+      <p>
+        By providing a single point of contact for the provision of
+        physiotherapy solutions, Physio Med helps employees to access high
+        quality occupational physiotherapy quickly and easily and, in turn,
+        assists businesses in reducing sickness absence levels and associated
+        costs.
+      </p>
+    </div>
+  </div>
+
+  <div class="content what-we-do-container">
+    <section class="flexbox-wrap">
+      <div class="what-we-do-summary-wrap">
+        <div class="what-we-do-summary-title">
+          <h2>Here's how we do it...</h2>
+        </div>
+
+        <div class="what-we-do-sections">
+          <div class="what-we-do-item">
+            <div class="what-we-do-item-title">
+              We prevent people going off work
+            </div>
+
+            <ul class="what-we-do-item-list">
+              <li>
+                DSE and ergonomic assessment
+              </li>
+              <li>
+                Job analysis
+              </li>
+              <li>
+                Health checks
+              </li>
+            </ul>
+          </div>
+
+          <div class="what-we-do-item">
+            <div class="what-we-do-item-title">
+              We get people back to work
+            </div>
+
+            <ul class="what-we-do-item-list">
+              <li>
+                DSE and ergonomic assessment
+              </li>
+              <li>
+                Job analysis
+              </li>
+              <li>
+                Health checks
+              </li>
+            </ul>
+          </div>
+
+          <div class="what-we-do-item">
+            <div class="what-we-do-item-title">
+              We keep people fit and well
+            </div>
+
+            <ul class="what-we-do-item-list">
+              <li>
+                DSE and ergonomic assessment
+              </li>
+              <li>
+                Job analysis
+              </li>
+              <li>
+                Health checks
+              </li>
+              <li>
+                DSE and ergonomic assessment
+              </li>
+              <li>
+                Job analysis
+              </li>
+              <li>
+                Health checks
+              </li>
+              <li>
+                DSE and ergonomic assessment
+              </li>
+              <li>
+                Job analysis
+              </li>
+              <li>
+                Health checks
+              </li>
+            </ul>
+          </div>
+
+          <div class="page-contact-methods-wrap">
+            <div class="page-contact-methods">
+              <h4>
+                Talk to our clinical team
+              </h4>
+
+              <ul class="page-contact-method-links">
+                <%= render 'shared/contact_method_items' %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <%= image_tag 'layout/mask.png', alt: '', class: 'hero-section-overlay-mask' %>
+</div>

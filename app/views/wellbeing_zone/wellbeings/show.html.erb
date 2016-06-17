@@ -1,17 +1,32 @@
-<div class="wellbeing content">
-  <% if @wellbeing_facade.body_parts.any? %>
-    <section class="flexbox-wrap">
-      <div class="body-parts-container">
-        <div class="body-parts">
-          <%= render(
-            partial: "body_parts/body_part",
-            collection: @wellbeing_facade.body_parts,
-            as: :body_part
-          ) %>
+<div class="hero-section">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title">
+      Health and Well-Being Zone
+    </h1>
+
+    <% # TODO Link this %>
+    <%= link_to 'General Well-Being', '#', class: 'hero-section-button' %>
+  </div>
+
+  <div class="wellbeing content">
+    <% if @wellbeing_facade.body_parts.any? %>
+      <section class="flexbox-wrap">
+        <div class="body-parts-container">
+          <div class="body-parts">
+            <%= render(
+              partial: "body_parts/body_part",
+              collection: @wellbeing_facade.body_parts,
+              as: :body_part
+            ) %>
+          </div>
         </div>
-      </div>
-    </section>
-  <% end %>
+      </section>
+    <% end %>
+  </div>
+</div>
+
+<div class="wellbeing content section">
+
 
   <%= render(
     "wellbeing_zone/shared/team_member_section.html.erb",
@@ -42,8 +57,30 @@
       articles: @wellbeing_facade.articles
     ) %>
     <div class="twitter-container brown-background">
-      <%= image_tag "twitter-brown" %>
-      TWITTER GOES HERE
+      <% twitter = 'optimisedhq' %>
+
+      <%= link_to "https://twitter.com/#{twitter}", title: 'Twitter', class: 'twitter-link' do %>
+        <%= image_tag "icons/twitter-brown.png", class: 'twitter-icon' %>
+      <% end %>
+
+      <% tweets = twitter_timeline(twitter, 3) %>
+      <% tweets.each do |tweet| %>
+        <div class="tweet">
+          <p class="tweet-text">
+            <%= raw tweet_text(tweet.text) %>
+          </p>
+
+          <!--
+            <p class="tweet-time">
+              <%= tweet_time(tweet.created_at) %>
+            </p>
+          -->
+        </div>
+      <% end %>
+
+      <div class="twitter-follow-button">
+        <a href="https://twitter.com/<%= twitter %>" class="twitter-follow-button" data-show-count="false">Follow @<%= twitter %></a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
     </div>
   </section>
 

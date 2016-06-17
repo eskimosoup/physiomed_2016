@@ -1,9 +1,13 @@
 <% if case_studies.present? %>
   <div class="case-studies-container">
-    <%= link_to "See more", case_studies_path, class: "button brown-background" %>
-    <h2 class="green-border-bottom">
-      Case Studies
-    </h2>
+    <div class="case-studies-container-title">
+      <h2>
+        Case Studies
+      </h2>
+
+      <%= link_to "See more", case_studies_path, class: "button brown-background" %>
+    </div>
+
     <% case_studies.each_with_index do |case_study, i| %>
       <%= render(
         partial: wellbeing_case_study_partial_path(i),
@@ -13,4 +17,3 @@
   <% end %>
   </div>
 <% end %>
-

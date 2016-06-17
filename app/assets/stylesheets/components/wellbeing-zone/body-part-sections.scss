@@ -1,0 +1,63 @@
+.body-part-sections-container {
+  @include flex-grid-column(12, $gutter: (small: 0));
+  margin: rem(10px) 0 0;
+
+  ul#tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  ul#tabs li {
+    background-color: $beige;
+    display: inline-block;
+    padding: rem-calc(0 8px);
+
+    &.current a {
+      background: $green;
+      color: $white;
+    }
+
+    &:not(.current) a {
+      background: $offset-beige;
+    }
+
+    a {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      display: inline-block;
+      font-size: rem(16px);
+      font-weight: $open-sans-bold;
+      padding: rem(12px 18px);
+    }
+  }
+
+  .body-part-section {
+    display: none;
+    @include border-radius-with-box-shadow;
+    border-top: 5px solid $green;
+    padding: rem-calc(20px);
+  }
+
+  .body-part-section.current {
+    display: block;
+  }
+
+  .body-part-section h3 {
+    color: $green;
+  }
+}
+
+.body-part-section-title {
+  @include module-container-title;
+}
+
+.body-part-section-content {
+  @include clearfix;
+}
+
+.body-part-section-image {
+  float: right;
+  margin: rem(0 10px);
+}

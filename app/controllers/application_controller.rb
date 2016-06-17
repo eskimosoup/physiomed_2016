@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def what_we_do
-    render layout: nil
   end
 
   def standard_page

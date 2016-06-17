@@ -1,6 +1,13 @@
 <div class="guide">
-  <%= image_tag guide.image_url(:index), alt: guide.title, title: guide.title if guide.image? %>
-  <h3><%= guide.title %></h3>
-  <%= raw guide.content %>
-  <%= link_to "Download", guide.file.url %>
+  <div class="guide-content-wrap">
+    <%= content_tag :div, (image_tag guide.image_url(:index), alt: guide.title, title: guide.title), class: 'guide-image' if guide.image? %>
+
+    <div class="guide-content">
+      <h3 class="guide-title"><%= guide.title %></h3>
+
+      <%= raw guide.content %>
+
+      <%= link_to "Download", guide.file.url, class: 'guide-download-button button brown-background' %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,32 @@
+.twitter-link {
+  display: inline-block;
+  padding: rem(35px) 0 0;
+  text-align: center;
+  width: 100%;
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.tweet {
+  font-family: $montserrat;
+  font-size: rem(12px);
+  font-weight: $montserrat-light;
+  margin: rem(19px) 0;
+  padding: 0 rem(40px);
+  text-align: center;
+
+  a {
+    color: $white;
+  }
+}
+
+.twitter-follow-button {
+  text-align: center;
+
+  a {
+    display: inline-block;
+  }
+}

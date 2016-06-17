@@ -1,0 +1,34 @@
+.wellbeing .faqs .faq {
+  @include flex-grid-column(4);
+
+  .faq-inner {
+    border-bottom: 1px solid $secondary-offset-white;
+    margin: 0 0 rem(30px);
+    padding-bottom: rem(20px);
+  }
+
+  .answer {
+    font-size: rem(13px);
+    margin: rem(5px);
+  }
+}
+
+.faq .question {
+  display: flex;
+  align-items: center;
+  padding: rem(10px) 0;
+
+  a {
+    font-size: rem(13px);
+    font-weight: $open-sans-semibold;
+  }
+
+  .text {
+    padding-left: rem-calc(5px);
+  }
+}
+
+.faqs-container-title {
+  @include module-container-title;
+  margin: rem(15px) 0;
+}

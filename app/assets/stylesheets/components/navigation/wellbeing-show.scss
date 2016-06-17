@@ -1,0 +1,52 @@
+.sticky-body-part-navigation {
+  background: $brown;
+  display: none;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+
+  a {
+    color: $white;
+  }
+}
+
+.sticky-body-part-navigation-content {
+  margin: 0 auto;
+  width: $global-width;
+}
+
+.sticky-body-part-name {
+  background: image-url('health-zone/white-mini-arrow.png') no-repeat center right;
+  color: $white;
+  font-size: rem(16px);
+  font-weight: $open-sans-bold;
+  padding-right: rem(10px);
+}
+
+.sticky-body-part-navigation-links {
+  display: inline-block;
+
+  li {
+    display: inline-block;
+    margin: 0 rem(5px);
+  }
+}
+
+.sticky-page-contact-methods {
+  border-left: 1px solid $green;
+  display: inline-block;
+  margin: rem(5px) 0 rem(5px) rem(5px);
+  padding: 0 0 0 rem(5px);
+
+  li {
+    display: inline-block;
+    text-indent: -9999px;
+    width: 50px;
+
+    .contact-method {
+      background-position: center;
+    }
+  }
+}

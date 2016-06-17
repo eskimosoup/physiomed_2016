@@ -1,0 +1,9 @@
+.body-part-sections-container {
+
+}
+
+.body-part-sections {
+  @include border-radius-with-dark-box-shadow;
+  background: $white;
+  text-align: left;
+}
