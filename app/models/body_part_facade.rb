@@ -10,7 +10,7 @@ class BodyPartFacade
   end
 
   def people_helped_section
-    @people_helped_section ||= PeopleHelpedSection.joins(:category).displayed.merge( Category.by_name(name) ).first
+    @people_helped_section ||= PeopleHelpedSection.joins(:category).displayed.merge(Category.by_name(name)).first
   end
 
   def articles

@@ -1,8 +1,34 @@
-<% present @page do |page_presenter| %>
-  <div class="title">
-    <h1 class="green-border-bottom"><%= page_presenter.title %></h1>
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title page <%= ' full-width' unless @page.side_menus.last.child_menu_items(@page).present? %>">
+      <% present @page do |page_presenter| %>
+        <%= page_presenter.title %>
+      <% end %>
+    </h1>
   </div>
-  <div class="content">
-    <%= page_presenter.content %>
+
+  <div class="hero-section-primary-content">
+    <%= render partial: "menus/menu" if @page.side_menus.last.child_menu_items(@page).present? %>
+
+    <div class="page-content-wrap <%= 'full-width' unless @page.side_menus.last.child_menu_items(@page).present? %>">
+      <div class="page-content">
+        <% present @page do |page_presenter| %>
+          <%= page_presenter.show_image(alt: page_presenter.title) %>
+          <%= page_presenter.content %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
+        </ul>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>

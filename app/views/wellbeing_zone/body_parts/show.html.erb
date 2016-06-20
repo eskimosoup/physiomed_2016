@@ -1,15 +1,16 @@
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'vendor/modernizr' %>
   <%= javascript_include_tag 'vendor/jquery.viewport' %>
+
   <script>
     // http://craftedpixelz.co.uk/blog/conditional-js-with-modernizr-mq/
     if (Modernizr.mq('only screen and (min-width: 1200px)')) {
       var $bodyPartNavigation, $stickyBodyPartNavigation;
 
       function setStickyNavigation() {
-        if($('.body-part-navigation:in-viewport').length === 1) {
+        if($('.hero-navigation:in-viewport').length === 1 && $stickyBodyPartNavigation !== undefined) {
           $stickyBodyPartNavigation.hide();
-        } else {
+        } else if($stickyBodyPartNavigation !== undefined) {
           $stickyBodyPartNavigation.show();
         }
       }
@@ -17,13 +18,14 @@
       function buildStickyNavigation() {
         var visibleLis = $('.body-part-section-navigation-links').html();
         var contactMethods = $('.page-contact-method-links').html();
-        $('.sticky-body-part-navigation-links').html(visibleLis);
+        $('.sticky-hero-navigation-links').html(visibleLis);
         $('.sticky-page-contact-methods').html(contactMethods);
+        setStickyNavigation();
       }
 
       $(window).load(function() {
-        $bodyPartNavigation = $('.body-part-navigation');
-        $stickyBodyPartNavigation = $('.sticky-body-part-navigation');
+        $bodyPartNavigation = $('.hero-navigation');
+        $stickyBodyPartNavigation = $('.sticky-hero-navigation');
         buildStickyNavigation();
       });
 
@@ -31,16 +33,43 @@
         setStickyNavigation();
       });
     }
+
+    // Adapted from http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
+    var $root;
+
+    function smoothScroll(elem) {
+      $root.animate({
+        scrollTop: $(elem).offset().top - 51
+      }, 500, function () {
+        window.location.hash = elem;
+      });
+    }
+
+    $(function() {
+      $root = $('html, body');
+
+      var windowAnchor = window.location.hash;
+      if(windowAnchor !== undefined && $(windowAnchor).length === 1) {
+        smoothScroll(windowAnchor);
+      }
+    });
+
+    $(document).on('click', 'a[href^="#"]', function() {
+      var elem = $.attr(this, 'href');
+      smoothScroll(elem);
+      return false;
+    });
   </script>
+
 <% end %>
 
-<div class="sticky-body-part-navigation">
-  <div class="sticky-body-part-navigation-content">
+<div class="sticky-hero-navigation">
+  <div class="sticky-hero-navigation-content">
     <span class="sticky-body-part-name">
       <%= @body_part_facade.name %>
     </span>
 
-    <ul class="sticky-body-part-navigation-links">
+    <ul class="sticky-hero-navigation-links">
     </ul>
 
     <ul class="sticky-page-contact-methods">
@@ -62,32 +91,29 @@
   -->
 
   <div class="hero-section-primary-content">
-    <div class="body-part-navigation-wrap">
-      <div class="body-part-navigation">
-        <ul class="body-part-navigation-links">
-          <li class="body-part-navigation-top-level">
+    <div class="hero-navigation-wrap">
+      <div class="hero-navigation">
+        <ul class="hero-navigation-links">
+          <li class="hero-navigation-top-level">
             <%= link_to @body_part_facade.name, @body_part, class: 'current-body-part' %>
 
-            <ul class="body-part-navigation-links-dropdown">
-              <li>
-                <% # TODO: List body parts %>
-                <%= link_to 'Lower Back', '#', class: 'body-part-link' %>
-              </li>
+            <ul class="hero-navigation-links-dropdown">
+              <% @body_parts.each do |body_part| %>
+                <%= content_tag :li, (link_to body_part.name, wellbeing_zone_body_part_path(body_part), class: 'body-part-link', title: body_part.name) %>
+              <% end %>
             </ul>
           </li>
         </ul>
 
         <ul class="body-part-section-navigation-links">
-          <% # TODO: Link to page sections %>
-          <li>
-            <%= link_to 'Feeling Fab', '#' %>
-          </li>
-          <li>
-            <%= link_to 'Guides', '#' %>
-          </li>
-          <li>
-            <%= link_to "Know your #{@body_part_facade.name.downcase}", '#' %>
-          </li>
+          <% # TODO: Feeling Fab link %>
+          <%= content_tag :li, (link_to 'Feeling Fab', '#feeling-fab') if true %>
+          <%= content_tag :li, (link_to 'Guides', '#guides') if @body_part_facade.guides.any? %>
+          <%= content_tag :li, (link_to "Know Your #{@body_part_facade.name.titlecase}", '#body-part-sections') if @body_part_facade.body_part_sections.any? %>
+          <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @body_part_facade.team_members.any? %>
+          <%= content_tag :li, (link_to "Case Studies", '#case-studies') if @body_part_facade.case_studies.any? %>
+          <%= content_tag :li, (link_to "Testimonials", '#testimonials') if @body_part_facade.testimonials.any? %>
+          <%= content_tag :li, (link_to "FAQs", '#faqs') if @body_part_facade.faqs.any? %>
         </ul>
       </div>
     </div>
@@ -114,7 +140,7 @@
   <div class="content">
 
     <% if @body_part_facade.guides.any? %>
-     <section class="box-wrap">
+     <section class="box-wrap" id="guides">
        <div class="guides-container">
          <h2 class="guides-container-title">Guides</h2>
          <div class="guides wellbeing">
@@ -130,7 +156,7 @@
       <% end %>
     <% end %>
 
-    <section class="box-wrap">
+    <section class="box-wrap" id="body-part-sections">
       <div class="body-part-sections-container">
         <ul id="tabs" class="body-part-tabs">
           <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
@@ -169,7 +195,7 @@
         <% end %>
       </section>
 
-      <section class="flexbox-wrap">
+      <section class="flexbox-wrap" id="team-members">
         <%= render(
           "wellbeing_zone/shared/team_member_section.html.erb",
           team_members: @body_part_facade.team_members
@@ -197,7 +223,7 @@
         </section>
       -->
 
-      <section class="flexbox-wrap">
+      <section class="flexbox-wrap" id="faqs">
         <%= render(
           "wellbeing_zone/shared/faqs_section",
           faqs: @body_part_facade.faqs
