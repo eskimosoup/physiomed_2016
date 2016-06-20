@@ -1,6 +1,11 @@
 class WellbeingFacade
+
+  def initialize(category)
+    @category = category
+  end
+
   def articles
-    @articles ||= Article.displayed.order(date: :desc).limit(4)
+    @articles ||= category.articles.displayed.order(date: :desc).limit(4)
   end
 
   def body_parts
@@ -8,19 +13,19 @@ class WellbeingFacade
   end
 
   def case_studies
-    @case_studies ||= CaseStudy.displayed.order(date: :desc).limit(3)
+    @case_studies ||= category.case_studies.displayed.order(date: :desc).limit(3)
   end
 
   def faqs
-    @faqs ||= FrequentlyAskedQuestion.displayed.order("RANDOM()").limit(6)
+    @faqs ||= category.frequently_asked_questions.displayed.order("RANDOM()").limit(6)
   end
 
   def video
-    @video ||= Video.displayed.order(created_at: :desc).first
+    @video ||= category.videos.displayed.order(created_at: :desc).first
   end
 
   def people_helped_section
-    @people_helped_section ||= PeopleHelpedSection.joins(:category).displayed.merge( Category.by_name("Wellbeing Zone Overview") ).first
+    @people_helped_section ||= category.people_helped_section
   end
 
   def team_members
@@ -28,6 +33,10 @@ class WellbeingFacade
   end
 
   def testimonials
-    @testimonials ||= Testimonial.displayed.order("RANDOM()").limit(8)
+    @testimonials ||= category.testimonials.displayed.order("RANDOM()").limit(8)
   end
+
+  private
+
+  attr_reader :category
 end
