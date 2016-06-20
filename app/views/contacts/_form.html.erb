@@ -14,23 +14,26 @@
   <% end %>
 
   <div class="contact-details">
-        <div class="field">
-      <%= f.label :name %><br />
+    <div class="field">
+      <%= f.label :name %>
       <%= f.text_field :name %>
     </div>
-        <div class="field">
-      <%= f.label :telephone %><br />
+
+    <div class="field">
+      <%= f.label :telephone %>
       <%= f.text_field :telephone %>
     </div>
-        <div class="field">
-      <%= f.label :email %><br />
+    
+    <div class="field">
+      <%= f.label :email %>
       <%= f.text_field :email %>
     </div>
-        <div class="field">
-      <%= f.label :message %><br />
+
+    <div class="field">
+      <%= f.label :message %>
       <%= f.text_area :message %>
     </div>
-    
+
     <div class="actions">
       <%= f.submit "Send", class: "submit-button" %>
     </div>

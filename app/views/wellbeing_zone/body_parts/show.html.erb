@@ -157,34 +157,25 @@
         <%= javascript_include_tag "components/body_part_sections" %>
       <% end %>
 
-<<<<<<< HEAD
     <section class="box-wrap" id="body-part-sections">
       <div class="body-part-sections-container">
         <ul id="tabs" class="body-part-tabs">
           <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
             <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
               <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
-=======
-      <section class="box-wrap">
-        <div class="body-part-sections-container">
-          <ul id="tabs" class="body-part-tabs">
-            <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
-              <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
-                <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
-              <% end %>
->>>>>>> upstream/master
             <% end %>
-          </ul>
+          <% end %>
+        </ul>
 
-          <div class="body-part-sections">
-            <%= render(
-              partial: "wellbeing_zone/body_part_sections/body_part_section",
-              collection: @body_part_facade.body_part_sections,
-              as: :body_part_section
-            ) %>
-          </div>
+        <div class="body-part-sections">
+          <%= render(
+            partial: "wellbeing_zone/body_part_sections/body_part_section",
+            collection: @body_part_facade.body_part_sections,
+            as: :body_part_section
+          ) %>
         </div>
-      </section>
+      </div>
+    </section>
     <% end %>
 
     <div class="content wellbeing section">

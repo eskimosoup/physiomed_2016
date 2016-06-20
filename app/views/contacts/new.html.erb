@@ -1,7 +1,74 @@
-<div class="page">
-  <div class="content">
-    <%= render 'shared/flash_messages' %>
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/google-map' %>
+<% end %>
 
-    <%= render 'form' %>
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title page full-width">
+      Contact Us
+    </h1>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="page-content-wrap full-width">
+      <div class="page-content">
+        <p>
+          If you want to find out how Physio Med can help your organisation or
+          if you would like to arrange a site visit, please get in touch via
+          the form below.
+        </p>
+
+        <%= render 'shared/flash_messages' %>
+
+        <%= render 'form' %>
+
+        <div class="secondary-contact-methods">
+          <div class="secondary-contact-method-details">
+            <h3>Address</h3>
+            <%= global_site_settings['Address'].gsub(', ', '<br />').html_safe if global_site_settings['Address'].present? %>
+
+            <h3>Other Methods</h3>
+
+            <div class="secondary-contact-method-phone">
+              <strong>Phone</strong>
+              <%= global_site_settings['Phone'] if global_site_settings['Phone'].present? %>
+            </div>
+
+            <div class="secondary-contact-method-fax">
+              <strong>Fax</strong>
+              <%= global_site_settings['Fax'] if global_site_settings['Fax'].present? %>
+            </div>
+
+            <div class="secondary-contact-method-email">
+              <strong>Email</strong>
+              <%= mail_to global_site_settings['Email'] if global_site_settings['Email'].present? %>
+            </div>
+          </div>
+
+          <div class="secondary-contact-method-map">
+            <div id="map-canvas" data-latitude="53.7773527" data-longitude="-1.5870628" data-title="<%= global_site_settings['Name'] %>"></div>
+
+            <div id="map-info-window" class="hide">
+              <div class="maps-info-window-popup">
+                <%= global_site_settings['Name'] %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
