@@ -29,6 +29,12 @@
   </div>
 
   <div class="field">
+    <%= f.label :frequently_asked_question_ids, 'Frequently Asked Questions' %><br>
+    <%= f.select :frequently_asked_question_ids, FrequentlyAskedQuestion.order(:question).pluck(:question, :id),
+      {}, { class: 'multiselect', multiple: true } %>
+  </div>
+
+  <div class="field">
     <%= f.label :guide_ids, 'Guides' %><br>
     <%= f.select :guide_ids, Guide.order(:title).pluck(:title, :id),
       {}, { class: 'multiselect', multiple: true } %>

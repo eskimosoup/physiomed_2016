@@ -50,92 +50,156 @@ describe BodyPartFacade do
   end
 
   describe '#articles' do
+    it 'gets articles belonging to the articles category' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      article = create(:article, display: true, categories: [category])
+      not_category_article = create(:article, display: true)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.articles).to include(article)
+      expect(facade.articles).not_to include(not_category_article)
+    end
+
     it 'only gets 4 articles' do
-      create_list(:article, 4, display: true)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      create_list(:article, 4, display: true, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.articles.size).to eq(3)
     end
 
     it 'only get displayed articles' do
-      article = create(:article, display: true)
-      not_displayed = create(:article, display: false)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      article = create(:article, display: true, categories: [category])
+      not_displayed = create(:article, display: false, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.articles).to include(article)
       expect(facade.articles).not_to include(not_displayed)
     end
 
     it 'ordered by descending date' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
       articles = [
-        create(:article, display: true, date: Date.today),
-        create(:article, display: true, date: Date.yesterday),
+        create(:article, display: true, date: Date.today, categories: [category]),
+        create(:article, display: true, date: Date.yesterday, categories: [category]),
       ]
-      facade = build_facade
+      facade = build_facade(body_part: body_part)
 
       expect(facade.articles).to eq(articles)
     end
   end
 
   describe "#case_studies" do
+    it 'only gets case studies belonging to body parts category' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      case_study = create(:case_study, display: true, categories: [category])
+      other_category_case_study = create(:case_study, display: true)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.case_studies).to include(case_study)
+      expect(facade.case_studies).not_to include(other_category_case_study)
+    end
+
     it 'orders by descending date' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
       case_studies = [
-        create(:case_study, display: true, date: Date.today),
-        create(:case_study, display: true, date: Date.yesterday),
+        create(:case_study, display: true, date: Date.today, categories: [category]),
+        create(:case_study, display: true, date: Date.yesterday, categories: [category]),
       ]
-      facade = build_facade
+      facade = build_facade(body_part: body_part)
 
       expect(facade.case_studies).to eq(case_studies)
     end
 
     it 'only gets those that are displayed' do
-      case_study = create(:case_study, display: true)
-      not_displayed = create(:case_study, display: false)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      case_study = create(:case_study, display: true, categories: [category])
+      not_displayed = create(:case_study, display: false, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.case_studies).to include(case_study)
       expect(facade.case_studies).not_to include(not_displayed)
     end
 
     it 'only gets three' do
-      create_list(:case_study, 4, display: true)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      create_list(:case_study, 4, display: true, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.case_studies.size).to eq(3)
     end
   end
 
   describe '#faqs' do
+    it 'only gets faqs belonging to body parts category' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      faq = create(:frequently_asked_question, display: true, categories: [category])
+      other_category_faq = create(:frequently_asked_question, display: true)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.faqs).to include(faq)
+      expect(facade.faqs).not_to include(other_category_faq)
+    end
+
     it 'only gets displayed faqs' do
-      faq = create(:frequently_asked_question, display: true)
-      not_displayed = create(:frequently_asked_question, display: false)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      faq = create(:frequently_asked_question, display: true, categories: [category])
+      not_displayed = create(:frequently_asked_question, display: false, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.faqs).to include(faq)
       expect(facade.faqs).not_to include(not_displayed)
     end
 
     it 'only gets six' do
-      create_list(:frequently_asked_question, 7, display: true)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      create_list(:frequently_asked_question, 7, display: true, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.faqs.size).to eq(6)
     end
   end
 
   describe '#testimonials' do
-    it 'it gets displayed testimonials' do
-      testimonial = create(:testimonial, display: true)
-      not_displayed = create(:testimonial, display: false)
-      facade = build_facade
+    it 'gets testimonials through category' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      testimonial = create(:testimonial, display: true, categories: [category])
+      no_category_testimonial = create(:testimonial, display: true)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.testimonials).to include(testimonial)
+      expect(facade.testimonials).not_to include(no_category_testimonial)
+    end
+
+    it 'gets displayed testimonials' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      testimonial = create(:testimonial, display: true, categories: [category])
+      not_displayed = create(:testimonial, display: false, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.testimonials).to include(testimonial)
       expect(facade.testimonials).not_to include(not_displayed)
     end
 
     it 'only gets 8' do
-      create_list(:testimonial, 9, display: true)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      create_list(:testimonial, 9, display: true, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.testimonials.size).to eq(8)
     end
@@ -160,10 +224,23 @@ describe BodyPartFacade do
   end
 
   describe '#video' do
+    it 'gets videos through category' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      video = create(:video, display: true, categories: [category])
+      no_category_video = create(:video, display: true)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.video).to eq(video)
+      expect(facade.video).not_to eq(no_category_video)
+    end
+
     it 'gets displayed video' do
-      video = create(:video, display: true)
-      not_displayed = create(:video, display: false)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      video = create(:video, display: true, categories: [category])
+      not_displayed = create(:video, display: false, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.video).to eq(video)
       expect(facade.video).not_to eq(not_displayed)
@@ -171,18 +248,33 @@ describe BodyPartFacade do
   end
 
   describe '#guides' do
+    it 'gets guides through category' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      guide = create(:guide, display: true, categories: [category])
+      no_category_guide = create(:guide, display: true)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.guides).to include(guide)
+      expect(facade.guides).not_to include(no_category_guide)
+    end
+
     it 'gets displayed guides' do
-      guide = create(:guide, display: true)
-      not_displayed = create(:guide, display: false)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      guide = create(:guide, display: true, categories: [category])
+      not_displayed = create(:guide, display: false, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.guides).to include(guide)
       expect(facade.guides).not_to include(not_displayed)
     end
 
     it 'only gets two guides' do
-      create_list(:guide, 3, display: true)
-      facade = build_facade
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      create_list(:guide, 3, display: true, categories: [category])
+      facade = build_facade(body_part: body_part)
 
       expect(facade.guides.size).to eq(2)
     end

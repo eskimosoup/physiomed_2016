@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617095444) do
+ActiveRecord::Schema.define(version: 20160620090206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,16 @@ ActiveRecord::Schema.define(version: 20160617095444) do
 
   add_index "categories_case_studies", ["case_study_id"], name: "index_categories_case_studies_on_case_study_id", using: :btree
   add_index "categories_case_studies", ["category_id"], name: "index_categories_case_studies_on_category_id", using: :btree
+
+  create_table "categories_frequently_asked_questions", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "frequently_asked_question_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "categories_frequently_asked_questions", ["category_id"], name: "categories_faqs_category", using: :btree
+  add_index "categories_frequently_asked_questions", ["frequently_asked_question_id"], name: "categories_faqs_faq", using: :btree
 
   create_table "categories_guides", force: :cascade do |t|
     t.integer  "category_id"
@@ -412,6 +422,8 @@ ActiveRecord::Schema.define(version: 20160617095444) do
   add_foreign_key "categories_articles", "categories", on_delete: :cascade
   add_foreign_key "categories_case_studies", "case_studies", on_delete: :cascade
   add_foreign_key "categories_case_studies", "categories", on_delete: :cascade
+  add_foreign_key "categories_frequently_asked_questions", "categories", on_delete: :cascade
+  add_foreign_key "categories_frequently_asked_questions", "frequently_asked_questions", on_delete: :cascade
   add_foreign_key "categories_guides", "categories", on_delete: :cascade
   add_foreign_key "categories_guides", "guides", on_delete: :cascade
   add_foreign_key "categories_testimonials", "categories", on_delete: :cascade
