@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # get 'wellbeing', to: 'application#wellbeing'
   # get 'standard-page', to: 'application#standard_page'
 
+  resources :contacts, only: [:new, :create]
   resources :pages, only: :show
 
   resources :articles, only: [:index, :show]
