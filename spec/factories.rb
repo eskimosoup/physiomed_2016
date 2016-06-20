@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :categories_frequently_asked_question, class: 'Categories::FrequentlyAskedQuestion' do
+    category nil
+    frequently_asked_question nil
+  end
   factory :text_additional_home_content, class: AdditionalHomeContent do
     title "MyString"
     content_type "text_content"

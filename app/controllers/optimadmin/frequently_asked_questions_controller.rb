@@ -46,7 +46,7 @@ module Optimadmin
 
     def frequently_asked_question_params
       params.require(:frequently_asked_question)
-            .permit(:question, :answer, :display)
+            .permit(:question, :answer, :display, category_ids: [])
     end
   end
 end

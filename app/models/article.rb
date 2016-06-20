@@ -7,6 +7,7 @@ class Article < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
   scope :home, -> { where(home_highlight: true) }
+  scope :for_category, ->(category) { joins(:categories_articles).where(categories_articles: { category_id: category }) }
 
   belongs_to :author, class_name: "TeamMember"
   has_many :categories_articles, class_name: "Categories::Article"

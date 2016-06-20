@@ -12,6 +12,13 @@ RSpec.describe BodyPart, type: :model do
 
   describe "associations" do
     it { should belong_to(:category) }
+    it { should have_one(:people_helped_section).through(:category) }
+    it { should have_many(:articles).through(:category) }
+    it { should have_many(:case_studies).through(:category) }
+    it { should have_many(:frequently_asked_questions).through(:category) }
+    it { should have_many(:guides).through(:category) }
+    it { should have_many(:testimonials).through(:category) }
+    it { should have_many(:videos).through(:category) }
     it { should have_many(:body_part_sections) }
   end
 

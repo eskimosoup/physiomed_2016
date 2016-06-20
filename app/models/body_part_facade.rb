@@ -1,4 +1,5 @@
 class BodyPartFacade
+  attr_reader :body_part
   delegate :name, :summary, to: :body_part
 
   def initialize(body_part)
@@ -6,27 +7,28 @@ class BodyPartFacade
   end
 
   def body_part_sections
-    @body_part_sections ||= body_part.body_part_sections.displayed.order(position: :asc)
+    @body_part_sections ||= body_part.body_part_sections
+                                     .displayed.order(position: :asc)
   end
 
   def people_helped_section
-    @people_helped_section ||= PeopleHelpedSection.joins(:category).displayed.merge(Category.by_name(name)).first
+    @people_helped_section ||= body_part.people_helped_section
   end
 
   def articles
-    @articles ||= Article.displayed.order(date: :desc).limit(3)
+    @articles ||= body_part.articles.displayed.order(date: :desc).limit(3)
   end
 
   def case_studies
-    @case_studies ||= CaseStudy.order(date: :desc).displayed.limit(3)
+    @case_studies ||= body_part.case_studies.displayed.order(date: :desc).limit(3)
   end
 
   def faqs
-    @faqs ||= FrequentlyAskedQuestion.order('RANDOM()').displayed.limit(6)
+    @faqs ||= body_part.frequently_asked_questions.displayed.order('RANDOM()').limit(6)
   end
 
   def guides
-    @guides ||= Guide.displayed.limit(2)
+    @guides ||= body_part.guides.displayed.limit(2)
   end
 
   def team_members
@@ -34,14 +36,10 @@ class BodyPartFacade
   end
 
   def testimonials
-    @testimonials ||= Testimonial.order('RANDOM()').displayed.limit(8)
+    @testimonials ||= body_part.testimonials.displayed.order('RANDOM()').limit(8)
   end
 
   def video
-    @video ||= Video.displayed.order(created_at: :desc).first
+    @video ||= body_part.videos.displayed.order(created_at: :desc).first
   end
-
-  private
-
-  attr_reader :body_part
 end

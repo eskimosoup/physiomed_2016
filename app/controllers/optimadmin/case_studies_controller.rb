@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_case_study, only: [:show, :edit, :update, :destroy]
 
     def index
-      @case_studies = CaseStudy.order_by(params[:order])
+      @case_studies = CaseStudy.order(params[:order] || { date: :desc })
         .search(params[:search]).page(params[:page]).per(params[:per_page])
     end
 

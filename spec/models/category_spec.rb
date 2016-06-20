@@ -18,6 +18,8 @@ RSpec.describe Category, type: :model do
     it { should have_many(:articles).through(:categories_articles) }
     it { should have_many(:categories_case_studies).class_name("Categories::CaseStudy") }
     it { should have_many(:case_studies).through(:categories_case_studies) }
+    it { should have_many(:categories_frequently_asked_questions) }
+    it { should have_many(:frequently_asked_questions).through(:categories_frequently_asked_questions) }
     it { should have_many(:categories_guides).class_name("Categories::Guide") }
     it { should have_many(:guides).through(:categories_guides) }
     it { should have_many(:categories_testimonials).class_name("Categories::Testimonial") }

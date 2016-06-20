@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_testimonial, only: [:show, :edit, :update, :destroy]
 
     def index
-      @testimonials = Testimonial.order_by(params[:order])
+      @testimonials = Testimonial.order(params[:order] || { created_at: :desc })
         .search(params[:search]).page(params[:page]).per(10)
     end
 
