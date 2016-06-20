@@ -26,6 +26,7 @@ button.slick-prev.slick-team-members {
   background-image: image-url('icons/slider/left.png');
   background-position: center;
   background-repeat: no-repeat;
+  text-indent: -9999px;
 
   &:before {
     content: '';
@@ -40,6 +41,7 @@ button.slick-next.slick-team-members {
   background-image: image-url('icons/slider/right.png');
   background-position: center;
   background-repeat: no-repeat;
+  text-indent: -9999px;
 
   &:before {
     content: '';
