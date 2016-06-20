@@ -6,7 +6,6 @@ feature "user views testmonials" do
 
     visit testimonials_path
 
-    expect(page).to have_css ".testimonial", text: "My Testimonial"
     expect(page).to have_css ".testimonial", text: "They were ace!"
   end
 end

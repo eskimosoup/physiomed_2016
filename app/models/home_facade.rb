@@ -36,11 +36,11 @@ class HomeFacade
   end
 
   def case_studies
-    @case_studies ||= CaseStudy.order_by(date: :desc).displayed.for_home.limit(10)
+    @case_studies ||= CaseStudy.order(date: :desc).displayed.for_home.limit(10)
   end
 
   def testimonials
-    @testimonials ||= Testimonial.displayed.random_order.limit(10)
+    @testimonials ||= Testimonial.displayed.order("RANDOM()").limit(10)
   end
 
   def clients

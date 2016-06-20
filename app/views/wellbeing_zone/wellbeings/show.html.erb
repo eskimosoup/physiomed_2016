@@ -14,7 +14,7 @@
         <div class="body-parts-container">
           <div class="body-parts">
             <%= render(
-              partial: "body_parts/body_part",
+              partial: "wellbeing_zone/body_parts/body_part",
               collection: @wellbeing_facade.body_parts,
               as: :body_part
             ) %>
@@ -26,8 +26,6 @@
 </div>
 
 <div class="wellbeing content section">
-
-
   <%= render(
     "wellbeing_zone/shared/team_member_section.html.erb",
     team_members: @wellbeing_facade.team_members

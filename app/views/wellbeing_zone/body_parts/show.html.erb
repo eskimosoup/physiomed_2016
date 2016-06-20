@@ -66,7 +66,9 @@
       <div class="body-part-navigation">
         <ul class="body-part-navigation-links">
           <li class="body-part-navigation-top-level">
-            <%= link_to @body_part_facade.name, @body_part, class: 'current-body-part' %>
+            <%= link_to @body_part_facade.name, 
+              wellbeing_zone_body_part_path(@body_part_facade.body_part), 
+              class: 'current-body-part' %>
 
             <ul class="body-part-navigation-links-dropdown">
               <li>
@@ -128,27 +130,27 @@
       <%= content_for :javascript do %>
         <%= javascript_include_tag "components/body_part_sections" %>
       <% end %>
-    <% end %>
 
-    <section class="box-wrap">
-      <div class="body-part-sections-container">
-        <ul id="tabs" class="body-part-tabs">
-          <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
-            <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
-              <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
+      <section class="box-wrap">
+        <div class="body-part-sections-container">
+          <ul id="tabs" class="body-part-tabs">
+            <% @body_part_facade.body_part_sections.each_with_index do |body_part_section, i| %>
+              <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
+                <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
+          </ul>
 
-        <div class="body-part-sections">
-          <%= render(
-            partial: "wellbeing_zone/body_part_sections/body_part_section",
-            collection: @body_part_facade.body_part_sections,
-            as: :body_part_section
-          ) %>
+          <div class="body-part-sections">
+            <%= render(
+              partial: "wellbeing_zone/body_part_sections/body_part_section",
+              collection: @body_part_facade.body_part_sections,
+              as: :body_part_section
+            ) %>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    <% end %>
 
     <div class="content wellbeing section">
       <section class="flexbox-wrap">

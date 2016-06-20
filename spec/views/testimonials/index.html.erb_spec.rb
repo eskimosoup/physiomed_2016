@@ -3,12 +3,12 @@ require "rails_helper"
 RSpec.describe "testimonials/index", type: :view do
   context "has testimonials" do
     it do
-      testimonial = create(:testimonial, title: "Title")
+      testimonial = create(:testimonial, content: "My content")
 
-      assign(:testimonials, Testimonial.all)
+      assign(:testimonials, [testimonial])
       render
 
-      expect(rendered).to have_content "Title"
+      expect(rendered).to have_content "My content"
     end
   end
 

@@ -27,7 +27,8 @@ describe "wellbeing_zone/body_parts/show.html.erb" do
   context 'has guides' do
     it 'renders the guide section' do
       facade = build_facade
-      create(:guide, title: "Guide", content: "some content", display: true)
+      guide = create(:guide, title: "Guide", content: "some content", display: true)
+      allow(facade).to receive(:guides).and_return([guide])
 
       render
 
@@ -49,7 +50,9 @@ describe "wellbeing_zone/body_parts/show.html.erb" do
     end
   end
 
-  def build_facade(body_part: BodyPart.new)
+  def build_facade
+    category = build_stubbed(:category)
+    body_part = build_stubbed(:body_part, category: category)
     facade = BodyPartFacade.new(body_part)
     assign(:body_part_facade, facade)
     facade

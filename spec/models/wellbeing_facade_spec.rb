@@ -234,4 +234,42 @@ describe WellbeingFacade do
       expect(facade.testimonials.size).to eq(8)
     end
   end
+
+  context 'when category is nil' do
+    it '#articles' do
+      facade = WellbeingFacade.new(nil)
+
+      expect(facade.articles).to eq([])
+    end
+
+    it '#case_studies' do
+      facade = WellbeingFacade.new(nil)
+
+      expect(facade.case_studies).to eq([])
+    end
+
+    it '#faqs' do
+      facade = WellbeingFacade.new(nil)
+
+      expect(facade.faqs).to eq([])
+    end
+
+    it '#video' do
+      facade = WellbeingFacade.new(nil)
+
+      expect(facade.video).to be nil
+    end
+
+    it '#people_helped_section' do
+      facade = WellbeingFacade.new(nil)
+
+      expect(facade.people_helped_section).to be nil
+    end
+
+    it '#testimonials' do
+      facade = WellbeingFacade.new(nil)
+
+      expect(facade.testimonials).to eq([])
+    end
+  end
 end

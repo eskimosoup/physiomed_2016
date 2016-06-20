@@ -1,4 +1,5 @@
 class BodyPartFacade
+  attr_reader :body_part
   delegate :name, :summary, to: :body_part
 
   def initialize(body_part)
@@ -6,7 +7,8 @@ class BodyPartFacade
   end
 
   def body_part_sections
-    @body_part_sections ||= body_part.body_part_sections.displayed.order(position: :asc)
+    @body_part_sections ||= body_part.body_part_sections
+      .displayed.order(position: :asc)
   end
 
   def people_helped_section
@@ -40,8 +42,4 @@ class BodyPartFacade
   def video
     @video ||= body_part.videos.displayed.order(created_at: :desc).first
   end
-
-  private
-
-  attr_reader :body_part
 end
