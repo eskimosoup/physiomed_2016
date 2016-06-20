@@ -8,7 +8,7 @@ class BodyPartFacade
 
   def body_part_sections
     @body_part_sections ||= body_part.body_part_sections
-      .displayed.order(position: :asc)
+                                     .displayed.order(position: :asc)
   end
 
   def people_helped_section
@@ -24,7 +24,7 @@ class BodyPartFacade
   end
 
   def faqs
-    @faqs ||= body_part.frequently_asked_questions.displayed.order("RANDOM()").limit(6)
+    @faqs ||= body_part.frequently_asked_questions.displayed.order('RANDOM()').limit(6)
   end
 
   def guides
@@ -36,7 +36,7 @@ class BodyPartFacade
   end
 
   def testimonials
-    @testimonials ||= body_part.testimonials.displayed.order("RANDOM()").limit(8)
+    @testimonials ||= body_part.testimonials.displayed.order('RANDOM()').limit(8)
   end
 
   def video

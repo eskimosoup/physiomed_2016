@@ -12,6 +12,13 @@ h2 {
   text-transform: uppercase;
 }
 
+::selection {
+  background: $beige;
+}
+::-moz-selection {
+  background: $beige;
+}
+
 .green-border-bottom {
   border-bottom: 1px solid $green;
 }
@@ -93,4 +100,36 @@ a.button.brown-background:hover {
     @include flex-grid-column(2);
   }
 
+}
+
+.secondary-contact-methods {
+  @include flex-grid-row;
+}
+
+.secondary-contact-method-details {
+  @include flex-grid-column(4, $gutter: (small: 0));
+
+  strong {
+    display: inline-block;
+    width: 60px;
+  }
+}
+
+.secondary-contact-method-map {
+  @include flex-grid-column(7, $gutter: (small: 0));
+}
+
+#map-canvas {
+  height: 223px;
+  margin-top: 63px;
+  width: 540px;
+
+  img {
+    max-width: initial;
+  }
+}
+
+.maps-info-window-popup {
+  height: 30px;
+  width: 250px;
 }

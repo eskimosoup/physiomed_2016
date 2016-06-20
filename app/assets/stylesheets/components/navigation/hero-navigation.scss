@@ -1,4 +1,4 @@
-.sticky-body-part-navigation {
+.sticky-hero-navigation {
   background: $brown;
   display: none;
   left: 0;
@@ -12,7 +12,7 @@
   }
 }
 
-.sticky-body-part-navigation-content {
+.sticky-hero-navigation-content {
   margin: 0 auto;
   width: $global-width;
 }
@@ -23,9 +23,10 @@
   font-size: rem(16px);
   font-weight: $open-sans-bold;
   padding-right: rem(10px);
+  margin-right: rem(20px);
 }
 
-.sticky-body-part-navigation-links {
+.sticky-hero-navigation-links {
   display: inline-block;
 
   li {

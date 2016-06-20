@@ -1,14 +1,14 @@
 .video {
   @include flex-grid-row;
   .video-iframe {
-    @include flex-grid-column(6);    
+    @include flex-grid-column(6);
   }
   .basic-details {
     @include flex-grid-column(6);
   }
 
   h2 {
-    font-weight: 400;
+    @include module-container-title-header;
   }
 
   .video-subtitle {

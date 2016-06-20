@@ -1,11 +1,33 @@
-<h1>What People Say</h1>
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title page full-width">
+      What People Say
+    </h1>
+  </div>
 
-<% if @testimonials.any? %>
-  <%= render(
-    partial: "testimonials/testimonial",
-    collection: @testimonials,
-    as: :testimonial
-  ) %>
-<% else %>
-  We currently have no testimonials to display.
-<% end %>
+  <div class="hero-section-primary-content">
+    <div class="testimonials-index-wrap">
+      <% if @testimonials.any? %>
+          <%= render(
+            partial: "testimonials/testimonial",
+            collection: @testimonials,
+            as: :testimonial
+          ) %>
+      <% else %>
+        We currently have no testimonials to display.
+      <% end %>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

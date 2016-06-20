@@ -3,20 +3,20 @@
   text-align: left;
 }
 
-.body-part-navigation-wrap {
+.hero-navigation-wrap {
   @include flex-grid-column(3);
   @media screen {
     padding-left: 0;
   }
 }
 
-.body-part-navigation {
+.hero-navigation {
   @include border-radius-with-dark-box-shadow;
   background: $white;
   padding: rem(23px) 0;
 }
 
-.body-part-navigation-links {
+.hero-navigation-links {
   background: $dark-brown-offset image-url('health-zone/body-part/body-part-navigation-background.jpg') repeat-x top left;
   list-style: none;
   margin: 0 0 rem(20px);
@@ -32,18 +32,27 @@
     &:hover {
       color: $beige;
     }
+
+    &.current-body-part {
+      background: image-url('health-zone/white-mini-arrow-down.png') no-repeat 90% 50%;
+    }
   }
 
-  li:hover .body-part-navigation-links-dropdown {
+  li:hover .hero-navigation-links-dropdown {
     display: block;
   }
 }
 
-.body-part-navigation-links-dropdown {
+.hero-navigation-links-dropdown {
   display: none;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: rem(10px) 0;
+
+  a {
+    padding-bottom: rem(2px);
+    padding-top: rem(2px);
+  }
 }
 
 .body-part-section-navigation-links {
@@ -65,19 +74,4 @@
 
 .body-part-summary-wrap {
   @include flex-grid-column(6);
-}
-
-.body-part-summary {
-  @include border-radius-with-dark-box-shadow;
-  background: $white;
-  padding: rem(15px) rem(30px);
-
-  p:first-of-type strong {
-    font-size: rem(16px);
-    line-height: 1.25;
-  }
-
-  strong {
-    font-weight: $open-sans-extrabold;
-  }
 }

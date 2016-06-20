@@ -1,4 +1,4 @@
-.team-member.wellbeing {
+.team-member {
   padding: rem-calc(10px);
 
   .name {
@@ -20,5 +20,27 @@
 
   span {
     font-weight: $open-sans-bold;
+  }
+}
+
+.page-author-information {
+  @include border-radius-with-dark-box-shadow;
+  background: $white;
+  margin: rem(25px) 0;
+
+  .team-member {
+    @include flex-grid-row;
+
+    .name {
+      padding: 0 0 rem(5px);
+    }
+  }
+
+  .image {
+    @include flex-grid-column(3, $gutter: ( small: 0 ));
+  }
+
+  .basic-details {
+    @include flex-grid-column(9, $gutter: ( small: 10 ));
   }
 }

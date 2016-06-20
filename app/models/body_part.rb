@@ -1,7 +1,7 @@
 class BodyPart < ActiveRecord::Base
   BODY_PARTS = [
-    "Ankle", "Elbow", "Foot", "Hip", "Knee",
-    "Lower Back", "Lower Leg", "Neck", "Shoulder", "Wrist"
+    'Ankle', 'Elbow', 'Foot', 'Hip', 'Knee',
+    'Lower Back', 'Lower Leg', 'Neck', 'Shoulder', 'Wrist'
   ].freeze
 
   extend FriendlyId
@@ -25,6 +25,6 @@ class BodyPart < ActiveRecord::Base
   delegate :name, to: :category, allow_nil: true
 
   def image
-    "body_parts/#{ name.downcase.gsub(" ", "_") }.jpg"
+    "body_parts/#{name.downcase.tr(' ', '_')}.jpg"
   end
 end

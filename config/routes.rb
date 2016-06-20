@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   get 'what-we-do', to: 'application#what_we_do'
-  get 'wellbeing-list', to: 'application#wellbeing_list'
-  get 'wellbeing', to: 'application#wellbeing'
-  get 'standard-page', to: 'application#standard_page'
+  # get 'wellbeing-list', to: 'application#wellbeing_list'
+  # get 'wellbeing', to: 'application#wellbeing'
+  # get 'standard-page', to: 'application#standard_page'
 
+  resources :contacts, only: [:new, :create]
   resources :pages, only: :show
 
   resources :articles, only: [:index, :show]
   resources :case_studies, only: [:index, :show], path: 'case-studies'
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
-  resources :team_members, only: [:index, :show]
+  resources :team_members, only: [:index, :show], path: 'team-members'
   resources :testimonials, only: [:index]
   resource :physio_search, only: [:create, :show], path: 'find-a-physio'
   namespace :wellbeing_zone, path: 'well-being-zone' do

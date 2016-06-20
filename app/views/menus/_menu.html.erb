@@ -1,7 +1,7 @@
-<div class="menu-container">
-  <nav class="secondary-menu">
-    <ul class="secondary-navigation">
-      <%= nested_menu_items(menu_items: menu.menu_items) %>
+<div class="hero-navigation-wrap">
+  <div class="hero-navigation">
+    <ul class="body-part-section-navigation-links">
+      <%= child_menu_items(menu_items: @page.side_menus.last.child_menu_items(@page)) %>
     </ul>
-  </nav>
+  </div>
 </div>
