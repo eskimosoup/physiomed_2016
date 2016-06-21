@@ -75,7 +75,10 @@ a.button.brown-background:hover {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    width: $grid-row-width;
+
+    @include media('>768px') {
+      width: $grid-row-width;
+    }
   }
 
   section.box-wrap, section.flexbox-wrap {

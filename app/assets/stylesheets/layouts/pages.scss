@@ -11,32 +11,43 @@
   }
 }
 
-.page-content-wrap {
-  @include flex-grid-column(6);
+@include media('>768px') {
+  .page-content-wrap {
+    @include flex-grid-column(6);
 
-  &.full-width {
-    @include flex-grid-column(9);
+    &.full-width {
+      @include flex-grid-column(9);
+    }
   }
 }
 
 .hero-section {
-  background: image-url('layout/mask.png') no-repeat top center,
-              image-url('layout/photography/wellbeing-zone.jpg') no-repeat top center,
-              $beige;
+  background: $beige;
   margin: 0 auto;
-  padding: rem(140px) 0 0;
+  padding: rem(10px) 0;
   position: relative;
 
-  &.body-part-background {
+  @include media('>768px') {
     background: image-url('layout/mask.png') no-repeat top center,
-                image-url('layout/photography/wellbeing-body-part.jpg') no-repeat top center,
+                image-url('layout/photography/wellbeing-zone.jpg') no-repeat top center,
                 $beige;
+
+
+    padding: rem(140px) 0 0;
   }
 
-  &.what-we-do-background {
-    background: image-url('layout/photography/what-we-do.jpg') no-repeat top center,
-                $beige;
-    padding: 0;
+  @include media('>768px') {
+    &.body-part-background {
+      background: image-url('layout/mask.png') no-repeat top center,
+                  image-url('layout/photography/wellbeing-body-part.jpg') no-repeat top center,
+                  $beige;
+    }
+
+    &.what-we-do-background {
+      background: image-url('layout/photography/what-we-do.jpg') no-repeat top center,
+                  $beige;
+      padding: 0;
+    }
   }
 }
 
@@ -53,18 +64,29 @@
 }
 
 .hero-section-title {
-  color: $white;
   font-family: $open-sans;
   font-size: rem(38px);
   font-weight: $open-sans-bold;
   margin-left: auto;
   margin-right: auto;
-  max-width: calc(#{$global-width} - 80px);
   text-align: center;
-  text-shadow: 1px 1px 9px rgba($black, .5);
+
+  @include media('>768px') {
+    color: $white;
+    max-width: calc(#{$global-width} - 80px);
+    text-shadow: 1px 1px 9px rgba($black, .5);
+  }
 
   &.full-width {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: rem(15px);
     text-align: left;
+
+    @include media('>768px') {
+      margin-bottom: rem(15px);
+      padding: 0;
+    }
   }
 
   &.page {

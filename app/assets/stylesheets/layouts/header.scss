@@ -1,6 +1,10 @@
 .primary-header {
   border-top: 2px solid $green;
-  margin: rem(0 0 35px);
+  margin: rem(0 0 5px);
+
+  @include media('>=768px') {
+    margin: rem(0 0 35px);
+  }
 }
 
 .primary-header-content-wrap {
@@ -8,21 +12,32 @@
 }
 
 .primary-header-content {
-  @include flex-grid-column(12);
+  @include media('>=768px') {
+    @include flex-grid-column(12);
+  }
 }
 
 .primary-header-branding {
-  @include flex-grid-column(2);
-  clear: right;
+  @include media('>=768px') {
+    @include flex-grid-column(2);
+    clear: right;
+  }
 }
 
 .primary-header-navigation-wrap {
-  @include flex-grid-column(8);
+  @include media('>=768px') {
+    @include flex-grid-column(8);
+  }
 }
 
 .primary-header-cta {
-  @include flex-grid-column(2);
-  text-align: right;
+  display: none;
+
+  @include media('>=768px') {
+    @include flex-grid-column(2);
+    display: block;
+    text-align: right;
+  }
 }
 
 .client-area-button {

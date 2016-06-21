@@ -11,8 +11,10 @@
   }
 
   .service-standard-wrap {
-    @include flex-grid-layout(7, '.service-standard');
-    display: flex;
+    @include media('>768px') {
+      @include flex-grid-layout(7, '.service-standard');
+      display: flex;
+    }
   }
 
   .additional-home-content {
@@ -31,10 +33,18 @@
     padding: 0;
   }
 
-  .additional-home-content,.physio-search,.case-studies-container,.testimonials-container {
-    width: 32%;
-    padding: rem-calc(20px);
+  .additional-home-content,
+  .physio-search,
+  .case-studies-container,
+  .testimonials-container {
     @include border-radius-with-box-shadow;
+    margin: rem-calc(25px) 0;
+    padding: rem-calc(20px);
+
+    @include media('>768px') {
+      margin: 0;
+      width: 32%;
+    }
   }
 
   .physio-search {
@@ -115,7 +125,11 @@
     position: relative;
     .slick-controls {
       float: right;
-      margin: rem(20px 10px 0 15px);
+
+      @include media('>768px') {
+        margin: rem(20px 10px 0 15px);
+      }
+
       //position: absolute;
       //top: rem-calc(45px);
       //right: rem-calc(25px);
@@ -140,5 +154,13 @@
     padding: rem-calc(20px);
     @include border-radius-with-box-shadow;
     @include flex-grid-column(12);
+  }
+
+  .flexbox-wrap {
+    display: block;
+
+    @include media('>=768px') {
+      display: flex;
+    }
   }
 }

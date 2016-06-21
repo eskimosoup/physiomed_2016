@@ -21,7 +21,14 @@
 }
 
 .page-contact-methods-wrap {
-  @include flex-grid-column(3);
+  margin: rem(10px) 0;
+  width: 100%;
+
+  @include media('>768px') {
+    @include flex-grid-column(3);
+    margin: 0;
+  }
+
   @media screen {
     padding-right: 0;
   }

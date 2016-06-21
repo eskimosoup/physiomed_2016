@@ -1,6 +1,8 @@
 .hero-section-primary-content {
-  @include flex-grid-row;
-  text-align: left;
+  @include media('>768px') {
+    @include flex-grid-row;
+    text-align: left;
+  }
 }
 
 .hero-navigation-wrap {

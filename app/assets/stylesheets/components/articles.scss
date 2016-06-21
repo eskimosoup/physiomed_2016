@@ -103,10 +103,13 @@
 
 .article,
 .case-study {
-  @include flex-grid-row;
   border-bottom: 1px solid $beige;
   margin-bottom: rem(10px);
   padding-bottom: rem(10px);
+
+  @include media('>768px') {
+    @include flex-grid-row;
+  }
 
   .button {
     background: $brown;
@@ -133,11 +136,15 @@
   }
 
   .content.has-aside {
-    @include flex-grid-column(8, $gutter: (small: 0));
+    @include media('>768px') {
+      @include flex-grid-column(8, $gutter: (small: 0));
+    }
   }
 
   .aside-wrap {
-    @include flex-grid-column(4);
+    @include media('>768px') {
+      @include flex-grid-column(4);
+    }
   }
 
   .entry-image {

@@ -1,7 +1,6 @@
 .social-links-wrap {
   background: $beige;
-  // padding: rem(100px 0 0);
-}
+  padding: rem(60px 0 0);}
 
 .social-links {
   @include flex-grid-row;

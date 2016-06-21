@@ -1,17 +1,19 @@
 <head>
-  <title>Physiomed2016</title>
 
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <title><%= "#{@title} - " if @title %><%= global_site_settings['Name'] %></title>
 
+  <%= tag :meta, name: 'description', content: @meta_description if @meta_description %>
+  <%= tag :meta, name: 'keywords', content: @meta_tags if @meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
 
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-
-  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css' %>
+  <%= javascript_include_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js' %>
 
   <%= yield :head %>
-
-  <%= csrf_meta_tags %>
 
   <script src="https://use.typekit.net/qmb4xev.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
