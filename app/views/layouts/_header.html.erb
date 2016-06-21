@@ -1,3 +1,19 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).on({
+    mouseenter: function (e) {
+      var $dropdown = $(this).find('.dropdown-arrow');
+      var marginLeft = parseInt($(this).find('.menu-link').width() / 2) - (parseInt($dropdown.width()) / 2)
+      $dropdown.toggleClass('visible');
+      $dropdown.css('margin-left', marginLeft);
+    },
+    mouseleave: function () {
+      $(this).find('.dropdown-arrow').toggleClass('visible').removeAttr('style');
+    }
+    }, '.primary-header-navigation li');
+  </script>
+<% end %>
+
 <header class="primary-header">
   <div class="primary-header-content-wrap">
     <div class="primary-header-content">

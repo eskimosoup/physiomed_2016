@@ -1,6 +1,11 @@
 <div class="case-study">
-  <%= link_to case_study.title, case_study %>
-  <%= simple_format case_study.summary %>
-  <%= image_tag case_study.image.index, alt: case_study.title if case_study.image? %>
-  <%= link_to "Read More", case_study %>
+  <div class="content <%= 'has-aside' if case_study.image.present? %>">
+    <%= link_to case_study.title, case_study, class: 'title' %>
+
+    <%= simple_format case_study.summary %>
+
+    <%= link_to "Read more", case_study, class: 'button' %>
+  </div>
+
+  <%= content_tag :div, (image_tag case_study.image.index, alt: case_study.title, class: 'entry-image'), class: 'aside-wrap' if case_study.image? %>
 </div>
