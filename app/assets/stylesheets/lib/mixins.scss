@@ -13,9 +13,14 @@
   font-size: rem(21px);
   color: $brown;
   font-weight: $open-sans-light;
-  margin: rem(15px 5px 25px);
-  padding: rem(0 20px 10px);
+  margin: rem(5px);
+  padding: rem(0 5px 10px);
   text-transform: uppercase;
+
+  @include media('>768px') {
+    margin: rem(15px 5px 25px);
+    padding: rem(0 20px 10px);
+  }
 }
 
 // Functions

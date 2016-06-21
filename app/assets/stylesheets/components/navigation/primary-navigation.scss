@@ -72,5 +72,9 @@
 
 // Stop the two line content flash, until the font has loaded
 .wf-active .primary-header-navigation .menu-link {
-  padding: rem(0 8px 30px);
+  padding: rem(0 8px 5px);
+  
+  @include media('>=768px') {
+    padding: rem(0 8px 30px);
+  }
 }

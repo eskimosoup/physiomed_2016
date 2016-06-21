@@ -1,10 +1,14 @@
 <div class="home-health-zone">
   <% present health_zone do |health_zone_presenter| %>
     <div class="home-health-zone-content">
-      <%= health_zone_presenter.show_home_image %>
+      <%= link_to health_zone_presenter.link, class: 'home-health-zone-image-link' do %>
+        <%= health_zone_presenter.show_home_image %>
+      <% end %>
 
       <div class="home-health-zone-hover">
-        <%= health_zone_presenter.hover_text %>
+        <%= link_to health_zone_presenter.link do %>
+          <%= health_zone_presenter.hover_text %>
+        <% end %>
       </div>
   </div>
 

@@ -1,6 +1,8 @@
 .home {
   .testimonials-container {
-    @include flex-grid-column(4);
+    @include media('>768px') {
+      @include flex-grid-column(4);
+    }
   }
 
   .testimonial-title {
@@ -19,7 +21,11 @@
 }
 
 .testimonials.slick-slider {
-  margin: 0 rem(20px);
+  margin: 0 rem(10px);
+  
+  @include media('>768px') {
+    margin: 0 rem(20px);
+  }
 }
 
 .testimonials-container.wellbeing.green-background {

@@ -1,36 +1,44 @@
 .service-standards-wrap {
-  background: image-url('service-standards/background.jpg') center no-repeat;
   // box-shadow: 0 4px 10px 0 rgba($black ,0.36);
-  margin: rem(50px 0);
-  padding: rem(60px 0 70px);
+  margin: rem(15px) 0 0;
+
+  @include media('>768px') {
+    background: image-url('service-standards/background.jpg') center no-repeat;
+    margin: rem(50px 0);
+    padding: rem(60px 0 70px);
+  }
 }
 
 .service-standard-wrap {
-  box-shadow: 0 1px 10px 0 rgba($black ,0.36);
+  box-shadow: 0 1px 10px 0 rgba($black, .36);
 }
 
 .service-standard {
   background: $green linear-gradient(to bottom, $green 0%, $dark-green 100%);
   border-right: 1px solid $white;
   color: $white;
-  transition: background-color 500ms linear;
-  padding: rem-calc(20px 10px);
+  padding: rem-calc(10px);
   text-align: center;
-  min-height: 220px;
+  transition: background-color 500ms linear;
+
+  @include media('>768px') {
+    min-height: 220px;
+    padding: rem-calc(20px 10px);
+  }
 
   .arrow-down {
-    width: 0;
-    height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-top: 20px solid $white;
+    height: 0;
     margin: rem-calc(5px) auto;
+    width: 0;
   }
 
   &:hover {
     background-color: $brown;
-    transition: background-color 500ms linear;
     cursor: pointer;
+    transition: background-color 500ms linear;
   }
 
   &:last-child {
@@ -39,8 +47,12 @@
 }
 
 .service-standards-title {
-  color: $white;
   font-size: rem(18px);
   font-weight: 400;
-  margin: rem(0 0 45px);
+  margin: 0 0 rem(15px);
+
+  @include media('>768px') {
+    color: $white;
+    margin: rem(0 0 45px);
+  }
 }

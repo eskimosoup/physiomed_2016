@@ -11,9 +11,17 @@ $(document).ready(function() {
 
 $(document).on({
   mouseenter: function (e) {
-    $(this).closest('div').find('.home-health-zone-hover').slideToggle();
+    $(this).closest('div').find('.home-health-zone-hover').slideDown();
   },
   mouseleave: function () {
-    $(this).closest('div').find('.home-health-zone-hover').slideToggle();
+    $(this).closest('div').find('.home-health-zone-hover').slideUp();
   }
 }, '.home-health-zone-link');
+
+$(document).on('mouseenter', '.home-health-zone-image-link', function() {
+  $(this).closest('div').find('.home-health-zone-hover').slideDown();
+});
+
+$(document).on('mouseleave', '.home-health-zone-hover', function() {
+  $(this).slideUp();
+});
