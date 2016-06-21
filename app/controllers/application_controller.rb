@@ -8,19 +8,7 @@ class ApplicationController < ActionController::Base
 
   before_action :global_site_settings
 
-  def wellbeing
-    render layout: nil
-  end
-
-  def wellbeing_list
-    render layout: nil
-  end
-
   def what_we_do
-  end
-
-  def standard_page
-    render layout: nil
   end
 
   private
