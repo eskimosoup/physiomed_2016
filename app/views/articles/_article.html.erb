@@ -1,11 +1,26 @@
 <div class="article">
-  <%= image_tag article.image.index, title: article.title if article.image.present? %>
-  <%= link_to article.title, article, class: "title" %>
-  <%= render(
-    partial: "team_members/author",
-    locals: {
-      team_member: article.author
-    }
-  ) if article.author %>
-  <%= simple_format article.summary %>
+  <div class="content <%= 'has-aside' if article.image.present? || article.author.present? %>">
+    <%= link_to article.title, article, class: 'title' %>
+
+    <div class="date">
+      <%= l article.date, format: :long %>
+    </div>
+
+    <%= simple_format article.summary %>
+
+    <%= link_to 'Read more', article, class: 'button' %>
+  </div>
+
+  <% if article.image.present? || article.author.present? %>
+    <div class="aside-wrap">
+      <%= image_tag article.image.index, alt: article.title, class: 'entry-image' if article.image.present? %>
+
+      <%= render(
+        partial: "team_members/author",
+        locals: {
+          team_member: article.author
+        }
+      ) if article.author %>
+    </div>
+  <% end %>
 </div>

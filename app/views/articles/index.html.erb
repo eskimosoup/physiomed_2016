@@ -1,8 +1,32 @@
-<div class="content">
-  <h1>Latest News</h1>
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title full-width">
+      Latest News
+    </h1>
+  </div>
 
-  <%= render(
-    partial: "articles/article",
-    collection: @articles
-  ) %>
+  <div class="hero-section-primary-content">
+    <div class="page-content-wrap full-width">
+      <div class="page-content">
+        <%= render(
+          partial: "articles/article",
+          collection: @articles
+        ) %>
+
+        <%= paginate @articles %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

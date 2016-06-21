@@ -1,0 +1,18 @@
+.pagination {
+  a {
+    @include pagination-base;
+    background: $beige;
+    color: $dark-brown-offset;
+
+    &:hover {
+      background: $dark-brown;
+      color: $beige;
+    }
+  }
+
+  .current {
+    @include pagination-base;
+    background: $beige;
+    color: $mud-brown;
+  }
+}

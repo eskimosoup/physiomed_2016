@@ -49,6 +49,11 @@
   }
 }
 
+@mixin pagination-base {  
+  display: inline-block;
+  padding: rem(5px) rem(10px);
+}
+
 @mixin module-container-title-header {
   font-size: rem(18px);
   font-weight: 400;

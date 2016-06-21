@@ -1,9 +1,46 @@
-<% if @results.present? %>
-  <%= render(
-    partial: "physio_searches/result",
-    collection: @results,
-    as: :practice
-  ) %>
-<% else %>
-  Found 0 results
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/physio-searches' %>
 <% end %>
+
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title page full-width">
+      Find a Physio
+    </h1>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="page-content-wrap full-width">
+      <div class="page-content">
+        <p>We have found <%= pluralize(@results.size, 'result') %> for your search.</p>
+
+        <div id="physio-search-map-canvas" class="find-a-physio-map-canvas" data-locations="<%= @results.to_json %>">
+        </div>
+
+        <% if @results.present? %>
+          <div class="physio-search-results-list">
+            <%= render(
+              partial: "physio_searches/result",
+              collection: @results,
+              as: :practice
+            ) %>
+          </div>
+        <% else %>
+          Found 0 results
+        <% end %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

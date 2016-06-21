@@ -1,4 +1,9 @@
-<div class="physio-search-result">
-  <%= practice.name %>
-  <%= practice.distance.round(2) %> miles
+<div class="physio-search-result physio-search-result-<%= practice_counter %>">
+  <div class="physio-search-result-name">
+    <%= practice.name %>
+
+    <span class="physio-search-result-distance">
+      <%= practice.distance.round(2) %> miles
+    </span>
+  </div>
 </div>

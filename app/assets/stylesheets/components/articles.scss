@@ -1,5 +1,10 @@
 .article.home {
+  border: 0;
   padding: rem-calc(15px);
+
+  .team-member {
+    display: none;
+  }
 
   .title {
     display: block;
@@ -94,4 +99,74 @@
 
 .articles-container-title {
   @include module-container-title;
+}
+
+.article,
+.case-study {
+  @include flex-grid-row;
+  border-bottom: 1px solid $beige;
+  margin-bottom: rem(10px);
+  padding-bottom: rem(10px);
+
+  .button {
+    background: $brown;
+    margin: rem(15px) 0 0;
+
+    &:hover {
+      background: $mud-brown;
+    }
+  }
+
+  .title {
+    display: block;
+    font-size: rem(18px);
+    font-weight: $open-sans-bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .date {
+    color: $dark-brown-offset;
+    font-size: rem(12px);
+  }
+
+  .content.has-aside {
+    @include flex-grid-column(8, $gutter: (small: 0));
+  }
+
+  .aside-wrap {
+    @include flex-grid-column(4);
+  }
+
+  .entry-image {
+    // @include flex-grid-column(3, $gutter: (small: 0));
+    margin: rem(24px) 0 0;
+    text-align: right;
+  }
+
+  .team-member {
+    @include flex-grid-row;
+    margin: rem(15px) 0 0;
+    padding: 0;
+
+    .image {
+      @include flex-grid-column(3, $gutter: (small: 0));
+    }
+  }
+
+  .basic-details {
+    @include flex-grid-column(9, $gutter: (small: 0));
+  }
+
+  .team-member .name,
+  .team-member .role {
+    margin: 0;
+    padding: rem(4px) 0;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
 }
