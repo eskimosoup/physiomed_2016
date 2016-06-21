@@ -1,8 +1,4 @@
 FactoryGirl.define do
-  factory :categories_frequently_asked_question, class: 'Categories::FrequentlyAskedQuestion' do
-    category nil
-    frequently_asked_question nil
-  end
   factory :text_additional_home_content, class: AdditionalHomeContent do
     title "MyString"
     content_type "text_content"
@@ -153,6 +149,18 @@ FactoryGirl.define do
     end
 
     factory :health_zone_with_image, traits: [:image]
+  end
+
+  factory :page do
+    sequence(:id) { |n| n }
+    title 'Page title'
+    style 'basic'
+    layout 'application'
+    content '<p>test</p>'
+    trait :with_image do
+      image { File.open(File.join(Rails.root, 'spec/support/images/landscape_image.jpg')) }
+    end
+    factory :page_with_image, traits: [:with_image]
   end
 
   factory :people_helped_section do
