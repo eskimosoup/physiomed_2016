@@ -15,8 +15,9 @@
 }
 
 .home.case-study {
-  text-align: center;
+  border-bottom: 0;
   margin: 0 rem(10px);
+  text-align: center;
 
   .main-content {
     text-align: left;
@@ -34,6 +35,7 @@
 
 .wellbeing.case-study {
   @include flex-grid-row;
+  border-bottom: 0;
 
   a:hover {
     color: $green;
