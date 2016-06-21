@@ -1,5 +1,10 @@
 .article.home {
+  border: 0;
   padding: rem-calc(15px);
+
+  .team-member {
+    display: none;
+  }
 
   .title {
     display: block;

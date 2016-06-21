@@ -25,6 +25,6 @@ class BodyPart < ActiveRecord::Base
   delegate :name, to: :category, allow_nil: true
 
   def image
-    "body_parts/#{name.downcase.tr(' ', '_')}.jpg"
+    "body_parts/#{name.downcase.tr(' ', '_')}.jpg" if name
   end
 end

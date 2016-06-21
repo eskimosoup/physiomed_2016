@@ -55,13 +55,11 @@
       articles: @wellbeing_facade.articles
     ) %>
     <div class="twitter-container brown-background">
-      <% twitter = 'optimisedhq' %>
-
       <%= link_to "https://twitter.com/#{twitter}", title: 'Twitter', class: 'twitter-link' do %>
         <%= image_tag "icons/twitter-brown.png", class: 'twitter-icon' %>
       <% end %>
 
-      <% tweets = twitter_timeline(twitter, 3) %>
+      <% tweets = twitter_timeline(global_site_settings['Twitter'].tr('@', ''), 3) %>
       <% tweets.each do |tweet| %>
         <div class="tweet">
           <p class="tweet-text">

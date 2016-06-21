@@ -3,7 +3,7 @@
     <div class="social-links">
       <ul class="social-links-list">
         <%= content_tag :li, (link_to (image_tag 'icons/footer-social/facebook.png', alt: 'Facebook'), global_site_settings['Facebook'], title: 'Facebook') if global_site_settings['Facebook'] %>
-        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/twitter.png', alt: 'Twitter'), global_site_settings['Twitter'], title: 'Twitter') if global_site_settings['Twitter'] %>
+        <%= content_tag :li, (link_to (image_tag 'icons/footer-social/twitter.png', alt: 'Twitter'), "http://twitter.com/#{global_site_settings['Twitter'].tr('@', '')}", title: 'Twitter') if global_site_settings['Twitter'] %>
         <%= content_tag :li, (link_to (image_tag 'icons/footer-social/pinterest.png', alt: 'Pinterest'), global_site_settings['Pinterest'], title: 'Pinterest') if global_site_settings['Pinterest'] %>
         <%= content_tag :li, (link_to (image_tag 'icons/footer-social/linked-in.png', alt: 'LinkedIn'), global_site_settings['LinkedIn'], title: 'LinkedIn') if global_site_settings['LinkedIn'] %>
         <%= content_tag :li, (link_to (image_tag 'icons/footer-social/youtube.png', alt: 'YouTube'), global_site_settings['YouTube'], title: 'YouTube') if global_site_settings['YouTube'] %>
