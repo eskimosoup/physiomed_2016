@@ -1,6 +1,21 @@
+.body-part-summary,
+.page-content {
+  @include border-radius-with-dark-box-shadow;
+  @include page-styles;
+  background: $white;
+  padding: rem(15px) rem(30px);
+  position: relative;
+
+  .team-members {
+    padding: 0 rem(25px);
+  }
+}
+
 .page-content-wrap {
-  .page-content {
-    @include flex-grid-column(8);
+  @include flex-grid-column(6);
+
+  &.full-width {
+    @include flex-grid-column(9);
   }
 }
 
@@ -42,28 +57,35 @@
   font-family: $open-sans;
   font-size: rem(38px);
   font-weight: $open-sans-bold;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(#{$global-width} - 80px);
+  text-align: center;
   text-shadow: 1px 1px 9px rgba($black, .5);
-}
 
+  &.full-width {
+    text-align: left;
+  }
+
+  &.page {
+    margin-top: 0;
+  }
+}
 
 .hero-section-subtitle {
   color: $white;
   font-family: $open-sans;
   font-size: rem(18px);
   font-weight: $open-sans-bold;
-  text-shadow: 1px 1px 9px rgba($black, .5);
   margin: 0;
+  text-shadow: 1px 1px 9px rgba($black, .5);
 }
-
-
 
 .hero-section-button,
 .wellbeing-full-section-button {
-  background: $green;
-  background:
-  image-url('icons/button-arrow.png') no-repeat 95% 50%,
-  linear-gradient(to right, $dark-green 0%, $pale-green 100%),
-  $green;
+  background: image-url('icons/button-arrow.png') no-repeat 95% 50%,
+              linear-gradient(to right, $dark-green 0%, $pale-green 100%),
+              $green;
   display: inline-block;
   font-size: rem(16px);
   font-weight: $open-sans-bold;
@@ -83,4 +105,13 @@
   &.wellbeing-full-section-button {
     display: block;
   }
+}
+
+.page-content-image {
+  display: block;
+  margin: rem(15px) 0;
+}
+
+.page-content-footer {
+  margin: rem(15px) 0;
 }

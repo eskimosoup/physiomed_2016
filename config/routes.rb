@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   get 'what-we-do', to: 'application#what_we_do'
 
+  resources :contacts, only: [:new, :create]
   resources :pages, only: :show
   resources :articles, only: [:index, :show]
   resources :case_studies, only: [:index, :show], path: 'case-studies'
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
-  resources :team_members, only: [:index, :show]
+  resources :team_members, only: [:index, :show], path: 'team-members'
   resources :testimonials, only: [:index]
   resource :physio_search, only: [:create, :show], path: 'find-a-physio'
   namespace :wellbeing_zone, path: 'well-being-zone' do
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
+  get 'frequently_asked_questions/index'
+
   concern :imageable do
     member do
       get 'edit_images'

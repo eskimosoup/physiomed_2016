@@ -1,0 +1,37 @@
+input[type="submit"].submit-button {
+  background: $brown;
+  border: 0;
+  border-radius: 2px;
+  color: $white;
+  display: inline-block;
+  font-family: $ubuntu;
+  font-size: rem(16px);
+  padding: rem(12px);
+  transition: color .25s ease, background .25s ease;
+
+  &:hover {
+    background: $light-mud-brown;
+    color: $dark-brown-offset;
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+input[type='search'],
+textarea {
+  &:focus {
+    outline: 1px solid $green;
+  }
+}

@@ -2,9 +2,20 @@
   @include flex-grid-column(4);
 
   .faq-inner {
-    border-bottom: 1px solid $secondary-offset-white;
-    margin: 0 0 rem(30px);
     padding-bottom: rem(20px);
+  }
+
+  .answer {
+    font-size: rem(13px);
+    margin: rem(5px);
+  }
+}
+
+.faqs .faq {
+  .faq-inner {
+    border-bottom: 1px solid $secondary-offset-white;
+    margin: 0 0 rem(12px);
+    padding-bottom: rem(7px);
   }
 
   .answer {
@@ -19,12 +30,15 @@
   padding: rem(10px) 0;
 
   a {
+    display: block;
     font-size: rem(13px);
     font-weight: $open-sans-semibold;
   }
 
   .text {
+    display: block;
     padding-left: rem-calc(5px);
+    width: 100%;
   }
 }
 

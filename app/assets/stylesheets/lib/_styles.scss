@@ -1,3 +1,61 @@
+@mixin page-styles {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: $open-sans-light;
+  }
+
+  h2 {
+    font-size: rem(32px);
+  }
+
+  h3 {
+    font-size: rem(30px);
+  }
+
+  h4 {
+    font-size: rem(28px);
+  }
+
+  h5 {
+    font-size: rem(26px);
+  }
+
+  h4 {
+    font-size: rem(24px);
+  }
+
+  h5 {
+    font-size: rem(22px);
+  }
+
+  h6 {
+    font-size: rem(20px);
+  }
+
+  p {
+    font-family: $open-sans;
+
+    &:first-of-type strong {
+      font-size: rem(16px);
+      line-height: 1.25;
+    }
+  }
+
+  strong {
+    font-weight: $open-sans-extrabold;
+  }
+}
+
+@mixin module-container-title-header {
+  font-size: rem(18px);
+  font-weight: 400;
+  margin: rem(15px) rem(10px) 0;
+  padding: 0 0 rem(10px);
+}
+
 @mixin module-container-title {
   @include clearfix;
   border-bottom: 1px solid $green;
@@ -6,15 +64,12 @@
   @include media('>768px') {
     h2 {
       float: left;
-      font-size: rem(18px);
-      font-weight: 400;
-      margin: rem(15px) rem(10px) 0;
-      padding: 0 0 rem(10px);
+      @include module-container-title-header;
     }
 
     .button {
       float: right;
-      padding: rem(12px) rem(20px);
+      padding: rem(8px) rem(10px);
     }
   }
 }
@@ -27,11 +82,11 @@
   }
 
   a {
-    padding: rem-calc(20px);
-    margin-bottom: rem-calc(5px);
-    display: block;
-    width: 100%;
     @include flex-grid-row;
+    display: block;
+    margin-bottom: rem-calc(5px);
+    padding: rem-calc(20px);
+    width: 100%;
 
     .date {
       @include flex-grid-column(2);
