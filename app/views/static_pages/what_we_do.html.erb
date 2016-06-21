@@ -1,0 +1,45 @@
+<div class="hero-section what-we-do-background">
+  <div class="what-we-do-content-wrap">
+    <div class="what-we-do-content">
+      <h1 class="what-we-do-title">
+        We look after your staff, so your business looks after itself.
+      </h1>
+
+      <p>
+        By providing a single point of contact for the provision of
+        physiotherapy solutions, Physio Med helps employees to access high
+        quality occupational physiotherapy quickly and easily and, in turn,
+        assists businesses in reducing sickness absence levels and associated
+        costs.
+      </p>
+    </div>
+  </div>
+
+  <div class="content what-we-do-container">
+    <section class="flexbox-wrap">
+      <div class="what-we-do-summary-wrap">
+        <div class="what-we-do-summary-title">
+          <h2>Here's how we do it...</h2>
+        </div>
+
+        <div class="what-we-do-sections">
+          <%= render @facade.what_we_dos %>
+
+          <div class="page-contact-methods-wrap">
+            <div class="page-contact-methods">
+              <h4>
+                Talk to our clinical team
+              </h4>
+
+              <ul class="page-contact-method-links">
+                <%= render 'shared/contact_method_items' %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <%= image_tag 'layout/mask.png', alt: '', class: 'hero-section-overlay-mask' %>
+</div>

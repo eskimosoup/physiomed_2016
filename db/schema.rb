@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620090206) do
+ActiveRecord::Schema.define(version: 20160621150823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -413,6 +413,28 @@ ActiveRecord::Schema.define(version: 20160620090206) do
     t.text     "content"
   end
 
+  create_table "what_we_do_links", force: :cascade do |t|
+    t.integer  "what_we_do_id"
+    t.string   "title",                        null: false
+    t.string   "url",                          null: false
+    t.boolean  "display",       default: true, null: false
+    t.integer  "position",      default: 0,    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "what_we_do_links", ["what_we_do_id"], name: "index_what_we_do_links_on_what_we_do_id", using: :btree
+
+  create_table "what_we_dos", force: :cascade do |t|
+    t.string   "title",                      null: false
+    t.text     "content"
+    t.boolean  "display",     default: true, null: false
+    t.integer  "position",    default: 0,    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "links_count", default: 0,    null: false
+  end
+
   add_foreign_key "additional_home_contents", "videos"
   add_foreign_key "articles", "team_members", column: "author_id", on_delete: :cascade
   add_foreign_key "body_part_sections", "body_parts", on_delete: :cascade
@@ -432,4 +454,5 @@ ActiveRecord::Schema.define(version: 20160620090206) do
   add_foreign_key "categories_videos", "videos", on_delete: :cascade
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade
+  add_foreign_key "what_we_do_links", "what_we_dos", on_delete: :cascade
 end

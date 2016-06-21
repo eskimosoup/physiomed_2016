@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "Additional home content admin" do
-  it "creation" do
+  scenario "creation" do
     admin = create(:administrator)
 
     login_to_admin_as(admin)
@@ -16,7 +16,7 @@ describe "Additional home content admin" do
     expect(page).to have_admin_index "Content"
   end
 
-  it "editing" do
+  scenario "editing" do
     admin = create(:administrator)
     home_content = create(:text_additional_home_content, title: "old title")
 
@@ -30,7 +30,7 @@ describe "Additional home content admin" do
     expect(page).to have_admin_index "new title"
   end
 
-  it "destroying" do
+  scenario "destroying" do
     admin = create(:administrator)
     home_content = create(:text_additional_home_content, title: "old title")
 

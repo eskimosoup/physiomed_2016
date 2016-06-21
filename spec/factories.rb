@@ -230,6 +230,17 @@ FactoryGirl.define do
     display true
   end
 
+  factory :what_we_do do
+    title "MyString"
+    content "MyText"
+  end
+
+  factory :what_we_do_link do
+    what_we_do nil
+    title "MyString"
+    url "MyString"
+  end
+
   factory :video do
     title "My Video"
     subtitle "Some subtitle"

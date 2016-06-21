@@ -8,9 +8,6 @@ class ApplicationController < ActionController::Base
 
   before_action :global_site_settings
 
-  def what_we_do
-  end
-
   private
 
   def header_menu
