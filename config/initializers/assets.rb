@@ -16,4 +16,5 @@ Rails.application.config.assets.precompile += %w(
   components/*.js
   vendor/modernizr.js
   vendor/jquery.viewport.js
+  vendor/jquery.doubletaptogo.js
 )

@@ -5,7 +5,15 @@ $(document).ready(function() {
     autoplay: false,
     arrows: true,
     prevArrow: '.slick-health-zone.slick-prev',
-    nextArrow: '.slick-health-zone.slick-next'
+    nextArrow: '.slick-health-zone.slick-next',
+    responsive: [
+    {
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }]
   });
 });
 

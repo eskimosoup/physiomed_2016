@@ -2,7 +2,12 @@
   @include border-radius-with-dark-box-shadow;
   background: $brown;
   color: $white;
+  margin: rem(10px);
   padding: rem(20px) rem(17px);
+
+  @include media('>=768px') {
+    margin: 0;
+  }
 
   h4 {
     @include content-box-title;
@@ -21,15 +26,14 @@
 }
 
 .page-contact-methods-wrap {
-  margin: rem(10px) 0;
-  width: 100%;
+  // margin: rem(10px) 0;
+  // width: 100%;
 
-  @include media('>768px') {
+  @include media('>=768px') {
     @include flex-grid-column(3);
-    margin: 0;
   }
 
-  @media screen {
+  @media screen and (min-width: 1024px) {
     padding-right: 0;
   }
 }

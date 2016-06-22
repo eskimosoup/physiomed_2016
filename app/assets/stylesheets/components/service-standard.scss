@@ -1,10 +1,13 @@
 .service-standards-wrap {
   // box-shadow: 0 4px 10px 0 rgba($black ,0.36);
-  margin: rem(15px) 0 0;
 
-  @include media('>768px') {
+  @include media('>=768px') {
     background: image-url('service-standards/background.jpg') center no-repeat;
-    margin: rem(50px 0);
+    margin: rem(50px 0 25px);
+    padding: rem(30px 0);
+  }
+
+  @include media('>=1024px') {
     padding: rem(60px 0 70px);
   }
 }
@@ -14,16 +17,37 @@
 }
 
 .service-standard {
+  @include clearfix;
   background: $green linear-gradient(to bottom, $green 0%, $dark-green 100%);
-  border-right: 1px solid $white;
   color: $white;
-  padding: rem-calc(10px);
+  padding: rem-calc(5px);
   text-align: center;
   transition: background-color 500ms linear;
 
-  @include media('>768px') {
+  @include media('>=768px') {
+    border-right: 1px solid $white;
     min-height: 220px;
     padding: rem-calc(20px 10px);
+  }
+
+  img {
+    @include media('<768px') {
+      float: left;
+      margin: rem(-10px 15px 0 0);
+    }
+  }
+
+  p {
+    font-size: rem(14px);
+    text-align: left;
+
+    @include media('>=768px', '<1024px') {
+      text-align: center;
+    }
+
+    @include media('>=1024px') {
+      font-size: rem(16px);
+    }
   }
 
   .arrow-down {
@@ -51,7 +75,7 @@
   font-weight: 400;
   margin: 0 0 rem(15px);
 
-  @include media('>768px') {
+  @include media('>=768px') {
     color: $white;
     margin: rem(0 0 45px);
   }

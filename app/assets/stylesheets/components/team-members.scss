@@ -2,8 +2,16 @@
   padding: rem-calc(10px);
 
   .name {
-    padding: rem-calc(10px) 0;
     border-bottom: 1px solid $brown;
+    padding: rem-calc(10px 0);
+
+    @include media('<768px') {
+      padding: rem-calc(5px 0);
+
+      br {
+        display: none;
+      }
+    }
   }
 
   .role {
@@ -19,7 +27,12 @@
   }
 
   span {
+    display: block;
     font-weight: $open-sans-bold;
+
+    @include media('>=768px') {
+      display: inline-block;
+    }
   }
 }
 
@@ -42,5 +55,11 @@
 
   .basic-details {
     @include flex-grid-column(9, $gutter: ( small: 10 ));
+  }
+}
+
+.wellbeing.team-member {
+  img {
+    margin: 0 auto;
   }
 }

@@ -11,8 +11,8 @@
     background-color: $white;
 
     .body-parts {
-      width: 100%;
       @include flex-grid-row;
+      width: 100%;
     }
   }
 
@@ -20,8 +20,8 @@
     @include border-radius-with-box-shadow;
     @include flex-grid-column(12);
     background-color: $white;
-    padding-top: rem-calc(20px);
     padding-bottom: rem-calc(20px);
+    padding-top: rem-calc(20px);
     position: relative;
 
     .team-members {
@@ -32,29 +32,39 @@
 
   .people-helped-section {
     @include border-radius-with-box-shadow;
-    width: 33%;
     padding: rem-calc(15px);
+    width: 33%;
   }
 
   .video-section {
     @include border-radius-with-box-shadow;
     background-color: $white;
     padding: rem-calc(15px);
-    width: 65.5%;
+    width: 100%;
+
+    @include media('>=768px') {
+      width: 65.5%;
+    }
   }
 
   .articles-container {
     @include border-radius-with-box-shadow;
     background-color: $white;
     padding: rem-calc(15px);
-    width: 65.5%;
+
+    @include media('>=768px') {
+      width: 65.5%;
+    }
   }
 
   .twitter-container {
     @include border-radius-with-box-shadow;
     color: $white;
     padding: rem-calc(15px);
-    width: 33%;
+
+    @include media('>=768px') {
+      width: 33%;
+    }
   }
 
   .faqs-container {
@@ -71,12 +81,26 @@
     @include border-radius-with-box-shadow;
     background-color: $white;
     padding: rem-calc(15px);
-    width: 65.5%;
+
+    @include media('>=768px') {
+      width: 65.5%;
+    }
   }
 
   .testimonials-container {
     @include border-radius-with-box-shadow;
+    margin: rem(15px) 0;
     padding: rem-calc(15px);
-    width: 33%;
+
+    @include media('>=768px') {
+      margin: 0;
+      width: 33%;
+    }
+  }
+
+  .case-studies-and-testimonials {
+    @include media('<768px') {
+      display: block;
+    }
   }
 }

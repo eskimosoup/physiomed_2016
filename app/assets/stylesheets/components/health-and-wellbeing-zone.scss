@@ -1,26 +1,44 @@
 .health-wellbeing-zone-wrap {
-  @include flex-grid-row;
   @include border-radius-with-box-shadow;
-  background: $white;
-  bottom: -180px;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, 0);
+  margin: rem(10px);
+
+  @include media('>=1024px') {
+    @include flex-grid-row;
+    background: $white;
+    bottom: -180px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 0);
+  }
 
   h2 {
     color: $dark-brown;
-    font-size: rem(18px);
-    font-weight: 400;
-    margin: rem(31px 0);
-    padding: rem(0 0 20px);
+    font-size: rem(21px);
+    font-weight: 300;
+    margin: rem(0 0 15px);
+    text-align: left;
     text-transform: uppercase;
+
+    @include media('>=768px') {
+      font-size: rem(18px);
+      margin: rem(31px 0);
+      padding: rem(0 0 20px);
+      text-align: center;
+    }
   }
 }
 
 .health-wellbeing-zone {
   @include flex-grid-column(12);
-  min-width: 1200px;
-  padding-bottom: rem(30px);
+  background: $white;
+  border-radius: 6px;
+  overflow: auto;
+  padding: rem(15px);
+  position: relative;
+
+  @include media('>=768px') {
+    padding: rem(0 15px 30px);
+  }
 }
 
 .health-zones-wrap {

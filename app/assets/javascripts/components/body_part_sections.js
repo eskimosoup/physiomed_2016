@@ -8,7 +8,6 @@ $('.body-part-sections-container ul#tabs li a').click(function(e) {
 });
 
 function switchTab(linkClicked) {
-  console.log(linkClicked);
   $('.body-part-sections-container ul#tabs li').removeClass('current');
   $('.body-part-section').removeClass('current');
   tabLinks[linkClicked].addClass('current');
@@ -18,7 +17,7 @@ function switchTab(linkClicked) {
 $(document).ready(function() {
   var tabs = $('.body-part-sections-container ul#tabs li');
   tabs.each(function() {
-    var id = $(this).find("a").attr("href")
+    var id = $(this).find("a").attr("href");
     tabLinks[id] = $(this);
     bodyPartSections[id] = $(id);
   });

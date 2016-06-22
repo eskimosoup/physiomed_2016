@@ -1,10 +1,14 @@
 .video {
-  @include flex-grid-row;
-  .video-iframe {
-    @include flex-grid-column(6);
-  }
-  .basic-details {
-    @include flex-grid-column(6);
+  @include media('>=768px') {
+    @include flex-grid-row;
+
+    .video-iframe {
+      @include flex-grid-column(6);
+    }
+
+    .basic-details {
+      @include flex-grid-column(6);
+    }
   }
 
   h2 {

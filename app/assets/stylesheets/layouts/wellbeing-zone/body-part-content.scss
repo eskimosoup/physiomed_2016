@@ -1,79 +1,8 @@
-.hero-section-primary-content {
-  @include media('>768px') {
-    @include flex-grid-row;
-    text-align: left;
-  }
-}
-
-.hero-navigation-wrap {
-  @include flex-grid-column(3);
-  @media screen {
-    padding-left: 0;
-  }
-}
-
-.hero-navigation {
-  @include border-radius-with-dark-box-shadow;
-  background: $white;
-  padding: rem(23px) 0;
-}
-
-.hero-navigation-links {
-  background: $dark-brown-offset image-url('health-zone/body-part/body-part-navigation-background.jpg') repeat-x top left;
-  list-style: none;
-  margin: 0 0 rem(20px);
-  padding: rem(22px) 0;
-
-  a {
-    color: $white;
-    display: block;
-    font-size: rem(16px);
-    font-weight: $open-sans-bold;
-    padding: 0 rem(22px);
-
-    &:hover {
-      color: $beige;
-    }
-
-    &.current-body-part {
-      background: image-url('health-zone/white-mini-arrow-down.png') no-repeat 90% 50%;
-    }
-  }
-
-  li:hover .hero-navigation-links-dropdown {
-    display: block;
-  }
-}
-
-.hero-navigation-links-dropdown {
-  display: none;
-  list-style: none;
-  margin: 0;
-  padding: rem(10px) 0;
-
-  a {
-    padding-bottom: rem(2px);
-    padding-top: rem(2px);
-  }
-}
-
-.body-part-section-navigation-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  a {
-    display: block;
-    font-size: rem(15px);
-    font-weight: $open-sans-bold;
-    padding: rem(4px) rem(22px);
-
-    &:hover {
-      color: $black;
-    }
-  }
-}
-
 .body-part-summary-wrap {
-  @include flex-grid-column(6);
+  margin: rem(20px 10px);
+
+  @include media('>=768px') {
+    @include flex-grid-column(6);
+    margin: 0;
+  }
 }

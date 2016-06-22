@@ -55,7 +55,7 @@
       articles: @wellbeing_facade.articles
     ) %>
     <div class="twitter-container brown-background">
-      <%= link_to "https://twitter.com/#{twitter}", title: 'Twitter', class: 'twitter-link' do %>
+      <%= link_to "https://twitter.com/#{global_site_settings['Twitter'].tr('@', '')}", title: 'Twitter', class: 'twitter-link' do %>
         <%= image_tag "icons/twitter-brown.png", class: 'twitter-icon' %>
       <% end %>
 
@@ -80,7 +80,7 @@
     </div>
   </section>
 
-  <section class="flexbox-wrap">
+  <section class="flexbox-wrap case-studies-and-testimonials">
     <%= render(
       "wellbeing_zone/shared/case_studies_section",
       case_studies: @wellbeing_facade.case_studies

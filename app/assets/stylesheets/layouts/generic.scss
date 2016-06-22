@@ -51,7 +51,7 @@ h2 {
   text-align: center;
 }
 
-a.button {
+.button {
   color: $white;
   display: inline-block;
   font-family: $ubuntu;
@@ -59,30 +59,45 @@ a.button {
   padding: rem-calc(5px 10px);
   border-radius: rem-calc(3px);
   text-align: center;
-}
 
-a.button.brown-background:hover {
-  background-color: lighten($brown, 10%);
+  &.brown-background:hover {
+    background-color: lighten($brown, 10%);
+  }
 }
 
 .content {
-  section.box-wrap {
+  .box-wrap {
     @include flex-grid-row;
+
+    @include media('<=768px') {
+      max-width: 100%;
+    }
   }
 
-  section.flexbox-wrap {
-    margin: 0 auto;
+  .flexbox-wrap {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    margin: 0 auto;
 
     @include media('>768px') {
       width: $grid-row-width;
     }
   }
 
-  section.box-wrap, section.flexbox-wrap {
-    margin: rem-calc(20px) auto;
+  .box-wrap,
+  .flexbox-wrap {
+    padding: rem(20px 10px 0);
+
+    @include media('>768px') {
+      margin: rem-calc(20px) auto;
+      padding: 0;
+    }
+
+    .box-wrap {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 

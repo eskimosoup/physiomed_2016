@@ -36,7 +36,12 @@
   }
 
   p {
+    font-size: rem(14px);
     font-family: $open-sans;
+
+    //@include media('>=1024px') {
+    //  font-size: rem(16px);
+    //}
 
     &:first-of-type strong {
       font-size: rem(16px);
@@ -49,7 +54,7 @@
   }
 }
 
-@mixin pagination-base {  
+@mixin pagination-base {
   display: inline-block;
   padding: rem(5px) rem(10px);
 }
@@ -66,16 +71,14 @@
   border-bottom: 1px solid $green;
   margin-bottom: rem(15px);
 
-  @include media('>768px') {
-    h2 {
-      float: left;
-      @include module-container-title-header;
-    }
+  h2 {
+    @include module-container-title-header;
+    float: left;
+  }
 
-    .button {
-      float: right;
-      padding: rem(8px) rem(10px);
-    }
+  .button {
+    float: right;
+    padding: rem(8px) rem(10px);
   }
 }
 

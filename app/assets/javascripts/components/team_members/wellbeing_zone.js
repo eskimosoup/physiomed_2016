@@ -6,5 +6,13 @@ $(document).ready(function() {
     arrows: true,
     prevArrow: '.slick-team-members.slick-prev',
     nextArrow: '.slick-team-members.slick-next',
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1
+        }
+      },
+    ]
   });
 });

@@ -12,21 +12,28 @@
 }
 
 .primary-header-content {
+  width: 100%;
+
   @include media('>=768px') {
     @include flex-grid-column(12);
   }
 }
 
 .primary-header-branding {
+  width: 100%;
+
   @include media('>=768px') {
     @include flex-grid-column(2);
     clear: right;
   }
-}
 
-.primary-header-navigation-wrap {
-  @include media('>=768px') {
-    @include flex-grid-column(8);
+  a:not(.toggle-menu) {
+    display: block;
+    padding: rem(15px);
+
+    @include media('>=768px') {
+      padding: 0;
+    }
   }
 }
 
@@ -59,5 +66,19 @@
   &:hover,
   &:active {
     background: $green;
+  }
+}
+
+.toggle-menu {
+  position: absolute;
+  right: 30px;
+  top: 73px;
+
+  @include media('>=768px') {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer; // not that it matters
   }
 }
