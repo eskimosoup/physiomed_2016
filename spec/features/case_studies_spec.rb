@@ -8,6 +8,6 @@ feature "case studies" do
 
     expect(page).to have_content "Case Study #1"
     expect(page).to have_link "Case Study #1", href: case_study_path(case_study)
-    expect(page).to have_link "Read More", href: case_study_path(case_study)
+    expect(page).to have_link "Read more", href: case_study_path(case_study)
   end
 end
