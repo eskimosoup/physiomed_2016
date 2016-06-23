@@ -1,0 +1,40 @@
+.videos-with-guides-container {
+  @include flex-grid-column(12);
+  @include border-radius-with-dark-box-shadow;
+  background: $white;
+}
+
+.videos-with-guides-container-title {
+  @include module-container-title;
+}
+
+.video-with-guide {
+  @include flex-grid-row;
+  margin: 0 0 rem(15px);
+
+  .video-iframe,
+  .basic-details {
+    @include media('>=768px') {
+      @include flex-grid-column(5);
+    }
+  }
+
+  .guide {
+    @include media('>=768px') {
+      @include flex-grid-column(2);
+    }
+
+    .button {
+      margin: rem(10px) 0;
+      width: 100%;
+    }
+  }
+}
+
+.video-with-guide-title {
+  @include module-container-title-header;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 0;
+}
