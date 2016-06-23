@@ -7,7 +7,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.valid?
       ContactMailer.new_contact(@contact).deliver_now
-      redirect_to new_contact_path, notice: 'Thank you for your submission.'
+      redirect_to new_contact_path, 
+        notice: I18n.t('contacts.create.flash')
     else
       render :new
     end
