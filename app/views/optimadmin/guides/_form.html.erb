@@ -46,6 +46,12 @@
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
+      <div class="field">
+        <%= f.label :video_id %><br>
+        <%= f.select :video_id, Video.order(:title).pluck(:title, :id),
+          { include_blank: true } %>
+      </div>
+
       <%= render 'optimadmin/shared/category_select', f: f %>
 
       <div class="field">

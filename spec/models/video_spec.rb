@@ -7,6 +7,7 @@ RSpec.describe Video, type: :model do
   end
 
   describe 'associations' do
+    it { should have_one(:guide) }
     it { should have_many(:categories_videos).class_name("Categories::Video") }
     it { should have_many(:categories).through(:categories_videos) }
   end

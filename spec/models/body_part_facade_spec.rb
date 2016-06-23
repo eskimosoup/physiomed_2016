@@ -28,6 +28,42 @@ RSpec.describe BodyPartFacade do
     expect(facade.other_body_parts).to include(other_body_part)
   end
 
+  describe '#videos_with_guides' do
+    it 'gets videos that are displayed with guides that are displayed' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      displayed = create_video_with_guide(
+        display_video: true, display_guide: true, category: category)
+      not_displayed_video = create_video_with_guide(
+        display_video: false, display_guide: true, category: category)
+      not_displayed_guide = create_video_with_guide(
+        display_video: true, display_guide: false, category: category)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.videos_with_guides).to include(displayed)
+      expect(facade.videos_with_guides).not_to include(not_displayed_video)
+      expect(facade.videos_with_guides).not_to include(not_displayed_guide)
+    end
+
+    it 'does not get videos without guides' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      displayed = create_video_with_guide(display_video: true, 
+                                          display_guide: true, category: category)
+      not_displayed = create(:video, display: true, categories: [category])
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.videos_with_guides).to include(displayed)
+      expect(facade.videos_with_guides).not_to include(not_displayed)
+    end
+
+    def create_video_with_guide(display_video:, display_guide:, category:)
+      video = create(:video, display: display_video, categories: [category])
+      create(:guide, display: display_guide, video: video)
+      video
+    end
+  end
+
   describe '#people_helped_section' do
     it 'gets one with a section of wellbeing zone' do
       incorrect_category = create(:category, name: "Wellbeing Zone Overview")
@@ -235,6 +271,18 @@ RSpec.describe BodyPartFacade do
   end
 
   describe '#video' do
+    it 'gets videos without guides' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      video = create(:video, display: true, categories: [category])
+      video_with_guide = create(:video, display: true, categories: [category])
+      guide = create(:guide, video: video_with_guide)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.video).to eq(video)
+      expect(facade.video).not_to eq(video_with_guide)
+    end
+
     it 'gets videos through category' do
       category = create(:category, name: "Ankle")
       body_part = create(:body_part, category: category)
@@ -268,6 +316,18 @@ RSpec.describe BodyPartFacade do
 
       expect(facade.guides).to include(guide)
       expect(facade.guides).not_to include(no_category_guide)
+    end
+
+    it 'gets guides without videos' do
+      category = create(:category, name: "Ankle")
+      body_part = create(:body_part, category: category)
+      video = create(:video)
+      guide = create(:guide, display: true, categories: [category])
+      with_video = create(:guide, display: true, categories: [category], video: video)
+      facade = build_facade(body_part: body_part)
+
+      expect(facade.guides).to include(guide)
+      expect(facade.guides).not_to include(with_video)
     end
 
     it 'gets displayed guides' do
