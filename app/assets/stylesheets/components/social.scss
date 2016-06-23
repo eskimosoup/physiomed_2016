@@ -1,14 +1,23 @@
 .social-links-wrap {
   background: $beige;
-  padding: rem(60px 0 0);}
+  padding: rem(15px 0 0);
+
+  @include media('>=768px') {
+    padding: rem(60px 0 15px);
+  }
+}
 
 .social-links {
   @include flex-grid-row;
 }
 
 .social-links-list {
-  @include flex-grid-column(6);
   list-style: none;
+  width: 100%;
+
+  @include media('>=768px') {
+    @include flex-grid-column(6);
+  }
 
   li {
     display: inline-block;
@@ -18,8 +27,21 @@
 }
 
 .social-methods {
-  @include flex-grid-column(6);
+  bottom: 0;
+  padding: rem(0 15px);
+  position: fixed;
+  right: 0;
   text-align: right;
+
+  @include media('<1024px') {
+    bottom: 110px;
+    right: -120px;
+    transform: rotate(-90deg);
+  }
+
+  @include media('>=768px') {
+    @include flex-grid-column(6);
+  }
 }
 
 .contact-action {
@@ -30,8 +52,8 @@
   font-family: $ubuntu;
   font-size: rem(13px);
   font-weight: $ubuntu-light;
-  padding: rem(14px 44px 14px 14px);
   margin: rem(10px 0 0);
+  padding: rem(14px 44px 14px 14px);
 }
 
 .get-in-touch-action {

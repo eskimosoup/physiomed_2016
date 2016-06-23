@@ -9,3 +9,10 @@ $(document).on("click", ".toggle-class", function(e) {
     e.preventDefault();
   }
 });
+
+$(document).on('click', '.inline-modal', function(e) {
+  if (e.target !== this)
+    return;
+
+  $(this).removeClass('visible');
+});

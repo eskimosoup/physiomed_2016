@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include Optimadmin::AdminSessionsHelper
   helper_method :current_administrator
 
-  before_action :global_site_settings
+  before_action :global_site_settings, :physio_search
 
   private
 
@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
     @global_site_settings ||= Optimadmin::SiteSetting.current_environment
   end
   helper_method :global_site_settings
+
+  def physio_search
+    @physio_search ||= PhysioSearch.new
+  end
+  helper_method :physio_search
 end

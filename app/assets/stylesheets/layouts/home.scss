@@ -1,9 +1,17 @@
 .home.content {
   background-color: $beige;
-  padding: rem(220px 0 1px);
+  padding: rem(1px);
+
+  @include media('>=#{$grid-row-width}') {
+    padding: rem(220px 0 1px);
+  }
 
   .service-standards {
-    @include flex-grid-column(12);
+    width: 100%;
+
+    @include media('>=768px') {
+      @include flex-grid-column(12);
+    }
 
     h2 {
       text-align: center;
@@ -11,7 +19,7 @@
   }
 
   .service-standard-wrap {
-    @include media('>768px') {
+    @include media('>=768px') {
       @include flex-grid-layout(7, '.service-standard');
       display: flex;
     }
@@ -21,16 +29,20 @@
     background-color: $white;
 
     li {
-      font-size: rem(16px);
+      font-size: rem(14px);
       font-weight: $open-sans-bold;
       line-height: 1.5;
       list-style-image: image-url('tick.png');
       margin: rem(10px 0);
-    }
-  }
 
-  .additional-home-content.video {
-    padding: 0;
+      @include media('>768px') {
+        font-size: rem(16px);
+      }
+    }
+
+    .video {
+      padding: 0;
+    }
   }
 
   .additional-home-content,
@@ -41,84 +53,27 @@
     margin: rem-calc(25px) 0;
     padding: rem-calc(20px);
 
-    @include media('>768px') {
+    @include media('>=768px', '<1024px') {
+      margin: rem(25px 0);
+      width: 100%;
+    }
+
+    @include media('>=1024px') {
       margin: 0;
       width: 32%;
+    }
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
     }
   }
 
   .physio-search {
-    background-image: image-url('map/uk.png');
-    background-position: 95% 50%;
-    background-repeat: no-repeat;
-
-
-    .input-add-on {
-      display: flex;
-    }
-
-    .input-add-on-field {
-      flex: 1;
-    }
-
-    .input-add-on-field:not(:first-child) {
-      border-left: 0;
-    }
-
-    .input-add-on-field:not(:last-child) {
-      border-right: 0;
-    }
-
-    .input-add-on-item {
-      background-color: rgba(147, 128, 108, .1);
-      color: #666;
-      font: inherit;
-      font-weight: normal;
-    }
-
-    .input-add-on-field,.input-add-on-item {
-      border: 1px solid rgba(147, 128, 108, .25);
-      padding: .5em .75em;
-    }
-    .input-add-on-field:first-child,.input-add-on-item:first-child {
-      border-radius: 2px 0 0 2px;
-    }
-    .input-add-on-field:last-child,.input-add-on-item:last-child {
-      border-radius: 0 2px 2px 0;
-    }
-    input-add-on {
-      display: flex;
-    }
-
-    .input-add-on-field {
-      flex: 1;
-    }
-
-    .input-add-on-field:not(:first-child) {
-      border-left: 0;
-    }
-
-    .input-add-on-field:not(:last-child) {
-      border-right: 0;
-    }
-
-    .input-add-on-item {
-      background-color: rgba(147, 128, 108, .1);
-      color: #666;
-      font: inherit;
-      font-weight: normal;
-    }
-
-    .input-add-on-field,.input-add-on-item {
-      border: 1px solid rgba(147, 128, 108, .25);
-      padding: .5em .75em;
-    }
-    .input-add-on-field:first-child,.input-add-on-item:first-child {
-      border-radius: 2px 0 0 2px;
-    }
-    .input-add-on-field:last-child,.input-add-on-item:last-child {
-      border-radius: 0 2px 2px 0;
-    }
+    @include physio-search;
   }
 
   .case-studies-container {
@@ -127,39 +82,36 @@
       float: right;
 
       @include media('>768px') {
-        margin: rem(20px 10px 0 15px);
+        // margin: rem(20px 10px 0 15px);
       }
-
-      //position: absolute;
-      //top: rem-calc(45px);
-      //right: rem-calc(25px);
     }
   }
 
   .articles-container {
-    position: relative;
     @include border-radius-with-box-shadow;
     @include flex-grid-column(12);
     background-color: $white;
-    .articles {
-      width: 91%;
-      margin: 0 auto;
-    }
-    padding-top: rem-calc(20px);
     padding-bottom: rem-calc(20px);
+    padding-top: rem-calc(20px);
+    position: relative;
+
+    .articles {
+      margin: 0 auto;
+      width: 91%;
+    }
   }
 
   .clients-container {
-    background-color: $white;
-    padding: rem-calc(20px);
     @include border-radius-with-box-shadow;
     @include flex-grid-column(12);
+    background-color: $white;
+    padding: rem-calc(20px);
   }
 
   .flexbox-wrap {
     display: block;
 
-    @include media('>=768px') {
+    @include media('>=1024px') {
       display: flex;
     }
   }

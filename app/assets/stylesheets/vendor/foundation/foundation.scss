@@ -31,7 +31,7 @@
 // @import 'components/dropdown-menu';
 // @import 'components/dropdown';
 @import 'components/flex';
-// @import 'components/flex-video';
+@import 'components/flex-video';
 // @import 'components/label';
 // @import 'components/media-object';
 // @import 'components/menu';
@@ -110,3 +110,4 @@ $global-flexbox: true !global;
 @include foundation-global-styles;
 @include foundation-flex-grid;
 @include foundation-flex-classes;
+@include foundation-flex-video;

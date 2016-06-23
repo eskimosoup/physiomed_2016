@@ -11,7 +11,7 @@
   }
 }
 
-@include media('>768px') {
+@include media('>=768px') {
   .page-content-wrap {
     @include flex-grid-column(6);
 
@@ -65,7 +65,7 @@
 
 .hero-section-title {
   font-family: $open-sans;
-  font-size: rem(38px);
+  font-size: rem(28px);
   font-weight: $open-sans-bold;
   margin-left: auto;
   margin-right: auto;
@@ -73,6 +73,7 @@
 
   @include media('>768px') {
     color: $white;
+    font-size: rem(38px);
     max-width: calc(#{$global-width} - 80px);
     text-shadow: 1px 1px 9px rgba($black, .5);
   }

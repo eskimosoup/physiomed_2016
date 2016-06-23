@@ -3,8 +3,8 @@ footer {
   color: $white;
 
   .awards-container {
-    width: 100%;
     background-color: $white;
+    width: 100%;
   }
 
   .awards-title {
@@ -13,7 +13,6 @@ footer {
   }
 
   .footer-container {
-
     &.small-print {
       padding: rem(55px 0);
     }

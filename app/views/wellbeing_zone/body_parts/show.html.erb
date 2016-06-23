@@ -35,17 +35,21 @@
     }
 
     // Adapted from http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
-    var $root;
+    var $root, offsetTop = 0;
 
     function smoothScroll(elem) {
       $root.animate({
-        scrollTop: $(elem).offset().top - 51
+        scrollTop: $(elem).offset().top - offsetTop
       }, 500, function () {
         window.location.hash = elem;
       });
     }
 
     $(function() {
+      if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+        offsetTop = 50;
+      }
+
       $root = $('html, body');
 
       var windowAnchor = window.location.hash;
@@ -204,7 +208,7 @@
         ) %>
       </section>
 
-      <section class="flexbox-wrap">
+      <section class="flexbox-wrap  case-studies-and-testimonials">
         <%= render(
           "wellbeing_zone/shared/case_studies_section",
           case_studies: @body_part_facade.case_studies

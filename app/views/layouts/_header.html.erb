@@ -1,18 +1,22 @@
 <%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
   <script>
-    $(document).on({
-    mouseenter: function (e) {
-      var $dropdown = $(this).find('.dropdown-arrow');
-      var marginLeft = parseInt($(this).find('.menu-link').width() / 2) - (parseInt($dropdown.width()) / 2)
-      $dropdown.toggleClass('visible');
-      $dropdown.css('margin-left', marginLeft);
-    },
-    mouseleave: function () {
-      $(this).find('.dropdown-arrow').toggleClass('visible').removeAttr('style');
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      $(document).on({
+        mouseenter: function (e) {
+          var $dropdown = $(this).find('.dropdown-arrow');
+          var marginLeft = parseInt($(this).find('.menu-link').width() / 2) - (parseInt($dropdown.width()) / 2)
+          $dropdown.toggleClass('visible');
+          $dropdown.css('margin-left', marginLeft);
+        },
+        mouseleave: function () {
+          $(this).find('.dropdown-arrow').toggleClass('visible').removeAttr('style');
+        }
+      }, '.primary-header-navigation li');
     }
-    }, '.primary-header-navigation li');
   </script>
 <% end %>
+
 
 <header class="primary-header">
   <div class="primary-header-content-wrap">
@@ -23,9 +27,11 @@
 
   <div class="primary-header-content-wrap">
     <div class="primary-header-branding">
-      <%= link_to root_url do %>
-        <%= image_tag "logo.jpg", alt: "Physio Med", title: "Physio Med", id: "physiomed-logo" %>
+      <%= link_to root_url, title: "Physio Med" do %>
+        <%= image_tag "logo.jpg", alt: "Physio Med", id: "physiomed-logo" %>
       <% end %>
+      <%= link_to (image_tag 'icons/menu-icon.png', alt: 'Menu'), '#', class: 'toggle-menu toggle-class',
+                  data: { container: '.primary-header-navigation', class: 'visible', return: false } %>
     </div>
 
     <nav class="primary-header-navigation-wrap">

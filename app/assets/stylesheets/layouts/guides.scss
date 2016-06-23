@@ -1,21 +1,33 @@
 .guides-container {
   @include border-radius-with-dark-box-shadow;
   background: $white;
-  padding: rem(10px) rem(25px) rem(25px);
   text-align: left;
+  padding: rem(15px);
   width: 100%;
+
+  @include media('>=768px') {
+    padding: rem(10px) rem(25px) rem(25px);
+  }
 }
 
 .guides-container-title {
   @include content-box-title;
+  @include module-container-title-header;
   text-align: center;
 }
 
 .guides {
-  @include flex-grid-row;
+  @include media('>=768px') {
+    @include flex-grid-row;
+  }
 
   &.wellbeing .guide {
-    @include flex-grid-column(6, $gutter: (small: 0));
+    margin: rem(10px) 0;
+
+    @include media('>=768px') {
+      @include flex-grid-column(6, $gutter: (small: 0));
+      margin: rem(15px) auto;
+    }
   }
 }
 

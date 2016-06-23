@@ -107,7 +107,7 @@
   margin-bottom: rem(10px);
   padding-bottom: rem(10px);
 
-  @include media('>768px') {
+  @include media('>=768px') {
     @include flex-grid-row;
   }
 
@@ -136,13 +136,13 @@
   }
 
   .content.has-aside {
-    @include media('>768px') {
+    @include media('>=768px') {
       @include flex-grid-column(8, $gutter: (small: 0));
     }
   }
 
   .aside-wrap {
-    @include media('>768px') {
+    @include media('>=768px') {
       @include flex-grid-column(4);
     }
   }
@@ -159,18 +159,22 @@
     padding: 0;
 
     .image {
-      @include flex-grid-column(3, $gutter: (small: 0));
+      @include flex-grid-column(3, $gutter: (large: 0));
     }
   }
 
   .basic-details {
-    @include flex-grid-column(9, $gutter: (small: 0));
+    @include flex-grid-column(9, $gutter: (large: 0, medium: 10));
   }
 
   .team-member .name,
   .team-member .role {
     margin: 0;
-    padding: rem(4px) 0;
+    padding: 0;
+    
+    @include media('>=1024px') {
+      padding: rem(4px) 0;
+    }
   }
 
   p:last-of-type {
