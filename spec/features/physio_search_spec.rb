@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "searching for a physio" do
+RSpec.feature "searching for a physio" do
   it "has a result" do
     practice = create(:practice, name: "Hull")
 

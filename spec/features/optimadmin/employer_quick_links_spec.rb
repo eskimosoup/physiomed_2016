@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Employer quick links admin" do
+RSpec.feature "Employer quick links admin" do
   it "creation" do
     admin = create(:administrator)
 

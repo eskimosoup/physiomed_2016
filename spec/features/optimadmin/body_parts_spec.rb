@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "body parts admin", type: :feature do
+RSpec.feature "body parts admin", type: :feature do
   it "creation", js: true do
     create(:category, name: "Knee")
 

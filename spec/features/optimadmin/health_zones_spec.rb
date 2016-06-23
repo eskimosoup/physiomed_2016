@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Health zone admin" do
+RSpec.feature "Health zone admin" do
   it "creation", js: true do
     admin = create(:administrator)
 

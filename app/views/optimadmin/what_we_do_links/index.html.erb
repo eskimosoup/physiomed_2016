@@ -1,0 +1,27 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage What We Do Links' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'What We Do Link',
+      object: WhatWeDoLink, path: new_what_we_do_what_we_do_link_path %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin',
+      items: @what_we_do_links.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-8 small-8' do %>
+      <%= link_to octicon('chevron-down'), '#', 
+        class: 'helper-link index-list-expand-all',
+        data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Title
+    <% end %>
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+
+  <div class="module-sortable" data-module="WhatWeDoLink">
+    <%= render partial: 'what_we_do_link', collection: @what_we_do_links %>
+  </div>
+</div>

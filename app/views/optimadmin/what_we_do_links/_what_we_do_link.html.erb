@@ -1,0 +1,25 @@
+<% present what_we_do_link do |what_we_do_link_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>"
+  data-equalizer="module-list" id="item_<%= what_we_do_link_presenter.id %>">
+    <div class="large-8 small-8 columns" data-equalizer-watch="module-list">
+      <%= what_we_do_link_presenter.title %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= what_we_do_link_presenter.toggle_link %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= what_we_do_link_presenter.view_link %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= what_we_do_link_presenter.edit_link %>
+    </div>
+
+    <div class="large-1 hide-for-medium-down columns last" 
+      data-equalizer-watch="module-list">
+      <%= what_we_do_link_presenter.delete_link %>
+    </div>
+  </div>
+<% end %>

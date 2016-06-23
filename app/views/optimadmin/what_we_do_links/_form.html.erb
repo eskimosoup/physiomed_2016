@@ -1,0 +1,32 @@
+<%= form_for([@what_we_do, @what_we_do_link]) do |f| %>
+  <% if @what_we_do_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@what_we_do_link.errors.count, "error") %> prohibited this what we do from being saved:</h2>
+
+      <ul>
+        <% @what_we_do_link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.url_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :display %><br>
+    <%= f.check_box :display %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>

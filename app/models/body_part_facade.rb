@@ -6,6 +6,10 @@ class BodyPartFacade
     @body_part = body_part
   end
 
+  def other_body_parts
+    @other_body_parts = BodyPart.where.not(id: body_part.id).includes(:category)
+  end
+
   def body_part_sections
     @body_part_sections ||= body_part.body_part_sections
                                      .displayed.order(position: :asc)

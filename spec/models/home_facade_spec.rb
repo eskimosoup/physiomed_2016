@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe HomeFacade do
+RSpec.describe HomeFacade do
   describe "#banners" do
     it "gets displayed banners" do
       displayed_banner = create(:banner, display: true)

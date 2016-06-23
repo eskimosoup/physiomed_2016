@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe QuickLink, type: :model do
+RSpec.describe QuickLink, type: :model do
   describe "validations" do
     it { should validate_presence_of(:link) }
     it { should validate_presence_of(:link_text) }

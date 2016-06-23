@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'guides/_guide.html.erb' do
+RSpec.describe 'guides/_guide.html.erb' do
   context 'has an image' do
     it 'renders an image' do
       guide = create(:guide_with_image)

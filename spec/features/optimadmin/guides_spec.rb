@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Guides admin' do
+RSpec.feature 'Guides admin' do
   it 'creation', js: true do
     file = File.join("#{ Rails.root }/spec/support/images/landscape_image.jpg")
 

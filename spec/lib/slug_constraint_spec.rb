@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe SlugConstraint do
+RSpec.describe SlugConstraint do
   describe "#matches?" do
     context "when request has an id that matches a slug" do
       it "returns true if not using friendly id history" do

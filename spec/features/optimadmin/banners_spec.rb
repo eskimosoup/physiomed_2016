@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Banner admin" do
+RSpec.feature "Banner admin" do
   it "creation", js: true do
     admin = create(:administrator)
 

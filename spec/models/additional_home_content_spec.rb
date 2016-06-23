@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe AdditionalHomeContent, type: :model do
+RSpec.describe AdditionalHomeContent, type: :model do
   describe "validations" do
     it { should validate_presence_of(:content_type) }
     it { should validate_inclusion_of(:content_type).in_array(AdditionalHomeContent::CONTENT_TYPES) }

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'what-we-do', to: 'application#what_we_do'
+  get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
   resources :contacts, only: [:new, :create]
   resources :pages, only: :show
@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
-  get 'frequently_asked_questions/index'
-
   concern :imageable do
     member do
       get 'edit_images'
@@ -62,5 +60,8 @@ Optimadmin::Engine.routes.draw do
   resources :service_standards, concerns: [:orderable, :toggleable], except: [:show]
   resources :team_members, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   resources :testimonials, concerns: [:orderable, :toggleable], except: [:show]
+  resources :what_we_dos, concerns: [:orderable, :toggleable], except: [:show] do
+    resources :what_we_do_links, shallow: true, concerns: [:orderable, :toggleable], except: [:show]
+  end
   resources :videos, concerns: [:toggleable], except: [:show]
 end

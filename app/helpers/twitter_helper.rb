@@ -8,6 +8,10 @@ module TwitterHelper
     end
   end
 
+  def twitter_name
+    global_site_settings['Twitter']
+  end
+
   def twitter_timeline(twitter, limit)
     twitter_connect.user_timeline(twitter.delete('@'), count: limit)
   end

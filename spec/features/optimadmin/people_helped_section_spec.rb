@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "people helped section admin" do
+RSpec.feature "people helped section admin" do
   scenario "creation" do
     category = create(:category)
 

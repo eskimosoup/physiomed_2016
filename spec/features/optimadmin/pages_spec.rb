@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "pages admin" do
+RSpec.feature "pages admin" do
   scenario "creation", js: true do
     admin = create(:administrator)
 

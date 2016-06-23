@@ -1,0 +1,36 @@
+<% present what_we_do do |what_we_do_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>"
+  data-equalizer="module-list" id="item_<%= what_we_do_presenter.id %>">
+    <div class="large-6 small-8 columns" data-equalizer-watch="module-list">
+      <%= what_we_do_presenter.toggle_title %>
+    </div>
+
+    <div class="large-2 small-4 columns" data-equalizer-watch="module-list">
+      <%= link_to pluralize(what_we_do.links_count, "link"),
+        what_we_do_what_we_do_links_path(what_we_do) %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= what_we_do_presenter.toggle_link %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= what_we_do_presenter.view_link %>
+    </div>
+
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= what_we_do_presenter.edit_link %>
+    </div>
+
+    <div class="large-1 hide-for-medium-down columns last" 
+      data-equalizer-watch="module-list">
+      <%= what_we_do_presenter.delete_link %>
+    </div>
+
+    <div class="row module-list-detail hide" id="index-list-<%= what_we_do_presenter.id %>">
+      <div class="small-12 columns module-list-summary last">
+        <%= what_we_do_presenter.optimadmin_summary %>
+      </div>
+    </div>
+  </div>
+<% end %>

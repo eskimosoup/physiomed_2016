@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Frequently asked questions" do
+RSpec.feature "Frequently asked questions" do
   it "creation" do
     admin = create(:administrator)
 

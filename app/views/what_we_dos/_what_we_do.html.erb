@@ -1,0 +1,15 @@
+<div class="what-we-do-item">
+  <div data-role="what-we-do-title" class="what-we-do-item-title">
+    <%= what_we_do.title %>
+  </div>
+
+  <%= raw what_we_do.content %>
+  <ul class="what-we-do-item-list">
+    <% what_we_do.links.each do |what_we_do_link| %>
+      <li data-role="what-we-do-link">
+        <%= link_to what_we_do_link.title, what_we_do_link.url %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

@@ -54,30 +54,27 @@
       "wellbeing_zone/shared/articles_section",
       articles: @wellbeing_facade.articles
     ) %>
-    <div class="twitter-container brown-background">
-      <%= link_to "https://twitter.com/#{global_site_settings['Twitter'].tr('@', '')}", title: 'Twitter', class: 'twitter-link' do %>
-        <%= image_tag "icons/twitter-brown.png", class: 'twitter-icon' %>
-      <% end %>
 
-      <% tweets = twitter_timeline(global_site_settings['Twitter'].tr('@', ''), 3) %>
-      <% tweets.each do |tweet| %>
-        <div class="tweet">
-          <p class="tweet-text">
-            <%= raw tweet_text(tweet.text) %>
-          </p>
+    <% if global_site_settings['Twitter'].present? %>
+      <div class="twitter-container brown-background">
+        <%= link_to "https://twitter.com/#{global_site_settings['Twitter'].tr('@', '')}", title: 'Twitter', class: 'twitter-link' do %>
+          <%= image_tag "icons/twitter-brown.png", class: 'twitter-icon' %>
+        <% end %>
 
-          <!--
-            <p class="tweet-time">
-              <%= tweet_time(tweet.created_at) %>
+        <% tweets = twitter_timeline(global_site_settings['Twitter'].tr('@', ''), 3) %>
+        <% tweets.each do |tweet| %>
+          <div class="tweet">
+            <p class="tweet-text">
+              <%= raw tweet_text(tweet.text) %>
             </p>
-          -->
-        </div>
-      <% end %>
+          </div>
+          <% end %>
 
-      <div class="twitter-follow-button">
-        <a href="https://twitter.com/<%= twitter %>" class="twitter-follow-button" data-show-count="false">Follow @<%= twitter %></a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <div class="twitter-follow-button">
+          <a href="https://twitter.com/<%= twitter_name %>" class="twitter-follow-button" data-show-count="false">Follow @<%= twitter_name %></a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
       </div>
-    </div>
+    <% end %>
   </section>
 
   <section class="flexbox-wrap case-studies-and-testimonials">

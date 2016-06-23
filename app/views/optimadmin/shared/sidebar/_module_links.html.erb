@@ -43,6 +43,7 @@
         <%= module_link(content: "Employer Quick Links", model: EmployerQuickLink, path: employer_quick_links_path) %>
         <%= module_link(content: "Banners", model: Banner, path: banners_path) %>
         <%= module_link(content: "Health Zones", model: HealthZone, path: health_zones_path) %>
+        <%= module_link(content: "What We Dos", model: WhatWeDo, path: what_we_dos_path) %>
         <% if can? :manage, Optimadmin::MenuItem %>
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>

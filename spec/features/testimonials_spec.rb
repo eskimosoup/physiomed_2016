@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "user views testmonials" do
+RSpec.feature "user views testmonials" do
   scenario "by clicking view all on the home page" do
     create(:testimonial, title: "My Testimonial", content: "They were ace!")
 

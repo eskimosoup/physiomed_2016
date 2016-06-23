@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe WellbeingFacade do
+RSpec.describe WellbeingFacade do
   describe '#articles' do
     it 'gets articles belonging to the category' do
       category = create(:category, name: "General Wellbeing")
