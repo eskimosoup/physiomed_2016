@@ -2,7 +2,7 @@
   @include border-radius-with-box-shadow;
   margin: rem(10px);
 
-  @include media('>=1024px') {
+  @include media('>=#{$grid-row-width}') {
     @include flex-grid-row;
     background: $white;
     bottom: -180px;

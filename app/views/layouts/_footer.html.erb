@@ -8,11 +8,6 @@
         <%= content_tag :li, (link_to (image_tag 'icons/footer-social/linked-in.png', alt: 'LinkedIn'), global_site_settings['LinkedIn'], title: 'LinkedIn') if global_site_settings['LinkedIn'] %>
         <%= content_tag :li, (link_to (image_tag 'icons/footer-social/youtube.png', alt: 'YouTube'), global_site_settings['YouTube'], title: 'YouTube') if global_site_settings['YouTube'] %>
       </ul>
-
-      <div class="social-methods">
-        <%= link_to 'Get in Touch', '#', class: 'get-in-touch-action contact-action' %>
-        <%= link_to 'Find a Physio', '#', class: 'find-a-physio-action contact-action' %>
-      </div>
     </div>
   </div>
 
@@ -36,3 +31,28 @@
     </p>
   </div>
 </footer>
+
+<div class="social-methods">
+  <%= link_to 'Get in Touch',  new_contact_path, class: 'get-in-touch-action contact-action' %>
+  <%= link_to 'Find a Physio', '#', class: 'find-a-physio-action contact-action toggle-class', data: { container: '.find-a-physio-wrap', class: 'visible', return: false } %>
+</div>
+
+<div class="inline-modal find-a-physio-wrap">
+  <div class="inline-modal-content find-a-physio">
+    <%= button_tag class: 'inline-modal-close-button toggle-class', data: { class: 'visible', container: '.find-a-physio-wrap', return: false }, aria: { label: 'Close modal' }, type: 'button' do %>
+      <span aria-hidden="true">&times;</span>
+    <% end %>
+
+    <h2 class="white">
+      Find a Physiotherapist<br>
+      <span class="green">Near you</span>
+    </h2>
+    <%= render(
+      partial: "physio_searches/form",
+      locals:
+      {
+        physio_search: @physio_search
+      }
+    ) %>
+  </div>
+</div>

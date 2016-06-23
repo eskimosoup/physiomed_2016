@@ -1,9 +1,20 @@
 .primary-header {
+  background: $white;
+  border-bottom: 1px solid $mud-brown;
   border-top: 2px solid $green;
+  height: auto;
   margin: rem(0 0 5px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 
   @include media('>=768px') {
+    border: 0;
+    height: auto;
     margin: rem(0 0 35px);
+    position: static;
+    width: auto;
   }
 }
 
@@ -29,7 +40,7 @@
 
   a:not(.toggle-menu) {
     display: block;
-    padding: rem(15px);
+    padding: 0 0 0 rem(15px);
 
     @include media('>=768px') {
       padding: 0;

@@ -31,16 +31,12 @@ class HomeFacade
     @service_standards ||= ServiceStandard.displayed.ordered_by_position
   end
 
-  def physio_search
-    @physio_search ||= PhysioSearch.new
-  end
-
   def case_studies
     @case_studies ||= CaseStudy.order(date: :desc).displayed.for_home.limit(10)
   end
 
   def testimonials
-    @testimonials ||= Testimonial.displayed.order("RANDOM()").limit(10)
+    @testimonials ||= Testimonial.displayed.order('RANDOM()').limit(10)
   end
 
   def clients

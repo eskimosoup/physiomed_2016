@@ -3,7 +3,7 @@
   padding: rem(15px 0 0);
 
   @include media('>=768px') {
-    padding: rem(60px 0 0);
+    padding: rem(60px 0 15px);
   }
 }
 
@@ -27,8 +27,17 @@
 }
 
 .social-methods {
-  text-align: right;
+  bottom: 0;
   padding: rem(0 15px);
+  position: fixed;
+  right: 0;
+  text-align: right;
+
+  @include media('<1024px') {
+    bottom: 110px;
+    right: -120px;
+    transform: rotate(-90deg);
+  }
 
   @include media('>=768px') {
     @include flex-grid-column(6);

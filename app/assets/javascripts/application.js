@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require components/quick-links
 //= require components/toggle-class
+//= require components/primary-navigation
+//= require vendor/jquery.doubletaptogo

@@ -1,0 +1,79 @@
+.inline-modal {
+  animation: animate-in .15s linear;
+  background: darken(rgba($dark-brown, .75), 15%);
+  display: none;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+
+  @include media('>768px') {
+    position: fixed;
+  }
+
+  &.visible {
+    display: block;
+  }
+
+  .find-a-physio {
+    @include physio-search;
+    background-color: $dark-brown;
+    min-height: 276px;
+    width: 540px;
+  }
+
+  .new_physio_search {
+    margin: rem(20px) 0 0;
+  }
+}
+
+@keyframes animate-in {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.inline-modal-close-button {
+  color: $white;
+  font-size: rem(40px);
+  position: absolute;
+  right: 0;
+  top: -40px;
+
+  &:hover {
+    color: $green;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.inline-modal-content {
+  @include grid-row;
+  background: $white;
+  box-shadow: 5px 5px 10px 0 rgba($dark-brown-offset, .75);
+  -webkit-filter: blur(0);
+  height: auto;
+  padding: rem(20px);
+  width: 100%;
+
+  @include media('>768px') {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+  }
+}

@@ -41,7 +41,7 @@
     font-size: rem(14px);
     text-align: left;
 
-    @include media('>=768px', '<1024px') {
+    @include media('>=768px') {
       text-align: center;
     }
 

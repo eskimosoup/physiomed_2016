@@ -1,5 +1,11 @@
 body {
   font-size: rem(14px);
+
+  padding-top: rem(114px);
+
+  @include media('>=768px') {
+    padding-top: 0;
+  }
 }
 
 a {
@@ -80,7 +86,7 @@ h2 {
     justify-content: space-between;
     margin: 0 auto;
 
-    @include media('>768px') {
+    @include media('>=#{$grid-row-width}') {
       width: $grid-row-width;
     }
   }
@@ -89,7 +95,7 @@ h2 {
   .flexbox-wrap {
     padding: rem(20px 10px 0);
 
-    @include media('>768px') {
+    @include media('>=#{$grid-row-width}') {
       margin: rem-calc(20px) auto;
       padding: 0;
     }

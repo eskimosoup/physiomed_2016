@@ -109,3 +109,87 @@
     }
   }
 }
+
+@mixin physio-search {
+  background-image: image-url('map/uk.png');
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+
+  form.new_physio_search {
+    width: 60%;
+    input[type="submit"].input-add-on-item {
+      background: $green image-url("icons/search.png") no-repeat center center;
+      padding: 0 rem(15px);
+    }
+  }
+
+  .input-add-on {
+    display: flex;
+  }
+
+  .input-add-on-field {
+    flex: 1;
+  }
+
+  .input-add-on-field:not(:first-child) {
+    border-left: 0;
+  }
+
+  .input-add-on-field:not(:last-child) {
+    border-right: 0;
+  }
+
+  .input-add-on-item {
+    background-color: rgba(147, 128, 108, .1);
+    color: #666;
+    font: inherit;
+    font-weight: normal;
+  }
+
+  .input-add-on-field,.input-add-on-item {
+    border: 1px solid rgba(147, 128, 108, .25);
+    padding: .5em .75em;
+  }
+
+  .input-add-on-field:first-child,.input-add-on-item:first-child {
+    border-radius: 2px 0 0 2px;
+  }
+
+  .input-add-on-field:last-child,.input-add-on-item:last-child {
+    border-radius: 0 2px 2px 0;
+  }
+
+  .input-add-on-field {
+    flex: 1;
+  }
+
+  .input-add-on-field:not(:first-child) {
+    border-left: 0;
+  }
+
+  .input-add-on-field:not(:last-child) {
+    border-right: 0;
+  }
+
+  .input-add-on-item {
+    background-color: rgba(147, 128, 108, .1);
+    color: #666;
+    font: inherit;
+    font-weight: normal;
+  }
+
+  .input-add-on-field,.input-add-on-item {
+    border: 1px solid rgba(147, 128, 108, .25);
+    padding: .5em .75em;
+  }
+
+  .input-add-on-field:first-child,
+  .input-add-on-item:first-child {
+    border-radius: 2px 0 0 2px;
+  }
+
+  .input-add-on-field:last-child,
+  .input-add-on-item:last-child {
+    border-radius: 0 2px 2px 0;
+  }
+}

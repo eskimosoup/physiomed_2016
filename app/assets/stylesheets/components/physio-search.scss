@@ -1,9 +1,8 @@
-.home {
-  form.new_physio_search {
-    width: 60%;
-    input[type="submit"].input-add-on-item {
-      background: $green image-url("icons/search.png") no-repeat center center;
-    }
+form.new_physio_search {
+  width: 60%;
+  input[type="submit"].input-add-on-item {
+    background: $green image-url("icons/search.png") no-repeat center center;
+    padding: 0 rem(15px);
   }
 }
 
