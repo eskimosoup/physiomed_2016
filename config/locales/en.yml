@@ -23,3 +23,7 @@ en:
   date:
     formats:
       slashes: "%d/%m/%Y"
+  contacts:
+    create:
+      flash: "Thank you for your submission."
+
