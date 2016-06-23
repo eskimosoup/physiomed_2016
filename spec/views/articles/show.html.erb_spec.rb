@@ -27,7 +27,7 @@ RSpec.describe "articles/show", type: :view do
 
     render
 
-    expect(rendered).to have_css(".author")
+    expect(rendered).to have_css('[data-role="team-member"]')
   end
 
 end
