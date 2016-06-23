@@ -1,4 +1,4 @@
-<%= present guide do |guide_presenter| %>
+<% present guide do |guide_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= guide_presenter.id %>">
     <div class="large-6 small-8 columns" data-equalizer-watch="module-list">
       <%= guide_presenter.toggle_title %>

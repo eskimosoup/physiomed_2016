@@ -149,12 +149,6 @@ RSpec.describe HomeFacade do
     expect(facade.articles).not_to include(normal_article) 
   end
 
-  it "#physio_search" do
-    facade = HomeFacade.new
-    
-    expect(facade.physio_search).to be_an_instance_of(PhysioSearch)
-  end
-
   it "#case_studies" do 
     first = create(:case_study, date: Date.today, display: true, home_highlight: true)
     last = create(:case_study, date: Date.yesterday, display: true, home_highlight: true)

@@ -32,7 +32,7 @@ class BodyPartFacade
   end
 
   def guides
-    @guides ||= body_part.guides.displayed.limit(2)
+    @guides ||= body_part.guides.without_video.displayed.limit(2)
   end
 
   def team_members
@@ -44,6 +44,10 @@ class BodyPartFacade
   end
 
   def video
-    @video ||= body_part.videos.displayed.order(created_at: :desc).first
+    @video ||= body_part.videos.without_guide.displayed.order(created_at: :desc).first
+  end
+
+  def videos_with_guides
+    @videos_with_guides ||= body_part.videos.displayed.joins(:guide).merge(Guide.displayed).preload(:guide)
   end
 end
