@@ -100,7 +100,7 @@
               class: 'current-body-part' %>
 
             <ul class="hero-navigation-links-dropdown">
-              <% @body_parts.each do |body_part| %>
+              <% @body_part_facade.other_body_parts.each do |body_part| %>
                 <%= content_tag :li, (link_to body_part.name, wellbeing_zone_body_part_path(body_part), class: 'body-part-link', title: body_part.name) %>
               <% end %>
             </ul>

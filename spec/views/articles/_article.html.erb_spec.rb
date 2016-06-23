@@ -23,6 +23,6 @@ RSpec.describe "articles/_article", type: :view do
 
     render(partial: "articles/article", locals: { article: article })
 
-    expect(rendered).to have_css(".author")
+    expect(rendered).to have_css('[data-role="team-member"]')
   end
 end

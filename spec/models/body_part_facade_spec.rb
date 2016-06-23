@@ -17,6 +17,17 @@ RSpec.describe BodyPartFacade do
     end
   end
 
+  it '#other_body_parts' do
+    correct_category = create(:category, name: "Ankle")
+    body_part = create(:body_part, category: correct_category)
+    incorrect_category = create(:category, name: "Knee")
+    other_body_part = create(:body_part, category: incorrect_category)
+    facade = build_facade(body_part: body_part)
+
+    expect(facade.other_body_parts).not_to include(body_part)
+    expect(facade.other_body_parts).to include(other_body_part)
+  end
+
   describe '#people_helped_section' do
     it 'gets one with a section of wellbeing zone' do
       incorrect_category = create(:category, name: "Wellbeing Zone Overview")
