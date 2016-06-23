@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Service standard admin" do
+RSpec.feature "Service standard admin" do
   scenario "creation" do
     admin = create(:administrator)
 

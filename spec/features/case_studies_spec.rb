@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "case studies" do
+RSpec.feature "case studies" do
   scenario "user views the index page" do
     case_study = create(:case_study, title: "Case Study #1", content: "Awesome stuff")
 

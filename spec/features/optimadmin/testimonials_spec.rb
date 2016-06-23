@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Testimonial admin" do
+RSpec.feature "Testimonial admin" do
   it "creation" do
     admin = create(:administrator)
 

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "wellbeing_zone/body_parts/show.html.erb" do
+RSpec.describe "wellbeing_zone/body_parts/show.html.erb" do
   context "has body part sections" do
     it 'renders body part section container' do
       facade = build_facade

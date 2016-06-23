@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Additional home content admin" do
+RSpec.feature "Additional home content admin" do
   scenario "creation" do
     admin = create(:administrator)
 

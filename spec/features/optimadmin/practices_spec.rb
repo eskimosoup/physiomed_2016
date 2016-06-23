@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Practice admin" do
+RSpec.feature "Practice admin" do
   scenario "creation" do
     admin = create(:administrator)
 

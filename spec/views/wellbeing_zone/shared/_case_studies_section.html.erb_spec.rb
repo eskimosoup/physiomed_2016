@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'wellbeing_zone/shared/case_studies_section.html.erb' do
+RSpec.describe 'wellbeing_zone/shared/case_studies_section.html.erb' do
   context 'with case studies' do
     it 'renders the case studies container' do
       case_studies = build_stubbed_list(:case_study, 2)

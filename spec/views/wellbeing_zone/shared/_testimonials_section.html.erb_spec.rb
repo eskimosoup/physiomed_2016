@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "wellbeing_zone/shared/_testimonials_section.html.erb" do
+RSpec.describe "wellbeing_zone/shared/_testimonials_section.html.erb" do
   context 'with testimonials' do
     it 'renders the testimonals section' do
       testimonials = build_stubbed_list(:testimonial, 2)

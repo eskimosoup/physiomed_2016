@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'categories admin' do
+RSpec.feature 'categories admin' do
   it 'creation' do
     go_to_category_index
     click_link "New Category"

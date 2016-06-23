@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "case study admin" do
+RSpec.feature "case study admin" do
   scenario "creation", js: true do
     admin = create(:administrator)
 

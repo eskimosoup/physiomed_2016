@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'wellbeing_zone/shared/_articles_section.html.erb' do
+RSpec.describe 'wellbeing_zone/shared/_articles_section.html.erb' do
   context 'with articles' do
     it 'renders the articles container' do
       articles = build_stubbed_list(:article, 2)

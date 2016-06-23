@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "visiting wellbeing zone body parts" do
+RSpec.feature "visiting wellbeing zone body parts" do
   scenario "clicking through from the main wellbeing zone" do
     category = create(:category, name: "Ankle")
     create(:body_part, category: category, summary: "Some summary")

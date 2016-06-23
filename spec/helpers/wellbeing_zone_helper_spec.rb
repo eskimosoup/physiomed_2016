@@ -1,10 +1,10 @@
 require "rails_helper"
 
-describe WellbeingZoneHelper, type: :helper do
+RSpec.describe WellbeingZoneHelper, type: :helper do
   describe "#wellbeing_article_partial_path" do
     it "first article" do
       article = Article.new(date: Date.today)
-      
+
       path = "articles/main_wellbeing_article"
 
       expect(helper.wellbeing_article_partial_path(0)).to eq(path)

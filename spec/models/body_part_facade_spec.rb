@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe BodyPartFacade do
+RSpec.describe BodyPartFacade do
   describe "delegations" do
     it do
       body_part = build_stubbed(:body_part)

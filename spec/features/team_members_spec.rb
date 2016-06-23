@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "user views team member" do
+RSpec.feature "user views team member" do
   scenario "user clicks into the team member" do
     team_member = create(:team_member, forename: "Joe", surname: "Bloggs")
 

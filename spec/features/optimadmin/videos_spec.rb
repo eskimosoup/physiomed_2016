@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Video admin" do
+RSpec.feature "Video admin" do
   it "creation" do
     admin = create(:administrator)
 
