@@ -1,10 +1,6 @@
 <div class="video-with-guide">
-  <div class="video-iframe">
-    <%= raw iframe_for(video, width: 345, height: 248) %>
-  </div>
-
   <div class="basic-details">
-    <h2 class="green-border-bottom">
+    <h2 class="video-with-guide-title green-border-bottom">
       <%= video.title %>
     </h2>
 
@@ -14,11 +10,16 @@
 
     <%= simple_format video.content %>
   </div>
+  <div class="video-iframe">
+    <div class="flex-video">
+      <%= raw iframe_for(video, width: 345, height: 248) %>
+    </div>
+  </div>
   <div class="guide">
-    <%= content_tag :div, 
-      image_tag(guide.image_url(:index), alt: guide.title, title: guide.title),
-      class: 'guide-image' if guide.image? %>
+    <%= content_tag :div,
+      image_tag(guide.image_url(:index), alt: guide.title, title: guide.title) if guide.image? %>
+
     <%= link_to "Download", guide.file.url,
-      class: 'guide-download-button button brown-background' %>
+      class: 'button brown-background' %>
   </div>
 </div>
