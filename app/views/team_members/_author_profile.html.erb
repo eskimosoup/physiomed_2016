@@ -1,0 +1,21 @@
+<div class="modal-team-member-profile-content">
+  <div class="modal-team-member-profile-image">
+    <%= image_tag team_member.image.show, alt: "#{team_member.forename} #{team_member.surname}" %>
+  </div>
+
+  <div class="modal-team-member-profile-details">
+    <div class="modal-team-member-profile-name">
+      <%= team_member.forename %>
+      <%= team_member.surname %>
+    </div>
+
+    <div class="modal-team-member-profile-small-details">
+      <%= team_member.role %>
+      <%= "(#{team_member.phone})" if team_member.phone.present? %>
+    </div>
+
+    <div class="modal-team-member-profile-biography">
+      <%= team_member.bio %>
+    </div>
+  </div>
+</div>

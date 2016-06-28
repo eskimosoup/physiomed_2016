@@ -146,7 +146,10 @@
     <% if @body_part_facade.videos_with_guides.any? %>
      <section class="box-wrap" id="videos-with-guides">
        <div class="videos-with-guides-container">
-         <h2 class="videos-with-guides-container-title">Feeling Fab</h2>
+         <div class="videos-with-guides-container-title">
+           <h2>Feeling Fab</h2>
+         </div>
+
          <div class="videos-with-guides wellbeing">
            <% @body_part_facade.videos_with_guides.each do |video| %>
              <%= render partial: 'videos/video_with_guide',
@@ -162,7 +165,7 @@
        <div class="guides-container">
          <h2 class="guides-container-title">Guides</h2>
          <div class="guides wellbeing">
-           <%= render partial: 'guides/guide', 
+           <%= render partial: 'guides/guide',
              collection: @body_part_facade.guides, as: :guide %>
          </div>
        </div>

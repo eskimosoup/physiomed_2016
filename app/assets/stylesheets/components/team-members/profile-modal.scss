@@ -1,0 +1,26 @@
+.modal-team-member-profile-content {
+  @include flex-grid-row;
+}
+
+.modal-team-member-profile-image {
+  @include flex-grid-column(4);
+}
+
+.modal-team-member-profile-details {
+  @include flex-grid-column(8);
+}
+
+.modal-team-member-profile-name {
+  color: $brown;
+  font-size: rem(24px);
+  font-weight: $open-sans-bold;
+}
+
+.modal-team-member-profile-small-details {
+  font-size: rem(14px);
+  margin: rem(5px) 0;
+}
+
+.modal-team-member-profile-biography {
+  font-size: rem(16px);
+}
