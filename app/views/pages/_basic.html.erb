@@ -8,9 +8,7 @@
   </div>
 
   <div class="hero-section-primary-content">
-    <%= render partial: "menus/menu" if @page.side_menus.last.child_menu_items(@page).present? %>
-
-    <div class="page-content-wrap <%= 'full-width' unless @page.side_menus.last.child_menu_items(@page).present? %>">
+    <div class="page-content-wrap full-width">
       <div class="page-content">
         <% present @page do |page_presenter| %>
           <%= page_presenter.show_image(alt: page_presenter.title) %>
