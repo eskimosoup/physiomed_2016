@@ -47,7 +47,7 @@
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <div class="field">
         <%= f.label :client_id %><br>
-        <%= f.select :client_id, Client.ordered_by_name.pluck(:name, :id) %>
+        <%= f.select :client_id, Client.ordered_by_name.pluck(:name, :id), include_blank: true %>
       </div>
 
       <%= render 'optimadmin/shared/category_select', f: f %>
