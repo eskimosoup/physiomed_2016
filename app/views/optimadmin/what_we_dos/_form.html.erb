@@ -19,8 +19,7 @@
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
-      <li><a href="#tabs-2">Media</a></li>
-      <li><a href="#tabs-3">Settings</a></li>
+      <li><a href="#tabs-2">Settings</a></li>
       <li>
         <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
           <%= octicon('chevron-down') %>
@@ -33,23 +32,14 @@
         <%= f.label :content %><br>
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
-      
-      
-          <% end %>
+    <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
-      
-      
-          <% end %>
-
-    <%= field_set_tag nil, id: 'tabs-3' do %>
-      
-      
-            <div class="field">
+      <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>
       </div>
-          <% end %>
+    <% end %>
   </div>
 
   <div class="actions">
