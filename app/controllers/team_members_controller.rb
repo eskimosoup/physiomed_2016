@@ -4,6 +4,6 @@ class TeamMembersController < ApplicationController
   end
 
   def show
-    @team_member = TeamMember.displayed.find(params[:id])
+    @team_member = TeamMember.displayed.friendly.find(params[:id])
   end
 end

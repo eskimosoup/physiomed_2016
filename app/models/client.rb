@@ -4,11 +4,11 @@ class Client < ActiveRecord::Base
 
   mount_uploader :logo, ClientUploader
 
-  validates :name, presence: true, uniqueness: true
-  validates :logo, presence: true
-
   scope :ordered_by_name, ->{ order(name: :asc) }
   scope :displayed, ->{ where(display: true) }
   scope :ordered_by_position, ->{ order(position: :asc) }
+
+  validates :name, presence: true, uniqueness: true
+  validates :logo, presence: true
 
 end

@@ -1,4 +1,6 @@
 class TeamMember < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
   mount_uploader :image, TeamMemberUploader
 
   has_many :articles, foreign_key: :author_id

@@ -98,8 +98,6 @@ FactoryGirl.define do
   factory :client do
     sequence(:name) {|n| "Name #{ n }" }
     logo { File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg")) }
-    position 1
-    display true
   end
   
   factory :employee_quick_link, class: EmployeeQuickLink do
