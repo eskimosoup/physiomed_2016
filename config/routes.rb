@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :testimonials, only: [:index]
   resource :physio_search, only: [:create, :show], path: 'find-a-physio'
   namespace :wellbeing_zone, path: 'well-being-zone' do
+    get 'general-well-being', to: 'general_wellbeings#show', as: :general_wellbeing
     resources :body_parts, only: [:show], path: '', constraints: SlugConstraint.new(BodyPart)
     root to: 'wellbeings#show'
   end
