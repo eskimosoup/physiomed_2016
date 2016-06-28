@@ -1,6 +1,6 @@
 <div class="hero-section body-part-background">
   <div class="hero-section-header">
-    <h1 class="hero-section-title page <%= ' full-width' unless @page.side_menus.last.child_menu_items(@page).present? %>">
+    <h1 class="hero-section-title page full-width">
       <% present @page do |page_presenter| %>
         <%= page_presenter.title %>
       <% end %>
