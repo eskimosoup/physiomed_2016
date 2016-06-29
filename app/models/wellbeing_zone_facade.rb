@@ -17,7 +17,6 @@ class WellbeingZoneFacade
   end
 
   def video
-    @video ||= Video.for_category(category).displayed.order(created_at: :desc).first
   end
 
   def people_helped_section

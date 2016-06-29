@@ -4,6 +4,7 @@ class Guide < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
   scope :without_video, -> { where(video_id: nil) }
+  scope :for_category, ->(category) { joins(:categories_guides).where(categories_guides: { category_id: category }) }
 
   belongs_to :video
   has_many :categories_guides, class_name: "Categories::Guide"

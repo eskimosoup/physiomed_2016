@@ -114,34 +114,11 @@ RSpec.describe WellbeingZoneFacade do
   end
 
   describe '#video' do
-    it 'gets videos through the category' do
+    it 'is nil' do
       category = create(:category, name: "General Wellbeing")
       facade = WellbeingZoneFacade.new(category)
-      vid = create(:video, display: true, categories: [category])
-      no_category_vid = create(:video, display: true)
 
-      expect(facade.video).to eq(vid)
-      expect(facade.video).not_to eq(no_category_vid)
-    end
-
-    it 'gets displayed video' do
-      category = create(:category, name: "General Wellbeing")
-      facade = WellbeingZoneFacade.new(category)
-      vid = create(:video, display: true, categories: [category])
-      not_displayed = create(:video, display: false, categories: [category])
-
-      expect(facade.video).to eq(vid)
-      expect(facade.video).not_to eq(not_displayed)
-    end
-
-    it 'gets the most recently created video' do
-      category = create(:category, name: "General Wellbeing")
-      facade = WellbeingZoneFacade.new(category)
-      old_vid = create(:video, display: true, categories: [category])
-      vid = create(:video, display: true, categories: [category])
-
-      expect(facade.video).to eq(vid)
-      expect(facade.video).not_to eq(old_vid)
+      expect(facade.video).to be nil
     end
   end
 

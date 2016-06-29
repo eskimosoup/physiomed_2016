@@ -26,4 +26,7 @@ en:
   contacts:
     create:
       flash: "Thank you for your submission."
-
+  wellbeing_zone:
+    general_wellbeings:
+      show:
+        title: "General Well-Being"
