@@ -46,7 +46,7 @@ module Optimadmin
     private
 
     def what_we_do_link_params
-      params.require(:what_we_do_link).permit(:title, :url, :display)
+      params.require(:what_we_do_link).permit(:title, :page_id, :display)
     end
 
     def find_what_we_do

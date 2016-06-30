@@ -5,12 +5,13 @@ RSpec.describe 'what we do links admin' do
     title = "My title"
     url = "https://www.google.co.uk"
     what_we_do = create(:what_we_do)
+    dynamic_page = create(:page, title: "Page 1")
 
     go_to_what_we_do_index
     click_link "0 links"
     click_link "New What We Do Link"
     fill_in "what_we_do_link_title", with: title
-    fill_in "what_we_do_link_url", with: url
+    select "Page 1", from: "what_we_do_link_page_id"
     click_button "Save"
 
     expect(page).to have_admin_index title
@@ -32,7 +33,8 @@ RSpec.describe 'what we do links admin' do
 
   scenario "editing" do
     what_we_do = create(:what_we_do)
-    link = create(:what_we_do_link, what_we_do: what_we_do, title: "Title")
+    dynamic_page = create(:page, title: "Page 1")
+    link = create(:what_we_do_link, page: dynamic_page, what_we_do: what_we_do, title: "Title")
 
     go_to_what_we_do_index
     click_link "1 link"
@@ -45,7 +47,8 @@ RSpec.describe 'what we do links admin' do
 
   scenario "destroying" do
     what_we_do = create(:what_we_do)
-    link = create(:what_we_do_link, what_we_do: what_we_do, title: "Lin")
+    dynamic_page = create(:page, title: "Page 1")
+    link = create(:what_we_do_link, page: dynamic_page, what_we_do: what_we_do, title: "Lin")
 
     go_to_what_we_do_index
     click_link "1 link"

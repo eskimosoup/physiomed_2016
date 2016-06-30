@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623160345) do
+ActiveRecord::Schema.define(version: 20160630084412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -420,13 +420,14 @@ ActiveRecord::Schema.define(version: 20160623160345) do
   create_table "what_we_do_links", force: :cascade do |t|
     t.integer  "what_we_do_id"
     t.string   "title",                        null: false
-    t.string   "url",                          null: false
     t.boolean  "display",       default: true, null: false
     t.integer  "position",      default: 0,    null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "page_id"
   end
 
+  add_index "what_we_do_links", ["page_id"], name: "index_what_we_do_links_on_page_id", unique: true, using: :btree
   add_index "what_we_do_links", ["what_we_do_id"], name: "index_what_we_do_links_on_what_we_do_id", using: :btree
 
   create_table "what_we_dos", force: :cascade do |t|
@@ -459,5 +460,6 @@ ActiveRecord::Schema.define(version: 20160623160345) do
   add_foreign_key "guides", "videos", on_delete: :cascade
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade
+  add_foreign_key "what_we_do_links", "pages", on_delete: :nullify
   add_foreign_key "what_we_do_links", "what_we_dos", on_delete: :cascade
 end

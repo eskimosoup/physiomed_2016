@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :url %><br>
-    <%= f.url_field :url %>
+    <%= f.label :page_id %><br>
+    <%= f.select :page_id, Page.order(:title).pluck(:title, :id) %>
   </div>
 
   <div class="field">

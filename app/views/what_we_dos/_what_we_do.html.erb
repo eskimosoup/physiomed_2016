@@ -7,7 +7,7 @@
   <ul class="what-we-do-item-list">
     <% what_we_do.links.each do |what_we_do_link| %>
       <li data-role="what-we-do-link">
-        <%= link_to what_we_do_link.title, what_we_do_link.url %>
+        <%= link_to what_we_do_link.title, what_we_do_link.page %>
       </li>
     <% end %>
   </ul>

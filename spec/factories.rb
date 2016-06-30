@@ -235,8 +235,8 @@ FactoryGirl.define do
 
   factory :what_we_do_link do
     what_we_do nil
+    page nil
     title "MyString"
-    url "MyString"
   end
 
   factory :video do
