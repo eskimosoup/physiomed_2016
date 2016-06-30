@@ -11,7 +11,7 @@
     <div class="page-content-wrap full-width">
       <div class="page-content">
         <% present @page do |page_presenter| %>
-          <%= page_presenter.show_image(alt: page_presenter.title) %>
+          <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-image') %>
           <%= page_presenter.content %>
         <% end %>
       </div>

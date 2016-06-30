@@ -5,9 +5,15 @@
   background: $white;
   padding: rem(15px) rem(30px);
   position: relative;
+  overflow: hidden;
 
   .team-members {
     padding: 0 rem(25px);
+  }
+
+  img.page-image {
+    float: right;
+    @include clearfix;
   }
 }
 
