@@ -216,12 +216,10 @@
         <% end %>
       </section>
 
-      <section class="flexbox-wrap" id="team-members">
-        <%= render(
-          "wellbeing_zone/shared/team_member_section.html.erb",
-          team_members: @body_part_facade.team_members
-        ) %>
-      </section>
+      <%= render(
+        "wellbeing_zone/shared/team_member_section.html.erb",
+        team_members: @body_part_facade.team_members
+      ) %>
 
       <section class="flexbox-wrap  case-studies-and-testimonials">
         <%= render(
