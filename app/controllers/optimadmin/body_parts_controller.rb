@@ -46,7 +46,7 @@ module Optimadmin
 
     def body_part_params
       params.require(:body_part)
-            .permit(:category_id, :image, :tagline, :display, 
+            .permit(:category_id, :summary, :image, :tagline, :display, 
                     :remove_image, :remote_image_url, :image_cache)
     end
   end
