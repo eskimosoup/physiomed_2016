@@ -9,8 +9,8 @@
   <% end %>
 
   <div class="body-part-section-content">
-    <%= raw body_part_section.content %>
     <%= image_tag body_part_section.image_url(:show), alt: body_part_section.title,
       title: body_part_section.title, class: 'body-part-section-image' if body_part_section.image? %>
+    <%= raw body_part_section.content %>
   </div>
 </div>
