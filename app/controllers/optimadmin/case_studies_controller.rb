@@ -1,6 +1,9 @@
 module Optimadmin
   class CaseStudiesController < Optimadmin::ApplicationController
     before_action :set_case_study, only: [:show, :edit, :update, :destroy]
+    edit_images_for CaseStudy, [
+      [:image, { index: ['fill', 300, 300], show: ['fill', 300, 300] }]
+    ]
 
     def index
       @case_studies = CaseStudy.order(params[:order] || { date: :desc })

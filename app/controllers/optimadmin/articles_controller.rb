@@ -1,6 +1,9 @@
 module Optimadmin
   class ArticlesController < Optimadmin::ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
+    edit_images_for Article, [
+      [:image, { index: ['fill', 325, 145], show: ['fill', 300, 300] }]
+    ]
 
     def index
       @articles = Article.order(params.fetch(:order, { date: :desc }))

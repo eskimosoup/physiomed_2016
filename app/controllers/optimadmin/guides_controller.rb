@@ -1,6 +1,9 @@
 module Optimadmin
   class GuidesController < Optimadmin::ApplicationController
     before_action :set_guide, only: [:show, :edit, :update, :destroy]
+    edit_images_for Guide, [
+      [:image, { index: ['fill', 220, 185] }]
+    ]
 
     def index
       @guides = Guide.order(title: :asc).page(params[:page]).per(params[:per_page])

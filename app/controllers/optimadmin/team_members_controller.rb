@@ -1,6 +1,9 @@
 module Optimadmin
   class TeamMembersController < Optimadmin::ApplicationController
     before_action :set_team_member, only: [:show, :edit, :update, :destroy]
+    edit_images_for TeamMember, [
+      [:image, { author: ['fill', 50, 50], index: ['fill', 160, 160], show: ['fill', 386, 386] }]
+    ]
 
     def index
       @team_members = TeamMember.order(surname: :asc, forename: :asc)

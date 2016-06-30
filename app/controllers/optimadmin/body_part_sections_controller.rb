@@ -1,6 +1,9 @@
 module Optimadmin
   class BodyPartSectionsController < Optimadmin::ApplicationController
     before_action :set_body_part_section, only: [:show, :edit, :update, :destroy]
+    edit_images_for BodyPartSection, [
+      [:image, { wellbeing_index: ['fill', 389, 142], show: ['fill', 300, 300] }]
+    ]
 
     def index
       @body_part = find_body_part
