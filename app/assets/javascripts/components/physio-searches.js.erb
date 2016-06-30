@@ -26,10 +26,8 @@ function initialize() {
           contentString += '<strong>' + value.name + '</strong><br />';
         }
 
-        if (value.address != null) {
-          contentString += value.address + '<br />';
-        }
-
+        contentString += 'To book an appointment<br />';
+        contentString += 'Call 0113 229 1300<br />';
         contentString += '</div>';
 
         var infowindow = new google.maps.InfoWindow({

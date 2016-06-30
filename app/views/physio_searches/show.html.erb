@@ -17,7 +17,7 @@
         <% if @results.present? %>
           <div id="physio-search-map-canvas" class="find-a-physio-map-canvas" data-locations="<%= @results.to_json %>">
           </div>
-          
+
           <div class="physio-search-results-list">
             <%= render(
               partial: "physio_searches/result",
