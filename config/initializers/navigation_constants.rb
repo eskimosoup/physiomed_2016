@@ -1,4 +1,4 @@
-NavigationMenus = %w( header footer what_we_do )
+NavigationMenus = %w( header footer )
 
 NavigationLinks = {
   'Module Page' => 'Optimadmin::ModulePage',
