@@ -7,6 +7,7 @@ class PagesController < ApplicationController
       @what_we_dos = WhatWeDo.eager_load(:displayed_links).displayed.order(position: :asc).merge(WhatWeDoLink.order(position: :asc))
       @current_what_we_do = WhatWeDo.eager_load(:displayed_links).where(what_we_do_links: { page_id: @page.id }).first
     end
+    @side_menus = @page.side_menus
     render layout: @page.layout
   end
 

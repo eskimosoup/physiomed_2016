@@ -1,0 +1,43 @@
+.page-aside-navigation-tree {
+  //list-style: none;
+  //margin-left: 0;
+
+  .depth-0 .what-we-do-item-list:first-of-type {
+    list-style: none;
+  }
+
+  .active {
+    text-decoration: underline;
+  }
+
+  li {
+    a {
+      display: none;
+    }
+
+    &.top-level-parent:hover ul,
+    &.selected-navigation > ul {
+      display: block;
+    }
+
+
+    ul {
+      display: none;
+      margin-left: rem(10px);
+
+      &.depth-0 {
+        display: block;
+        margin: 0;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    a {
+      display: block;
+    }
+  }
+}
