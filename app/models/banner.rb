@@ -3,7 +3,7 @@ class Banner < ActiveRecord::Base
 
   validates :title, presence: true
   validates :image, presence: true
-  validate :image_width
+  # validate :image_width
 
   scope :displayed, -> { where(display: true) }
   scope :ordered_by_position, -> { order(position: :asc) }
