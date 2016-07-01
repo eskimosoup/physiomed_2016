@@ -22,12 +22,31 @@
 
         <%= render 'form' %>
 
+
+          <p>
+            If you want to find out how Physio Med can help your organisation
+            or if you would like to arrange a site visit, please get in touch
+            via:
+          </p>
+
         <div class="secondary-contact-methods">
           <div class="secondary-contact-method-details">
-            <h3>Address</h3>
+
+            <strong>Address</strong><br />
+
             <%= global_site_settings['Address'].gsub(', ', '<br />').html_safe if global_site_settings['Address'].present? %>
 
-            <h3>Other Methods</h3>
+            <div>
+              <%= link_to 'Get directions',
+                        'https://www.google.co.uk/maps/place/Physio+Med/@53.777276,-1.584949,16z/data=!4m5!3m4!1s0x48795f1955555555:0x65b3ef1a2b6d13ed!8m2!3d53.7773495!4d-1.5848741?hl=en',
+                        class: 'brown-background button get-directions',
+                        target: '_blank' %>
+            </div>
+
+            <div class="secondary-contact-method-email">
+              <strong>Email</strong>
+              <%= mail_to global_site_settings['Email'] if global_site_settings['Email'].present? %>
+            </div>
 
             <div class="secondary-contact-method-phone">
               <strong>Phone</strong>
@@ -39,9 +58,12 @@
               <%= global_site_settings['Fax'] if global_site_settings['Fax'].present? %>
             </div>
 
-            <div class="secondary-contact-method-email">
-              <strong>Email</strong>
-              <%= mail_to global_site_settings['Email'] if global_site_settings['Email'].present? %>
+            <div class="headquarters-highlight">
+              <%= link_to (image_tag 'headquarters.jpg', alt: 'Visit our headquarters'), '/pages/headquarters' %>
+              <%= link_to 'Visit our headquarters',
+                        '/pages/headquarters',
+                        class: 'brown-background button get-directions' %>
+
             </div>
           </div>
 
