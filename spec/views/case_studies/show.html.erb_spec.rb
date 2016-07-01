@@ -42,6 +42,27 @@ RSpec.describe "case_studies/show", type: :view do
     end
   end
 
+  context 'has displayed client' do
+    it 'renders the client' do
+      client = build(:client, display: true)
+      case_study = create(:case_study, image: nil, displayed_client: client)
+
+      render_case_study(case_study)
+
+      expect(rendered).to have_client
+    end
+  end
+
+  context 'has no client' do
+    it 'does not render client' do
+      case_study = create(:case_study, image: nil, displayed_client: nil)
+
+      render_case_study(case_study)
+
+      expect(rendered).not_to have_client
+    end
+  end
+
   def render_case_study(case_study)
     assign(:case_study, case_study)
     render
@@ -53,6 +74,10 @@ RSpec.describe "case_studies/show", type: :view do
 
   def have_testimonial
     have_css '[data-role="testimonial"]'
+  end
+
+  def have_client
+    have_css '[data-role="client"]'
   end
 end
 

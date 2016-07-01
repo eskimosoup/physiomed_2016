@@ -1,2 +1,9 @@
 .client.home {
 }
+
+.page-client {
+  @include border-radius-with-dark-box-shadow;
+  background: $white;
+  margin: rem(10px) 0;
+  padding: rem(17px);
+}

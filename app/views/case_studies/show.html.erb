@@ -29,9 +29,15 @@
         </ul>
       </div>
 
+      <% if @case_study.displayed_client %>
+        <div class="page-client">
+          <%= render @case_study.displayed_client %>
+        </div>
+      <% end %>
+
       <% if @case_study.testimonials.displayed.any? %>
         <%= render(
-          partial: 'shared/testimonials',
+          partial: 'shared/sidebar_testimonials',
           locals: {
             testimonials: @case_study.testimonials.displayed
           }

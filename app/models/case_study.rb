@@ -4,6 +4,8 @@ class CaseStudy < ActiveRecord::Base
   mount_uploader :image, CaseStudyUploader
 
   belongs_to :client
+  belongs_to :displayed_client, -> { merge(Client.displayed) }, 
+    class_name: "Client", foreign_key: :client_id
   has_many :categories_case_studies, class_name: "Categories::CaseStudy"
   has_many :categories, through: :categories_case_studies
   has_many :testimonials
