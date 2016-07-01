@@ -4,6 +4,6 @@ class CaseStudyUploader < Optimadmin::ImageUploader
   end
 
   version :show do
-    process resize_to_fill: [300, 300]
+    process resize_to_fit: [870, 300]
   end
 end

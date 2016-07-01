@@ -2,12 +2,12 @@ module Optimadmin
   class CaseStudiesController < Optimadmin::ApplicationController
     before_action :set_case_study, only: [:show, :edit, :update, :destroy]
     edit_images_for CaseStudy, [
-      [:image, { index: ['fill', 300, 300], show: ['fill', 300, 300] }]
+      [:image, { index: ['fill', 300, 300], show: ['fit', 870, 300] }]
     ]
 
     def index
       @case_studies = CaseStudy.order(params[:order] || { date: :desc })
-        .search(params[:search]).page(params[:page]).per(params[:per_page])
+                               .search(params[:search]).page(params[:page]).per(params[:per_page])
     end
 
     def show
@@ -51,8 +51,8 @@ module Optimadmin
     def case_study_params
       params.require(:case_study)
             .permit(:title, :image, :summary, :content, :date,
-              :client_id, :remove_image, :remote_image_url,
-              :image_cache, category_ids: [])
+                    :client_id, :remove_image, :remote_image_url,
+                    :image_cache, category_ids: [])
     end
   end
 end
