@@ -11,5 +11,7 @@ RSpec.describe Testimonial, type: :model do
     it { should belong_to(:case_study) }
     it { should have_many(:categories_testimonials).class_name("Categories::Testimonial") }
     it { should have_many(:categories).through(:categories_testimonials) }
+    it { should have_many(:pages_testimonials).class_name("Pages::Testimonial") }
+    it { should have_many(:pages).through(:pages_testimonials) }
   end
 end

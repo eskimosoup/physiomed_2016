@@ -50,6 +50,12 @@
         <%= f.select :case_study_id, CaseStudy.order(:title).pluck(:title, :id), include_blank: true %>
       </div>
 
+      <div class="field">
+        <%= f.label :page_ids, 'Pages' %><br>
+        <%= f.select :page_ids, Page.order(:title).pluck(:title, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
+
       <%= render 'optimadmin/shared/category_select', f: f %>
 
       <div class="field">

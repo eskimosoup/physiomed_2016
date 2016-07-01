@@ -60,6 +60,12 @@
       </div>
 
       <div class="field">
+        <%= f.label :testimonial_ids, 'Testimonials' %><br>
+        <%= f.select :testimonial_ids, Testimonial.order(:title).pluck(:title, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
+
+      <div class="field">
         <%= f.label :display %><br />
         <%= f.check_box :display %>
       </div>

@@ -10,6 +10,8 @@ RSpec.describe Page, type: :model do
 
   describe "associations", :association do
     it { should have_one :what_we_do_link }
+    it { should have_many(:pages_testimonials).class_name("Pages::Testimonial") }
+    it { should have_many(:testimonials).through(:pages_testimonials) }
   end
 
   describe 'scopes', :scope do

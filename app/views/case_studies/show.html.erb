@@ -30,10 +30,12 @@
       </div>
 
       <% if @case_study.testimonials.displayed.any? %>
-        <div class="page-testimonials">
-          <h4 class="green-border-bottom text-center">Testimonials</h4>
-          <%= render @case_study.testimonials.displayed %>
-        </div>
+        <%= render(
+          partial: 'shared/testimonials',
+          locals: {
+            testimonials: @case_study.testimonials.displayed
+          }
+        ) %>
       <% end %>
     </div>
   </div>

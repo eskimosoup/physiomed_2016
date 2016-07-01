@@ -7,6 +7,8 @@ class Page < ActiveRecord::Base
   mount_uploader :image, PageUploader
 
   has_one :what_we_do_link
+  has_many :pages_testimonials, class_name: 'Pages::Testimonial'
+  has_many :testimonials, through: :pages_testimonials
 
   before_save :store_image, if: proc { |page| page.remote_image_url.blank? }
   # before_save :store_file, if: Proc.new{|page| page.remote_file_url.blank? }

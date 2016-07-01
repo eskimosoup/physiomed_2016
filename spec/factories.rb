@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :pages_testimonial, class: 'Pages::Testimonial' do
+    page nil
+    testimonial nil
+  end
   factory :text_additional_home_content, class: AdditionalHomeContent do
     title "MyString"
     content_type "text_content"
