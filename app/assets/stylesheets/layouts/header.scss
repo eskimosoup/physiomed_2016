@@ -52,7 +52,7 @@
   display: none;
 
   @include media('>=768px') {
-    @include flex-grid-column(2);
+    @include flex-grid-column(2, $gutter: (small: 0));
     display: block;
     text-align: right;
   }
