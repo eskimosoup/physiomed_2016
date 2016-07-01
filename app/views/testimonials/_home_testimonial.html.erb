@@ -1,13 +1,22 @@
 <div class="home testimonial">
   <%= link_to testimonial.title, testimonials_path(anchor: "testimonial-#{ testimonial.id }"), class: 'testimonial-title' %>
 
-  <%= simple_format testimonial.content %>
+  <%= simple_format (truncate testimonial.content, length: 275) %>
 
-  <div class="testimonial-author">
-    <%= testimonial.author %>
-  </div>
-  
-  <div class="testimonial-role">
-    <%= testimonial.role %>
+
+  <div class="testimonial-details">
+    <div class="testimonial-authorship">
+      <div class="testimonial-author">
+        <%= testimonial.author %>
+      </div>
+
+      <div class="testimonial-role">
+        <%= testimonial.role %>
+      </div>
+    </div>
+
+    <div class="testimonials-further-reading">
+      <%= link_to (testimonial.content.length > 275 ? 'Read more' : 'View all'), testimonials_path(anchor: "testimonial-#{ testimonial.id }"), class: 'button brown-background' %>
+    </div>
   </div>
 </div>
