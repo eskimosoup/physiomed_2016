@@ -144,8 +144,8 @@ h2 {
 }
 
 #map-canvas {
-  height: 223px;
-  margin-top: 63px;
+  border: 1px solid $brown;
+  height: 433px;
   width: 540px;
 
   img {
@@ -153,7 +153,23 @@ h2 {
   }
 }
 
+.get-directions {
+  margin: rem(10px 0);
+}
+
 .maps-info-window-popup {
   height: 30px;
   width: 250px;
+}
+
+.headquarters-highlight {
+  margin: rem(10px 0);
+
+  img {
+    border: 1px solid $brown;
+  }
+
+  .button {
+    width: 193px;
+  }
 }
