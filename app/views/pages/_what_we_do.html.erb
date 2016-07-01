@@ -10,8 +10,10 @@
       <div class="hero-navigation">
         <% what_we_dos.each do |what_we_do| %>
           <div class="what-we-do">
-            <h3><%= what_we_do.title %></h3>
-            <ul class="body-part-section-navigation-links">
+            <div data-role="what-we-do-title" class="what-we-do-item-title sidebar <%= 'current' if what_we_do == @current_what_we_do %>">
+              <%= what_we_do.title %>
+            </div>
+            <ul class="what-we-do-item-list">
               <%= render what_we_do.displayed_links %>
             </ul>
           </div>
