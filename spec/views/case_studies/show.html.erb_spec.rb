@@ -21,6 +21,27 @@ RSpec.describe "case_studies/show", type: :view do
     end
   end
 
+  context 'has testimonials' do
+    it 'renders the testimonials' do
+      testimonial = build(:testimonial, display: true)
+      case_study = create(:case_study, image: nil, testimonials: [testimonial])
+
+      render_case_study(case_study)
+
+      expect(rendered).to have_testimonial
+    end
+  end
+
+  context 'no testimonials' do
+    it 'does not render testimonials' do
+      case_study = create(:case_study, image: nil, testimonials: [])
+
+      render_case_study(case_study)
+
+      expect(rendered).not_to have_testimonial
+    end
+  end
+
   def render_case_study(case_study)
     assign(:case_study, case_study)
     render
@@ -29,4 +50,9 @@ RSpec.describe "case_studies/show", type: :view do
   def have_image
     have_css("img")
   end
+
+  def have_testimonial
+    have_css '[data-role="testimonial"]'
+  end
 end
+

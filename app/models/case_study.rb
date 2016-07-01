@@ -6,6 +6,7 @@ class CaseStudy < ActiveRecord::Base
   belongs_to :client
   has_many :categories_case_studies, class_name: "Categories::CaseStudy"
   has_many :categories, through: :categories_case_studies
+  has_many :testimonials
 
   scope :search, ->(keywords){ where("title ILIKE ?", "%#{ keywords }%") if keywords.present? }
   scope :displayed, ->{ where(display: true) }
