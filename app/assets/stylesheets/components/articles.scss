@@ -2,10 +2,6 @@
   border: 0;
   padding: rem-calc(15px);
 
-  .team-member {
-    display: none;
-  }
-
   .title {
     display: block;
     font-size: rem(16px);
@@ -27,15 +23,7 @@
   }
 
   .name {
-    font-size: rem(13px);
     font-weight: $open-sans-extrabold;
-    line-height: 1;
-    padding: rem(10px) 0 0;
-  }
-
-  .role {
-    font-size: rem(13px);
-    margin: rem(4px) 0;
   }
 }
 
@@ -85,7 +73,7 @@
     }
 
     .image {
-      @include flex-grid-column(5);
+      @include flex-grid-column(5);      
     }
     .basic-details {
       @include flex-grid-column(7)
@@ -167,14 +155,14 @@
     @include flex-grid-column(9, $gutter: (large: 0, medium: 10));
   }
 
-  .team-member .name,
+  .team-member .name {
+    margin: 0;
+    padding: rem(5px 0 0);
+  }
+
   .team-member .role {
     margin: 0;
     padding: 0;
-    
-    @include media('>=1024px') {
-      padding: rem(4px) 0;
-    }
   }
 
   p:last-of-type {

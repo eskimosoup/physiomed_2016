@@ -7,6 +7,7 @@
     background: $white;
     bottom: -180px;
     left: 50%;
+    min-width: 1200px;
     position: absolute;
     transform: translate(-50%, 0);
   }
@@ -66,6 +67,7 @@
 }
 
 .home-health-zone-content {
+  min-height: 135px;
   position: relative;
 }
 

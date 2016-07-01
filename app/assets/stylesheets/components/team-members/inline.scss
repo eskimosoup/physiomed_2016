@@ -1,17 +1,20 @@
 .team-member {
   padding: rem-calc(10px);
 
+  .image img {
+    border-radius: 50%;
+  }
+
   &:hover {
     background-color: $beige;
     border-radius: 6px;
   }
 
   .name {
-    border-bottom: 1px solid $brown;
-    padding: rem-calc(10px 0);
+    //border-bottom: 1px solid $brown;
+    font-weight: $open-sans-bold;
 
     @include media('<768px') {
-      padding: rem-calc(5px 0);
 
       br {
         display: none;
@@ -20,8 +23,8 @@
   }
 
   .role {
-    margin: rem-calc(5px) auto;
-    color: $green;
+    font-size: rem(13px);
+    margin: 0 auto;
   }
 }
 
@@ -50,7 +53,7 @@
     @include flex-grid-row;
 
     .name {
-      padding: 0 0 rem(5px);
+      padding: 0 0 rem(2px);
     }
   }
 
