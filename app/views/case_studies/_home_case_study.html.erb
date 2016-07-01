@@ -2,7 +2,7 @@
   <div class="main-content">
     <% if case_study.image? %>
       <div class="image">
-        <%= image_tag case_study.image.thumb if case_study.image? %>
+        <%= image_tag case_study.image.index if case_study.image? %>
       </div>
     <% end %>
     <div class="basic-details">
