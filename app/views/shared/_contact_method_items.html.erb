@@ -1,13 +1,12 @@
-<% # TODO: Link these %>
 <li>
-  <%= link_to 'Call us', '#', class: 'contact-method call-us' %>
+  <%= link_to  global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'contact-method call-us' %>
 </li>
 <li>
-  <%= link_to 'Request a callback', '#', class: 'contact-method callback' %>
+  <%= link_to 'Request a callback', new_contact_path, class: 'contact-method callback' %>
 </li>
 <li>
   <%= link_to 'Email us', new_contact_path, class: 'contact-method email' %>
 </li>
 <li>
-  <%= link_to 'Find a Physio', '#', class: 'contact-method find-a-physio' %>
+  <%= link_to 'Find a Physio', '#', class: 'contact-method find-a-physio toggle-class', data: { container: '.find-a-physio-wrap', class: 'visible', return: false } %>
 </li>
