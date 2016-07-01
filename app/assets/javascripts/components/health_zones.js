@@ -18,18 +18,10 @@ $(document).ready(function() {
 });
 
 $(document).on({
-  mouseenter: function (e) {
-    $(this).closest('div').stop(true, true).find('.home-health-zone-hover').slideDown();
+  mouseover: function (e) {
+    $(this).closest('div').find('.home-health-zone-hover').stop(true, true).hide().slideDown();
   },
-  mouseleave: function () {
-    $(this).closest('div').stop(true, true).find('.home-health-zone-hover').slideUp();
+  mouseout: function () {
+    $(this).closest('div').find('.home-health-zone-hover').stop(true, true).show().slideUp();
   }
-}, '.home-health-zone-link');
-
-$(document).on('mouseenter', '.home-health-zone-image-link', function() {
-  $(this).closest('div').stop(true, true).find('.home-health-zone-hover').slideDown();
-});
-
-$(document).on('mouseleave', '.home-health-zone-hover', function() {
-  $(this).stop(true, true).slideUp();
-});
+}, '.home-health-zone-link, .home-health-zone-image-link');
