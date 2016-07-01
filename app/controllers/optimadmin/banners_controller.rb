@@ -1,6 +1,7 @@
 module Optimadmin
   class BannersController < Optimadmin::ApplicationController
-    edit_images_for Banner, [[:image, { show: ['limit', 1366, 700] }]]
+    edit_images_for Banner, [[:image, { show: ['fill', 1366, 700] }]]
+
     before_action :set_banner, only: [:show, :edit, :update, :destroy]
 
     def index
