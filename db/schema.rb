@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701105528) do
+ActiveRecord::Schema.define(version: 20160701134846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -390,6 +390,26 @@ ActiveRecord::Schema.define(version: 20160701105528) do
     t.datetime "updated_at",                   null: false
   end
 
+  create_table "subcategories", force: :cascade do |t|
+    t.string   "title",                     null: false
+    t.string   "image"
+    t.text     "summary"
+    t.boolean  "display",    default: true
+    t.integer  "position",   default: 0,    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "subcategories_videos", force: :cascade do |t|
+    t.integer  "subcategory_id"
+    t.integer  "video_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "subcategories_videos", ["subcategory_id"], name: "index_subcategories_videos_on_subcategory_id", using: :btree
+  add_index "subcategories_videos", ["video_id"], name: "index_subcategories_videos_on_video_id", using: :btree
+
   create_table "team_members", force: :cascade do |t|
     t.string   "forename",                  null: false
     t.string   "surname",                   null: false
@@ -471,6 +491,8 @@ ActiveRecord::Schema.define(version: 20160701105528) do
   add_foreign_key "pages_testimonials", "pages", on_delete: :cascade
   add_foreign_key "pages_testimonials", "testimonials", on_delete: :cascade
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
+  add_foreign_key "subcategories_videos", "subcategories"
+  add_foreign_key "subcategories_videos", "videos"
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade
   add_foreign_key "what_we_do_links", "pages", on_delete: :nullify
   add_foreign_key "what_we_do_links", "what_we_dos", on_delete: :cascade

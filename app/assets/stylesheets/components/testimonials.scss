@@ -29,7 +29,7 @@
 
 .testimonials.slick-slider {
   margin: 0 rem(10px);
-  
+
   @include media('>768px') {
     margin: 0 rem(20px);
   }
@@ -99,4 +99,17 @@
   .testimonial-role {
     font-weight: $open-sans-semibold;
   }
+}
+
+.testimonial-details {
+  @include flex-grid-row;
+}
+
+.testimonial-authorship {
+  @include flex-grid-column(8, $gutter: (small: 0));
+}
+
+.testimonials-further-reading {
+  @include flex-grid-column(4, $gutter: (small: 0));
+  text-align: right;
 }

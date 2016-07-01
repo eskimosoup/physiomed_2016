@@ -12,6 +12,6 @@ class Banner < ActiveRecord::Base
 
   def image_width
     return if image_cache.nil?
-    errors.add(:image, "is less than 1200 pixels wide") if image.width < 1200
+    errors.add(:image, 'is less than 1366 pixels wide') if image.width < 1366
   end
 end
