@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   helper_method :header_menu
 
   def footer_menu
-    @footer_menu ||= Optimadmin::Menu.new(name: 'header')
+    @footer_menu ||= Optimadmin::Menu.new(name: 'footer')
   end
   helper_method :footer_menu
 
