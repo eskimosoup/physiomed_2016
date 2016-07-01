@@ -41,8 +41,8 @@
     </nav>
 
     <div class="primary-header-cta">
-      <%= link_to 'Call Us', '#', class: 'primary-header-call-us' %>
-      <%= link_to 'Find Us', '#', class: 'primary-header-find-us' %>
+      <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'primary-header-call-us' %>
+      <%= link_to 'Find Us', new_contact_path(anchor: 'map-canvas'), class: 'primary-header-find-us' %>
     </div>
   </div>
 </header>
