@@ -111,7 +111,7 @@
         </ul>
 
         <ul class="body-part-section-navigation-links">
-          <%= content_tag :li, (link_to 'Feeling Fab', '#videos-with-guides') if @body_part_facade.videos_with_guides.any? %>
+          <%= content_tag :li, (link_to 'Feeling Fab', '#main-content') if @body_part_facade.videos_with_guides.any? %>
           <%= content_tag :li, (link_to 'Guides', '#guides') if @body_part_facade.guides.any? %>
           <%= content_tag :li, (link_to "Know Your #{@body_part_facade.name.titlecase}", '#body-part-sections') if @body_part_facade.body_part_sections.any? %>
           <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @body_part_facade.team_members.any? %>
@@ -141,22 +141,12 @@
     </div>
   </div>
 
-  <div class="content">
+  <div id="main-content" class="content">
     <% if @body_part_facade.videos_with_guides.any? %>
-     <section class="box-wrap" id="videos-with-guides">
-       <div class="videos-with-guides-container">
-         <div class="videos-with-guides-container-title">
-           <h2>Feeling Fab</h2>
-         </div>
-
-         <div class="videos-with-guides wellbeing">
-           <% @body_part_facade.videos_with_guides.each do |video| %>
-             <%= render partial: 'videos/video_with_guide',
-               locals: { video: video, guide: video.guide } %>
-           <% end %>
-         </div>
-       </div>
-     </section>
+      <% @body_part_facade.videos_with_guides.each do |video| %>
+        <%= render partial: 'videos/video_with_guide',
+          locals: { video: video, guide: video.guide } %>
+      <% end %>
     <% end %>
 
     <% if @body_part_facade.guides.any? %>

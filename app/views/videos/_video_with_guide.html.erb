@@ -1,25 +1,34 @@
-<div class="video-with-guide">
-  <div class="basic-details">
-    <h2 class="video-with-guide-title green-border-bottom">
-      <%= video.title %>
-    </h2>
-
-    <div class="video-subtitle">
-      <%= video.subtitle %>
+<section class="box-wrap">
+  <div class="videos-with-guides-container">
+    <div class="videos-with-guides-container-title">
+      <h2>
+        <%= video.title %>
+      </h2>
     </div>
 
-    <%= simple_format video.content %>
-  </div>
-  <div class="video-iframe">
-    <div class="flex-video">
-      <%= raw iframe_for(video, width: 345, height: 248) %>
+    <div class="videos-with-guides wellbeing">
+      <div class="video-with-guide">
+        <div class="basic-details">
+          <div class="video-subtitle">
+            <%= video.subtitle %>
+          </div>
+
+          <%= raw video.content %>
+        </div>
+        <div class="video-iframe">
+          <div class="flex-video">
+            <%= raw iframe_for(video, width: 345, height: 248) %>
+          </div>
+        </div>
+        <div class="guide">
+          <%= content_tag :div,
+            image_tag(guide.image_url(:index), alt: guide.title, title: guide.title) if guide.image? %>
+
+          <%= link_to "Download", guide.file.url,
+            class: 'button brown-background' %>
+      </div>
+      </div>
     </div>
   </div>
-  <div class="guide">
-    <%= content_tag :div,
-      image_tag(guide.image_url(:index), alt: guide.title, title: guide.title) if guide.image? %>
+</section>
 
-    <%= link_to "Download", guide.file.url,
-      class: 'button brown-background' %>
-  </div>
-</div>
