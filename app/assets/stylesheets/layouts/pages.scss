@@ -82,6 +82,10 @@
     font-size: rem(38px);
     max-width: calc(#{$global-width} - 80px);
     text-shadow: 1px 1px 9px rgba($black, .5);
+
+    a {
+      color: $white;
+    }
   }
 
   &.full-width {

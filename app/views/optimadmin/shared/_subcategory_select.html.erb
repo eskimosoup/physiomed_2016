@@ -1,0 +1,5 @@
+<div class="field">
+  <%= f.label :subcategory_ids, 'Subcategories' %><br>
+  <%= f.select :subcategory_ids, Subcategory.order(:title).pluck(:title, :id),
+    {}, { class: 'multiselect', multiple: true } %>
+</div>

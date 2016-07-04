@@ -73,7 +73,7 @@
     }
 
     .image {
-      @include flex-grid-column(5);      
+      @include flex-grid-column(5);
     }
     .basic-details {
       @include flex-grid-column(7)
@@ -90,7 +90,8 @@
 }
 
 .article,
-.case-study {
+.case-study,
+.subcategory {
   border-bottom: 1px solid $beige;
   margin-bottom: rem(10px);
   padding-bottom: rem(10px);

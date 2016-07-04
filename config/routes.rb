@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
+  resources :subcategories, only: [:index, :show], path: 'categorisation'
   resources :contacts, only: [:new, :create]
   resources :pages, only: :show
   resources :articles, only: [:index, :show]
@@ -20,6 +21,22 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
+  get 'subcategories/index'
+
+  get 'subcategories/show'
+
+  resources :subcategories, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
   concern :imageable do
     member do
       get 'edit_images'
