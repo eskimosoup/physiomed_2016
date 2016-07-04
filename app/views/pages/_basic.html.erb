@@ -11,9 +11,10 @@
     <% if @side_menus.present? %>
       <div class="hero-navigation-wrap">
         <div class="hero-navigation">
-          <div data-role="what-we-do-title" class="what-we-do-item-title sidebar current">
-            <%= @page.title %>
-          </div>
+          <%=
+          render partial: "pages/shared/top_level_menu_item",
+                 locals: { menu_item_presenter: MenuItemPresenter.new(object: @side_menus.last.related_menu_items(@page).first.first, view_template: self, descendants_hash: nil),
+                           sub_menu_items: nil, depth: 0 } %>
 
           <ul class="page-aside-navigation-tree">
             <%= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
