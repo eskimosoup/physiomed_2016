@@ -11,5 +11,7 @@
 
     <%= yield :footer %>
     <%= yield :javascript %>
+
+    <%= render 'layouts/shared/remarketing_footer' if request.host.include?('physiomed.co.uk') %>
   </body>
 </html>
