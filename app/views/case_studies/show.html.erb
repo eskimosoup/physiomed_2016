@@ -19,30 +19,10 @@
     </div>
 
     <div class="page-contact-methods-wrap">
-      <div class="page-contact-methods">
-        <h4>
-          Talk to our clinical team
-        </h4>
-
-        <ul class="page-contact-method-links">
-          <%= render 'shared/contact_method_items' %>
-        </ul>
-      </div>
-
-      <% if @case_study.displayed_client %>
-        <div class="page-client">
-          <%= render @case_study.displayed_client %>
-        </div>
-      <% end %>
-
-      <% if @case_study.testimonials.displayed.any? %>
-        <%= render(
-          partial: 'shared/sidebar_testimonials',
-          locals: {
-            testimonials: @case_study.testimonials.displayed
-          }
-        ) %>
-      <% end %>
+      <%= render partial: 'shared/sidebar', locals: {
+        hide_case_studies: true
+      }
+      %>
     </div>
   </div>
 </div>

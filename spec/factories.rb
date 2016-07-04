@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :pages_team_member, class: 'Pages::TeamMember' do
+    page
+    team_member
+  end
   factory :subcategories_video, class: 'Subcategories::Video' do
     subcategory
     video

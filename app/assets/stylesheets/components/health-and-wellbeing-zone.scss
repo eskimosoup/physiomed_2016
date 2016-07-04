@@ -48,6 +48,10 @@
 
 .home-health-zone {
   padding: 0 rem(15px);
+
+  &.sidebar {
+    padding: 0;
+  }
 }
 
 .home-health-zone-link {

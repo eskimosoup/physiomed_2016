@@ -49,7 +49,9 @@ module Optimadmin
 
     def team_member_params
       params.require(:team_member)
-            .permit(:forename, :surname, :image, :bio, :email, :phone, :role, :display, :remove_image, :remote_image_url, :image_cache)
+            .permit(:forename, :surname, :image, :bio, :email, :phone, :role,
+                    :display, :remove_image, :remote_image_url, :image_cache,
+                    page_ids: [])
     end
   end
 end

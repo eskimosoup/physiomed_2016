@@ -1,0 +1,19 @@
+<%= content_for :footer do %>
+  <div class="inline-modal team-member-profile-wrap-modal team-member-profile-wrap-<%= team_member.id %>">
+    <div class="inline-modal-content">
+      <%= button_tag class: 'inline-modal-close-button toggle-class', data: { class: 'visible', container: ".team-member-profile-wrap-#{team_member.id}", return: false }, aria: { label: 'Close modal' }, type: 'button' do %>
+        <span aria-hidden="true">&times;</span>
+      <% end %>
+
+      <%= render(
+        partial: "team_members/author_profile",
+        locals: {
+          team_member: team_member
+        }
+      ) %>
+
+      <%= link_to '<', '#', class: 'previous-team-member-modal' %>
+      <%= link_to '>', '#', class: 'next-team-member-modal' %>
+    </div>
+  </div>
+<% end %>

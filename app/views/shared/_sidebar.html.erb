@@ -1,0 +1,73 @@
+<% unless defined?(hide_cta_methods) %>
+  <div class="page-contact-methods">
+    <h4>
+      Talk to our clinical team
+    </h4>
+
+    <ul class="page-contact-method-links">
+      <%= render 'shared/contact_method_items' %>
+    </ul>
+  </div>
+<% end %>
+
+<% if defined?(testimonials) %>
+  <%= render(
+    partial: 'shared/sidebar_testimonials',
+    locals: {
+      testimonials: testimonials
+    }
+  ) if testimonials.present? %>
+<% end %>
+
+<% if defined?(author) %>
+  <%= content_tag :div, (render(
+    partial: "team_members/author",
+    locals: {
+      team_member: author
+    }
+  )), class: 'page-author-information' if author.present? %>
+<% end %>
+
+<% if defined?(team_members) %>
+  <% if team_members.present? %>
+    <div class="page-author-information">
+      <% team_members.each do |team_member| %>
+        <%= render(
+          partial: "team_members/author",
+          locals: {
+            team_member: team_member
+          }
+        ) %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<% unless defined?(hide_health_and_wellbeing_zone) %>
+  <%= content_for :javascript do %>
+    <%= javascript_include_tag "components/health_zones.js" %>
+    <% end %>
+
+  <div class="page-sidebar-information">
+    <%= render(
+      partial: "health_zones/sidebar_health_zone",
+      locals: { health_zone: @health_and_wellbeing_zone }
+    ) %>
+  </div>
+<% end %>
+
+<% unless defined?(hide_case_studies) %>
+<%= content_tag :div, ('<h6>Case Studies</h6>'.html_safe + render(
+  partial: "case_studies/sidebar_case_study",
+  collection: @latest_case_studies,
+  as: :case_study
+)), class: 'page-sidebar-information' if @latest_case_studies.present? %>
+<% end %>
+
+<% unless defined?(hide_articles) %>
+  <%= content_tag :div, ('<h6>Latest News</h6>'.html_safe + render(
+    partial: "articles/sidebar_article",
+    collection: @latest_articles,
+    as: :article
+  )), class: 'page-sidebar-information' if @latest_articles.present? %>
+<% end %>

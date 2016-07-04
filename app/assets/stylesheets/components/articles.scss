@@ -27,6 +27,40 @@
   }
 }
 
+.article.sidebar,
+.case-study.sidebar {
+  border-bottom: 1px solid $beige;
+  padding: rem-calc(5px 0 5px);
+
+  .title {
+    display: block;
+    font-size: rem(14px);
+    font-weight: $open-sans-bold;
+    margin: rem-calc(5px) auto;
+    width: 100%;
+  }
+
+  .date {
+    font-size: rem(12px);
+  }
+
+  .team-member {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+
+    .image {
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .name {
+    font-weight: $open-sans-extrabold;
+  }
+}
+
 .article.wellbeing {
   @include flex-grid-row;
 

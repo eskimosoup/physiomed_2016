@@ -1,9 +1,13 @@
-<div class="team-member text-center">
-  <%= image_tag team_member.image.index, title: team_member.name if team_member.image? %>
-  <div class="name">
-    <%= link_to team_member.name, team_member %>
+<%= link_to '#', class: 'team-member toggle-class', data: { role: 'team-member', class: 'visible', container: ".team-member-profile-wrap-#{team_member.id}", return: false, team_member_modal: true } do %>
+  <div class="team-member text-center">
+    <%= image_tag team_member.image.index, title: team_member.name if team_member.image? %>
+    <div class="name">
+      <%= link_to team_member.name, team_member %>
+    </div>
+    <div class="role">
+      <%= team_member.role %>
+    </div>
   </div>
-  <div class="role">
-    <%= team_member.role %>
-  </div>
-</div>
+<% end %>
+
+<%= render 'team_members/shared/modal', team_member: team_member %>

@@ -36,6 +36,7 @@
 
     &:link,
     &:visited {
+      border-bottom: 4px solid $white;
       color: $brown;
       font-family: $ubuntu;
       font-weight: $ubuntu-light;
@@ -43,13 +44,14 @@
       padding: rem(0 5px 30px);
     }
 
-    &:hover,
-    &:active {
-      color: $green;
-    }
-
     &.active {
       border-bottom: 4px solid $green;
+    }
+
+    &:hover,
+    &:active {
+      border-bottom: 0;
+      color: $green;
     }
   }
 }
@@ -70,12 +72,19 @@
     margin: 0;
     padding: rem(25px) rem(25px) 0;
     position: absolute;
+    width: 100%;
+  }
+
+  .dropdown,
+  .dropdown-arrow {
+    display: none !important;
   }
 
   .menu-link {
     &:link,
     &:visited {
       color: $white;
+      border: 0;
     }
 
     &:hover,

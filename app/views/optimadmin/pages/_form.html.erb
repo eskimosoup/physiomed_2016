@@ -66,6 +66,13 @@
       </div>
 
       <div class="field">
+        <%= f.label :team_member_ids %><br>
+        <%= f.select :team_member_ids,
+            TeamMember.order({forename: :asc, surname: :asc }).pluck(:forename, :surname, :id).map{|x| ["#{ x[0] } #{ x[1] }", x[2]] },
+            { }, { class: 'multiselect', multiple: true } %>
+      </div>
+
+      <div class="field">
         <%= f.label :display %><br />
         <%= f.check_box :display %>
       </div>

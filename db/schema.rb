@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701134846) do
+ActiveRecord::Schema.define(version: 20160704100642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -334,6 +334,16 @@ ActiveRecord::Schema.define(version: 20160701134846) do
     t.datetime "updated_at",                   null: false
   end
 
+  create_table "pages_team_members", force: :cascade do |t|
+    t.integer  "page_id"
+    t.integer  "team_member_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "pages_team_members", ["page_id"], name: "index_pages_team_members_on_page_id", using: :btree
+  add_index "pages_team_members", ["team_member_id"], name: "index_pages_team_members_on_team_member_id", using: :btree
+
   create_table "pages_testimonials", force: :cascade do |t|
     t.integer  "page_id"
     t.integer  "testimonial_id"
@@ -493,6 +503,8 @@ ActiveRecord::Schema.define(version: 20160701134846) do
   add_foreign_key "categories_videos", "categories", on_delete: :cascade
   add_foreign_key "categories_videos", "videos", on_delete: :cascade
   add_foreign_key "guides", "videos", on_delete: :cascade
+  add_foreign_key "pages_team_members", "pages"
+  add_foreign_key "pages_team_members", "team_members"
   add_foreign_key "pages_testimonials", "pages", on_delete: :cascade
   add_foreign_key "pages_testimonials", "testimonials", on_delete: :cascade
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
