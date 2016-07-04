@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include Optimadmin::AdminSessionsHelper
   helper_method :current_administrator
 
-  before_action :global_site_settings, :physio_search
+  before_action :global_site_settings, :physio_search, :sidebar_objects
 
   private
 
@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
     @physio_search ||= PhysioSearch.new
   end
   helper_method :physio_search
+
+  def sidebar_objects
+    @health_and_wellbeing_zone ||= HealthZone.displayed.find(1)
+    @latest_articles ||= Article.displayed.order(date: :desc).limit(2)
+    @latest_case_studies ||= CaseStudy.displayed.order(date: :desc).limit(2)
+  end
 end

@@ -2,7 +2,7 @@ module Optimadmin
   class HealthZonesController < Optimadmin::ApplicationController
     edit_images_for HealthZone, [
       [:image, { show: ['fill', 480, 300] }],
-      [:home_image, { show: ['fill', 335, 140] }]
+      [:home_image, { show: ['fill', 335, 140], sidebar: ['fill', 255, 135] }]
     ]
     before_action :set_health_zone, only: [:show, :edit, :update, :destroy]
 
@@ -50,7 +50,7 @@ module Optimadmin
 
     def health_zone_params
       params.require(:health_zone)
-        .permit(:title, :image, :home_image, :hover_text, :link, :display, :content, :remove_image, :remote_image_url, :image_cache, :remote_home_image_url, :home_image_cache)
+            .permit(:title, :image, :home_image, :hover_text, :link, :display, :content, :remove_image, :remote_image_url, :image_cache, :remote_home_image_url, :home_image_cache)
     end
   end
 end

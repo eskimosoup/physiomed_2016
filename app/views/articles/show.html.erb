@@ -25,24 +25,11 @@
     </div>
 
     <div class="page-contact-methods-wrap">
-      <div class="page-contact-methods">
-        <h4>
-          Talk to our clinical team
-        </h4>
-
-        <ul class="page-contact-method-links">
-          <%= render 'shared/contact_method_items' %>
-        </ul>
-      </div>
-
-      <div class="page-author-information">
-        <%= render(
-          partial: "team_members/author",
-          locals: {
-            team_member: @article.author
-          }
-        ) if @article.author %>
-      </div>
+      <%= render partial: 'shared/sidebar', locals: {
+        hide_articles: true,
+        author: @article.author
+      }
+      %>
     </div>
   </div>
 </div>
