@@ -79,6 +79,10 @@
     min-height: 85px;
     padding: rem(24px 14px);
     text-align: left;
+
+    a {
+      color: $white;
+    }
   }
 
   &.current {
