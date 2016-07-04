@@ -101,6 +101,8 @@
 
   &.page {
     margin-top: 0;
+    text-align: left;
+    max-width: $global-width;
   }
 }
 
