@@ -10,7 +10,9 @@
       <div class="video-with-guide page-content">
         <%= raw @subcategory.summary %>
 
-        <%= link_to 'View all', subcategories_path, class: 'button brown-background' %>
+        <div class="video-with-guide-download-button">
+          <%= link_to 'View all', subcategories_path, class: 'button brown-background' %>
+        </div>
       </div>
 
       <% @subcategory.videos.each do |video| %>
