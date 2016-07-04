@@ -23,7 +23,6 @@
         <div class="guide">
           <%= content_tag :div,
             image_tag(guide.image_url(:index), alt: guide.title, title: guide.title) if guide.image? %>
-
           <%= link_to "Download", guide.file.url,
             class: 'button brown-background' %>
       </div>
@@ -31,4 +30,3 @@
     </div>
   </div>
 </section>
-
