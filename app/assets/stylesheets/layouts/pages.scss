@@ -34,7 +34,7 @@
   position: relative;
 
   @include media('>768px') {
-    background: image-url('layout/mask.png') no-repeat top center,
+    background: image-url('banner/mask.png') no-repeat top center,
                 image-url('layout/photography/wellbeing-zone.jpg') no-repeat top center,
                 $beige;
 
@@ -44,7 +44,7 @@
 
   @include media('>768px') {
     &.body-part-background {
-      background: image-url('layout/mask.png') no-repeat top center,
+      background: image-url('banner/mask.png') no-repeat top center,
                   image-url('layout/photography/wellbeing-body-part.jpg') no-repeat top center,
                   $beige;
     }
@@ -58,10 +58,9 @@
 }
 
 .hero-section-overlay-mask {
-  left: 50%;
+  left: 0;
   position: absolute;
   top: 0;
-  transform: translate(-50%, 0);
   z-index: 1;
 }
 

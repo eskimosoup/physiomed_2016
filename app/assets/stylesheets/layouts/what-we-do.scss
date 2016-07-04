@@ -54,7 +54,7 @@
   padding: 0;
 
   li {
-    margin: rem(6px) 0;
+    margin: rem(4px) 0;
 
     .current {
       text-decoration: underline !important;
@@ -74,8 +74,10 @@
   text-align: center;
 
   &.sidebar {
-    background-position: left;
-    padding: rem(33px 50px 33px 24px);
+    background: $white image-url('what-we-do/title-small.png') no-repeat left center;
+    font-size: rem(14px);
+    min-height: 85px;
+    padding: rem(24px 14px);
     text-align: left;
   }
 

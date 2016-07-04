@@ -4,12 +4,14 @@
     if (Modernizr.mq('only screen and (min-width: 1200px)')) {
       $(document).on({
         mouseenter: function (e) {
+          $(this).find('a').css('border-bottom', 0);
           var $dropdown = $(this).find('.dropdown-arrow');
           var marginLeft = parseInt($(this).find('.menu-link').width() / 2) - (parseInt($dropdown.width()) / 2)
           $dropdown.toggleClass('visible');
           $dropdown.css('margin-left', marginLeft);
         },
         mouseleave: function () {
+          $(this).find('a').removeAttr('style');
           $(this).find('.dropdown-arrow').toggleClass('visible').removeAttr('style');
         }
       }, '.primary-header-navigation li');
