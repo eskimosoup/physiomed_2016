@@ -47,7 +47,8 @@ module Optimadmin
     def video_params
       params.require(:video)
             .permit(:title, :subtitle, :content,
-      :youtube_identifier, :display, category_ids: [])
+                    :youtube_identifier, :display, category_ids: [],
+                                                   subcategory_ids: [])
     end
   end
 end

@@ -1,0 +1,34 @@
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title full-width">
+      <%= link_to 'Videos', subcategories_path %>: <%= @subcategory.title %>
+    </h1>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="page-content-wrap full-width">
+      <div class="video-with-guide page-content">
+        <%= raw @subcategory.summary %>
+
+        <%= link_to 'View all', subcategories_path, class: 'button brown-background' %>
+      </div>
+
+      <% @subcategory.videos.each do |video| %>
+        <%= render partial: 'videos/video_with_guide_button',
+          locals: { video: video, guide: video.guide } %>
+      <% end %>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

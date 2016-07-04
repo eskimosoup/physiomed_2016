@@ -12,10 +12,11 @@
 
   @include media('>=768px') {
     display: block;
-    left: 50%;
+    //left: 50%;
+    left: 0;
     position: absolute;
     top: 0;
-    transform: translate(-50%, 0);
+    //transform: translate(-50%, 0);
     z-index: 3;
   }
 }

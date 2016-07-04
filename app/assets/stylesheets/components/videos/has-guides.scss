@@ -16,6 +16,10 @@
   .basic-details {
     @include media('>=768px') {
       @include flex-grid-column(5);
+
+      &.full-width {
+        @include flex-grid-column(7);
+      }
     }
   }
 

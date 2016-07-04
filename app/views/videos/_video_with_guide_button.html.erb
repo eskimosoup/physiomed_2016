@@ -1,0 +1,29 @@
+<section class="box-wrap">
+  <div class="videos-with-guides-container">
+    <div class="videos-with-guides-container-title">
+      <h2>
+        <%= video.title %>
+      </h2>
+    </div>
+
+    <div class="videos-with-guides wellbeing">
+      <div class="video-with-guide">
+        <div class="basic-details full-width">
+          <div class="video-subtitle">
+            <%= video.subtitle %>
+          </div>
+
+          <%= raw video.content %>
+
+        <%= link_to "Download PDF", guide.file.url,
+          class: 'button brown-background' %>
+        </div>
+        <div class="video-iframe">
+          <div class="flex-video">
+            <%= raw iframe_for(video, width: 345, height: 248) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

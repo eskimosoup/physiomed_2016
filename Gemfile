@@ -54,5 +54,6 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
   gem 'simplecov', require: false
 end

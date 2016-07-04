@@ -28,19 +28,25 @@
   .additional-home-content {
     background-color: $white;
 
+    ul {
+      margin: rem(20px) rem(10px);
+    }
+
     li {
+      background: image-url('tick.png') no-repeat center left;
       font-size: rem(14px);
       font-weight: $open-sans-bold;
       line-height: 1.5;
-      list-style-image: image-url('tick.png');
-      margin: rem(10px 0);
+      list-style: none;
+      margin: rem(15px 0);
+      padding: rem(0 0 0 35px);
 
       @include media('>768px') {
         font-size: rem(16px);
       }
     }
 
-    .video {
+    &.video {
       padding: 0;
     }
   }

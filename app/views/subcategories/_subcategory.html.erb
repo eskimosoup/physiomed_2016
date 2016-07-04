@@ -1,0 +1,11 @@
+<div class="subcategory">
+  <div class="content <%= 'has-aside' if subcategory.image.present? %>">
+    <%= link_to subcategory.title, subcategory, class: 'title' %>
+
+    <%= simple_format subcategory.summary %>
+
+    <%= link_to 'See videos', subcategory, class: 'button' %>
+  </div>
+
+  <%= content_tag :div, (image_tag subcategory.image.index, alt: subcategory.title, class: 'entry-image'), class: 'aside-wrap' if subcategory.image.present? %>
+</div>

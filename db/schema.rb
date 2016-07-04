@@ -391,14 +391,19 @@ ActiveRecord::Schema.define(version: 20160701134846) do
   end
 
   create_table "subcategories", force: :cascade do |t|
-    t.string   "title",                     null: false
+    t.string   "title",                        null: false
     t.string   "image"
     t.text     "summary"
-    t.boolean  "display",    default: true
-    t.integer  "position",   default: 0,    null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "display",       default: true
+    t.integer  "position",      default: 0,    null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
+
+  add_index "subcategories", ["slug"], name: "index_subcategories_on_slug", using: :btree
+  add_index "subcategories", ["suggested_url"], name: "index_subcategories_on_suggested_url", using: :btree
 
   create_table "subcategories_videos", force: :cascade do |t|
     t.integer  "subcategory_id"
