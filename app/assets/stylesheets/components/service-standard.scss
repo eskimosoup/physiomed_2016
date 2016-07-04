@@ -24,6 +24,10 @@
   text-align: center;
   transition: background-color 500ms linear;
 
+  a {
+    color: $white;
+  }
+
   @include media('>=768px') {
     border-right: 1px solid $white;
     min-height: 245px;

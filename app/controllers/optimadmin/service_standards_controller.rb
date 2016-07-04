@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_service_standard, only: [:show, :edit, :update, :destroy]
 
     def index
-      @service_standards = ServiceStandard.ordered_by_position 
+      @service_standards = ServiceStandard.ordered_by_position
     end
 
     def show
@@ -46,7 +46,7 @@ module Optimadmin
 
     def service_standard_params
       params.require(:service_standard)
-            .permit(:icon, :content, :hover_content, :position, :display)
+            .permit(:icon, :content, :hover_content, :position, :display, :link)
     end
   end
 end
