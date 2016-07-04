@@ -5,13 +5,20 @@ class TeamMember < ActiveRecord::Base
 
   has_many :articles, foreign_key: :author_id
 
+  has_many :page_team_members,
+           dependent: :destroy,
+           class_name: 'Pages::TeamMember'
+
+  has_many :pages,
+           through: :page_team_members
+
   validates :forename, presence: true
   validates :surname, presence: true
   validates :role, presence: true
 
-  scope :displayed, ->{ where(display: true) }
+  scope :displayed, -> { where(display: true) }
 
   def name
-    [forename, surname].join(" ")
+    [forename, surname].join(' ')
   end
 end

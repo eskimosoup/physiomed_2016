@@ -1,4 +1,4 @@
-<%= link_to '#', class: 'team-member toggle-class', data: { role: 'team-member', class: 'visible', container: '.team-member-profile-wrap', return: false } do %>
+<%= link_to '#', class: 'team-member toggle-class', data: { role: 'team-member', class: 'visible', container: ".team-member-profile-wrap-#{team_member.id}", return: false, team_member_modal: true } do %>
   <% if team_member.image? %>
     <div class="image">
       <%= image_tag team_member.image.author, title: team_member.name %>
@@ -14,19 +14,4 @@
   </div>
 <% end %>
 
-<%= content_for :footer do %>
-  <div class="inline-modal team-member-profile-wrap">
-    <div class="inline-modal-content">
-      <%= button_tag class: 'inline-modal-close-button toggle-class', data: { class: 'visible', container: '.team-member-profile-wrap', return: false }, aria: { label: 'Close modal' }, type: 'button' do %>
-        <span aria-hidden="true">&times;</span>
-      <% end %>
-
-      <%= render(
-        partial: "team_members/author_profile",
-        locals: {
-          team_member: team_member
-        }
-      ) %>
-    </div>
-  </div>
-<% end %>
+<%= render 'team_members/shared/modal', team_member: team_member %>

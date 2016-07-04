@@ -8,10 +8,12 @@ RSpec.describe Page, type: :model do
     it { should validate_uniqueness_of(:suggested_url).allow_blank.case_insensitive.with_message('is already taken, leave blank to generate automatically') }
   end
 
-  describe "associations", :association do
+  describe 'associations', :association do
     it { should have_one :what_we_do_link }
-    it { should have_many(:pages_testimonials).class_name("Pages::Testimonial") }
+    it { should have_many(:pages_testimonials).class_name('Pages::Testimonial') }
     it { should have_many(:testimonials).through(:pages_testimonials) }
+    it { should have_many(:page_team_members).dependent(:destroy).class_name('Pages::TeamMember') }
+    it { should have_many(:team_members).through(:page_team_members) }
   end
 
   describe 'scopes', :scope do

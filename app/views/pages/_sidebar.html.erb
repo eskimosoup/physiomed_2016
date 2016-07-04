@@ -16,4 +16,17 @@
       }
     ) %>
   <% end %>
+
+  <% if page.team_members.displayed.any? %>
+    <div class="page-author-information">
+      <% page.team_members.displayed.each do |team_member| %>
+        <%= render(
+          partial: "team_members/author",
+          locals: {
+            team_member: team_member
+          }
+        ) %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

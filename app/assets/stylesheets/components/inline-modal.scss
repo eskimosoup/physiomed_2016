@@ -77,3 +77,20 @@
     width: 80%;
   }
 }
+
+.previous-team-member-modal,
+.next-team-member-modal {
+  bottom: -45px;
+  color: $white;
+  display: none;
+  font-size: rem(40px);
+  position: absolute;
+}
+
+.previous-team-member-modal {
+  left: 0;
+}
+
+.next-team-member-modal {
+  right: 0;
+}

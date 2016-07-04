@@ -10,6 +10,13 @@ class Page < ActiveRecord::Base
   has_many :pages_testimonials, class_name: 'Pages::Testimonial'
   has_many :testimonials, through: :pages_testimonials
 
+  has_many :page_team_members,
+           dependent: :destroy,
+           class_name: 'Pages::TeamMember'
+
+  has_many :team_members,
+           through: :page_team_members
+
   before_save :store_image, if: proc { |page| page.remote_image_url.blank? }
   # before_save :store_file, if: Proc.new{|page| page.remote_file_url.blank? }
 
