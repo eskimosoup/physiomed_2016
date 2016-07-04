@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  
+
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
@@ -41,6 +41,11 @@
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
+      <div class="field">
+        <%= f.label :link %><br>
+        <%= f.text_field :link %>
+      </div>
+
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>

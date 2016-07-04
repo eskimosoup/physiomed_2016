@@ -15,4 +15,5 @@
 //= require components/quick-links
 //= require components/toggle-class
 //= require components/primary-navigation
+//= require components/google-analytics-events
 //= require vendor/jquery.doubletaptogo
