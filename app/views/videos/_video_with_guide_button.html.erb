@@ -15,8 +15,11 @@
 
           <%= raw video.content %>
 
-        <%= link_to "Download PDF", video.guide.file.url,
-          class: 'button brown-background' if video.guide.present? %>
+          <div class="video-with-guide-download-button">
+            <%= link_to "Download PDF", video.guide.file.url,
+              class: 'button brown-background' if video.guide.present? %>
+          </div>
+
         </div>
         <div class="video-iframe">
           <div class="flex-video">
