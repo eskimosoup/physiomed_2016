@@ -1,0 +1,25 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Practice Applications' %>
+
+<div class="main-content">
+  <div class="row collapse module-list-index header">
+    <%= list_item 'small-5' do %>
+      Name
+    <% end %>
+    <%= list_item 'small-2' do %>
+      Post Code
+    <% end %>
+    <%= list_item 'small-2' do %>
+      Telephone
+    <% end %>
+    <%= list_item 'small-2' do %>
+      Email
+    <% end %>
+    <%= list_item 'small-1' do %>
+      View
+    <% end %>
+  </div>
+  <%= render partial: 'practice_application', collection: @practice_applications,
+    as: :practice_application %>
+  <%= paginate @practice_applications %>
+</div>
+

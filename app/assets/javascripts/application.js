@@ -17,3 +17,4 @@
 //= require components/primary-navigation
 //= require components/google-analytics-events
 //= require vendor/jquery.doubletaptogo
+//= require cocoon

@@ -23,9 +23,18 @@ en:
   date:
     formats:
       slashes: "%d/%m/%Y"
+  mailers:
+    practice_application:
+      application_made:
+        subject: "Physio Med National Website - Practice form completed"
   contacts:
     create:
       flash: "Thank you for your submission."
+  practice_applications:
+    new:
+      header: "New Practice Application"
+    create:
+      flash: "Practice Application successfully created"
   wellbeing_zone:
     general_wellbeings:
       show:

@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="large-3 columns">
+    Name
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    CSP number
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.csp_number %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    HPC number
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.hpc_number %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    OCPPP member
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.ocppp_member %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    Qualification date
+  </div>
+  <div class="large-9 columns">
+    <%= l practitioner.qualification_date if practitioner.qualification_date %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    Years practicing
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.years_practicing %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    <p>
+      Specialisation areas
+    </p>
+  </div>
+  <div class="large-9 columns">
+    <%= simple_format practitioner.specialisation_areas %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    Domiciliary visits
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.domiciliary_visits %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    Manual treatments
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.manual_treatments %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    BUPA registered
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.bupa_registered %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    CPD
+  </div>
+  <div class="large-9 columns">
+    <%= practitioner.cpd %>
+  </div>
+</div>
