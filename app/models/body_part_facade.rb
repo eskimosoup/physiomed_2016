@@ -7,7 +7,7 @@ class BodyPartFacade
   end
 
   def other_body_parts
-    @other_body_parts = BodyPart.where.not(id: body_part.id).includes(:category)
+    @other_body_parts = BodyPart.where.not(id: body_part.id, display: true).includes(:category)
   end
 
   def body_part_sections
