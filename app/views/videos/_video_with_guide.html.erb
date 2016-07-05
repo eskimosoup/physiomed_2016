@@ -10,7 +10,7 @@
       <div class="video-with-guide">
         <div class="basic-details">
           <div class="video-subtitle">
-            <%= video.subcategories.pluck(:title).join(', ') %><br />
+            <%= "#{video.subcategories.pluck(:title).join(', ')}<br />".html_safe if video.subcategories.present? %>
             <%= video.subtitle %>
           </div>
 
