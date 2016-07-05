@@ -1,5 +1,5 @@
 <section class="box-wrap">
-  <div class="videos-with-guides-container">
+  <div class="videos-with-guides-container" id="video-with-guide-<%= video.id %>">
     <div class="videos-with-guides-container-title">
       <h2>
         <%= video.title %>
@@ -10,6 +10,7 @@
       <div class="video-with-guide">
         <div class="basic-details">
           <div class="video-subtitle">
+            <%= video.subcategories.pluck(:title).join(', ') %><br />
             <%= video.subtitle %>
           </div>
 

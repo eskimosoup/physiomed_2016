@@ -111,7 +111,11 @@
         </ul>
 
         <ul class="body-part-section-navigation-links">
-          <%= content_tag :li, (link_to 'Feeling Fab', '#main-content') if @body_part_facade.videos_with_guides.any? %>
+          <% if @body_part_facade.videos_with_guides.any? %>
+            <% @body_part_facade.videos_with_guides.each do |video| %>
+              <%= content_tag :li, (link_to video.title, "#video-with-guide-#{video.id}") if @body_part_facade.videos_with_guides.any? %>
+            <% end %>
+          <% end %>
           <%= content_tag :li, (link_to 'Guides', '#guides') if @body_part_facade.guides.any? %>
           <%= content_tag :li, (link_to "Know Your #{@body_part_facade.name.titlecase}", '#body-part-sections') if @body_part_facade.body_part_sections.any? %>
           <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @body_part_facade.team_members.any? %>
