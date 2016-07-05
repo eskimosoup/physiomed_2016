@@ -58,7 +58,7 @@
       }
     });
 
-    $(document).on('click', 'a[href^="#"]', function() {
+    $(document).on('click', 'a[href^="#"]:not(.body-part-tabs a)', function() {
       var elem = $.attr(this, 'href');
       smoothScroll(elem);
       return false;
