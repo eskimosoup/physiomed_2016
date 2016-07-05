@@ -28,7 +28,8 @@ class BodyPartFacade
   end
 
   def faqs
-    @faqs ||= body_part.frequently_asked_questions.displayed.order('RANDOM()').limit(6)
+    # @faqs ||= body_part.frequently_asked_questions.displayed.order('RANDOM()').limit(6)
+    @faqs ||= body_part.frequently_asked_questions.displayed.order(:position).limit(6)
   end
 
   def guides
