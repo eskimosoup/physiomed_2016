@@ -2,7 +2,7 @@ module Optimadmin
   class PagesController < Optimadmin::ApplicationController
     before_action :set_page, only: [:show, :edit, :update, :destroy]
 
-    edit_images_for Page, [[:image, { show: ['fit', 200, 200] }]]
+    edit_images_for Page, [[:image, { show: ['limit', 200, 200] }]]
 
     def index
       @pages = Optimadmin::BaseCollectionPresenter.new(
