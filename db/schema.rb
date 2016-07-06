@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704160528) do
+ActiveRecord::Schema.define(version: 20160705145138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -367,6 +367,74 @@ ActiveRecord::Schema.define(version: 20160704160528) do
 
   add_index "people_helped_sections", ["category_id"], name: "index_people_helped_sections_on_category_id", unique: true, using: :btree
 
+  create_table "practice_applications_contacts", force: :cascade do |t|
+    t.integer  "practice_id"
+    t.string   "name",        null: false
+    t.string   "position",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "practice_applications_contacts", ["practice_id"], name: "index_practice_applications_contacts_on_practice_id", using: :btree
+
+  create_table "practice_applications_practices", force: :cascade do |t|
+    t.string   "name",                                        null: false
+    t.text     "address",                                     null: false
+    t.string   "county"
+    t.string   "postcode",                                    null: false
+    t.string   "telephone",                                   null: false
+    t.string   "fax"
+    t.string   "email",                                       null: false
+    t.boolean  "public_liability_insurance",   default: true, null: false
+    t.boolean  "employee_liability_insurance", default: true, null: false
+    t.string   "full_time"
+    t.string   "part_time"
+    t.string   "male"
+    t.string   "female"
+    t.string   "monday"
+    t.string   "tuesday"
+    t.string   "wednesday"
+    t.string   "thursday"
+    t.string   "friday"
+    t.string   "number_of_locations"
+    t.string   "capacity"
+    t.boolean  "receptionist",                                null: false
+    t.boolean  "parking_facilities",                          null: false
+    t.string   "established"
+    t.boolean  "word_access"
+    t.text     "cancellation_policy"
+    t.string   "cheques_payable_to"
+    t.text     "description"
+    t.string   "treatment_rooms"
+    t.string   "treatment_min_time"
+    t.string   "initial_assessment_cost"
+    t.string   "subsequent_treatment_cost"
+    t.string   "image_1"
+    t.string   "image_2"
+    t.string   "image_3"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  create_table "practice_applications_practitioners", force: :cascade do |t|
+    t.integer  "practice_id"
+    t.string   "name"
+    t.string   "csp_number"
+    t.string   "hpc_number"
+    t.boolean  "ocppp_member",         default: false, null: false
+    t.date     "qualification_date"
+    t.string   "years_practicing"
+    t.text     "specialisation_areas"
+    t.boolean  "domiciliary_visits",   default: false, null: false
+    t.string   "manual_treatments"
+    t.boolean  "bupa_registered",      default: false, null: false
+    t.boolean  "cpd",                  default: false, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "practice_applications_practitioners", ["practice_id"], name: "index_practice_applications_practitioners_on_practice_id", using: :btree
+
   create_table "practices", force: :cascade do |t|
     t.string   "name",                      null: false
     t.string   "address"
@@ -509,6 +577,8 @@ ActiveRecord::Schema.define(version: 20160704160528) do
   add_foreign_key "pages_testimonials", "pages", on_delete: :cascade
   add_foreign_key "pages_testimonials", "testimonials", on_delete: :cascade
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
+  add_foreign_key "practice_applications_contacts", "practice_applications_practices", column: "practice_id", on_delete: :cascade
+  add_foreign_key "practice_applications_practitioners", "practice_applications_practices", column: "practice_id", on_delete: :cascade
   add_foreign_key "subcategories_videos", "subcategories"
   add_foreign_key "subcategories_videos", "videos"
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade

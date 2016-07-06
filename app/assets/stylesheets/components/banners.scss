@@ -81,6 +81,8 @@
   top: 0;
   width: 100%;
   z-index: 2;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 
   @include media('>=768px') {
     max-width: 524px;

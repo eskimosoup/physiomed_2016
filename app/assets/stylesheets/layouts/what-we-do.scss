@@ -7,6 +7,8 @@
   background: rgba($green, .75);
   color: $white;
   padding: rem(140px) 0 rem(40px);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 
   p {
     font-size: rem(16px);
