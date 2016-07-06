@@ -23,6 +23,7 @@
 }
 
 .primary-header-content {
+  @include clearfix;
   width: 100%;
 
   @include media('>=768px') {
@@ -58,11 +59,25 @@
   }
 }
 
+.clinic-button {
+  background: $green image-url('icons/map-pin-white.png') no-repeat 20px 50%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: $white;
+  display: inline-block;
+  float: right;
+  margin: rem(0 10px 0 0);
+  padding: rem(8px 17px 8px 50px);
+
+  &:hover {
+    background-color: $pale-green;
+  }
+}
+
 .client-area-button {
   background: $brown-offset;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  clear: right;
   float: right;
   font-family: $ubuntu;
   font-weight: $ubuntu-light;
