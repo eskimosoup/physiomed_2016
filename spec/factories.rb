@@ -14,35 +14,6 @@ FactoryGirl.define do
     display true
     position 1
   end
-  factory :practice_applications_practitioner, class: 'PracticeApplications::Practitioner' do
-    practice nil
-    name "MyString"
-    csp_number "MyString"
-    hpc_number "MyString"
-    ocppp_member false
-    qualification_date "2016-07-05"
-    years_practicing "MyString"
-    specialisation_areas "MyText"
-    domiciliary_visits false
-    manual_treatments "MyString"
-    bupa_registered false
-    cpd false
-  end
-  factory :practice_applications_contact, class: 'PracticeApplications::Contact' do
-    practice "MyString"
-    belongs_to "MyString"
-    name "MyString"
-    position "MyString"
-  end
-  factory :practice_applications_practice, class: 'PracticeApplications::Practice' do
-    name "MyString"
-    address "MyText"
-    county "MyString"
-    postcode "MyString"
-    telephone "MyString"
-    fax "MyString"
-    email "MyString"
-  end
   factory :pages_testimonial, class: 'Pages::Testimonial' do
     page nil
     testimonial nil
