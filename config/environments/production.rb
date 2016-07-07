@@ -1,6 +1,5 @@
 Rails.application.configure do
-  Rails.application.routes.default_url_options[:host] = 'www.physiomed.co.uk'
-
+  config.action_mailer.asset_host = 'http://www.physiomed.co.uk'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

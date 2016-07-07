@@ -1,0 +1,103 @@
+<%= simple_form_for @practice_application do |f| %>
+  <%= field_set_tag 'Basic Details' do %>
+    <%= f.input :name %>
+    <%= f.input :address, as: :text %>
+    <%= f.input :county %>
+    <%= f.input :postcode %>
+  <% end %>
+
+  <%= field_set_tag 'Practice Contact Details' do %>
+    <%= f.input :telephone, as: :tel %>
+    <%= f.input :fax, as: :tel %>
+    <%= f.input :email, as: :email %>
+  <% end %>
+
+  <%= field_set_tag 'Primary Contact(s) for Clinic' do %>
+    <%= f.input :first_contact_name %>
+    <%= f.input :first_contact_position %>
+    <%= f.input :second_contact_name %>
+    <%= f.input :second_contact_position %>
+  <% end %>
+
+  <%= field_set_tag 'Practice Details' do %>
+    <%= field_set_tag 'How many Physios do you have?' do %>
+      <%= f.input :full_time, collection: PracticeApplication::NUMBERS %>
+      <%= f.input :part_time, collection: PracticeApplication::NUMBERS %>
+      <%= f.input :male, collection: PracticeApplication::NUMBERS %>
+      <%= f.input :female, collection: PracticeApplication::NUMBERS %>
+    <% end %>
+
+    <%= field_set_tag 'What are your opening hours?' do %>
+      <%= f.input :monday %>
+      <%= f.input :tuesday %>
+      <%= f.input :wednesday %>
+      <%= f.input :thursday %>
+      <%= f.input :friday %>
+    <% end %>
+
+    <%= field_set_tag 'Additional required information' do %>
+      <%= f.input :number_of_locations, collection: PracticeApplication::NUMBERS %>
+      <%= f.input :capacity, collection: PracticeApplication.percentages %>
+      <%= f.input :receptionist, collection: [["Yes", true], ["No", false]] %>
+      <%= f.input :parking_facilities, collection: [["Yes", true], ["No", false]] %>
+      <%= f.input :established %>
+      <%= f.input :word_access, collection: [["Yes", true], ["No", false]] %>
+      <%= f.input :cancellation_policy, as: :text %>
+      <%= f.input :cheques_payable_to %>
+      <%= f.input :description, as: :text %>
+    <% end %>
+  <% end %>
+
+  <%= field_set_tag 'Insurance Policies' do %>
+    <%= f.input :public_liability_insurance,
+      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
+    <%= f.input :employee_liability_insurance,
+      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
+  <% end %>
+
+  <%= field_set_tag 'Treatment Information' do %>
+    <%= f.input :treatment_rooms, collection: PracticeApplication::NUMBERS %>
+    <%= f.input :treatment_min_time %>
+
+    <%= field_set_tag 'What are your treatment costs?' do %>
+      <%= f.input :initial_assessment_cost %>
+      <%= f.input :subsequent_treatment_cost %>
+    <% end %>
+  <% end %>
+
+  <%= field_set_tag 'Practitioners' do %>
+    <div id="practitioners">
+      <%= f.simple_fields_for :practitioners do |practitioner| %>
+        <%= render 'practice_applications/practitioner_fields', f: practitioner %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add Practitioner", f, :practitioners, class: 'button brown-background' %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= field_set_tag "Optional Pictures" do %>
+    <%= f.input :image_1, as: :file %>
+    <%= f.input :image_2, as: :file %>
+    <%= f.input :image_3, as: :file %>
+  <% end %>
+
+  <%= field_set_tag 'Declaration' do %>
+    <p>
+      I wish to apply for membership to Physio Med provider Network. The information I have supplied on this application form is accurate and correct.
+    </p>
+
+    <p>
+      I would like to register to receive referrals through the Physio Med Provider Referral Programme and will forward a copy of my proof of insurance.
+    </p>
+
+    <p>
+    I have read and agree to the <%= link_to "Business Terms and Conditions", "/terms-of-business.pdf", :target => "_blank" %>.
+    I understand that by submitting this form I am not under any obligation to accept referrals.
+    </p>
+
+    <%= f.input :terms_and_conditions, as: :boolean %>
+  <% end %>
+
+  <%= f.button :submit, class: 'button green-background' %>
+<% end %>

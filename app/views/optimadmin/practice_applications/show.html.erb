@@ -1,0 +1,240 @@
+<%= render 'optimadmin/shared/header/main_title', title: "Practice Application - #{ @practice_application.name }" %>
+
+<div class="main-content">
+  <h3>Main Details</h3>
+  <div class="row">
+    <div class="large-3 columns">
+      <p>
+        Address
+      </p>
+    </div>
+    <div class="large-9 columns">
+      <%= simple_format @practice_application.address %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      County
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.county %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Post Code
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.postcode %>
+    </div>
+  </div>
+
+  <h3>Contact Details</h3>
+  <div class="row">
+    <div class="large-3 columns">
+      Telephone
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.telephone %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Fax
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.fax %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Email
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.email %>
+    </div>
+  </div>
+
+  <h3>Primary Contact(s) for Clinic</h3>
+  <%= render partial: 'optimadmin/practice_applications/contact', 
+    collection: @practice_application.contacts, as: :contact %>
+
+  <h3>Practice Details</h3>
+
+  <h4>How many physios do you have?</h4>
+  <div class="row">
+    <div class="large-3 columns">
+      Full time
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.full_time %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Part time
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.part_time %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Male
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.male %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Female
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.female %>
+    </div>
+  </div>
+
+  <h4>What are your opening hours?</h4>
+  <% %w( monday tuesday wednesday thursday friday ).each do |day| %>
+    <div class="row">
+      <div class="large-3 columns">
+        <%= day.titleize %>
+      </div>
+      <div class="large-9 columns">
+        <%= @practice_application.public_send(day) %>
+      </div>
+    </div>
+  <% end %>
+
+  <h3>Additional required information</h3>
+  <div class="row">
+    <div class="large-3 columns">
+      Locations
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.number_of_locations %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Receptionist
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.receptionist %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Parking
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.parking_facilities %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Established
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.established %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Word access
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.word_access %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Cancellation policy
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.cancellation_policy %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Cheques payable to
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.cheques_payable_to %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      <p>
+        Description
+      </p>
+    </div>
+    <div class="large-9 columns">
+      <%= simple_format @practice_application.description %>
+    </div>
+  </div>
+
+  <h3>Insurance Policies</h3>
+  <div class="row">
+    <div class="large-3 columns">
+      Public liability insurance
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.public_liability_insurance %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Employee liability insurance
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.employee_liability_insurance %>
+    </div>
+  </div>
+
+  <h3>Treatment information</h3>
+  <div class="row">
+    <div class="large-3 columns">
+      Treatment rooms
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.treatment_rooms %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Treatment minimum time
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.treatment_min_time %>
+    </div>
+  </div>
+
+  <h3>Treatment Costs</h3>
+  <div class="row">
+    <div class="large-3 columns">
+      Initial cost
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.initial_assessment_cost %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Subsequent treatment cost
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.subsequent_treatment_cost %>
+    </div>
+  </div>
+
+  <h3>Practitioners</h3>
+  <%= render partial: 'optimadmin/practice_applications/practitioner',
+    collection: @practice_application.practitioners, as: :practitioner %>
+
+  <h3>Optional Pictures</h3>
+  <%= image_tag @practice_application.image_1.show if @practice_application.image_1? %>
+  <%= image_tag @practice_application.image_2.show if @practice_application.image_2? %>
+  <%= image_tag @practice_application.image_3.show if @practice_application.image_3? %>
+</div>

@@ -1,5 +1,8 @@
 <div class="sidebar case-study">
-  <%= link_to case_study.title, case_study, class: 'title' %>
+  <%= image_tag case_study.image.thumb, alt: case_study.title if case_study.image? %>
 
-  <span class="date"><%= l case_study.date, format: :long %></span>
+  <div class="details">
+    <%= link_to case_study.title, case_study, class: 'title' %>
+    <span class="date"><%= l case_study.date, format: :long %></span>
+  </div>
 </div>

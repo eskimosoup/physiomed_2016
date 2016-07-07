@@ -1,0 +1,61 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    # Examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+    # include_blanks:
+    #   defaults:
+    #     age: 'Rather not say'
+    # prompts:
+    #   defaults:
+    #     age: 'Select your age'
+    labels:
+      practice_application:
+        number_of_locations: "How many locations do you have?"
+        capacity: "What % of capacity are you running at?"
+        receptionist: "Do you have a full time receptionist?"
+        parking_facilities: "Do you have parking facilities?"
+        established: "How long have you been established?"
+        word_access: "Do you have access to Microsoft Word?"
+        cancellation_policy: "What is your cancellation policy?"
+        cheques_payable_to: "Who should cheques be made payable to?"
+        description: "Please include a short description of your practice"
+        public_liability_insurance: "Do you have public liability insurance?"
+        employee_liability_insurance: "Do you have employee liability insurance?"
+        treatment_rooms: "How many treatment rooms do you have?"
+        treatment_min_time: "What is the minimum time allocated to each treatment?"
+        initial_assessment_cost: "Initial assessment (in £)"
+        subsequent_treatment_cost: "Subsequent treatments (in £)"
+        terms_and_conditions: "I accept the terms and conditions"
+        practitioners:
+          name: "Name of practitioner"
+          csp_number: "CSP Number"
+          hpc_number: "HPC Number"
+          ocppp_member: "Is the practitioner a member of OCPPP?"
+          qualification_date: "Date of qualifying"
+          years_practicing: "How many years has the practitioner been practicing?"
+          specialisation_areas: "Please list any areas of specialisation"
+          domiciliary_visits: "Is the practitioner able to offer domiciliary visits?"
+          manual_treatments: "On average, what % of the practitioners treatments are performed manually?"
+          bupa_registered: "Is the practitioner BUPA registered?"
+          cpd: "Does the practitioner maintain their CPD requirements?"

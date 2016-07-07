@@ -33,6 +33,10 @@
   }
 }
 
+.case-study .entry-image {
+  margin-top: 0;
+}
+
 .wellbeing.case-study {
   @include flex-grid-row;
   border-bottom: 0;
@@ -97,7 +101,6 @@
 .home-case-study-title {
   font-weight: $open-sans-bold;
 }
-
 
 .case-studies-container-title {
   @include module-container-title;

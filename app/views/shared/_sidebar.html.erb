@@ -56,18 +56,24 @@
   </div>
 <% end %>
 
-<% unless defined?(hide_case_studies) %>
-  <%= content_tag :div, ('<h6>Case Studies</h6>'.html_safe + render(
-    partial: "case_studies/sidebar_case_study",
-    collection: @latest_case_studies,
-    as: :case_study
-  )), class: 'page-sidebar-information' if @latest_case_studies.present? %>
+<% unless defined?(hide_case_studies) && @latest_case_studies.blank? %>
+  <div class="page-sidebar-information">
+    <h6><%= link_to "Case Studies", case_studies_path %></h6>
+    <%= render(
+      partial: "case_studies/sidebar_case_study",
+      collection: @latest_case_studies,
+      as: :case_study
+    ) %>
+  </div>
 <% end %>
 
-<% unless defined?(hide_articles) %>
-  <%= content_tag :div, ('<h6>Latest News</h6>'.html_safe + render(
-    partial: "articles/sidebar_article",
-    collection: @latest_articles,
-    as: :article
-  )), class: 'page-sidebar-information' if @latest_articles.present? %>
+<% unless defined?(hide_articles) && @latest_articles.blank? %>
+  <div class="page-sidebar-information">
+    <h6><%= link_to "Latest News", articles_path %></h6>
+    <%= render(
+      partial: "articles/sidebar_article",
+      collection: @latest_articles,
+      as: :article
+    ) %>
+  </div>
 <% end %>

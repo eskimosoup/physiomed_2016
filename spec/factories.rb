@@ -200,6 +200,27 @@ FactoryGirl.define do
     display true
   end
 
+  factory :practice_applications_practitioner, class: 'PracticeApplications::Practitioner' do
+    practice nil
+    name "MyString"
+  end
+
+  factory :practice_applications_contact, class: 'PracticeApplications::Contact' do
+    practice nil
+    name "MyString"
+    position "MyString"
+  end
+
+  factory :practice_applications_practice, class: 'PracticeApplications::Practice' do
+    name "MyString"
+    address "MyText"
+    postcode "MyString"
+    telephone "MyString"
+    email "MyString"
+    receptionist false
+    parking_facilities false
+  end
+
   factory :service_standard do
     icon { ServiceStandard::ICONS.sample }
     content 'MyText'

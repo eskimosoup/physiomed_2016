@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
-  resources :subcategories, only: [:index, :show], path: 'categorisation'
-  resources :contacts, only: [:new, :create]
-  resources :pages, only: :show
+  resource :physio_search, only: [:create, :show], path: 'find-a-physio'
+
   resources :articles, only: [:index, :show]
   resources :case_studies, only: [:index, :show], path: 'case-studies'
+  resources :contacts, only: [:new, :create]
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
+  resources :pages, only: :show
+  resources :practice_applications, only: [:new, :create], path: 'practice-applications'
+  resources :subcategories, only: [:index, :show], path: 'categorisation'
   resources :team_members, only: [:index, :show], path: 'team-members'
   resources :testimonials, only: [:index]
-  resource :physio_search, only: [:create, :show], path: 'find-a-physio'
+
   namespace :wellbeing_zone, path: 'well-being-zone' do
     get 'general-well-being', to: 'general_wellbeings#show', as: :general_wellbeing
     resources :body_parts, only: [:show], path: '', constraints: SlugConstraint.new(BodyPart)
@@ -75,6 +78,7 @@ Optimadmin::Engine.routes.draw do
   resources :pages, concerns: [:toggleable, :imageable], except: :show
   resources :people_helped_sections, concerns: [:toggleable], except: [:show]
   resources :practices, concerns: [:toggleable], except: [:show]
+  resources :practice_applications, only: [:index, :show]
   resources :service_standards, concerns: [:orderable, :toggleable], except: [:show]
   resources :team_members, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   resources :testimonials, concerns: [:orderable, :toggleable], except: [:show]

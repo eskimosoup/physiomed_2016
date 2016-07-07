@@ -1,0 +1,45 @@
+.new_practice_application {
+  fieldset {
+    border: 0;
+    padding: rem-calc(20px);
+    margin: rem-calc(20px 0);
+    font-weight: bold;
+  }
+
+  fieldset legend {
+    padding: rem-calc(5px 0);
+  }
+
+  fieldset fieldset {
+    margin: rem-calc(3px 0);
+  }
+
+  label {
+    float: left;
+    width: 35%;
+    padding-right: 5px;
+  }
+
+  label.boolean {
+    width: 100%;
+    input {
+      width: 25px;
+    }
+  }
+
+  input, textarea, select {
+    width: 65%;
+  }
+
+  select.date {
+    float: left;
+    width: 20%;
+    margin-left: 1%;
+  }
+
+  div.input {
+    @include clearfix;
+    margin-bottom: 20px;
+  }
+
+}

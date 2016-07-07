@@ -27,6 +27,8 @@ gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :mast
 gem 'friendly_id', '~> 5.1'
 gem 'geocoder', '~> 1.3', '>= 1.3.4'
 gem 'twitter'
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'cocoon', '~> 1.2', '>= 1.2.9'
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
@@ -50,6 +52,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'email_spec', '~> 2.1'
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'launchy'
