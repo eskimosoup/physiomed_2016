@@ -8,7 +8,7 @@
 
           var index = $(this).find('a').parent().index();
           $(".primary-header-navigation li").slice(0, index).each(function(index, element) {
-            widthOffset += parseInt($(element).width()) - 10;
+            widthOffset += parseInt($(element).width());
           });
 
           widthOffset += parseInt($(this).find('a').parent().width()) / 2;
