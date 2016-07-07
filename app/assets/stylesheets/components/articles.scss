@@ -29,8 +29,14 @@
 
 .article.sidebar,
 .case-study.sidebar {
+  @include clearfix;
   border-bottom: 1px solid $beige;
   padding: rem-calc(5px 0 5px);
+
+  img {
+    float: left;
+    margin-right: rem-calc(10px);
+  }
 
   .title {
     display: block;
