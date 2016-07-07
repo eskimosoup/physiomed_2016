@@ -36,9 +36,8 @@
   @include media('>768px') {
     background: image-url('banner/mask.png') no-repeat top center,
                 image-url('layout/photography/wellbeing-zone.jpg') no-repeat top center,
-                $beige;
-
-
+                image-url('banner/colour-bg.jpg') no-repeat top center;
+    background-size: 100% 117px, 1366px 100%, 1366px 100%;
     padding: rem(140px) 0 0;
   }
 
@@ -46,12 +45,14 @@
     &.body-part-background {
       background: image-url('banner/mask.png') no-repeat top center,
                   image-url('layout/photography/wellbeing-body-part.jpg') no-repeat top center,
-                  $beige;
+                  image-url('banner/colour-bg.jpg') no-repeat top center;
+      background-size: auto, auto, 1366px 100%;
     }
 
     &.what-we-do-background {
       background: image-url('layout/photography/what-we-do.jpg') no-repeat top center,
-                  $beige;
+                  image-url('banner/colour-bg.jpg') no-repeat top center;
+      background-size: 1366px 100%, 1366px 100%;
       padding: 0;
     }
   }

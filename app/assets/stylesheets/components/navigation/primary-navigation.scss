@@ -2,7 +2,7 @@
   width: 100%;
 
   @include media('>=768px') {
-    @include flex-grid-column(8);
+    @include flex-grid-column(9);
   }
 }
 
