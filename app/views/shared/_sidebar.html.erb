@@ -57,11 +57,11 @@
 <% end %>
 
 <% unless defined?(hide_case_studies) %>
-<%= content_tag :div, ('<h6>Case Studies</h6>'.html_safe + render(
-  partial: "case_studies/sidebar_case_study",
-  collection: @latest_case_studies,
-  as: :case_study
-)), class: 'page-sidebar-information' if @latest_case_studies.present? %>
+  <%= content_tag :div, ('<h6>Case Studies</h6>'.html_safe + render(
+    partial: "case_studies/sidebar_case_study",
+    collection: @latest_case_studies,
+    as: :case_study
+  )), class: 'page-sidebar-information' if @latest_case_studies.present? %>
 <% end %>
 
 <% unless defined?(hide_articles) %>

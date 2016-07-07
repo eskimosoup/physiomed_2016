@@ -20,6 +20,13 @@
             <%= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
           </ul>
         </div>
+
+        <%= render(
+          partial: 'shared/sidebar_testimonials',
+          locals: {
+            testimonials: @page.testimonials
+          }
+        ) if @page.testimonials.present? %>
       </div>
     <% end %>
 
@@ -34,7 +41,6 @@
 
     <div class="page-contact-methods-wrap">
       <%= render partial: 'shared/sidebar', locals: {
-        testimonials: @page.testimonials.displayed,
         team_members: @page.team_members.displayed
       }
       %>

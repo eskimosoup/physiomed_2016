@@ -3,6 +3,27 @@
   background: $white;
   margin: rem(10px) 0;
   padding: rem(17px);
+
+  h4 {
+    @include module-container-title-header;
+    margin: 0;
+    text-align: left;
+  }
+
+  p {
+    font-size: rem(14px);
+  }
+
+  .testimonial-author,
+  .testimonial-role {
+    font-family: $montserrat;
+    font-size: rem(12px);
+    font-weight: $montserrat-bold;
+  }
+
+  .testimonials.slick-slider {
+    margin: 0;
+  }
 }
 
 .home {

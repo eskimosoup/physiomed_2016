@@ -4,15 +4,22 @@
     if (Modernizr.mq('only screen and (min-width: 1200px)')) {
       $(document).on({
         mouseenter: function (e) {
+          var widthOffset = 0;
+
+          var index = $(this).find('a').parent().index();
+          $(".primary-header-navigation li").slice(0, index).each(function(index, element) {
+            widthOffset += parseInt($(element).width()) - 10;
+          });
+
+          widthOffset += parseInt($(this).find('a').parent().width()) / 2;
+
           $(this).find('a').css('border-bottom', 0);
           var $dropdown = $(this).find('.dropdown-arrow');
-          var marginLeft = parseInt($(this).find('.menu-link').width() / 2) - (parseInt($dropdown.width()) / 2)
-          $dropdown.toggleClass('visible');
-          $dropdown.css('margin-left', marginLeft);
+          $dropdown.css('margin-left', widthOffset);
         },
         mouseleave: function () {
           $(this).find('a').removeAttr('style');
-          $(this).find('.dropdown-arrow').toggleClass('visible').removeAttr('style');
+          $(this).find('.dropdown-arrow').removeAttr('style');
         }
       }, '.primary-header-navigation li');
     }
@@ -44,7 +51,7 @@
       <div class="primary-header-content-wrap">
         <nav class="primary-header-navigation-wrap">
           <ul class="primary-header-navigation" id="header-navigation">
-            <%= nested_menu_items(menu_items: header_menu.menu_items) %>
+            <%= header_menu_items(menu_items: header_menu.menu_items) %>
           </ul>
         </nav>
 
