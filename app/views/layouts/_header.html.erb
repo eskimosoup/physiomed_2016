@@ -4,15 +4,22 @@
     if (Modernizr.mq('only screen and (min-width: 1200px)')) {
       $(document).on({
         mouseenter: function (e) {
+          var widthOffset = 0;
+
+          var index = $(this).find('a').parent().index();
+          $(".primary-header-navigation li").slice(0, index).each(function(index, element) {
+            widthOffset += parseInt($(element).width()) - 10;
+          });
+
+          widthOffset += parseInt($(this).find('a').parent().width()) / 2;
+
           $(this).find('a').css('border-bottom', 0);
           var $dropdown = $(this).find('.dropdown-arrow');
-          var marginLeft = parseInt($(this).find('.menu-link').width() / 2) - (parseInt($dropdown.width()) / 2)
-          $dropdown.toggleClass('visible');
-          $dropdown.css('margin-left', marginLeft);
+          $dropdown.css('margin-left', widthOffset);
         },
         mouseleave: function () {
           $(this).find('a').removeAttr('style');
-          $(this).find('.dropdown-arrow').toggleClass('visible').removeAttr('style');
+          $(this).find('.dropdown-arrow').removeAttr('style');
         }
       }, '.primary-header-navigation li');
     }
@@ -22,16 +29,6 @@
 
 <header class="primary-header">
   <div class="primary-header-content-wrap">
-    <div class="primary-header-content">
-      <%= link_to 'Client Area', '#', class: 'client-area-button' %>
-      <%= link_to '#', class: 'clinic-button' do  %>
-        <strong>Local to Leeds?</strong>
-        Book an appointment at our Head Office clinic
-      <% end %>
-    </div>
-  </div>
-
-  <div class="primary-header-content-wrap">
     <div class="primary-header-branding">
       <%= link_to root_url, title: "Physio Med" do %>
         <%= image_tag "logo.jpg", alt: "Physio Med", id: "physiomed-logo" %>
@@ -40,15 +37,29 @@
                   data: { container: '.primary-header-navigation', class: 'visible', return: false } %>
     </div>
 
-    <nav class="primary-header-navigation-wrap">
-      <ul class="primary-header-navigation" id="header-navigation">
-        <%= nested_menu_items(menu_items: header_menu.menu_items) %>
-      </ul>
-    </nav>
+    <div class="primary-header-navigation-content">
+      <div class="primary-header-content-wrap">
+        <div class="primary-header-content">
+          <%= link_to 'Client Area', '#', class: 'client-area-button' %>
+          <%= link_to '#', class: 'clinic-button' do  %>
+            <strong>Local to Leeds?</strong>
+            Book an appointment at our Head Office clinic
+          <% end %>
+        </div>
+      </div>
 
-    <div class="primary-header-cta">
-      <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'primary-header-call-us' %>
-      <%= link_to 'Find Us', new_contact_path(anchor: 'map-canvas'), class: 'primary-header-find-us' %>
+      <div class="primary-header-content-wrap">
+        <nav class="primary-header-navigation-wrap">
+          <ul class="primary-header-navigation" id="header-navigation">
+            <%= header_menu_items(menu_items: header_menu.menu_items) %>
+          </ul>
+        </nav>
+
+        <div class="primary-header-cta">
+          <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'primary-header-call-us' %>
+          <%= link_to 'Find Us', new_contact_path(anchor: 'map-canvas'), class: 'primary-header-find-us' %>
+        </div>
+      </div>
     </div>
   </div>
 </header>

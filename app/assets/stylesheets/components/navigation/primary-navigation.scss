@@ -2,8 +2,16 @@
   width: 100%;
 
   @include media('>=768px') {
-    @include flex-grid-column(8);
+    @include flex-grid-column(9);
   }
+}
+
+.header-dropdown {
+  display: none;
+  left: 0;
+  position: absolute;
+  top: 20px;
+  width: 100%;
 }
 
 .primary-header-navigation {
@@ -25,7 +33,7 @@
       display: inline-block;
 
       &:hover .dropdown,
-      &:hover .dropdown-arrow {
+      &:hover .header-dropdown {
         display: block;
       }
     }
@@ -56,7 +64,7 @@
   }
 }
 
-.primary-header .dropdown {
+.primary-header .dropdown-links {
   background: $mud-brown;
   display: block;
   list-style: none;
@@ -67,7 +75,6 @@
   @include media('>=768px') {
     background: linear-gradient(to bottom, $mud-brown 0%, $brown 100%), $brown;
     box-shadow: 8px 11px 12px 0 rgba($black, .6);
-    display: none;
     left: 0;
     margin: 0;
     padding: rem(25px) rem(25px) 0;
@@ -96,13 +103,9 @@
 }
 
 .dropdown-arrow {
-  display: none;
-
-  &.visible {
-    display: block;
-    position: absolute;
-    top: 27px;
-  }
+  display: block;
+  position: relative;
+  top: 0;
 }
 
 // Stop the two line content flash, until the font has loaded

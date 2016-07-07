@@ -3,6 +3,7 @@
 
   @include media('>=768px') {
     background: image-url('service-standards/background.jpg') center no-repeat;
+    background-size: 1366px auto;
     margin: rem(50px 0 25px);
     padding: rem(30px 0);
   }

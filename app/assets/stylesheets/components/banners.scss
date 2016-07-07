@@ -2,7 +2,6 @@
   position: relative;
 
   @include media('<=1024px') {
-    background: $beige;
     padding: rem(1px);
   }
 }
@@ -22,7 +21,6 @@
 }
 
 .banner {
-  background: $beige;
   position: relative;
 
   img {

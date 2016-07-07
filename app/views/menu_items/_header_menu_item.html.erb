@@ -1,0 +1,11 @@
+<li <%= 'class=has-dropdown' if sub_menu_items.present? %>>
+  <%= menu_item_presenter.link_to_webpage %>
+  <% if sub_menu_items.present? %>
+    <div class="header-dropdown">
+      <%= image_tag 'icons/navigation-arrow.png', alt: '', class: 'dropdown-arrow' %>
+      <%= content_tag :ul, class: "dropdown-links depth-#{ depth }" do %>
+        <%= nested_menu_items(menu_items: sub_menu_items, depth: depth + 1) %>
+      <% end %>
+    </div>
+  <% end %>
+</li>

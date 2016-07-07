@@ -17,11 +17,14 @@ $(document).ready(function() {
   });
 });
 
-$(document).on({
-  mouseover: function (e) {
-    $(this).closest('div').find('.home-health-zone-hover').stop(true, true).hide().slideDown();
-  },
-  mouseout: function () {
-    $(this).closest('div').find('.home-health-zone-hover').stop(true, true).show().slideUp();
-  }
-}, '.home-health-zone-link, .home-health-zone-image-link');
+$(document).on('mouseout', '.home-health-zone-link', function() {
+  $(this).closest('div').find('.home-health-zone-hover').stop(true, true).show().slideUp();
+});
+
+$(document).on('mouseout', '.home-health-zone-hover', function() {
+  $(this).stop(true, true).show().slideUp();
+});
+
+$(document).on('mouseover', '.home-health-zone-link, .home-health-zone-image-link', function() {
+  $(this).closest('div').find('.home-health-zone-hover').stop(true, true).hide().slideDown();
+});
