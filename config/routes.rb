@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sitemap', to: 'application#sitemap'
+
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
   resource :physio_search, only: [:create, :show], path: 'find-a-physio'
@@ -24,9 +26,17 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
-  get 'subcategories/index'
+  resources :reorderings, only: [:index]
 
-  get 'subcategories/show'
+  resources :seo_entries, except: [:show] do
+    collection do
+      post 'order'
+      get 'rebuild_seo'
+    end
+    member do
+      get 'toggle'
+    end
+  end
 
   resources :subcategories, except: [:show] do
     collection do
@@ -68,7 +78,7 @@ Optimadmin::Engine.routes.draw do
     resources :body_part_sections, shallow: true, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   end
   resources :case_studies, concerns: [:orderable, :toggleable, :imageable], except: [:show]
-  resources :categories, except: [:show]
+  resources :categories, concerns: [:imageable], except: [:show]
   resources :clients, concerns: [:imageable, :orderable, :toggleable], except: [:show]
   resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]
   resources :employer_quick_links, concerns: [:orderable, :toggleable], except: [:show]
@@ -82,7 +92,7 @@ Optimadmin::Engine.routes.draw do
   resources :service_standards, concerns: [:orderable, :toggleable], except: [:show]
   resources :team_members, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   resources :testimonials, concerns: [:orderable, :toggleable], except: [:show]
-  resources :what_we_dos, concerns: [:orderable, :toggleable], except: [:show] do
+  resources :what_we_dos, concerns: [:orderable, :toggleable, :imageable], except: [:show] do
     resources :what_we_do_links, shallow: true, concerns: [:orderable, :toggleable], except: [:show]
   end
   resources :videos, concerns: [:toggleable], except: [:show]

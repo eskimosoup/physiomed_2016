@@ -6,7 +6,17 @@ class ApplicationController < ActionController::Base
   include Optimadmin::AdminSessionsHelper
   helper_method :current_administrator
 
-  before_action :global_site_settings, :physio_search, :sidebar_objects
+  before_action :global_site_settings, :physio_search,
+                :sidebar_objects, :set_seo_variables
+
+  def sitemap
+    @seo_entries = SeoEntry.where(in_sitemap: true).order(:nominal_url)
+
+    respond_to do |format|
+      format.html
+      format.xml
+    end
+  end
 
   private
 
@@ -34,5 +44,13 @@ class ApplicationController < ActionController::Base
     @health_and_wellbeing_zone ||= HealthZone.displayed.find(1)
     @latest_articles ||= Article.displayed.order(date: :desc).limit(2)
     @latest_case_studies ||= CaseStudy.displayed.order(date: :desc).limit(2)
+  end
+
+  def set_seo_variables
+    seo_entry = SeoEntry.find_by_nominal_url(request.path)
+    return unless seo_entry
+    @title = seo_entry.title
+    @meta_description = seo_entry.meta_description
+    @meta_tags = seo_entry.title
   end
 end

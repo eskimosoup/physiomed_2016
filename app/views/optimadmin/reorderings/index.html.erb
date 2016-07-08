@@ -1,0 +1,18 @@
+<%= render 'optimadmin/shared/snippets/colorbox' %>
+<%= render 'optimadmin/shared/header/main_title', title: "Manage Ordering: #{@model.model_name.human.pluralize}" %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%#= render 'optimadmin/shared/module/form/back', path: services_path(audience_id: @service.audience.id), title: 'Services', prefix: 'Back to' %>
+  </div>
+  <div class="row collapse module-list-index header">
+    <%= list_item 'small-1' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    <%= list_item 'small-11' do %>
+      Title
+  <% end %>
+  </div>
+  <div class='module-sortable' data-module="<%= @model %>">
+    <%= render partial: 'reorderings_item', collection: @model_items, as: :reordering_item %>
+  </div>
+</div>

@@ -1,7 +1,8 @@
 module WellbeingZone
   class WellbeingsController < ApplicationController
     def show
-      @wellbeing_facade = WellbeingFacade.new(Category.find_by(name: "Wellbeing Zone Overview"))
+      @general_wellbeing_category = Category.find_by(name: 'General Wellbeing')
+      @wellbeing_facade = WellbeingFacade.new(Category.find_by(name: 'Wellbeing Zone Overview'))
     end
   end
 end

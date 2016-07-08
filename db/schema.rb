@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705145138) do
+ActiveRecord::Schema.define(version: 20160708143111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,9 +106,13 @@ ActiveRecord::Schema.define(version: 20160705145138) do
   add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                       null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "standalone", default: false
+    t.string   "image"
+    t.string   "content"
+    t.string   "tagline"
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
@@ -136,8 +140,9 @@ ActiveRecord::Schema.define(version: 20160705145138) do
   create_table "categories_frequently_asked_questions", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "frequently_asked_question_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "position",                     default: 0, null: false
   end
 
   add_index "categories_frequently_asked_questions", ["category_id"], name: "categories_faqs_category", using: :btree
@@ -146,8 +151,9 @@ ActiveRecord::Schema.define(version: 20160705145138) do
   create_table "categories_guides", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "guide_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "position",    default: 0, null: false
   end
 
   add_index "categories_guides", ["category_id"], name: "index_categories_guides_on_category_id", using: :btree
@@ -156,8 +162,9 @@ ActiveRecord::Schema.define(version: 20160705145138) do
   create_table "categories_testimonials", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "testimonial_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "position",       default: 0, null: false
   end
 
   add_index "categories_testimonials", ["category_id"], name: "index_categories_testimonials_on_category_id", using: :btree
@@ -166,8 +173,9 @@ ActiveRecord::Schema.define(version: 20160705145138) do
   create_table "categories_videos", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "video_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "position",    default: 0, null: false
   end
 
   add_index "categories_videos", ["category_id"], name: "index_categories_videos_on_category_id", using: :btree
@@ -458,6 +466,15 @@ ActiveRecord::Schema.define(version: 20160705145138) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "seo_entries", force: :cascade do |t|
+    t.string   "nominal_url"
+    t.string   "title"
+    t.text     "meta_description"
+    t.boolean  "in_sitemap",       default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "service_standards", force: :cascade do |t|
     t.string   "icon",                         null: false
     t.text     "content",                      null: false
@@ -545,13 +562,15 @@ ActiveRecord::Schema.define(version: 20160705145138) do
   add_index "what_we_do_links", ["what_we_do_id"], name: "index_what_we_do_links_on_what_we_do_id", using: :btree
 
   create_table "what_we_dos", force: :cascade do |t|
-    t.string   "title",                      null: false
+    t.string   "title",                       null: false
     t.text     "content"
-    t.boolean  "display",     default: true, null: false
-    t.integer  "position",    default: 0,    null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "links_count", default: 0,    null: false
+    t.boolean  "display",      default: true, null: false
+    t.integer  "position",     default: 0,    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "links_count",  default: 0,    null: false
+    t.string   "pdf_download"
+    t.string   "image"
   end
 
   add_foreign_key "additional_home_contents", "videos"
