@@ -1,5 +1,5 @@
 <div class="sidebar case-study">
-  <%= image_tag case_study.image.thumb, alt: case_study.title if case_study.image? %>
+  <%= image_tag case_study.image.sidebar, alt: case_study.title if case_study.image? %>
 
   <div class="details">
     <%= link_to case_study.title, case_study, class: 'title' %>

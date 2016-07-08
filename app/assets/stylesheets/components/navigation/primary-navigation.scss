@@ -12,6 +12,7 @@
   position: absolute;
   top: 20px;
   width: 100%;
+  z-index: 2;
 }
 
 .primary-header-navigation {
@@ -113,6 +114,6 @@
   padding: rem(7px 15px);
 
   @include media('>=768px') {
-    padding: rem(0 5px 30px);
+    padding: rem(0 5px 15px);
   }
 }

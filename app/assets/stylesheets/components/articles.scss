@@ -31,18 +31,25 @@
 .case-study.sidebar {
   @include clearfix;
   border-bottom: 1px solid $beige;
+  display: block;
   padding: rem-calc(5px 0 5px);
+  overflow: hidden;
+  width: 100%;
 
   img {
     float: left;
-    margin-right: rem-calc(10px);
+    margin: rem-calc(3px 10px 0 0);
+  }
+
+  .details {
+    overflow: hidden;
   }
 
   .title {
     display: block;
     font-size: rem(14px);
     font-weight: $open-sans-bold;
-    margin: rem-calc(5px) auto;
+    margin: 0 auto rem-calc(5px);
     width: 100%;
   }
 
