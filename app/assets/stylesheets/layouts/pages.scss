@@ -140,7 +140,9 @@
 
   &:hover,
   &:active {
-    background: linear-gradient(to right, $dark-green 0%, $green 100%);
+    background: image-url('icons/button-arrow.png') no-repeat 95% 50%,
+                linear-gradient(to right, $dark-green 0%, $green 100%),
+                $green;
     color: $white;
   }
 
