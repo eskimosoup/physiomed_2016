@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sitemap', to: 'application#sitemap'
+
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
   resource :physio_search, only: [:create, :show], path: 'find-a-physio'
@@ -24,9 +26,17 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
-  get 'subcategories/index'
+  resources :reorderings, only: [:index]
 
-  get 'subcategories/show'
+  resources :seo_entries, except: [:show] do
+    collection do
+      post 'order'
+      get 'rebuild_seo'
+    end
+    member do
+      get 'toggle'
+    end
+  end
 
   resources :subcategories, except: [:show] do
     collection do

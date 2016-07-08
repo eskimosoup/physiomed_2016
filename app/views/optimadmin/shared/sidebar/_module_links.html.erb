@@ -20,17 +20,11 @@
   <div class="row collapse">
     <div class="large-12 small-8 left content-categories columns">
       <div class="content-category-type">
-        Manage Your Content
+        General Content
       </div>
 
       <ul id="modules" class="content-category-list">
-        <%= module_link(content: "Subcategories", model: Subcategory, path: subcategories_path) %>
-        <%= module_link(content: "Categories", model: Category, path: categories_path) %>
-        <%= module_link(content: "Guides", model: Guide, path: guides_path) %>
         <%= module_link(content: 'Pages', model: Page, path: pages_path) %>
-        <%= module_link(content: "People Helped Sections", model: PeopleHelpedSection, path: people_helped_sections_path) %>
-        <%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
-        <%= module_link(content: "Body Parts", model: BodyPart, path: body_parts_path) %>
         <%= module_link(content: "Articles", model: Article, path: articles_path) %>
         <%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
         <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
@@ -43,12 +37,39 @@
         <%= module_link(content: "Employee Quick Links", model: EmployeeQuickLink, path: employee_quick_links_path) %>
         <%= module_link(content: "Employer Quick Links", model: EmployerQuickLink, path: employer_quick_links_path) %>
         <%= module_link(content: "Banners", model: Banner, path: banners_path) %>
-        <%= module_link(content: "Health Zones", model: HealthZone, path: health_zones_path) %>
         <%= module_link(content: "What We Dos", model: WhatWeDo, path: what_we_dos_path) %>
         <%= link_to 'Practice Applications', practice_applications_path %>
         <% if can? :manage, Optimadmin::MenuItem %>
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>
+      </ul>
+
+      <div class="content-category-type">
+        Wellbeing Zone Content
+      </div>
+
+      <ul class="content-category-list">
+        <%= module_link(content: "Subcategories", model: Subcategory, path: subcategories_path) %>
+        <%= module_link(content: "Categories", model: Category, path: categories_path) %>
+        <%= module_link(content: "Guides", model: Guide, path: guides_path) %>
+        <%= module_link(content: "People Helped Sections", model: PeopleHelpedSection, path: people_helped_sections_path) %>
+        <%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
+        <%= module_link(content: "Body Parts", model: BodyPart, path: body_parts_path) %>
+        <%= module_link(content: "Health Zones", model: HealthZone, path: health_zones_path) %>
+        <%= link_to 'Practice Applications', practice_applications_path %>
+        <% if can? :manage, Optimadmin::MenuItem %>
+          <li><%= link_to 'Site Navigation', menu_items_path %></li>
+        <% end %>
+      </ul>
+
+
+
+      <div class="content-category-type">
+        Manage SEO
+      </div>
+
+      <ul class="content-category-list">
+        <%= module_link(content: "SEO Entries", model: SeoEntry, path: seo_entries_path) %>
       </ul>
     </div>
   </div>
