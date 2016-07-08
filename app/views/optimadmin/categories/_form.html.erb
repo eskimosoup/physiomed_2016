@@ -16,41 +16,82 @@
     <%= f.select :name, Category::NAMES %>
   </div>
 
-  <div class="field">
-    <%= f.label :article_ids, 'Articles' %><br>
-    <%= f.select :article_ids, Article.order(:title).pluck(:title, :id),
-      {}, { class: 'multiselect', multiple: true } %>
-  </div>
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Relationships</a></li>
+      <% if @category.standalone %>
+        <li><a href="#tabs-2">Media</a></li>
+      <% end %>
+      <li><a href="#tabs-3">Content</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
 
-  <div class="field">
-    <%= f.label :case_study_ids, 'Case Studies' %><br>
-    <%= f.select :case_study_ids, CaseStudy.order(:title).pluck(:title, :id),
-      {}, { class: 'multiselect', multiple: true } %>
-  </div>
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+      <div class="field">
+        <%= f.label :article_ids, 'Articles' %><br>
+        <%= f.select :article_ids, Article.order(:title).pluck(:title, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
 
-  <div class="field">
-    <%= f.label :frequently_asked_question_ids, 'Frequently Asked Questions' %><br>
-    <%= f.select :frequently_asked_question_ids, FrequentlyAskedQuestion.order(:question).pluck(:question, :id),
-      {}, { class: 'multiselect', multiple: true } %>
-  </div>
+      <div class="field">
+        <%= f.label :case_study_ids, 'Case Studies' %><br>
+        <%= f.select :case_study_ids, CaseStudy.order(:title).pluck(:title, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
 
-  <div class="field">
-    <%= f.label :guide_ids, 'Guides' %><br>
-    <%= f.select :guide_ids, Guide.order(:title).pluck(:title, :id),
-      {}, { class: 'multiselect', multiple: true } %>
-  </div>
+      <div class="field">
+        <%= f.label :frequently_asked_question_ids, 'Frequently Asked Questions' %><br>
+        <%= f.select :frequently_asked_question_ids, FrequentlyAskedQuestion.order(:question).pluck(:question, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
 
-  <div class="field">
-    <%= f.label :testimonial_ids, 'Testimonials' %><br>
-    <%= f.select :testimonial_ids, Testimonial.order(:title).pluck(:title, :id),
-      {}, { class: 'multiselect', multiple: true } %>
-  </div>
+      <div class="field">
+        <%= f.label :guide_ids, 'Guides' %><br>
+        <%= f.select :guide_ids, Guide.order(:title).pluck(:title, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
 
-  <div class="field">
-    <%= f.label :video_ids, 'Videos' %><br>
-    <%= f.select :video_ids, Video.order(:title).pluck(:title, :id),
-      {}, { class: 'multiselect', multiple: true } %>
-  </div>
+      <div class="field">
+        <%= f.label :testimonial_ids, 'Testimonials' %><br>
+        <%= f.select :testimonial_ids, Testimonial.order(:title).pluck(:title, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :video_ids, 'Videos' %><br>
+        <%= f.select :video_ids, Video.order(:title).pluck(:title, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
+    <% end %>
+
+    <% if @category.standalone %>
+      <%= field_set_tag nil, id: 'tabs-2' do %>
+        <%= f.image_field :image %>
+      <% end %>
+    <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+      <% if @category.standalone %>
+        <div class="field">
+          <%= f.label :tagline %><br>
+          <%= f.text_field :tagline %>
+        </div>
+
+        <div class="field">
+          <%= f.label :content %><br>
+          <%= f.text_area :content, class: 'tinymce' %>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :standalone %><br>
+        <%= f.check_box :standalone %>
+      </div>
+    <% end %>
 
   <div class="actions">
     <%= f.submit 'Save' %>

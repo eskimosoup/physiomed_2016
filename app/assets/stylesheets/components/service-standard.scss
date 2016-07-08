@@ -10,6 +10,8 @@
 
   @include media('>=1024px') {
     padding: rem(60px 0 70px);
+    height: 489px;
+    overflow: hidden;    
   }
 }
 
@@ -18,21 +20,21 @@
 }
 
 .service-standard {
-  @include clearfix;
-  background: $green linear-gradient(to bottom, $green 0%, $dark-green 100%);
-  color: $white;
-  padding: rem-calc(5px);
-  text-align: center;
-  transition: background-color 500ms linear;
-
   a {
+    @include clearfix;
+    background: $green linear-gradient(to bottom, $green 0%, $dark-green 100%);
     color: $white;
-  }
+    display: block;
+    padding: rem-calc(5px);
+    text-align: center;
+    transition: background-color 500ms linear;
 
-  @include media('>=768px') {
-    border-right: 1px solid $white;
-    min-height: 245px;
-    padding: rem-calc(20px 10px);
+    @include media('>=768px') {
+      border-right: 1px solid $white;
+      height: 255px;
+      overflow: hidden;
+      padding: rem-calc(20px 10px);
+    }
   }
 
   img {
@@ -70,7 +72,7 @@
     transition: background-color 500ms linear;
   }
 
-  &:last-child {
+  &:last-child a {
     border-right: 0;
   }
 }

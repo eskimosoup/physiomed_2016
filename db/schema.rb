@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708133030) do
+ActiveRecord::Schema.define(version: 20160708143111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,9 +106,13 @@ ActiveRecord::Schema.define(version: 20160708133030) do
   add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                       null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "standalone", default: false
+    t.string   "image"
+    t.string   "content"
+    t.string   "tagline"
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
@@ -558,13 +562,15 @@ ActiveRecord::Schema.define(version: 20160708133030) do
   add_index "what_we_do_links", ["what_we_do_id"], name: "index_what_we_do_links_on_what_we_do_id", using: :btree
 
   create_table "what_we_dos", force: :cascade do |t|
-    t.string   "title",                      null: false
+    t.string   "title",                       null: false
     t.text     "content"
-    t.boolean  "display",     default: true, null: false
-    t.integer  "position",    default: 0,    null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "links_count", default: 0,    null: false
+    t.boolean  "display",      default: true, null: false
+    t.integer  "position",     default: 0,    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "links_count",  default: 0,    null: false
+    t.string   "pdf_download"
+    t.string   "image"
   end
 
   add_foreign_key "additional_home_contents", "videos"

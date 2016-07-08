@@ -2,6 +2,10 @@ module Optimadmin
   class WhatWeDosController < Optimadmin::ApplicationController
     before_action :set_what_we_do, only: [:show, :edit, :update, :destroy]
 
+    edit_images_for WhatWeDo, [
+      [:image, { show: ['fill', 88, 62] }]
+    ]
+
     def index
       @what_we_dos = WhatWeDo.order(position: :asc)
     end
@@ -46,7 +50,10 @@ module Optimadmin
 
     def what_we_do_params
       params.require(:what_we_do)
-            .permit(:title, :content, :display)
+            .permit(:title, :content, :display,
+                    :image, :image_cache, :remove_image, :remote_image_url,
+                    :pdf_download, :pdf_download_cache, :remove_pdf_download,
+                    :remote_pdf_download_url)
     end
   end
 end

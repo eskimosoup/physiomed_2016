@@ -1,4 +1,4 @@
-<div class="banner-quick-links <%= quick_link_type %>-quick-links">
+<div class="banner-quick-links <%= quick_link_type %>-quick-links" style="display:<%= quick_link_type != 'employer' ? 'none' : 'block' %>">
   <h3 class="banner-quick-link-title">We can help...</h3>
   <ul class="banner-quick-link-list">
     <% quick_links.each do |quick_link| %>

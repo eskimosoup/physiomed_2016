@@ -4,8 +4,17 @@
   </div>
 
   <%= raw what_we_do.content %>
+
   <ul class="what-we-do-item-list">
     <%= render what_we_do.displayed_links %>
   </ul>
-</div>
 
+  <% if what_we_do.pdf_download.present? %>
+    <%= link_to what_we_do.pdf_download.url, title: what_we_do.title,
+                          target: '_blank', class: 'wwd-download-pdf' do %>
+      <%= image_tag what_we_do.image.show, alt: what_we_do.title %>
+
+      Download PDF
+    <% end %>
+  <% end %>
+</div>
