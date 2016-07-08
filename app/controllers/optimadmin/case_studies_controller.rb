@@ -2,7 +2,7 @@ module Optimadmin
   class CaseStudiesController < Optimadmin::ApplicationController
     before_action :set_case_study, only: [:show, :edit, :update, :destroy]
     edit_images_for CaseStudy, [
-      [:image, { index: ['fill', 300, 300], show: ['fit', 870, 300] }]
+      [:image, { index: ['fill', 300, 300], show: ['fit', 870, 300], sidebar: ['fill', 50, 50] }]
     ]
 
     def index

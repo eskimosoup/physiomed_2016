@@ -293,7 +293,10 @@ ActiveRecord::Schema.define(version: 20160705145138) do
   add_index "optimadmin_menu_item_hierarchies", ["descendant_id"], name: "menu_item_desc_idx", using: :btree
 
   create_table "optimadmin_menu_items", force: :cascade do |t|
-    t.string   "menu_name",       limit: 100 t.string   "name",            limit: 100 t.integer  "parent_id" t.boolean  "deletable",                   default: true
+    t.string   "menu_name",       limit: 100
+    t.string   "name",            limit: 100
+    t.integer  "parent_id"
+    t.boolean  "deletable",                   default: true
     t.boolean  "new_window",                  default: false
     t.string   "title_attribute", limit: 100
     t.integer  "position",                    default: 0
@@ -419,16 +422,6 @@ ActiveRecord::Schema.define(version: 20160705145138) do
     t.string   "csp_number"
     t.string   "hpc_number"
     t.boolean  "ocppp_member",         default: false, null: false
-    t.date     "qualification_date"
-    t.string   "years_practicing"
-    t.text     "specialisation_areas"
-    t.boolean  "domiciliary_visits",   default: false, null: false
-    t.string   "manual_treatments"
-    t.boolean  "bupa_registered",      default: false, null: false
-    t.boolean  "cpd",                  default: false, null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.boolean  "ocppp_member",         null: false
     t.date     "qualification_date"
     t.string   "years_practicing"
     t.text     "specialisation_areas"
