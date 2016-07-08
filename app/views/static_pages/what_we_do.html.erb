@@ -23,7 +23,7 @@
         </div>
 
         <div class="what-we-do-sections">
-          <%= render @facade.what_we_dos %>
+          <%= render @facade.what_we_dos.limit(3) %>
 
           <div class="page-contact-methods-wrap">
             <div class="page-contact-methods">
