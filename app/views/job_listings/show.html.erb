@@ -1,0 +1,43 @@
+<div class="hero-section standard-page-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title full-width">
+      <%= @job_listing_facade.title %>
+    </h1>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="page-content-wrap full-width">
+      <div class="page-content">
+        <%= image_tag "hiring.png", alt: "We're hiring", title: "We're hiring" %>
+
+        <%= raw @job_listing_facade.description %>
+
+        <%= render(
+          partial: 'job_applications/form', 
+          locals: {
+            job_listing: @job_listing_facade.job_listing,
+            job_application: @job_listing_facade.job_application
+          }
+        ) %>
+
+        <div class="page-content-footer">
+          <%= link_to "View All", job_listings_path, class: "button brown-background" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: wellbeing_zone_health_zone,
+          case_studies: latest_case_studies,
+          articles: latest_articles,
+        }
+      ) %>
+    </div>
+  </div>
+</div>

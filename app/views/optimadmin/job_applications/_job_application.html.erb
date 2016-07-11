@@ -1,0 +1,14 @@
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= job_application.id %>">
+    <div class="small-3 columns" data-equalizer-watch="module-list">
+      <%= job_application.name %>
+    </div>
+    <div class="small-3 columns" data-equalizer-watch="module-list">
+      <%= mail_to job_application.email %>
+    </div>
+    <div class="small-3 columns" data-equalizer-watch="module-list">
+      <%= job_application.telephone %>
+    </div>
+    <div class="small-3 columns" data-equalizer-watch="module-list">
+      <%= link_to "Download CV", job_application.cv.url %>
+    </div>
+  </div>

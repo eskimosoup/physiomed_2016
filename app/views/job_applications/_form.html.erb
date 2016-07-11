@@ -1,0 +1,7 @@
+<%= simple_form_for [job_listing, job_application] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :telephone, as: :tel %>
+  <%= f.input :email, as: :email %>
+  <%= f.input :cv, as: :file %>
+  <%= f.button :submit %>
+<% end %>

@@ -168,6 +168,21 @@ FactoryGirl.define do
     factory :health_zone_with_image, traits: [:image]
   end
 
+  factory :job_listing do
+    title "MyString"
+    description "MyText"
+    display_from { Date.today }
+    display_until { Date.today }
+  end
+
+  factory :job_application do
+    job_listing nil
+    name "MyString"
+    telephone "MyString"
+    email "MyString"
+    cv { File.open(File.join(Rails.root, 'spec/support/images/landscape_image.jpg')) }
+  end
+
   factory :page do
     sequence(:id) { |n| n }
     title 'Page title'

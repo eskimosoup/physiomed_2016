@@ -1,0 +1,19 @@
+<%= render 'optimadmin/shared/header/main_title', title: "Job Applications For #{ @job_listing.title }" %>
+
+<div class="main-content">
+  <div class="row collapse module-list-index header">
+    <%= list_item 'small-3' do %>
+      Name
+    <% end %>
+    <%= list_item 'small-3' do %>
+      Email
+    <% end %>
+    <%= list_item 'small-3' do %>
+      Telephone
+    <% end %>
+    <%= list_item 'small-3' do %>
+      C.V.
+    <% end %>
+  </div>
+  <%= render @job_applications %>
+</div>

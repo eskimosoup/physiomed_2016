@@ -17,9 +17,9 @@ RSpec.describe PracticeApplicationMailer, type: :mailer do
       application = build(:practice_applications_practice)
       mail = PracticeApplicationMailer.application_made(application)
 
-      expect(mail.subject).to eq(I18n.t('mailers.practice_application.application_made.subject'))
-      expect(mail.to).to eq([practice_application_email.value])
-      expect(mail.from).to eq([site_email.value])
+      expect(mail).to have_subject(I18n.t('mailers.practice_application.application_made.subject'))
+      expect(mail).to deliver_to(practice_application_email.value)
+      expect(mail).to deliver_from(site_email.value)
     end
 
     it 'defaults to site email if practice application email not set' do
@@ -32,7 +32,7 @@ RSpec.describe PracticeApplicationMailer, type: :mailer do
       application = build(:practice_applications_practice)
       mail = PracticeApplicationMailer.application_made(application)
 
-      expect(mail.to).to eq([site_email.value])
+      expect(mail).to deliver_to(site_email.value)
     end
 
     it 'renders the body' do
@@ -43,9 +43,9 @@ RSpec.describe PracticeApplicationMailer, type: :mailer do
       allow(application).to receive(:practitioners).and_return([practitioner])
       mail = PracticeApplicationMailer.application_made(application)
 
-      expect(mail.body.encoded).to match(application.name)
-      expect(mail.body.encoded).to match(contact.name)
-      expect(mail.body.encoded).to match(practitioner.name)
+      expect(mail).to have_body_text(application.name)
+      expect(mail).to have_body_text(contact.name)
+      expect(mail).to have_body_text(practitioner.name)
     end
 
   end

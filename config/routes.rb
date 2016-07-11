@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :case_studies, only: [:index, :show], path: 'case-studies'
   resources :contacts, only: [:new, :create]
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
+  resources :job_listings, only: [:index, :show], path: 'job-listings' do
+    resources :job_applications, only: [:create]
+  end
   resources :pages, only: :show
   resources :practice_applications, only: [:new, :create], path: 'practice-applications'
   resources :subcategories, only: [:index, :show], path: 'categorisation'
@@ -28,28 +31,7 @@ end
 Optimadmin::Engine.routes.draw do
   resources :reorderings, only: [:index]
 
-  resources :seo_entries, except: [:show] do
-    collection do
-      post 'order'
-      get 'rebuild_seo'
-    end
-    member do
-      get 'toggle'
-    end
-  end
 
-  resources :subcategories, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
   concern :imageable do
     member do
       get 'edit_images'
@@ -85,10 +67,19 @@ Optimadmin::Engine.routes.draw do
   resources :frequently_asked_questions, concerns: [:orderable, :toggleable]
   resources :guides, concerns: [:orderable, :imageable, :orderable], except: [:show]
   resources :health_zones, concerns: [:orderable, :toggleable, :imageable], except: [:show]
+  resources :job_listings, except: [:show] do
+    resources :job_applications, only: [:index]
+  end
   resources :pages, concerns: [:toggleable, :imageable], except: :show
   resources :people_helped_sections, concerns: [:toggleable], except: [:show]
   resources :practices, concerns: [:toggleable], except: [:show]
   resources :practice_applications, only: [:index, :show]
+  resources :seo_entries, concerns: [:orderable, :toggleable], except: [:show] do
+    collection do
+      get 'rebuild_seo'
+    end
+  end
+  resources :subcategories, concerns: [:imageable, :toggleable, :orderable], except: [:show]
   resources :service_standards, concerns: [:orderable, :toggleable], except: [:show]
   resources :team_members, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   resources :testimonials, concerns: [:orderable, :toggleable], except: [:show]

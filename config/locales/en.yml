@@ -27,9 +27,15 @@ en:
     practice_application:
       application_made:
         subject: "Physio Med National Website - Practice form completed"
+    job_application:
+      application_made:
+        subject: "Physio Med National Website - Job Application Made"
   contacts:
     create:
       flash: "Thank you for your submission."
+  job_applications:
+    create:
+      flash: "Job Application successfully made"
   practice_applications:
     new:
       header: "New Practice Application"

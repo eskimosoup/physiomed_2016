@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708143111) do
+ActiveRecord::Schema.define(version: 20160712084725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -243,6 +243,30 @@ ActiveRecord::Schema.define(version: 20160708143111) do
 
   add_index "health_zones", ["link"], name: "index_health_zones_on_link", unique: true, using: :btree
   add_index "health_zones", ["title"], name: "index_health_zones_on_title", unique: true, using: :btree
+
+  create_table "job_applications", force: :cascade do |t|
+    t.integer  "job_listing_id"
+    t.string   "name",           null: false
+    t.string   "telephone"
+    t.string   "email",          null: false
+    t.string   "cv",             null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "job_applications", ["job_listing_id"], name: "index_job_applications_on_job_listing_id", using: :btree
+
+  create_table "job_listings", force: :cascade do |t|
+    t.string   "title",                                 null: false
+    t.text     "summary"
+    t.text     "description",                           null: false
+    t.date     "display_from",                          null: false
+    t.date     "display_until",                         null: false
+    t.boolean  "display",                default: true, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "job_applications_count", default: 0
+  end
 
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
@@ -591,6 +615,7 @@ ActiveRecord::Schema.define(version: 20160708143111) do
   add_foreign_key "categories_videos", "categories", on_delete: :cascade
   add_foreign_key "categories_videos", "videos", on_delete: :cascade
   add_foreign_key "guides", "videos", on_delete: :cascade
+  add_foreign_key "job_applications", "job_listings"
   add_foreign_key "pages_team_members", "pages"
   add_foreign_key "pages_team_members", "team_members"
   add_foreign_key "pages_testimonials", "pages", on_delete: :cascade
