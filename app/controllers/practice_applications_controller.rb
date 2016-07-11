@@ -6,7 +6,7 @@ class PracticeApplicationsController < ApplicationController
   def create
     @practice_application = PracticeApplication.new(practice_application_params)
     if @practice_application.save
-      PracticeApplicationMailer.application_made(@practice_application).deliver_now
+      PracticeApplicationMailer.application_made(@practice_application.practice).deliver_now
       redirect_to new_practice_application_path, notice: I18n.t('practice_applications.create.flash')
     else
       render :new

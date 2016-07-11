@@ -4,6 +4,7 @@ RSpec.describe "wellbeing_zone/body_parts/show.html.erb" do
   context "has body part sections" do
     it 'renders body part section container' do
       facade = build_facade
+      stub_global_site_settings
       body_part_section = build_stubbed(:body_part_section)
       allow(facade).to receive(:body_part_sections).and_return([body_part_section])
 
@@ -16,6 +17,7 @@ RSpec.describe "wellbeing_zone/body_parts/show.html.erb" do
   context "has no body part sections" do
     it 'does not render the body part section container' do
       facade = build_facade
+      stub_global_site_settings
       allow(facade).to receive(:body_part_sections).and_return([])
 
       render
@@ -27,6 +29,7 @@ RSpec.describe "wellbeing_zone/body_parts/show.html.erb" do
   context 'has guides' do
     it 'renders the guide section' do
       facade = build_facade
+      stub_global_site_settings
       guide = create(:guide, title: "Guide", content: "some content", display: true)
       allow(facade).to receive(:guides).and_return([guide])
 
@@ -43,6 +46,7 @@ RSpec.describe "wellbeing_zone/body_parts/show.html.erb" do
   context 'does not have guides' do
     it 'does not render the guides section' do
       facade = build_facade
+      stub_global_site_settings
 
       render
 
@@ -64,6 +68,12 @@ RSpec.describe "wellbeing_zone/body_parts/show.html.erb" do
 
   def have_guides_section_container
     have_css ".guides-container"
+  end
+
+  def stub_global_site_settings
+    def view.global_site_settings
+      {}
+    end
   end
 end
 

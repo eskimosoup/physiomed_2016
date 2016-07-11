@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe GeneralWellbeingFacade do
+  it 'delegates content to category' do
+    facade = GeneralWellbeingFacade.new(nil)
+
+    expect(facade).to delegate_method(:content).to(:category)
+  end
+
   describe '#guides' do
     it 'gets guides through category' do
       category = create(:category, name: "General Wellbeing")

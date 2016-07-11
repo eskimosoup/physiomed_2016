@@ -56,7 +56,6 @@
         <%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
         <%= module_link(content: "Body Parts", model: BodyPart, path: body_parts_path) %>
         <%= module_link(content: "Health Zones", model: HealthZone, path: health_zones_path) %>
-        <%= link_to 'Practice Applications', practice_applications_path %>
         <% if can? :manage, Optimadmin::MenuItem %>
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>

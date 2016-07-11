@@ -1,4 +1,7 @@
 class GeneralWellbeingFacade < WellbeingZoneFacade
+
+  delegate :content, to: :category, allow_nil: true
+
   def guides
     @guides ||= Guide.for_category(category).displayed
   end

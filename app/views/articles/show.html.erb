@@ -30,7 +30,7 @@
         locals: {
           call_to_action: true,
           testimonials: nil,
-          team_members: [@article.author],
+          team_members: [@article.author].compact,
           health_zone: wellbeing_zone_health_zone,
           case_studies: latest_case_studies,
           articles: nil,
