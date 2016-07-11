@@ -38,9 +38,9 @@
 
             <div>
               <%= link_to 'Get directions',
-                        'https://www.google.co.uk/maps/place/Physio+Med/@53.777276,-1.584949,16z/data=!4m5!3m4!1s0x48795f1955555555:0x65b3ef1a2b6d13ed!8m2!3d53.7773495!4d-1.5848741?hl=en',
-                        class: 'brown-background button get-directions',
-                        target: '_blank' %>
+                'https://www.google.co.uk/maps/place/Physio+Med/@53.777276,-1.584949,16z/data=!4m5!3m4!1s0x48795f1955555555:0x65b3ef1a2b6d13ed!8m2!3d53.7773495!4d-1.5848741?hl=en',
+                class: 'brown-background button get-directions',
+                target: '_blank' %>
             </div>
 
             <div class="secondary-contact-method-email">
@@ -82,6 +82,17 @@
     </div>
 
     <div class="page-contact-methods-wrap">
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: wellbeing_zone_health_zone,
+          case_studies: latest_case_studies,
+          articles: latest_articles,
+        }
+      ) %>
       <%= render partial: 'shared/sidebar' %>
     </div>
   </div>

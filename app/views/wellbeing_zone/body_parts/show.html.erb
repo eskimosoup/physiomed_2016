@@ -87,12 +87,6 @@
     </h1>
   </div>
 
-  <!--
-    <h2 class="hero-section-subtitle">
-      Health and Well-Being Zone
-    </h2>
-  -->
-
   <div class="hero-section-primary-content">
     <div class="hero-navigation-wrap">
       <div class="hero-navigation">
@@ -133,12 +127,17 @@
     </div>
 
     <div class="page-contact-methods-wrap">
-      <%= render partial: 'shared/sidebar', locals: {
-        hide_case_studies: true,
-        hide_articles: true,
-        hide_health_and_wellbeing_zone: true
-      }
-      %>
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: nil,
+          case_studies: nil,
+          articles: nil,
+        }
+      ) %>
     </div>
   </div>
 

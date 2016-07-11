@@ -30,11 +30,17 @@
     </div>
 
     <div class="page-contact-methods-wrap">
-      <%= render partial: 'shared/sidebar', locals: {
-        hide_case_studies: true,
-        hide_articles: true
-      }
-      %>
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: wellbeing_zone_health_zone,
+          case_studies: nil,
+          articles: nil,
+        }
+      ) %>
     </div>
   </div>
 </div>

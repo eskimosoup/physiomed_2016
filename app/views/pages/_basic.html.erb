@@ -40,10 +40,17 @@
     </div>
 
     <div class="page-contact-methods-wrap">
-      <%= render partial: 'shared/sidebar', locals: {
-        team_members: @page.team_members.displayed
-      }
-      %>
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: @page.team_members.displayed,
+          health_zone: nil,
+          case_studies: nil,
+          articles: nil,
+        }
+      ) %>
     </div>
   </div>
 </div>

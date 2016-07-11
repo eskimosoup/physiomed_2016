@@ -1,83 +1,53 @@
-<% unless defined?(hide_cta_methods) %>
-  <div class="page-contact-methods">
-    <h4>
-      Talk to our clinical team
-    </h4>
+<%= render 'shared/sidebar_cta' if call_to_action %>
 
-    <ul class="page-contact-method-links">
-      <%= render 'shared/contact_method_items' %>
-    </ul>
-  </div>
-<% end %>
+<%= render(
+  partial: 'shared/sidebar_testimonials',
+  locals: {
+    testimonials: testimonials
+  }
+) if testimonials.present? %>
 
-<% if defined?(testimonials) %>
-  <%= render(
-    partial: 'shared/sidebar_testimonials',
-    locals: {
-      testimonials: testimonials
-    }
-  ) if testimonials.present? %>
-<% end %>
-
-<% if defined?(author) %>
-  <%= content_tag :div, (render(
-    partial: "team_members/author",
-    locals: {
-      team_member: author
-    }
-  )), class: 'page-author-information' if author.present? %>
-<% end %>
-
-<% if defined?(team_members) %>
-  <% if team_members.present? %>
-    <div class="page-author-information">
-      <% team_members.each do |team_member| %>
-        <%= render(
-          partial: "team_members/author",
-          locals: {
-            team_member: team_member
-          }
-        ) %>
-      <% end %>
-    </div>
-  <% end %>
-<% end %>
-
-<% unless defined?(hide_health_and_wellbeing_zone) %>
-  <%= content_for :javascript do %>
-    <%= javascript_include_tag "components/health_zones.js" %>
-    <% end %>
-
-  <div class="page-sidebar-information">
+<% if team_members.present? %>
+  <div class="page-author-information" data-role="sidebar-team-members">
     <%= render(
-      partial: "health_zones/sidebar_health_zone",
-      locals: { health_zone: @health_and_wellbeing_zone }
+      partial: "team_members/author",
+      collection: team_members,
+      as: :team_member
     ) %>
   </div>
 <% end %>
 
-<% unless defined?(hide_case_studies) %>
-  <% if @latest_case_studies.present? %>
-    <div class="page-sidebar-information">
-      <h6><%= link_to "Case Studies", case_studies_path %></h6>
-      <%= render(
-        partial: "case_studies/sidebar_case_study",
-        collection: @latest_case_studies,
-        as: :case_study
-      ) %>
-    </div>
+<% if health_zone.present? %>
+  <%= content_for :javascript do %>
+    <%= javascript_include_tag "components/health_zones.js" %>
   <% end %>
+
+  <div class="page-sidebar-information" data-role="sidebar-health-zone">
+    <%= render(
+      partial: "health_zones/sidebar_health_zone",
+      locals: { health_zone: health_zone }
+    ) %>
+  </div>
 <% end %>
 
-<% unless defined?(hide_articles) %>
-  <% if @latest_articles.present? %>
-    <div class="page-sidebar-information">
-      <h6><%= link_to "Latest News", articles_path %></h6>
-      <%= render(
-        partial: "articles/sidebar_article",
-        collection: @latest_articles,
-        as: :article
-      ) %>
-    </div>
-  <% end %>
+<% if case_studies.present? %>
+  <div class="page-sidebar-information" data-role="sidebar-case-studies">
+    <h6><%= link_to "Case Studies", case_studies_path %></h6>
+    <%= render(
+      partial: "case_studies/sidebar_case_study",
+      collection: case_studies,
+      as: :case_study
+    ) %>
+  </div>
+<% end %>
+
+<% if articles.present? %>
+  <div class="page-sidebar-information" data-role="sidebar-articles">
+    <h6><%= link_to "Latest News", articles_path %></h6>
+    <%= render(
+      partial: "articles/sidebar_article",
+      collection: articles,
+      as: :article
+    ) %>
+  </div>
 <% end %>

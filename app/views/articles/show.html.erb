@@ -25,11 +25,17 @@
     </div>
 
     <div class="page-contact-methods-wrap">
-      <%= render partial: 'shared/sidebar', locals: {
-        hide_articles: true,
-        author: @article.author
-      }
-      %>
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: [@article.author],
+          health_zone: wellbeing_zone_health_zone,
+          case_studies: latest_case_studies,
+          articles: nil,
+        }
+      ) %>
     </div>
   </div>
 </div>
