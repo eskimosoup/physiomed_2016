@@ -1,7 +1,7 @@
 class BodyPart < ActiveRecord::Base
   BODY_PARTS = [
     'Ankle', 'Elbow', 'Foot', 'Hip', 'Knee',
-    'Lower Back', 'Lower Leg', 'Neck', 'Shoulder', 'Wrist'
+    'Lower Back', 'Lower Leg', 'Neck and Upper Back', 'Shoulder', 'Wrist'
   ].freeze
 
   extend FriendlyId
