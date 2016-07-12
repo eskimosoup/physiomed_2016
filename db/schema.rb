@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712084725) do
+ActiveRecord::Schema.define(version: 20160712142136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -534,6 +534,24 @@ ActiveRecord::Schema.define(version: 20160712084725) do
 
   add_index "subcategories_videos", ["subcategory_id"], name: "index_subcategories_videos_on_subcategory_id", using: :btree
   add_index "subcategories_videos", ["video_id"], name: "index_subcategories_videos_on_video_id", using: :btree
+
+  create_table "team_member_categories", force: :cascade do |t|
+    t.string   "title",                     null: false
+    t.integer  "position",      default: 0, null: false
+    t.string   "category_type",             null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "team_member_categories", ["category_type"], name: "index_team_member_categories_on_category_type", unique: true, using: :btree
+
+  create_table "team_member_categories_members", id: false, force: :cascade do |t|
+    t.integer "team_member_id",          null: false
+    t.integer "team_member_category_id", null: false
+  end
+
+  add_index "team_member_categories_members", ["team_member_category_id", "team_member_id"], name: "category_team_member", using: :btree
+  add_index "team_member_categories_members", ["team_member_id", "team_member_category_id"], name: "team_member_category", using: :btree
 
   create_table "team_members", force: :cascade do |t|
     t.string   "forename",                  null: false

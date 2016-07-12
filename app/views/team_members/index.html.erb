@@ -1,3 +1,10 @@
+<%= content_for :javascript do %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+      $('a.team-member-link').colorbox();
+    });
+  </script>
+<% end %>
 <div class="hero-section standard-page-background">
   <div class="hero-section-header">
     <h1 class="hero-section-title page full-width">
@@ -8,36 +15,21 @@
   <div class="hero-section-primary-content">
     <div class="page-content-wrap full-width">
       <div class="page-content">
-        <% if @team_members.present? %>
-          <%= content_for :head do %>
-            <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' %>
-            <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css' %>
-          <% end %>
-
-          <%= content_for :javascript do %>
-            <%= javascript_include_tag "components/team_members/wellbeing_zone.js" %>
-          <% end %>
-
-          <div class="team-members-container">
-            <h2 class="text-center">
-              The Team
+        <% @team_member_categories.each do |team_member_category| %>
+          <div class="team-member-category">
+            <h2 data-role="team-member-category">
+              <%= team_member_category.title %>
             </h2>
-            <%= button_tag(type: 'button', class: "slick-team-members slick-prev") do %>
-              <
-            <% end %>
-            <div class="team-members">
+            <div class="team-members-container">
               <%= render(
-                partial: "team_members/wellbeing_team_member",
-                collection: @team_members,
+                partial: 'team_members/team_member_index',
+                collection: team_member_category.displayed_team_members,
                 as: :team_member
               ) %>
-          </div>
-          <%= button_tag(type: 'button', class: "slick-team-members slick-next") do %>
-            >
-          <% end %>
+            </div>
+
           </div>
         <% end %>
-
       </div>
     </div>
 

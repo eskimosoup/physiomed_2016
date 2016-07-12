@@ -28,7 +28,6 @@ class BodyPartFacade
   end
 
   def faqs
-    # @faqs ||= body_part.frequently_asked_questions.displayed.order('RANDOM()').limit(6)
     @faqs ||= body_part.frequently_asked_questions.displayed.order(:position).limit(6)
   end
 
@@ -37,7 +36,8 @@ class BodyPartFacade
   end
 
   def team_members
-    @team_members ||= TeamMember.order('RANDOM()').displayed.limit(12)
+    @team_members ||= TeamMember.joins(:team_member_categories)
+      .merge(TeamMemberCategory.clinical).order('RANDOM()').displayed.limit(12)
   end
 
   def testimonials

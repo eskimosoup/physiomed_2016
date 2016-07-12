@@ -31,7 +31,6 @@ end
 Optimadmin::Engine.routes.draw do
   resources :reorderings, only: [:index]
 
-
   concern :imageable do
     member do
       get 'edit_images'
@@ -81,6 +80,7 @@ Optimadmin::Engine.routes.draw do
   end
   resources :subcategories, concerns: [:imageable, :toggleable, :orderable], except: [:show]
   resources :service_standards, concerns: [:orderable, :toggleable], except: [:show]
+  resources :team_member_categories, concerns: [:orderable], except: [:show]
   resources :team_members, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   resources :testimonials, concerns: [:orderable, :toggleable], except: [:show]
   resources :what_we_dos, concerns: [:orderable, :toggleable, :imageable], except: [:show] do

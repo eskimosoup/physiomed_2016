@@ -1,10 +1,10 @@
 class HomeFacade
   def additional_contents
-    @additional_contents ||= AdditionalHomeContent.displayed.ordered_by_position
+    @additional_contents ||= AdditionalHomeContent.includes(:video).displayed.ordered_by_position
   end
 
   def articles
-    @articles ||= Article.displayed.home.order(date: :desc).limit(10)
+    @articles ||= Article.includes(:author).displayed.home.order(date: :desc).limit(10)
   end
 
   def banners

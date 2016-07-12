@@ -1,0 +1,21 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Team Member Categories' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Team Member Category', object: TeamMemberCategory, path: new_team_member_category_path %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @team_member_categories.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'small-10' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Name
+    <% end %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+
+  <div class="module-sortable" data-module="Banner">
+    <%= render partial: 'team_member_category', collection: @team_member_categories %>
+  </div>
+</div>

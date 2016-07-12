@@ -259,6 +259,11 @@ FactoryGirl.define do
     factory :site_setting_email, traits: [:email]
   end
 
+  factory :team_member_category do
+    title "MyString"
+    category_type { TeamMemberCategory::TYPES.sample }
+  end
+
   factory :team_member do
     forename 'MyString'
     surname 'MyString'

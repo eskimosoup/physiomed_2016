@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'job listings admin', type: :feature do
   context "successfully created" do
-    it 'creation' do
+    scenario 'creation' do
       visit_job_listing_index
       click_link "New Job Listing"
       fill_job_listing_form(
@@ -19,7 +19,7 @@ RSpec.feature 'job listings admin', type: :feature do
   end
 
   context 'with errors' do
-    it 'creation' do
+    scenario 'creation' do
       visit_job_listing_index
       click_link "New Job Listing"
       fill_job_listing_form
@@ -29,7 +29,7 @@ RSpec.feature 'job listings admin', type: :feature do
     end
   end
 
-  it 'editing' do
+  scenario 'editing' do
     job_listing = create(:job_listing, title: "Title A")
 
     visit_job_listing_index
@@ -40,7 +40,7 @@ RSpec.feature 'job listings admin', type: :feature do
     expect(page).to have_admin_index "Title B"
   end
 
-  it 'destroying' do
+  scenario 'destroying' do
     job_listing = create(:job_listing, title: "A Title")
 
     visit_job_listing_index

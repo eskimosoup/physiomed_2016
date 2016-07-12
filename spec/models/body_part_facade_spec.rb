@@ -254,19 +254,33 @@ RSpec.describe BodyPartFacade do
 
   describe '#team_members' do
     it 'only gets 12' do
-      create_list(:team_member, 13, display: true)
+      category = create(:team_member_category, category_type: 'Clinical')
+      create_list(:team_member, 13, display: true, team_member_categories: [category])
       facade = build_facade
 
       expect(facade.team_members.size).to eq(12)
     end
 
     it 'only gets displayed team members' do
-      team_member = create(:team_member, display: true)
-      not_displayed = create(:team_member, display: false)
+      category = create(:team_member_category, category_type: 'Clinical')
+      team_member = create(:team_member, display: true, team_member_categories: [category])
+      not_displayed = create(:team_member, display: false, team_member_categories: [category])
       facade = build_facade
 
       expect(facade.team_members).to include(team_member)
       expect(facade.team_members).not_to include(not_displayed)
+    end
+
+    it 'only gets clinical team members' do
+      category = create(:team_member_category, category_type: 'Clinical')
+      team_member = create(:team_member, display: true, team_member_categories: [category])
+      not_clinical = create(:team_member, display: true)
+      facade = build_facade
+
+      team_members = facade.team_members
+
+      expect(team_members).to include(team_member)
+      expect(team_members).not_to include(not_clinical)
     end
   end
 

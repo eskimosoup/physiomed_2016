@@ -1,9 +1,7 @@
 <div class="hero-section standard-page-background">
   <div class="hero-section-header">
     <h1 class="hero-section-title page <%= 'full-width' if @side_menus.blank? %>">
-      <% present @page do |page_presenter| %>
-        <%= page_presenter.title %>
-      <% end %>
+      <%= @page.title %>
     </h1>
   </div>
 

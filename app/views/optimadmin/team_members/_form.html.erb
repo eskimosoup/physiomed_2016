@@ -68,6 +68,12 @@
       </div>
 
       <div class="field">
+        <%= f.label :team_member_category_ids, 'Team Member Categories' %><br>
+        <%= f.select :team_member_category_ids, TeamMemberCategory.order(:title).pluck(:title, :id),
+      {}, { class: 'multiselect', multiple: true } %>
+      </div>
+
+      <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>
       </div>

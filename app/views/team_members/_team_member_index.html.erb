@@ -1,0 +1,13 @@
+<div class="team-member index">
+  <%= link_to team_member, class: 'team-member-link', remote: true do %>
+    <div class="team-member text-center">
+      <%= image_tag team_member.image.index, title: team_member.name if team_member.image? %>
+      <div class="name">
+        <%= team_member.name %>
+      </div>
+      <div class="role">
+        <%= team_member.role %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,18 @@
+<%= form_for(@team_member_category) do |f| %>
+  <%= render partial: 'optimadmin/shared/form_errors', locals: { object: @team_member_category } %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :categpry_type %><br />
+    <%= f.select :category_type, TeamMemberCategory::TYPES %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+    <%= f.submit 'Save and continue editing' %>
+  </div>
+<% end %>

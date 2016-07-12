@@ -26,6 +26,11 @@
       <ul id="modules" class="content-category-list">
         <%= module_link(content: 'Pages', model: Page, path: pages_path) %>
         <%= module_link(content: "Articles", model: Article, path: articles_path) %>
+        <%= module_link(
+          content: "Team Member Categories",
+          model: TeamMemberCategory,
+          path: team_member_categories_path
+        ) %>
         <%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
         <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
         <%= module_link(content: "Case Studies", model: CaseStudy, path: case_studies_path) %>

@@ -153,19 +153,32 @@ RSpec.describe WellbeingZoneFacade do
 
   describe '#team_members' do
     it 'only gets 18' do
-      create_list(:team_member, 19, display: true)
+      category = create(:team_member_category, category_type: 'Clinical')
+      create_list(:team_member, 19, display: true, team_member_categories: [category])
       facade = WellbeingZoneFacade.new(nil)
 
       expect(facade.team_members.size).to eq(18)
     end
 
     it 'only gets displayed team members' do
-      team_member = create(:team_member, display: true)
-      not_displayed = create(:team_member, display: false)
+      category = create(:team_member_category, category_type: 'Clinical')
+      team_member = create(:team_member, display: true, team_member_categories: [category])
+      not_displayed = create(:team_member, display: false, team_member_categories: [category])
       facade = WellbeingZoneFacade.new(nil)
 
       expect(facade.team_members).to include(team_member)
       expect(facade.team_members).not_to include(not_displayed)
+    end
+
+    it 'only gets clinical team members' do
+      category = create(:team_member_category, category_type: 'Clinical')
+      team_member = create(:team_member, team_member_categories: [category])
+      no_category = create(:team_member)
+
+      facade = WellbeingZoneFacade.new(nil)
+
+      expect(facade.team_members).to include(team_member)
+      expect(facade.team_members).not_to include(no_category)
     end
   end
 

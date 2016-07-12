@@ -67,6 +67,14 @@
   }
 }
 
+.team-member-category .team-members-container {
+  @include flex-grid-row;
+}
+
+.team-member.index {
+  @include flex-grid-column(3);
+}
+
 .page-sidebar-information {
   padding: rem(20px 15px);
 }

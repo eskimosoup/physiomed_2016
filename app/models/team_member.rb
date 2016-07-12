@@ -4,6 +4,7 @@ class TeamMember < ActiveRecord::Base
   mount_uploader :image, TeamMemberUploader
 
   has_many :articles, foreign_key: :author_id
+  has_and_belongs_to_many :team_member_categories
 
   has_many :page_team_members,
            dependent: :destroy,

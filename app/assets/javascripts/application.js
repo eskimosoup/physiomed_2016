@@ -17,4 +17,5 @@
 //= require components/primary-navigation
 //= require components/google-analytics-events
 //= require vendor/jquery.doubletaptogo
+//= require vendor/jquery.colorbox-min.js
 //= require cocoon

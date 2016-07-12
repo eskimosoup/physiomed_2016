@@ -24,7 +24,7 @@ class WellbeingZoneFacade
   end
 
   def team_members
-    @team_members ||= TeamMember.displayed.order("RANDOM()").limit(18)
+    @team_members ||= TeamMember.joins(:team_member_categories).displayed.merge(TeamMemberCategory.clinical).order("RANDOM()").limit(18)
   end
 
   def testimonials
