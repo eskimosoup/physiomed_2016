@@ -15,9 +15,10 @@
     @include module-container-title-header;
   }
 
-  .video-subtitle {
+  h3.video-subtitle {
     color: $green;
     font-size: rem(19px);
     font-weight: $open-sans-extrabold;
+    margin: 0 0 rem(19px);
   }
 }

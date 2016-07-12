@@ -9,10 +9,9 @@
     <div class="videos-with-guides wellbeing">
       <div class="video-with-guide">
         <div class="basic-details">
-          <div class="video-subtitle">
-            <%= "#{video.subcategories.pluck(:title).join(', ')}<br />".html_safe if video.subcategories.present? %>
+          <h3 class="video-subtitle">
             <%= video.subtitle %>
-          </div>
+          </h3>
 
           <%= raw video.content %>
         </div>
