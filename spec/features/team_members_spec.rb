@@ -18,15 +18,4 @@ RSpec.feature "user views team member" do
     expect(page).to have_content clinical_team_member.name
     expect(page).to have_content management_team_member.name
   end
-
-  scenario "user visits team members index and clicks on team member", js: true do
-    clinical = create(:team_member_category, title: "Cat A", category_type: 'Clinical')
-    team_member = create(:team_member, forename: "Joe", surname: "Bloggs",
-                         bio: "my bio", team_member_categories: [clinical])
-
-    visit team_members_path
-    click_link "Joe Bloggs"
-
-    expect(page).to have_content team_member.bio
-  end
 end
