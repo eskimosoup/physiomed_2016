@@ -96,19 +96,19 @@
 }
 #cboxMiddleLeft{
   width:21px;
-  background:url("colorbox/controls.png") left top repeat-y;
+  background: image-url("colorbox/controls.png") left top repeat-y;
 }
 #cboxMiddleRight{
   width:21px;
-  background:url("colorbox/controls.png") right top repeat-y;
+  background: image-url("colorbox/controls.png") right top repeat-y;
 }
 #cboxTopCenter{
   height:21px;
-  background:url("colorbox/border.png") 0 0 repeat-x;
+  background: image-url("colorbox/border.png") 0 0 repeat-x;
 }
 #cboxBottomCenter{
   height:21px;
-  background:url("colorbox/border.png") 0 -29px repeat-x;
+  background: image-url("colorbox/border.png") 0 -29px repeat-x;
 }
 #cboxContent{
   background:#fff;
@@ -170,7 +170,7 @@
   position:absolute;
   bottom:0;
   left:0;
-  background:url("colorbox/controls.png") no-repeat -75px 0;
+  background: image-url("colorbox/controls.png") no-repeat -75px 0;
   width:25px;
   height:25px;
   text-indent:-9999px;
@@ -194,7 +194,7 @@
   position:absolute;
   bottom:0;
   right:0;
-  background:url("colorbox/controls.png") no-repeat -25px 0;
+  background: image-url("colorbox/controls.png") no-repeat -25px 0;
   width:25px;
   height:25px;
   text-indent:-9999px;
