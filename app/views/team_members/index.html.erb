@@ -1,7 +1,14 @@
 <%= content_for :javascript do %>
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-      $('a.team-member-link').colorbox();
+      $('a.team-member-link').colorbox({
+        // this seems to be necessary
+        onComplete : function() {
+          $(document).ready(function() {
+            $(this).colorbox.resize(); 
+          });
+        }
+      });
     });
   </script>
 <% end %>
