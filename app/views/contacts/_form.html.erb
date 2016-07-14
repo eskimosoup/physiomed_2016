@@ -1,41 +1,11 @@
-<%= form_for @contact, url: contacts_path do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize @contact.errors.count, 'error' %> prevented this message from being sent
-      </h2>
-
-      <ul>
-        <% @contact.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= simple_form_for @contact, url: contacts_path do |f| %>
   <div class="contact-details">
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :telephone %>
-      <%= f.text_field :telephone %>
-    </div>
-
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-
-    <div class="field">
-      <%= f.label :message %>
-      <%= f.text_area :message %>
-    </div>
-
+    <%= f.input :name %>
+    <%= f.input :telephone, as: :tel %>
+    <%= f.input :email, as: :email %>
+    <%= f.input :message, as: :text %>
     <div class="actions">
-      <%= f.submit "Send", class: "submit-button" %>
+      <%= f.button :submit, 'Send', class: 'submit-button' %>
     </div>
   </div>
 <% end %>

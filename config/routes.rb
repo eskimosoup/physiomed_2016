@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create]
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
   resources :job_listings, only: [:index, :show], path: 'job-listings' do
-    resources :job_applications, only: [:create]
+    resources :job_applications, only: [:create], path: 'job-applications'
   end
   resources :pages, only: :show
   resources :practice_applications, only: [:new, :create], path: 'practice-applications'

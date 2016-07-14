@@ -35,3 +35,15 @@ textarea {
     outline: 1px solid $green;
   }
 }
+
+form {
+  .input {
+    margin: 10px auto;
+  }
+
+  .input.field_with_errors {
+    label, span.error {
+      color: $red;
+    }
+  }
+}

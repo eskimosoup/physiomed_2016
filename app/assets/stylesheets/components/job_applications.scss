@@ -1,0 +1,30 @@
+a#apply-button {
+  display: block;
+  text-align: center;
+  width: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  background-color: $green;
+  color: $white;
+
+  &:hover {
+    background-color: lighten($green, 10%);
+  }
+}
+
+.new_job_application {
+  @include flex-grid-row;
+  align-items: center;
+
+  .input {
+    @include flex-grid-column(6);
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .actions {
+    @include flex-grid-column(6);
+  }
+}
