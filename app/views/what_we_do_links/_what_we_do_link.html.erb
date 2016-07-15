@@ -1,3 +1,4 @@
 <li data-role="what-we-do-link">
-  <%= link_to what_we_do_link.title, what_we_do_link.page, class: (@page == what_we_do_link.page ? 'current' : 'not-current') %>
+  <%= link_to what_we_do_link.title, what_we_do_link.page, 
+    class: link_class(link: what_we_do_link, current: current_link) %>
 </li>

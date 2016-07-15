@@ -14,7 +14,8 @@
               <%= what_we_do.title %>
             </div>
             <ul class="what-we-do-item-list">
-              <%= render what_we_do.displayed_links %>
+              <%= render what_we_do.displayed_links,
+                current_link: @page_facade.what_we_do_link %>
             </ul>
           </div>
         <% end %>
