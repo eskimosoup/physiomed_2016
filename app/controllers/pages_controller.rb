@@ -1,19 +1,15 @@
 class PagesController < ApplicationController
-  before_action :set_page
 
   def show
-    return redirect_to @page, status: :moved_permanently if request.path != page_path(@page)
-    if @page.what_we_do_link
-      @what_we_dos = WhatWeDo.eager_load(:displayed_links).displayed.order(position: :asc).merge(WhatWeDoLink.order(position: :asc))
-      @current_what_we_do = WhatWeDo.eager_load(:displayed_links).where(what_we_do_links: { page_id: @page.id }).first
-    end
-    @side_menus = @page.side_menus
-    render layout: @page.layout
+    page = find_page
+    return redirect_to page, status: :moved_permanently if request.path != page_path(page)
+    @page_facade = PageFacade.new(page)
+    render layout: @page_facade.layout
   end
 
   private
 
-  def set_page
-    @page = Page.displayed.friendly.find(params[:id])
+  def find_page
+    Page.displayed.friendly.find(params[:id])
   end
 end

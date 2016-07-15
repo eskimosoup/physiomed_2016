@@ -1,16 +1,16 @@
 <div class="hero-section standard-page-background">
   <div class="hero-section-header">
     <h1 class="hero-section-title page">
-      <%= page.title %>
+      <%= @page_facade.title %>
     </h1>
   </div>
 
   <div class="hero-section-primary-content">
     <div class="hero-navigation-wrap">
       <div class="hero-navigation">
-        <% what_we_dos.each do |what_we_do| %>
+        <% @page_facade.what_we_dos.each do |what_we_do| %>
           <div class="what-we-do">
-            <div data-role="what-we-do-title" class="what-we-do-item-title sidebar <%= 'current' if what_we_do == @current_what_we_do %>">
+            <div data-role="what-we-do-title" class="what-we-do-item-title sidebar <%= 'current' if what_we_do.id == @page_facade.what_we_do_link.what_we_do_id %>">
               <%= what_we_do.title %>
             </div>
             <ul class="what-we-do-item-list">
@@ -23,13 +23,13 @@
       <%= render(
         partial: 'shared/sidebar_testimonials',
         locals: {
-          testimonials: @page.testimonials
+          testimonials: @page_facade.testimonials
         }
-      ) if @page.testimonials.present? %>
+      ) %>
     </div>
     <div class="page-content-wrap">
       <div class="page-content">
-        <% present page do |page_presenter| %>
+        <% present @page_facade.page do |page_presenter| %>
           <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-image') %>
           <%= page_presenter.content %>
         <% end %>
@@ -42,10 +42,10 @@
         locals: {
           call_to_action: true,
           testimonials: nil,
-          team_members: @page.team_members.displayed,
+          team_members: @page_facade.team_members,
           health_zone: nil,
-          case_studies: nil,
-          articles: nil,
+          case_studies: @page_facade.case_studies,
+          articles: @page_facade.articles,
         }
       ) %>
     </div>

@@ -1,36 +1,36 @@
 <div class="hero-section standard-page-background">
   <div class="hero-section-header">
-    <h1 class="hero-section-title page <%= 'full-width' if @side_menus.blank? %>">
-      <%= @page.title %>
+    <h1 class="hero-section-title page <%= 'full-width' if @page_facade.side_menus.blank? %>">
+      <%= @page_facade.title %>
     </h1>
   </div>
 
   <div class="hero-section-primary-content">
-    <% if @side_menus.present? %>
+    <% if @page_facade.side_menus.present? %>
       <div class="hero-navigation-wrap">
         <div class="hero-navigation">
           <%=
           render partial: "pages/shared/top_level_menu_item",
-                 locals: { menu_item_presenter: MenuItemPresenter.new(object: @side_menus.last.related_menu_items(@page).first.first, view_template: self, descendants_hash: nil),
+                 locals: { menu_item_presenter: MenuItemPresenter.new(object: @page_facade.side_menus.last.related_menu_items(@page_facade.page).first.first, view_template: self, descendants_hash: nil),
                            sub_menu_items: nil, depth: 0 } %>
 
           <ul class="page-aside-navigation-tree">
-            <%= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
+            <%= page_sidebar_menu_items(menu_items: @page_facade.side_menus.last.root_menu_items(@page_facade.page)) %>
           </ul>
         </div>
 
         <%= render(
           partial: 'shared/sidebar_testimonials',
           locals: {
-            testimonials: @page.testimonials
+            testimonials: @page_facade.testimonials
           }
-        ) if @page.testimonials.present? %>
+        ) %>
       </div>
     <% end %>
 
-    <div class="page-content-wrap <%= 'full-width' if @side_menus.blank? %>">
+    <div class="page-content-wrap <%= 'full-width' if @page_facade.side_menus.blank? %>">
       <div class="page-content">
-        <% present @page do |page_presenter| %>
+        <% present @page_facade.page do |page_presenter| %>
           <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-image') %>
           <%= page_presenter.content %>
         <% end %>
@@ -43,10 +43,10 @@
         locals: {
           call_to_action: true,
           testimonials: nil,
-          team_members: @page.team_members.displayed,
+          team_members: @page_facade.team_members,
           health_zone: nil,
-          case_studies: nil,
-          articles: nil,
+          case_studies: @page_facade.case_studies,
+          articles: @page_facade.articles,
         }
       ) %>
     </div>

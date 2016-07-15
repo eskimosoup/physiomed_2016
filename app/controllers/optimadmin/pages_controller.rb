@@ -51,10 +51,12 @@ module Optimadmin
     end
 
     def page_params
-      params.require(:page).permit(:title, :suggested_url, :image,
-                                   :image_cache, :remove_image, :remote_image_url,
-                                   :display, :content, :style, :layout,
-                                   testimonial_ids: [], team_member_ids: [])
+      params.require(:page).permit(
+        :title, :suggested_url, :image, :image_cache, :remove_image,
+        :remote_image_url, :display, :content, :style, :layout,
+        :display_case_studies, :display_news, testimonial_ids: [],
+        team_member_ids: []
+      )
     end
   end
 end

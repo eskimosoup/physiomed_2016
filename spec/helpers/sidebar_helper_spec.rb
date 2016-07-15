@@ -23,7 +23,8 @@ RSpec.describe SidebarHelper, type: :helper do
 
   it '#latest_case_studies' do
     case_studies = create_list(:case_study, 2, display: true)
-    
+
     expect(helper.latest_case_studies).to eq(case_studies)
   end
+
 end
