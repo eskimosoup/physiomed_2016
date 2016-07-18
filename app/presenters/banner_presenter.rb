@@ -15,7 +15,7 @@ class BannerPresenter < BasePresenter
   end
 
   def link(options = {})
-    return nil unless banner_link
+    return nil unless banner_link.present?
     h.link_to 'Read More', banner_link, options
   end
 end

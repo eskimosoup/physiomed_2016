@@ -6,4 +6,8 @@ class WellbeingFacade < WellbeingZoneFacade
   def video
     @video ||= Video.for_category(category).displayed.order(created_at: :desc).first
   end
+
+  def what_we_do_video
+    @what_we_do_video ||= Video.displayed.find_by(title: 'What we do')
+  end
 end

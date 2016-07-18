@@ -79,6 +79,11 @@
         </div>
       </div>
     <% end %>
+
+    <%= content_tag :div, (render(
+      partial: "videos/video",
+      object: @what_we_do_video
+    )), class: 'video-section' if @what_we_do_video.present? %>
   </section>
 
   <section class="flexbox-wrap case-studies-and-testimonials">

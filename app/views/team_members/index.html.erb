@@ -5,7 +5,7 @@
         // this seems to be necessary
         onComplete : function() {
           $(document).ready(function() {
-            $(this).colorbox.resize(); 
+            $(this).colorbox.resize();
           });
         }
       });
@@ -48,8 +48,8 @@
           testimonials: nil,
           team_members: nil,
           health_zone: nil,
-          case_studies: nil,
-          articles: nil,
+          case_studies: latest_case_studies,
+          articles: latest_articles,
         }
       ) %>
     </div>
