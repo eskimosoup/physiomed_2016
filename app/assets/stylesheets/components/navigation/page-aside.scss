@@ -2,7 +2,7 @@
   //list-style: none;
   //margin-left: 0;
 
-  .depth-0 .what-we-do-item-list:first-of-type {
+  .selected-navigation.what-we-do-item-list:first-of-type {
     list-style: none;
   }
 
@@ -37,7 +37,7 @@
     margin: 0;
 
     a {
-      display: block;
+      display: inline-block;
     }
   }
 }
