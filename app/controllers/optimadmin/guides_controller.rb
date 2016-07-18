@@ -2,7 +2,7 @@ module Optimadmin
   class GuidesController < Optimadmin::ApplicationController
     before_action :set_guide, only: [:show, :edit, :update, :destroy]
     edit_images_for Guide, [
-      [:image, { index: ['fill', 220, 185] }]
+      [:image, { index: ['fill', 220, 185], show: ['fill', 165, 216] }]
     ]
 
     def index
@@ -50,8 +50,8 @@ module Optimadmin
     def guide_params
       params.require(:guide)
             .permit(:title, :content, :file, :image, :display,
-              :remove_image, :remote_image_url, :image_cache,
-              :video_id, category_ids: [])
+                    :remove_image, :remote_image_url, :image_cache,
+                    :video_id, category_ids: [])
     end
   end
 end
