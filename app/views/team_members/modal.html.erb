@@ -2,7 +2,7 @@
   <div class="modal-content">
     <%= content_tag :div, (image_tag @team_member.image.show, title: @team_member.name), class: 'image' if @team_member.image %>
 
-    <div class="details <%= 'with-image' if @team_member.image %>">
+    <div class="details">
       <h1 class="green-border-bottom">
         <%= @team_member.name %>
       </h1>
