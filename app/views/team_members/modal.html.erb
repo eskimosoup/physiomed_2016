@@ -1,16 +1,21 @@
-<div class="modal-content">
-  <%= image_tag @team_member.image.show, title: @team_member.name if @team_member.image? %>
-  <div class="details">
-    <h1 class="green-border-bottom">
-      <%= @team_member.name %>
-    </h1>
+<div class="modal-overview">
+  <div class="modal-content">
+    <div class="image">
+      <%= image_tag @team_member.image.show, title: @team_member.name if @team_member.image? %>
+    </div>
 
-    <h3>
-      <%= @team_member.role %>
-    </h3>
+    <div class="details">
+      <h1 class="green-border-bottom">
+        <%= @team_member.name %>
+      </h1>
 
-    <%= mail_to @team_member.email %>
+      <h3>
+        <%= @team_member.role %>
+      </h3>
 
-    <%= raw @team_member.bio %>
+      <%= mail_to @team_member.email %>
+
+      <%= raw @team_member.bio %>
+    </div>
   </div>
 </div>
