@@ -8,6 +8,6 @@ class WellbeingFacade < WellbeingZoneFacade
   end
 
   def what_we_do_video
-    @what_we_do_video ||= Video.displayed.find_by(title: 'What we do')
+    @what_we_do_video ||= Video.find_by(title: 'What we do')
   end
 end
