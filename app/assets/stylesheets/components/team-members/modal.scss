@@ -1,19 +1,17 @@
 .modal-overview {
-  width: 80%;
   padding: rem-calc(10px);
+  width: 800px;
 }
 
 .modal-content {
-  @include flex-grid-row;
+  @include grid-row;
 
   .image {
-    @include flex-grid-column(4);
+    @include grid-column(4);
   }
 
   .details {
-    &.with-image {
-      @include flex-grid-column(7);
-    }
+    @include grid-column(7);
 
     h1 {
       margin-top: 0;
