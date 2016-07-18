@@ -37,7 +37,7 @@ class BodyPartFacade
 
   def team_members
     @team_members ||= TeamMember.joins(:team_member_categories)
-      .merge(TeamMemberCategory.clinical).order('RANDOM()').displayed.limit(12)
+                                .merge(TeamMemberCategory.clinical).order('RANDOM()').displayed.limit(12)
   end
 
   def testimonials
