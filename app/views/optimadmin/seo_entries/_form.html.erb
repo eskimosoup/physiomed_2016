@@ -13,12 +13,10 @@
   </div>
 <% end %>
 
-  <% if attributes.map(&:name).include?('title') %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <% end %>
 
   <div class="tabs prevent-flash">
     <ul class="tab-list">
