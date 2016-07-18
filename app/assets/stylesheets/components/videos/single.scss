@@ -13,6 +13,7 @@
 
   h2 {
     @include module-container-title-header;
+    margin-top: 0;
   }
 
   .video-subtitle {
