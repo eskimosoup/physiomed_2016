@@ -15,7 +15,7 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  
+
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
@@ -39,10 +39,7 @@
     <%= field_set_tag nil, id: 'tabs-2' do %>
       <%= f.image_field :image %>
 
-      <div class="field">
-        <%= f.label :file %><br>
-        <%= f.file_field :file %>
-      </div>
+      <%= f.document_field :file %>
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
