@@ -26,9 +26,11 @@
   &.slick-slide {
     height: 245px;
   }
-  
+
   @include media('>=768px') {
-    height: auto;
+    &.slick-slide {
+      height: auto;
+    }
   }
 
   img {
