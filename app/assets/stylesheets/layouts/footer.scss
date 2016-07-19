@@ -13,16 +13,16 @@ footer {
   }
 
   .footer-container {
+    @include flex-grid-row;
+    text-align: center;
+
     &.small-print {
-      padding: rem(55px 0);
+      padding: rem(55px 0 23px);
     }
 
     h2 {
       width: 100%;
     }
-
-    @include flex-grid-row;
-    text-align: center;
 
     p {
       display: block;
@@ -33,7 +33,7 @@ footer {
 
       &.physiotherapists-small-print {
         font-size: rem(13px);
-        margin: rem(46px auto 0);
+        margin: rem(23px auto 0);
       }
     }
   }
@@ -42,4 +42,20 @@ footer {
 .awards-container {
   padding: rem(50px 0);
   text-align: center;
+}
+
+.rich-snippets {
+  display: block;
+  font-size: rem(13px);
+  padding: rem(0 0 5px);
+  text-align: center;
+
+  div:first-of-type span {
+    font-weight: $open-sans-bold;
+  }
+
+  img {
+    display: block;
+    margin: rem(5px) auto;
+  }
 }

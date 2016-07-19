@@ -24,6 +24,18 @@
     float: right;
     @include clearfix;
   }
+
+  a {
+    &:link,
+    &:visited {
+      color: $dark-green;
+    }
+
+    &:hover,
+    &:active {
+      color: $pale-green;
+    }
+  }
 }
 
 @include media('>=768px') {
