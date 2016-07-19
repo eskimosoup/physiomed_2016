@@ -1,20 +1,8 @@
 <div class="nested-fields">
   <%= field_set_tag 'Practitioner Details' do %>
     <%= f.input :name %>
-    <%= f.input :csp_number %>
-    <%= f.input :hpc_number %>
-    <%= f.input :ocppp_member, collection: [['No', false], ['Yes', true]], 
-      prompt: 'Please select' %>
     <%= f.input :qualification_date, as: :date, order: [:day, :month, :year] %>
     <%= f.input :years_practicing %>
-    <%= f.input :specialisation_areas, as: :text %>
-    <%= f.input :domiciliary_visits, collection: [['No', false], ['Yes', true]],
-      prompt: 'Please select' %>
-    <%= f.input :manual_treatments, collection: PracticeApplication.percentages %>
-    <%= f.input :bupa_registered, collection: [['No', false], ['Yes', true]],
-      prompt: 'Please select' %>
-    <%= f.input :cpd, collection: [['No', false], ['Yes', true]],
-      prompt: 'Please select' %>
     <%= link_to_remove_association 'Remove Practitioner', f, class: 'button brown-background' %>
   <% end %>
 </div>
