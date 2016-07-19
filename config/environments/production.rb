@@ -1,4 +1,18 @@
 Rails.application.configure do
+  config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
+
+  Rails.application.routes.default_url_options[:host] = 'www.physiomed.co.uk'
+
+  config.action_mailer.smtp_settings = { enable_starttls_auto: false }
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: 'mail.optimised.today',
+    authentication: :plain,
+    user_name: 'noreply@optimised.today',
+    password: 'LudoStudio47#!poip'
+  }
+
   config.action_mailer.asset_host = 'http://www.physiomed.co.uk'
   # Settings specified here will take precedence over those in config/application.rb.
 
