@@ -13,6 +13,7 @@
     border: 0;
     height: auto;
     margin: 0;
+    padding: 0;
     position: static;
     width: auto;
   }
@@ -25,6 +26,13 @@
 .primary-header-content {
   @include clearfix;
   width: 100%;
+
+  @include media('<768px') {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 
   @include media('>=768px') {
     @include flex-grid-column(12, $gutter: (small: 0));
@@ -70,10 +78,16 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   color: $white;
-  display: inline-block;
-  float: right;
-  margin: rem(0 10px 0 0);
-  padding: rem(8px 17px 8px 50px);
+  display: block;
+  line-height: 1.25;
+  padding: rem(8px 8px 8px 50px);
+
+  @include media('>=768px') {
+    display: inline-block;
+    float: right;
+    margin: rem(0 10px 0 0);
+    padding: rem(8px 17px 8px 50px);
+  }
 
   &:hover {
     background-color: $pale-green;
@@ -82,13 +96,20 @@
 
 .client-area-button {
   background: $brown-offset;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  float: right;
+  display: block;
   font-family: $ubuntu;
   font-weight: $ubuntu-light;
   line-height: 1;
-  padding: rem(12px 40px);
+  padding: rem(12px 12px 6px);
+  width: 100%;
+
+  @include media('>=768px') {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    float: right;
+    padding: rem(12px 40px);
+    width: auto;
+  }
 
   &:link,
   &:visited {
@@ -104,7 +125,7 @@
 .toggle-menu {
   position: absolute;
   right: 30px;
-  top: 73px;
+  top: 43px;
 
   @include media('>=768px') {
     display: none;

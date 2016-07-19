@@ -1,5 +1,7 @@
 .wellbeing .faqs .faq {
-  @include flex-grid-column(4);
+  @include media('>=768px') {
+    @include flex-grid-column(4);
+  }
 
   .faq-inner {
     padding-bottom: rem(20px);
@@ -12,6 +14,11 @@
 }
 
 .faqs .faq {
+  @include media('<768px') {
+    display: block;
+    width: 100%;
+  }
+
   .faq-inner {
     border-bottom: 1px solid $secondary-offset-white;
     margin: 0 0 rem(12px);

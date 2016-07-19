@@ -21,7 +21,12 @@
 }
 
 .banner {
+  height: 240px;
   position: relative;
+
+  @include media('>=768px') {
+    height: auto;
+  }
 
   img {
     margin: 0 auto;
@@ -72,17 +77,19 @@
 
 .banner-content {
   background: rgba($green, .75);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   color: $white;
+  height: 240px;
   left: 0;
   padding: rem(20px);
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 2;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
 
   @include media('>=768px') {
+    height: auto;
     max-width: 524px;
     padding: rem(136px 63px 60px);
   }

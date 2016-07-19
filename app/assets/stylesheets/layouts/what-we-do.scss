@@ -96,9 +96,11 @@
   background: $brown;
   border-radius: 5px;
   box-shadow: 1px 3px 3px 0 $brown;
-  display: inline-block;
   color: $white;
+  display: block;
+  margin: 0 auto;
   padding: rem(5px 15px 5px 5px);
+  width: 246px;
 
   img {
     border-radius: 5px;

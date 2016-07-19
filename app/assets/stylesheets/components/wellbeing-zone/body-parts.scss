@@ -1,8 +1,12 @@
 .body-part {
-  @include flex-grid-column(4);
   margin: rem-calc(20px) auto;
-  min-height: 204px;
   position: relative;
+  width: 100%;
+
+  @include media('>=768px') {
+    @include flex-grid-column(4);
+    min-height: 204px;
+  }
 
   .name {
     color: $white;
@@ -17,6 +21,10 @@
     font-weight: $open-sans-semibold;
     padding: rem(20px) 0;
     position: absolute;
-    width: calc(100% - 30px);
+    width: 100%;
+    
+    @include media('>=768px') {
+      width: calc(100% - 30px);
+    }
   }
 }

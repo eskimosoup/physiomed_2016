@@ -1,5 +1,5 @@
 .body-part-summary-wrap {
-  margin: rem(20px 10px);
+  margin: rem(20px 0);
 
   @include media('>=768px') {
     @include flex-grid-column(6);
