@@ -34,14 +34,22 @@
   .people-helped-section {
     @include border-radius-with-box-shadow;
     padding: rem-calc(15px);
-    width: 33%;
+    width: 100%;
+
+    @include media('>=768px') {
+      width: 33%;
+    }
   }
 
   .video-section {
     @include border-radius-with-box-shadow;
     background-color: $white;
     padding: rem-calc(15px);
-    width: 100%;
+
+    @include media('<768px') {
+      @include flex-grid-column(12);
+      margin: rem(10px 0);
+    }
 
     @include media('>=768px') {
       width: 65.5%;
@@ -62,6 +70,11 @@
     @include border-radius-with-box-shadow;
     color: $white;
     padding: rem-calc(15px);
+    width: 100%;
+
+    @include media('<768px') {
+      @include flex-grid-column(12);
+    }
 
     @include media('>=768px') {
       width: 33%;

@@ -7,9 +7,14 @@
   @include border-radius-with-dark-box-shadow;
   @include page-styles;
   background: $white;
-  padding: rem(15px) rem(30px);
+  margin: 0 rem(10px);
   position: relative;
+  padding: rem(15px) rem(30px);
   overflow: hidden;
+
+  @include media('>=768px') {
+    margin: 0;
+  }
 
   .team-members {
     padding: 0 rem(25px);
@@ -34,7 +39,7 @@
 .hero-section {
   background: $beige;
   margin: 0 auto;
-  padding: rem(10px) 0;
+  padding: rem(10px) 0 0;
   position: relative;
 
   @include media('>768px') {
