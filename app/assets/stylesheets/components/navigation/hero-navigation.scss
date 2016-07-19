@@ -60,7 +60,7 @@
 }
 
 .hero-navigation-wrap {
-  margin: 0 rem(10px);
+  margin: rem(0 10px 10px);
 
   @include media('>=768px') {
     @include flex-grid-column(3);
