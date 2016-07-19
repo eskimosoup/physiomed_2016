@@ -48,7 +48,7 @@
 .page-sidebar-information {
   @include border-radius-with-dark-box-shadow;
   background: $white;
-  margin: rem(25px 10px);
+  margin: rem(10px);
 
   @include media('>=768px') {
     margin: rem(25px) 0;

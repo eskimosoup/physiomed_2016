@@ -136,7 +136,9 @@ h2 {
 }
 
 .secondary-contact-method-details {
-  @include flex-grid-column(4, $gutter: (small: 0));
+  @include media('>=768px') {
+    @include flex-grid-column(4, $gutter: (small: 0));
+  }
 
   strong {
     display: inline-block;
@@ -145,13 +147,22 @@ h2 {
 }
 
 .secondary-contact-method-map {
-  @include flex-grid-column(7, $gutter: (small: 0));
+  display: block;
+  width: 100%;
+
+  @include media('>=768px') {
+    @include flex-grid-column(7, $gutter: (small: 0));
+  }
 }
 
 #map-canvas {
   border: 1px solid $brown;
   height: 454px;
-  width: 540px;
+  width: 100%;
+
+  @include media('>=540px') {
+    width: 540px;
+  }
 
   img {
     max-width: initial;

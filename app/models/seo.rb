@@ -11,8 +11,8 @@ class SEO
       Article.order(:title)
     when 'case_studies'
       CaseStudy.order(:title)
-    when 'body_parts'
-      BodyPart.order(:title)
+    when 'wellbeing_zone/body_parts'
+      BodyPart.all
     when 'pages'
       Page.order(:title)
     when 'subcategories'
@@ -37,8 +37,8 @@ class SEO
       Article.displayed.order(:title)
     when 'case_studies'
       CaseStudy.displayed.order(:title)
-    when 'body_parts'
-      BodyPart.displayed.order(:title)
+    when 'wellbeing_zone/body_parts'
+      BodyPart.displayed
     when 'pages'
       Page.displayed.order(:title)
     when 'subcategories'

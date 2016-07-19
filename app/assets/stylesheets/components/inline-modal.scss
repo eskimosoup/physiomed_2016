@@ -5,12 +5,9 @@
   height: 100%;
   left: 0;
   top: 0;
+  position: fixed;
   width: 100%;
   z-index: 9999;
-
-  @include media('>768px') {
-    position: fixed;
-  }
 
   &.visible {
     display: block;
@@ -20,7 +17,10 @@
     @include physio-search;
     background-color: $dark-brown;
     min-height: 276px;
-    width: 540px;
+
+    @include media('>=540px') {
+      width: 540px;
+    }
   }
 
   .new_physio_search {
@@ -66,14 +66,14 @@
   box-shadow: 5px 5px 10px 0 rgba($dark-brown-offset, .75);
   -webkit-filter: blur(0);
   height: auto;
+  left: 50%;
   padding: rem(20px);
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
 
   @include media('>768px') {
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
     width: 80%;
   }
 }
