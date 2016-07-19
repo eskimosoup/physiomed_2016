@@ -12,13 +12,12 @@ class PracticeApplication
 
   attr_reader :practice
   attr_accessor :name, :address, :county, :postcode, :telephone, :fax, :email,
-    :terms_and_conditions, :full_time, :part_time, :male, :female, :monday,
-    :tuesday, :wednesday, :thursday, :friday, :number_of_locations, :capacity,
-    :established, :cancellation_policy, :cheques_payable_to, :description,
-    :treatment_rooms, :treatment_min_time, :initial_assessment_cost, 
-    :subsequent_treatment_cost, :image_1, :image_2, :image_3
+    :terms_and_conditions, :monday, :tuesday, :wednesday, :thursday, :friday,
+    :capacity, :established, :cancellation_policy, :description, :treatment_rooms,
+    :manual_therapy, :initial_assessment_cost, :subsequent_treatment_cost,
+    :initial_assessment_duration, :subsequent_treatment_duration
   attr_reader :public_liability_insurance, :employee_liability_insurance,
-    :receptionist, :parking_facilities, :word_access
+    :receptionist, :parking_facilities, :tm2_or_pps, :online_booking
 
   attr_reader :first_contact
   attr_accessor :first_contact_name, :first_contact_position
@@ -43,31 +42,25 @@ class PracticeApplication
       email: email,
       public_liability_insurance: public_liability_insurance,
       employee_liability_insurance: employee_liability_insurance,
-      full_time: full_time,
-      part_time: part_time,
-      male: male,
-      female: female,
       monday: monday,
       tuesday: tuesday,
       wednesday: wednesday,
       thursday: thursday,
       friday: friday,
-      number_of_locations: number_of_locations,
       capacity: capacity,
       receptionist: receptionist,
       parking_facilities: parking_facilities,
       established: established,
-      word_access: word_access,
       cancellation_policy: cancellation_policy,
-      cheques_payable_to: cheques_payable_to,
+      manual_therapy: manual_therapy,
       description: description,
       treatment_rooms: treatment_rooms,
-      treatment_min_time: treatment_min_time,
+      tm2_or_pps: tm2_or_pps,
+      online_booking: online_booking,
       initial_assessment_cost: initial_assessment_cost,
       subsequent_treatment_cost: subsequent_treatment_cost,
-      image_1: image_1,
-      image_2: image_2,
-      image_3: image_3,
+      initial_assessment_duration: initial_assessment_duration,
+      subsequent_treatment_duration: subsequent_treatment_duration,
     )
   end
 
@@ -117,16 +110,20 @@ class PracticeApplication
     @employee_liability_insurance = cast_to_boolean(value)
   end
 
+  def tm2_or_pps=(value)
+    @tm2_or_pps = cast_to_boolean(value)
+  end
+  
+  def online_booking=(value)
+    @online_booking = cast_to_boolean(value)
+  end
+
   def receptionist=(value)
     @receptionist = cast_to_boolean(value)
   end
 
   def parking_facilities=(value)
     @parking_facilities = cast_to_boolean(value)
-  end
-
-  def word_access=(value)
-    @word_access = cast_to_boolean(value)
   end
 
   private

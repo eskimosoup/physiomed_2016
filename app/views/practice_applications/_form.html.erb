@@ -1,68 +1,32 @@
 <%= simple_form_for @practice_application do |f| %>
-  <%= field_set_tag 'Basic Details' do %>
+  <%= field_set_tag 'Practice Details' do %>
     <%= f.input :name %>
     <%= f.input :address, as: :text %>
     <%= f.input :county %>
     <%= f.input :postcode %>
-  <% end %>
-
-  <%= field_set_tag 'Practice Contact Details' do %>
     <%= f.input :telephone, as: :tel %>
     <%= f.input :fax, as: :tel %>
     <%= f.input :email, as: :email %>
-  <% end %>
-
-  <%= field_set_tag 'Primary Contact(s) for Clinic' do %>
     <%= f.input :first_contact_name %>
     <%= f.input :first_contact_position %>
     <%= f.input :second_contact_name %>
     <%= f.input :second_contact_position %>
+    <%= f.input :established %>
   <% end %>
 
-  <%= field_set_tag 'Practice Details' do %>
-    <%= field_set_tag 'How many Physios do you have?' do %>
-      <%= f.input :full_time, collection: PracticeApplication::NUMBERS %>
-      <%= f.input :part_time, collection: PracticeApplication::NUMBERS %>
-      <%= f.input :male, collection: PracticeApplication::NUMBERS %>
-      <%= f.input :female, collection: PracticeApplication::NUMBERS %>
-    <% end %>
-
-    <%= field_set_tag 'What are your opening hours?' do %>
-      <%= f.input :monday %>
-      <%= f.input :tuesday %>
-      <%= f.input :wednesday %>
-      <%= f.input :thursday %>
-      <%= f.input :friday %>
-    <% end %>
-
-    <%= field_set_tag 'Additional required information' do %>
-      <%= f.input :number_of_locations, collection: PracticeApplication::NUMBERS %>
-      <%= f.input :capacity, collection: PracticeApplication.percentages %>
-      <%= f.input :receptionist, collection: [["Yes", true], ["No", false]] %>
-      <%= f.input :parking_facilities, collection: [["Yes", true], ["No", false]] %>
-      <%= f.input :established %>
-      <%= f.input :word_access, collection: [["Yes", true], ["No", false]] %>
-      <%= f.input :cancellation_policy, as: :text %>
-      <%= f.input :cheques_payable_to %>
-      <%= f.input :description, as: :text %>
-    <% end %>
+  <%= field_set_tag 'Opening Hours' do %>
+    <%= f.input :monday %>
+    <%= f.input :tuesday %>
+    <%= f.input :wednesday %>
+    <%= f.input :thursday %>
+    <%= f.input :friday %>
   <% end %>
 
-  <%= field_set_tag 'Insurance Policies' do %>
-    <%= f.input :public_liability_insurance,
-      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
-    <%= f.input :employee_liability_insurance,
-      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
-  <% end %>
-
-  <%= field_set_tag 'Treatment Information' do %>
-    <%= f.input :treatment_rooms, collection: PracticeApplication::NUMBERS %>
-    <%= f.input :treatment_min_time %>
-
-    <%= field_set_tag 'What are your treatment costs?' do %>
-      <%= f.input :initial_assessment_cost %>
-      <%= f.input :subsequent_treatment_cost %>
-    <% end %>
+  <%= field_set_tag 'Treatment Charges' do %>
+    <%= f.input :initial_assessment_cost %>
+    <%= f.input :initial_assessment_duration %>
+    <%= f.input :subsequent_treatment_cost %>
+    <%= f.input :subsequent_treatment_duration %>
   <% end %>
 
   <%= field_set_tag 'Practitioners' do %>
@@ -76,10 +40,22 @@
     </div>
   <% end %>
 
-  <%= field_set_tag "Optional Pictures" do %>
-    <%= f.input :image_1, as: :file %>
-    <%= f.input :image_2, as: :file %>
-    <%= f.input :image_3, as: :file %>
+  <%= field_set_tag 'Additional required information' do %>
+    <%= f.input :manual_therapy, collection: PracticeApplication.percentages %>
+    <%= f.input :capacity, collection: PracticeApplication.percentages %>
+    <%= f.input :treatment_rooms, collection: PracticeApplication::NUMBERS %>
+    <%= f.input :parking_facilities, collection: [["Yes", true], ["No", false]] %>
+    <%= f.input :receptionist, collection: [["Yes", true], ["No", false]] %>
+    <%= f.input :tm2_or_pps,
+      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
+    <%= f.input :online_booking,
+      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
+    <%= f.input :cancellation_policy, as: :text %>
+    <%= f.input :public_liability_insurance,
+      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
+    <%= f.input :employee_liability_insurance,
+      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
+    <%= f.input :description, as: :text %>
   <% end %>
 
   <%= field_set_tag 'Declaration' do %>
