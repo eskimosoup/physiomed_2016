@@ -4,12 +4,7 @@
       Health and Well-Being Zone
     </h1>
 
-    <% # TODO: Style these to make them look like a body part %>
-    <%#= @general_wellbeing_category.name %>
-    <%#= @general_wellbeing_category.tagline %>
-    <%#= image_tag @general_wellbeing_category.image.show, alt: @general_wellbeing_category.name %>
-
-    <%= link_to 'General Well-Being', wellbeing_zone_general_wellbeing_path, class: 'hero-section-button' %>
+    <%#= link_to 'General Well-Being', wellbeing_zone_general_wellbeing_path, class: 'hero-section-button' %>
   </div>
 
   <div class="wellbeing content">
@@ -17,6 +12,21 @@
       <section class="flexbox-wrap">
         <div class="body-parts-container">
           <div class="body-parts">
+
+            <div class="body-part">
+              <%= link_to wellbeing_zone_body_part_path(@general_wellbeing_category) do %>
+                <div class="name text-center wellbeing-full-section-button green-background">
+                  <%= @general_wellbeing_category.name %>
+                </div>
+                <%= image_tag @general_wellbeing_category.image.show, alt: @general_wellbeing_category.name %>
+                <% if @general_wellbeing_category.tagline.present? %>
+                  <div class="tagline text-center">
+                    <%= @general_wellbeing_category.tagline %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
             <%= render(
               partial: "wellbeing_zone/body_parts/body_part",
               collection: @wellbeing_facade.body_parts,
@@ -65,7 +75,7 @@
           <%= image_tag "icons/twitter-brown.png", class: 'twitter-icon' %>
         <% end %>
 
-        <% tweets = twitter_timeline(global_site_settings['Twitter'].tr('@', ''), 2) %>
+        <% tweets = twitter_timeline(global_site_settings['Twitter'].tr('@', ''), 1) %>
         <% tweets.each do |tweet| %>
           <div class="tweet">
             <p class="tweet-text">
