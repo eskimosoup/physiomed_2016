@@ -1,4 +1,6 @@
 class TeamMember < ActiveRecord::Base
+  default_scope { positioned }
+
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
   mount_uploader :image, TeamMemberUploader
@@ -18,6 +20,7 @@ class TeamMember < ActiveRecord::Base
   validates :role, presence: true
 
   scope :displayed, -> { where(display: true) }
+  scope :positioned, -> { order(:position) }
 
   def name
     [forename, surname].join(' ')
