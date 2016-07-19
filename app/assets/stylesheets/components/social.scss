@@ -39,7 +39,7 @@
   text-align: right;
   z-index: 2;
 
-  @include media('<1024px') {
+  @media screen and (max-width: 1023px) and (min-height: 400px) {
     bottom: 110px;
     right: -120px;
     transform: rotate(-90deg);
