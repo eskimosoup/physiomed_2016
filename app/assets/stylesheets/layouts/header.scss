@@ -28,6 +28,7 @@
   width: 100%;
 
   @include media('<768px') {
+    display: none; // temporary amend
     left: 0;
     position: fixed;
     top: 0;
