@@ -21,9 +21,12 @@
 }
 
 .banner {
-  height: 245px;
   position: relative;
 
+  &.slick-slide {
+    height: 245px;
+  }
+  
   @include media('>=768px') {
     height: auto;
   }
