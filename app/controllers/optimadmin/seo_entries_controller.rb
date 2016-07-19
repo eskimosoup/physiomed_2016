@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_seo_entry, only: [:edit, :update]
 
     def index
-      @seo_entries = Optimadmin::BaseCollectionPresenter.new(collection: SeoEntry.where('nominal_url LIKE :search OR title LIKE :search OR meta_description LIKE :search', search: "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 100).order(:created_at), view_template: view_context, presenter: Optimadmin::SeoEntryPresenter)
+      @seo_entries = Optimadmin::BaseCollectionPresenter.new(collection: SeoEntry.where('nominal_url LIKE :search OR title LIKE :search OR meta_description LIKE :search', search: "#{params[:search]}%").page(params[:page]).per(params[:per_page] || 1000).order(:created_at), view_template: view_context, presenter: Optimadmin::SeoEntryPresenter)
     end
 
     def edit
