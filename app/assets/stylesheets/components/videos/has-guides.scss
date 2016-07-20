@@ -8,6 +8,21 @@
   @include module-container-title;
 }
 
+.basic-details-subcategories,
+.video-iframe-subcategories {
+  @include media('>=768px') {
+    @include flex-grid-column(5);
+
+    &.full-width {
+      @include flex-grid-column(10);
+    }
+
+    p {
+      font-size: rem(14px);
+    }
+  }
+}
+
 .video-with-guide {
   @include flex-grid-row;
   margin: 0 0 rem(15px);
@@ -20,13 +35,6 @@
       &.full-width {
         @include flex-grid-column(7);
       }
-    }
-  }
-
-  .basic-details-subcategories,
-  .video-iframe-subcategories {
-    @include media('>=768px') {
-      @include flex-grid-column(5);
     }
   }
 
