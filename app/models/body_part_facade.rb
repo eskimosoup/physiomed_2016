@@ -6,6 +6,10 @@ class BodyPartFacade
     @body_part = body_part
   end
 
+  def general_wellbeing_categorisation
+    @general_wellbeing_categorisation ||= Subcategory.displayed.find(4)
+  end
+
   def other_body_parts
     @other_body_parts = BodyPart.displayed.joins(:category).where.not(id: body_part.id).order('categories.name').includes(:category)
   end

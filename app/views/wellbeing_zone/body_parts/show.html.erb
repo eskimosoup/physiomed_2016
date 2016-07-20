@@ -165,7 +165,7 @@
        <div class="guides-container">
 
          <div class="body-part-guides-title">
-           <%= link_to "See more", '#', class: "button brown-background" %>
+           <%= link_to "See more", @body_part_facade.general_wellbeing_categorisation, class: "button brown-background" if @body_part_facade.general_wellbeing_categorisation.present? %>
 
            <div class="slick-controls">
              <%= button_tag(type: 'button', class: "slick-guides slick-prev") do %>
