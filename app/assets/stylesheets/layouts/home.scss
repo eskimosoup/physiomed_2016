@@ -47,8 +47,12 @@
       }
     }
 
-    &.video {
+    &.home-video {
       padding: 0;
+
+      .flex-video {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -60,12 +64,7 @@
     margin: rem-calc(25px) 0;
     padding: rem-calc(20px);
 
-    @include media('>=768px', '<1024px') {
-      margin: rem(25px 0);
-      width: 100%;
-    }
-
-    @include media('>=1024px') {
+    @include media('>=768px') {
       margin: 0;
       width: 32%;
     }
@@ -118,7 +117,7 @@
   .flexbox-wrap {
     display: block;
 
-    @include media('>=1024px') {
+    @include media('>=768px') {
       display: flex;
     }
   }

@@ -115,6 +115,12 @@
   background-position: 95% 50%;
   background-repeat: no-repeat;
 
+  @include media('>=768px', '<1024px') {
+    h2 {
+      font-size: rem(20px);
+    }
+  }
+
   form.new_physio_search {
     width: 60%;
     input[type="submit"].input-add-on-item {

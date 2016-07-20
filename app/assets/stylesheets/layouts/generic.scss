@@ -136,7 +136,7 @@ h2 {
 }
 
 .secondary-contact-method-details {
-  @include media('>=768px') {
+  @include media('>=1024px') {
     @include flex-grid-column(4, $gutter: (small: 0));
   }
 
@@ -150,7 +150,7 @@ h2 {
   display: block;
   width: 100%;
 
-  @include media('>=768px') {
+  @include media('>=1024px') {
     @include flex-grid-column(7, $gutter: (small: 0));
   }
 }
@@ -160,7 +160,7 @@ h2 {
   height: 454px;
   width: 100%;
 
-  @include media('>=540px') {
+  @include media('>=1024px') {
     width: 540px;
   }
 
@@ -186,6 +186,11 @@ h2 {
   }
 
   .button {
+    display: block;
     width: 193px;
+
+    @include media('>=1024px') {
+      display: inline-block;
+    }
   }
 }

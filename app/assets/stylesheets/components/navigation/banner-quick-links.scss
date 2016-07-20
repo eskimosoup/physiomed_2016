@@ -13,6 +13,10 @@
 .banner-quick-link-navigation {
   color: $white;
 
+  @include media('>=768px', '<1024px') {
+    top: 90px;
+  }
+
   @include media('>=768px') {
     position: absolute;
     right: 0;

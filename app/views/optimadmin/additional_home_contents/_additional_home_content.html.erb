@@ -1,15 +1,11 @@
 <% present additional_home_content do |additional_home_content_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= additional_home_content_presenter.id %>">
-    <div class="large-6 small-8 columns" data-equalizer-watch="module-list">
+    <div class="large-9 small-8 columns" data-equalizer-watch="module-list">
       <%= additional_home_content_presenter.toggle_title %>
     </div>
 
     <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
       <%= additional_home_content_presenter.toggle_link %>
-    </div>
-
-    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-      <%= additional_home_content_presenter.view_link %>
     </div>
 
     <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
