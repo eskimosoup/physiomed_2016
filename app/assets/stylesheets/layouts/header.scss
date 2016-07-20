@@ -28,7 +28,7 @@
   width: 100%;
 
   @include media('<768px') {
-    display: none; // temporary amend
+    display: none; // temporary amend TODO: need to work out a way to get these visible
     left: 0;
     position: fixed;
     top: 0;
