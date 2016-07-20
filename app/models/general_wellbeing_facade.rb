@@ -6,7 +6,7 @@ class GeneralWellbeingFacade < WellbeingZoneFacade
   end
 
   def articles
-    @articles ||= Article.for_category(category).displayed
+    @articles ||= Article.for_category(category).displayed.order(date: :desc)
   end
 
   def body_parts

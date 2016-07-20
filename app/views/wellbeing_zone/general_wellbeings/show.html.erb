@@ -62,6 +62,17 @@
       smoothScroll(elem);
       return false;
     });
+
+    $(document).ready(function() {
+      $(".guides").slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        arrows: true,
+        prevArrow: '.slick-guides.slick-prev',
+        nextArrow: '.slick-guides.slick-next',
+      });
+    });
   </script>
 
 <% end %>
@@ -138,7 +149,18 @@
   <% if @general_wellbeing_facade.guides.any? %>
     <section class="box-wrap" id="guides">
       <div class="guides-container">
-        <h2 class="guides-container-title">Guides</h2>
+
+        <div class="slick-controls">
+          <%= button_tag(type: 'button', class: "slick-guides slick-prev") do %>
+            <
+          <% end %>
+          <%= button_tag(type: 'button', class: "slick-guides slick-next") do %>
+            >
+          <% end %>
+        </div>
+
+        <h2 class="content-box-title guides-container-title">Guides</h2>
+
         <div class="guides wellbeing">
           <%= render partial: 'guides/guide',
             collection: @general_wellbeing_facade.guides, as: :guide %>
