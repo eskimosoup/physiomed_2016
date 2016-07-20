@@ -1,3 +1,18 @@
+.body-part-guides-title {
+  @include clearfix;
+  border-bottom: 1px solid $green;
+  text-align: center;
+
+  .button.brown-background {
+    float: left;
+    margin: rem(10px 0 0);
+  }
+
+  h2 {
+    display: inline-block;
+  }
+}
+
 .guides-container {
   @include border-radius-with-dark-box-shadow;
   background: $white;
@@ -19,6 +34,7 @@
 .guides-container-title {
   @include content-box-title;
   @include module-container-title-header;
+  border-bottom: 0;
   text-align: center;
 }
 

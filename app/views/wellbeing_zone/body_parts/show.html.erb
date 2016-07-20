@@ -163,16 +163,23 @@
     <% if @body_part_facade.guides.any? %>
      <section class="box-wrap" id="guides">
        <div class="guides-container">
-         <div class="slick-controls">
-           <%= button_tag(type: 'button', class: "slick-guides slick-prev") do %>
-             <
-           <% end %>
-           <%= button_tag(type: 'button', class: "slick-guides slick-next") do %>
-             >
-           <% end %>
+
+         <div class="body-part-guides-title">
+           <%= link_to "See more", case_studies_path, class: "button brown-background" %>
+
+           <div class="slick-controls">
+             <%= button_tag(type: 'button', class: "slick-guides slick-prev") do %>
+               <
+             <% end %>
+             <%= button_tag(type: 'button', class: "slick-guides slick-next") do %>
+               >
+             <% end %>
+           </div>
+
+           <h2 class="guides-container-title">Guides</h2>
          </div>
-         
-         <h2 class="guides-container-title">Guides</h2>
+
+
          <div class="guides wellbeing">
            <%= render partial: 'guides/guide',
              collection: @body_part_facade.guides, as: :guide %>
