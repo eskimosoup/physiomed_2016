@@ -70,6 +70,14 @@
     <th align="left">Friday</th>
     <td align="left"><%= @practice_application.friday %></td>
   </tr>
+  <tr>
+    <th align="left">Saturday</th>
+    <td align="left"><%= @practice_application.saturday %></td>
+  </tr>
+  <tr>
+    <th align="left">Sunday</th>
+    <td align="left"><%= @practice_application.sunday %></td>
+  </tr>
 </table>
 
 <h3>Treatment Charges</h3>
@@ -136,7 +144,7 @@
   </tr>
   <tr>
     <th align="left">Do you have TM2 or PPS?</th>
-    <td align="left"><%= @practice_application.tm2_or_pps? ? "Yes" : "No" %></td>
+    <td align="left"><%= @practice_application.tm2_or_pps %></td>
   </tr>
   <tr>
     <th align="left">Online booking?</th>
@@ -159,4 +167,3 @@
     <td align="left"><%= @practice_application.description %></td>
   </tr>
 </table>
-

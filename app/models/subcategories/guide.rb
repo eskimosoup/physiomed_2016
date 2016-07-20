@@ -1,8 +1,8 @@
-class Subcategories::Video < ActiveRecord::Base
+class Subcategories::Guide < ActiveRecord::Base
   include OptimadminScopes
 
   default_scope { order :position }
 
   belongs_to :subcategory, class_name: '::Subcategory'
-  belongs_to :video, class_name: '::Video'
+  belongs_to :guide, class_name: '::Guide'
 end

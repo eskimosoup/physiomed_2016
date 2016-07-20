@@ -59,7 +59,7 @@ module Optimadmin
       params.require(:subcategory)
             .permit(:title, :image, :summary, :display, :remove_image,
                     :remote_image_url, :image_cache, :suggested_url,
-                    video_ids: [])
+                    video_ids: [], guide_ids: [])
     end
   end
 end

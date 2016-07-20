@@ -1,23 +1,25 @@
 class PracticeApplication
   include ActiveModel::Model
+  include ActiveModel::Validations
 
   NUMBERS = [
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
-    "14", "15", "16", "17", "18", "19", "20+"
-  ]
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13',
+    '14', '15', '16', '17', '18', '19', '20+'
+  ].freeze
 
   def self.percentages
-    0.upto(20).map {|i| "#{ 5 * i }%"}
+    0.upto(20).map { |i| "#{5 * i}%" }
   end
 
   attr_reader :practice
   attr_accessor :name, :address, :county, :postcode, :telephone, :fax, :email,
-    :terms_and_conditions, :monday, :tuesday, :wednesday, :thursday, :friday,
-    :capacity, :established, :cancellation_policy, :description, :treatment_rooms,
-    :manual_therapy, :initial_assessment_cost, :subsequent_treatment_cost,
-    :initial_assessment_duration, :subsequent_treatment_duration
+                :terms_and_conditions, :monday, :tuesday, :wednesday, :thursday, :friday,
+                :saturday, :sunday, :capacity, :established, :cancellation_policy,
+                :description, :treatment_rooms, :manual_therapy, :tm2_or_pps,
+                :initial_assessment_cost, :subsequent_treatment_cost,
+                :initial_assessment_duration, :subsequent_treatment_duration
   attr_reader :public_liability_insurance, :employee_liability_insurance,
-    :receptionist, :parking_facilities, :tm2_or_pps, :online_booking
+              :receptionist, :parking_facilities, :online_booking
 
   attr_reader :first_contact
   attr_accessor :first_contact_name, :first_contact_position
@@ -29,6 +31,7 @@ class PracticeApplication
     PracticeApplications::Practice.reflect_on_association(association)
   end
 
+  validates :terms_and_conditions, presence: true, inclusion: { in: ['1'], message: 'needs to be ticked' }
   validate :validate_objects
 
   def practice
@@ -47,6 +50,8 @@ class PracticeApplication
       wednesday: wednesday,
       thursday: thursday,
       friday: friday,
+      saturday: saturday,
+      sunday: sunday,
       capacity: capacity,
       receptionist: receptionist,
       parking_facilities: parking_facilities,
@@ -60,7 +65,7 @@ class PracticeApplication
       initial_assessment_cost: initial_assessment_cost,
       subsequent_treatment_cost: subsequent_treatment_cost,
       initial_assessment_duration: initial_assessment_duration,
-      subsequent_treatment_duration: subsequent_treatment_duration,
+      subsequent_treatment_duration: subsequent_treatment_duration
     )
   end
 
@@ -69,19 +74,19 @@ class PracticeApplication
   end
 
   def practitioners_attributes=(attributes)
-    attributes.each do |i, practitioner_params|
+    attributes.each do |_i, practitioner_params|
       practitioners.build(practitioner_params)
     end
   end
 
-  def first_contact 
+  def first_contact
     @first_contact ||= practice.contacts.new(
       name: first_contact_name,
       position: first_contact_position
     )
   end
 
-  def second_contact 
+  def second_contact
     @second_contact ||= practice.contacts.new(
       name: second_contact_name,
       position: second_contact_position
@@ -95,9 +100,7 @@ class PracticeApplication
       practice.save!
       first_contact.save! if first_contact.valid?
       second_contact.save! if second_contact.valid?
-      practitioners.each do |practitioner|
-        practitioner.save!
-      end
+      practitioners.each(&:save!)
     end
     true
   end
@@ -110,10 +113,6 @@ class PracticeApplication
     @employee_liability_insurance = cast_to_boolean(value)
   end
 
-  def tm2_or_pps=(value)
-    @tm2_or_pps = cast_to_boolean(value)
-  end
-  
   def online_booking=(value)
     @online_booking = cast_to_boolean(value)
   end
@@ -130,13 +129,13 @@ class PracticeApplication
 
   def validate_objects
     promote_errors(practice.errors) if practice.invalid?
-    promote_errors(first_contact.errors, prefix: "first_contact_") if promote_contact_errors?(first_contact)
-    promote_errors(second_contact.errors, prefix: "first_contact_") if promote_contact_errors?(second_contact)
+    promote_errors(first_contact.errors, prefix: 'first_contact_') if promote_contact_errors?(first_contact)
+    promote_errors(second_contact.errors, prefix: 'first_contact_') if promote_contact_errors?(second_contact)
   end
 
-  def promote_errors(object_errors, prefix: "")
+  def promote_errors(object_errors, prefix: '')
     object_errors.each do |attribute, message|
-      errors.add("#{ prefix }#{ attribute }", message)
+      errors.add("#{prefix}#{attribute}", message)
     end
   end
 
@@ -149,6 +148,6 @@ class PracticeApplication
   end
 
   def cast_to_boolean(value)
-    value == "true"
+    value == 'true'
   end
 end

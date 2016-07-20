@@ -21,7 +21,7 @@ class PracticeApplicationsController < ApplicationController
       :first_contact_name, :first_contact_position, :second_contact_name,
       :second_contact_position, :public_liability_insurance,
       :employee_liability_insurance, :monday, :tuesday, :wednesday, :thursday,
-      :friday, :capacity, :receptionist, :parking_facilities, :established,
+      :friday, :saturday, :sunday, :capacity, :receptionist, :parking_facilities, :established,
       :cancellation_policy, :description, :treatment_rooms, :manual_therapy,
       :tm2_or_pps, :online_booking, :initial_assessment_duration,
       :subsequent_treatment_duration, :initial_assessment_cost,

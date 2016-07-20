@@ -6,7 +6,7 @@ module Optimadmin
     delegate :id, to: :categories_frequently_asked_question
 
     def title
-      categories_frequently_asked_question.frequently_asked_question.title
+      categories_frequently_asked_question.frequently_asked_question.question
     end
   end
 end

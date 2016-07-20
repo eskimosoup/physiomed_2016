@@ -20,10 +20,10 @@
       <div class="small-12 module-list-additional-row columns">
         <div class="row collapse" id="index-list-<%= category_presenter.id %>">
           <div class="large-12 columns">
-            <%= link_to 'Re-order FAQs', reorderings_path(model: 'Categories::FrequentlyAskedQuestion', colorbox: 1), class: 'iframe-colorbox' if category.frequently_asked_questions.size > 1 %>
-            <%= link_to 'Re-order Videos', reorderings_path(model: 'Categories::Video', colorbox: 1), class: 'iframe-colorbox' if category.videos.size > 1 %>
-            <%= link_to 'Re-order Guides', reorderings_path(model: 'Categories::Guide', colorbox: 1), class: 'iframe-colorbox' if category.guides.size > 1 %>
-            <%= link_to 'Re-order Testimonials', reorderings_path(model: 'Categories::Testimonial', colorbox: 1), class: 'iframe-colorbox' if category.testimonials.size > 1 %>
+            <%= link_to 'Re-order FAQs', reorderings_path(model: 'Categories::FrequentlyAskedQuestion', colorbox: 1, parent_model_field: 'category_id', parent_model_id: category_presenter.id), class: 'iframe-colorbox' if category.frequently_asked_questions.size > 1 %>
+            <%= link_to 'Re-order Videos', reorderings_path(model: 'Categories::Video', colorbox: 1, parent_model_field: 'category_id', parent_model_id: category_presenter.id), class: 'iframe-colorbox' if category.videos.size > 1 %>
+            <%= link_to 'Re-order Guides', reorderings_path(model: 'Categories::Guide', colorbox: 1, parent_model_field: 'category_id', parent_model_id: category_presenter.id), class: 'iframe-colorbox' if category.guides.size > 1 %>
+            <%= link_to 'Re-order Testimonials', reorderings_path(model: 'Categories::Testimonial', colorbox: 1, parent_model_field: 'category_id', parent_model_id: category_presenter.id), class: 'iframe-colorbox' if category.testimonials.size > 1 %>
           </div>
         </div>
       </div>

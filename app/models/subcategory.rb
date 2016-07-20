@@ -17,9 +17,14 @@ class Subcategory < ActiveRecord::Base
   has_many :subcategory_videos,
            dependent: :destroy,
            class_name: 'Subcategories::Video'
+  has_many :subcategory_guides,
+           dependent: :destroy,
+           class_name: 'Subcategories::Guide'
 
   has_many :videos,
            through: :subcategory_videos
+  has_many :guides,
+           through: :subcategory_guides
 
   scope :positioned, -> { order(:position) }
   scope :displayed, -> { where(display: true) }

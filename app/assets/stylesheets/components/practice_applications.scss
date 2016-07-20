@@ -43,3 +43,17 @@
   }
 
 }
+
+.practitioner-title {
+  @include clearfix;
+}
+
+@include media('>768px') {
+  .practitioner-legend {
+    float: left;
+  }
+
+  .remove-practitioner {
+    float: right;
+  }
+}

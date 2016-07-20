@@ -1,8 +1,16 @@
 <div class="nested-fields">
-  <%= field_set_tag 'Practitioner Details' do %>
+  <%= field_set_tag '' do %>
+
+    <div class="practitioner-title">
+      <legend class="practitioner-legend">
+        Practitioner Details
+      </legend>
+
+      <%= link_to_remove_association 'Remove Practitioner', f, class: 'button brown-background remove-practitioner' %>
+    </div>
+
     <%= f.input :name %>
-    <%= f.input :qualification_date, as: :date, order: [:day, :month, :year] %>
+    <%= f.input :qualification_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year - 50, end_year: Date.today.year %>
     <%= f.input :years_practicing %>
-    <%= link_to_remove_association 'Remove Practitioner', f, class: 'button brown-background' %>
   <% end %>
 </div>

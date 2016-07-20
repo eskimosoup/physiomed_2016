@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :subcategories_guide, class: 'Subcategories::Guide' do
+    subcategory
+    guide
+    position 1
+  end
   factory :pages_team_member, class: 'Pages::TeamMember' do
     page
     team_member
@@ -169,17 +174,17 @@ FactoryGirl.define do
   end
 
   factory :job_listing do
-    title "MyString"
-    description "MyText"
+    title 'MyString'
+    description 'MyText'
     display_from { Date.today }
     display_until { Date.today }
   end
 
   factory :job_application do
     job_listing nil
-    name "MyString"
-    telephone "MyString"
-    email "MyString"
+    name 'MyString'
+    telephone 'MyString'
+    email 'MyString'
     cv { File.open(File.join(Rails.root, 'spec/support/images/landscape_image.jpg')) }
   end
 
@@ -217,21 +222,21 @@ FactoryGirl.define do
 
   factory :practice_applications_practitioner, class: 'PracticeApplications::Practitioner' do
     practice nil
-    name "MyString"
+    name 'MyString'
   end
 
   factory :practice_applications_contact, class: 'PracticeApplications::Contact' do
     practice nil
-    name "MyString"
-    position "MyString"
+    name 'MyString'
+    position 'MyString'
   end
 
   factory :practice_applications_practice, class: 'PracticeApplications::Practice' do
-    name "MyString"
-    address "MyText"
-    postcode "MyString"
-    telephone "MyString"
-    email "MyString"
+    name 'MyString'
+    address 'MyText'
+    postcode 'MyString'
+    telephone 'MyString'
+    email 'MyString'
     receptionist false
     parking_facilities false
   end
@@ -260,7 +265,7 @@ FactoryGirl.define do
   end
 
   factory :team_member_category do
-    title "MyString"
+    title 'MyString'
     category_type { TeamMemberCategory::TYPES.sample }
   end
 
