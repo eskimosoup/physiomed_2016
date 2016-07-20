@@ -1,6 +1,10 @@
 class GeneralWellbeingFacade < WellbeingZoneFacade
   delegate :content, to: :category, allow_nil: true
 
+  def general_wellbeing_categorisation
+    @general_wellbeing_categorisation ||= Subcategory.displayed.find(4)
+  end
+
   def guides
     @guides ||= Guide.for_category(category).displayed
   end
