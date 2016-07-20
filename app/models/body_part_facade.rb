@@ -32,7 +32,7 @@ class BodyPartFacade
   end
 
   def guides
-    @guides ||= body_part.guides.without_video.displayed.limit(2)
+    @guides ||= body_part.guides.without_video.displayed
   end
 
   def team_members
