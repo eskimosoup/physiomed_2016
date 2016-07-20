@@ -1,7 +1,9 @@
 <div class="article home">
-  <%= image_tag article.image.index, title: article.title if article.image.present? %>
-  <%= link_to article.title, article, class: "title" %>
-  
+  <%= link_to article, title: article.title do %>
+    <%= image_tag article.image.index, title: article.title if article.image.present? %>
+    <span class="title"><%= article.title %></span>
+  <% end %>
+
   <%= render(
     partial: "team_members/author",
     locals: {

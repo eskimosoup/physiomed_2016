@@ -16,7 +16,9 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module Physiomed2016
-  class Application < Rails::Application
+  class Application < Rails::Application            
+    config.exceptions_app = self.routes
+
     config.autoload_paths << Rails.root.join('lib')
     config.time_zone = 'London'
     config.active_record.default_timezone = :local

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  %w( 403 404 422 500 ).each do |code|
+    get code, to: 'errors#show', code: code
+  end
+
   get 'sitemap', to: 'application#sitemap'
 
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
@@ -25,6 +29,10 @@ Rails.application.routes.draw do
   end
 
   mount Optimadmin::Engine => '/admin'
+
+  # This has to be the last route in your list
+  match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
+
   root to: 'homes#show'
 end
 
