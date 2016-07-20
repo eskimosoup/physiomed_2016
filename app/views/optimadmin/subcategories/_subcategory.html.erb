@@ -1,5 +1,5 @@
 <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= subcategory_presenter.id %>">
-  
+
 
       <div class="large-6 small-8 columns" data-equalizer-watch="module-list">
       <%= subcategory_presenter.toggle_title %>
@@ -8,7 +8,7 @@
       <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
       <%= subcategory_presenter.edit_image(:image) %>
     </div>
-  
+
   <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
     <%= subcategory_presenter.toggle_link %>
   </div>
@@ -30,4 +30,15 @@
       <%= subcategory_presenter.optimadmin_summary %>
     </div>
   </div>
+
+  <% if subcategory_presenter.videos.size > 1 || subcategory_presenter.guides.size > 1 %>
+    <div class="small-12 module-list-additional-row columns">
+      <div class="row collapse" id="index-list-<%= subcategory_presenter.id %>">
+        <div class="large-12 columns">
+          <%= link_to 'Re-order Videos', reorderings_path(model: 'Subcategories::Video', colorbox: 1, parent_model_field: 'subcategory_id', parent_model_id: subcategory_presenter.id), class: 'iframe-colorbox' if subcategory_presenter.videos.size > 1 %>
+          <%= link_to 'Re-order Guides', reorderings_path(model: 'Subcategories::Guide', colorbox: 1, parent_model_field: 'subcategory_id', parent_model_id: subcategory_presenter.id), class: 'iframe-colorbox' if subcategory_presenter.guides.size > 1 %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

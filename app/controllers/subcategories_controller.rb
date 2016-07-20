@@ -6,6 +6,7 @@ class SubcategoriesController < ApplicationController
   end
 
   def show
+    return redirect_to @subcategory, status: :moved_permanently if request.path != subcategory_path(@subcategory)
   end
 
   private

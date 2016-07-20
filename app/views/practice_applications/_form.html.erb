@@ -20,6 +20,8 @@
     <%= f.input :wednesday %>
     <%= f.input :thursday %>
     <%= f.input :friday %>
+    <%= f.input :saturday %>
+    <%= f.input :sunday %>
   <% end %>
 
   <%= field_set_tag 'Treatment Charges' do %>
@@ -30,6 +32,10 @@
   <% end %>
 
   <%= field_set_tag 'Practitioners' do %>
+    <p>
+      Please note that practitioners need to have more than 4 years MSK experience
+    </p>
+
     <div id="practitioners">
       <%= f.simple_fields_for :practitioners do |practitioner| %>
         <%= render 'practice_applications/practitioner_fields', f: practitioner %>
@@ -47,7 +53,7 @@
     <%= f.input :parking_facilities, collection: [["Yes", true], ["No", false]] %>
     <%= f.input :receptionist, collection: [["Yes", true], ["No", false]] %>
     <%= f.input :tm2_or_pps,
-      collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
+      collection: ['TM2', 'PPS', 'Both'], prompt: 'Please select' %>
     <%= f.input :online_booking,
       collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
     <%= f.input :cancellation_policy, as: :text %>

@@ -1,0 +1,32 @@
+<section class="box-wrap">
+  <div class="videos-with-guides-container" id="video-with-guide-<%= video.id %>">
+    <div class="videos-with-guides-container-title">
+      <h2>
+        <%= video.title %>
+      </h2>
+    </div>
+
+    <div class="videos-with-guides wellbeing">
+      <div class="video-with-guide">
+        <div class="basic-details-subcategories">
+          <h3 class="video-subtitle">
+            <%= video.subtitle %>
+          </h3>
+
+          <%= raw video.content %>
+        </div>
+        <div class="video-iframe-subcategories">
+          <div class="flex-video widescreen">
+            <%= raw iframe_for(video, width: 345, height: 248) %>
+          </div>
+        </div>
+        <div class="guide guide-subcategory">
+          <%= content_tag :div,
+            image_tag(guide.image_url(:show), alt: guide.title, title: guide.title) if guide.image? %>
+          <%= link_to "Download", guide.file.url,
+            class: 'button brown-background' %>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>

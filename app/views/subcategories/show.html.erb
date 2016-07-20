@@ -16,8 +16,13 @@
       </div>
 
       <% @subcategory.videos.each do |video| %>
-        <%= render partial: 'videos/video_with_guide_button',
-          locals: { video: video } %>
+        <%= render partial: 'subcategories/shared/video_with_guide',
+          locals: { video: video, guide: video.guide } %>
+      <% end %>
+
+      <% @subcategory.guides.each do |guide| %>
+      <%= render partial: 'subcategories/shared/guide',
+        locals: { guide: guide } %>
       <% end %>
     </div>
 

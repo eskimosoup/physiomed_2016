@@ -4,7 +4,7 @@ module Optimadmin
       @model = params[:model].constantize
       model = @model
 
-      @pagination_helper = model.field_search(params[:search])
+      @pagination_helper = model.where("#{params[:parent_model_field]} = ?", params[:parent_model_id]).field_search(params[:search])
 
       @model_items = Optimadmin::BaseCollectionPresenter.new(
         collection: @pagination_helper,

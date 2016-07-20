@@ -47,6 +47,12 @@
       {}, { class: 'multiselect', multiple: true } %>
       </div>
 
+      <div class="field">
+        <%= f.label :guide_ids, 'Guides' %><br>
+        <%= f.select :guide_ids, Guide.order(:title).pluck(:title, :id),
+      {}, { class: 'multiselect', multiple: true } %>
+      </div>
+
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
 
       <div class="field">

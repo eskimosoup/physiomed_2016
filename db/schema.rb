@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719153327) do
+ActiveRecord::Schema.define(version: 20160720112822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -440,8 +440,10 @@ ActiveRecord::Schema.define(version: 20160719153327) do
     t.string   "initial_assessment_duration"
     t.string   "subsequent_treatment_duration"
     t.string   "manual_therapy"
-    t.boolean  "tm2_or_pps"
+    t.string   "tm2_or_pps"
     t.boolean  "online_booking"
+    t.string   "saturday"
+    t.string   "sunday"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|
@@ -513,11 +515,23 @@ ActiveRecord::Schema.define(version: 20160719153327) do
   add_index "subcategories", ["slug"], name: "index_subcategories_on_slug", using: :btree
   add_index "subcategories", ["suggested_url"], name: "index_subcategories_on_suggested_url", using: :btree
 
+  create_table "subcategories_guides", force: :cascade do |t|
+    t.integer  "subcategory_id"
+    t.integer  "guide_id"
+    t.integer  "position",       default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "subcategories_guides", ["guide_id"], name: "index_subcategories_guides_on_guide_id", using: :btree
+  add_index "subcategories_guides", ["subcategory_id"], name: "index_subcategories_guides_on_subcategory_id", using: :btree
+
   create_table "subcategories_videos", force: :cascade do |t|
     t.integer  "subcategory_id"
     t.integer  "video_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "position",       default: 0, null: false
   end
 
   add_index "subcategories_videos", ["subcategory_id"], name: "index_subcategories_videos_on_subcategory_id", using: :btree
@@ -630,6 +644,8 @@ ActiveRecord::Schema.define(version: 20160719153327) do
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
   add_foreign_key "practice_applications_contacts", "practice_applications_practices", column: "practice_id", on_delete: :cascade
   add_foreign_key "practice_applications_practitioners", "practice_applications_practices", column: "practice_id", on_delete: :cascade
+  add_foreign_key "subcategories_guides", "guides"
+  add_foreign_key "subcategories_guides", "subcategories"
   add_foreign_key "subcategories_videos", "subcategories"
   add_foreign_key "subcategories_videos", "videos"
   add_foreign_key "testimonials", "case_studies", on_delete: :cascade

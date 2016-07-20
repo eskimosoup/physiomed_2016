@@ -3,7 +3,7 @@ module Optimadmin
     include Optimadmin::PresenterMethods
 
     presents :subcategory
-    delegate :id, :title, to: :subcategory
+    delegate :id, :title, :guides, :videos, to: :subcategory
 
     def toggle_title
       inline_detail_toggle_link(title)

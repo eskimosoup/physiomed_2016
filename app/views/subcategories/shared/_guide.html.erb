@@ -1,0 +1,23 @@
+<section class="box-wrap">
+  <div class="videos-with-guides-container guide-only" id="guide-with-guide-<%= guide.id %>">
+    <div class="videos-with-guides-container-title">
+      <h2>
+        <%= guide.title %>
+      </h2>
+    </div>
+
+    <div class="videos-with-guides wellbeing">
+      <div class="video-with-guide">
+        <div class="basic-details full-width">
+          <%= raw guide.content %>
+        </div>
+        <div class="guide">
+          <%= content_tag :div,
+            image_tag(guide.image_url(:show), alt: guide.title, title: guide.title) if guide.image? %>
+          <%= link_to "Download", guide.file.url,
+            class: 'button brown-background' %>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
