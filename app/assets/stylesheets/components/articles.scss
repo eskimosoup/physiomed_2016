@@ -37,8 +37,11 @@
   width: 100%;
 
   img {
-    float: left;
     margin: rem-calc(3px 10px 0 0);
+
+    @include media('>=1024px') {
+      float: left;
+    }
   }
 
   .details {

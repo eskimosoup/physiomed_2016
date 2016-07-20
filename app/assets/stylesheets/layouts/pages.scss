@@ -25,7 +25,7 @@
     @include clearfix;
   }
 
-  a {
+  a:not(.button) {
     &:link,
     &:visited {
       color: $dark-green;

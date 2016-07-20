@@ -15,8 +15,12 @@
   font-size: rem(12px);
   font-weight: $montserrat-light;
   margin: rem(19px) 0;
-  padding: 0 rem(40px);
+  padding: rem(0 10px);
   text-align: center;
+
+  @include media('>=1024px') {
+    padding: 0 rem(40px);
+  }
 
   a {
     color: $white;
