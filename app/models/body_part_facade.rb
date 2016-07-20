@@ -8,6 +8,8 @@ class BodyPartFacade
 
   def general_wellbeing_categorisation
     @general_wellbeing_categorisation ||= Subcategory.displayed.find(4)
+  rescue
+    nil
   end
 
   def other_body_parts

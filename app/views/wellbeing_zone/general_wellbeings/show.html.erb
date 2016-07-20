@@ -149,18 +149,20 @@
   <% if @general_wellbeing_facade.guides.any? %>
     <section class="box-wrap" id="guides">
       <div class="guides-container">
-        <%= link_to "See more", @general_wellbeing_facade.general_wellbeing_categorisation, class: "button brown-background" if @general_wellbeing_facade.general_wellbeing_categorisation.present? %>
+        <div class="body-part-guides-title">
+          <%= link_to "See more", @body_part_facade.general_wellbeing_categorisation, class: "button brown-background" if @body_part_facade.general_wellbeing_categorisation.present? %>
 
-        <div class="slick-controls">
-          <%= button_tag(type: 'button', class: "slick-guides slick-prev") do %>
-            <
-          <% end %>
-          <%= button_tag(type: 'button', class: "slick-guides slick-next") do %>
-            >
-          <% end %>
+          <div class="slick-controls">
+            <%= button_tag(type: 'button', class: "slick-guides slick-prev") do %>
+              <
+            <% end %>
+            <%= button_tag(type: 'button', class: "slick-guides slick-next") do %>
+              >
+            <% end %>
+          </div>
+
+          <h2 class="guides-container-title">Guides</h2>
         </div>
-
-        <h2 class="content-box-title guides-container-title">Guides</h2>
 
         <div class="guides wellbeing">
           <%= render partial: 'guides/guide',
