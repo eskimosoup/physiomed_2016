@@ -15,7 +15,7 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  
+
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
@@ -41,7 +41,7 @@
 
       <div class="field">
         <%= f.label :author_id %><br>
-        <%= f.select :author_id, TeamMember.order({forename: :asc, surname: :asc }).pluck(:forename, :surname, :id).map{|x| ["#{ x[0] } #{ x[1] }", x[2]] }, allow_blank: true %>
+        <%= f.select :author_id, TeamMember.order({forename: :asc, surname: :asc }).pluck(:forename, :surname, :id).map{|x| ["#{ x[0] } #{ x[1] }", x[2]] }, include_blank: 'No author' %>
       </div>
 
       <div class="field">
