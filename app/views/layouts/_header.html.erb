@@ -40,11 +40,7 @@
     <div class="primary-header-navigation-content">
       <div class="primary-header-content-wrap">
         <div class="primary-header-content">
-          <%= link_to 'Client Area', 'http://clients.physiomed.co.uk/client-centre', class: 'client-area-button' %>
-          <%= link_to 'http://www.physiotherapyinleeds.co.uk/', class: 'clinic-button' do  %>
-            <strong>Local to Leeds?</strong>
-            Book an appointment at our Head Office clinic
-          <% end %>
+          <%= render 'shared/clinic_and_client_area_buttons' %>
         </div>
       </div>
 
