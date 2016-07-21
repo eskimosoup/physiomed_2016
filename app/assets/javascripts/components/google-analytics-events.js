@@ -7,6 +7,15 @@ $(document).on('click', '.ga-event', function(e) {
 	var itemName  = $(this).data('item-name');
 
 	if ( eventName && itemName ) {
-		ga('send', 'event', eventName, 'click', eventName + ': ' + itemName, 1);
-	}
+    ga('send', {
+      hitType: 'event',
+      eventCategory: eventName, //required
+      eventAction: 'click', //required
+      eventLabel: eventName + ': ' + itemName,
+      eventValue: 1,
+      hitCallback: function() {
+        console.log('Event sent: ' + eventName + ' ' + itemName);
+      }
+    });
+  }
 });
