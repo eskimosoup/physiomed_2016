@@ -17,14 +17,16 @@ $(document).ready(function() {
   });
 });
 
+/*
 $(document).on('mouseout', '.home-health-zone-link', function() {
-  $(this).closest('div').find('.home-health-zone-hover').stop(true, true).show().slideUp();
+  $(this).closest('div').find('.home-health-zone-hover').hide();
 });
 
 $(document).on('mouseout', '.home-health-zone-hover', function() {
-  $(this).stop(true, true).show().slideUp();
+  $(this).hide();
 });
 
 $(document).on('mouseover', '.home-health-zone-link, .home-health-zone-image-link', function() {
-  $(this).closest('div').find('.home-health-zone-hover').stop(true, true).hide().slideDown();
+  $(this).closest('div').find('.home-health-zone-hover').show();
 });
+*/

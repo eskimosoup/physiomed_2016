@@ -49,6 +49,10 @@
 .home-health-zone {
   padding: 0 rem(15px);
 
+  &:hover .home-health-zone-hover {
+    display: block;
+  }
+
   &.sidebar {
     padding: 0;
   }
@@ -81,14 +85,16 @@
   display: none;
   height: 100%;
   left: 0;
+  padding: rem(25px);
   position: absolute;
   top: 0;
   width: 100%;
 
+  /*
   a {
     color: $white;
     display: block;
     height: 100%;
-    padding: rem(25px);
   }
+  */
 }

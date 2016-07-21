@@ -5,11 +5,10 @@
         <%= health_zone_presenter.show_home_image %>
       <% end %>
 
-      <div class="home-health-zone-hover">
-        <%= link_to health_zone_presenter.link do %>
-          <%= health_zone_presenter.hover_text %>
-        <% end %>
-      </div>
+
+      <%= link_to health_zone_presenter.link, class: 'home-health-zone-hover' do %>
+        <%= health_zone_presenter.hover_text %>
+      <% end %>
   </div>
 
     <%= health_zone_presenter.title_link(class: 'home-health-zone-link') %>
