@@ -1,8 +1,4 @@
 <% if testimonials.present? %>
-  <%= content_for :head do %>
-    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' %>
-    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css' %>
-  <% end %>
   <%= content_for :javascript do %>
     <%= javascript_include_tag "components/testimonials/wellbeing_zone" %>
   <% end %>
