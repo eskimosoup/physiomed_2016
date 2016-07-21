@@ -21,10 +21,13 @@
           </div>
         </div>
         <div class="guide guide-subcategory">
-          <%= content_tag :div,
-            image_tag(guide.image_url(:show), alt: guide.title, title: guide.title) if guide.image? %>
+          <% if guide.image? %>
+            <div>
+              <%= link_to image_tag(guide.image_url(:show), alt: guide.title, title: guide.title), guide.file.url, class: 'ga-event', data: { event_name: 'Infographic Download', item_name: guide.title } %>
+            </div>
+          <% end %>
           <%= link_to "Download", guide.file.url,
-            class: 'button brown-background' %>
+            class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: guide.title } %>
       </div>
       </div>
     </div>
