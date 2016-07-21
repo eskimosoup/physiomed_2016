@@ -2,6 +2,10 @@
   @include flex-grid-column(12);
   @include border-radius-with-dark-box-shadow;
   background: $white;
+
+  .youtube-title {
+    margin: rem(0 0 15px);
+  }
 }
 
 .videos-with-guides-container-title {
@@ -15,6 +19,10 @@
 
     &.full-width {
       @include flex-grid-column(10);
+    }
+
+    .flex-video {
+      margin-bottom: 0;
     }
 
     p {

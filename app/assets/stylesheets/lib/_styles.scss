@@ -54,6 +54,16 @@
   }
 }
 
+@mixin content-item-title {
+  background: image-url('health-zone/light-mini-arrow.png') 20px center no-repeat,
+              image-url('health-zone/link-background.jpg') right center no-repeat,
+              $green;
+  color: $white;
+  display: block;
+  font-weight: $open-sans-bold;
+  padding: rem(18px) rem(18px) rem(18px) rem(38px);
+}
+
 @mixin pagination-base {
   display: inline-block;
   padding: rem(5px) rem(10px);

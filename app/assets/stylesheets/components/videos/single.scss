@@ -26,3 +26,7 @@
     font-weight: $open-sans-extrabold;
   }
 }
+
+.youtube-title {
+  @include content-item-title;
+}
