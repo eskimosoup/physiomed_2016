@@ -17,7 +17,7 @@
 
           <div class="video-with-guide-download-button">
             <%= link_to "Download PDF", video.guide.file.url,
-              class: 'button brown-background' if video.guide.present? %>
+              class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: video.guide.title } if video.guide.present? %>
           </div>
 
         </div>
