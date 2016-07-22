@@ -1,4 +1,6 @@
-<li data-role="what-we-do-link">
-  <%= link_to what_we_do_link.title, what_we_do_link.page,
-    class: link_class(link: what_we_do_link, current: (defined?(current_link) ? current_link : nil)) %>
-</li>
+<% cache what_we_do_link do %>
+  <li data-role="what-we-do-link">
+    <%= link_to what_we_do_link.title, what_we_do_link.page,
+      class: link_class(link: what_we_do_link, current: (defined?(current_link) ? current_link : nil)) %>
+  </li>
+<% end %>

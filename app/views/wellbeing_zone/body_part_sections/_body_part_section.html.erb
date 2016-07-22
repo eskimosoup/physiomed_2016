@@ -1,16 +1,18 @@
-<div id="body-part-section-<%= body_part_section.id %>" class="body-part-section <%= body_part_section_counter.zero? ? "current" : nil %>">
+<% cache body_part_section do %>
+  <div id="body-part-section-<%= body_part_section.id %>" class="body-part-section <%= body_part_section_counter.zero? ? "current" : nil %>">
 
-  <div class="body-part-section-title">
-    <h2><%= body_part_section.title %></h2>
+    <div class="body-part-section-title">
+      <h2><%= body_part_section.title %></h2>
+    </div>
+
+    <% if body_part_section.sub_title %>
+      <h3><%= body_part_section.sub_title %></h3>
+    <% end %>
+
+    <div class="body-part-section-content">
+      <%= image_tag body_part_section.image_url(:show), alt: body_part_section.title,
+        title: body_part_section.title, class: 'body-part-section-image' if body_part_section.image? %>
+      <%= raw body_part_section.content %>
+    </div>
   </div>
-
-  <% if body_part_section.sub_title %>
-    <h3><%= body_part_section.sub_title %></h3>
-  <% end %>
-
-  <div class="body-part-section-content">
-    <%= image_tag body_part_section.image_url(:show), alt: body_part_section.title,
-      title: body_part_section.title, class: 'body-part-section-image' if body_part_section.image? %>
-    <%= raw body_part_section.content %>
-  </div>
-</div>
+<% end %>

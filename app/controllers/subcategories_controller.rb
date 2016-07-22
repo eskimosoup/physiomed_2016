@@ -12,6 +12,6 @@ class SubcategoriesController < ApplicationController
   private
 
   def find_subcategory
-    @subcategory = Subcategory.friendly.find(params[:id])
+    @subcategory = Subcategory.includes(:guides, videos: [:guide]).friendly.displayed.find(params[:id])
   end
 end

@@ -8,10 +8,12 @@
 
   &.slick-prev {
     background: image-url('slick/arrow-left.png') center no-repeat;
+    left: 0;
   }
 
   &.slick-next {
     background: image-url('slick/arrow-right.png') center no-repeat;
+    right: 0;
   }
 }
 

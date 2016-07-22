@@ -1,15 +1,17 @@
-<div class="case-study wellbeing main">
-  <% if case_study.image? %>
-    <div class="image">
-      <%= image_tag case_study.image.index, title: case_study.title %>
-    </div>
-  <% end %>
-  <div class="basic-details">
-    <div class="title">
-      <%= link_to case_study.title, case_study %>
-    </div>
-    <div class="summary">
-      <%= simple_format case_study.summary %>
+<% cache ['main_wellbeing', case_study] do %>
+  <div class="case-study wellbeing main">
+    <% if case_study.image? %>
+      <div class="image">
+        <%= image_tag case_study.image.index, title: case_study.title %>
+      </div>
+    <% end %>
+    <div class="basic-details">
+      <div class="title">
+        <%= link_to case_study.title, case_study %>
+      </div>
+      <div class="summary">
+        <%= simple_format case_study.summary %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

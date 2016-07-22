@@ -19,7 +19,8 @@
     <div class="banners">
       <%= render(
         partial: "banners/banner",
-        collection: @homepage_facade.banners
+        collection: @homepage_facade.banners,
+        cache: @homepage_facade.banners
       ) %>
     </div>
 
@@ -55,7 +56,8 @@
                   locals: {
                     quick_link_type: "employer",
                     quick_links: @homepage_facade.employer_quick_links
-                    }
+                  },
+                  cache: @homepage_facade.employer_quick_links
                 ) %>
               <% end %>
               <% if @homepage_facade.employee_quick_links.any? %>
@@ -64,7 +66,8 @@
                   locals: {
                     quick_link_type: "employee",
                     quick_links: @homepage_facade.employee_quick_links
-                    }
+                  },
+                  cache: @homepage_facade.employee_quick_links
                 ) %>
               <% end %>
             </div>
@@ -96,7 +99,8 @@
               <%= render(
                 partial: "health_zones/home_health_zone",
                 collection: @homepage_facade.health_zones,
-                as: :health_zone
+                as: :health_zone,
+                cache: @homepage_facade.health_zones
               ) %>
             </div>
           </div>
@@ -110,7 +114,7 @@
 <div class="home content">
   <% if @homepage_facade.additional_contents.any? %>
     <section class="flexbox-wrap additional-home-contents">
-      <%= render @homepage_facade.additional_contents %>
+      <%= render @homepage_facade.additional_contents, cache: @homepage_facade.additional_contents %>
     </section>
   <% end %>
 
@@ -123,7 +127,7 @@
         <div class="service-standards">
           <h2 class="service-standards-title text-center">Service Standards</h2>
           <div class="service-standard-wrap">
-            <%= render @homepage_facade.service_standards %>
+            <%= render @homepage_facade.service_standards, cache: @homepage_facade.service_standards %>
           </div>
         </div>
       </section>
@@ -141,7 +145,8 @@
         locals:
         {
           physio_search: @physio_search
-        }
+        },
+        cache: @physio_search
       ) %>
     </div>
 
@@ -164,7 +169,8 @@
           <%= render(
             partial: "case_studies/home_case_study",
             collection: @homepage_facade.case_studies,
-            as: :case_study
+            as: :case_study,
+            cache: @homepage_facade.case_studies
           ) %>
         </div>
       </div>
@@ -180,7 +186,8 @@
           <%= render(
             partial: "testimonials/home_testimonial",
             collection: @homepage_facade.testimonials,
-            as: :testimonial
+            as: :testimonial,
+            cache: @homepage_facade.testimonials
           ) %>
         </div>
       </div>
@@ -198,7 +205,8 @@
           <%= render(
             partial: "clients/home_client",
             collection: @homepage_facade.clients,
-            as: :client
+            as: :client,
+            cache: @homepage_facade.clients
           ) %>
         </div>
       </div>
@@ -219,7 +227,8 @@
           <%= render(
             partial: "articles/home_article",
             collection: @homepage_facade.articles,
-            as: :article
+            as: :article,
+            cache: @homepage_facade.articles
           ) %>
         </div>
         <%= button_tag(type: 'button', class: "slick-articles slick-next") do %>

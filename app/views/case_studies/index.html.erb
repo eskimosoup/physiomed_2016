@@ -12,7 +12,8 @@
           <%= render(
             partial: "case_studies/case_study",
             collection: @case_studies,
-            as: :case_study
+            as: :case_study,
+            cache: @case_studies
           ) %>
         <% else %>
           We currently have no case studies available to view.
@@ -32,7 +33,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: nil,
           articles: latest_articles,
-        }
+        },
+        cache: [wellbeing_zone_health_zone, latest_articles]
       ) %>
     </div>
   </div>

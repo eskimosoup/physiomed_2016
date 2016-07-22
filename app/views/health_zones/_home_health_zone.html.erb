@@ -1,16 +1,18 @@
-<div class="home-health-zone">
-  <% present health_zone do |health_zone_presenter| %>
-    <div class="home-health-zone-content">
-      <%= link_to health_zone_presenter.link, class: 'home-health-zone-image-link' do %>
-        <%= health_zone_presenter.show_home_image %>
-      <% end %>
+<% cache ['home_health_zone', health_zone] do %>
+  <div class="home-health-zone">
+    <% present health_zone do |health_zone_presenter| %>
+      <div class="home-health-zone-content">
+        <%= link_to health_zone_presenter.link, class: 'home-health-zone-image-link' do %>
+          <%= health_zone_presenter.show_home_image %>
+        <% end %>
 
 
-      <%= link_to health_zone_presenter.link, class: 'home-health-zone-hover' do %>
-        <%= health_zone_presenter.hover_text %>
-      <% end %>
+        <%= link_to health_zone_presenter.link, class: 'home-health-zone-hover' do %>
+          <%= health_zone_presenter.hover_text %>
+        <% end %>
+    </div>
+
+      <%= health_zone_presenter.title_link(class: 'home-health-zone-link') %>
+    <% end %>
   </div>
-
-    <%= health_zone_presenter.title_link(class: 'home-health-zone-link') %>
-  <% end %>
-</div>
+<% end %>

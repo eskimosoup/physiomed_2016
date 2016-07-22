@@ -1,35 +1,37 @@
-<section class="box-wrap">
-  <div class="videos-with-guides-container">
-    <div class="videos-with-guides-container-title">
-      <h2>
-        <%= video.title %>
-      </h2>
-    </div>
+<% cache ['video_with_guide_button', video, video.guide] do %>
+  <section class="box-wrap">
+    <div class="videos-with-guides-container">
+      <div class="videos-with-guides-container-title">
+        <h2>
+          <%= video.title %>
+        </h2>
+      </div>
 
-    <div class="videos-with-guides wellbeing">
-      <div class="video-with-guide">
-        <div class="basic-details full-width">
-          <h3 class="video-subtitle">
-            <%= video.subtitle %>
-          </h3>
+      <div class="videos-with-guides wellbeing">
+        <div class="video-with-guide">
+          <div class="basic-details full-width">
+            <h3 class="video-subtitle">
+              <%= video.subtitle %>
+            </h3>
 
-          <%= raw video.content %>
+            <%= raw video.content %>
 
-          <div class="video-with-guide-download-button">
-            <%= link_to "Download PDF", video.guide.file.url,
-              class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: video.guide.title } if video.guide.present? %>
+            <div class="video-with-guide-download-button">
+              <%= link_to "Download PDF", video.guide.file.url,
+                class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: video.guide.title } if video.guide.present? %>
+            </div>
+
           </div>
-
-        </div>
-        <div class="video-iframe">
-          <div class="flex-video">
-            <%= raw iframe_for(video, width: 345, height: 248) %>
-          </div>
-          <div class="youtube-title">
-            <%= video.title %>
+          <div class="video-iframe">
+            <div class="flex-video">
+              <%= raw iframe_for(video, width: 345, height: 248) %>
+            </div>
+            <div class="youtube-title">
+              <%= video.title %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+<% end %>

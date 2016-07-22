@@ -10,7 +10,8 @@
       <div class="page-content">
         <%= render(
           partial: "articles/article",
-          collection: @articles
+          collection: @articles,
+          cache: @articles
         ) %>
 
         <%= paginate @articles %>
@@ -27,7 +28,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: latest_case_studies,
           articles: nil,
-        }
+        },
+        cache: [wellbeing_zone_health_zone, latest_case_studies]
       ) %>
     </div>
   </div>

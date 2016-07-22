@@ -1,4 +1,6 @@
-<div class="additional-home-content text">
-  <h3 class="content-box-title"><%= text_content.title %></h3>
-  <%= raw text_content.content %>
-</div>
+<% cache text_content do %>
+  <div class="additional-home-content text">
+    <h3 class="content-box-title"><%= text_content.title %></h3>
+    <%= raw text_content.content %>
+  </div>
+<% end %>

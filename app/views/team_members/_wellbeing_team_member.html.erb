@@ -1,14 +1,16 @@
-<%= link_to '#', class: 'team-member toggle-class', data: { role: 'team-member', class: 'visible', container: ".team-member-profile-wrap-#{team_member.id}", return: false, team_member_modal: true } do %>
-  <div class="wellbeing team-member text-center">
-    <%= image_tag team_member.image.index, title: team_member.name if team_member.image? %>
-    <div class="name">
-      <%= team_member.forename %><br>
-      <%= team_member.surname %>
+<% cache ['wellbeing_team_member', team_member] do %>
+  <%= link_to '#', class: 'team-member toggle-class', data: { role: 'team-member', class: 'visible', container: ".team-member-profile-wrap-#{team_member.id}", return: false, team_member_modal: true } do %>
+    <div class="wellbeing team-member text-center">
+      <%= image_tag team_member.image.index, title: team_member.name if team_member.image? %>
+      <div class="name">
+        <%= team_member.forename %><br>
+        <%= team_member.surname %>
+      </div>
+      <div class="role">
+        <%= team_member.role %>
+      </div>
     </div>
-    <div class="role">
-      <%= team_member.role %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
 
-<%= render 'team_members/shared/modal', team_member: team_member %>
+  <%= render 'team_members/shared/modal', team_member: team_member %>
+<% end %>

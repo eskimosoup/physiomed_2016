@@ -22,7 +22,8 @@
             <%= render(
               partial: "physio_searches/result",
               collection: @results,
-              as: :practice
+              as: :practice,
+              cache:  @results
             ) %>
           </div>
         <% end %>
@@ -39,7 +40,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: nil,
           articles: nil,
-        }
+        },
+        cache: wellbeing_zone_health_zone
       ) %>
     </div>
   </div>

@@ -1,13 +1,15 @@
-<div class="article home">
-  <%= link_to article, title: article.title do %>
-    <%= image_tag article.image.index, title: article.title if article.image.present? %>
-    <span class="title"><%= article.title %></span>
-  <% end %>
+<% cache ['home', article, article.author] do %>
+  <div class="article home">
+    <%= link_to article, title: article.title do %>
+      <%= image_tag article.image.index, title: article.title if article.image.present? %>
+      <span class="title"><%= article.title %></span>
+    <% end %>
 
-  <%= render(
-    partial: "team_members/author",
-    locals: {
-      team_member: article.author
-    }
-  ) if article.author %>
-</div>
+    <%= render(
+      partial: "team_members/author",
+      locals: {
+        team_member: article.author
+      }
+    ) if article.author %>
+  </div>
+<% end %>

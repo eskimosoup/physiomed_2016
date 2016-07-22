@@ -1,12 +1,14 @@
-<div class="banner">
-  <% present banner do |banner_presenter| %>
-    <div class="banner-content-wrap">
-      <div class="banner-content">
-        <%= banner_presenter.title %>
-        <%= banner_presenter.summary %>
-        <%= banner_presenter.link(class: 'banner-read-more') %>
+<% cache banner do %>
+  <div class="banner">
+    <% present banner do |banner_presenter| %>
+      <div class="banner-content-wrap">
+        <div class="banner-content">
+          <%= banner_presenter.title %>
+          <%= banner_presenter.summary %>
+          <%= banner_presenter.link(class: 'banner-read-more') %>
+        </div>
       </div>
-    </div>
-    <%= banner_presenter.show_image(alt: '') %>
-  <% end %>
-</div>
+      <%= banner_presenter.show_image(alt: '') %>
+    <% end %>
+  </div>
+<% end %>

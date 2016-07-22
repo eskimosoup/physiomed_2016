@@ -1,20 +1,22 @@
-<div class="what-we-do-item">
-  <div data-role="what-we-do-title" class="what-we-do-item-title">
-    <%= what_we_do.title %>
-  </div>
+<% cache what_we_do do %>
+  <div class="what-we-do-item">
+    <div data-role="what-we-do-title" class="what-we-do-item-title">
+      <%= what_we_do.title %>
+    </div>
 
-  <%= raw what_we_do.content %>
+    <%= raw what_we_do.content %>
 
-  <ul class="what-we-do-item-list">
-    <%= render what_we_do.displayed_links %>
-  </ul>
+    <ul class="what-we-do-item-list">
+      <%= render what_we_do.displayed_links %>
+    </ul>
 
-  <% if what_we_do.pdf_download.present? %>
-    <%= link_to what_we_do.pdf_download.url, title: what_we_do.title,
-                          target: '_blank', class: 'wwd-download-pdf' do %>
-      <%= image_tag what_we_do.image.show, alt: what_we_do.title %>
+    <% if what_we_do.pdf_download.present? %>
+      <%= link_to what_we_do.pdf_download.url, title: what_we_do.title,
+                            target: '_blank', class: 'wwd-download-pdf' do %>
+        <%= image_tag what_we_do.image.show, alt: what_we_do.title %>
 
-      Download PDF
+        Download PDF
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
