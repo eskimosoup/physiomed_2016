@@ -1,38 +1,40 @@
-<section class="box-wrap">
-  <div class="videos-with-guides-container" id="video-with-guide-<%= video.id %>">
-    <div class="videos-with-guides-container-title">
-      <h2>
-        <%= video.title %>
-      </h2>
-    </div>
+<% cache ['video_with_guide', video, video.guide] do %>
+  <section class="box-wrap">
+    <div class="videos-with-guides-container" id="video-with-guide-<%= video.id %>">
+      <div class="videos-with-guides-container-title">
+        <h2>
+          <%= video.title %>
+        </h2>
+      </div>
 
-    <div class="videos-with-guides wellbeing">
-      <div class="video-with-guide">
-        <div class="basic-details">
-          <h3 class="video-subtitle">
-            <%= video.subtitle %>
-          </h3>
+      <div class="videos-with-guides wellbeing">
+        <div class="video-with-guide">
+          <div class="basic-details">
+            <h3 class="video-subtitle">
+              <%= video.subtitle %>
+            </h3>
 
-          <%= raw video.content %>
-        </div>
-        <div class="video-iframe">
-          <div class="flex-video widescreen">
-            <%= raw iframe_for(video, width: 345, height: 248) %>
+            <%= raw video.content %>
           </div>
-          <div class="youtube-title">
-            <%= video.title %>
-          </div>
-        </div>
-        <div class="guide">
-          <% if guide.image? %>
-            <div>
-              <%= link_to image_tag(guide.image_url(:show), alt: guide.title, title: guide.title), guide.file.url, class: 'ga-event', data: { event_name: 'Infographic Download', item_name: guide.title } %>
+          <div class="video-iframe">
+            <div class="flex-video widescreen">
+              <%= raw iframe_for(video, width: 345, height: 248) %>
             </div>
-          <% end %>
-          <%= link_to "Download", guide.file.url,
-            class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: guide.title } %>
-      </div>
+            <div class="youtube-title">
+              <%= video.title %>
+            </div>
+          </div>
+          <div class="guide">
+            <% if guide.image? %>
+              <div>
+                <%= link_to image_tag(guide.image_url(:show), alt: guide.title, title: guide.title), guide.file.url, class: 'ga-event', data: { event_name: 'Infographic Download', item_name: guide.title } %>
+              </div>
+            <% end %>
+            <%= link_to "Download", guide.file.url,
+              class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: guide.title } %>
+        </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+<% end %>

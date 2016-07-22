@@ -38,11 +38,12 @@
       <div id="job-application-form" class="page-content">
         <h3>Apply Now</h3>
         <%= render(
-          partial: 'job_applications/form', 
+          partial: 'job_applications/form',
           locals: {
             job_listing: @job_listing_facade.job_listing,
             job_application: @job_listing_facade.job_application
-          }
+          },
+          cache: [@job_listing_facade.job_listing, @job_listing_facade.job_application]
         ) %>
       </div>
     </div>
@@ -57,7 +58,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: latest_case_studies,
           articles: latest_articles,
-        }
+        },
+        cache: [wellbeing_zone_health_zone, latest_case_studies, latest_articles]
       ) %>
     </div>
   </div>

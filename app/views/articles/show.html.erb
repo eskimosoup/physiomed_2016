@@ -4,6 +4,7 @@
   <% end %>
 <% end %>
 
+
 <div class="hero-section standard-page-background">
   <div class="hero-section-header">
     <h1 class="hero-section-title full-width">
@@ -34,7 +35,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: latest_case_studies,
           articles: nil,
-        }
+        },
+        cache: [[@article.author].compact, wellbeing_zone_health_zone, latest_case_studies]
       ) %>
     </div>
   </div>

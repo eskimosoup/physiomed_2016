@@ -1,3 +1,5 @@
-<div class="client home">
-  <%= image_tag client.logo.show, alt: client.name, title: client.name %>
-</div>
+<% cache ['home_client', client] do %>
+  <div class="client home">
+    <%= image_tag client.logo.show, alt: client.name, title: client.name %>
+  </div>
+<% end %>

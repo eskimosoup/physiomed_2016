@@ -23,7 +23,8 @@
           partial: 'shared/sidebar_testimonials',
           locals: {
             testimonials: @page_facade.testimonials
-          }
+          },
+          cache: @page_facade.testimonials
         ) %>
       </div>
     <% end %>
@@ -47,7 +48,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: @page_facade.case_studies,
           articles: @page_facade.articles,
-        }
+        },
+        cache: [@page_facade.team_members, wellbeing_zone_health_zone, @page_facade.case_studies, @page_facade.articles]
       ) %>
     </div>
   </div>

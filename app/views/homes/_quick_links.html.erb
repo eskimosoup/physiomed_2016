@@ -1,10 +1,12 @@
-<div class="banner-quick-links <%= quick_link_type %>-quick-links" style="display:<%= quick_link_type != 'employer' ? 'none' : 'block' %>">
-  <h3 class="banner-quick-link-title">We can help...</h3>
-  <ul class="banner-quick-link-list">
-    <% quick_links.each do |quick_link| %>
-      <li>
-        <%= link_to quick_link.link_text, quick_link.link %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<% cache quick_links do %>
+  <div class="banner-quick-links <%= quick_link_type %>-quick-links" style="display:<%= quick_link_type != 'employer' ? 'none' : 'block' %>">
+    <h3 class="banner-quick-link-title">We can help...</h3>
+    <ul class="banner-quick-link-list">
+      <% quick_links.each do |quick_link| %>
+        <li>
+          <%= link_to quick_link.link_text, quick_link.link %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

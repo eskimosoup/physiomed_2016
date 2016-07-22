@@ -1,19 +1,21 @@
-<div class="modal-overview">
-  <div class="modal-content">
-    <%= content_tag :div, (image_tag @team_member.image.show, title: @team_member.name), class: 'image' if @team_member.image %>
+<% cache @team_member do %>
+  <div class="modal-overview">
+    <div class="modal-content">
+      <%= content_tag :div, (image_tag @team_member.image.show, title: @team_member.name), class: 'image' if @team_member.image %>
 
-    <div class="details">
-      <h1 class="green-border-bottom">
-        <%= @team_member.name %>
-      </h1>
+      <div class="details">
+        <h1 class="green-border-bottom">
+          <%= @team_member.name %>
+        </h1>
 
-      <h3>
-        <%= @team_member.role %>
-      </h3>
+        <h3>
+          <%= @team_member.role %>
+        </h3>
 
-      <%= mail_to @team_member.email %>
+        <%= mail_to @team_member.email %>
 
-      <%= raw @team_member.bio %>
+        <%= raw @team_member.bio %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

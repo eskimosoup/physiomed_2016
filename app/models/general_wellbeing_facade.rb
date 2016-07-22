@@ -3,6 +3,8 @@ class GeneralWellbeingFacade < WellbeingZoneFacade
 
   def general_wellbeing_categorisation
     @general_wellbeing_categorisation ||= Subcategory.displayed.find(4)
+  rescue
+    nil
   end
 
   def guides

@@ -1,22 +1,24 @@
-<div class="video">
-  <div class="video-iframe">
-    <div class="flex-video widescreen">
-      <%= raw iframe_for(video, width: 345, height: 248) %>
+<% cache ['video', video] do %>
+  <div class="video">
+    <div class="video-iframe">
+      <div class="flex-video widescreen">
+        <%= raw iframe_for(video, width: 345, height: 248) %>
+      </div>
+      <div class="youtube-title">
+        <%= video.title %>
+      </div>
     </div>
-    <div class="youtube-title">
-      <%= video.title %>
+
+    <div class="basic-details">
+      <h2 class="green-border-bottom">
+        <%= video.title %>
+      </h2>
+
+      <h3 class="video-subtitle">
+        <%= video.subtitle %>
+      </h3>
+
+      <%= raw video.content %>
     </div>
   </div>
-
-  <div class="basic-details">
-    <h2 class="green-border-bottom">
-      <%= video.title %>
-    </h2>
-
-    <h3 class="video-subtitle">
-      <%= video.subtitle %>
-    </h3>
-
-    <%= raw video.content %>
-  </div>
-</div>
+<% end %>

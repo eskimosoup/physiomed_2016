@@ -1,9 +1,11 @@
-<div class="additional-home-content home-video">
-  <div class="flex-video widescreen">
-    <%= raw iframe_for(video_content.video, width: 384, height: 254) %>
-  </div>
+<% cache video_content do %>
+  <div class="additional-home-content home-video">
+    <div class="flex-video widescreen">
+      <%= raw iframe_for(video_content.video, width: 384, height: 254) %>
+    </div>
 
-  <div class="youtube-title">
-    <%= video_content.title %>
+    <div class="youtube-title">
+      <%= video_content.title %>
+    </div>
   </div>
-</div>
+<% end %>

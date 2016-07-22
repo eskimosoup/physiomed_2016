@@ -1,13 +1,15 @@
-<div class="body-part">
-  <%= link_to wellbeing_zone_body_part_path(body_part) do %>
-    <div class="name text-center wellbeing-full-section-button green-background">
-      <%= body_part.name %>
-    </div>
-    <%= image_tag body_part.image %>
-    <% if body_part.tagline.present? %>
-      <div class="tagline text-center">
-        <%= body_part.tagline %>
+<% cache body_part do %>
+  <div class="body-part">
+    <%= link_to wellbeing_zone_body_part_path(body_part) do %>
+      <div class="name text-center wellbeing-full-section-button green-background">
+        <%= body_part.name %>
       </div>
+      <%= image_tag body_part.image %>
+      <% if body_part.tagline.present? %>
+        <div class="tagline text-center">
+          <%= body_part.tagline %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

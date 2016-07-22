@@ -8,16 +8,18 @@
   <div class="hero-section-primary-content">
     <div class="hero-navigation-wrap">
       <div class="hero-navigation">
-        <% @page_facade.what_we_dos.each do |what_we_do| %>
-          <div class="what-we-do">
-            <div data-role="what-we-do-title" class="what-we-do-item-title sidebar <%= 'current' if what_we_do.id == @page_facade.what_we_do_link.what_we_do_id %>">
-              <%= what_we_do.title %>
+        <% cache @page_facade.what_we_dos do %>
+          <% @page_facade.what_we_dos.each do |what_we_do| %>
+            <div class="what-we-do">
+              <div data-role="what-we-do-title" class="what-we-do-item-title sidebar <%= 'current' if what_we_do.id == @page_facade.what_we_do_link.what_we_do_id %>">
+                <%= what_we_do.title %>
+              </div>
+              <ul class="what-we-do-item-list">
+                <%= render what_we_do.displayed_links,
+                  current_link: @page_facade.what_we_do_link %>
+              </ul>
             </div>
-            <ul class="what-we-do-item-list">
-              <%= render what_we_do.displayed_links,
-                current_link: @page_facade.what_we_do_link %>
-            </ul>
-          </div>
+          <% end %>
         <% end %>
       </div>
 
@@ -25,7 +27,8 @@
         partial: 'shared/sidebar_testimonials',
         locals: {
           testimonials: @page_facade.testimonials
-        }
+        },
+        cache: @page_facade.testimonials
       ) %>
     </div>
     <div class="page-content-wrap">
@@ -47,7 +50,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: @page_facade.case_studies,
           articles: @page_facade.articles,
-        }
+        },
+        cache: [@page_facade.team_members, wellbeing_zone_health_zone, @page_facade.case_studies, @page_facade.articles]
       ) %>
     </div>
   </div>

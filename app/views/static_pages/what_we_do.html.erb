@@ -23,8 +23,10 @@
         </div>
 
         <div class="what-we-do-sections">
-          <% @facade.what_we_dos.limit(3).each do |what_we_do| %>
-            <%= render what_we_do %>            
+          <% cache @facade.what_we_dos do %>
+            <% @facade.what_we_dos.limit(3).each do |what_we_do| %>
+              <%= render what_we_do %>
+            <% end %>
           <% end %>
 
           <div class="page-contact-methods-wrap">

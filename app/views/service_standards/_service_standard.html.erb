@@ -1,15 +1,17 @@
-<div class="service-standard green-background">
-    <div class="hover-content" style="display: none;">
-      <%= link_to service_standard.link do %>
-        <div class="arrow-down">
-        </div>
-        <%= simple_format service_standard.hover_content %>
-      <% end %>
-    </div>
-    <div class="main-content">
-      <%= link_to service_standard.link do %>
-        <%= image_tag service_standard.icon_image %>
-        <%= simple_format service_standard.content %>
-      <% end %>
-    </div>
-</div>
+<% cache service_standard do %>
+  <div class="service-standard green-background">
+      <div class="hover-content" style="display: none;">
+        <%= link_to service_standard.link do %>
+          <div class="arrow-down">
+          </div>
+          <%= simple_format service_standard.hover_content %>
+        <% end %>
+      </div>
+      <div class="main-content">
+        <%= link_to service_standard.link do %>
+          <%= image_tag service_standard.icon_image %>
+          <%= simple_format service_standard.content %>
+        <% end %>
+      </div>
+  </div>
+<% end %>

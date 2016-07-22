@@ -31,7 +31,8 @@
               <%= render(
                 partial: 'team_members/team_member_index',
                 collection: team_member_category.displayed_team_members,
-                as: :team_member
+                as: :team_member,
+                cache: team_member_category.displayed_team_members
               ) %>
             </div>
 
@@ -50,7 +51,8 @@
           health_zone: nil,
           case_studies: latest_case_studies,
           articles: latest_articles,
-        }
+        },
+        cache: [latest_case_studies, latest_articles]
       ) %>
     </div>
   </div>

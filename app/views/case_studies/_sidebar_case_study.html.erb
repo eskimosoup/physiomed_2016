@@ -1,8 +1,10 @@
-<div class="sidebar case-study">
-  <%= image_tag case_study.image.sidebar, alt: case_study.title if case_study.image? %>
+<% cache ['sidebar', case_study] do %>
+  <div class="sidebar case-study">
+    <%= image_tag case_study.image.sidebar, alt: case_study.title if case_study.image? %>
 
-  <div class="details">
-    <%= link_to case_study.title, case_study, class: 'title' %>
-    <span class="date"><%= l case_study.date, format: :long %></span>
+    <div class="details">
+      <%= link_to case_study.title, case_study, class: 'title' %>
+      <span class="date"><%= l case_study.date, format: :long %></span>
+    </div>
   </div>
-</div>
+<% end %>

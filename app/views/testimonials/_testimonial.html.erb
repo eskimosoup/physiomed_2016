@@ -1,13 +1,15 @@
-<div data-role="testimonial" class="testimonial" id="testimonial-<%= testimonial.id %>">
-  <div class="testimonial-content">
-    <%= simple_format testimonial.content %>
-  </div>
+<% cache ['testimonial', testimonial] do %>
+  <div data-role="testimonial" class="testimonial" id="testimonial-<%= testimonial.id %>">
+    <div class="testimonial-content">
+      <%= simple_format testimonial.content %>
+    </div>
 
-  <div class="testimonial-author">
-    <%= testimonial.author %>
-  </div>
+    <div class="testimonial-author">
+      <%= testimonial.author %>
+    </div>
 
-  <div class="testimonial-role">
-    <%= testimonial.role %>
+    <div class="testimonial-role">
+      <%= testimonial.role %>
+    </div>
   </div>
-</div>
+<% end %>

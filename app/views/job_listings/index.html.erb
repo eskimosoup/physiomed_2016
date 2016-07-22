@@ -14,7 +14,8 @@
 
         <%= render(
           partial: "job_listings/job_listing",
-          collection: @job_listings
+          collection: @job_listings,
+          cache: @job_listings
         ) %>
 
         <%= paginate @job_listings %>
@@ -31,7 +32,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: latest_case_studies,
           articles: nil,
-        }
+        },
+        cache: [wellbeing_zone_health_zone, latest_case_studies]
       ) %>
     </div>
   </div>

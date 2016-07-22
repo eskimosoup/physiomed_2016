@@ -17,12 +17,12 @@
 
       <% @subcategory.videos.each do |video| %>
         <%= render partial: 'subcategories/shared/video_with_guide',
-          locals: { video: video, guide: video.guide } %>
+          locals: { video: video, guide: video.guide }, cache: [@subcategory, video] %>
       <% end %>
 
       <% @subcategory.guides.each do |guide| %>
       <%= render partial: 'subcategories/shared/guide',
-        locals: { guide: guide } %>
+        locals: { guide: guide }, cache: [@subcategory, guide] %>
       <% end %>
     </div>
 
@@ -34,7 +34,8 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: latest_case_studies,
           articles: latest_articles,
-        } %>
+        },
+        cache: [wellbeing_zone_health_zone, latest_case_studies, latest_articles] %>
     </div>
   </div>
 </div>

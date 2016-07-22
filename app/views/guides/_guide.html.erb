@@ -1,15 +1,17 @@
-<div class="guide">
-  <div class="guide-content-wrap">
-    <div class="guide-image">
-      <%= image_tag guide.image_url(:show), alt: guide.title, title: guide.title if guide.image? %>
-      <%= link_to "Download", guide.file.url, class: 'guide-download-button button brown-background ga-event', data: { event_name: 'Guide Download', item_name: guide.title } %>
-    </div>
+<% cache guide do %>
+  <div class="guide">
+    <div class="guide-content-wrap">
+      <div class="guide-image">
+        <%= image_tag guide.image_url(:show), alt: guide.title, title: guide.title if guide.image? %>
+        <%= link_to "Download", guide.file.url, class: 'guide-download-button button brown-background ga-event', data: { event_name: 'Guide Download', item_name: guide.title } %>
+      </div>
 
-    <div class="guide-content">
-      <h3 class="guide-title"><%= guide.title %></h3>
+      <div class="guide-content">
+        <h3 class="guide-title"><%= guide.title %></h3>
 
-      <%= raw guide.content %>
+        <%= raw guide.content %>
 
+      </div>
     </div>
   </div>
-</div>
+<% end %>

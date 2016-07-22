@@ -147,7 +147,8 @@
           health_zone: nil,
           case_studies: nil,
           articles: nil,
-        }
+        },
+        cache: 'call_to_action'
       ) %>
     </div>
   </div>
@@ -156,7 +157,7 @@
     <% if @body_part_facade.videos_with_guides.present? %>
       <% @body_part_facade.videos_with_guides.each do |video| %>
         <%= render partial: 'videos/video_with_guide',
-          locals: { video: video, guide: video.guide } %>
+          locals: { video: video, guide: video.guide }, cache: [@body_part_facade, video] %>
       <% end %>
     <% end %>
 
@@ -182,7 +183,7 @@
 
          <div class="guides wellbeing">
            <%= render partial: 'guides/guide',
-             collection: @body_part_facade.guides, as: :guide %>
+             collection: @body_part_facade.guides, as: :guide, cache: [@body_part_facade.guides] %>
          </div>
        </div>
      </section>
@@ -207,7 +208,8 @@
           <%= render(
             partial: "wellbeing_zone/body_part_sections/body_part_section",
             collection: @body_part_facade.body_part_sections,
-            as: :body_part_section
+            as: :body_part_section,
+            cache: @body_part_facade.body_part_sections
           ) %>
         </div>
       </div>
@@ -219,7 +221,8 @@
         <% if @body_part_facade.people_helped_section %>
           <%= render(
             partial: "people_helped_sections/people_helped_section",
-            object: @body_part_facade.people_helped_section
+            object: @body_part_facade.people_helped_section,
+            cache: @body_part_facade.people_helped_section
           ) %>
         <% end %>
 
@@ -227,7 +230,8 @@
           <div class="video-section">
             <%= render(
               partial: "videos/video",
-              object: @body_part_facade.video
+              object: @body_part_facade.video,
+              cache: @body_part_facade.video
             ) %>
           </div>
         <% end %>
@@ -235,25 +239,29 @@
 
       <%= render(
         "wellbeing_zone/shared/team_member_section.html.erb",
-        team_members: @body_part_facade.team_members
+        team_members: @body_part_facade.team_members,
+        cache: @body_part_facade.team_members
       ) %>
 
       <section class="flexbox-wrap  case-studies-and-testimonials">
         <%= render(
           "wellbeing_zone/shared/case_studies_section",
-          case_studies: @body_part_facade.case_studies
+          case_studies: @body_part_facade.case_studies,
+          cache: @body_part_facade.case_studies
         ) %>
 
         <%= render(
           "wellbeing_zone/shared/testimonials_section",
-          testimonials: @body_part_facade.testimonials
+          testimonials: @body_part_facade.testimonials,
+          cache: @body_part_facade.testimonials
         ) %>
       </section>
 
       <section class="flexbox-wrap" id="faqs">
         <%= render(
           "wellbeing_zone/shared/faqs_section",
-          faqs: @body_part_facade.faqs
+          faqs: @body_part_facade.faqs,
+          cache: @body_part_facade.faqs,
         ) %>
       </section>
     </div>
