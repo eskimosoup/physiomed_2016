@@ -116,11 +116,11 @@
         </ul>
 
         <ul class="body-part-section-navigation-links">
-          <%= content_tag :li, (link_to 'Guides', '#guides') if @general_wellbeing_facade.guides.any? %>
-          <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @general_wellbeing_facade.team_members.any? %>
-          <%= content_tag :li, (link_to "Case Studies", '#case-studies') if @general_wellbeing_facade.case_studies.any? %>
-          <%= content_tag :li, (link_to "Testimonials", '#testimonials') if @general_wellbeing_facade.testimonials.any? %>
-          <%= content_tag :li, (link_to "FAQs", '#faqs') if @general_wellbeing_facade.faqs.any? %>
+          <%= content_tag :li, (link_to 'Guides', '#guides') if @general_wellbeing_facade.guides.present? %>
+          <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @general_wellbeing_facade.team_members.present? %>
+          <%= content_tag :li, (link_to "Case Studies", '#case-studies') if @general_wellbeing_facade.case_studies.present? %>
+          <%= content_tag :li, (link_to "Testimonials", '#testimonials') if @general_wellbeing_facade.testimonials.present? %>
+          <%= content_tag :li, (link_to "FAQs", '#faqs') if @general_wellbeing_facade.faqs.present? %>
         </ul>
       </div>
     </div>

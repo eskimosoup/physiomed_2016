@@ -8,24 +8,25 @@
   </div>
 
   <div class="wellbeing content">
-    <% if @wellbeing_facade.body_parts.any? %>
+    <% if @wellbeing_facade.body_parts.present? %>
       <section class="flexbox-wrap">
         <div class="body-parts-container">
           <div class="body-parts">
-
-            <div class="body-part">
-              <%= link_to wellbeing_zone_general_wellbeing_path do %>
-                <div class="name text-center wellbeing-full-section-button green-background">
-                  <%= @general_wellbeing_category.name %>
-                </div>
-                <%= image_tag @general_wellbeing_category.image.show, alt: @general_wellbeing_category.name %>
-                <% if @general_wellbeing_category.tagline.present? %>
-                  <div class="tagline text-center">
-                    <%= @general_wellbeing_category.tagline %>
+            <% if @general_wellbeing_category.present? %>
+              <div class="body-part">
+                <%= link_to wellbeing_zone_general_wellbeing_path do %>
+                  <div class="name text-center wellbeing-full-section-button green-background">
+                    <%= @general_wellbeing_category.name %>
                   </div>
+                  <%= image_tag @general_wellbeing_category.image.show, alt: @general_wellbeing_category.name %>
+                  <% if @general_wellbeing_category.tagline.present? %>
+                    <div class="tagline text-center">
+                      <%= @general_wellbeing_category.tagline %>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
 
             <%= render(
               partial: "wellbeing_zone/body_parts/body_part",

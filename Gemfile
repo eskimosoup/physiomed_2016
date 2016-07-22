@@ -37,7 +37,7 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'web-console'
-  gem 'rack-mini-profiler', require: false
+  gem 'rack-mini-profiler'
 end
 
 group :development, :test do

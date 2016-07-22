@@ -1,6 +1,6 @@
 class WellbeingFacade < WellbeingZoneFacade
   def body_parts
-    @body_parts ||= BodyPart.displayed.order(position: :asc)
+    @body_parts ||= BodyPart.includes(:category).displayed.order(position: :asc)
   end
 
   def video

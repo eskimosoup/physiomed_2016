@@ -116,17 +116,17 @@
         </ul>
 
         <ul class="body-part-section-navigation-links">
-          <% if @body_part_facade.videos_with_guides.any? %>
+          <% if @body_part_facade.videos_with_guides.present? %>
             <% @body_part_facade.videos_with_guides.each do |video| %>
-              <%= content_tag :li, (link_to video.title, "#video-with-guide-#{video.id}") if @body_part_facade.videos_with_guides.any? %>
+              <%= content_tag :li, (link_to video.title, "#video-with-guide-#{video.id}") if @body_part_facade.videos_with_guides.present? %>
             <% end %>
           <% end %>
-          <%= content_tag :li, (link_to 'Guides', '#guides') if @body_part_facade.guides.any? %>
-          <%= content_tag :li, (link_to "Know Your #{@body_part_facade.name.titlecase}", '#body-part-sections') if @body_part_facade.body_part_sections.any? %>
-          <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @body_part_facade.team_members.any? %>
-          <%= content_tag :li, (link_to "Case Studies", '#case-studies') if @body_part_facade.case_studies.any? %>
-          <%= content_tag :li, (link_to "Testimonials", '#testimonials') if @body_part_facade.testimonials.any? %>
-          <%= content_tag :li, (link_to "FAQs", '#faqs') if @body_part_facade.faqs.any? %>
+          <%= content_tag :li, (link_to 'Guides', '#guides') if @body_part_facade.guides.present? %>
+          <%= content_tag :li, (link_to "Know Your #{@body_part_facade.name.titlecase}", '#body-part-sections') if @body_part_facade.body_part_sections.present? %>
+          <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @body_part_facade.team_members.present? %>
+          <%= content_tag :li, (link_to "Case Studies", '#case-studies') if @body_part_facade.case_studies.present? %>
+          <%= content_tag :li, (link_to "Testimonials", '#testimonials') if @body_part_facade.testimonials.present? %>
+          <%= content_tag :li, (link_to "FAQs", '#faqs') if @body_part_facade.faqs.present? %>
         </ul>
       </div>
     </div>
@@ -153,14 +153,14 @@
   </div>
 
   <div id="main-content" class="content">
-    <% if @body_part_facade.videos_with_guides.any? %>
+    <% if @body_part_facade.videos_with_guides.present? %>
       <% @body_part_facade.videos_with_guides.each do |video| %>
         <%= render partial: 'videos/video_with_guide',
           locals: { video: video, guide: video.guide } %>
       <% end %>
     <% end %>
 
-    <% if @body_part_facade.guides.any? %>
+    <% if @body_part_facade.guides.present? %>
      <section class="box-wrap" id="guides">
        <div class="guides-container">
 
@@ -188,7 +188,7 @@
      </section>
     <% end %>
 
-    <% if @body_part_facade.body_part_sections.any? %>
+    <% if @body_part_facade.body_part_sections.present? %>
       <%= content_for :javascript do %>
         <%= javascript_include_tag "components/body_part_sections" %>
       <% end %>
@@ -249,15 +249,6 @@
           testimonials: @body_part_facade.testimonials
         ) %>
       </section>
-
-      <!--
-        <section class="flexbox-wrap">
-          <%#= render(
-            "wellbeing_zone/shared/articles_section",
-            articles: @body_part_facade.articles
-          ) %>
-        </section>
-      -->
 
       <section class="flexbox-wrap" id="faqs">
         <%= render(
