@@ -1,5 +1,131 @@
 <%= content_for :javascript do %>
-  <%= javascript_include_tag 'components/physio-searches' %>
+  <script>
+    var markers = [];
+    var map, locations, latlngbounds, lastMarker;
+    var infoWindows = [];
+    var apiKey = 'AIzaSyDw5ll7D-Uln_pW-eDKsC61NaoS2gCQUZo'; // seo.optimisd@gmail.com
+
+    function createMarker(number, currentMap, lat, long) {
+      return new MarkerWithLabel({
+              position: new google.maps.LatLng(lat, long),
+                map: currentMap,
+                icon: "<%= asset_path 'icons/google-map-pin.png' %>",
+                labelContent: number,
+                labelAnchor: new google.maps.Point(10, 35),
+                labelClass: "map-icon-label", // the CSS class for the label
+                labelInBackground: false,
+                zIndex: number,
+              });
+    }
+
+    function initialize() {
+      $.getScript("<%= asset_path 'vendor/marker-with-label.js' %>", function() {
+        if (document.getElementById("physio-search-map-canvas")) {
+          locations = $('#physio-search-map-canvas').data('locations');
+
+          if (locations) {
+            var mapOptions = {
+              center: new google.maps.LatLng(53.743317, -0.331004),
+              zoom: 18,
+              scrollwheel: false
+            };
+
+            map = new google.maps.Map(document.getElementById("physio-search-map-canvas"), mapOptions);
+
+            var infoWindow = new google.maps.InfoWindow({
+              pixelOffset: new google.maps.Size(0, -30)
+            });
+
+            var latLngs = [];
+            $.each(locations, function(index, value) {
+              var myLatLng = new google.maps.LatLng(value.latitude, value.longitude);
+              latLngs[index] = myLatLng;
+              var contentString = '<div class="offices-info-window">';
+
+              if (value.name != null) {
+                contentString += '<strong>' + value.name + '</strong><br />';
+              }
+
+              contentString += 'To book an appointment<br />';
+              contentString += 'Call 0113 229 1300<br />';
+              contentString += '</div>';
+
+              var infowindow = new google.maps.InfoWindow({
+                content: contentString
+              });
+
+              var image = '<%= image_url "icons/google-map-pin.png" %>';
+
+              marker = createMarker(index + 1, map, value.latitude, value.longitude);
+              markers.push(marker);
+              infoWindows.push(infoWindow);
+
+              // http://stackoverflow.com/questions/35570180/markerwithlabel-in-googlemaps-causes-infowindow-to-be-displayed-faraway-from-mar
+              google.maps.event.addListener(marker, 'click', function(){
+                var index = markers.indexOf(this);
+                $('.physio-search-result').removeClass('active');
+                $('.physio-search-result-' + index).addClass('active');
+
+                var string = '<div class="offices-info-window">';
+                if(value.name) {
+                  string += '<strong>' + value.name + '</strong><br />';
+                }
+                string += 'To book an appointment<br />';
+                string += 'Call 0113 229 1300';
+                string += '</div>';
+
+
+                infoWindow.setContent(string);
+                infoWindow.setPosition(this.getPosition());
+                window.setTimeout(function() {
+                  map.setZoom(18);
+                  infoWindow.open(map);
+                }, 1000);
+              });
+
+              google.maps.event.addListener(infoWindow, 'closeclick', function() {
+                if(latLngs.length > 1) {
+                  map.fitBounds(latlngbounds);
+                }
+                $('.physio-search-result').removeClass('active');
+              });
+            });
+
+            latlngbounds = new google.maps.LatLngBounds();
+            $.each(latLngs, function(index, n) {
+              latlngbounds.extend(n);
+            });
+            map.setCenter(latlngbounds.getCenter());
+            if(latLngs.length > 1) {
+              map.fitBounds(latlngbounds);
+            }
+          }
+        }
+      })
+    }
+
+    function closeInfoWindow() {
+      if (lastMarker != null) {
+        infoWindows[lastMarker].close();
+      }
+    }
+
+    function loadScript() {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&callback=initialize';
+      script.async = 'async';
+      script.defer = 'defer';
+      document.body.appendChild(script);
+    }
+
+    // The function to trigger the marker click, 'id' is the reference index to the 'markers' array.
+    function locationClick(id) {
+      google.maps.event.trigger(markers[id], 'click');
+    }
+
+    window.onload = loadScript;
+  </script>
 <% end %>
 
 <div class="hero-section standard-page-background">
