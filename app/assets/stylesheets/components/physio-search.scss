@@ -33,3 +33,14 @@ form.new_physio_search {
   font-size: rem(14px);
   font-weight: $open-sans-semibold;
 }
+
+.map-icon-label {
+  background: rgba($green, .75);
+  border-radius: 50%;
+  color: $white;
+  font-size: rem(16px);
+  font-weight: $open-sans-semibold;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+}
