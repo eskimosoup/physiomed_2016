@@ -14,6 +14,7 @@ Rails.application.config.assets.precompile += %w(
   roi_savings/*
   tinymce/*
   components/*.js
+  vendor/marker-with-label.js
   vendor/modernizr.js
   vendor/jquery.viewport.js
   vendor/jquery.doubletaptogo.js
