@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 7d98529bc2dcb0249f917a497dcf959b42ac9101
+  revision: e77f9606b24c90220a74dcca10b930b2c5baa6c3
   branch: master
   specs:
     optimadmin (0.0.32)
