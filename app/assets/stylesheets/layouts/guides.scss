@@ -2,6 +2,7 @@
   @include clearfix;
   border-bottom: 1px solid $green;
   text-align: center;
+  position: relative;
 
   .button.brown-background {
     float: left;
@@ -21,9 +22,11 @@
   width: 100%;
 
   .slick-controls {
-    float: right;
-    margin: rem(22px 22px 0);
-    position: relative;
+    height: 30px;
+    padding: rem(40px 0 0);
+    position: absolute;
+    right: 0;
+    width: 40px;
   }
 
   @include media('>=768px') {
