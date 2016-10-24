@@ -32,7 +32,7 @@ en:
     labels:
       practice_application:
         number_of_locations: How many locations do you have?
-        manual_therapy: What % of you treatments are manual therapy?
+        manual_therapy: What % of your treatments are manual therapy?
         capacity: What % of capacity are you running at?
         receptionist: Do you have a full time receptionist?
         tm2_or_pps: Do you have TM2 or PPS?
