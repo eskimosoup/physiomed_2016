@@ -196,18 +196,52 @@
 
   <% if @homepage_facade.clients.any? %>
     <%= content_for :javascript do %>
-      <%= javascript_include_tag "components/clients/home" %>
+      <script>
+        $(document).ready(function() {
+          $(".clients").slick({
+            slidesToShow: <%= @homepage_facade.job_listings.blank? ? 6 : 4 %>,
+            slidesToScroll: 1,
+            autoplay: true,
+            arrows: false,
+            responsive: [
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2
+                }
+              },
+            ]
+          });
+        });
+      </script>
     <% end %>
     <section class="box-wrap">
-      <div class="clients-container">
-        <h2 class="green-border-bottom text-center  content-box-title">Some of our happy clients</h2>
-        <div class="clients">
+      <div class="clients-container <%= 'full-width' if @homepage_facade.job_listings.blank? %>">
+        <div class="clients-container-content">
+          <h2 class="green-border-bottom text-center  content-box-title">Some of our happy clients</h2>
+          <div class="clients">
+            <%= render(
+              partial: "clients/home_client",
+              collection: @homepage_facade.clients,
+              as: :client,
+              cache: @homepage_facade.clients
+            ) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="job-listings-container">
+        <div class="job-listings-content">
+          <h2 class="green-border-bottom text-center  content-box-title">We're hiring</h2>
+
           <%= render(
-            partial: "clients/home_client",
-            collection: @homepage_facade.clients,
-            as: :client,
-            cache: @homepage_facade.clients
+            partial: "job_listings/home_job_listing",
+            collection: @homepage_facade.job_listings.limit(1),
+            as: :job_listing,
+            cache: @homepage_facade.job_listings
           ) %>
+
+          <%= link_to 'View all', job_listings_path, class: 'button brown-background job-listings-view-all' %>
         </div>
       </div>
     </section>
