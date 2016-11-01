@@ -1,0 +1,9 @@
+<% cache job_listing do %>
+  <div class="job-listing">
+    <div class="content">
+      <%= link_to job_listing.title, job_listing, class: 'title' %>
+
+      <%= link_to 'Apply Now', job_listing, class: 'button' %>
+    </div>
+  </div>
+<% end %>

@@ -42,4 +42,8 @@ class HomeFacade
   def clients
     @cients ||= Client.displayed.ordered_by_position
   end
+
+  def job_listings
+    @job_listings ||= JobListing.displayed.limit(2).order(display_until: :asc)
+  end
 end

@@ -108,10 +108,38 @@
   }
 
   .clients-container {
+    @include breakpoint(medium) {
+      @include flex-grid-column(8);
+      padding-left: 0;
+    }
+
+    &.full-width {
+      @include flex-grid-column($columns: 12, $gutter: (medium: 0));
+    }
+  }
+
+  .clients-container-content {
     @include border-radius-with-box-shadow;
-    @include flex-grid-column(12);
     background-color: $white;
-    padding: rem-calc(20px);
+    height: 100%;
+    padding: rem(20px);
+  }
+
+  .job-listings-container {
+    @include breakpoint(medium) {
+      @include flex-grid-column(4);
+    }
+  }
+
+  .job-listings-content {
+    @include border-radius-with-box-shadow;
+    @include clearfix;
+    background-color: $white;
+    padding: rem(20px);
+  }
+
+  .job-listings-view-all {
+    float: right;
   }
 
   .flexbox-wrap {
