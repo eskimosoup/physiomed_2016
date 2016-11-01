@@ -5,7 +5,7 @@ class JobApplicationMailer < ApplicationMailer
     attachments[@job_application.cv.file.filename] = @job_application.cv.read
 
     mail to: job_application_email,
-         subject: I18n.t('mailers.job_application.application_made.subject')
+         subject: "#{job_listing.title} - #{I18n.t('mailers.job_application.application_made.subject')}"
   end
 
   private
