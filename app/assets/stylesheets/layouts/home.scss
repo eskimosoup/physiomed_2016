@@ -126,6 +126,9 @@
   }
 
   .job-listings-container {
+    @include flex-grid-column($columns: 12, $gutter: (small: 0));
+    margin-top: rem(20px);
+
     @include breakpoint(medium) {
       @include flex-grid-column(4);
     }
