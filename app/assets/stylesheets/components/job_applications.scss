@@ -28,3 +28,7 @@ a#apply-button {
     @include flex-grid-column(6);
   }
 }
+
+.job-application-form {
+  margin: rem(20px 0 0);
+}

@@ -35,8 +35,12 @@
           <%= link_to "View All", job_listings_path, class: "button brown-background" %>
         </div>
       </div>
-      <div id="job-application-form" class="page-content">
+
+      <div id="job-application-form" class="job-application-form page-content">
         <h3>Apply Now</h3>
+
+        <%= render 'shared/flash_messages' %>
+
         <%= render(
           partial: 'job_applications/form',
           locals: {
