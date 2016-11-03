@@ -12,7 +12,7 @@ class SlugConstraint
   attr_reader :model
 
   def slug_exists?(request)
-    requested_slug = request.path_parameters[:id]
+    requested_slug = request.path_parameters[:id] || request.path_parameters[:body_part_id]
 
     if uses_friendly_id_table?
       FriendlyId::Slug.where(sluggable_type: model.to_s).exists?(slug: requested_slug)

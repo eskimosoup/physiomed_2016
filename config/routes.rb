@@ -25,7 +25,12 @@ Rails.application.routes.draw do
 
   namespace :wellbeing_zone, path: 'well-being-zone' do
     get 'general-well-being', to: 'general_wellbeings#show', as: :general_wellbeing
-    resources :body_parts, only: [:show], path: '', constraints: SlugConstraint.new(BodyPart)
+
+    get 'general-well-being/guides', to: 'guides#general_wellbeing'
+
+    resources :body_parts, only: [:show], path: '', constraints: SlugConstraint.new(BodyPart) do
+      resources :guides, only: :index
+    end
     root to: 'wellbeings#show'
   end
 
