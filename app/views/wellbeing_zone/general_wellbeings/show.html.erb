@@ -150,7 +150,8 @@
     <section class="box-wrap" id="guides">
       <div class="guides-container">
         <div class="body-part-guides-title">
-          <%= link_to "See more", @general_wellbeing_facade.general_wellbeing_categorisation, class: "button brown-background" if @general_wellbeing_facade.general_wellbeing_categorisation.present? %>
+          <%= link_to 'See all', wellbeing_zone_general_well_being_guides_path(anchor: 'guides'), class: "button brown-background" if @general_wellbeing_facade.guides.size > 2 %>
+          <%#= link_to "See more", @general_wellbeing_facade.general_wellbeing_categorisation, class: "button brown-background" if @general_wellbeing_facade.general_wellbeing_categorisation.present? %>
 
           <div class="slick-controls">
 

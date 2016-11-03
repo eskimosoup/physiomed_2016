@@ -166,7 +166,8 @@
        <div class="guides-container">
 
          <div class="body-part-guides-title">
-           <%= link_to "See more", @body_part_facade.general_wellbeing_categorisation, class: "button brown-background" if @body_part_facade.general_wellbeing_categorisation.present? %>
+           <%= link_to 'See all', wellbeing_zone_body_part_guides_path(@body_part, anchor: 'guides'), class: "button brown-background" if @body_part_facade.guides.size > 2 %>
+           <%#= link_to "See more", @body_part_facade.general_wellbeing_categorisation, class: "button brown-background" if @body_part_facade.general_wellbeing_categorisation.present? %>
 
            <div class="slick-controls">
              <%= button_tag(type: 'button', class: "slick-guides slick-prev") do %>
