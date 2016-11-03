@@ -41,6 +41,10 @@
   text-align: center;
 }
 
+.wellbeing-guides-content {
+  padding: rem(1px);
+}
+
 .guides {
   @include media('>=768px') {
     @include flex-grid-row;
@@ -51,7 +55,7 @@
 
     @include media('>=768px') {
       @include flex-grid-column(6, $gutter: (small: 0));
-      margin: rem(15px) auto;
+      margin: rem(15px) 0;
     }
   }
 }
