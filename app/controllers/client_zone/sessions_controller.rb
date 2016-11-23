@@ -6,7 +6,7 @@ module ClientZone
     end
 
     def create
-      user = User.find_by(username: params[:username])
+      user = User.active.find_by(username: params[:username])
       if user && user.authenticate(params[:password])
         login_and_redirect_user(user)
       else

@@ -1,7 +1,21 @@
 FactoryGirl.define do
+  factory :client_zone_service, class: 'ClientZone::Service' do
+    title 'MyString'
+    summary 'MyText'
+    file { File.open(File.join(Rails.root, 'spec/support/images/landscape_image.jpg')) }
+    display true
+    position 1
+
+    trait :with_image do
+      image { File.open(File.join(Rails.root, 'spec/support/images/landscape_image.jpg')) }
+    end
+
+    factory :client_zone_service_with_image, traits: [:with_image]
+  end
   factory :client_zone_user, class: 'ClientZone::User' do
     username 'MyString'
     password 'MyString'
+    password_confirmation 'MyString'
     auth_token 'MyString'
     active true
   end

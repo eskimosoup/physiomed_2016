@@ -1,5 +1,7 @@
 module ClientZone
   class User < ActiveRecord::Base
+    require_dependency 'client_zone'
+
     include OptimadminScopes
 
     validates :username,
