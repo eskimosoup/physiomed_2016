@@ -1,0 +1,18 @@
+<div class="body-part">
+  <div class="name text-center wellbeing-full-section-button green-background">
+    <%= body_part.name %>
+  </div>
+
+  <%= image_tag body_part.image %>
+
+  <div class="body-part-client-zone-buttons">
+    <%= link_to 'View Guides', client_zone_guide_path(body_part, anchor: 'guides'), class: 'button brown-background' if body_part.guides.present? %>
+    <%= link_to 'View Videos', client_zone_videos_path(anchor: body_part.name.parameterize), class: 'button brown-background' if body_part.videos.present? %>
+  </div>
+
+  <% if body_part.tagline.present? %>
+    <div class="tagline text-center">
+      <%= body_part.tagline %>
+    </div>
+  <% end %>
+</div>

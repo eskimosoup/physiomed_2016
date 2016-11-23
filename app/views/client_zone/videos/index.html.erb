@@ -1,4 +1,69 @@
 <%= content_for :head do %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
+  <%= javascript_include_tag 'vendor/jquery.viewport' %>
+
+  <script>
+    // http://craftedpixelz.co.uk/blog/conditional-js-with-modernizr-mq/
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      var $bodyPartNavigation, $stickyBodyPartNavigation;
+
+      function setStickyNavigation() {
+        if($('.hero-navigation:in-viewport').length === 1 && $stickyBodyPartNavigation !== undefined) {
+          $stickyBodyPartNavigation.hide();
+        } else if($stickyBodyPartNavigation !== undefined) {
+          $stickyBodyPartNavigation.show();
+        }
+      }
+
+      function buildStickyNavigation() {
+        var visibleLis = $('.body-part-section-navigation-links').html();
+        var contactMethods = $('.page-contact-method-links').html();
+        $('.sticky-hero-navigation-links').html(visibleLis);
+        $('.sticky-page-contact-methods').html(contactMethods);
+        setStickyNavigation();
+      }
+
+      $(window).load(function() {
+        $bodyPartNavigation = $('.hero-navigation');
+        $stickyBodyPartNavigation = $('.sticky-hero-navigation');
+        buildStickyNavigation();
+      });
+
+      $(window).scroll(function() {
+        setStickyNavigation();
+      });
+    }
+
+    // Adapted from http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
+    var $root, offsetTop = 0;
+
+    function smoothScroll(elem) {
+      $root.animate({
+        scrollTop: $(elem).offset().top - offsetTop
+      }, 500, function () {
+        window.location.hash = elem;
+      });
+    }
+
+    $(function() {
+      if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+        offsetTop = 50;
+      }
+
+      $root = $('html, body');
+
+      var windowAnchor = window.location.hash;
+      if(windowAnchor !== undefined && $(windowAnchor).length === 1) {
+        smoothScroll(windowAnchor);
+      }
+    });
+
+    $(document).on('click', 'a[href^="#"]:not(.body-part-tabs a)', function() {
+      var elem = $.attr(this, 'href');
+      smoothScroll(elem);
+      return false;
+    });
+  </script>
   <script>
     $(document).on('click', '.video-embed-toggle', function() {
       var videoId = $(this).data('video-id');
@@ -42,7 +107,7 @@
     </div>
   </div>
 
-  <div id="main-content" class="content">
+  <div id="main-content" class="content client-zone-content">
     <section class="box-wrap">
       <div class="videos-with-guides-container">
         <div class="videos-with-guides-container-title">
@@ -70,8 +135,16 @@
       </div>
     </section>
 
-    <%= render partial: 'client_zone/videos/video',
-               collection: @videos,
-               as: :video %>
+    <% @categories.each do |category_title, category| %>
+      <% videos = category.first.videos.displayed.reject{|x| x.id == 1} %>
+      <% next unless videos.present? %>
+      <h2 id="<%= category.first.name.parameterize %>" class="hero-section-title">
+        <%= category_title %>
+      </h2>
+
+        <%= render partial: 'client_zone/videos/video',
+                 collection: videos,
+                 as: :video %>
+    <% end %>
   </div>
 </div>
