@@ -43,6 +43,12 @@ Rails.application.routes.draw do
     resources :services, only: :index
     resources :articles, only: [:index, :show]
 
+    resources :guides, only: [:index, :show] do
+      get 'general-well-being', on: :collection
+    end
+
+    # resources :videos, only: :index
+
     root to: 'homes#show'
   end
 
