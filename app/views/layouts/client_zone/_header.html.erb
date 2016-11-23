@@ -1,0 +1,61 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
+  <script>
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      $(document).on({
+        mouseenter: function (e) {
+          var widthOffset = 0;
+
+          var index = $(this).find('a').parent().index();
+          $(".primary-header-navigation li").slice(0, index).each(function(index, element) {
+            widthOffset += parseInt($(element).width());
+          });
+
+          widthOffset += parseInt($(this).find('a').parent().width()) / 2;
+
+          $(this).find('a').css('border-bottom', 0);
+          var $dropdown = $(this).find('.dropdown-arrow');
+          $dropdown.css('margin-left', widthOffset);
+        },
+        mouseleave: function () {
+          $(this).find('a').removeAttr('style');
+          $(this).find('.dropdown-arrow').removeAttr('style');
+        }
+      }, '.primary-header-navigation li');
+    }
+  </script>
+<% end %>
+
+
+<header class="primary-header">
+  <div class="primary-header-content-wrap">
+    <div class="primary-header-branding">
+      <%= link_to client_zone_root_url, title: "Physio Med" do %>
+        <%= image_tag "logo.jpg", alt: "Physio Med", id: "physiomed-logo" %>
+      <% end %>
+      <%= link_to (image_tag 'icons/menu-icon.png', alt: 'Menu'), '#', class: 'toggle-menu toggle-class',
+                  data: { container: '.primary-header-navigation', class: 'visible', return: false } %>
+    </div>
+
+    <div class="primary-header-navigation-content">
+      <div class="primary-header-content-wrap">
+        <div class="primary-header-content">
+          <%= render 'shared/clinic_and_client_area_buttons' %>
+        </div>
+      </div>
+
+      <div class="primary-header-content-wrap">
+        <nav class="primary-header-navigation-wrap">
+          <ul class="primary-header-navigation" id="header-navigation">
+            <%= header_menu_items(menu_items: header_menu.menu_items) %>
+          </ul>
+        </nav>
+
+        <div class="primary-header-cta">
+          <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'primary-header-call-us' %>
+          <%= link_to 'Find Us', new_contact_path(anchor: 'map-canvas'), class: 'primary-header-find-us' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,5 +1,7 @@
 module ClientZone
   class SessionsController < BaseController
+    layout 'application'
+
     skip_before_action :valid_user, only: [:new, :create]
 
     def new
@@ -19,6 +21,12 @@ module ClientZone
       cookies[:auth_token] = nil
       session[:request_url] = nil
       redirect_to new_client_zone_session_path, notice: 'You are now logged out'
+    end
+
+    private
+
+    helper_method def header_menu
+      @header_menu ||= Optimadmin::Menu.new(name: 'header')
     end
   end
 end

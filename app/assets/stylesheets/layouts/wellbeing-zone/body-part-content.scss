@@ -4,5 +4,9 @@
   @include media('>=768px') {
     @include flex-grid-column(6);
     margin: 0;
+
+    &.full-width {
+      @include flex-grid-column(9);      
+    }
   }
 }

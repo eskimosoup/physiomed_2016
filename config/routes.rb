@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :body_parts, only: [:show], path: '', constraints: SlugConstraint.new(BodyPart) do
       resources :guides, only: :index
     end
+
     root to: 'wellbeings#show'
   end
 
@@ -38,6 +39,9 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create] do
       get 'logout', on: :collection
     end
+
+    resources :services, only: :index
+    # resources :articles, only: [:index, :show]
 
     root to: 'homes#show'
   end

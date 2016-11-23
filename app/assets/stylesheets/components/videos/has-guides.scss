@@ -43,6 +43,10 @@
       &.full-width {
         @include flex-grid-column(7);
       }
+
+      &.large-width {
+        @include flex-grid-column(10);
+      }
     }
   }
 

@@ -2,9 +2,15 @@ module ClientZone
   class BaseController < ::ApplicationController
     include ClientZone::SessionsHelper
 
+    layout 'client_zone'
+
     before_action :valid_user
 
     private
+
+    helper_method def header_menu
+      @header_menu ||= Optimadmin::Menu.new(name: 'client_zone_header')
+    end
 
     helper_method def current_user
       @current_user ||= User.find_by(auth_token: cookies[:auth_token])
