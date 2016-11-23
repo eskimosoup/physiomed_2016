@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123113359) do
+ActiveRecord::Schema.define(version: 20161123120936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,18 +30,19 @@ ActiveRecord::Schema.define(version: 20161123113359) do
   add_index "additional_home_contents", ["video_id"], name: "index_additional_home_contents_on_video_id", using: :btree
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",                                   null: false
-    t.text     "summary",                                 null: false
-    t.text     "content",                                 null: false
+    t.string   "title",                                    null: false
+    t.text     "summary",                                  null: false
+    t.text     "content",                                  null: false
     t.string   "image"
-    t.date     "date",                                    null: false
-    t.boolean  "display",                  default: true, null: false
-    t.boolean  "home_highlight",           default: true, null: false
+    t.date     "date",                                     null: false
+    t.boolean  "display",                  default: true,  null: false
+    t.boolean  "home_highlight",           default: true,  null: false
     t.integer  "author_id"
     t.string   "slug"
     t.string   "url_originally_posted_on"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "display_on_client_zone",   default: false
   end
 
   add_index "articles", ["author_id"], name: "index_articles_on_author_id", using: :btree
