@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       get 'general-well-being', on: :collection
     end
 
-    # resources :videos, only: :index
+    resources :videos, only: [:index, :show]
 
     root to: 'homes#show'
   end

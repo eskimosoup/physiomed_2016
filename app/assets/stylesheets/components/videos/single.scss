@@ -30,3 +30,14 @@
 .youtube-title {
   @include content-item-title;
 }
+
+.video-play-link {
+  position: relative;
+}
+
+.video-play-icon {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
