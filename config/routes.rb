@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
 
     resources :services, only: :index
-    # resources :articles, only: [:index, :show]
+    resources :articles, only: [:index, :show]
 
     root to: 'homes#show'
   end
