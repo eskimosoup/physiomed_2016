@@ -29,6 +29,7 @@ gem 'geocoder', '~> 1.3', '>= 1.3.4'
 gem 'twitter'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
+gem 'bcrypt'
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'

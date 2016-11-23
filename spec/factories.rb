@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :client_zone_user, class: 'ClientZone::User' do
+    username 'MyString'
+    password 'MyString'
+    auth_token 'MyString'
+    active true
+  end
+
   factory :subcategories_guide, class: 'Subcategories::Guide' do
     subcategory
     guide

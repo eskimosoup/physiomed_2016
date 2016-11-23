@@ -1,0 +1,63 @@
+<%= form_for(@client_zone_user) do |f| %>
+  <% if @client_zone_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client_zone_user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @client_zone_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <li><a href="#tabs-2">Media</a></li>
+      <li><a href="#tabs-3">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+            <div class="field">
+        <%= f.label :username %><br>
+        <%= f.text_field :username %>
+      </div>
+            <div class="field">
+        <%= f.label :password %><br>
+        <%= f.text_field :password %>
+      </div>
+            <div class="field">
+        <%= f.label :password_confirmation %><br>
+        <%= f.text_field :password_confirmation %>
+      </div>
+      
+      
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-2' do %>
+      
+      
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+      
+      
+            <div class="field">
+        <%= f.label :active %><br>
+        <%= f.check_box :active %>
+      </div>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+    <%= f.submit 'Save and continue editing' %>
+  </div>
+<% end %>

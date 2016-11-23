@@ -1,0 +1,18 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Client Zone Users' %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'User', object: ClientZone::User, path: new_client_zone_user_path %>
+  </div>
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-9 small-8' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Username
+    <% end %>
+    <%= list_item { 'Active' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+  <div class="module-sortable" data-module="ClientZone::User">
+    <%= render partial: 'user', collection: @client_zone_users, as: :user_presenter %>
+  </div>
+</div>

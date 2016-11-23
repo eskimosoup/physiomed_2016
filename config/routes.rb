@@ -34,6 +34,14 @@ Rails.application.routes.draw do
     root to: 'wellbeings#show'
   end
 
+  namespace :client_zone, path: 'client-zone' do
+    resources :sessions, only: [:new, :create] do
+      get 'logout', on: :collection
+    end
+
+    root to: 'homes#show'
+  end
+
   mount Optimadmin::Engine => '/admin'
 
   # This has to be the last route in your list
@@ -64,6 +72,10 @@ Optimadmin::Engine.routes.draw do
     member do
       get 'toggle'
     end
+  end
+
+  namespace :client_zone, path: 'client-zone' do
+    resources :users, concerns: [:orderable, :toggleable], except: [:show]
   end
 
   resources :additional_home_contents, concerns: [:orderable, :toggleable], except: [:show]
