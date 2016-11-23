@@ -80,6 +80,7 @@ Optimadmin::Engine.routes.draw do
 
   namespace :client_zone, path: 'client-zone' do
     resources :users, concerns: [:orderable, :toggleable], except: [:show]
+    resources :additional_contents, concerns: [:orderable, :toggleable], except: [:show]
     resources :services, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   end
 

@@ -2,7 +2,7 @@
   <div class="hero-section-primary-content">
     <div class="body-part-summary-wrap full-width">
       <h1 class="hero-section-title full-width">
-        Services
+        <%= @additional_content.title if @additional_content.present? %>
       </h1>
     </div>
   </div>
@@ -10,7 +10,7 @@
   <div class="hero-section-primary-content">
     <div class="body-part-summary-wrap full-width">
       <div class="body-part-summary">
-        
+        <%= raw @additional_content.content if @additional_content.present? %>
       </div>
     </div>
 

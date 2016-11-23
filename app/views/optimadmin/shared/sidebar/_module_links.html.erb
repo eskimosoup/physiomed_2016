@@ -72,6 +72,7 @@
       </div>
 
       <ul class="content-category-list">
+        <%= module_link(content: "Additional Contents", model: ClientZone::AdditionalContent, path: client_zone_additional_contents_path) %>
         <%= module_link(content: "Services", model: ClientZone::Service, path: client_zone_services_path) %>
         <%= module_link(content: "Users", model: ClientZone::User, path: client_zone_users_path) %>
       </ul>

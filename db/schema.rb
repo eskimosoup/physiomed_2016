@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123120936) do
+ActiveRecord::Schema.define(version: 20161123125959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,15 @@ ActiveRecord::Schema.define(version: 20161123120936) do
 
   add_index "categories_videos", ["category_id"], name: "index_categories_videos_on_category_id", using: :btree
   add_index "categories_videos", ["video_id"], name: "index_categories_videos_on_video_id", using: :btree
+
+  create_table "client_zone_additional_contents", force: :cascade do |t|
+    t.string   "area",                      null: false
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "client_zone_services", force: :cascade do |t|
     t.string   "title",                     null: false

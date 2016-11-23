@@ -1,0 +1,21 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Client Zone Additional Contents' %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Client Zone Additional Content', object: ClientZone::AdditionalContent, path: new_client_zone_additional_content_path %>
+  </div>
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-6 small-8' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Title
+    <% end %>
+    <%= list_item('large-3 small-6') { 'Area' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+  <!-- <div class="module-sortable" data-module="ClientZone::AdditionalContent"> -->
+  <%= render partial: 'client_zone_additional_content', collection: @client_zone_additional_contents, as: :client_zone_additional_content_presenter %>
+  <!-- </div> -->
+  <%= paginate @client_zone_additional_contents %>
+  <%= pagination_helper(@pagination_helper, 'client zone additional content') %>
+</div>

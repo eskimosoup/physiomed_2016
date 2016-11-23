@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :client_zone_additional_content, class: 'ClientZone::AdditionalContent' do
+    area 'services'
+    title 'MyString'
+    content 'MyText'
+    display true
+  end
   factory :client_zone_service, class: 'ClientZone::Service' do
     title 'MyString'
     summary 'MyText'
