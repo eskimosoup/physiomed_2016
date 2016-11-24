@@ -1,0 +1,32 @@
+<% cache ['client_zone', service] do %>
+  <section class="box-wrap">
+    <div class="videos-with-guides-container">
+      <div class="videos-with-guides-container-title">
+        <h2>
+          <%= service.title %>
+        </h2>
+      </div>
+
+      <div class="videos-with-guides wellbeing">
+        <div class="video-with-guide">
+          <div class="basic-details large-width">
+            <%= raw service.summary %>
+          </div>
+          <div class="guide">
+
+            <div>
+              <% if service.image.present? %>
+                <%= link_to service.file.url, class: 'ga-event', data: { event_name: 'Infographic Download', item_name: service.title } do %>
+                  <%= image_tag service.image_url(:show), alt: service.title %>
+                <% end %>
+              <% end %>
+            </div>
+
+            <%= link_to "Download", service.file.url,
+              class: 'button brown-background ga-event', data: { event_name: 'Service File Download', item_name: service.title } %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

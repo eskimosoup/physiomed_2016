@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720112822) do
+ActiveRecord::Schema.define(version: 20161123125959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,18 +30,19 @@ ActiveRecord::Schema.define(version: 20160720112822) do
   add_index "additional_home_contents", ["video_id"], name: "index_additional_home_contents_on_video_id", using: :btree
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",                                   null: false
-    t.text     "summary",                                 null: false
-    t.text     "content",                                 null: false
+    t.string   "title",                                    null: false
+    t.text     "summary",                                  null: false
+    t.text     "content",                                  null: false
     t.string   "image"
-    t.date     "date",                                    null: false
-    t.boolean  "display",                  default: true, null: false
-    t.boolean  "home_highlight",           default: true, null: false
+    t.date     "date",                                     null: false
+    t.boolean  "display",                  default: true,  null: false
+    t.boolean  "home_highlight",           default: true,  null: false
     t.integer  "author_id"
     t.string   "slug"
     t.string   "url_originally_posted_on"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "display_on_client_zone",   default: false
   end
 
   add_index "articles", ["author_id"], name: "index_articles_on_author_id", using: :btree
@@ -180,6 +181,35 @@ ActiveRecord::Schema.define(version: 20160720112822) do
 
   add_index "categories_videos", ["category_id"], name: "index_categories_videos_on_category_id", using: :btree
   add_index "categories_videos", ["video_id"], name: "index_categories_videos_on_video_id", using: :btree
+
+  create_table "client_zone_additional_contents", force: :cascade do |t|
+    t.string   "area",                      null: false
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "client_zone_services", force: :cascade do |t|
+    t.string   "title",                     null: false
+    t.text     "summary",                   null: false
+    t.string   "file",                      null: false
+    t.string   "image"
+    t.boolean  "display",    default: true
+    t.integer  "position"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "client_zone_users", force: :cascade do |t|
+    t.string   "username",                       null: false
+    t.string   "password_digest",                null: false
+    t.string   "auth_token",                     null: false
+    t.boolean  "active",          default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string   "name",                      null: false

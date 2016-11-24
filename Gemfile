@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use SCSS for stylesheets
@@ -29,6 +29,7 @@ gem 'geocoder', '~> 1.3', '>= 1.3.4'
 gem 'twitter'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
+gem 'bcrypt'
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'

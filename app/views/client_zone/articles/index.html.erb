@@ -1,0 +1,36 @@
+<div class="hero-section standard-page-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title full-width">
+      Client Zone Latest News
+    </h1>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="page-content-wrap full-width">
+      <div class="page-content">
+        <%= render(
+          partial: "client_zone/articles/article",
+          collection: @articles,
+          cache: ['client_zone', @articles]
+        ) %>
+
+        <%= paginate @articles %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: wellbeing_zone_health_zone,
+          case_studies: latest_case_studies,
+          articles: nil,
+        },
+        cache: ['client_zone', wellbeing_zone_health_zone, latest_case_studies]
+      ) %>
+    </div>
+  </div>
+</div>

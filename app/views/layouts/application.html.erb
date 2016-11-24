@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <%= render "layouts/head" %>
+  <%= render "layouts/shared/head" %>
 
   <body>
-    <%= render "layouts/header" %>
-    
+    <%= render "layouts/application/header" %>
+
     <%= yield %>
 
-    <%= render "layouts/footer" %>
+    <%= render "layouts/shared/footer" %>
 
     <%= yield :footer %>
     <%= yield :javascript %>

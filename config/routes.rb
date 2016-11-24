@@ -31,7 +31,25 @@ Rails.application.routes.draw do
     resources :body_parts, only: [:show], path: '', constraints: SlugConstraint.new(BodyPart) do
       resources :guides, only: :index
     end
+
     root to: 'wellbeings#show'
+  end
+
+  namespace :client_zone, path: 'client-zone' do
+    resources :sessions, only: [:new, :create] do
+      get 'logout', on: :collection
+    end
+
+    resources :services, only: :index
+    resources :articles, only: [:index, :show]
+
+    resources :guides, only: [:index, :show] do
+      get 'general-well-being', on: :collection
+    end
+
+    resources :videos, only: :index
+
+    root to: 'homes#show'
   end
 
   mount Optimadmin::Engine => '/admin'
@@ -64,6 +82,12 @@ Optimadmin::Engine.routes.draw do
     member do
       get 'toggle'
     end
+  end
+
+  namespace :client_zone, path: 'client-zone' do
+    resources :users, concerns: [:orderable, :toggleable], except: [:show]
+    resources :additional_contents, concerns: [:orderable, :toggleable], except: [:show]
+    resources :services, concerns: [:orderable, :toggleable, :imageable], except: [:show]
   end
 
   resources :additional_home_contents, concerns: [:orderable, :toggleable], except: [:show]

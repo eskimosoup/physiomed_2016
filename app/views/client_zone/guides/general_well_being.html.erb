@@ -1,0 +1,148 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
+  <%= javascript_include_tag 'vendor/jquery.viewport' %>
+  <script>
+    // http://craftedpixelz.co.uk/blog/conditional-js-with-modernizr-mq/
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      var $bodyPartNavigation, $stickyBodyPartNavigation;
+
+      function setStickyNavigation() {
+        if($('.hero-navigation:in-viewport').length === 1 && $stickyBodyPartNavigation !== undefined) {
+          $stickyBodyPartNavigation.hide();
+        } else if($stickyBodyPartNavigation !== undefined) {
+          $stickyBodyPartNavigation.show();
+        }
+      }
+
+      function buildStickyNavigation() {
+        var visibleLis = $('.body-part-section-navigation-links').html();
+        var contactMethods = $('.page-contact-method-links').html();
+        $('.sticky-hero-navigation-links').html(visibleLis);
+        $('.sticky-page-contact-methods').html(contactMethods);
+        setStickyNavigation();
+      }
+
+      $(window).load(function() {
+        $bodyPartNavigation = $('.hero-navigation');
+        $stickyBodyPartNavigation = $('.sticky-hero-navigation');
+        buildStickyNavigation();
+      });
+
+      $(window).scroll(function() {
+        setStickyNavigation();
+      });
+    }
+
+    // Adapted from http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
+    var $root, offsetTop = 0;
+
+    function smoothScroll(elem) {
+      $root.animate({
+        scrollTop: $(elem).offset().top - offsetTop
+      }, 500, function () {
+        window.location.hash = elem;
+      });
+    }
+
+    $(function() {
+      if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+        offsetTop = 50;
+      }
+
+      $root = $('html, body');
+
+      var windowAnchor = window.location.hash;
+      if(windowAnchor !== undefined && $(windowAnchor).length === 1) {
+        smoothScroll(windowAnchor);
+      }
+    });
+
+    $(document).on('click', 'a[href^="#"]', function() {
+      var elem = $.attr(this, 'href');
+      smoothScroll(elem);
+      return false;
+    });
+  </script>
+
+<% end %>
+
+<div class="sticky-hero-navigation">
+  <div class="sticky-hero-navigation-content">
+    <span class="sticky-body-part-name">
+      <%= I18n.t('wellbeing_zone.general_wellbeings.show.title') %>
+    </span>
+
+    <ul class="sticky-hero-navigation-links">
+    </ul>
+
+    <ul class="sticky-page-contact-methods">
+    </ul>
+  </div>
+</div>
+
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title">
+      <%= I18n.t('wellbeing_zone.general_wellbeings.show.title') %>
+    </h1>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="hero-navigation-wrap">
+      <div class="hero-navigation">
+        <ul class="hero-navigation-links">
+          <li class="hero-navigation-top-level">
+            <%= link_to I18n.t('wellbeing_zone.general_wellbeings.show.title'),
+              general_well_being_client_zone_guides_path,
+              class: 'current-body-part' %>
+
+            <ul class="hero-navigation-links-dropdown">
+              <% @general_wellbeing_facade.body_parts.each do |body_part| %>
+                <%= content_tag :li, (link_to body_part.name, client_zone_guide_path(body_part, anchor: 'guides'), class: 'body-part-link', title: body_part.name) %>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="body-part-section-navigation-links">
+          <%= content_tag :li, (link_to 'Guides', '#guides') if @general_wellbeing_facade.guides.present? %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="body-part-summary-wrap">
+      <div class="body-part-summary">
+        <%= raw @general_wellbeing_facade.content %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <div class="page-contact-methods">
+        <h4>
+          Talk to our clinical team
+        </h4>
+
+        <ul class="page-contact-method-links">
+          <%= render 'shared/contact_method_items' %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content wellbeing section">
+  <% if @general_wellbeing_facade.guides.any? %>
+    <section class="box-wrap" id="guides">
+      <div class="guides-container">
+        <div class="body-part-guides-title">
+          <h2 class="guides-container-title">Guides</h2>
+        </div>
+
+        <div class="guides wellbeing">
+          <%= render partial: 'guides/guide',
+            collection: @general_wellbeing_facade.guides, as: :guide, cache: @general_wellbeing_facade.guides %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+</div>

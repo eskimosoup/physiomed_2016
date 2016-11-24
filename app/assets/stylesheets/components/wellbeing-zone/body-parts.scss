@@ -22,9 +22,28 @@
     padding: rem(20px) 0;
     position: absolute;
     width: 100%;
-    
+
     @include media('>=768px') {
       width: calc(100% - 30px);
+    }
+  }
+}
+
+.body-part-client-zone-buttons {
+  left: 15px;
+  position: absolute;
+  text-align: center;
+  top: 73px;
+  width: calc(100% - 30px);
+  z-index: 1;
+
+  .button {
+    &:first-of-type {
+      float: left;
+    }
+
+    &:last-of-type {
+      float: right;
     }
   }
 }

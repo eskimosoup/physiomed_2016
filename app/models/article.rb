@@ -6,16 +6,17 @@ class Article < ActiveRecord::Base
   mount_uploader :image, ArticleUploader
 
   scope :displayed, -> { where(display: true) }
+  scope :displayed_on_client_zone, -> { where(display_on_client_zone: true) }
+
   scope :home, -> { where(home_highlight: true) }
   scope :for_category, ->(category) { joins(:categories_articles).where(categories_articles: { category_id: category }) }
 
-  belongs_to :author, class_name: "TeamMember"
-  has_many :categories_articles, class_name: "Categories::Article"
+  belongs_to :author, class_name: 'TeamMember'
+  has_many :categories_articles, class_name: 'Categories::Article'
   has_many :categories, through: :categories_articles
 
   validates :content, presence: true
   validates :date, presence: true
   validates :summary, presence: true
   validates :title, presence: true, uniqueness: true
-
 end

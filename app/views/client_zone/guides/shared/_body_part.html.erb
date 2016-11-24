@@ -1,0 +1,13 @@
+<div class="body-part">
+  <%= link_to client_zone_guide_path(body_part, anchor: 'guides') do %>
+    <div class="name text-center wellbeing-full-section-button green-background">
+      <%= body_part.name %>
+    </div>
+    <%= image_tag body_part.image %>
+    <% if body_part.tagline.present? %>
+      <div class="tagline text-center">
+        <%= body_part.tagline %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,41 @@
+<% cache ['client_zone', 'video', video] do %>
+  <section class="box-wrap">
+    <div class="videos-with-guides-container">
+      <div class="videos-with-guides-container-title">
+        <h2>
+          <%= video.title %>
+        </h2>
+      </div>
+
+      <div class="video">
+        <div class="video-iframe">
+          <div class="flex-video widescreen">
+            <div class="video-embed-<%= video.id %>">
+              <%= link_to '#', class: 'video-embed-toggle video-play-link', data: { video_id: video.id } do %>
+                <%= image_tag 'placeholders/play-icon.png', alt: '', class: 'video-play-icon' %>
+                <%= image_tag "https://img.youtube.com/vi/#{video.youtube_identifier}/maxresdefault.jpg", class: 'video-play-image' %>
+              <% end %>
+            </div>
+
+            <textarea class="video-embed-code-<%= video.id %> invisible">
+              <%= raw iframe_for(video, width: 345, height: 248) %>
+            </textarea>
+          </div>
+        <!--
+          <div class="youtube-title">
+            <%= video.title %>
+          </div>
+        -->
+        </div>
+
+        <div class="basic-details">
+          <h3 class="video-subtitle">
+            <%= video.subtitle %>
+          </h3>
+
+          <%= raw video.content %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

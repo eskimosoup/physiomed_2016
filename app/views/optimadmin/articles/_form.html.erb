@@ -63,8 +63,13 @@
       </div>
 
       <div class="field">
-        <%= f.label :display %><br>
+        <%= f.label :display %> <%= module_tooltip('Website article', 'This will ensure the article displays on the main website') %><br>
         <%= f.check_box :display %>
+      </div>
+
+      <div class="field">
+        <%= f.label :display_on_client_zone %> <%= module_tooltip('Client zone article', 'This will ensure the article displays on the client zone') %><br>
+        <%= f.check_box :display_on_client_zone %>
       </div>
 
       <div class="field">

@@ -1,0 +1,150 @@
+<%= content_for :head do %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
+  <%= javascript_include_tag 'vendor/jquery.viewport' %>
+
+  <script>
+    // http://craftedpixelz.co.uk/blog/conditional-js-with-modernizr-mq/
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      var $bodyPartNavigation, $stickyBodyPartNavigation;
+
+      function setStickyNavigation() {
+        if($('.hero-navigation:in-viewport').length === 1 && $stickyBodyPartNavigation !== undefined) {
+          $stickyBodyPartNavigation.hide();
+        } else if($stickyBodyPartNavigation !== undefined) {
+          $stickyBodyPartNavigation.show();
+        }
+      }
+
+      function buildStickyNavigation() {
+        var visibleLis = $('.body-part-section-navigation-links').html();
+        var contactMethods = $('.page-contact-method-links').html();
+        $('.sticky-hero-navigation-links').html(visibleLis);
+        $('.sticky-page-contact-methods').html(contactMethods);
+        setStickyNavigation();
+      }
+
+      $(window).load(function() {
+        $bodyPartNavigation = $('.hero-navigation');
+        $stickyBodyPartNavigation = $('.sticky-hero-navigation');
+        buildStickyNavigation();
+      });
+
+      $(window).scroll(function() {
+        setStickyNavigation();
+      });
+    }
+
+    // Adapted from http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
+    var $root, offsetTop = 0;
+
+    function smoothScroll(elem) {
+      $root.animate({
+        scrollTop: $(elem).offset().top - offsetTop
+      }, 500, function () {
+        window.location.hash = elem;
+      });
+    }
+
+    $(function() {
+      if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+        offsetTop = 50;
+      }
+
+      $root = $('html, body');
+
+      var windowAnchor = window.location.hash;
+      if(windowAnchor !== undefined && $(windowAnchor).length === 1) {
+        smoothScroll(windowAnchor);
+      }
+    });
+
+    $(document).on('click', 'a[href^="#"]:not(.body-part-tabs a)', function() {
+      var elem = $.attr(this, 'href');
+      smoothScroll(elem);
+      return false;
+    });
+  </script>
+  <script>
+    $(document).on('click', '.video-embed-toggle', function() {
+      var videoId = $(this).data('video-id');
+      var embedCode = $('.video-embed-code-' + videoId).val();
+      embedCode = embedCode.replace('?showinfo=0', '?showinfo=0&autoplay=1');
+      $('.video-embed-' + videoId).html(embedCode);
+      return false;
+    });
+  </script>
+<% end %>
+
+<div class="hero-section body-part-background">
+  <div class="hero-section-primary-content">
+    <div class="body-part-summary-wrap full-width">
+      <h1 class="hero-section-title full-width">
+        <%= @additional_content.title if @additional_content.present? %>
+      </h1>
+    </div>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="body-part-summary-wrap full-width">
+      <div class="body-part-summary">
+        <%= raw @additional_content.content if @additional_content.present? %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: nil,
+          case_studies: nil,
+          articles: nil,
+        },
+        cache: 'call_to_action'
+      ) %>
+    </div>
+  </div>
+
+  <div id="main-content" class="content client-zone-content">
+    <section class="box-wrap">
+      <div class="videos-with-guides-container">
+        <div class="videos-with-guides-container-title">
+          <h2>
+            Download Videos
+          </h2>
+        </div>
+
+        <div class="video">
+          <div class="video-iframe">
+            <div class="flex-video widescreen">
+              <%#= raw iframe_for(video, width: 345, height: 248) %>
+              <%= link_to (image_tag 'placeholders/dropbox.jpg', alt: ''), 'https://www.dropbox.com/sh/hqtbac6o61hip7b/AADpREMS3ZsIp6F2zgZ-0PRta?dl=0', title: 'Download videos' %>
+            </div>
+          </div>
+
+          <div class="basic-details">
+            <p>
+              Click the button below to go to Dropbox. In Dropbox 'Click the video' > Click 'More options' (bottom right) > Select 'Download'
+            </p>
+
+            <%= link_to 'Download videos', 'https://www.dropbox.com/sh/hqtbac6o61hip7b/AADpREMS3ZsIp6F2zgZ-0PRta?dl=0', class: 'button brown-background' %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <% @categories.each do |category_title, category| %>
+      <% videos = category.first.videos.displayed.reject{|x| x.id == 1} %>
+      <% next unless videos.present? %>
+      <h2 id="<%= category.first.name.parameterize %>" class="hero-section-title">
+        <%= category_title %>
+      </h2>
+
+        <%= render partial: 'client_zone/videos/video',
+                 collection: videos,
+                 as: :video %>
+    <% end %>
+  </div>
+</div>
