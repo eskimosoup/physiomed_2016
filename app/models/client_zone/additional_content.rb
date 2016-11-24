@@ -4,7 +4,7 @@ module ClientZone
 
     include OptimadminScopes
 
-    AREAS = %w(services videos client_zone_home).freeze
+    AREAS = %w(services videos articles client_zone_home).freeze
 
     validates :area,
               presence: true,
