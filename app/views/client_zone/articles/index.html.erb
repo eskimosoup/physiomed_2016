@@ -1,13 +1,15 @@
 <div class="hero-section standard-page-background">
   <div class="hero-section-header">
     <h1 class="hero-section-title full-width">
-      Client Zone Latest News
+      <%= @additional_content.title if @additional_content.present? %>
     </h1>
   </div>
 
   <div class="hero-section-primary-content">
     <div class="page-content-wrap full-width">
       <div class="page-content">
+        <%= raw @additional_content.content if @additional_content.present? %>
+        
         <%= render(
           partial: "client_zone/articles/article",
           collection: @articles,
