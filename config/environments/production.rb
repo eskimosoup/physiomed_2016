@@ -10,7 +10,7 @@ Rails.application.configure do
     address: 'mail.optimised.today',
     authentication: :plain,
     user_name: 'noreply@optimised.today',
-    password: 'LudoStudio47#!poip'
+    password: ENV['NOREPLY_PASSWORD']
   }
 
   config.action_mailer.asset_host = 'http://www.physiomed.co.uk'
