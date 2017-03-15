@@ -143,12 +143,28 @@
     <td align="left"><%= @practice_application.parking_facilities? ? "Yes" : "No" %></td>
   </tr>
   <tr>
+    <th align="left">Full time receptionist</th>
+    <td align="left"><%= @practice_application.receptionist? ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <th align="left">Disabled access</th>
+    <td align="left"><%= @practice_application.disabled_access? ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
     <th align="left">Do you have TM2 or PPS?</th>
     <td align="left"><%= @practice_application.tm2_or_pps %></td>
   </tr>
   <tr>
     <th align="left">Online booking?</th>
     <td align="left"><%= @practice_application.online_booking? ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <th align="left">BUPA registered?</th>
+    <td align="left"><%= @practice_application.bupa_registered? ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <th align="left">Domiciliary visits?</th>
+    <td align="left"><%= @practice_application.domiciliary_visits? ? "Yes" : "No" %></td>
   </tr>
   <tr>
     <th align="left">Cancellation Policy</th>

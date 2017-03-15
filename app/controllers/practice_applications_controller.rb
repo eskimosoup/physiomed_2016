@@ -25,7 +25,8 @@ class PracticeApplicationsController < ApplicationController
       :cancellation_policy, :description, :treatment_rooms, :manual_therapy,
       :tm2_or_pps, :online_booking, :initial_assessment_duration,
       :subsequent_treatment_duration, :initial_assessment_cost,
-      :subsequent_treatment_cost, :terms_and_conditions,
+      :subsequent_treatment_cost, :terms_and_conditions, :disabled_access,
+      :bupa_registered, :domiciliary_visits,
       practitioners_attributes: [:name, :qualification_date, :years_practicing]
     )
   end
