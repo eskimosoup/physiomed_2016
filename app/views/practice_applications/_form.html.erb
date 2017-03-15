@@ -52,10 +52,15 @@
     <%= f.input :treatment_rooms, collection: PracticeApplication::NUMBERS %>
     <%= f.input :parking_facilities, collection: [["Yes", true], ["No", false]] %>
     <%= f.input :receptionist, collection: [["Yes", true], ["No", false]] %>
+    <%= f.input :disabled_access, collection: [["Yes", true], ["No", false]] %>
     <%= f.input :tm2_or_pps,
       collection: ['TM2', 'PPS', 'Both'], prompt: 'Please select' %>
     <%= f.input :online_booking,
       collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
+
+      <%= f.input :bupa_registered, collection: [["Yes", true], ["No", false]] %>
+      <%= f.input :domiciliary_visits, collection: [["Yes", true], ["No", false]] %>
+
     <%= f.input :cancellation_policy, as: :text %>
     <%= f.input :public_liability_insurance,
       collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123125959) do
+ActiveRecord::Schema.define(version: 20170315151929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -474,6 +474,9 @@ ActiveRecord::Schema.define(version: 20161123125959) do
     t.boolean  "online_booking"
     t.string   "saturday"
     t.string   "sunday"
+    t.boolean  "disabled_access"
+    t.boolean  "bupa_registered"
+    t.boolean  "domiciliary_visits"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|

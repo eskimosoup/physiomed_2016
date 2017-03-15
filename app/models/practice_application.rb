@@ -19,7 +19,8 @@ class PracticeApplication
                 :initial_assessment_cost, :subsequent_treatment_cost,
                 :initial_assessment_duration, :subsequent_treatment_duration
   attr_reader :public_liability_insurance, :employee_liability_insurance,
-              :receptionist, :parking_facilities, :online_booking
+              :receptionist, :parking_facilities, :online_booking,
+              :disabled_access, :bupa_registered, :domiciliary_visits
 
   attr_reader :first_contact
   attr_accessor :first_contact_name, :first_contact_position
@@ -54,6 +55,7 @@ class PracticeApplication
       sunday: sunday,
       capacity: capacity,
       receptionist: receptionist,
+      disabled_access: disabled_access,
       parking_facilities: parking_facilities,
       established: established,
       cancellation_policy: cancellation_policy,
@@ -62,6 +64,8 @@ class PracticeApplication
       treatment_rooms: treatment_rooms,
       tm2_or_pps: tm2_or_pps,
       online_booking: online_booking,
+      bupa_registered: bupa_registered,
+      domiciliary_visits: domiciliary_visits,
       initial_assessment_cost: initial_assessment_cost,
       subsequent_treatment_cost: subsequent_treatment_cost,
       initial_assessment_duration: initial_assessment_duration,
@@ -119,6 +123,18 @@ class PracticeApplication
 
   def receptionist=(value)
     @receptionist = cast_to_boolean(value)
+  end
+
+  def bupa_registered=(value)
+    @bupa_registered = cast_to_boolean(value)
+  end
+
+  def domiciliary_visits=(value)
+    @domiciliary_visits = cast_to_boolean(value)
+  end
+
+  def disabled_access=(value)
+    @disabled_access = cast_to_boolean(value)
   end
 
   def parking_facilities=(value)
