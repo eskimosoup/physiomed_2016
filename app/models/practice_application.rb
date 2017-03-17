@@ -17,7 +17,8 @@ class PracticeApplication
                 :saturday, :sunday, :capacity, :established, :cancellation_policy,
                 :description, :treatment_rooms, :manual_therapy, :tm2_or_pps,
                 :initial_assessment_cost, :subsequent_treatment_cost,
-                :initial_assessment_duration, :subsequent_treatment_duration
+                :initial_assessment_duration, :subsequent_treatment_duration,
+                :employee_liability_expiry_date, :public_liability_expiry_date
   attr_reader :public_liability_insurance, :employee_liability_insurance,
               :receptionist, :parking_facilities, :online_booking,
               :disabled_access, :bupa_registered, :domiciliary_visits
@@ -69,7 +70,9 @@ class PracticeApplication
       initial_assessment_cost: initial_assessment_cost,
       subsequent_treatment_cost: subsequent_treatment_cost,
       initial_assessment_duration: initial_assessment_duration,
-      subsequent_treatment_duration: subsequent_treatment_duration
+      subsequent_treatment_duration: subsequent_treatment_duration,
+      employee_liability_expiry_date: employee_liability_expiry_date,
+      public_liability_expiry_date: public_liability_expiry_date
     )
   end
 

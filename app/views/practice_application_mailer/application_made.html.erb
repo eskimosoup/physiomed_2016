@@ -175,8 +175,16 @@
     <td align="left"><%= @practice_application.public_liability_insurance? ? "Yes" : "No" %></td>
   </tr>
   <tr>
+    <th align="left">Public Liability Insurance Expiry Date</th>
+    <td align="left"><%= @practice_application.public_liability_expiry_date %></td>
+  </tr>
+  <tr>
     <th align="left">Employee Liability Insurance</th>
     <td align="left"><%= @practice_application.employee_liability_insurance? ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <th align="left">Employee Liability Insurance Expiry Date</th>
+    <td align="left"><%= @practice_application.employee_liability_expiry_date %></td>
   </tr>
   <tr>
     <th align="left">Description</th>
