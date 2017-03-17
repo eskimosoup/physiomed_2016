@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315151929) do
+ActiveRecord::Schema.define(version: 20170316162740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -442,31 +442,31 @@ ActiveRecord::Schema.define(version: 20170315151929) do
   add_index "practice_applications_contacts", ["practice_id"], name: "index_practice_applications_contacts_on_practice_id", using: :btree
 
   create_table "practice_applications_practices", force: :cascade do |t|
-    t.string   "name",                                         null: false
-    t.text     "address",                                      null: false
+    t.string   "name",                                          null: false
+    t.text     "address",                                       null: false
     t.string   "county"
-    t.string   "postcode",                                     null: false
-    t.string   "telephone",                                    null: false
+    t.string   "postcode",                                      null: false
+    t.string   "telephone",                                     null: false
     t.string   "fax"
-    t.string   "email",                                        null: false
-    t.boolean  "public_liability_insurance",    default: true, null: false
-    t.boolean  "employee_liability_insurance",  default: true, null: false
+    t.string   "email",                                         null: false
+    t.boolean  "public_liability_insurance",     default: true, null: false
+    t.boolean  "employee_liability_insurance",   default: true, null: false
     t.string   "monday"
     t.string   "tuesday"
     t.string   "wednesday"
     t.string   "thursday"
     t.string   "friday"
     t.string   "capacity"
-    t.boolean  "receptionist",                                 null: false
-    t.boolean  "parking_facilities",                           null: false
+    t.boolean  "receptionist",                                  null: false
+    t.boolean  "parking_facilities",                            null: false
     t.string   "established"
     t.text     "cancellation_policy"
     t.text     "description"
     t.string   "treatment_rooms"
     t.string   "initial_assessment_cost"
     t.string   "subsequent_treatment_cost"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.string   "initial_assessment_duration"
     t.string   "subsequent_treatment_duration"
     t.string   "manual_therapy"
@@ -477,6 +477,8 @@ ActiveRecord::Schema.define(version: 20170315151929) do
     t.boolean  "disabled_access"
     t.boolean  "bupa_registered"
     t.boolean  "domiciliary_visits"
+    t.date     "public_liability_expiry_date"
+    t.date     "employee_liability_expiry_date"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|
