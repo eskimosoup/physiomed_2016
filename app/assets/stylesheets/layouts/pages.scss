@@ -36,6 +36,11 @@
       color: $pale-green;
     }
   }
+
+  ul {
+    margin-left: 15px;
+    list-style-position: outside;
+  }
 }
 
 @include media('>=768px') {
