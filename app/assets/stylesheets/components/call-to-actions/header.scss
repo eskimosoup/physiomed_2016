@@ -1,5 +1,9 @@
 .primary-header-cta {
-  margin: rem(25px 0 0);
+  margin: rem(15px);
+
+  @include media('>=768px') {
+    margin: rem(25px 0 0);
+  }
 
   a {
     color: $green;

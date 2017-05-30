@@ -65,8 +65,6 @@
 }
 
 .primary-header-cta {
-  display: none;
-
   @include media('>=768px') {
     @include flex-grid-column(3, $gutter: (small: 0));
     display: block;
