@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316162740) do
+ActiveRecord::Schema.define(version: 20170724113616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -298,6 +298,109 @@ ActiveRecord::Schema.define(version: 20170316162740) do
     t.integer  "job_applications_count", default: 0
   end
 
+  create_table "landing_pages", force: :cascade do |t|
+    t.string   "title",                         null: false
+    t.text     "content"
+    t.string   "image"
+    t.string   "style",                         null: false
+    t.string   "layout",                        null: false
+    t.boolean  "display",        default: true, null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "sections_count", default: 0,    null: false
+  end
+
+  add_index "landing_pages", ["slug"], name: "index_landing_pages_on_slug", using: :btree
+  add_index "landing_pages", ["suggested_url"], name: "index_landing_pages_on_suggested_url", using: :btree
+
+  create_table "landing_pages_articles", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "landing_page_id"
+    t.boolean  "display",         default: true, null: false
+    t.integer  "position",        default: 0,    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "landing_pages_articles", ["article_id"], name: "index_landing_pages_articles_on_article_id", using: :btree
+  add_index "landing_pages_articles", ["landing_page_id"], name: "index_landing_pages_articles_on_landing_page_id", using: :btree
+
+  create_table "landing_pages_case_studies", force: :cascade do |t|
+    t.integer  "case_study_id"
+    t.integer  "landing_page_id"
+    t.boolean  "display",         default: true, null: false
+    t.integer  "position",        default: 0,    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "landing_pages_case_studies", ["case_study_id"], name: "index_landing_pages_case_studies_on_case_study_id", using: :btree
+  add_index "landing_pages_case_studies", ["landing_page_id"], name: "index_landing_pages_case_studies_on_landing_page_id", using: :btree
+
+  create_table "landing_pages_frequently_asked_questions", force: :cascade do |t|
+    t.integer  "frequently_asked_question_id"
+    t.integer  "landing_page_id"
+    t.boolean  "display",                      default: true, null: false
+    t.integer  "position",                     default: 0,    null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "landing_pages_frequently_asked_questions", ["frequently_asked_question_id"], name: "index_landing_pages_faqs_on_landing_page_id", using: :btree
+  add_index "landing_pages_frequently_asked_questions", ["landing_page_id"], name: "index_landing_pages_landing_page_on_landing_page_id", using: :btree
+
+  create_table "landing_pages_guides", force: :cascade do |t|
+    t.integer  "guide_id"
+    t.integer  "landing_page_id"
+    t.boolean  "display",         default: true, null: false
+    t.integer  "position",        default: 0,    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "landing_pages_guides", ["guide_id"], name: "index_landing_pages_guides_on_guide_id", using: :btree
+  add_index "landing_pages_guides", ["landing_page_id"], name: "index_landing_pages_guides_on_landing_page_id", using: :btree
+
+  create_table "landing_pages_sections", force: :cascade do |t|
+    t.integer  "landing_page_id"
+    t.string   "title",                          null: false
+    t.string   "sub_title"
+    t.text     "content"
+    t.string   "image"
+    t.integer  "position",        default: 0,    null: false
+    t.boolean  "display",         default: true, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "landing_pages_sections", ["landing_page_id"], name: "index_landing_pages_sections_on_landing_page_id", using: :btree
+
+  create_table "landing_pages_testimonials", force: :cascade do |t|
+    t.integer  "testimonial_id"
+    t.integer  "landing_page_id"
+    t.boolean  "display",         default: true, null: false
+    t.integer  "position",        default: 0,    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "landing_pages_testimonials", ["landing_page_id"], name: "index_landing_pages_testimonials_on_landing_page_id", using: :btree
+  add_index "landing_pages_testimonials", ["testimonial_id"], name: "index_landing_pages_testimonials_on_testimonial_id", using: :btree
+
+  create_table "landing_pages_videos", force: :cascade do |t|
+    t.integer  "video_id"
+    t.integer  "landing_page_id"
+    t.boolean  "display",         default: true, null: false
+    t.integer  "position",        default: 0,    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "landing_pages_videos", ["landing_page_id"], name: "index_landing_pages_videos_on_landing_page_id", using: :btree
+  add_index "landing_pages_videos", ["video_id"], name: "index_landing_pages_videos_on_video_id", using: :btree
+
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
     t.string   "email",                  null: false
@@ -478,7 +581,7 @@ ActiveRecord::Schema.define(version: 20170316162740) do
     t.boolean  "bupa_registered"
     t.boolean  "domiciliary_visits"
     t.date     "public_liability_expiry_date"
-    t.date     "employee_liability_expiry_date"
+    t.date     "employee_liability_expire_date"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|
@@ -672,6 +775,19 @@ ActiveRecord::Schema.define(version: 20170316162740) do
   add_foreign_key "categories_videos", "videos", on_delete: :cascade
   add_foreign_key "guides", "videos", on_delete: :cascade
   add_foreign_key "job_applications", "job_listings"
+  add_foreign_key "landing_pages_articles", "articles"
+  add_foreign_key "landing_pages_articles", "landing_pages"
+  add_foreign_key "landing_pages_case_studies", "case_studies"
+  add_foreign_key "landing_pages_case_studies", "landing_pages"
+  add_foreign_key "landing_pages_frequently_asked_questions", "frequently_asked_questions"
+  add_foreign_key "landing_pages_frequently_asked_questions", "landing_pages"
+  add_foreign_key "landing_pages_guides", "guides"
+  add_foreign_key "landing_pages_guides", "landing_pages"
+  add_foreign_key "landing_pages_sections", "landing_pages"
+  add_foreign_key "landing_pages_testimonials", "landing_pages"
+  add_foreign_key "landing_pages_testimonials", "testimonials"
+  add_foreign_key "landing_pages_videos", "landing_pages"
+  add_foreign_key "landing_pages_videos", "videos"
   add_foreign_key "pages_team_members", "pages"
   add_foreign_key "pages_team_members", "team_members"
   add_foreign_key "pages_testimonials", "pages", on_delete: :cascade

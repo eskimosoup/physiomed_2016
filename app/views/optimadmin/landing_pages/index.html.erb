@@ -1,0 +1,26 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Landing Pages' %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Landing Page', object: LandingPage, path: new_landing_page_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!-- <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Displayed', 'display DESC'], ['Hidden', 'display ASC']] %> -->
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @landing_pages.size, path: root_url %>
+  </div>
+  <div class="row collapse module-list-index header">
+    <% # ADD TWO TO THE TITLE LARGE COLUMN SIZE BELOW TO ACCOUNT FOR NO IMAGE %>
+    <%= list_item 'large-4 small-8' do %>
+      Title
+    <% end %>
+    <%= list_item ('large-2') { 'Sections' } %>
+    <%= list_item 'large-2 hide-for-medium-down' do 'Image' end %>
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+  </div>
+  <!-- <div class="module-sortable" data-module="LandingPage"> -->
+  <%= render partial: 'landing_page', collection: @landing_pages, as: :landing_page %>
+  <!-- </div> -->
+  <%= paginate @landing_pages %>
+</div>

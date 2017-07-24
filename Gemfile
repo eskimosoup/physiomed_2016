@@ -54,7 +54,7 @@ end
 
 group :test do
   gem 'email_spec', '~> 2.1'
-  # gem 'capybara-webkit'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'

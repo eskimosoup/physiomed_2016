@@ -1,0 +1,248 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
+  <%= javascript_include_tag 'vendor/jquery.viewport' %>
+
+  <script>
+    // http://craftedpixelz.co.uk/blog/conditional-js-with-modernizr-mq/
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      var $bodyPartNavigation, $stickyBodyPartNavigation;
+
+      function setStickyNavigation() {
+        if($('.hero-navigation:in-viewport').length === 1 && $stickyBodyPartNavigation !== undefined) {
+          $stickyBodyPartNavigation.hide();
+        } else if($stickyBodyPartNavigation !== undefined) {
+          $stickyBodyPartNavigation.show();
+        }
+      }
+
+      function buildStickyNavigation() {
+        var visibleLis = $('.body-part-section-navigation-links').html();
+        var contactMethods = $('.page-contact-method-links').html();
+        $('.sticky-hero-navigation-links').html(visibleLis);
+        $('.sticky-page-contact-methods').html(contactMethods);
+        setStickyNavigation();
+      }
+
+      $(window).load(function() {
+        $bodyPartNavigation = $('.hero-navigation');
+        $stickyBodyPartNavigation = $('.sticky-hero-navigation');
+        buildStickyNavigation();
+      });
+
+      $(window).scroll(function() {
+        setStickyNavigation();
+      });
+    }
+
+    // Adapted from http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
+    var $root, offsetTop = 0;
+
+    function smoothScroll(elem) {
+      $root.animate({
+        scrollTop: $(elem).offset().top - offsetTop
+      }, 500, function () {
+        window.location.hash = elem;
+      });
+    }
+
+    $(function() {
+      if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+        offsetTop = 50;
+      }
+
+      $root = $('html, body');
+
+      var windowAnchor = window.location.hash;
+      if(windowAnchor !== undefined && $(windowAnchor).length === 1) {
+        smoothScroll(windowAnchor);
+      }
+    });
+
+    $(document).on('click', 'a[href^="#"]:not(.body-part-tabs a)', function() {
+      var elem = $.attr(this, 'href');
+      smoothScroll(elem);
+      return false;
+    });
+
+    $(document).ready(function() {
+      $(".guides").slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        arrows: true,
+        prevArrow: '.slick-guides.slick-prev',
+        nextArrow: '.slick-guides.slick-next',
+      });
+    });
+  </script>
+<% end %>
+
+<div class="sticky-hero-navigation">
+  <div class="sticky-hero-navigation-content">
+    <span class="sticky-body-part-name">
+      <%= @facade.title %>
+    </span>
+
+    <ul class="sticky-hero-navigation-links">
+    </ul>
+
+    <ul class="sticky-page-contact-methods">
+    </ul>
+  </div>
+</div>
+
+<div class="hero-section body-part-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title">
+      <%= @facade.title %>
+    </h1>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="hero-navigation-wrap">
+      <div class="hero-navigation">
+        <ul class="body-part-section-navigation-links">
+          <% if @facade.videos_with_guides.present? %>
+            <% @facade.videos_with_guides.each do |video| %>
+              <%= content_tag :li, (link_to video.title, "#video-with-guide-#{video.id}") if @facade.videos_with_guides.present? %>
+            <% end %>
+          <% end %>
+          <%= content_tag :li, (link_to 'Guides', '#guides') if @facade.guides.present? %>
+          <%#= content_tag :li, (link_to "Know Your #{@facade.name.titlecase}", '#body-part-sections') if @facade.body_part_sections.present? %>
+          <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @facade.team_members.present? %>
+          <%= content_tag :li, (link_to "Case Studies", '#case-studies') if @facade.case_studies.present? %>
+          <%= content_tag :li, (link_to "Testimonials", '#testimonials') if @facade.testimonials.present? %>
+          <%= content_tag :li, (link_to "FAQs", '#faqs') if @facade.faqs.present? %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="body-part-summary-wrap">
+      <div class="body-part-summary">
+        <%= raw @facade.content %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: nil,
+          case_studies: nil,
+          articles: nil,
+        },
+        cache: 'call_to_action'
+      ) %>
+    </div>
+  </div>
+
+  <div id="main-content" class="content">
+    <% if @facade.videos_with_guides.present? %>
+      <% @facade.videos_with_guides.each do |video| %>
+        <%= render partial: 'videos/video_with_guide',
+          locals: { video: video, guide: video.guide }, cache: [@facade, video] %>
+      <% end %>
+    <% end %>
+
+    <% if @facade.guides.present? %>
+     <section class="box-wrap" id="guides">
+       <div class="guides-container">
+
+         <div class="body-part-guides-title">
+           <%= link_to 'See all', wellbeing_zone_body_part_guides_path(@body_part, anchor: 'guides'), class: "button brown-background" if @facade.guides.size > 2 %>
+           <%#= link_to "See more", @facade.general_wellbeing_categorisation, class: "button brown-background" if @facade.general_wellbeing_categorisation.present? %>
+
+           <div class="slick-controls">
+             <%= button_tag(type: 'button', class: "slick-guides slick-prev") do %>
+               <
+             <% end %>
+             <%= button_tag(type: 'button', class: "slick-guides slick-next") do %>
+               >
+             <% end %>
+           </div>
+
+           <h2 class="guides-container-title">Guides</h2>
+         </div>
+
+
+         <div class="guides wellbeing">
+           <%= render partial: 'guides/guide',
+             collection: @facade.guides, as: :guide, cache: [@facade.guides] %>
+         </div>
+       </div>
+     </section>
+    <% end %>
+
+    <% if @facade.sections.present? %>
+      <%= content_for :javascript do %>
+        <%= javascript_include_tag "components/body_part_sections" %>
+      <% end %>
+
+    <section class="box-wrap" id="body-part-sections">
+      <div class="body-part-sections-container">
+        <ul id="tabs" class="body-part-tabs">
+          <% @facade.sections.each_with_index do |body_part_section, i| %>
+            <%= content_tag :li, class: (i.zero? ? "current" : nil) do %>
+              <%= link_to body_part_section.title, "#body-part-section-#{ body_part_section.id }" %>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <div class="body-part-sections">
+          <%= render(
+            partial: "wellbeing_zone/body_part_sections/body_part_section",
+            collection: @facade.sections,
+            as: :body_part_section,
+            cache: @facade.sections
+          ) %>
+        </div>
+      </div>
+    </section>
+    <% end %>
+
+    <div class="content wellbeing section">
+      <section class="flexbox-wrap">
+        <% if @facade.video %>
+          <div class="video-section">
+            <%= render(
+              partial: "videos/video",
+              object: @facade.video,
+              cache: @facade.video
+            ) %>
+          </div>
+        <% end %>
+      </section>
+
+      <%= render(
+        "wellbeing_zone/shared/team_member_section.html.erb",
+        team_members: @facade.team_members,
+        cache: @facade.team_members
+      ) %>
+
+      <section class="flexbox-wrap  case-studies-and-testimonials">
+        <%= render(
+          "wellbeing_zone/shared/case_studies_section",
+          case_studies: @facade.case_studies,
+          cache: @facade.case_studies
+        ) %>
+
+        <%= render(
+          "wellbeing_zone/shared/testimonials_section",
+          testimonials: @facade.testimonials,
+          cache: @facade.testimonials
+        ) %>
+      </section>
+
+      <section class="flexbox-wrap" id="faqs">
+        <%= render(
+          "wellbeing_zone/shared/faqs_section",
+          faqs: @facade.faqs,
+          cache: @facade.faqs,
+        ) %>
+      </section>
+    </div>
+  </div>
+</div>
