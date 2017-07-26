@@ -44,6 +44,10 @@
         @include flex-grid-column(7);
       }
 
+      &.cta-width {
+        @include flex-grid-column(9);
+      }
+
       &.large-width {
         @include flex-grid-column(10);
       }

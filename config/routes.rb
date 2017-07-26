@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  %w( 403 404 422 500 ).each do |code|
+  %w[403 404 422 500].each do |code|
     get code, to: 'errors#show', code: code
   end
 
@@ -8,19 +8,24 @@ Rails.application.routes.draw do
 
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
-  resource :physio_search, only: [:create, :show], path: 'find-a-physio'
+  resources :landing_pages,
+            only: :show,
+            path: '',
+            constraints: SlugConstraint.new(LandingPage)
 
-  resources :articles, only: [:index, :show]
-  resources :case_studies, only: [:index, :show], path: 'case-studies'
-  resources :contacts, only: [:new, :create]
+  resource :physio_search, only: %i[create show], path: 'find-a-physio'
+
+  resources :articles, only: %i[index show]
+  resources :case_studies, only: %i[index show], path: 'case-studies'
+  resources :contacts, only: %i[new create]
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
-  resources :job_listings, only: [:index, :show], path: 'job-listings' do
+  resources :job_listings, only: %i[index show], path: 'job-listings' do
     resources :job_applications, only: [:create], path: 'job-applications'
   end
   resources :pages, only: :show
-  resources :practice_applications, only: [:new, :create], path: 'practice-applications'
-  resources :subcategories, only: [:index, :show], path: 'categorisation'
-  resources :team_members, only: [:index, :show], path: 'team-members'
+  resources :practice_applications, only: %i[new create], path: 'practice-applications'
+  resources :subcategories, only: %i[index show], path: 'categorisation'
+  resources :team_members, only: %i[index show], path: 'team-members'
   resources :testimonials, only: [:index]
 
   namespace :wellbeing_zone, path: 'well-being-zone' do
@@ -36,14 +41,14 @@ Rails.application.routes.draw do
   end
 
   namespace :client_zone, path: 'client-zone' do
-    resources :sessions, only: [:new, :create] do
+    resources :sessions, only: %i[new create] do
       get 'logout', on: :collection
     end
 
     resources :services, only: :index
-    resources :articles, only: [:index, :show]
+    resources :articles, only: %i[index show]
 
-    resources :guides, only: [:index, :show] do
+    resources :guides, only: %i[index show] do
       get 'general-well-being', on: :collection
     end
 
@@ -84,45 +89,53 @@ Optimadmin::Engine.routes.draw do
     end
   end
 
-  namespace :client_zone, path: 'client-zone' do
-    resources :users, concerns: [:orderable, :toggleable], except: [:show]
-    resources :additional_contents, concerns: [:orderable, :toggleable], except: [:show]
-    resources :services, concerns: [:orderable, :toggleable, :imageable], except: [:show]
+  # Module resources go below concerns
+  resources :landing_pages, concerns: %i[imageable toggleable], except: :show do
+    resources :sections,
+              concerns: %i[orderable toggleable imageable],
+              except: [:show],
+              controller: 'landing_pages/sections'
   end
 
-  resources :additional_home_contents, concerns: [:orderable, :toggleable], except: [:show]
-  resources :articles, concerns: [:orderable, :toggleable, :imageable], except: [:show]
-  resources :banners, concerns: [:imageable, :orderable, :toggleable], except: [:show]
-  resources :body_parts, concerns: [:orderable, :toggleable], except: [:show] do
-    resources :body_part_sections, shallow: true, concerns: [:orderable, :toggleable, :imageable], except: [:show]
+  namespace :client_zone, path: 'client-zone' do
+    resources :users, concerns: %i[orderable toggleable], except: [:show]
+    resources :additional_contents, concerns: %i[orderable toggleable], except: [:show]
+    resources :services, concerns: %i[orderable toggleable imageable], except: [:show]
   end
-  resources :case_studies, concerns: [:orderable, :toggleable, :imageable], except: [:show]
+
+  resources :additional_home_contents, concerns: %i[orderable toggleable], except: [:show]
+  resources :articles, concerns: %i[orderable toggleable imageable], except: [:show]
+  resources :banners, concerns: %i[imageable orderable toggleable], except: [:show]
+  resources :body_parts, concerns: %i[orderable toggleable], except: [:show] do
+    resources :body_part_sections, shallow: true, concerns: %i[orderable toggleable imageable], except: [:show]
+  end
+  resources :case_studies, concerns: %i[orderable toggleable imageable], except: [:show]
   resources :categories, concerns: [:imageable], except: [:show]
-  resources :clients, concerns: [:imageable, :orderable, :toggleable], except: [:show]
-  resources :employee_quick_links, concerns: [:orderable, :toggleable], except: [:show]
-  resources :employer_quick_links, concerns: [:orderable, :toggleable], except: [:show]
-  resources :frequently_asked_questions, concerns: [:orderable, :toggleable]
-  resources :guides, concerns: [:orderable, :imageable, :orderable], except: [:show]
-  resources :health_zones, concerns: [:orderable, :toggleable, :imageable], except: [:show]
+  resources :clients, concerns: %i[imageable orderable toggleable], except: [:show]
+  resources :employee_quick_links, concerns: %i[orderable toggleable], except: [:show]
+  resources :employer_quick_links, concerns: %i[orderable toggleable], except: [:show]
+  resources :frequently_asked_questions, concerns: %i[orderable toggleable]
+  resources :guides, concerns: %i[orderable imageable orderable], except: [:show]
+  resources :health_zones, concerns: %i[orderable toggleable imageable], except: [:show]
   resources :job_listings, except: [:show] do
     resources :job_applications, only: [:index]
   end
-  resources :pages, concerns: [:toggleable, :imageable], except: :show
+  resources :pages, concerns: %i[toggleable imageable], except: :show
   resources :people_helped_sections, concerns: [:toggleable], except: [:show]
   resources :practices, concerns: [:toggleable], except: [:show]
-  resources :practice_applications, only: [:index, :show]
-  resources :seo_entries, concerns: [:orderable, :toggleable], except: [:show] do
+  resources :practice_applications, only: %i[index show]
+  resources :seo_entries, concerns: %i[orderable toggleable], except: [:show] do
     collection do
       get 'rebuild_seo'
     end
   end
-  resources :subcategories, concerns: [:imageable, :toggleable, :orderable], except: [:show]
-  resources :service_standards, concerns: [:orderable, :toggleable], except: [:show]
+  resources :subcategories, concerns: %i[imageable toggleable orderable], except: [:show]
+  resources :service_standards, concerns: %i[orderable toggleable], except: [:show]
   resources :team_member_categories, concerns: [:orderable], except: [:show]
-  resources :team_members, concerns: [:orderable, :toggleable, :imageable], except: [:show]
-  resources :testimonials, concerns: [:orderable, :toggleable], except: [:show]
-  resources :what_we_dos, concerns: [:orderable, :toggleable, :imageable], except: [:show] do
-    resources :what_we_do_links, shallow: true, concerns: [:orderable, :toggleable], except: [:show]
+  resources :team_members, concerns: %i[orderable toggleable imageable], except: [:show]
+  resources :testimonials, concerns: %i[orderable toggleable], except: [:show]
+  resources :what_we_dos, concerns: %i[orderable toggleable imageable], except: [:show] do
+    resources :what_we_do_links, shallow: true, concerns: %i[orderable toggleable], except: [:show]
   end
   resources :videos, concerns: [:toggleable], except: [:show]
 end

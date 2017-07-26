@@ -5,12 +5,24 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    if @contact.valid?
-      ContactMailer.new_contact(@contact).deliver_now
-      redirect_to new_contact_path, 
-        notice: I18n.t('contacts.create.flash')
-    else
-      render :new
+
+    respond_to do |format|
+      format.html do
+        if @contact.valid?
+          ContactMailer.new_contact(@contact).deliver_now
+          redirect_to new_contact_path,
+            notice: I18n.t('contacts.create.flash')
+        else
+          render :new
+        end
+      end
+      format.js do
+        if @contact.valid?
+          ContactMailer.new_contact(@contact).deliver_now
+          @success = true
+        end
+        render :new
+      end
     end
   end
 

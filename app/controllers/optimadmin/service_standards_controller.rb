@@ -1,20 +1,18 @@
 module Optimadmin
   class ServiceStandardsController < Optimadmin::ApplicationController
-    before_action :set_service_standard, only: [:show, :edit, :update, :destroy]
+    before_action :set_service_standard, only: %i[show edit update destroy]
 
     def index
       @service_standards = ServiceStandard.ordered_by_position
     end
 
-    def show
-    end
+    def show; end
 
     def new
       @service_standard = ServiceStandard.new
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @service_standard = ServiceStandard.new(service_standard_params)
@@ -46,7 +44,10 @@ module Optimadmin
 
     def service_standard_params
       params.require(:service_standard)
-            .permit(:icon, :content, :hover_content, :position, :display, :link)
+            .permit(
+              :icon, :content, :hover_content, :position, :display, :link,
+              :icon_text, landing_page_ids: []
+            )
     end
   end
 end
