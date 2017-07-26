@@ -10,7 +10,7 @@ class LandingPage < ActiveRecord::Base
 
   mount_uploader :image, LandingPageUploader
 
-  STYLE = %w[cquinn].freeze
+  STYLE = %w[cquin].freeze
   LAYOUT = %w[application].freeze
 
   validates :title, presence: true
