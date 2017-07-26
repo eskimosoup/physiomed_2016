@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724113616) do
+ActiveRecord::Schema.define(version: 20170726110743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -377,6 +377,16 @@ ActiveRecord::Schema.define(version: 20170724113616) do
 
   add_index "landing_pages_sections", ["landing_page_id"], name: "index_landing_pages_sections_on_landing_page_id", using: :btree
 
+  create_table "landing_pages_service_standards", force: :cascade do |t|
+    t.integer  "service_standard_id"
+    t.integer  "landing_page_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "landing_pages_service_standards", ["landing_page_id"], name: "index_landing_pages_service_standards_on_landing_page_id", using: :btree
+  add_index "landing_pages_service_standards", ["service_standard_id"], name: "index_landing_pages_service_standards_on_service_standard_id", using: :btree
+
   create_table "landing_pages_testimonials", force: :cascade do |t|
     t.integer  "testimonial_id"
     t.integer  "landing_page_id"
@@ -636,6 +646,7 @@ ActiveRecord::Schema.define(version: 20170724113616) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "link"
+    t.string   "icon_text"
   end
 
   create_table "subcategories", force: :cascade do |t|
@@ -784,6 +795,8 @@ ActiveRecord::Schema.define(version: 20170724113616) do
   add_foreign_key "landing_pages_guides", "guides"
   add_foreign_key "landing_pages_guides", "landing_pages"
   add_foreign_key "landing_pages_sections", "landing_pages"
+  add_foreign_key "landing_pages_service_standards", "landing_pages"
+  add_foreign_key "landing_pages_service_standards", "service_standards"
   add_foreign_key "landing_pages_testimonials", "landing_pages"
   add_foreign_key "landing_pages_testimonials", "testimonials"
   add_foreign_key "landing_pages_videos", "landing_pages"

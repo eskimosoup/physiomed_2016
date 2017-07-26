@@ -85,6 +85,12 @@
         <%= f.select :video_ids, Video.order(:title).pluck(:title, :id),
           {}, { class: 'multiselect', multiple: true } %>
       </div>
+
+      <div class="field">
+        <%= f.label :service_standard_ids, 'Service standards' %><br>
+        <%= f.select :service_standard_ids, ServiceStandard.all.pluck(:content, :id),
+          {}, { class: 'multiselect', multiple: true } %>
+      </div>
     <% end %>
   </div>
   <div class="actions">

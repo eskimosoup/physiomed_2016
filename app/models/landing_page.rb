@@ -10,7 +10,7 @@ class LandingPage < ActiveRecord::Base
 
   mount_uploader :image, LandingPageUploader
 
-  STYLE = %w[basic].freeze
+  STYLE = %w[cquinn].freeze
   LAYOUT = %w[application].freeze
 
   validates :title, presence: true
@@ -58,6 +58,12 @@ class LandingPage < ActiveRecord::Base
            dependent: :destroy
   has_many :videos,
            through: :landing_pages_videos
+
+  has_many :landing_pages_service_standards,
+           class_name: 'LandingPages::ServiceStandard',
+           dependent: :destroy
+  has_many :service_standards,
+           through: :landing_pages_service_standards
 
   has_many :sections,
            class_name: 'LandingPages::Section',

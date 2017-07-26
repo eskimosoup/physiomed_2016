@@ -54,7 +54,7 @@ module Optimadmin
         :title, :content, :style, :layout, :display, :suggested_url,
         :image, :remote_image_url, :image_cache, :remove_image,
         article_ids: [], case_study_ids: [], frequently_asked_question_ids: [],
-        guide_ids: [], testimonial_ids: [], video_ids: []
+        guide_ids: [], testimonial_ids: [], video_ids: [], service_standard_ids: []
       )
     end
   end

@@ -30,6 +30,11 @@
       </div>
 
       <div class="field">
+        <%= f.label :icon_text %><br>
+        <%= f.text_field :icon_text %>
+      </div>
+
+      <div class="field">
         <%= f.label :content %><br>
         <%= f.text_area :content %>
       </div>
@@ -49,6 +54,12 @@
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>
+      </div>
+
+      <div class="field">
+        <%= f.label :landing_page_ids, 'Landing pages' %><br>
+        <%= f.select :landing_page_ids, LandingPage.all.pluck(:title, :id),
+          {}, { class: 'multiselect', multiple: true } %>
       </div>
     <% end %>
   </div>

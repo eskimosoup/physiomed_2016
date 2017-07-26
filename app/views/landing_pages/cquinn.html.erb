@@ -96,17 +96,15 @@
     <div class="hero-navigation-wrap">
       <div class="hero-navigation">
         <ul class="body-part-section-navigation-links">
-          <% if @facade.videos_with_guides.present? %>
-            <% @facade.videos_with_guides.each do |video| %>
-              <%= content_tag :li, (link_to video.title, "#video-with-guide-#{video.id}") if @facade.videos_with_guides.present? %>
-            <% end %>
-          <% end %>
+          <%= content_tag :li, (link_to 'What We Do',  '#what-we-do') %>
+          <%= content_tag :li, (link_to @facade.sections.first.title.titleize,  '#tabs') if @facade.sections.present? %>
+          <%= content_tag :li, (link_to 'Success Rates', '#success-rates') if @facade.service_standards.present? %>
           <%= content_tag :li, (link_to 'Guides', '#guides') if @facade.guides.present? %>
-          <%#= content_tag :li, (link_to "Know Your #{@facade.name.titlecase}", '#body-part-sections') if @facade.body_part_sections.present? %>
-          <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @facade.team_members.present? %>
           <%= content_tag :li, (link_to "Case Studies", '#case-studies') if @facade.case_studies.present? %>
           <%= content_tag :li, (link_to "Testimonials", '#testimonials') if @facade.testimonials.present? %>
+          <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @facade.team_members.present? %>
           <%= content_tag :li, (link_to "FAQs", '#faqs') if @facade.faqs.present? %>
+          <%= content_tag :li, (link_to "Contact Us", '#contact-us') %>
         </ul>
       </div>
     </div>
@@ -132,7 +130,7 @@
   </div>
   <div id="main-content" class="content landing-page basic">
     <div class="content wellbeing section">
-      <section class="flexbox-wrap">
+      <section class="flexbox-wrap" id="what-we-do">
         <div class="additional-home-content text">
           <h3 class="content-box-title"><%= @facade.additional_content.title %></h3>
           <%= raw @facade.additional_content.content %>
@@ -172,22 +170,15 @@
         </section>
       <% end %>
       <%= content_for :javascript do %>
-        <%#= javascript_include_tag "components/service_standards" %>
+        <%= javascript_include_tag "components/service_standards" %>
       <% end %>
-      <div class="service-standards-wrap">
+      <div class="service-standards-wrap" id="success-rates">
         <section class="box-wrap">
           <div class="service-standards">
             <h2 class="service-standards-title text-center">Our Success Rates</h2>
             <p class="service-standards-text text-center">Below is the average benchmark data from 9 NHS Trusts who currently use our blended delivery model</p>
             <div class="service-standard-wrap">
-              <div class="service-standard green-background">
-                <div class="main-content item">
-                  <div class="service-standard-percentage">
-                    94%
-                  </div>
-                  <p>Hello world</p>
-                </div>
-              </div>
+              <%= render @facade.service_standards %>
             </div>
           </div>
         </section>
@@ -229,7 +220,7 @@
             ) %>
 
       <section class="box-wrap">
-        <div class="videos-with-guides-container">
+        <div class="videos-with-guides-container" id="contact-us">
           <div class="videos-with-guides-container-title">
             <h2>
               For more information, please contact us

@@ -36,6 +36,10 @@ class LandingPageFacade
     @testimonials ||= landing_page.testimonials.displayed.order('RANDOM()').limit(8)
   end
 
+  def service_standards
+    @service_standards ||= landing_page.service_standards.order(:position).displayed.limit(7)
+  end
+
   def video
     @video ||= landing_page.videos.without_guide.displayed.order(created_at: :desc).first
   end

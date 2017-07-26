@@ -9,7 +9,13 @@
       </div>
       <div class="main-content">
         <%= link_to service_standard.link do %>
-          <%= image_tag service_standard.icon_image %>
+          <% if service_standard.icon == 'none' %>
+            <div class="service-standard-percentage">
+              <%= service_standard.icon_text %>
+            </div>
+          <% else %>
+            <%= image_tag service_standard.icon_image %>
+          <% end %>
           <%= simple_format service_standard.content %>
         <% end %>
       </div>
