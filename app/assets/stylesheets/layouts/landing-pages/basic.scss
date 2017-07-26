@@ -1,0 +1,59 @@
+.landing-page.basic {
+  @include additional-home-content;
+  @include service-standard-home-content;
+
+  .case-studies-container {
+    @include media('>=768px') {
+      width: 65.5%;
+    }
+  }
+
+  .service-standard-percentage {
+    background: rgba($white, .7);
+    border-radius: 50%;
+    color: $brown;
+    font-size: rem(18px);
+    font-weight: $open-sans-bold;
+    text-align: center;
+    margin: 0 auto;
+
+    @include media('>=768px') {
+      height: 100px;
+      line-height: 100px;
+      width: 100px;
+    }
+  }
+
+  .service-standard {
+    &:not(:last-of-type) .main-content.item {
+      border-right: 1px solid $white;
+    }
+
+    .main-content.item {
+      @include clearfix;
+      background: $green linear-gradient(to bottom, $green 0%, $dark-green 100%);
+      color: $white;
+      display: block;
+      padding: rem-calc(5px);
+      text-align: center;
+      transition: background-color 500ms linear;
+
+      @include media('>=768px') {
+        height: 255px;
+        overflow: hidden;
+        padding: rem-calc(20px 10px);
+      }
+    }
+  }
+
+  .service-standards-title {
+    font-weight: $open-sans-bold;
+    margin-bottom: 0;
+  }
+
+  .service-standards-text {
+    color: $white;
+    margin-bottom: rem(30px);
+    margin-top: rem(5px);
+  }
+}

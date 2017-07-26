@@ -581,7 +581,7 @@ ActiveRecord::Schema.define(version: 20170724113616) do
     t.boolean  "bupa_registered"
     t.boolean  "domiciliary_visits"
     t.date     "public_liability_expiry_date"
-    t.date     "employee_liability_expire_date"
+    t.date     "employee_liability_expiry_date"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|

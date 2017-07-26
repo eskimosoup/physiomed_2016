@@ -1,0 +1,11 @@
+<%= simple_form_for @contact, url: contacts_path, remote: true, html: { class: 'remote-contact-form' } do |f| %>
+  <% if @success.present? %>
+    <div class="flash-wrap">
+      <div class="flash-message notice">
+        Thank you for getting in touch.
+      </div>
+    </div>
+  <% end %>
+
+  <%= render 'contacts/shared/form_fields', f: f %>
+<% end %>

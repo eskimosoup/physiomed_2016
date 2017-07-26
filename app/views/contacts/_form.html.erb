@@ -1,11 +1,3 @@
 <%= simple_form_for @contact, url: contacts_path do |f| %>
-  <div class="contact-details">
-    <%= f.input :name %>
-    <%= f.input :telephone, as: :tel %>
-    <%= f.input :email, as: :email %>
-    <%= f.input :message, as: :text %>
-    <div class="actions">
-      <%= f.button :submit, 'Send', class: 'submit-button' %>
-    </div>
-  </div>
+  <%= render 'contacts/shared/form_fields', f: f %>
 <% end %>

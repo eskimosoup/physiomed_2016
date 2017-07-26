@@ -1,4 +1,6 @@
 .home.content {
+  @include additional-home-content;
+  @include service-standard-home-content;
   background: image-url('banner/colour-bg.jpg') no-repeat top center;
   background-size: 1366px 100%;
   padding: rem(1px);
@@ -7,76 +9,7 @@
     padding: rem(220px 0 1px);
   }
 
-  .service-standards {
-    width: 100%;
 
-    @include media('>=768px') {
-      @include flex-grid-column(12);
-    }
-
-    h2 {
-      text-align: center;
-    }
-  }
-
-  .service-standard-wrap {
-    @include media('>=768px') {
-      @include flex-grid-layout(7, '.service-standard');
-      display: flex;
-    }
-  }
-
-  .additional-home-content {
-    background-color: $white;
-
-    ul {
-      margin: rem(20px) rem(10px);
-    }
-
-    li {
-      background: image-url('tick.png') no-repeat center left;
-      font-size: rem(14px);
-      font-weight: $open-sans-bold;
-      line-height: 1.5;
-      list-style: none;
-      margin: rem(15px 0);
-      padding: rem(0 0 0 35px);
-
-      @include media('>768px') {
-        font-size: rem(16px);
-      }
-    }
-
-    &.home-video {
-      padding: 0;
-
-      .flex-video {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .additional-home-content,
-  .physio-search,
-  .case-studies-container,
-  .testimonials-container {
-    @include border-radius-with-box-shadow;
-    margin: rem-calc(25px) 0;
-    padding: rem-calc(20px);
-
-    @include media('>=768px') {
-      margin: 0;
-      width: 32%;
-    }
-
-    &:first-of-type {
-      margin-top: 0;
-    }
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
 
   .physio-search {
     @include physio-search;

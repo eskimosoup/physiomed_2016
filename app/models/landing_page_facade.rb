@@ -40,6 +40,10 @@ class LandingPageFacade
     @video ||= landing_page.videos.without_guide.displayed.order(created_at: :desc).first
   end
 
+  def additional_content
+    @additional_content ||= AdditionalHomeContent.find_by(title: 'What we do')
+  end
+
   def videos_with_guides
     @videos_with_guides ||= landing_page.videos.displayed.joins(:guide).merge(Guide.displayed).preload(:guide)
   end
