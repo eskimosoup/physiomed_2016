@@ -1,7 +1,7 @@
 class LandingPageFacade
   attr_reader :landing_page
 
-  delegate :style, :layout, :title, :content, to: :landing_page
+  delegate :style, :layout, :title, :content, :image, :image?, to: :landing_page
 
   def initialize(landing_page)
     @landing_page = landing_page
