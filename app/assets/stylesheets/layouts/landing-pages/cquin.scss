@@ -2,10 +2,6 @@
   @include additional-home-content;
   @include service-standard-home-content;
 
-  .body-part-summary {
-    margin-bottom: rem(10px);
-  }
-
   .case-studies-container {
     @include media('>=768px') {
       // width: 65.5%;
