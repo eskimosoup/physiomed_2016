@@ -64,7 +64,8 @@
                 });
 
                 $(document).on('click', '.landing-page-tab-toggle', function() {
-                  $('a[href="#body-part-section-2"]').click();
+                  var anchor = $(this).data('anchor');
+                  $('a[href="' + anchor + '"]').click();
                   return false;
                 });
 
