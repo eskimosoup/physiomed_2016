@@ -57,7 +57,7 @@
                   }
                 });
 
-                $(document).on('click', 'a[href^="#"]:not(.body-part-tabs a)', function() {
+                $(document).on('click', 'a[href^="#"]:not(.body-part-tabs a):not(.landing-page-tab-toggle)', function() {
                   var elem = $.attr(this, 'href');
                   smoothScroll(elem);
                   return false;
@@ -69,6 +69,7 @@
                 });
 
                 $(document).ready(function() {
+                  $('.colorbox').colorbox();
                   $(".guides").slick({
                     slidesToShow: 2,
                     slidesToScroll: 1,

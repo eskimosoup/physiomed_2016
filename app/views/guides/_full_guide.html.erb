@@ -18,7 +18,7 @@
             </div>
           <% end %>
           <%= link_to "Download", guide.file.url,
-              class: 'button brown-background ga-event', data: { event_name: (defined?(ga_event_name) ? ga_event_name : 'Infographic Download'), action_name: (defined?(ga_action_name) ? ga_action_name : 'Click'), item_name: (defined?(ga_item_name) ? ga_item_name : guide.title) } %>
+              class: 'button brown-background ga-event', data: { event_name: (defined?(ga_event_name) ? ga_event_name : 'Infographic Download'), action_name: (defined?(ga_action_name) ? ga_action_name : 'Click'), item_name: (defined?(ga_label_name) ? ga_label_name : guide.title) } %>
         </div>
       </div>
     </div>
