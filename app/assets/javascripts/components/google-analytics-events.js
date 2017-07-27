@@ -4,13 +4,18 @@ $(function() {
 
 $(document).on('click', '.ga-event', function(e) {
 	var eventName = $(this).data('event-name');
-	var itemName  = $(this).data('item-name');
+	var itemName  = $(this).data('action-name');
+  var actionName = $(this).data('item-name');
+
+  if(actionName === undefined) {
+    actionName = 'click';
+  }
 
 	if ( eventName && itemName ) {
     ga('send', {
       hitType: 'event',
       eventCategory: eventName, //required
-      eventAction: 'click', //required
+      eventAction: actionName, //required
       eventLabel: eventName + ': ' + itemName,
       eventValue: 1,
       hitCallback: function() {

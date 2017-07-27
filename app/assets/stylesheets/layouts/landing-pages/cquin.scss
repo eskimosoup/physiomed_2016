@@ -1,10 +1,21 @@
-.landing-page.basic {
+.landing-page.cquin {
   @include additional-home-content;
   @include service-standard-home-content;
 
+  .body-part-summary {
+    margin-bottom: rem(10px);
+  }
+
   .case-studies-container {
     @include media('>=768px') {
-      width: 65.5%;
+      // width: 65.5%;
+      @include flex-grid-column(6);
+    }
+  }
+
+  .testimonials-container {
+    @include media('>=768px') {
+      width: 48%;
     }
   }
 

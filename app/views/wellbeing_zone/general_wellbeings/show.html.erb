@@ -214,12 +214,14 @@
           <% end %>
 
           <% tweets = twitter_timeline(global_site_settings['Twitter'].tr('@', ''), 3) %>
-          <% tweets.each do |tweet| %>
-            <div class="tweet">
-              <p class="tweet-text">
-                <%= raw tweet_text(tweet.text) %>
-              </p>
-            </div>
+          <% if tweets %>
+            <% tweets.each do |tweet| %>
+              <div class="tweet">
+                <p class="tweet-text">
+                  <%= raw tweet_text(tweet.text) %>
+                </p>
+              </div>
+              <% end %>
             <% end %>
 
           <div class="twitter-follow-button">

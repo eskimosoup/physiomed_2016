@@ -70,9 +70,16 @@
   @include media('>768px') {
     &.cquin-background {
       background: image-url('banner/mask.png') no-repeat top center,
-                  image-url('layout/photography/wellbeing-zone.jpg') no-repeat top center,
+                  image-url('layout/photography/cquin.jpg') no-repeat top center,
                   image-url('banner/colour-bg.jpg') no-repeat top center;
       background-size: auto, auto, 1366px 100%;
+
+      .hero-section-title {
+        background: rgba($green, .75);
+        border-radius: 6px;
+        padding: rem(20px);
+        max-width: 75rem;
+      }
     }
 
     &.body-part-background {

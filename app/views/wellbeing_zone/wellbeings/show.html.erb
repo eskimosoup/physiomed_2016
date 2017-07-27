@@ -83,13 +83,15 @@
           <% end %>
 
           <% tweets = twitter_timeline(global_site_settings['Twitter'].tr('@', ''), 1) %>
-          <% tweets.each do |tweet| %>
-            <div class="tweet">
-              <p class="tweet-text">
-                <%= raw tweet_text(tweet.text) %>
-              </p>
-            </div>
+          <% if tweets %>
+            <% tweets.each do |tweet| %>
+              <div class="tweet">
+                <p class="tweet-text">
+                  <%= raw tweet_text(tweet.text) %>
+                </p>
+              </div>
             <% end %>
+          <% end %>
 
           <div class="twitter-follow-button">
             <a href="https://twitter.com/<%= twitter_name %>" class="twitter-follow-button" data-show-count="false">Follow @<%= twitter_name %></a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
