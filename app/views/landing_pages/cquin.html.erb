@@ -63,6 +63,11 @@
                   return false;
                 });
 
+                $(document).on('click', '.landing-page-tab-toggle', function() {
+                  $('a[href="#body-part-section-2"]').click();
+                  return false;
+                });
+
                 $(document).ready(function() {
                   $(".guides").slick({
                     slidesToShow: 2,
@@ -86,7 +91,7 @@
     </ul>
   </div>
 </div>
-<div class="hero-section body-part-background">
+<div class="hero-section cquin-background">
   <div class="hero-section-header">
     <h1 class="hero-section-title">
       <%= @facade.title %>
@@ -128,7 +133,7 @@
       ) %>
     </div>
   </div>
-  <div id="main-content" class="content landing-page basic">
+  <div id="main-content" class="content landing-page cquin">
     <div class="content wellbeing section">
       <section class="flexbox-wrap" id="what-we-do">
         <div class="additional-home-content text">
@@ -185,7 +190,7 @@
       </div>
       <% if @facade.guides.present? %>
         <% @facade.guides.each do |guide| %>
-          <%= render partial: 'guides/full_guide', locals: { guide: guide } %>
+          <%= render partial: 'guides/full_guide', locals: { guide: guide, ga_event_name: 'CQUIN Guide', ga_action_name: 'Download', ga_label_name: 'CQUIN Campaign Brochure' } %>
         <% end %>
       <% end %>
       <section class="flexbox-wrap" id="faqs">
