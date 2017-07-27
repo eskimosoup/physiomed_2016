@@ -28,7 +28,7 @@ class HomeFacade
   end
 
   def service_standards
-    @service_standards ||= ServiceStandard.displayed.ordered_by_position
+    @service_standards ||= ServiceStandard.displayed.ordered_by_position.where.not(id: [LandingPages::ServiceStandard.pluck(:service_standard_id)])
   end
 
   def case_studies
