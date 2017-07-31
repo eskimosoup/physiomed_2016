@@ -1,0 +1,20 @@
+<% present guide_download do |guide_download_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= guide_download_presenter.id %>">
+    <div class="large-4 columns" data-equalizer-watch="module-list">
+      <%= guide_download_presenter.name %><br />
+      <strong style="font-size:12px;"><%= guide_download_presenter.guide.title %></strong>
+    </div>
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= guide_download_presenter.created_at %>
+    </div>
+    <div class="large-2 small-4 columns" data-equalizer-watch="module-list">
+      <%= guide_download_presenter.job_title %>
+    </div>
+    <div class="large-3 columns" data-equalizer-watch="module-list">
+      <%= guide_download_presenter.email %>
+    </div>
+    <div class="large-2 columns last" data-equalizer-watch="module-list">
+      <%= guide_download_presenter.phone %>
+    </div>
+  </div>
+<% end %>

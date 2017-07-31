@@ -1,0 +1,20 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Guide Downloads' %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+  </div>
+  <div class="row collapse module-list-index header">
+    <% # ADD TWO TO THE TITLE LARGE COLUMN SIZE BELOW TO ACCOUNT FOR NO IMAGE %>
+    <%= list_item 'large-4' do %>
+      Name
+    <% end %>
+    <%= list_item('large-1') { 'Created at' } %>
+    <%= list_item('large-2') { 'Job title' } %>
+    <%= list_item('large-3') { 'Email' } %>
+    <%= list_item('large-2') { 'Phone' } %>
+  </div>
+  <!-- <div class="module-sortable" data-module="GuideDownload"> -->
+  <%= render partial: 'guide_download', collection: @guide_downloads, as: :guide_download %>
+  <!-- </div> -->
+  <%= paginate @guide_downloads %>
+</div>

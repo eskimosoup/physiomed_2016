@@ -9,7 +9,9 @@ class Guide < ActiveRecord::Base
   belongs_to :video
   has_many :categories_guides, class_name: "Categories::Guide"
   has_many :categories, through: :categories_guides
+  has_many :downloads, class_name: 'GuideDownload', dependent: :destroy
 
   validates :title, presence: true
   validates :file, presence: true
+
 end

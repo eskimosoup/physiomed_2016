@@ -57,6 +57,10 @@ Rails.application.routes.draw do
     root to: 'homes#show'
   end
 
+  resources :guides, only: [] do
+    resources :guide_downloads, only: [:new, :create], path: 'download', as: :downloads
+  end
+
   mount Optimadmin::Engine => '/admin'
 
   # This has to be the last route in your list
@@ -90,6 +94,7 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module resources go below concerns
+  resources :guide_downloads, only: [:index, :show]
   resources :landing_pages, concerns: %i[imageable toggleable], except: :show do
     resources :sections,
               concerns: %i[orderable toggleable imageable],

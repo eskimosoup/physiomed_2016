@@ -3,7 +3,9 @@
     <div class="guide-content-wrap">
       <div class="guide-image">
         <%= image_tag guide.image_url(:show), alt: guide.title, title: guide.title if guide.image? %>
-        <%= link_to "Download", guide.file.url, class: 'guide-download-button button brown-background ga-event', data: { event_name: 'Guide Download', item_name: guide.title } %>
+        <% present guide do |guide_presenter| %>
+          <%= guide_presenter.linked_download('Download', class: 'guide-download-button button brown-background ga-event', data: { event_name: 'Guide Download', item_name: guide.title }) %>
+        <% end %>
       </div>
 
       <div class="guide-content">

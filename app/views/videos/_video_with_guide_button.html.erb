@@ -17,8 +17,11 @@
             <%= raw video.content %>
 
             <div class="video-with-guide-download-button">
-              <%= link_to "Download PDF", video.guide.file.url,
-                class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: video.guide.title } if video.guide.present? %>
+              <% if video.guide.present? %>
+                <% present video.guide do |guide_presenter| %>
+                  <%= guide_presenter.linked_download("Download PDF", class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: video.guide.title }) %>
+                <% end %>
+              <% end %>
             </div>
 
           </div>

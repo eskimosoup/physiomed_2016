@@ -55,6 +55,11 @@
         <%= f.label :display %><br>
         <%= f.check_box :display %>
       </div>
+
+      <div class="field">
+        <%= f.label :gated %> <%= module_tooltip('What is a gated guide?', "A gated guide requries the user\'s details before proceeding.") %><br>
+        <%= f.check_box :gated %>
+      </div>
     <% end %>
   </div>
 
