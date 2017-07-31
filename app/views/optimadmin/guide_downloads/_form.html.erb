@@ -1,0 +1,71 @@
+<%= form_for(@guide_download) do |f| %>
+  <% if @guide_download.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guide_download.errors.count, "error") %> prohibited this guide download from being saved:</h2>
+
+      <ul>
+        <% @guide_download.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="tabs prevent-flash">
+    <ul class="tab-list">
+      <li><a href="#tabs-1">Content</a></li>
+      <li><a href="#tabs-2">Media</a></li>
+      <li><a href="#tabs-3">Settings</a></li>
+      <li>
+        <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+          <%= octicon('chevron-down') %>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= field_set_tag nil, id: 'tabs-1' do %>
+            <div class="field">
+        <%= f.label :guide_id %><br>
+        <%= f.text_field :guide_id %>
+      </div>
+            <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+            <div class="field">
+        <%= f.label :job_title %><br>
+        <%= f.text_field :job_title %>
+      </div>
+            <div class="field">
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+      </div>
+            <div class="field">
+        <%= f.label :phone %><br>
+        <%= f.text_field :phone %>
+      </div>
+      
+      
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-2' do %>
+      
+      
+          <% end %>
+
+    <%= field_set_tag nil, id: 'tabs-3' do %>
+      
+      
+            <div class="field">
+        <%= f.label :display %><br>
+        <%= f.check_box :display %>
+      </div>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+    <%= f.submit 'Save and continue editing' %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 $(function() {
-  $('.ga-event').attr('target', '_blank');
+  $('.ga-event:not(.ga-inline)').attr('target', '_blank');
 });
 
 $(document).on('click', '.ga-event', function(e) {
@@ -11,7 +11,7 @@ $(document).on('click', '.ga-event', function(e) {
     actionName = 'click';
   }
 
-	if ( eventName && itemName ) {
+	if ( eventName && itemName && typeof ga === 'function') {
     ga('send', {
       hitType: 'event',
       eventCategory: eventName, //required

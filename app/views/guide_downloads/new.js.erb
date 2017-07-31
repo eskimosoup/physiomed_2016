@@ -1,0 +1,8 @@
+$('.guide-download-form').replaceWith("<%= j render 'guide_downloads/form' %>");
+<% if @guide_url.present? %>
+  var anchor = document.createElement('a');
+  anchor.href = "<%= @guide_url %>";
+  anchor.target = '_blank';
+  anchor.download = '<%= @guide.title.parameterize %>';
+  anchor.click();
+<% end %>

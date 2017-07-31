@@ -20,13 +20,13 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  username: paul
-  password:
+  username: postgres
+  password: tmedia
 
 development:
   <<: *default
   database: physiomed_2016_development
-  host: localhost
+  host: 192.168.0.41
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

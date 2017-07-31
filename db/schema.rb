@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726110743) do
+ActiveRecord::Schema.define(version: 20170731140038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -245,15 +245,28 @@ ActiveRecord::Schema.define(version: 20170726110743) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "guide_downloads", force: :cascade do |t|
+    t.integer  "guide_id"
+    t.string   "name"
+    t.string   "job_title"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "guide_downloads", ["guide_id"], name: "index_guide_downloads_on_guide_id", using: :btree
+
   create_table "guides", force: :cascade do |t|
-    t.string   "title",                     null: false
+    t.string   "title",                      null: false
     t.text     "content"
     t.string   "image"
-    t.string   "file",                      null: false
-    t.boolean  "display",    default: true, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "file",                       null: false
+    t.boolean  "display",    default: true,  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "video_id"
+    t.boolean  "gated",      default: false
   end
 
   add_index "guides", ["video_id"], name: "index_guides_on_video_id", unique: true, using: :btree
@@ -784,6 +797,7 @@ ActiveRecord::Schema.define(version: 20170726110743) do
   add_foreign_key "categories_testimonials", "testimonials", on_delete: :cascade
   add_foreign_key "categories_videos", "categories", on_delete: :cascade
   add_foreign_key "categories_videos", "videos", on_delete: :cascade
+  add_foreign_key "guide_downloads", "guides"
   add_foreign_key "guides", "videos", on_delete: :cascade
   add_foreign_key "job_applications", "job_listings"
   add_foreign_key "landing_pages_articles", "articles"

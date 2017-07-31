@@ -1,0 +1,38 @@
+<% if @success.present? %>
+  <div class="flash-wrap">
+    <div class="flash-message notice">
+      Thank you for getting in touch.
+    </div>
+  </div>
+<% end %>
+<%= form_for [@guide, @download], url: guide_downloads_path, remote: true do |f| %>
+  <% if @download.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@download.errors.count, "error") %> prohibited this download from being submitted:</h2>
+      <ul>
+        <% @download.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :job_title %>
+    <%= f.text_field :job_title %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Download', class: 'submit-button' %>
+  </div>
+<% end %>

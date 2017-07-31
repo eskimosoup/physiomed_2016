@@ -17,7 +17,7 @@
 
   <%= yield :head %>
 
-  <%= render 'layouts/shared/remarketing_head' %>
+  <%= render 'layouts/shared/remarketing_head' if Rails.env.production? %>
 
   <script src="https://use.typekit.net/qmb4xev.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>

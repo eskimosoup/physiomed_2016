@@ -27,13 +27,14 @@
           -->
           </div>
           <div class="guide">
-            <% if guide.image? %>
-              <div>
-                <%= link_to image_tag(guide.image_url(:show), alt: guide.title, title: guide.title), guide.file.url, class: 'ga-event', data: { event_name: 'Infographic Download', item_name: guide.title } %>
-              </div>
+            <% present guide do |guide_presenter| %>
+              <% if guide.image? %>
+                <div>
+                  <%= guide_presenter.linked_download(image_tag(guide.image_url(:show), alt: guide.title, title: guide.title), guide.file.url, class: 'ga-event', data: { event_name: 'Infographic Download', item_name: guide.title }) %>
+                </div>
+              <% end %>
+              <%= guide_presenter.linked_download("Download", class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: guide.title }) %>
             <% end %>
-            <%= link_to "Download", guide.file.url,
-              class: 'button brown-background ga-event', data: { event_name: 'Infographic Download', item_name: guide.title } %>
         </div>
         </div>
       </div>
