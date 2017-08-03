@@ -19,6 +19,8 @@ class SEO
       Subcategory.order(:title)
     when 'team_members'
       TeamMember.order(:forename)
+    when 'landing_pages'
+      LandingPage.order(:title)
 
     else
       []
@@ -45,6 +47,8 @@ class SEO
       Subcategory.displayed.order(:title)
     when 'team_members'
       TeamMember.displayed.order(:forename)
+    when 'landing_pages'
+      LandingPage.displayed.order(:title)
 
     else
       []
