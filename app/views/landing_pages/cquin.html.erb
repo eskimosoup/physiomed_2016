@@ -189,8 +189,9 @@
           </div>
         </section>
       </div>
-      
+
       <% if @facade.guides.present? %>
+        <a id="guides-anchor"></a>
         <% @facade.guides.each do |guide| %>
           <%= render partial: 'guides/full_guide', locals: { guide: guide, ga_event_name: 'CQUIN Guide', ga_action_name: 'Download', ga_label_name: 'CQUIN Campaign Brochure' } %>
         <% end %>
