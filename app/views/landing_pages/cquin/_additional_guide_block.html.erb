@@ -1,0 +1,11 @@
+<div class="split-guides">
+  <div class="videos-with-guides-container">
+    <div class="videos-with-guides-container-title">
+      <h2><%= title %></h2>
+    </div>
+
+    <%= image_tag image, alt: '' if defined?(image) && image.present? %>
+
+    <%= link_to button_text, button_link, class: 'button brown-background' %>
+  </div>
+</div>

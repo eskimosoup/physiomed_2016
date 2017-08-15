@@ -24,7 +24,7 @@ class LandingPageFacade
   end
 
   def guides
-    @guides ||= landing_page.guides.without_video.displayed
+    @guides ||= landing_page.guides.displayed
   end
 
   def team_members

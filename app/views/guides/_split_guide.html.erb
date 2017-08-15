@@ -1,0 +1,16 @@
+<div class="split-guides">
+  <div class="videos-with-guides-container">
+    <div class="videos-with-guides-container-title">
+      <h2><%= guide.title %></h2>
+    </div>
+
+    <% present guide do |guide_presenter| %>
+      <% if guide.image? %>
+        <div>
+          <%= guide_presenter.linked_download(image_tag(guide.image_url(:show), alt: guide.title, title: guide.title), class: 'ga-event', data: { event_name: (defined?(ga_event_name) ? ga_event_name : 'Infographic Download'), action_name: (defined?(ga_action_name) ? ga_action_name : 'Click'), item_name: (defined?(ga_item_name) ? ga_item_name : guide.title) }) %>
+        </div>
+      <% end %>
+      <%= guide_presenter.linked_download('Download', class: 'button brown-background ga-event', data: { event_name: (defined?(ga_event_name) ? ga_event_name : 'Infographic Download'), action_name: (defined?(ga_action_name) ? ga_action_name : 'Click'), item_name: (defined?(ga_label_name) ? ga_label_name : guide.title) }) %>
+    <% end %>
+  </div>
+</div>

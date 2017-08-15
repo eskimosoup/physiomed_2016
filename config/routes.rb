@@ -100,6 +100,9 @@ Optimadmin::Engine.routes.draw do
   # Module resources go below concerns
   resources :guide_downloads, only: [:index, :show]
   resources :landing_pages, concerns: %i[imageable toggleable], except: :show do
+    resources :guides,
+              only: [:index],
+              controller: 'landing_pages/guides'              
     resources :sections,
               concerns: %i[orderable toggleable imageable],
               except: [:show],
