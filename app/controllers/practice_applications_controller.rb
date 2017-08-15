@@ -7,10 +7,13 @@ class PracticeApplicationsController < ApplicationController
     @practice_application = PracticeApplication.new(practice_application_params)
     if @practice_application.save
       PracticeApplicationMailer.application_made(@practice_application.practice).deliver_now
-      redirect_to new_practice_application_path, notice: I18n.t('practice_applications.create.flash')
+      redirect_to thank_you_practice_applications_path
     else
       render :new
     end
+  end
+
+  def thank_you
   end
 
   private
