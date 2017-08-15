@@ -1,17 +1,13 @@
 <div class="split-guides">
-  <div class="videos-with-guides-container">
-    <div class="body-part">
-      <%= link_to wellbeing_zone_general_wellbeing_path do %>
-        <div class="name text-center wellbeing-full-section-button green-background">
-          <%= general_wellbeing_category.name %>
-        </div>
-        <%= image_tag general_wellbeing_category.image.show, alt: general_wellbeing_category.name %>
-        <% if general_wellbeing_category.tagline.present? %>
-          <div class="tagline text-center">
-            <%= general_wellbeing_category.tagline %>
-          </div>
-        <% end %>
-      <% end %>
+  <div class="videos-with-guides-container">    
+    <div class="videos-with-guides-container-title">
+      <h2><%= title %></h2>
     </div>
+
+    <%= image_tag image, alt: '' if defined?(image) && image.present? %>
+
+    <%= simple_format tagline %>
+
+    <%= link_to button_text, button_link, class: 'button brown-background' %>
   </div>
 </div>
