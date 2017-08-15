@@ -197,10 +197,7 @@
 
         <section class="flexbox-wrap" id="additional-guides">
           <%= render partial: 'landing_pages/cquin/additional_guide_block', locals: {
-              title: 'Wellbeing Zone',
-              image: (Category.find(12).present? ? Category.find(12).image.url : nil),
-              button_text: 'Find out more',
-              button_link: wellbeing_zone_root_path
+              general_wellbeing_category: Category.find(12)
             } %>
 
           <% @facade.guides.limit(3).drop(1).each do |guide| %>
