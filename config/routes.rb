@@ -23,7 +23,11 @@ Rails.application.routes.draw do
     resources :job_applications, only: [:create], path: 'job-applications'
   end
   resources :pages, only: :show
-  resources :practice_applications, only: %i[new create], path: 'practice-applications'
+
+  resources :practice_applications, only: %i[new create], path: 'practice-applications' do
+    get 'thank-you', on: :collection
+  end
+
   resources :subcategories, only: %i[index show], path: 'categorisation'
   resources :team_members, only: %i[index show], path: 'team-members'
   resources :testimonials, only: [:index]
@@ -96,6 +100,9 @@ Optimadmin::Engine.routes.draw do
   # Module resources go below concerns
   resources :guide_downloads, only: [:index, :show]
   resources :landing_pages, concerns: %i[imageable toggleable], except: :show do
+    resources :guides,
+              only: [:index],
+              controller: 'landing_pages/guides'              
     resources :sections,
               concerns: %i[orderable toggleable imageable],
               except: [:show],

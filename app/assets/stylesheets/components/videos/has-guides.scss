@@ -1,3 +1,19 @@
+.split-guides {
+  @include flex-grid-column(4);
+
+  .videos-with-guides-container {
+    padding-bottom: rem(15px);
+  }
+
+  &:first-of-type {
+    padding-left: 0;
+  }
+
+  &:last-of-type {
+    padding-right: 0;
+  }
+}
+
 .videos-with-guides-container {
   @include flex-grid-column(12);
   @include border-radius-with-dark-box-shadow;

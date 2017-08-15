@@ -105,7 +105,7 @@
           <%= content_tag :li, (link_to 'What We Do',  '#what-we-do') %>
           <%= content_tag :li, (link_to @facade.sections.first.title.titleize,  '#tabs') if @facade.sections.present? %>
           <%= content_tag :li, (link_to 'Success Rates', '#success-rates') if @facade.service_standards.present? %>
-          <%= content_tag :li, (link_to 'Guides', '#guides') if @facade.guides.present? %>
+          <%= content_tag :li, (link_to 'Guides', '#guides-anchor') if @facade.guides.present? %>
           <%= content_tag :li, (link_to "Case Studies", '#case-studies') if @facade.case_studies.present? %>
           <%= content_tag :li, (link_to "Testimonials", '#testimonials') if @facade.testimonials.present? %>
           <%= content_tag :li, (link_to "Clinical Team", '#team-members') if @facade.team_members.present? %>
@@ -192,9 +192,22 @@
 
       <% if @facade.guides.present? %>
         <a id="guides-anchor"></a>
-        <% @facade.guides.each do |guide| %>
-          <%= render partial: 'guides/full_guide', locals: { guide: guide, ga_event_name: 'CQUIN Guide', ga_action_name: 'Download', ga_label_name: 'CQUIN Campaign Brochure' } %>
-        <% end %>
+        <%= render partial: 'guides/full_guide',
+                  locals: { guide: @facade.guides.first, ga_event_name: 'CQUIN Guide', ga_action_name: 'Download', ga_label_name: 'CQUIN Campaign Brochure' } %>
+
+        <section class="flexbox-wrap" id="additional-guides">
+          <%= render partial: 'landing_pages/cquin/additional_guide_block', locals: {
+              title: 'Wellbeing Zone',
+              image: (Category.find(13).present? ? Category.find(13).image.url : nil),
+              button_text: 'Find out more',
+              button_link: wellbeing_zone_root_path
+            } %>
+
+          <% @facade.guides.limit(3).drop(1).each do |guide| %>
+            <%= render partial: 'guides/split_guide',
+                      locals: { guide: guide, ga_event_name: guide.title, ga_action_name: 'Download', ga_label_name: guide.title } %>
+          <% end %>
+        </section>
       <% end %>
       <section class="flexbox-wrap" id="faqs">
         <%= render(

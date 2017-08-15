@@ -1,0 +1,22 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Order Guides' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%#= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @guides.size, path: root_url %>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    <%= list_item 'small-11' do %>
+      Title
+    <% end %>
+  </div>
+
+  <div class="module-sortable" data-module="LandingPages::Guide">
+    <%= render partial: 'optimadmin/landing_pages/guides/guide', collection: @guides, as: :landing_pages_guide %>
+  </div>
+</div>

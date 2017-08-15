@@ -23,5 +23,12 @@
     <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
       <%= landing_page_presenter.delete_link %>
     </div>
+    <div class="small-12 module-list-additional-row columns">
+    <div class="row collapse" id="index-list-<%= landing_page_presenter.id %>">
+      <div class="large-12 columns">
+        <%= landing_page_presenter.manage_guides %>
+      </div>
+    </div>
+  </div>
   </div>
 <% end %>
