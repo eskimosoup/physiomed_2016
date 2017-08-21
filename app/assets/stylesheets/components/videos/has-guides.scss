@@ -1,3 +1,9 @@
+.moving-is-key-guides {
+  .split-guides {
+    @include flex-grid-column(3);
+  }
+}
+
 .split-guides {
   @include flex-grid-column(4);
 
