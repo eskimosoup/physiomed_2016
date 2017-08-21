@@ -175,12 +175,18 @@
           locals: { video: video, guide: video.guide }, cache: [@facade, video] %>
         <% end %>
       <% end %>
-      <% if @facade.guides.present? %>
+      <% if @facade.videos.present? %>
+        <% @facade.videos.each do |video| %>
+          <%= render partial: 'videos/video_right_aligned',
+                     locals: { video: video }, cache: [@facade, video] %>
+        <% end %>
+      <% end %>
+      <% if @facade.guides.where.not(id: @facade.videos_with_guides.pluck(:id)).present? %>
         <a id="guides-anchor"></a>
         <section class="flexbox-wrap moving-is-key-guides" id="additional-guides">
           <%= render partial: 'landing_pages/moving_is_key/additional_block' %>
 
-          <% @facade.guides.limit(3).each do |guide| %>
+          <% @facade.guides.where.not(id: @facade.videos_with_guides.pluck(:id)).limit(3).each do |guide| %>
             <%= render partial: 'guides/split_guide',
                       locals: { guide: guide, ga_event_name: guide.title, ga_action_name: 'Download', ga_label_name: guide.title } %>
           <% end %>
