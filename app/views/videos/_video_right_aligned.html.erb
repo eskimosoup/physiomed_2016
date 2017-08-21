@@ -1,0 +1,33 @@
+<% cache ['video_with_guide', video, video.guide] do %>
+  <section class="box-wrap">
+    <div class="videos-with-guides-container" id="video-with-guide-<%= video.id %>">
+      <div class="videos-with-guides-container-title">
+        <h2>
+          <%= video.title %>
+        </h2>
+      </div>
+
+      <div class="videos-with-guides wellbeing">
+        <div class="video-with-guide">
+          <div class="basic-details">
+            <h3 class="video-subtitle">
+              <%= video.subtitle %>
+            </h3>
+
+            <%= raw video.content %>
+          </div>
+          <div class="video-iframe">
+            <div class="flex-video widescreen">
+              <%= raw iframe_for(video, width: 345, height: 248) %>
+            </div>
+            <!--
+            <div class="youtube-title">
+              <%= video.title %>
+            </div>
+          -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
