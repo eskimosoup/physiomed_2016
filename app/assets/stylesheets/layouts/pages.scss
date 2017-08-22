@@ -88,12 +88,12 @@
       }
     }
 
-    .moving-is-key-background {
+    &.moving-is-key-background {
       background: image-url('banner/mask.png') no-repeat top center,
                   image-url('layout/photography/wellbeing-zone.jpg') no-repeat top center,
                   image-url('banner/colour-bg.jpg') no-repeat top center;
       background-size: auto, 1365px auto, 1366px 100%;
-      &.wellbeing.content.section {
+      .wellbeing.content.section {
         background: none;
         }
     }
