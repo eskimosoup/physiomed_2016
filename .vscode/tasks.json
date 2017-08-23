@@ -1,0 +1,43 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "taskName": "beautify",
+      "type": "shell",
+      "command": "htmlbeautifier ${file}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "taskName": "rubocop",
+      "type": "shell",
+      "command": "rubocop --auto-correct ${file}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "taskName": "rspec",
+      "type": "shell",
+      "command": "bundle exec rspec ${file}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "taskName": "configure",
+      "type": "shell",
+      "command": "gem install ruby-debug-ide:0.6.0 debase:0.2.2.beta10 rcodetools rubocop fastri htmlbeautifier --no-ri --no-rdoc",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    }
+  ]
+}
