@@ -1,11 +1,11 @@
 .moving-is-key-guides {
   .split-guides {
     @include flex-grid-column(3);
-  }
 
-  .videos-with-guides-container {
-    position: relative;
-    padding-bottom: rem(60px);
+    .videos-with-guides-container {
+      position: relative;
+      padding-bottom: rem(60px);
+    }
   }
 
   .button {
