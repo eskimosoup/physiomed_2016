@@ -1,6 +1,7 @@
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'vendor/modernizr' %>
   <%= javascript_include_tag 'vendor/jquery.viewport' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight.js' %>
   <script>
     // http://craftedpixelz.co.uk/blog/conditional-js-with-modernizr-mq/
     if (Modernizr.mq('only screen and (min-width: 1200px)')) {
@@ -69,6 +70,10 @@
     });
 
     $(document).ready(function() {
+      if (Modernizr.mq('only screen and (min-width: 1024px)')) {
+        $('.hero-navigation, .page-contact-methods').matchHeight();
+      }
+
       $('.colorbox').colorbox();
       $(".guides").slick({
         slidesToShow: 2,
