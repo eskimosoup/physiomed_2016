@@ -6,7 +6,7 @@
     {
       "taskName": "beautify",
       "type": "shell",
-      "command": "htmlbeautifier ${file}",
+      "command": "htmlbeautifier ${relativeFile}",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never"
@@ -15,7 +15,7 @@
     {
       "taskName": "rubocop",
       "type": "shell",
-      "command": "rubocop --auto-correct ${file}",
+      "command": "rubocop --auto-correct ${relativeFile}",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never"
@@ -24,7 +24,52 @@
     {
       "taskName": "rspec",
       "type": "shell",
-      "command": "bundle exec rspec ${file}",
+      "command": "bundle exec rspec",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "taskName": "rspec file",
+      "type": "shell",
+      "command": "bundle exec rspec ${relativeFile}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "taskName": "rails c",
+      "type": "shell",
+      "command": "bundle exec rails console",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "taskName": "rails s",
+      "type": "shell",
+      "command": "bundle exec rails server",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "taskName": "bin/server",
+      "type": "shell",
+      "command": "./bin/server",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "taskName": "cap production deploy",
+      "type": "shell",
+      "command": "cap production deploy",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always"
