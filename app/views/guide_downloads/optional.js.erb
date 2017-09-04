@@ -1,6 +1,1 @@
-var anchor = document.createElement('a');
-anchor.href = "<%= @guide.file.url %>";
-anchor.target = '_blank';
-anchor.download = '<%= @guide.title.parameterize %>';
-anchor.click();
-parent.$.colorbox.close();
+window.location = '<%= @guide.file.url %>';
