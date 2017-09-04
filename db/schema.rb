@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731140038) do
+ActiveRecord::Schema.define(version: 20170904103110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -251,22 +251,27 @@ ActiveRecord::Schema.define(version: 20170731140038) do
     t.string   "job_title"
     t.string   "email"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "utm_source"
+    t.string   "utm_campaign"
+    t.string   "utm_medium"
+    t.string   "utm_term"
   end
 
   add_index "guide_downloads", ["guide_id"], name: "index_guide_downloads_on_guide_id", using: :btree
 
   create_table "guides", force: :cascade do |t|
-    t.string   "title",                      null: false
+    t.string   "title",                            null: false
     t.text     "content"
     t.string   "image"
-    t.string   "file",                       null: false
-    t.boolean  "display",    default: true,  null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "file",                             null: false
+    t.boolean  "display",          default: true,  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "video_id"
-    t.boolean  "gated",      default: false
+    t.boolean  "gated",            default: false
+    t.boolean  "optionally_gated"
   end
 
   add_index "guides", ["video_id"], name: "index_guides_on_video_id", unique: true, using: :btree

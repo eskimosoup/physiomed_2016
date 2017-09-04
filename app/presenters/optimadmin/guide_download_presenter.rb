@@ -3,7 +3,8 @@ module Optimadmin
     include Optimadmin::PresenterMethods
 
     presents :guide_download
-    delegate :id, :name, :job_title, :phone, :guide, to: :guide_download
+    delegate :id, :name, :job_title, :phone, :guide,
+             :utm_source, :utm_campaign, :utm_term, to: :guide_download
 
     def email
       h.mail_to guide_download.email

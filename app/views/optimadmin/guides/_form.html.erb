@@ -60,6 +60,11 @@
         <%= f.label :gated %> <%= module_tooltip('What is a gated guide?', "A gated guide requries the user\'s details before proceeding.") %><br>
         <%= f.check_box :gated %>
       </div>
+
+      <div class="field">
+        <%= f.label :optionally_gated %> <%= module_tooltip('Use this for landing pages', "Optionally gated guides invisibly record the data if it's available.") %><br>
+        <%= f.check_box :optionally_gated %>
+      </div>
     <% end %>
   </div>
 

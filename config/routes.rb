@@ -62,7 +62,9 @@ Rails.application.routes.draw do
   end
 
   resources :guides, only: [] do
-    resources :guide_downloads, only: [:new, :create], path: 'download', as: :downloads
+    resources :guide_downloads, only: [:new, :create], path: 'download', as: :downloads do
+      get 'optional', on: :collection
+    end
   end
 
   mount Optimadmin::Engine => '/admin'
@@ -102,7 +104,7 @@ Optimadmin::Engine.routes.draw do
   resources :landing_pages, concerns: %i[imageable toggleable], except: :show do
     resources :guides,
               only: [:index],
-              controller: 'landing_pages/guides'              
+              controller: 'landing_pages/guides'
     resources :sections,
               concerns: %i[orderable toggleable imageable],
               except: [:show],
