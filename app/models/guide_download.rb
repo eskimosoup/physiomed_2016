@@ -5,8 +5,8 @@ class GuideDownload < ActiveRecord::Base
 
   belongs_to :guide
 
-  validates :name, presence: true
-  validates :job_title, presence: true
-  validates :email, presence: true
-  validates :phone, presence: true
+  validates :name, presence: true, unless: :utm_source?
+  validates :job_title, presence: true, unless: :utm_source?
+  validates :email, presence: true, unless: :utm_source?
+  validates :phone, presence: true, unless: :utm_source?
 end

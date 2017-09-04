@@ -7,6 +7,16 @@ class GuideDownloadsController < ApplicationController
     @download = @guide.downloads.new
   end
 
+  def optional
+    @guide.downloads.new(
+      email: params[:email],
+      utm_source: params[:utm_source],
+      utm_campaign: params[:utm_campaign],
+      utm_medium: params[:utm_medium],
+      utm_term: params[:utm_term]
+    ).save
+  end
+
   def create
     @download = @guide.downloads.new(guide_download_params)
     respond_to do |format|
