@@ -14,7 +14,7 @@ class GuideDownloadsController < ApplicationController
       utm_campaign: params[:utm_campaign],
       utm_medium: params[:utm_medium],
       utm_term: params[:utm_term]
-    ).save
+    ).save if params[:email].present?
   end
 
   def create
