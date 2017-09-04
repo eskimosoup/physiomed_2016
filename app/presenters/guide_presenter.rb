@@ -2,7 +2,7 @@ class GuidePresenter < BasePresenter
   presents :guide
   delegate :gated?, :optionally_gated?, to: :guide
 
-  def linked_download(text, options = {}, params = {})
+  def linked_download(text, options = {})
     options[:class] = "#{options[:class]} gated-guide-colorbox ga-inline" if options.key?(:class) && gated?
     options[:class] = "#{options[:class]} ga-inline" if options.key?(:class) && optionally_gated?
     options.delete(:target) if options.key?(:target) && gated?
