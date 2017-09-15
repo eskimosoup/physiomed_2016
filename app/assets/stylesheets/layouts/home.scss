@@ -41,6 +41,10 @@
   }
 
   .clients-container {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12, 0);
+    }
+
     @include breakpoint(medium) {
       @include flex-grid-column(8);
       padding-left: 0;
