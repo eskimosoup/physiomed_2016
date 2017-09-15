@@ -143,13 +143,10 @@
 .case-study,
 .subcategory,
 .job-listing {
+  @include flex-grid-row;
   border-bottom: 1px solid $beige;
   margin-bottom: rem(10px);
   padding-bottom: rem(10px);
-
-  @include media('>=768px') {
-    @include flex-grid-row;
-  }
 
   .button {
     background: $brown;
