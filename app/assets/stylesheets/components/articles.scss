@@ -176,12 +176,18 @@
   }
 
   .content.has-aside {
+    @include flex-grid-column(12, $gutter: (small: 0));
+    order: 2;
+
     @include media('>=768px') {
       @include flex-grid-column(8, $gutter: (small: 0));
     }
   }
 
   .aside-wrap {
+    @include flex-grid-column(12, $gutter: (small: 0));
+    order: 1;
+
     @include media('>=768px') {
       @include flex-grid-column(4);
     }
