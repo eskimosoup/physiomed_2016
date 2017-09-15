@@ -2,7 +2,7 @@ body {
   background: $white;
   font-size: rem(14px);
 
-  padding-top: rem(114px);
+  padding-top: rem(160px);
 
   @include media('>=768px') {
     padding-top: 0;
