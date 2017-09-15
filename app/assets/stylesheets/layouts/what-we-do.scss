@@ -5,15 +5,16 @@
 .what-we-do-content {
   @include breakpoint(medium down) {
     @include flex-grid-column(12, 60);
+    padding: rem(10px);
   }
 
   @include breakpoint(large) {
     @include flex-grid-column(6, $gutter: (medium: 60));
+    padding: rem(140px) 0 rem(40px);
   }
 
   background: rgba($green, .75);
   color: $white;
-  padding: rem(140px) 0 rem(40px);
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 
@@ -125,11 +126,12 @@
   box-shadow: 1px 3px 3px 0 $brown;
   color: $white;
   display: block;
-  margin: 0 auto;
   padding: rem(5px 15px 5px 5px);
+  margin: rem(0 22px 40px);
 
   @include media('>=1024px') {
     width: 246px;
+    margin: 0 auto;
   }
 
   img {
