@@ -230,20 +230,22 @@
         </div>
       </div>
 
-      <div class="job-listings-container">
-        <div class="job-listings-content">
-          <h2 class="green-border-bottom text-center  content-box-title">We're hiring</h2>
+      <% if @homepage_facade.job_listings.present? %>
+        <div class="job-listings-container">
+          <div class="job-listings-content">
+            <h2 class="green-border-bottom text-center  content-box-title">We're hiring</h2>
 
-          <%= render(
-            partial: "job_listings/home_job_listing",
-            collection: @homepage_facade.job_listings.limit(1),
-            as: :job_listing,
-            cache: @homepage_facade.job_listings
-          ) %>
+            <%= render(
+              partial: "job_listings/home_job_listing",
+              collection: @homepage_facade.job_listings.limit(1),
+              as: :job_listing,
+              cache: @homepage_facade.job_listings
+            ) %>
 
-          <%= link_to 'View all', job_listings_path, class: 'button brown-background job-listings-view-all' %>
+            <%= link_to 'View all', job_listings_path, class: 'button brown-background job-listings-view-all' %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </section>
   <% end %>
 
