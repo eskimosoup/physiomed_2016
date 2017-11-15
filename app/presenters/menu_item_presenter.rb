@@ -18,14 +18,14 @@ class MenuItemPresenter < BasePresenter
     classes = ["menu-link"]
     classes << "active" if active?
     classes.join(' ')
-  end  
+  end
 
   def active?
     destination_evaluator.active? || active_descendants?
   end
 
   def has_children?
-    sub_menu_items.present? || display_offices?
+    sub_menu_items.present?
   end
 
   private
