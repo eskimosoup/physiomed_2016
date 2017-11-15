@@ -63,6 +63,37 @@
       color: $green;
     }
   }
+
+  .menu-item {
+    position: relative;
+
+    &:hover {
+      .dropdown {
+        display: block;
+      }
+    }
+  }
+
+  .dropdown {
+    background: $white;
+    border-bottom: 1px solid $green;
+    border-left: 1px solid $green;
+    border-right: 1px solid $green;
+    display: none;
+    left: 0;
+    margin: 0;
+    min-width: 200px;
+    position: absolute;
+    z-index: 10;
+
+    li {
+      display: block;
+    }
+
+    .menu-link {
+      border-bottom: 0;
+    }
+  }
 }
 
 .primary-header .dropdown-links {
