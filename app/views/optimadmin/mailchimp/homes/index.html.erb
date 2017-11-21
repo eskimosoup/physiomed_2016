@@ -1,0 +1,92 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Emails' %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <h1><%= @list['name'] %></h1>
+
+    <h2>Statistics</h2>
+
+    <ul>
+      <li>
+        Member count
+        <%= content_tag :strong, @list['stats']['member_count'] %>
+      </li>
+      <li>
+        Unsubscribe count
+        <%= content_tag :strong, @list['stats']['unsubscribe_count'] %>
+      </li>
+      <li>
+        Cleaned count
+        <%= content_tag :strong, @list['stats']['cleaned_count'] %>
+      </li>
+      <li>
+        Member count since send
+        <%= content_tag :strong, @list['stats']['member_count_since_send'] %>
+      </li>
+      <li>
+        Unsubscribe count since send
+        <%= content_tag :strong, @list['stats']['unsubscribe_count_since_send'] %>
+      </li>
+      <li>
+        Cleaned count since send
+        <%= content_tag :strong, @list['stats']['cleaned_count_since_send'] %>
+      </li>
+      <li>
+        Campaign count
+        <%= content_tag :strong, @list['stats']['campaign_count'] %>
+      </li>
+      <li>
+        Campaign last sent
+        <%= content_tag :strong, (l @list['stats']['campaign_last_sent'].to_datetime, format: :short) %>
+      </li>
+      <li>
+        Avg. sub rate
+        <%= content_tag :strong, @list['stats']['avg_sub_rate'] %>
+      </li>
+      <li>
+        Target sub rate
+        <%= content_tag :strong, @list['stats']['target_sub_rate'] %>
+      </li>
+      <li>
+        Last sub date
+        <%= content_tag :strong, (l @list['stats']['last_sub_date'].to_datetime, format: :short) %>
+      </li>
+      <li>
+        Last unsub date
+        <%= content_tag :strong, (l @list['stats']['last_unsub_date'].to_datetime, format: :short) %>
+      </li>
+      <li>
+        Avg. unsub rate
+        <%= content_tag :strong, @list['stats']['avg_unsub_rate'] %>
+      </li>
+      <li>
+        Open rate
+        <%= content_tag :strong, (number_to_percentage @list['stats']['open_rate']) %>
+      </li>
+      <li>
+        Click rate
+        <%= content_tag :strong, (number_to_percentage @list['stats']['click_rate']) %>
+      </li>
+    </ul>
+
+    <% @members.body['members'].each do |member| %>
+    <%#= debug member %>
+      <div class="row module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list">
+        <div class="large-6 columns" data-equalizer-watch="module-list">
+        <%= link_to 'View stats', mailchimp_subscriber_path(member['id']) %>
+          <strong>
+            <%= member['merge_fields']['FNAME'] %>
+            <%= member['merge_fields']['LNAME'] %>
+          </strong>
+          <br />
+          <%= mail_to member['email_address'] %>
+        </div>
+        <div class="large-3 columns">
+          Avg. open rate: <%= number_to_percentage member['stats']['avg_open_rate'] %><br />
+          Avg. click rate: <%= number_to_percentage member['stats']['avg_click_rate'] %>
+        </div>
+      </div>
+    <% end %>
+    <%#= debug @campaigns %>
+  </div>
+</div>
