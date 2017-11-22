@@ -1,0 +1,27 @@
+<%= render 'optimadmin/shared/header/main_title', title: "#{@member.body['merge_fields']['FNAME']} #{@member.body['merge_fields']['LNAME']}" %>
+
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= mail_to @member.body['email_address'] %>
+
+    <%#= debug @member %>
+    <% item = [] %>
+
+
+
+
+    <% @activity.body['activity'].group_by { |x| x['title'] }.each do |email| %>
+      <h2><%= email.first %></h2>
+
+      Opens: <%= email.last.select { |x| x['action'] == 'open' }.size %>
+      Clicks: <%= email.last.select { |x| x['action'] == 'click' }.size %>
+
+      <% email.last.each do |activity| %>
+        <div>
+          <%= activity['action'] %>
+          <%= l activity['timestamp'].to_datetime, format: :short %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

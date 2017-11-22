@@ -76,6 +76,13 @@ Rails.application.routes.draw do
 end
 
 Optimadmin::Engine.routes.draw do
+  namespace :mailchimp do
+    resource :subscribers, only: :show
+    resources :emails, only: :index
+    # get 'subcriber/:email_id', to: 'subscribers#show', as: :subscriber
+    root to: 'homes#index'
+  end
+
   resources :reorderings, only: [:index]
 
   concern :imageable do
