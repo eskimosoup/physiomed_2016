@@ -1,5 +1,5 @@
 module CsvCreator
-  class MailchimpCreator < BaseCreator
+  class MailchimpEmailCreator < BaseCreator
     STATS = ['opens', 'last_open', 'clicks', 'last_click', 'sends', 'last_sent']
 
     attr_reader :collection, :csv_columns, :email_titles
@@ -14,7 +14,7 @@ module CsvCreator
 
     def column_names
       if csv_columns.blank? && collection.present?
-        csv_columns = ['email_id']
+        csv_columns = ['email_address']
 
         email_titles.each do |email|
           STATS.each do |stat|
@@ -34,7 +34,7 @@ module CsvCreator
     def data(csv)
       collection.each do |item|
         data = []
-        data << item.email_id
+        data << item.email_address
         email_titles.each do |column|
           STATS.each do |stat|
             data << item.emails.where(title: column).pluck(stat).first

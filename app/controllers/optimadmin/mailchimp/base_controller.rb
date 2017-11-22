@@ -8,7 +8,7 @@ module Optimadmin
       end
 
       helper_method def cquin_list
-        '86b326da38'
+        ::Mailchimp::Processor::MAILCHIMP_LIST
       end
     end
   end

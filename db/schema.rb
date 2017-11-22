@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122104905) do
+ActiveRecord::Schema.define(version: 20171122142026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -447,8 +447,20 @@ ActiveRecord::Schema.define(version: 20171122104905) do
 
   create_table "mailchimp_subscribers", force: :cascade do |t|
     t.string   "email_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "email_address"
+    t.string   "email_type"
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "mmerge3"
+    t.string   "mmerge4"
+    t.decimal  "avg_open_rate"
+    t.decimal  "avg_click_rate"
+    t.datetime "timestamp_opt"
+    t.string   "email_client"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "optimadmin_administrators", force: :cascade do |t|

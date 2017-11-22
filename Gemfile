@@ -33,6 +33,7 @@ gem 'bcrypt'
 
 gem 'gibbon'
 gem 'dotenv-rails'
+gem 'whenever', require: false
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'

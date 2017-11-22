@@ -77,8 +77,9 @@ end
 
 Optimadmin::Engine.routes.draw do
   namespace :mailchimp do
-    resources :emails, only: :index
-    get 'subcriber/:email_id', to: 'subscribers#show', as: :subscriber
+    resource :subscribers, only: :show
+    # resources :emails, only: :index
+    # get 'subcriber/:email_id', to: 'subscribers#show', as: :subscriber
     root to: 'homes#index'
   end
 
