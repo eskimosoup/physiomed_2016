@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904103110) do
+ActiveRecord::Schema.define(version: 20171122104905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -429,6 +429,28 @@ ActiveRecord::Schema.define(version: 20170904103110) do
   add_index "landing_pages_videos", ["landing_page_id"], name: "index_landing_pages_videos_on_landing_page_id", using: :btree
   add_index "landing_pages_videos", ["video_id"], name: "index_landing_pages_videos_on_video_id", using: :btree
 
+  create_table "mailchimp_emails", force: :cascade do |t|
+    t.integer  "mailchimp_subscriber_id"
+    t.string   "title"
+    t.integer  "opens"
+    t.datetime "last_open"
+    t.integer  "clicks"
+    t.datetime "last_click"
+    t.integer  "sends"
+    t.datetime "last_sent"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "campaign_id"
+  end
+
+  add_index "mailchimp_emails", ["mailchimp_subscriber_id"], name: "index_mailchimp_emails_on_mailchimp_subscriber_id", using: :btree
+
+  create_table "mailchimp_subscribers", force: :cascade do |t|
+    t.string   "email_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
     t.string   "email",                  null: false
@@ -820,6 +842,7 @@ ActiveRecord::Schema.define(version: 20170904103110) do
   add_foreign_key "landing_pages_testimonials", "testimonials"
   add_foreign_key "landing_pages_videos", "landing_pages"
   add_foreign_key "landing_pages_videos", "videos"
+  add_foreign_key "mailchimp_emails", "mailchimp_subscribers"
   add_foreign_key "pages_team_members", "pages"
   add_foreign_key "pages_team_members", "team_members"
   add_foreign_key "pages_testimonials", "pages", on_delete: :cascade

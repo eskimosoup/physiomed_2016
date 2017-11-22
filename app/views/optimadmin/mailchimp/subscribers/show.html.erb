@@ -5,14 +5,23 @@
     <%= mail_to @member.body['email_address'] %>
 
     <%#= debug @member %>
-    <% @activity.body['activity'].each do |activity| %>
-      <div>
+    <% item = [] %>
+
+
+
+
+    <% @activity.body['activity'].group_by { |x| x['title'] }.each do |email| %>
+      <h2><%= email.first %></h2>
+
+      Opens: <%= email.last.select { |x| x['action'] == 'open' }.size %>
+      Clicks: <%= email.last.select { |x| x['action'] == 'click' }.size %>
+
+      <% email.last.each do |activity| %>
         <div>
-          <%= content_tag :strong, activity['title'] %>
+          <%= activity['action'] %>
+          <%= l activity['timestamp'].to_datetime, format: :short %>
         </div>
-        <%= activity['action'] %>
-        <%= l activity['timestamp'].to_datetime, format: :short %>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
