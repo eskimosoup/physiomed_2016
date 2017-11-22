@@ -4,8 +4,20 @@
   <div class="row module-header collapse">
     <h1><%= @list['name'] %></h1>
 
-    <h2>Statistics</h2>
+    <h2>Downloads</h2>
+    <%= link_to 'Download email overview', mailchimp_root_path(format: :csv), class: 'action-button' %>
+    <%= link_to 'Download list details', mailchimp_subscribers_path(format: :csv), class: 'action-button' %>
 
+    <p>
+      <% if @processor.present? %>
+        The last refresh was at
+        <%= l @processor.updated_at,
+              format: :short %>.
+      <% end %>
+      <%= link_to 'Refresh', mailchimp_emails_path, class: 'small-action-button' %>
+    </p>
+
+    <h3>Statistics</h3>
     <ul>
       <li>
         Member count
@@ -68,8 +80,5 @@
         <%= content_tag :strong, (number_to_percentage @list['stats']['click_rate']) %>
       </li>
     </ul>
-
-    <%= link_to 'Download email overview', mailchimp_root_path(format: :csv), class: 'action-button' %>
-    <%= link_to 'Download list details', mailchimp_subscribers_path(format: :csv), class: 'action-button' %>
   </div>
 </div>

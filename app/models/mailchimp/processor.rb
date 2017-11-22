@@ -1,8 +1,12 @@
 module Mailchimp
-  class Processor
+  class Processor < ActiveRecord::Base
     MAILCHIMP_LIST = '86b326da38'
 
     def self.process
+      item = self.all.size == 0 ? self.create(in_progress: true) : self.first
+
+      item.update_attributes(in_progress: true)
+
       members.body['members'].each do |member|
         subscriber = subscribers(member)
 
@@ -10,6 +14,8 @@ module Mailchimp
           emails(campaign, subscriber)
         end
       end
+
+      item.update_attributes(in_progress: false)
     end
 
     def self.subscribers(member)
@@ -58,7 +64,7 @@ module Mailchimp
     end
 
     def self.members
-      count = list['stats']['member_count']
+      count = Rails.env.production? ? list['stats']['member_count'] : 1
       @members ||= gibbon.lists(MAILCHIMP_LIST).members.retrieve(params: {"count": count})
       # gibbon.lists('86b326da38').members.retrieve(params: {"count": @list['stats']['member_count']})
     end

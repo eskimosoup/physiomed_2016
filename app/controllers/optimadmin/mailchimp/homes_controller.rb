@@ -3,6 +3,7 @@ module Optimadmin
     class HomesController < BaseController
       def index
         @list = gibbon.lists(cquin_list).retrieve.body
+        @processor =  ::Mailchimp::Processor.order(updated_at: :desc).first
 
         respond_to do |format|
           format.html

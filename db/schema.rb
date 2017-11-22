@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122142026) do
+ActiveRecord::Schema.define(version: 20171122153838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -444,6 +444,12 @@ ActiveRecord::Schema.define(version: 20171122142026) do
   end
 
   add_index "mailchimp_emails", ["mailchimp_subscriber_id"], name: "index_mailchimp_emails_on_mailchimp_subscriber_id", using: :btree
+
+  create_table "mailchimp_processors", force: :cascade do |t|
+    t.boolean  "in_progress"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "mailchimp_subscribers", force: :cascade do |t|
     t.string   "email_id"
