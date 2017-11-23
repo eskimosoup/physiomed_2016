@@ -32,7 +32,6 @@ gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'bcrypt'
 
 gem 'gibbon'
-gem 'dotenv-rails'
 gem 'whenever', require: false
 
 group :development do
