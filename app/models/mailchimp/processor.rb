@@ -3,17 +3,14 @@ module Mailchimp
     MAILCHIMP_LIST = '86b326da38'
 
     def self.process
-      item = self.all.size == 0 ? self.new(in_progress: true) : self.first
-      last_update = self.all.size == 0 ? nil : self.first.updated_at
-
-      item.save
+      item = self.all.size == 0 ? self.create(in_progress: true) : self.first
       item.update_attributes(in_progress: true)
 
       members.body['members'].each do |member|
         subscriber = subscribers(member)
 
         member_details(member['id']).body['activity'].group_by { |x| x['title'] }.each do |campaign|
-          emails(campaign, subscriber, last_update)
+          emails(campaign, subscriber)
         end
       end
 
@@ -39,11 +36,13 @@ module Mailchimp
       subscriber
     end
 
-    def self.emails(campaign, subscriber, last_update)
+    def self.emails(campaign, subscriber)
       details = campaign.last.last
-      email = Email.find_or_create_by(
+
+      title = "#{campaign.first} (#{details['campaign_id']})"
+      email = Email.find_or_initialize_by(
         mailchimp_subscriber_id: subscriber.id,
-        title: campaign.first
+        title: title
       )
 
       opens_count = email.new_record? ? 0 : email.opens
@@ -51,17 +50,19 @@ module Mailchimp
       sends_count = email.new_record? ? 0 : email.sends
 
       opens = campaign.last.select { |x| x['action'] == 'open' }
-      opens = opens.select { |x| x['timestamp'].to_datetime >= last_update } if last_update.present?
+      opens = opens.select { |x| x['timestamp'].to_datetime >= email.updated_at } unless email.new_record?
 
       clicks = campaign.last.select { |x| x['action'] == 'click' }
-      clicks = clicks.select { |x| x['timestamp'].to_datetime >= last_update } if last_update.present?
+      clicks = clicks.select { |x| x['timestamp'].to_datetime >= email.updated_at } unless email.new_record?
 
       sends = campaign.last.select { |x| x['action'] == 'sent' }
-      sends = sends.select { |x| x['timestamp'].to_datetime >= last_update } if last_update.present?
+      sends = sends.select { |x| x['timestamp'].to_datetime >= email.updated_at } unless email.new_record?
 
       opens_count = opens_count.present? ? opens_count + opens.size : opens.size if opens.present?
       clicks_count = clicks_count.present? ? clicks_count + clicks.size : clicks.size if clicks.present?
       sends_count = sends_count.present? ? sends_count + sends.size : sends.size if sends.present?
+
+      email.save!
 
       return if campaign.first.blank?
 
@@ -74,7 +75,8 @@ module Mailchimp
           sends_count,
           sends,
           clicks,
-          opens
+          opens,
+          title
         ).delete_if { |_k, v| v.nil? }
       )
     end
@@ -98,10 +100,10 @@ module Mailchimp
       gibbon.lists(MAILCHIMP_LIST).members(email_id).activity.retrieve
     end
 
-    def self.email_attributes(details, campaign, opens_count, clicks_count, sends_count, sends, clicks, opens)
+    def self.email_attributes(details, campaign, opens_count, clicks_count, sends_count, sends, clicks, opens, title)
       {
         campaign_id: details['campaign_id'],
-        title: campaign.first,
+        title: title,
         opens: opens_count,
         clicks: clicks_count,
         sends: sends_count,

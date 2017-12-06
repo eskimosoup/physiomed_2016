@@ -5,7 +5,6 @@ module Optimadmin
         @member = gibbon.lists(cquin_list).members(params[:email_id]).retrieve
         @activity = gibbon.lists(cquin_list).members(params[:email_id]).activity.retrieve
 
-
         respond_to do |format|
           format.html
           format.csv do
