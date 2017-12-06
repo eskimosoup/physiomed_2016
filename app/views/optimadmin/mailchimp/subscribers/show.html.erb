@@ -10,8 +10,10 @@
 
 
 
-    <% @activity.body['activity'].group_by { |x| x['title'] }.each do |email| %>
+    <% @activity.body['activity'].group_by { |x| x['title']  }.each do |email| %>
       <h2><%= email.first %></h2>
+
+      <%= debug email %>
 
       Opens: <%= email.last.select { |x| x['action'] == 'open' }.size %>
       Clicks: <%= email.last.select { |x| x['action'] == 'click' }.size %>
