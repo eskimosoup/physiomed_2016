@@ -86,9 +86,9 @@ module Mailchimp
     end
 
     def self.members
-      count = Rails.env.production? ? list['stats']['member_count'] : 10
+      count = Rails.env.production? ? (list['stats']['member_count'] + list['stats']['unsubscribe_count']) : 10
       # count = list['stats']['member_count']
-      @members ||= gibbon.lists(MAILCHIMP_LIST).members.retrieve(params: {"count": count, "status": 'subscribed'})
+      @members ||= gibbon.lists(MAILCHIMP_LIST).members.retrieve(params: {"count": count})
       # gibbon.lists('86b326da38').members.retrieve(params: {"count": @list['stats']['member_count']})
     end
 
