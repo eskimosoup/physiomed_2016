@@ -19,7 +19,7 @@
     <h3>Statistics</h3>
     <ul>
       <li>
-        Member count
+        Member subscribed count
         <%= content_tag :strong, @list['stats']['member_count'] %>
       </li>
       <li>
@@ -95,8 +95,8 @@
             <%= mail_to member['email_address'] %>
           </div>
           <div class="large-3 columns">
-            Avg. open rate: <%#= number_to_percentage member['stats']['avg_open_rate'] %><br />
-            Avg. click rate: <%#= number_to_percentage member['stats']['avg_click_rate'] %>
+            Avg. open rate: <%= number_to_percentage member['stats']['avg_open_rate'] %><br />
+            Avg. click rate: <%= number_to_percentage member['stats']['avg_click_rate'] %>
           </div>
         </div>
       <% end %>

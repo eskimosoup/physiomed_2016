@@ -3,7 +3,8 @@ module Optimadmin
     class HomesController < BaseController
       def index
         @list = gibbon.lists(cquin_list).retrieve.body
-        # @members = gibbon.lists('86b326da38').members.retrieve(params: {"count": @list['stats']['member_count'], "status": 'subscribed'})
+        @members = gibbon.lists('86b326da38').members.retrieve(params: {"count": (@list['stats']['member_count'] + @list['stats']['unsubscribe_count'] + @list['stats']['cleaned_count'])})
+
         @processor =  ::Mailchimp::Processor.order(updated_at: :desc).first
 
         respond_to do |format|
