@@ -35,6 +35,7 @@
           health_zone: wellbeing_zone_health_zone,
           case_studies: latest_case_studies,
           articles: nil,
+          guides: @article.guides.displayed
         },
         cache: [[@article.author].compact, wellbeing_zone_health_zone, latest_case_studies]
       ) %>

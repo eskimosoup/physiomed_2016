@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122153838) do
+ActiveRecord::Schema.define(version: 20180212163034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20171122153838) do
   add_index "articles", ["author_id"], name: "index_articles_on_author_id", using: :btree
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["title"], name: "index_articles_on_title", unique: true, using: :btree
+
+  create_table "articles_guides", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "guide_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "articles_guides", ["article_id"], name: "index_articles_guides_on_article_id", using: :btree
+  add_index "articles_guides", ["guide_id"], name: "index_articles_guides_on_guide_id", using: :btree
 
   create_table "banners", force: :cascade do |t|
     t.string   "title",                     null: false
@@ -827,6 +837,8 @@ ActiveRecord::Schema.define(version: 20171122153838) do
 
   add_foreign_key "additional_home_contents", "videos"
   add_foreign_key "articles", "team_members", column: "author_id", on_delete: :cascade
+  add_foreign_key "articles_guides", "articles"
+  add_foreign_key "articles_guides", "guides"
   add_foreign_key "body_part_sections", "body_parts", on_delete: :cascade
   add_foreign_key "body_parts", "categories"
   add_foreign_key "case_studies", "clients", on_delete: :cascade

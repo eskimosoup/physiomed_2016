@@ -17,6 +17,16 @@
   </div>
 <% end %>
 
+<% if guides.present? %>
+  <div class="page-sidebar-information" data-role="sidebar-health-zone">
+    <%= render(
+      partial: "guides/aside_guide",
+      collection: guides,
+      as: :guide
+    ) %>
+  </div>
+<% end %>
+
 <% if health_zone.present? %>
   <%= content_for :javascript do %>
     <%= javascript_include_tag "components/health_zones.js" %>

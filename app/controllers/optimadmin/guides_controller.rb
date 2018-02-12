@@ -51,7 +51,8 @@ module Optimadmin
       params.require(:guide)
             .permit(:title, :content, :file, :image, :display,
                     :remove_image, :remote_image_url, :image_cache,
-                    :video_id, :gated, :optionally_gated, category_ids: [])
+                    :video_id, :gated, :optionally_gated, category_ids: [],
+                    article_ids: [])
     end
   end
 end
