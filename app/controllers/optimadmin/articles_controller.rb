@@ -55,7 +55,8 @@ module Optimadmin
               :title, :summary, :content, :image, :date, :display,
               :home_highlight, :author_id, :url_originallly_posted_on,
               :display_on_client_zone,
-              :remove_image, :remote_image_url, :image_cache, category_ids: []
+              :remove_image, :remote_image_url, :image_cache, category_ids: [],
+              guide_ids: []
             )
     end
   end

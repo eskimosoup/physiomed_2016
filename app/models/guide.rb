@@ -11,6 +11,9 @@ class Guide < ActiveRecord::Base
   has_many :categories, through: :categories_guides
   has_many :downloads, class_name: 'GuideDownload', dependent: :destroy
 
+  has_many :articles_guides, class_name: 'Articles::Guide'
+  has_many :articles, through: :articles_guides
+
   validates :title, presence: true
   validates :file, presence: true
 

@@ -15,6 +15,9 @@ class Article < ActiveRecord::Base
   has_many :categories_articles, class_name: 'Categories::Article'
   has_many :categories, through: :categories_articles
 
+  has_many :articles_guides, class_name: 'Articles::Guide'
+  has_many :guides, through: :articles_guides
+
   validates :content, presence: true
   validates :date, presence: true
   validates :summary, presence: true
