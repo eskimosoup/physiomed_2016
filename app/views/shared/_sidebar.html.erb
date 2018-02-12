@@ -17,13 +17,13 @@
   </div>
 <% end %>
 
-<% if guides.present? %>
+<% if defined?(guides) %>
   <div class="page-sidebar-information" data-role="sidebar-health-zone">
     <%= render(
       partial: "guides/aside_guide",
       collection: guides,
       as: :guide
-    ) %>
+    ) if guides.present? %>
   </div>
 <% end %>
 
