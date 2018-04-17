@@ -15,6 +15,7 @@ class GuideDownloadsController < ApplicationController
       utm_medium: params[:utm_medium],
       utm_term: params[:utm_term]
     ).save if params[:email].present?
+    head :ok
   end
 
   def create
