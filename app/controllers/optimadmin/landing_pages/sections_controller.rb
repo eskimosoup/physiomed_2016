@@ -54,7 +54,7 @@ module Optimadmin
 
       def landing_page_section_params
         params.require(:landing_pages_section)
-              .permit(:landing_page_id, :title, :sub_title, :content, :image)
+              .permit(:landing_page_id, :title, :sub_title, :content, :image, :style)
       end
     end
   end

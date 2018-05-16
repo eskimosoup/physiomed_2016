@@ -26,7 +26,7 @@ class LandingPageFacade
   def guides
     @guides ||= landing_page.guides.displayed
   end
-    
+
   def videos
     @videos ||= landing_page.videos.without_guide.displayed
   end
