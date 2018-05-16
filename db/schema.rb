@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212163034) do
+ActiveRecord::Schema.define(version: 20180516112240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -393,14 +393,15 @@ ActiveRecord::Schema.define(version: 20180212163034) do
 
   create_table "landing_pages_sections", force: :cascade do |t|
     t.integer  "landing_page_id"
-    t.string   "title",                          null: false
+    t.string   "title",                             null: false
     t.string   "sub_title"
     t.text     "content"
     t.string   "image"
-    t.integer  "position",        default: 0,    null: false
-    t.boolean  "display",         default: true, null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "position",        default: 0,       null: false
+    t.boolean  "display",         default: true,    null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "style",           default: "basic", null: false
   end
 
   add_index "landing_pages_sections", ["landing_page_id"], name: "index_landing_pages_sections_on_landing_page_id", using: :btree
@@ -489,6 +490,7 @@ ActiveRecord::Schema.define(version: 20180212163034) do
     t.datetime "password_reset_sent_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.datetime "password_changed_at"
   end
 
   add_index "optimadmin_administrators", ["auth_token"], name: "index_optimadmin_administrators_on_auth_token", using: :btree
