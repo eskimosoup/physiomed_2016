@@ -22,4 +22,5 @@ Rails.application.config.assets.precompile += %w(
   vendor/jquery-ui.css
   vendor/jquery-ui.structure.css
   vendor/jquery-ui.theme.css
+  vendor/match-height.js
 )

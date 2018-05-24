@@ -19,6 +19,14 @@ GIT
       tinymce-rails
 
 GIT
+  remote: git@github.com:eskimosoup/cookie_consent.git
+  revision: 76f4bcd3bf57e5c02d61b2b2f38592b6d6224b5e
+  branch: master
+  specs:
+    cookie_consent (0.0.4)
+      rails (>= 4.0.0)
+
+GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
   revision: bd9977a8731863ccd6f37120f3de8b9106227d93
   specs:
@@ -343,6 +351,7 @@ DEPENDENCIES
   bullet
   bundler-audit (>= 0.5.0)
   cocoon (~> 1.2, >= 1.2.9)
+  cookie_consent!
   database_cleaner
   dotenv-rails
   email_spec (~> 2.1)
