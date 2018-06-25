@@ -5,7 +5,7 @@ set -e
 
 start=$SECONDS
 echo `date`
-cd physiomed_2017
+cd physiomed_2016
 
 # Do this here to prevent any potential Gemfile.lock conflicts
 if [ "$1" = "install" ] ; then
