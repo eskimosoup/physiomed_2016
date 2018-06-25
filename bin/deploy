@@ -1,0 +1,18 @@
+#!/bin/bash
+HOST_USER="physiomed";
+HOST="postgres.allofmy.co.uk";
+FULLHOST="$HOST_USER@$HOST";
+
+LOCAL_DEPLOY_FILE="bin/deploy-remote";
+DIRECTORY="/home/physiomed";
+DEPLOY_FILE="deploy-remote";
+USER="physiomed";
+
+echo $FULLHOST;
+echo $DIRECTORY;
+echo $DEPLOY_FILE;
+echo $USER;
+
+scp $LOCAL_DEPLOY_FILE $HOST:$DIRECTORY
+ssh $HOST -t "cd $DIRECTORY && chown $USER:$USER deploy-remote && chmod +x $DEPLOY_FILE"
+ssh $HOST -t "su -l $USER bash -c './$DEPLOY_FILE $1'"
