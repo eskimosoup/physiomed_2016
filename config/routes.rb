@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  %w[403 404 422 500].each do |code|
-    get code, to: 'errors#show', code: code
+  if Rails.env.development?
+    %w[400 403 404 422 500].each do |code|
+      get code, to: 'errors#show', code: code
+    end
   end
 
   get 'sitemap', to: 'application#sitemap'
@@ -106,6 +108,7 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module resources go below concerns
+  resources :additional_contents
   resources :guide_downloads, only: [:index, :show]
   resources :landing_pages, concerns: %i[imageable toggleable], except: :show do
     resources :guides,

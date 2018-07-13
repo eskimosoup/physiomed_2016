@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604083924) do
+ActiveRecord::Schema.define(version: 20180713120031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "additional_contents", force: :cascade do |t|
+    t.string   "area"
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "additional_contents", ["area"], name: "index_additional_contents_on_area", using: :btree
 
   create_table "additional_home_contents", force: :cascade do |t|
     t.string   "title",                       null: false

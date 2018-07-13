@@ -15,13 +15,15 @@ class MenuItemPresenter < BasePresenter
   end
 
   def classes
-    classes = ["menu-link"]
-    classes << "active" if active?
-    classes.join(' ')
+    !active? ? 'menu-link' : 'menu-link active'
   end
 
   def active?
     destination_evaluator.active? || active_descendants?
+  end
+
+  def cache_key
+    [menu_item.cache_key, active?]
   end
 
   def has_children?
