@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 module ClientZone
   class AdditionalContent < ActiveRecord::Base
     require_dependency 'client_zone'
 
     include OptimadminScopes
 
-    AREAS = %w(services videos articles client_zone_home).freeze
+    AREAS = %w[
+      services videos articles client_zone_home
+    ].freeze
 
     validates :area,
               presence: true,
@@ -12,5 +16,5 @@ module ClientZone
               inclusion: { in: AREAS }
 
     scope :displayed, -> { where(display: true) }
-  end
+    end
 end
