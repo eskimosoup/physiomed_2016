@@ -36,7 +36,7 @@ printf "\nClean up to last 3 versions of assets\n"
 bundle exec rake assets:clean RAILS_ENV=production
 
 printf "\nRestarting site\n"
-touch tmp/restart.txt
+passenger-config restart-app $PWD
 
 duration=$(( SECONDS - start ))
 printf "\nComplete: $duration seconds\n"
