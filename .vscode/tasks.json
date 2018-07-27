@@ -97,7 +97,8 @@
       "type": "shell",
       "command": "chrome.exe",
       "windows": {
-        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        //"command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        "command": "explorer.exe"
       },
       "osx": {
         "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -116,7 +117,8 @@
       "type": "shell",
       "command": "chrome.exe",
       "windows": {
-        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        // "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        "command": "explorer.exe"
       },
       "osx": {
         "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -135,7 +137,8 @@
       "type": "shell",
       "command": "chrome.exe",
       "windows": {
-        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        // "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        "command": "explorer.exe"
       },
       "osx": {
         "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
