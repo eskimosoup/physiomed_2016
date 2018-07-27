@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 685719d95e22e3db5e3f5c381f3578985fc57ae4
+  revision: 51fb1db9b4ae66c1efdf1a9bebcb75844e40dc62
   branch: master
   specs:
-    optimadmin (1.1.2.3)
+    optimadmin (1.1.7)
       bcrypt
       cancancan
       carrierwave
@@ -18,17 +18,17 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
-  revision: 2ffdd2777d4fccebaef3a0808698e08e00e2495d
+  revision: b47f9afedbc4836770e35db7e8942996a5a2625c
   branch: master
   specs:
-    cookie_consent (0.1.0.1)
+    cookie_consent (1.0.0.1)
       rails (>= 4.0.0)
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 3ff9a1da01b6fb37aa69377844c061b215ccae7b
+  revision: 76afa2d878b41a6ca3e07411d7bfb5e88cafd371
   specs:
-    optimadmin_generators (1.0.4)
+    optimadmin_generators (1.0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -274,7 +274,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    sass (3.5.6)
+    sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
