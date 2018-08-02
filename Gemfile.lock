@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 51fb1db9b4ae66c1efdf1a9bebcb75844e40dc62
+  revision: 6d6352c7b5452d0f7812e05f55c30fea4836688d
   branch: master
   specs:
-    optimadmin (1.1.7)
+    optimadmin (1.2.0)
       bcrypt
       cancancan
       carrierwave
@@ -156,7 +156,7 @@ GEM
     htmlentities (4.3.4)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    image_optimizer (1.7.2)
+    image_optimizer (1.8.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
