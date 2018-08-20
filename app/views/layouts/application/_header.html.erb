@@ -1,4 +1,4 @@
-<%= render 'cookie_consent/message' %>
+<%= render 'cookie_consent/message', date_cookies_changed: DateTime.new(2018, 8, 20, 9, 00, 0).strftime("%Y-%m-%d %H:%M") %>
 
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'vendor/modernizr' %>
