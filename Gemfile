@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'autoprefixer-rails'
+# gem 'autoprefixer-rails'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'lograge', '~> 0.3.5'
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
