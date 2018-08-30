@@ -33,7 +33,7 @@ function updateCosts()
 
   value = $("#amount").attr('data-value');
 
-  var perc = 45.17 * value;
+  var perc = 56.367 * value;
 
   /*
   $('#bar').width(perc + '%');
@@ -41,7 +41,7 @@ function updateCosts()
   at = (value * totala) / 100;
   */
 
-  $('#total_saving').text(formatPound(perc) + "*");
+  $('#total_saving').text(formatPound(perc));
 }
 
 function updateSliderAndCosts() {
