@@ -1,5 +1,5 @@
 <%= form_for(@job_listing) do |f| %>
-  <%= render partial: 'optimadmin/shared/form_errors', locals: { object: @job_listing } %>
+  <%= render partial: 'optimadmin/shared/form_errors', locals: { model: @job_listing } %>
 
   <div class="field">
     <%= f.label :title %><br />
