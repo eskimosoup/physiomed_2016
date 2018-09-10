@@ -5,10 +5,11 @@
   h5,
   h6 {
     font-weight: $open-sans-light;
+    text-transform: none;
   }
 
   h2 {
-    font-size: rem(32px);
+    font-size: rem(28px);
   }
 
   h3 {

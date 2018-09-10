@@ -2,6 +2,9 @@ Rails.application.configure do
   config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
   Rails.application.routes.default_url_options[:host] = 'www.physiomed.co.uk'
+  config.action_mailer.default_url_options = {
+    host: 'www.physiomed.co.uk'
+  }
 
   config.action_mailer.smtp_settings = { enable_starttls_auto: false }
 
