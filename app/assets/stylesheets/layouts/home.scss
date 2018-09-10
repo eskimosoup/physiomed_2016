@@ -89,5 +89,36 @@
     @include media('>=768px') {
       display: flex;
     }
+
+    &--pal {
+      margin-top: 0;
+    }
+  }
+}
+
+
+.additional-pal-content {
+  @include border-radius-with-box-shadow;
+  background-color: $white;
+  margin: 0 0 rem-calc(25px);
+  padding: rem-calc(20px);
+  width: 100%;
+
+  .flex-video {
+    margin-bottom: 0;
+    padding-bottom: 57%;
+  }
+
+  .pal-overview {
+    @include flex-grid-row(nest);
+
+    &__video {
+      @include flex-grid-column(6);
+    }
+
+    &__content {
+      @include flex-grid-column(6);
+      @include page-styles;
+    }
   }
 }

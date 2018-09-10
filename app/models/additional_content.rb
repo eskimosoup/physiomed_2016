@@ -4,7 +4,7 @@ class AdditionalContent < ActiveRecord::Base
   default_scope { order(title: :asc) }
 
   AREAS = %w[
-    error_404 error_422 error_400 error_500 error_403
+    error_404 error_422 error_400 error_500 error_403 home_pal_video
   ].freeze
 
   validates :area, inclusion: { in: AREAS }

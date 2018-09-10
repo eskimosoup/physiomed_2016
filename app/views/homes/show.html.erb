@@ -112,6 +112,24 @@
 
 
 <div class="home content">
+  <section class="flexbox-wrap flexbox-wrap--pal">
+  <div class="additional-pal-content text">
+    <h3 class="content-box-title">Physiotherapy Advice Line (PAL)</h3>
+    <div class="pal-overview">
+      <div class="pal-overview__video">
+        <div class="flex-video">
+          <iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/e89adeba1314e8cf60/904e8e07c6237ee9' width='630' height='354' frameborder='0' allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="pal-overview__content">
+        <div class="page-content-styles">
+          <%= raw @homepage_facade.pal_content.content if @homepage_facade.pal_content.present? %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
   <% if @homepage_facade.additional_contents.any? %>
     <section class="flexbox-wrap additional-home-contents">
       <%= render @homepage_facade.additional_contents, cache: @homepage_facade.additional_contents %>

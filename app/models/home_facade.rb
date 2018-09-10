@@ -46,4 +46,8 @@ class HomeFacade
   def job_listings
     @job_listings ||= JobListing.displayed.limit(2).order(display_until: :asc)
   end
+
+  def pal_content
+    @pal_content ||= AdditionalContent.displayed.find_by(area: 'home_pal_video')
+  end
 end
