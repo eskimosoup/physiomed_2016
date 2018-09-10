@@ -113,11 +113,15 @@
     @include flex-grid-row(nest);
 
     &__video {
-      @include flex-grid-column(6);
+      @include flex-grid-column(4);
+
+      .flex-video {
+        margin-top: rem(20px);
+      }
     }
 
     &__content {
-      @include flex-grid-column(6);
+      @include flex-grid-column(8);
       @include page-styles;
     }
   }
