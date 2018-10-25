@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713120031) do
+ActiveRecord::Schema.define(version: 20181024152241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -732,6 +732,55 @@ ActiveRecord::Schema.define(version: 20180713120031) do
     t.string   "icon_text"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.integer  "position",       default: 0
+    t.string   "title",                                  null: false
+    t.string   "colour"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "image"
+    t.boolean  "display",        default: true
+    t.string   "slug",                                   null: false
+    t.string   "suggested_url"
+    t.string   "style",          default: "basic",       null: false
+    t.string   "layout",         default: "application", null: false
+    t.integer  "sections_count", default: 0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "services", ["slug"], name: "index_services_on_slug", using: :btree
+  add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
+
+  create_table "services_section_items", force: :cascade do |t|
+    t.integer  "services_section_id"
+    t.integer  "position",            default: 0,       null: false
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.string   "style",               default: "basic", null: false
+    t.boolean  "display",             default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "services_section_items", ["services_section_id"], name: "index_services_section_items_on_services_section_id", using: :btree
+
+  create_table "services_sections", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "position",            default: 0,    null: false
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.string   "style"
+    t.boolean  "display",             default: true
+    t.integer  "section_items_count", default: 0,    null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "services_sections", ["service_id"], name: "index_services_sections_on_service_id", using: :btree
+
   create_table "subcategories", force: :cascade do |t|
     t.string   "title",                        null: false
     t.string   "image"
@@ -895,6 +944,8 @@ ActiveRecord::Schema.define(version: 20180713120031) do
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
   add_foreign_key "practice_applications_contacts", "practice_applications_practices", column: "practice_id", on_delete: :cascade
   add_foreign_key "practice_applications_practitioners", "practice_applications_practices", column: "practice_id", on_delete: :cascade
+  add_foreign_key "services_section_items", "services_sections"
+  add_foreign_key "services_sections", "services"
   add_foreign_key "subcategories_guides", "guides"
   add_foreign_key "subcategories_guides", "subcategories"
   add_foreign_key "subcategories_videos", "subcategories"

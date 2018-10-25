@@ -1,26 +1,21 @@
-<head>
+<title><%= "#{@title} - " if @title %><%= global_site_settings['Name'] %></title>
 
-  <title><%= "#{@title} - " if @title %><%= global_site_settings['Name'] %></title>
+<%= tag :meta, name: 'description', content: @meta_description if @meta_description %>
+<%= tag :meta, name: 'keywords', content: @meta_tags if @meta_tags %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%= tag :meta, name: 'description', content: @meta_description if @meta_description %>
-  <%= tag :meta, name: 'keywords', content: @meta_tags if @meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<%= stylesheet_link_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css' %>
+<%= stylesheet_link_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css' %>
+<%= stylesheet_link_tag 'application', media: 'all' %>
 
-  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css' %>
-  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css' %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+<%= javascript_include_tag 'application' %>
+<%= csrf_meta_tags %>
+<%= javascript_include_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js' %>
+<%= javascript_include_tag 'cookie-consent/consent' %>
 
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
+<%= yield :head %>
 
-  <%= javascript_include_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js' %>
+<%= render 'layouts/shared/remarketing_head' if Rails.env.production? %>
 
-  <%= javascript_include_tag 'cookie-consent/consent' %>
-
-  <%= yield :head %>
-
-  <%= render 'layouts/shared/remarketing_head' if Rails.env.production? %>
-
-  <script src="https://use.typekit.net/qmb4xev.js"></script>
-  <script>try{Typekit.load({ async: true });}catch(e){}</script>
-</head>
+<script src="https://use.typekit.net/qmb4xev.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>

@@ -24,8 +24,7 @@
       </div>
 
       <ul id="modules" class="content-category-list">
-<%= module_link(content: AdditionalContent.model_name.human.pluralize.titleize, model: AdditionalContent, path: additional_contents_path) %>
-
+        <%= module_link(content: AdditionalContent.model_name.human.pluralize.titleize, model: AdditionalContent, path: additional_contents_path) %>
         <%= module_link(content: 'Pages', model: Page, path: pages_path) %>
         <%= module_link(content: "Articles", model: Article, path: articles_path) %>
         <%= module_link(
@@ -49,6 +48,14 @@
         <% if can? :manage, Optimadmin::MenuItem %>
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>
+      </ul>
+
+      <div class="content-category-type">
+        Service Pyramid
+      </div>
+
+      <ul class="content-category-list">
+        <%= module_link(content: Service.model_name.human.pluralize.titleize, model: Service, path: services_path) %>
       </ul>
 
       <div class="content-category-type">

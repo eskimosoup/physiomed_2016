@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.9'
+gem 'rails', '4.2.10'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use SCSS for stylesheets
@@ -34,6 +34,7 @@ gem 'bcrypt'
 
 gem 'gibbon'
 gem 'whenever', require: false
+gem 'thin'
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
@@ -43,6 +44,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'web-console'
   gem 'rack-mini-profiler'
+  gem 'letter_opener'
 end
 
 group :development, :test do

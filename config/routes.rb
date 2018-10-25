@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   if Rails.env.development?
     %w[400 403 404 422 500].each do |code|
@@ -64,7 +66,7 @@ Rails.application.routes.draw do
   end
 
   resources :guides, only: [] do
-    resources :guide_downloads, only: [:new, :create], path: 'download', as: :downloads do
+    resources :guide_downloads, only: %i[new create], path: 'download', as: :downloads do
       get 'optional', on: :collection
     end
   end
@@ -108,8 +110,18 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module resources go below concerns
+  resources :services, concerns: %i[imageable toggleable] do
+    scope module: :services do
+      resources :sections, concerns: %i[imageable toggleable]
+    end
+  end
+
+  resources :sections, only: [] do
+    resources :items, concerns: %i[imageable toggleable], path: 'items', controller: 'services/section_items'
+  end
+
   resources :additional_contents
-  resources :guide_downloads, only: [:index, :show]
+  resources :guide_downloads, only: %i[index show]
   resources :landing_pages, concerns: %i[imageable toggleable], except: :show do
     resources :guides,
               only: [:index],

@@ -1,0 +1,6 @@
+<%= render 'optimadmin/shared/help_guides/sidebar', object: Services::SectionItem, area: 'edit' %>
+<%= render 'optimadmin/shared/header/main_title', title: "Edit #{Services::SectionItem.model_name.human.titleize}" %>
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: section_items_path(@section), title: Services::SectionItem.model_name.human.titleize %>
+  <%= render 'form', model: @services_section_item %>
+</div>

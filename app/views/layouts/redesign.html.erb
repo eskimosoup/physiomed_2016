@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "layouts/shared/head", redesign: true %>
+  </head>
+
+  <body>
+    <%= render "layouts/redesign/header" %>
+
+    <%= yield %>
+
+    <%= render "layouts/shared/footer" %>
+
+    <%= yield :footer %>
+    <%= yield :javascript %>
+
+    <%= render 'layouts/shared/remarketing_footer' if request.host.include?('physiomed.co.uk') %>
+  </body>
+</html>

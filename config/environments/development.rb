@@ -1,7 +1,48 @@
 Rails.application.configure do
-  Rails.application.routes.default_url_options[:host] = '192.168.0.26:3000'
+  config.logger = ActiveSupport::Logger.new(STDOUT)
+  config.action_view.raise_on_missing_translations = true
 
-  config.action_mailer.asset_host = 'localhost:3000'
+  # Mailer
+  config.action_mailer.delivery_method = :letter_opener
+
+  Rails.application.routes.default_url_options[:host] = 'localhost.ssl:3000'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
+
+  config.action_mailer.default_url_options = {
+    host: Rails.application.routes.default_url_options[:host],
+    protocol: Rails.application.routes.default_url_options[:protocol]
+  }
+
+  config.action_mailer.asset_host = [
+    Rails.application.routes.default_url_options[:protocol],
+    '://',
+    Rails.application.routes.default_url_options[:host]
+  ].join
+
+  # config.action_controller.asset_host = [
+  #  Rails.application.routes.default_url_options[:protocol],
+  #  '://',
+  #  Rails.application.routes.default_url_options[:host]
+  # ].join
+
+  # Do not let rack-mini-profiler disable caching
+  Rack::MiniProfiler.config.disable_caching = true # true is default
+  Rack::MiniProfiler.config.position = 'right'
+  Rack::MiniProfiler.config.start_hidden = false # use ALT + P to toggle
+
+  config.generators do |g|
+    g.stylesheets false
+    g.javascripts false
+    g.helpers false
+  end
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
+  end
 
   # Settings specified here will take precedence over those in config/application.rb.
 

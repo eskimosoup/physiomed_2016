@@ -1,0 +1,33 @@
+
+<% present services_section_item do |services_section_item_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" id="item_<%= services_section_item_presenter.id %>">
+          <div class="large-1 hide-for-medium-down columns">
+        <span class="drag-helper"></span>
+      </div>
+
+    <div class="columns">
+      <%= services_section_item_presenter.title %>
+    </div>
+
+    <div class="large-2 hide-for-medium-down columns">
+      <%= link_to (image_tag services_section_item.image.thumb, alt: ''), edit_images_section_item_path(services_section_item.section, services_section_item) %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= services_section_item_presenter.toggle_link %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= services_section_item_presenter.view_link %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= services_section_item_presenter.edit_link %>
+    </div>
+
+    <div class="large-1 text-center columns last">
+      <%= services_section_item_presenter.delete_link %>
+    </div>
+  </div>
+<% end %>
+

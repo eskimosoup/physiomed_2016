@@ -16,7 +16,7 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module Physiomed2016
-  class Application < Rails::Application            
+  class Application < Rails::Application
     config.exceptions_app = self.routes
 
     config.autoload_paths << Rails.root.join('lib')
@@ -32,6 +32,9 @@ module Physiomed2016
       generate.test_framework :rspec
       generate.view_specs true
     end
+
+    config.i18n.default_locale = :'en-GB'
+    config.force_ssl = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
