@@ -1,0 +1,74 @@
+.primary-header {
+  @include flex-grid-row;
+  // Brilliant :shrug:
+  border-bottom: 1px solid $color--brown--light;
+  max-width: none;
+
+  &__logo {
+    @include responsive-flex-grid-column((medium down: 12, large: 3, xlarge: 2));
+  }
+
+  &__call-to-actions {
+    @include responsive-flex-grid-column((medium down: 12, large: 3, xlarge: 3));
+    font-family: $font--ubuntu;
+    font-weight: $font--ubuntu--light;
+  }
+
+  &__leeds {
+    background-color: $color--brown--dark;
+    border-bottom-left-radius: $global-border-radius;
+    border-bottom-right-radius: $global-border-radius;
+    color: $color--white;
+    display: inline-block;
+    font-size: rem(13px);
+    padding: rem(9px 12px);
+    transition: background-color .15s linear;
+
+    &:hover,
+    &:focus {
+      background-color: $color--brown--light;
+    }
+
+    &:active {
+      background-color: $color--orange;
+    }
+  }
+
+  &__clinic-area {
+    background: asset-data-url('layout/header/call-to-actions/chevron--right-brown.png') no-repeat center right;
+    display: inline-block;
+    font-size: rem(14px);
+    padding: rem(9px 12px);
+    transition: color .15s linear;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-image: asset-data-url('layout/header/call-to-actions/chevron--right-orange.png');
+      color: darken($color--brown--dark, 15%);
+    }
+  }
+
+  &__resources {
+    background: asset-data-url('layout/header/call-to-actions/chevron--right-white.png') no-repeat center right 10px;
+    background-color: $color--green;
+    border-top-left-radius: $global-border-radius;
+    border-top-right-radius: $global-border-radius;
+    color: $color--white;
+    display: inline-block;
+    float: right;
+    font-size: rem(13px);
+    padding: rem(9px 22px 9px 12px);
+    transition: background-color .15s linear;
+    margin-top: rem(25px);
+
+    &:hover,
+    &:focus {
+      background-color: $color--brown--light;
+    }
+
+    &:active {
+      background-color: $color--orange;
+    }
+  }
+}

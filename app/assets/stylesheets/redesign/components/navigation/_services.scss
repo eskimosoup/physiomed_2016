@@ -1,0 +1,41 @@
+.services-navigation {
+  list-style: none;
+
+  &__item {
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+
+  &__link {
+    display: block;
+
+    &--purple--dark {
+      background-color: $color--service-purple--dark;
+    }
+
+    &--blue--regular {
+      background-color: $color--service-blue--regular;
+    }
+
+    &--green--light {
+      background-color: $color--service-green--light;
+    }
+
+    &--blue--dark {
+      background-color: $color--service-blue--dark;
+    }
+
+    &--green--pastel {
+      background-color: $color--service-green--pastel;
+    }
+
+    &--lilac {
+      background-color: $color--service-lilac;
+    }
+
+    &--blue--slate {
+      background-color: $color--service-blue--slate;
+    }
+  }
+}

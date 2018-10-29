@@ -1,1 +1,10 @@
+@import 'redesign/lib/variables';
+@import 'redesign/lib/mixins';
+
+@import 'vendor/foundation/foundation';
+@import 'cookie-consent/consent';
+
+@import 'redesign/components/navigation/header';
+@import 'redesign/components/navigation/services';
+
 @import 'redesign/layout/header';

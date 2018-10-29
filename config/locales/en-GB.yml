@@ -63,6 +63,13 @@ en-GB:
       show:
         title: "General Well-Being"
   views:
+    header:
+      call_to_actions:
+        leeds_clinic:
+          prefix: Visit our dedicated
+          suffix: Leeds Clinics website
+        client_area: Client Area
+        employee_resources: Employee Resources
     pagination:
         first: "&laquo; First"
         last: "Last &raquo;"

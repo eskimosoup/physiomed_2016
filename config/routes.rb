@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
+  resources :services, only: :show
+
   resources :landing_pages,
             only: :show,
             path: '',

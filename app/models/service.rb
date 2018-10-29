@@ -9,9 +9,18 @@ class Service < ActiveRecord::Base
   default_scope { order(:position) }
 
   STYLES = ['basic'].freeze
-  LAYOUTS = ['application'].freeze
+  LAYOUTS = %w[application redesign].freeze
   # TODO: Add pyramid colours
-  COLOURS = ['#000'].freeze
+  COLOURS = [
+    ['Purple dark', 'purple--dark'],
+    ['Blue regular', 'blue--regular'],
+    ['Green light', 'green--light'],
+    ['Blue dark', 'blue--dark'],
+    ['Green pastel', 'green--pastel'],
+    ['Lilac', 'lilac'],
+    ['Blue slate', 'blue--slate'],
+    ['Blue light', 'blue--light'],
+  ].freeze
 
   validates :title, presence: true
   validates :style, inclusion: { in: STYLES }
@@ -24,6 +33,8 @@ class Service < ActiveRecord::Base
   mount_uploader :image, ServiceUploader
 
   has_many :sections, class_name: '::Services::Section', dependent: :destroy
+
+  scope :displayed, -> { where(display: true) }
 
   def slug_candidates
     [
