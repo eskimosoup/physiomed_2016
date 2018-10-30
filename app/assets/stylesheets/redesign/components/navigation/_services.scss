@@ -1,41 +1,23 @@
 .services-navigation {
   list-style: none;
+  font-size: 0;
 
   &__item {
     display: inline-block;
+    vertical-align: top;
     white-space: nowrap;
-    vertical-align: bottom;
   }
 
   &__link {
+    @include service-colours(background);
+    color: $color--white;
     display: block;
+    font-size: rem(16px);
+    padding: rem(20px);
 
-    &--purple--dark {
-      background-color: $color--service-purple--dark;
-    }
-
-    &--blue--regular {
-      background-color: $color--service-blue--regular;
-    }
-
-    &--green--light {
-      background-color: $color--service-green--light;
-    }
-
-    &--blue--dark {
-      background-color: $color--service-blue--dark;
-    }
-
-    &--green--pastel {
-      background-color: $color--service-green--pastel;
-    }
-
-    &--lilac {
-      background-color: $color--service-lilac;
-    }
-
-    &--blue--slate {
-      background-color: $color--service-blue--slate;
+    &--active {
+      margin-top: rem(-10px);
+      padding: rem(30px 20px);
     }
   }
 }

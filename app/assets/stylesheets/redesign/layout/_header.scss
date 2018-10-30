@@ -55,12 +55,11 @@
     border-top-left-radius: $global-border-radius;
     border-top-right-radius: $global-border-radius;
     color: $color--white;
-    display: inline-block;
     float: right;
     font-size: rem(13px);
+    margin-top: rem(45px);
     padding: rem(9px 22px 9px 12px);
     transition: background-color .15s linear;
-    margin-top: rem(25px);
 
     &:hover,
     &:focus {

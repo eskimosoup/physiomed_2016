@@ -4,11 +4,16 @@ module Services
 
     default_scope { order(:position) }
 
-    STYLES = ['basic'].freeze
+    STYLES = [
+      ['Triangle CTA with image', 'triangle_cta_with_image'],
+      ['Abstract CTA points', 'abstract_cta_points'],
+    ].freeze
 
-    validates :style, inclusion: { in: STYLES }
+    # validates :style, inclusion: { in: STYLES }
 
-    mount_uploader :image, Services::SectionUploader
+    scope :displayed, -> { where(display: true) }
+
+    mount_uploader :image, Services::SectionItemUploader
 
     has_one :service, through: :section
 

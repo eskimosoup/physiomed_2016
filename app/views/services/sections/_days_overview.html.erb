@@ -1,0 +1,21 @@
+<div class="services-days-overview-background services-days-overview-background--<%= current_service.colour %>">
+  <div class="services-days-overview">
+    <div class="services-days-overview__days">
+      <ul class="sevices-days-overview-list">
+        <% [*1..10].each do |number| %>
+          <li class="sevices-days-overview-list__item">
+            <%= number %>
+          </li>
+        <% end %>
+      <ul>
+    </div>
+
+    <div class="services-days-overview__content">
+      <h2 class="services-days-overview__title">
+        <%= section.title %>
+      </h2>
+
+      <%= raw section.content %>
+    </div>
+  </div>
+</div>

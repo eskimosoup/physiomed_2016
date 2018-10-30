@@ -1,1 +1,9 @@
-<%= render 'services/shared/navigation', services: facade.services %>
+<%= render 'services/shared/navigation', services: facade.services, current_service: facade.service %>
+
+<%= render partial: 'services/sections/section',
+           collection: facade.sections,
+           as: :section,
+           cache: true,
+           locals: {
+             current_service: facade.service
+           } %>

@@ -1,0 +1,20 @@
+<div class="services-abstract-lines-background">
+  <div class="services-abstract-lines">
+    <div class="services-abstract-lines__inner">
+      <div class="services-abstract-lines__content services-abstract-lines__content--<%= current_service.colour %>">
+        <div class="services-abstract-lines__introduction">
+          <%= raw section.content %>
+        </div>
+
+        <%= render partial: 'services/section_items/section_item',
+                   collection: section.items.displayed.limit(2),
+                   as: :item,
+                   cache: true,
+                   locals: {
+                     current_service: current_service,
+                      parent_class: 'services-abstract-lines'
+                   } %>
+      </div>
+    </div>
+  </div>
+</div>

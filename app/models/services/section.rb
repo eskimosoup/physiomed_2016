@@ -4,9 +4,17 @@ module Services
 
     default_scope { order(:position) }
 
-    STYLES = ['basic'].freeze
+    STYLES = [
+      ['Introductary triangle', 'introductary_triangle'],
+      ['Itemised triangle with images', 'itemised_triangle_images'],
+      ['Abstract lines background with items', 'abstract_lines_background_with_items'],
+      ['Days overview', 'days_overview'],
+    ].freeze
 
-    validates :style, inclusion: { in: STYLES }
+    # TODO: Validate inclusion of array
+    # validates :style, inclusion: { in: STYLES }
+
+    scope :displayed, -> { where(display: true) }
 
     mount_uploader :image, Services::SectionUploader
 

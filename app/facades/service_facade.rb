@@ -1,4 +1,6 @@
 class ServiceFacade
+  attr_reader :service
+
   delegate :style, :layout, to: :service, prefix: true
 
   def initialize(service)
@@ -9,7 +11,7 @@ class ServiceFacade
     @services ||= Service.displayed
   end
 
-  private
-
-  attr_reader :service
+  def sections
+    @sections ||= service.sections.displayed
+  end
 end

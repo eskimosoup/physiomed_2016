@@ -1,0 +1,7 @@
+.services-content {
+  @include flex-grid-row;
+
+  &__inner {
+    @include flex-grid-column(12);
+  }
+}
