@@ -1,0 +1,18 @@
+<div class="services-clients-overview">
+  <div class="services-clients-overview__inner">
+    <h2 class="services-clients-overview__title">
+      <%= section.title %>
+    </h2>
+
+    <ul class="services-clients-overview-list">
+      <%= render partial: 'clients/shared/inline',
+                 collection: Client.ordered_by_position.displayed,
+                 as: :client,
+                 locals: {
+                   parent_class: 'services-clients-overview-list'
+                 } %>
+    </ul>
+
+    <%= raw section.content %>
+  </div>
+</div>

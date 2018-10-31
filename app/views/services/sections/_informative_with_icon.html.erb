@@ -1,0 +1,23 @@
+<div class="services-informative-with-icon">
+  <div class="services-informative-with-icon__image">
+    <div class="services-informative-with-icon-image services-informative-with-icon-image--<%= current_service.colour %>">
+      <div class="services-informative-with-icon-image__inner">
+        <%= image_tag section.image.url, alt: '' %>
+      </div>
+    </div>
+  </div>
+  <div class="services-informative-with-icon__content">
+    <% if section.title? %>
+      <h2 class="services-informative-with-icon__title services-informative-with-icon__title--<%= current_service.colour %>">
+        <%= section.title %>
+      </h2>
+    <% end %>
+    <%= raw section.content %>
+  </div>
+</div>
+
+<div class="services-informative-with-icon">
+  <div class="services-informative-with-icon__inner">
+    <hr class="services-informative-with-icon__rule services-informative-with-icon__rule--<%= current_service.colour %>" />
+  </div>
+</div>

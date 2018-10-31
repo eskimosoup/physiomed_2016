@@ -1,0 +1,103 @@
+.services-affiliates {
+  @include flex-grid-row;
+
+  &__inner {
+    @include flex-grid-column(12);
+    text-align: center;
+  }
+
+  &__title {
+    @include generic-light-box-shadow;
+    background-color: $color--green;
+    border-radius: $global-border-radius / 2;
+    color: $color--white;
+    display: inline-block;
+    font-size: rem(22px);
+    font-weight: $font--open-sans--semibold;
+    margin-bottom: rem(90px);
+    padding: rem(30px 35px);
+    position: relative;
+    text-transform: none;
+
+    &::after {
+      @include triangle('down', $color--green, 32px);
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+
+
+  &__link {
+    background-color: $color--orange;
+    border-radius: $global-border-radius / 2;
+    color: $color--white;
+    display: inline-block;
+    font-family: $font--myriad-pro;
+    font-size: rem(14px);
+    margin-bottom: rem(18px);
+    margin-top: rem(18px);
+    padding: rem(6px 12px);
+    transition: background-color .25s linear;
+
+    &:hover {
+      background-color: $color--brown--dark;
+    }
+  }
+}
+
+.services-affiliates-breakdown {
+  @include flex-grid-row;
+}
+
+.services-affiliates-item {
+  @include responsive-flex-grid-column((medium down: 12, large: 6));
+  text-align: center;
+
+  &__title {
+    color: $color--brown--light;
+    font-size: rem(30px);
+    font-weight: $font--open-sans--light;
+    text-transform: none;
+  }
+
+  &__image {
+    margin-bottom: rem(40px);
+    margin-top: rem(70px);
+    min-height: 200px;
+    position: relative;
+  }
+
+  &__icon {
+    bottom: 0;
+    margin-top: rem(30px);
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+  }
+
+  &__content {
+    @include breakpoint(large) {
+      max-width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__link {
+    background-color: $color--brown--beige;
+    border-radius: $global-border-radius / 2;
+    color: $color--white;
+    display: inline-block;
+    font-family: $font--myriad-pro;
+    font-size: rem(14px);
+    padding: rem(6px 9px);
+    margin-top: rem(18px);
+    transition: background-color .25s linear;
+
+    &:hover {
+      background-color: $color--brown--dark;
+    }
+  }
+}

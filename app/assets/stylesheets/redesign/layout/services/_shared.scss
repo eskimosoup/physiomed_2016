@@ -5,3 +5,67 @@
     @include flex-grid-column(12);
   }
 }
+
+.services-section-item-basic {
+  &__inner {
+    @include generic-service-box-shadow;
+    background-color: $color--white;
+    padding: rem(30px);
+  }
+
+  &__title {
+    @include service-colours(color);
+    font-size: rem(24px);
+    font-weight: $open-sans-bold;
+    text-transform: none;
+  }
+}
+
+.services-section-item-colour {
+  margin-top: rem(30px);
+
+  &__inner {
+    @include service-colours(background-color);
+    @include service-colours-text(color);
+    padding: rem(30px);
+  }
+
+  &__title {
+    font-size: rem(24px);
+    font-weight: $open-sans-bold;
+    text-transform: none;
+  }
+}
+
+.services-section-item-top-triangle {
+  &__inner {
+    @include service-colours(border-top-color);
+    @include generic-service-box-shadow;
+    background-color: $color--white;
+    border-top-style: solid;
+    border-top-width: 6px;
+    padding: rem(30px);
+    position: relative;
+
+    &::before {
+      @include triangle('down', transparent, 24px);
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+
+    @include service-colours-pseudo('before', border-top-color);
+  }
+
+  &__title {
+    @include service-colours(color);
+    font-size: rem(24px);
+    font-weight: $open-sans-bold;
+    margin-bottom: rem(30px);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-transform: none;
+    max-width: 80%;
+  }
+}

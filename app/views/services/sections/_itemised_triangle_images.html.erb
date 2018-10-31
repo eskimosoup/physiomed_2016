@@ -1,9 +1,11 @@
 <div class="services-content">
   <div class="services-content__inner">
 
-    <div class="services-itemised-triangle-images-content">
-      <%= raw section.content %>
-    </div>
+    <% if section.content? %>
+      <div class="services-itemised-triangle-images-content">
+        <%= raw section.content %>
+      </div>
+    <% end %>
 
     <div class="services-itemised-triangles">
       <%= render partial: 'services/section_items/section_item',

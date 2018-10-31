@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030160341) do
+ActiveRecord::Schema.define(version: 20181031131010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -763,6 +763,8 @@ ActiveRecord::Schema.define(version: 20181030160341) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "subtitle"
+    t.string   "button_text"
+    t.string   "button_link"
   end
 
   add_index "services_section_items", ["services_section_id"], name: "index_services_section_items_on_services_section_id", using: :btree
@@ -779,6 +781,8 @@ ActiveRecord::Schema.define(version: 20181030160341) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "subtitle"
+    t.string   "button_link"
+    t.string   "button_text"
   end
 
   add_index "services_sections", ["service_id"], name: "index_services_sections_on_service_id", using: :btree

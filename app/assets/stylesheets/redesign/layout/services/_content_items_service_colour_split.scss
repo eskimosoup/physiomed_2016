@@ -1,0 +1,19 @@
+.services-content-items-colour-split {
+  background-position: top right;
+  background-repeat: no-repeat;
+  padding: rem(50px);
+
+  &__inner {
+    @include flex-grid-row;
+    font-weight: $font--open-sans--bold;
+    justify-content: space-between;
+  }
+
+  .services-section-item-basic {
+    @include responsive-flex-grid-column((medium down: 12, large: 6));
+  }
+
+  .services-section-item-colour {
+    @include responsive-flex-grid-column((medium down: 12, large: 5));
+  }
+}

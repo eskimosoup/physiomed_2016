@@ -95,3 +95,6 @@ en-GB:
       shared:
         error_text: If you think this is an error, please %{contact_us}
         contact_us: contact us
+    services:
+      days:
+        day: Day

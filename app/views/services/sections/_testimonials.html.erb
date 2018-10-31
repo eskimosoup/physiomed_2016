@@ -1,0 +1,38 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.services-testimonials-list').slick({
+        autoplay: true,
+        arrows: false,
+        dots: true
+      });
+    });
+  </script>
+<% end %>
+
+
+<div class="services-testimonials">
+  <div class="services-testimonials__inner">
+    <h2 class="services-testimonials__title">
+      <%= section.title %>
+    </h2>
+
+
+    <div class="services-testimonials-list">
+      <%= render partial: 'testimonials/shared/inline',
+                collection: Testimonial.displayed.limit(10),
+                as: :testimonial,
+                cache: true,
+                locals: {
+                  current_service: current_service,
+                  parent_class: 'services-tesimonials-list'
+                } %>
+    </div>
+
+    <div class="services-testimonials__inner">
+      <%= link_to section.button_text, section.button_link, class: 'services-affiliates__link' if section.button_link? %>
+    </div>
+  </div>
+</div>
+
+

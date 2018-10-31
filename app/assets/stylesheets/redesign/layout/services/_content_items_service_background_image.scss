@@ -1,0 +1,68 @@
+.services-content-items-background-image {
+  background-attachment: fixed;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding: rem(50px);
+}
+
+.services-cta-list-service-colour {
+  @include flex-grid-row;
+
+  &__inner {
+    @include flex-grid-column(12);
+  }
+
+  &__content {
+    @include service-colours(background-color);
+    @include service-colours-text(color);
+    padding: rem(30px 20px);
+    position: relative;
+
+    &::before {
+      @include triangle('up', transparent, 50px);
+      top: -24px;
+      left: 24px;
+    }
+
+    @include service-colours-pseudo('before', border-bottom-color);
+  }
+
+  &__title {
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    font-size: rem(24px);
+    font-weight: $font--open-sans--semibold;
+    text-transform: none;
+    padding-bottom: rem(12px);
+  }
+}
+
+.services-cta-list-service-white {
+  @include flex-grid-row;
+
+  &__inner {
+    @include flex-grid-column(12);
+  }
+
+  &__content {
+    background-color: $color--white;
+    padding: rem(30px 20px);
+    position: relative;
+
+    &::before {
+      @include triangle('up', $color--white, 50px);
+      top: -24px;
+      left: 24px;
+    }
+  }
+
+  &__title {
+    @include service-colours(color);
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    font-size: rem(24px);
+    font-weight: $font--open-sans--semibold;
+    padding-bottom: rem(12px);
+    text-transform: none;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="services-affiliates">
+  <div class="services-affiliates__inner">
+    <h2 class="services-affiliates__title">
+      <%= section.title %>
+    </h2>
+  </div>
+</div>
+
+<% # TODO: Add lines to connect the affiliates %>
+
+<div class="services-affiliates-breakdown">
+  <%= render partial: 'services/section_items/section_item',
+            collection: section.items.displayed.limit(3),
+            as: :item,
+            cache: true,
+            locals: {
+              current_service: current_service,
+              parent_class: 'services-itemised-triangles'
+            } %>
+</div>
+
+<div class="services-affiliates">
+  <div class="services-affiliates__inner">
+    <%= link_to section.button_text, section.button_link, class: 'services-affiliates__link' if section.button_link? %>
+  </div>
+</div>
+
+

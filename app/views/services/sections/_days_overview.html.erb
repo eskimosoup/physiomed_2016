@@ -3,7 +3,11 @@
     <div class="services-days-overview__days">
       <ul class="sevices-days-overview-list">
         <% [*1..10].each do |number| %>
-          <li class="sevices-days-overview-list__item">
+          <li class="sevices-days-overview-list__item <%= "sevices-days-overview-list__item--last sevices-days-overview-list__item--last--#{current_service.colour}" if number == 10 %>">
+            <span class="sevices-days-overview-list__day sevices-days-overview-list__day--<%= current_service.colour %>">
+              <%= t('views.services.days.day') %>
+            </span>
+
             <%= number %>
           </li>
         <% end %>

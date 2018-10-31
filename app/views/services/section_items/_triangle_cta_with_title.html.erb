@@ -1,0 +1,11 @@
+<div class="services-section-item-top-triangle">
+  <% if item.title? %>
+    <h2 class="services-section-item-top-triangle__title services-section-item-top-triangle__title--<%= current_service.colour %>">
+      <%= item.title %>
+    </h2>
+  <% end %>
+
+  <div class="services-section-item-top-triangle__inner services-section-item-top-triangle__inner--<%= current_service.colour %>">
+    <%= raw item.content %>
+  </div>
+</div>

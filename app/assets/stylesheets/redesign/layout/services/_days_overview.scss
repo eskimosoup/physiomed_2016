@@ -3,7 +3,6 @@
   @include service-colours-text(color);
   padding-bottom: rem(60px);
   padding-top: rem(60px);
-  margin-bottom: rem(80px);
   margin-top: rem(80px);
 }
 
@@ -38,6 +37,33 @@
     display: inline-block;
     font-size: rem(48px);
     font-weight: $font--open-sans--extrabold;
+    min-width: 45px;
+    padding-left: rem(5px);
     padding-right: rem(5px);
+
+    &--last {
+      @include service-colours(color);
+      @include service-colours-text(background-color);
+      border-radius: 50%;
+      color: $color--black;
+      height: 80px;
+      line-height: 72px;
+      padding: rem(5px);
+      text-align: center;
+      width: 80px;
+
+      .sevices-days-overview-list__day {
+        display: none;
+      }
+    }
+  }
+
+  &__day {
+    @include service-colours-text(color);
+    display: block;
+    font-size: rem(16px);
+    font-weight: $font--open-sans--regular;
+    opacity: .5;
+    text-transform: uppercase;
   }
 }

@@ -127,6 +127,10 @@
   box-shadow: 11px 11px 57px 1px rgba($color--brown--light, .38);
 }
 
+@mixin generic-light-box-shadow {
+  box-shadow: 1px 2px 6px 0 $color--brown--dark;
+}
+
 @mixin triangle($direction, $color, $size: 6px) {
   content: '';
   display: block;

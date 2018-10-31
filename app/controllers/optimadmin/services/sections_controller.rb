@@ -65,7 +65,7 @@ module Optimadmin
         params.require(:services_section).permit(
           :service_id, :position, :title, :content, :image, :style, :display,
           :section_items, :remove_image, :remote_image_url, :image_cache,
-          :subtitle
+          :subtitle, :button_link, :button_text
         )
       end
     end
