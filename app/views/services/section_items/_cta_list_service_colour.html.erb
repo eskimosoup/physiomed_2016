@@ -1,4 +1,3 @@
-<% # TODO: Find a way to grid the content %>
 <div class="services-cta-list-service-colour">
   <div class="services-cta-list-service-colour__inner">
     <div class="services-cta-list-service-colour__content services-cta-list-service-colour__content--<%= current_service.colour %>">
@@ -6,7 +5,24 @@
         <%= item.title %>
       </h2>
 
-      <%= raw item.content %>
+      <%#= raw item.content %>
+
+      <% # TODO: Import to TinyMCE %>
+      <div class="services-time-required">
+        <div class="services-time-required__inner">
+          <strong>15 min</strong>
+          Triage
+        </div>
+        <div class="services-time-required__inner">
+          <strong>45 min</strong>
+          Initial Assessment (IA)
+        </div>
+        <div class="services-time-required__inner">
+          <strong>30 min</strong>
+          10 day follow up
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
