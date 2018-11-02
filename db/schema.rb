@@ -617,13 +617,13 @@ ActiveRecord::Schema.define(version: 20181102151328) do
   create_table "partners", force: :cascade do |t|
     t.integer  "position"
     t.string   "title"
-    t.string   "summary"
-    t.string   "content"
+    t.text     "summary"
+    t.text     "content"
     t.string   "image"
     t.string   "website_url"
-    t.boolean  "display"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "display",     default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "people_helped_sections", force: :cascade do |t|
