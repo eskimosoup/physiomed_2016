@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181031131010) do
+ActiveRecord::Schema.define(version: 20181102151328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -613,6 +613,18 @@ ActiveRecord::Schema.define(version: 20181031131010) do
 
   add_index "pages_testimonials", ["page_id"], name: "index_pages_testimonials_on_page_id", using: :btree
   add_index "pages_testimonials", ["testimonial_id"], name: "index_pages_testimonials_on_testimonial_id", using: :btree
+
+  create_table "partners", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title"
+    t.string   "summary"
+    t.string   "content"
+    t.string   "image"
+    t.string   "website_url"
+    t.boolean  "display"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "people_helped_sections", force: :cascade do |t|
     t.string   "title",                      null: false

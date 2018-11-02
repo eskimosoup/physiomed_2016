@@ -1,17 +1,27 @@
+.primary-header-wrap {
+  border-bottom: 1px solid $color--brown--light;
+}
+
 .primary-header {
   @include flex-grid-row;
-  // Brilliant :shrug:
-  border-bottom: 1px solid $color--brown--light;
-  max-width: none;
+
+  &__inner {
+    @include flex-grid-row(nest);
+    @include flex-grid-column(12);
+  }
 
   &__logo {
-    @include responsive-flex-grid-column((medium down: 12, large: 3, xlarge: 2));
+    @include responsive-flex-grid-column((medium down: 12, large: 3));
+    padding-top: rem(15px);
   }
 
   &__call-to-actions {
-    @include responsive-flex-grid-column((medium down: 12, large: 3, xlarge: 3));
     font-family: $font--ubuntu;
     font-weight: $font--ubuntu--light;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 
   &__leeds {
@@ -54,11 +64,12 @@
     background-color: $color--green;
     border-top-left-radius: $global-border-radius;
     border-top-right-radius: $global-border-radius;
+    bottom: -98px;
     color: $color--white;
-    float: right;
     font-size: rem(13px);
     margin-top: rem(45px);
     padding: rem(9px 22px 9px 12px);
+    position: relative;
     transition: background-color .15s linear;
 
     &:hover,
