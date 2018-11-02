@@ -31,7 +31,7 @@ set :repo_url, "git@github.com:eskimosoup/physiomed_2016.git"
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml", "config/secrets.yml"
-append :linked_files, 'config/credentials.yml.enc', 'config/master.key'
+# append :linked_files, 'config/credentials.yml.enc', 'config/master.key'
 
 
 # Default value for linked_dirs is []

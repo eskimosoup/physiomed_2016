@@ -38,6 +38,12 @@
 }
 
 .services-section-item-top-triangle {
+
+  ul {
+    list-style-position: outside;
+    margin-left: rem(14px);
+  }
+
   &__inner {
     @include service-colours(border-top-color);
     @include generic-service-box-shadow;

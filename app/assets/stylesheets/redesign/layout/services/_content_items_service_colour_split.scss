@@ -7,6 +7,11 @@
     @include flex-grid-row;
     font-weight: $font--open-sans--bold;
     justify-content: space-between;
+
+    ul {
+      list-style-position: outside;
+      margin-left: rem(14px);
+    }
   }
 
   .services-section-item-basic {

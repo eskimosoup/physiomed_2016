@@ -85,14 +85,23 @@
 }
 
 @mixin service-colours-text($property) {
-  $color--service-purple--dark-text: choose-contrast-color($color--service-purple--dark);
-  $color--service-blue--regular-text: choose-contrast-color($color--service-blue--regular);
-  $color--service-green--light-text: choose-contrast-color($color--service-green--light);
-  $color--service-blue--dark-text: choose-contrast-color($color--service-blue--dark);
-  $color--service-green--pastel-text: choose-contrast-color($color--service-green--pastel);
-  $color--service-lilac-text: choose-contrast-color($color--service-lilac);
-  $color--service-blue--slate-text: choose-contrast-color($color--service-blue--slate);
-  $color--service-blue--light-text: choose-contrast-color($color--service-blue--light);
+  //$color--service-purple--dark-text: choose-contrast-color($color--service-purple--dark);
+  //$color--service-blue--regular-text: choose-contrast-color($color--service-blue--regular);
+  //$color--service-green--light-text: choose-contrast-color($color--service-green--light);
+  //$color--service-blue--dark-text: choose-contrast-color($color--service-blue--dark);
+  //$color--service-green--pastel-text: choose-contrast-color($color--service-green--pastel);
+  //$color--service-lilac-text: choose-contrast-color($color--service-lilac);
+  //$color--service-blue--slate-text: choose-contrast-color($color--service-blue--slate);
+  //$color--service-blue--light-text: choose-contrast-color($color--service-blue--light);
+
+  $color--service-purple--dark-text: $color--white;
+  $color--service-blue--regular-text: $color--white;
+  $color--service-green--light-text: $color--white;
+  $color--service-blue--dark-text: $color--white;
+  $color--service-green--pastel-text: $color--white;
+  $color--service-lilac-text: $color--white;
+  $color--service-blue--slate-text: $color--white;
+  $color--service-blue--light-text: $color--white;
 
   &--purple--dark {
     #{$property}: $color--service-purple--dark-text;
