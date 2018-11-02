@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: subcategories
+#
+#  id            :integer          not null, primary key
+#  title         :string           not null
+#  image         :string
+#  summary       :text
+#  display       :boolean          default(TRUE)
+#  position      :integer          default(0), not null
+#  slug          :string
+#  suggested_url :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class Subcategory < ActiveRecord::Base
   include OptimadminScopes
 

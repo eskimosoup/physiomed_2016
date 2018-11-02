@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: additional_home_contents
+#
+#  id           :integer          not null, primary key
+#  title        :string           not null
+#  content_type :string           not null
+#  video_id     :integer
+#  content      :text
+#  position     :integer          default(0), not null
+#  display      :boolean          default(TRUE), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 require "rails_helper"
 
 RSpec.describe AdditionalHomeContent, type: :model do

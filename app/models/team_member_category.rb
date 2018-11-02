@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: team_member_categories
+#
+#  id            :integer          not null, primary key
+#  title         :string           not null
+#  position      :integer          default(0), not null
+#  category_type :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class TeamMemberCategory < ActiveRecord::Base
   TYPES = %w(Clinical Management Administration).freeze
 

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id                 :integer          not null, primary key
+#  title              :string           not null
+#  youtube_identifier :string           not null
+#  display            :boolean          default(TRUE), not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  subtitle           :string
+#  content            :text
+#
+
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do

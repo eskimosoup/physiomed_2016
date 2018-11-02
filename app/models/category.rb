@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id         :integer          not null, primary key
+#  name       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  standalone :boolean          default(FALSE)
+#  image      :string
+#  content    :string
+#  tagline    :string
+#
+
 class Category < ActiveRecord::Base
   NAMES = [
     *BodyPart::BODY_PARTS, 'General', 'General Wellbeing', 'Wellbeing Zone Overview'

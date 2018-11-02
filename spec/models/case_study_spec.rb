@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: case_studies
+#
+#  id             :integer          not null, primary key
+#  title          :string           not null
+#  image          :string
+#  summary        :text             not null
+#  content        :text             not null
+#  date           :date             not null
+#  client_id      :integer
+#  display        :boolean          default(TRUE), not null
+#  home_highlight :boolean          default(TRUE), not null
+#  slug           :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 require "rails_helper"
 
 RSpec.describe CaseStudy, type: :model do

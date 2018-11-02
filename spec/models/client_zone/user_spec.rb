@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: client_zone_users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  auth_token      :string           not null
+#  active          :boolean          default(TRUE)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe ClientZone::User, type: :model, client_zone_user: true do

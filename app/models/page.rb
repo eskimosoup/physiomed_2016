@@ -1,8 +1,30 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id                   :integer          not null, primary key
+#  title                :string           not null
+#  slug                 :string
+#  suggested_url        :string
+#  image                :string
+#  style                :string           not null
+#  layout               :string           not null
+#  display              :boolean          default(TRUE)
+#  content              :text             not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  display_case_studies :boolean          default(FALSE)
+#  display_news         :boolean          default(FALSE)
+#
+
 class Page < ActiveRecord::Base
   include MenuResourceable
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
+
+  include PgSearch
+  multisearchable against: [:title, :content], if: :display?
 
   mount_uploader :image, PageUploader
 

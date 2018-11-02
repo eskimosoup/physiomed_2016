@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: health_zones
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  image      :string
+#  home_image :string           not null
+#  hover_text :string           not null
+#  link       :string           not null
+#  position   :integer          default(0), not null
+#  display    :boolean          default(TRUE), not null
+#  content    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require "rails_helper"
 
 RSpec.describe HealthZone, type: :model do

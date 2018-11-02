@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: testimonials
+#
+#  id            :integer          not null, primary key
+#  title         :string           not null
+#  content       :text             not null
+#  author        :string           not null
+#  role          :string
+#  case_study_id :integer
+#  display       :boolean          default(TRUE), not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class Testimonial < ActiveRecord::Base
   belongs_to :case_study
 

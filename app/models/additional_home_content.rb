@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: additional_home_contents
+#
+#  id           :integer          not null, primary key
+#  title        :string           not null
+#  content_type :string           not null
+#  video_id     :integer
+#  content      :text
+#  position     :integer          default(0), not null
+#  display      :boolean          default(TRUE), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class AdditionalHomeContent < ActiveRecord::Base
 
   CONTENT_TYPES = %w( savings_calculator text_content video_content ).freeze

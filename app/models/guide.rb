@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: guides
+#
+#  id               :integer          not null, primary key
+#  title            :string           not null
+#  content          :text
+#  image            :string
+#  file             :string           not null
+#  display          :boolean          default(TRUE), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  video_id         :integer
+#  gated            :boolean          default(FALSE)
+#  optionally_gated :boolean
+#
+
 class Guide < ActiveRecord::Base
   mount_uploader :image, GuideUploader
   mount_uploader :file, Optimadmin::DocumentUploader

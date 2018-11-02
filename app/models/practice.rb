@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: practices
+#
+#  id         :integer          not null, primary key
+#  name       :string           not null
+#  address    :string
+#  town       :string
+#  county     :string
+#  post_code  :string           not null
+#  latitude   :float
+#  longitude  :float
+#  display    :boolean          default(TRUE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Practice < ActiveRecord::Base
   geocoded_by :post_code
   after_validation :geocode, if: :post_code_changed?

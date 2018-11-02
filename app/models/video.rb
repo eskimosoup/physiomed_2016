@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id                 :integer          not null, primary key
+#  title              :string           not null
+#  youtube_identifier :string           not null
+#  display            :boolean          default(TRUE), not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  subtitle           :string
+#  content            :text
+#
+
 class Video < ActiveRecord::Base
   validates :title, presence: true
   validates :youtube_identifier, presence: true
