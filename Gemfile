@@ -36,6 +36,11 @@ gem 'gibbon'
 gem 'whenever', require: false
 gem 'thin'
 
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-rbenv'
+gem 'capistrano-passenger'
+
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
   gem 'puma'
