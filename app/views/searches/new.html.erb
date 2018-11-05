@@ -1,0 +1,32 @@
+<div class="hero-section standard-page-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title full-width">
+      Search
+    </h1>
+  </div>
+
+  <div class="hero-section-primary-content">
+    <div class="page-content-wrap full-width">
+      <div class="page-content">
+        <%= render 'searches/shared/form' %>
+
+        <%= render partial: 'searches/search', collection: @facade.results, as: :document %>
+      </div>
+    </div>
+
+    <div class="page-contact-methods-wrap">
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: wellbeing_zone_health_zone,
+          case_studies: latest_case_studies,
+          articles: nil,
+        },
+        cache: [wellbeing_zone_health_zone, latest_case_studies]
+      ) %>
+    </div>
+  </div>
+</div>

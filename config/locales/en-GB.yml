@@ -31,7 +31,7 @@ en-GB:
           display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
   date:
     formats:
-      long: "%d %B, %Y"
+      long: "%d-%m-%Y"
       short: "%d-%m-%Y"
       slashes: "%d/%m/%Y"
   time:

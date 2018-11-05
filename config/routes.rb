@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
+  resources :searches, only: :new, path: 'search'
   resources :partners, only: :index
   resources :services, only: :show
 
