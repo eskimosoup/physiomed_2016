@@ -1,0 +1,83 @@
+.search-form {
+  &__field {
+    display: inline-block;
+  }
+
+  &__actions {
+    display: inline-block;
+  }
+
+  &__input {
+    background: asset-data-url('components/icons/search.png') no-repeat center right 5px;
+    padding-right: rem(25px);
+  }
+
+  &__submit {
+    background-color: $color--orange;
+    border: 0;
+    color: $color--white;
+    display: inline-block;
+    height: 32px;
+    min-width: 70px;
+    padding: rem(5px);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: lighten($color--orange, 5%);
+    }
+  }
+}
+
+.search-result {
+  @include flex-grid-row(nest);
+  border-bottom: 1px dotted rgba($color--brown--light, .5);
+  margin-bottom: rem(10px);
+  padding-bottom: rem(10px);
+
+  &__content {
+    &--with-aside {
+      @include responsive-flex-grid-column((medium down: 12, large: 8));
+
+      @include breakpoint(large) {
+        order: 1;
+      }
+    }
+
+    &:not(&--with-aside) {
+      @include flex-grid-column(12);
+    }
+  }
+
+  &__aside {
+    @include responsive-flex-grid-column((medium down: 12, large: 4));
+
+    @include breakpoint(large) {
+      order: 2;
+    }
+  }
+
+  &__title {
+    display: block;
+    font-size: rem(18px);
+    font-weight: $font--open-sans--bold;
+    line-height: 1.25;
+    margin-bottom: rem(5px);
+    text-transform: none;
+  }
+
+  &__microcopy {
+    font-size: rem(12px);
+    margin-bottom: rem(5px);
+    margin-top: rem(5px);
+  }
+
+  .button {
+    background: $brown;
+    margin: rem(15px) 0 0;
+
+    &:hover {
+      background: $mud-brown;
+    }
+  }
+}

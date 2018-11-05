@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: clients
+#
+#  id         :integer          not null, primary key
+#  name       :string           not null
+#  logo       :string           not null
+#  slug       :string
+#  position   :integer          default(0), not null
+#  display    :boolean          default(TRUE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require "rails_helper"
 
 RSpec.describe Client, type: :model do

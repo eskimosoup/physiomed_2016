@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181031131010) do
+ActiveRecord::Schema.define(version: 20181105112656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -614,6 +614,18 @@ ActiveRecord::Schema.define(version: 20181031131010) do
   add_index "pages_testimonials", ["page_id"], name: "index_pages_testimonials_on_page_id", using: :btree
   add_index "pages_testimonials", ["testimonial_id"], name: "index_pages_testimonials_on_testimonial_id", using: :btree
 
+  create_table "partners", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "image"
+    t.string   "website_url"
+    t.boolean  "display",     default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "people_helped_sections", force: :cascade do |t|
     t.string   "title",                      null: false
     t.integer  "number",                     null: false
@@ -626,6 +638,16 @@ ActiveRecord::Schema.define(version: 20181031131010) do
   end
 
   add_index "people_helped_sections", ["category_id"], name: "index_people_helped_sections_on_category_id", unique: true, using: :btree
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "practice_applications_contacts", force: :cascade do |t|
     t.integer  "practice_id"
@@ -675,6 +697,7 @@ ActiveRecord::Schema.define(version: 20181031131010) do
     t.boolean  "domiciliary_visits"
     t.date     "public_liability_expiry_date"
     t.date     "employee_liability_expiry_date"
+    t.string   "document"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|

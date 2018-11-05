@@ -1,7 +1,30 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id                       :integer          not null, primary key
+#  title                    :string           not null
+#  summary                  :text             not null
+#  content                  :text             not null
+#  image                    :string
+#  date                     :date             not null
+#  display                  :boolean          default(TRUE), not null
+#  home_highlight           :boolean          default(TRUE), not null
+#  author_id                :integer
+#  slug                     :string
+#  url_originally_posted_on :string
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  display_on_client_zone   :boolean          default(FALSE)
+#
+
 class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
   include OptimadminScopes
+
+  include PgSearch
+  multisearchable against: [:title, :summary, :content], if: :display?
 
   mount_uploader :image, ArticleUploader
 

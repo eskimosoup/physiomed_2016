@@ -41,12 +41,12 @@
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <div class="field<%= ' hide' if Page.layouts.size < 2 %>">
         <%= f.label :layout %><br />
-        <%= f.select :layout, Page.layouts.map{ |x| [t(x), x] } %>
+        <%= f.select :layout, Page.layouts.map{ |x| [x.humanize, x] } %>
       </div>
 
       <div class="field<%= ' hide' if Page.styles.size < 2 %>">
         <%= f.label :style %><br />
-        <%= f.select :style, Page.styles.map{ |x| [t(x), x] } %>
+        <%= f.select :style, Page.styles.map{ |x| [x.humanize, x] } %>
       </div>
 
       <div class="field">

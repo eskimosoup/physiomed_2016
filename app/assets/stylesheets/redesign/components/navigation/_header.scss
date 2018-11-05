@@ -1,8 +1,16 @@
 .primary-navigation {
-  @include responsive-flex-grid-column((medium down: 12, large: 6, xlarge: 7));
-  align-items: flex-end;
-  display: flex;
-  margin-bottom: rem(20px);
+  padding-bottom: rem(38px);
+  padding-top: rem(68px);
+  position: relative;
+
+
+  @include breakpoint(medium down) {
+    @include flex-grid-column(12);
+  }
+
+  @include breakpoint(large) {
+    @include flex-grid-column(9, (large: 0));
+  }
 
   &__list {
     list-style: none;
@@ -12,7 +20,8 @@
   // EWWW. :puke:
   .menu-item {
     display: inline-block;
-    padding-right: rem(15px);
+    font-size: rem(14px);
+    padding-right: rem(14px);
 
     .dropdown {
       display: none;
@@ -25,8 +34,6 @@
     display: block;
     font-family: $font--myriad-pro;
     font-size: rem(16px);
-    margin-bottom: rem(5px);
-    padding-bottom: rem(5px);
     transition: border .15s linear;
 
     &:hover,

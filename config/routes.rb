@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
 
+  resources :searches, only: :new, path: 'search'
+  resources :partners, only: :index
   resources :services, only: :show
 
   resources :landing_pages,
@@ -112,6 +114,7 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module resources go below concerns
+  resources :partners, concerns: %i[imageable toggleable]
   resources :services, concerns: %i[imageable toggleable] do
     scope module: :services do
       resources :sections, concerns: %i[imageable toggleable]

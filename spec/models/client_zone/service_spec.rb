@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: client_zone_services
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  summary    :text             not null
+#  file       :string           not null
+#  image      :string
+#  display    :boolean          default(TRUE)
+#  position   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 require 'rails_helper'

@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: mailchimp_processors
+#
+#  id          :integer          not null, primary key
+#  in_progress :boolean
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 module Mailchimp
   class Processor < ActiveRecord::Base
     MAILCHIMP_LIST = '86b326da38'

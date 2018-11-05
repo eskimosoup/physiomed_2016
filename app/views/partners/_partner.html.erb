@@ -1,0 +1,17 @@
+<% cache ['partner', partner] do %>
+  <div class="article">
+    <div class="content <%= 'has-aside' if partner.image.present? || partner.author.present? %>">
+      <%= link_to partner.title, partner.website_url, class: 'title' %>
+
+      <%= simple_format partner.summary %>
+
+      <%= link_to 'Visit website', partner.website_url, class: 'button', rel: 'noopener', target: '_blank' %>
+    </div>
+
+    <% if partner.image.present? || partner.author.present? %>
+      <div class="aside-wrap">
+        <%= image_tag partner.image.index, alt: partner.title, class: 'entry-image' if partner.image.present? %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
