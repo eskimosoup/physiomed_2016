@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: pages
@@ -21,10 +23,10 @@ class Page < ActiveRecord::Base
   include MenuResourceable
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :history]
+  friendly_id :slug_candidates, use: %i[slugged history]
 
   include PgSearch
-  multisearchable against: [:title, :content], if: :display?
+  multisearchable against: %i[title content], if: :display?
 
   mount_uploader :image, PageUploader
 
@@ -54,7 +56,7 @@ class Page < ActiveRecord::Base
     [
       :suggested_url,
       :title,
-      [:suggested_url, :title]
+      %i[suggested_url title]
     ]
   end
 
@@ -67,11 +69,11 @@ class Page < ActiveRecord::Base
   end
 
   def self.layouts
-    %w( application )
+    %w[application]
   end
 
   def self.styles
-    %w( basic )
+    %w[basic careers]
   end
 
   def store_image

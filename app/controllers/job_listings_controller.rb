@@ -1,6 +1,7 @@
 class JobListingsController < ApplicationController
   def index
-    @job_listings = JobListing.displayed.page(params[:page]).per(10)
+    #@job_listings = JobListing.displayed.page(params[:page]).per(10)
+    redirect_to Page.displayed.find_by(style: 'careers'), status: :moved_permanently
   end
 
   def show
