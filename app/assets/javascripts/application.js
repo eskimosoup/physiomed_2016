@@ -21,3 +21,5 @@
 //= require vendor/jquery.doubletaptogo
 //= require vendor/jquery.colorbox-min.js
 //= require cocoon
+//= require jquery.onscreen
+//= require animate

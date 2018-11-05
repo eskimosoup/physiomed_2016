@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'dotenv-rails'
 
 # gem 'autoprefixer-rails'
 gem 'normalize-rails', '~> 3.0.0'
@@ -61,7 +62,6 @@ group :development, :test do
   gem 'awesome_print'
   gem 'bullet'
   gem 'bundler-audit', '>= 0.5.0', require: false
-  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
