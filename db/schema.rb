@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181102162743) do
+ActiveRecord::Schema.define(version: 20181105112656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -697,6 +697,7 @@ ActiveRecord::Schema.define(version: 20181102162743) do
     t.boolean  "domiciliary_visits"
     t.date     "public_liability_expiry_date"
     t.date     "employee_liability_expiry_date"
+    t.string   "document"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|

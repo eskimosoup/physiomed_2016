@@ -139,6 +139,7 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     eventmachine (1.2.7)
+    excon (0.62.0)
     execjs (2.7.0)
     extlib (0.9.16)
     factory_girl (4.9.0)
@@ -150,6 +151,23 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastimage (2.1.4)
     ffi (1.9.25)
+    fog-aws (3.3.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (2.1.2)
+      builder
+      excon (~> 0.58)
+      formatador (~> 0.2)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.3)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (0.2.5)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
     geocoder (1.5.0)
@@ -189,6 +207,7 @@ GEM
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     image_optimizer (1.8.0)
+    ipaddress (0.8.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -244,6 +263,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     normalize-rails (3.0.3)
     os (1.0.0)
+    pdfkit (0.8.2)
     pg (0.21.0)
     pg_search (2.1.2)
       activerecord (>= 4.2)
@@ -295,6 +315,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (4.3.0)
+    render_anywhere (0.0.12)
+      rails (>= 3.0.7)
     retriable (1.4.1)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
@@ -413,6 +435,7 @@ DEPENDENCIES
   dotenv-rails
   email_spec (~> 2.1)
   factory_girl_rails
+  fog-aws
   friendly_id (~> 5.1)
   geocoder (~> 1.3, >= 1.3.4)
   gibbon
@@ -424,6 +447,7 @@ DEPENDENCIES
   normalize-rails (~> 3.0.0)
   optimadmin!
   optimadmin_generators!
+  pdfkit
   pg (~> 0.18)
   pg_search
   pry-byebug
@@ -432,6 +456,7 @@ DEPENDENCIES
   quiet_assets
   rack-mini-profiler
   rails (= 4.2.10)
+  render_anywhere
   rspec-rails (~> 3.4.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

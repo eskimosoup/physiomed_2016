@@ -41,6 +41,9 @@ gem 'capistrano-rails'
 gem 'capistrano-rbenv'
 gem 'capistrano-passenger'
 gem 'pg_search'
+gem 'pdfkit'
+gem 'render_anywhere'
+gem 'fog-aws'
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'

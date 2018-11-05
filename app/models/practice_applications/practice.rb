@@ -47,6 +47,7 @@ class PracticeApplications::Practice < ActiveRecord::Base
   mount_uploader :image_1, PracticeImageUploader
   mount_uploader :image_2, PracticeImageUploader
   mount_uploader :image_3, PracticeImageUploader
+  mount_uploader :document, PracticeApplicationUploader
 
   has_many :contacts, class_name: 'PracticeApplications::Contact', validate: false
   has_many :practitioners, class_name: 'PracticeApplications::Practitioner'
