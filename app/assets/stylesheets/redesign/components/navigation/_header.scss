@@ -1,8 +1,6 @@
 .primary-navigation {
-  padding-bottom: rem(38px);
   padding-top: rem(68px);
   position: relative;
-
 
   @include breakpoint(medium down) {
     @include flex-grid-column(12);

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181105112656) do
+ActiveRecord::Schema.define(version: 20181106153303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,14 +71,15 @@ ActiveRecord::Schema.define(version: 20181105112656) do
   add_index "articles_guides", ["guide_id"], name: "index_articles_guides_on_guide_id", using: :btree
 
   create_table "banners", force: :cascade do |t|
-    t.string   "title",                     null: false
-    t.string   "image",                     null: false
-    t.integer  "position",   default: 0,    null: false
-    t.boolean  "display",    default: true, null: false
+    t.string   "title",                             null: false
+    t.string   "image",                             null: false
+    t.integer  "position",    default: 0,           null: false
+    t.boolean  "display",     default: true,        null: false
     t.text     "summary"
     t.string   "link"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "button_text", default: "Read more"
   end
 
   create_table "body_part_sections", force: :cascade do |t|

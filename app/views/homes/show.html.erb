@@ -1,294 +1,141 @@
 <%= content_for :javascript do %>
-  <%= javascript_include_tag "roi_savings/jquery.simpleslider.min.js" %>
-  <%= javascript_include_tag "roi_savings/slider.js" %>
+  <script>
+    $(document).ready(function() {
+      $('.home-banner__slick').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 8000,
+        arrows: false,
+        fade: true
+      });
+    });
+  </script>
 <% end %>
 
-<%= content_for :head do %>
-  <%#= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' %>
-  <%#= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css' %>
-<% end %>
+<div class="home-banner">
+  <%= image_tag 'layout/home/banner-images.jpg', alt: '', class: 'home-banner__image' %>
 
-<% if @homepage_facade.banners.any? %>
-  <%= content_for :javascript do %>
-    <%= javascript_include_tag "components/banners.js" %>
-  <% end %>
-  <div class="banners-wrap">
-    <%= image_tag 'banner/mask.png', alt: '', class: 'banner-mask' %>
-    <%= image_tag 'banner/mask.png', alt: '', class: 'banner-mask' %>
-
-    <div class="banners">
-      <%= render(
-        partial: "banners/banner",
-        collection: @homepage_facade.banners,
-        cache: @homepage_facade.banners
-      ) %>
-    </div>
-
-    <% if @homepage_facade.quick_links.any? %>
-      <div class="banner-quick-link-navigation-wrap">
-        <div class="banner-quick-link-navigation">
-          <div class="banner-quick-link-type">
-            <ul class="tabs">
-              <% if @homepage_facade.employer_quick_links.any? %>
-                <li class="brown-background">
-                  <%= link_to "Employer", "#",
-                    class: "hover-toggle active employer",
-                    data: {
-                      container: "employer-quick-links"
-                    } %>
-                </li>
-              <% end %>
-              <% if @homepage_facade.employee_quick_links.any? %>
-                <li class="green-background">
-                  <%= link_to "Employee", "#",
-                    class: "hover-toggle employee",
-                    data: {
-                      container: "employee-quick-links"
-                    } %>
-                </li>
-              <% end %>
-            </ul>
-
-            <div class="quick-links-container">
-              <% if @homepage_facade.employer_quick_links.any? %>
-                <%= render(
-                  partial: "homes/quick_links",
-                  locals: {
-                    quick_link_type: "employer",
-                    quick_links: @homepage_facade.employer_quick_links
-                  },
-                  cache: @homepage_facade.employer_quick_links
-                ) %>
-              <% end %>
-              <% if @homepage_facade.employee_quick_links.any? %>
-                <%= render(
-                  partial: "homes/quick_links",
-                  locals: {
-                    quick_link_type: "employee",
-                    quick_links: @homepage_facade.employee_quick_links
-                  },
-                  cache: @homepage_facade.employee_quick_links
-                ) %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
-
-    <% if @homepage_facade.health_zones.any? %>
-      <%= content_for :javascript do %>
-        <%= javascript_include_tag "components/health_zones.js" %>
-      <% end %>
-      <section class="health-wellbeing-zone-wrap">
-        <div class="health-wellbeing-zone">
-          <h2 class="green-border-bottom text-center content-box-title">Health and well-being zone</h2>
-
-          <div class="slick-controls">
-            <%= button_tag(type: 'button', class: "slick-health-zone slick-prev") do %>
-              <
-            <% end %>
-            <%= button_tag(type: 'button', class: "slick-health-zone slick-next") do %>
-              >
-            <% end %>
-          </div>
-
-          <div class="health-zones-wrap">
-            <div class="health-zones">
-              <%= render(
-                partial: "health_zones/home_health_zone",
-                collection: @homepage_facade.health_zones,
-                as: :health_zone,
-                cache: @homepage_facade.health_zones
-              ) %>
-            </div>
-          </div>
-        </div>
-      </section>
-    <% end %>
-  </div>
-<% end %>
-
-
-<div class="home content">
-  <section class="flexbox-wrap flexbox-wrap--pal">
-  <div class="additional-pal-content text">
-    <h3 class="content-box-title">Physiotherapy Advice Line (PAL)</h3>
-    <div class="pal-overview">
-      <div class="pal-overview__video">
-        <div class="flex-video">
-          <iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/e89adeba1314e8cf60/904e8e07c6237ee9' width='630' height='354' frameborder='0' allowfullscreen></iframe>
-        </div>
-      </div>
-      <div class="pal-overview__content">
-        <div class="page-content-styles">
-          <%= raw @homepage_facade.pal_content.content if @homepage_facade.pal_content.present? %>
-        </div>
-      </div>
+  <div class="home-banner__inner">
+    <div class="home-banner__slick">
+      <%= render @facade.banners %>
     </div>
   </div>
-  </section>
 
-  <% if @homepage_facade.additional_contents.any? %>
-    <section class="flexbox-wrap additional-home-contents">
-      <%= render @homepage_facade.additional_contents, cache: @homepage_facade.additional_contents %>
-    </section>
-  <% end %>
-
-  <% if @homepage_facade.service_standards.any? %>
-    <%= content_for :javascript do %>
-      <%= javascript_include_tag "components/service_standards" %>
-    <% end %>
-    <div class="service-standards-wrap">
-      <section class="box-wrap">
-        <div class="service-standards">
-          <h2 class="service-standards-title text-center">Service Standards</h2>
-          <div class="service-standard-wrap">
-            <%= render @homepage_facade.service_standards, cache: @homepage_facade.service_standards %>
-          </div>
-        </div>
-      </section>
-    </div>
-  <% end %>
-
-  <section class="flexbox-wrap">
-    <div class="physio-search brown-background">
-      <h2 class="white">
-        Find a Physiotherapist<br>
-        <span class="green">Near you</span>
-      </h2>
-      <%= render(
-        partial: "physio_searches/form",
-        locals:
-        {
-          physio_search: @physio_search
-        },
-        cache: @physio_search
-      ) %>
-    </div>
-
-    <% if @homepage_facade.case_studies.any? %>
-      <%= content_for :javascript do %>
-        <%= javascript_include_tag "components/case_studies/home" %>
-      <% end %>
-      <div class="case-studies-container white-background">
-        <div class="slick-controls">
-          <%= button_tag(type: 'button', class: "slick-case-studies slick-prev") do %>
-            <
-          <% end %>
-          <%= button_tag(type: 'button', class: "slick-case-studies slick-next") do %>
-            >
-          <% end %>
-        </div>
-
-        <h2 class="green-border-bottom content-box-title">Case Studies</h2>
-        <div class="case-studies">
-          <%= render(
-            partial: "case_studies/home_case_study",
-            collection: @homepage_facade.case_studies,
-            as: :case_study,
-            cache: @homepage_facade.case_studies
-          ) %>
-        </div>
-      </div>
-    <% end %>
-
-    <% if @homepage_facade.testimonials.any? %>
-      <%= content_for :javascript do %>
-        <%= javascript_include_tag "components/testimonials/home" %>
-      <% end %>
-      <div class="testimonials-container white-background">
-        <h2 class="green-border-bottom content-box-title testimonials-title">What People Say</h2>
-        <div class="testimonials">
-          <%= render(
-            partial: "testimonials/home_testimonial",
-            collection: @homepage_facade.testimonials,
-            as: :testimonial,
-            cache: @homepage_facade.testimonials
-          ) %>
-        </div>
-      </div>
-    <% end %>
-  </section>
-
-  <% if @homepage_facade.clients.any? %>
-    <%= content_for :javascript do %>
-      <script>
-        $(document).ready(function() {
-          $(".clients").slick({
-            slidesToShow: <%= @homepage_facade.job_listings.blank? ? 6 : 4 %>,
-            slidesToScroll: 1,
-            autoplay: true,
-            arrows: false,
-            responsive: [
-              {
-                breakpoint: 767,
-                settings: {
-                  slidesToShow: 2
-                }
-              },
-            ]
-          });
-        });
-      </script>
-    <% end %>
-    <section class="box-wrap">
-      <div class="clients-container <%= 'full-width' if @homepage_facade.job_listings.blank? %>">
-        <div class="clients-container-content">
-          <h2 class="green-border-bottom text-center  content-box-title">Some of our happy clients</h2>
-          <div class="clients">
-            <%= render(
-              partial: "clients/home_client",
-              collection: @homepage_facade.clients,
-              as: :client,
-              cache: @homepage_facade.clients
-            ) %>
-          </div>
-        </div>
-      </div>
-
-      <% if @homepage_facade.job_listings.present? %>
-        <div class="job-listings-container">
-          <div class="job-listings-content">
-            <h2 class="green-border-bottom text-center  content-box-title">We're hiring</h2>
-
-            <%= render(
-              partial: "job_listings/home_job_listing",
-              collection: @homepage_facade.job_listings.limit(1),
-              as: :job_listing,
-              cache: @homepage_facade.job_listings
-            ) %>
-
-            <%= link_to 'View all', job_listings_path, class: 'button brown-background job-listings-view-all' %>
-          </div>
-        </div>
-      <% end %>
-    </section>
-  <% end %>
-
-  <% if @homepage_facade.articles.any? %>
-    <%= content_for :javascript do %>
-      <%= javascript_include_tag "components/articles/home.js" %>
-    <% end %>
-    <section class="box-wrap">
-      <div class="articles-container">
-        <h2 class="green-border-bottom text-center  content-box-title">Latest health and well-being news</h2>
-        <%= button_tag(type: 'button', class: "slick-articles slick-prev") do %>
-          <
-        <% end %>
-        <div class="articles">
-          <%= render(
-            partial: "articles/home_article",
-            collection: @homepage_facade.articles,
-            as: :article,
-            cache: @homepage_facade.articles
-          ) %>
-        </div>
-        <%= button_tag(type: 'button', class: "slick-articles slick-next") do %>
-          >
-        <% end %>
-      </div>
-    </section>
-  <% end %>
+  <%= image_tag 'layout/home/curvy-mask.png', alt: '', class: 'home-banner__mask' %>
 </div>
+
+<section class="home-approaches">
+  <div class="home-approaches__inner">
+    <h2 class="home-approaches__title">
+      How We Do It.
+    </h2>
+
+    <p class="home-approaches__content">
+      Our 3 Step Approach to
+      <span class="home-approaches__emphasis">
+        <strong>Blended</strong>
+        Physiotherapy
+      </span>
+    </p>
+  </div>
+
+  <div class="home-approaches__list">
+    <div class="home-approach">
+      <div class="home-approach__step">
+        Step
+      </div>
+
+      <div class="home-approach__number">
+        1
+      </div>
+
+      <div class="home-approach__content">
+        <div class="home-approach__styles">
+          <p>We prevent people going off work.</p>
+        </div>
+
+        <ul class="home-approach-benefits">
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            Job Analysis
+          </li>
+
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            DSE, Ergonomic and Functional Capacity Assessments
+          </li>
+
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            Health Checks and MSK Screening
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="home-approach">
+      <div class="home-approach__step">
+        Step
+      </div>
+
+      <div class="home-approach__number">
+        1
+      </div>
+
+      <div class="home-approach__content">
+        <div class="home-approach__styles">
+          <p>We prevent people going off work.</p>
+        </div>
+
+        <ul class="home-approach-benefits">
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            Job Analysis
+          </li>
+
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            DSE, Ergonomic and Functional Capacity Assessments
+          </li>
+
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            Health Checks and MSK Screening
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="home-approach">
+      <div class="home-approach__step">
+        Step
+      </div>
+
+      <div class="home-approach__number">
+        1
+      </div>
+
+      <div class="home-approach__content">
+        <div class="home-approach__styles">
+          <p>We prevent people going off work.</p>
+        </div>
+
+        <ul class="home-approach-benefits">
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            Job Analysis
+          </li>
+
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            DSE, Ergonomic and Functional Capacity Assessments
+          </li>
+
+          <li class="home-approach-benefits__item">
+            <%= image_tag 'https://placehold.it/45x45', class: 'home-approach-benefits__image' %>
+            Health Checks and MSK Screening
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

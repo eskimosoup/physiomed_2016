@@ -2,7 +2,7 @@
   width: 100%;
 
   @include media('>=768px') {
-    @include flex-grid-column(9);
+    @include flex-grid-column(9, (large: 0));
   }
 }
 
@@ -22,7 +22,7 @@
 
   @include media('>=768px') {
     display: block;
-    margin: rem(25px 0 0);
+    margin: rem(48px 0 0);
   }
 
   &.visible {
@@ -42,6 +42,7 @@
 
   .menu-link {
     display: block;
+    font-size: rem(14px);
 
     &:link,
     &:visited {

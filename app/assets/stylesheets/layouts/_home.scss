@@ -1,0 +1,95 @@
+.home-approaches {
+  @include flex-grid-row;
+  margin-top: rem(30px);
+
+  &__inner {
+    @include flex-grid-column(12);
+    text-align: center;
+  }
+
+  &__title {
+    font-size: rem(32px);
+    font-weight: $font--open-sans--extrabold;
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+  }
+
+  &__content {
+    font-size: rem(26px);
+    font-weight: $font--open-sans--semibold;
+    margin: 0;
+  }
+
+  &__emphasis {
+    color: $color--green;
+  }
+
+  &__list {
+    @include flex-grid-column(12);
+    @include flex-grid-layout(3, '.home-approach');
+    display: flex;
+  }
+}
+
+.home-approach {
+  padding-left: rem(10px);
+  padding-right: rem(10px);
+
+  &__step {
+    color: $color--brown--dark;
+    font-size: rem(30px);
+    font-weight: $font--open-sans--light;
+    margin-bottom: rem(16px);
+    text-align: center;
+  }
+
+  &__number {
+    @include generic-service-box-shadow;
+    background-color: $color--black;
+    border: 6px solid $color--white;
+    border-radius: 50%;
+    color: $color--white;
+    font-size: rem(26px);
+    font-weight: $font--open-sans--bold;
+    height: 61px;
+    line-height: 51px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 61px;
+    z-index: 1;
+  }
+
+  &__content {
+    @include generic-service-box-shadow;
+    background-color: $color--white;
+    color: $color--brown--dark;
+    padding: rem(20px);
+    margin-top: rem(-25px);
+  }
+
+  &__styles {
+    font-size: rem(17px);
+    font-weight: $font--open-sans--extrabold;
+    text-align: center;
+  }
+}
+
+.home-approach-benefits {
+  font-size: rem(14px);
+  font-weight: $font--open-sans--bold;
+  list-style: none;
+  margin-bottom: 0;
+
+  &__item {
+    margin-bottom: rem(25px);
+    overflow: hidden;
+  }
+
+  &__image {
+    float: left;
+    margin-right: rem(15px);
+  }
+}
