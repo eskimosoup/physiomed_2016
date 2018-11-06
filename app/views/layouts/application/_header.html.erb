@@ -54,8 +54,16 @@
         </nav>
 
         <div class="primary-header-cta">
-          <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'primary-header-call-us' %>
-          <%= link_to 'Find Us', new_contact_path(anchor: 'map-canvas'), class: 'primary-header-find-us' %>
+          <div class="primary-header-search-phone-toggle">
+            <div class="primary-header-search-phone-toggle__phone">
+              <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'primary-header-call-us' %>
+            </div>
+            <div class="primary-header-search-phone-toggle__search">
+              <%= render 'searches/shared/header_form' %>
+            </div>
+          </div>
+
+          <%#= link_to 'Find Us', new_contact_path(anchor: 'map-canvas'), class: 'primary-header-find-us' %>
         </div>
       </div>
     </div>

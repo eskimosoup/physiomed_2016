@@ -1,22 +1,22 @@
+# frozen_string_literal: true
+
 module Optimadmin
   class BannersController < Optimadmin::ApplicationController
     edit_images_for Banner, [[:image, { show: ['fill', 1366, 700] }]]
 
-    before_action :set_banner, only: [:show, :edit, :update, :destroy]
+    before_action :set_banner, only: %i[show edit update destroy]
 
     def index
       @banners = Banner.order(:position)
     end
 
-    def show
-    end
+    def show; end
 
     def new
       @banner = Banner.new
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @banner = Banner.new(banner_params)
@@ -48,7 +48,9 @@ module Optimadmin
 
     def banner_params
       params.require(:banner)
-            .permit(:title, :image, :image_cache, :remote_image_url, :position, :display, :summary, :link)
+            .permit(
+              :title, :image, :image_cache, :remote_image_url, :position, :display, :summary, :link, :button_text
+            )
     end
   end
 end

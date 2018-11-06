@@ -1,0 +1,72 @@
+.home-banner {
+  position: relative;
+
+  &__image {
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__inner {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+  }
+
+  &__mask {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    z-index: 3;
+  }
+}
+
+.home-banner-content {
+  @include flex-grid-row;
+  color: $color--white;
+
+  &__inner {
+    @include responsive-flex-grid-column((medium down: 12, large: 5));
+    background-color: rgba($color--green, .85);
+    padding-bottom: map-get($grid-column-gutter, medium);
+    padding-top: map-get($grid-column-gutter, medium);
+  }
+
+  &__button {
+    background-color: $color--orange;
+    border-radius: $global-border-radius--small;
+    color: $color--white;
+    display: inline-block;
+    font-family: $font--ubuntu;
+    font-weight: $font--ubuntu--light;
+    padding: rem(6px 12px);
+    transition: background-color .25s ease-in-out;
+    margin-top: rem(16px);
+
+    &:hover,
+    &:focus {
+      background-color: $color--brown--dark;
+      color: $color--white;
+    }
+  }
+
+  &__title {
+    font-size: rem(32px);
+    font-weight: $font--open-sans--bold;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  &__text {
+    p {
+      font-size: rem(14px);
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

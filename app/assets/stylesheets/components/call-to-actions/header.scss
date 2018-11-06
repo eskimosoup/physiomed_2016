@@ -2,14 +2,14 @@
   margin: rem(15px);
 
   @include media('>=768px') {
-    margin: rem(25px 0 0);
+    margin: rem(15px 0 0);
   }
 
   a {
     color: $green;
     display: inline-block;
     font-family: $open-sans;
-    font-size: rem(13px);
+    font-size: rem(14px);
     font-weight: $open-sans-bold;
     line-height: 24px;
     min-height: 24px;
