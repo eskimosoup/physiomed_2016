@@ -7,27 +7,8 @@
   }
 
   &__title {
-    @include generic-light-box-shadow;
-    background-color: $color--green;
-    border-radius: $global-border-radius / 2;
-    color: $color--white;
-    display: inline-block;
-    font-size: rem(22px);
-    font-weight: $font--open-sans--semibold;
-    margin-bottom: rem(90px);
-    padding: rem(30px 35px);
-    position: relative;
-    text-transform: none;
-
-    &::after {
-      @include triangle('down', $color--green, 32px);
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    @include green-title-box;
   }
-
-
 
   &__link {
     background-color: $color--orange;

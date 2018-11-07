@@ -1,5 +1,6 @@
 .home-approaches {
   @include flex-grid-row;
+  margin-bottom: rem(60px);
   margin-top: rem(30px);
 
   &__inner {
@@ -29,12 +30,33 @@
     @include flex-grid-column(12);
     @include flex-grid-layout(3, '.home-approach');
     display: flex;
+    padding-top: rem(30px);
   }
 }
 
 .home-approach {
   padding-left: rem(10px);
   padding-right: rem(10px);
+
+  &--orange {
+    .home-approach__number {
+      background-color: $color--orange;
+    }
+
+    .home-approach__content {
+      border-bottom-color: $color--orange;
+    }
+  }
+
+  &--green {
+    .home-approach__number {
+      background-color: $color--green;
+    }
+
+    .home-approach__content {
+      border-bottom-color: $color--green;
+    }
+  }
 
   &__step {
     color: $color--brown--dark;
@@ -54,9 +76,9 @@
     font-weight: $font--open-sans--bold;
     height: 61px;
     line-height: 51px;
-    position: relative;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
     text-align: center;
     width: 61px;
     z-index: 1;
@@ -65,9 +87,10 @@
   &__content {
     @include generic-service-box-shadow;
     background-color: $color--white;
+    border-bottom: 6px solid $color--black;
     color: $color--brown--dark;
-    padding: rem(20px);
     margin-top: rem(-25px);
+    padding: rem(30px 20px 20px);
   }
 
   &__styles {
@@ -81,7 +104,7 @@
   font-size: rem(14px);
   font-weight: $font--open-sans--bold;
   list-style: none;
-  margin-bottom: 0;
+  margin: rem(20px 20px 0);
 
   &__item {
     margin-bottom: rem(25px);
@@ -91,5 +114,308 @@
   &__image {
     float: left;
     margin-right: rem(15px);
+  }
+}
+
+.home-service-standards {
+  background: image-url('service-standards/background.jpg') center no-repeat fixed;
+  margin-bottom: rem(40px);
+  margin-top: rem(40px);
+  padding-bottom: rem(60px);
+  padding-top: rem(60px);
+
+  &__content {
+    @include flex-grid-row;
+  }
+
+  &__title {
+    @include flex-grid-column(12);
+    color: $color--white;
+    font-size: rem(18px);
+    margin-bottom: rem(24px);
+    text-align: center;
+    text-transform: none;
+  }
+
+  &__inner {
+    @include generic-light-box-shadow;
+    @include flex-grid-row;
+    @include flex-grid-layout(7, '.service-standard');
+    display: flex;
+  }
+}
+
+.home-resources {
+  background: image-url('layout/home/resources-background.jpg') center no-repeat fixed;
+  padding-bottom: rem(150px);
+}
+
+.home-resources-grid {
+  @include flex-grid-row;
+
+  &--negative-margin {
+    margin-top: rem(-120px);
+  }
+
+  &__inner {
+    @include flex-grid-column(12);
+    text-align: center;
+  }
+
+  &__layout {
+    @include flex-grid-column(12);
+    @include flex-grid-layout(3, '.home-resource');
+    display: flex;
+  }
+
+  &__title {
+    @include green-title-box;
+  }
+}
+
+.home-resource {
+  padding-left: rem(15px);
+  padding-right: rem(15px);
+
+  &__inner {
+    @include generic-light-box-shadow;
+    background-color: $color--white;
+    border-radius: $global-border-radius--small / 2;
+    display: block;
+    padding: rem(25px);
+
+    &:hover {
+      .home-resource__title {
+        background-image: asset-data-url('layout/header/call-to-actions/chevron--right-orange.png');
+        border-color: $color--green;
+        color: $color--orange;
+      }
+    }
+  }
+
+  &__title {
+    background: asset-data-url('layout/header/call-to-actions/chevron--right-brown.png') no-repeat center right;
+    border-top: 4px solid $color--green;
+    font-size: rem(20px);
+    font-weight: $font--open-sans--semibold;
+    margin-top: rem(20px);
+    padding-right: rem(20px);
+    padding-top: rem(20px);
+    transition: all .25s linear;
+  }
+}
+
+.home-find-a-physio {
+  background: image-url('layout/home/physiomed-icon.png') no-repeat bottom right $color--green;
+  color: $color--white;
+  padding-bottom: rem(60px);
+  padding-top: rem(60px);
+}
+
+.home-find-a-physio-content {
+  @include flex-grid-row;
+
+  &__inner {
+    @include flex-grid-column(12);
+    text-align: center;
+
+    p {
+      font-size: rem(24px);
+    }
+
+    strong {
+      font-size: rem(41px);
+      font-weight: $font--open-sans--extrabold;
+    }
+  }
+}
+
+.home-find-a-physio-search {
+  color: $color--brown--dark;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include breakpoint(large) {
+    max-width: 40%;
+  }
+
+  &__input,
+  input[type='search'] {
+    @include generic-light-box-shadow;
+    background: image-url('components/icons/search--flipped-orange.png') no-repeat center right 16px $color--white;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    font-size: rem(18px);
+    padding: rem(16px 24px);
+
+    &:focus {
+      border-color: $color--brown--light;
+    }
+  }
+}
+
+.home-articles {
+  @include flex-grid-row;
+  margin-top: rem(40px);
+
+  &__inner {
+    @include flex-grid-column(12);
+  }
+
+  &__title {
+    @include generic-bottom-bordered-title;
+    text-align: center;
+  }
+}
+
+.home-articles-slick {
+  position: relative;
+
+  .slick-prev {
+    left: -80px;
+  }
+
+  .slick-next {
+    right: -80px;
+  }
+}
+
+.home-pyramid {
+  background: image-url('layout/content/lines-background.png') no-repeat center;
+  margin-bottom: rem(60px);
+  margin-top: rem(40px);
+}
+
+.home-pyramid-content {
+  @include flex-grid-row;
+  position: relative;
+
+  &__pyramid {
+    @include responsive-flex-grid-column((medium down: 12, large: 6));
+    position: relative;
+    z-index: 2;
+  }
+
+  &__content {
+    @include responsive-flex-grid-column((medium down: 12, large: 6));
+    position: relative;
+    z-index: 2;
+  }
+
+  &__connector {
+    background-color: transparent;
+    height: 32px;
+    left: 50%;
+    position: absolute;
+    top: 10px;
+    transform: translateX(-50%);
+    width: 50%;
+    z-index: 1;
+    transition: all .25s linear;
+  }
+}
+
+.home-pyramid-content-structure {
+  list-style: none;
+  margin: 0;
+
+  &__item {
+    @include service-colours(background-color);
+    background-color: $color--black;
+    color: $color--white;
+    cursor: pointer;
+    font-size: rem(18px);
+    padding-bottom: rem(12px);
+    padding-top: rem(12px);
+    margin-left: auto;
+    margin-right: auto;
+    transform: perspective(25px) rotateX(1deg);
+    text-align: center;
+
+    &:nth-child(1) {
+      width: 50%;
+    }
+
+    &:nth-child(2) {
+      width: 55%;
+    }
+
+    &:nth-child(3) {
+      width: 60%;
+    }
+
+    &:nth-child(4) {
+      width: 65%;
+    }
+
+    &:nth-child(5) {
+      width: 70%;
+    }
+
+    &:nth-child(4) {
+      width: 75%;
+    }
+
+    &:nth-child(5) {
+      width: 80%;
+    }
+
+    &:nth-child(6) {
+      width: 85%;
+    }
+
+    &:nth-child(7) {
+      width: 95%;
+    }
+
+    &:nth-child(8) {
+      width: 100%;
+    }
+  }
+}
+
+.home-pyramid-content-overlay {
+  @include service-colours(border-top-color);
+  @include service-colours(border-bottom-color);
+  @include generic-service-box-shadow;
+  background-color: $color--white;
+  border-bottom: 6px solid $color--black;
+  border-top: 6px solid $color--black;
+  padding: rem(40px);
+    transition: all .25s linear;
+
+
+  &:not(&--0) {
+    display: none;
+  }
+
+  p {
+    font-size: rem(14px);
+  }
+
+  h2,
+  h3 {
+    font-size: rem(22px);
+    font-weight: $font--open-sans--bold;
+    text-transform: none;
+  }
+
+  &__button {
+    background-color: $color--brown--beige;
+    border-radius: $global-border-radius--small / 2;
+    color: $color--white;
+    display: inline-block;
+    font-family: $font--ubuntu;
+    margin-top: rem(20px);
+    padding: rem(6px 8px);
+
+    &:hover,
+    &:focus {
+      background-color: $color--brown--light;
+    }
+
+    &:active {
+      background-color: $color--brown--dark;
+    }
   }
 }

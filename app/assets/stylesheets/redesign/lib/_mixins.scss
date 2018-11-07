@@ -38,6 +38,10 @@
   &--blue--slate {
     #{$property}: $color--service-blue--slate;
   }
+
+  &--blue--light {
+    #{$property}: $color--service-blue--light;
+  }
 }
 
 @mixin service-colours-pseudo($element, $property) {
@@ -80,6 +84,12 @@
   &--blue--slate {
     &:#{$element} {
       #{$property}: $color--service-blue--slate;
+    }
+  }
+
+  &--blue--light {
+    &:#{$element} {
+      #{$property}: $color--service-blue--light;
     }
   }
 }
@@ -130,6 +140,31 @@
   &--blue--slate {
     #{$property}: $color--service-blue--slate-text;
   }
+
+  &--blue--light {
+    #{$property}: $color--service-blue--light-text;
+  }
+}
+
+@mixin green-title-box {
+  @include generic-light-box-shadow;
+  background-color: $color--green;
+  border-radius: $global-border-radius / 2;
+  color: $color--white;
+  display: inline-block;
+  font-size: rem(22px);
+  font-weight: $font--open-sans--semibold;
+  margin-bottom: rem(90px);
+  padding: rem(30px 35px);
+  position: relative;
+  text-transform: none;
+
+  &::after {
+    @include triangle('down', $color--green, 32px);
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 @mixin generic-service-box-shadow {
@@ -138,6 +173,15 @@
 
 @mixin generic-light-box-shadow {
   box-shadow: 1px 2px 6px 0 $color--brown--dark;
+}
+
+@mixin generic-bottom-bordered-title {
+  border-bottom: 3px solid $color--green;
+  font-size: rem(20px);
+  font-weight: $font--open-sans--bold;
+  margin-bottom: rem(30px);
+  padding-bottom: rem(30px);
+  text-transform: none;
 }
 
 @mixin triangle($direction, $color, $size: 6px) {

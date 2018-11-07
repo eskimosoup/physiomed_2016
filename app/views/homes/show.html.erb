@@ -11,6 +11,44 @@
       });
     });
   </script>
+  <script>
+    // https://stackoverflow.com/questions/1740700/how-to-get-hex-color-value-rather-than-rgb-value
+    var hexDigits = new Array
+            ("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
+
+    //Function to convert rgb color to hex format
+    function rgb2hex(rgb) {
+     rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+      return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+    }
+
+    function hex(x) {
+      return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+    }
+    // Legend! https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
+    function shadeColor2(color, percent) {
+     var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+      return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+    }
+    $(document).on('mouseover', '.home-pyramid-content-structure__item', function() {
+      var serviceId = $(this).data('service-id');
+      $('.home-pyramid-content-overlay').hide();
+      $('#service-' + serviceId).show();
+      var offset = $(this).position();
+      var hexColor = rgb2hex($(this).css('background-color'));
+      var backgroundColor = shadeColor2(hexColor, -0.25);
+      $('.home-pyramid-content__connector').css({ top: offset.top + 10, backgroundColor: backgroundColor });
+    });
+    $(document).ready(function() {
+      var $item = $('.home-pyramid-content-structure__item:first');
+      var offset = $item.position();
+      var hexColor = rgb2hex($item.css('background-color'));
+      var backgroundColor = shadeColor2(hexColor, -0.25);
+      $('.home-pyramid-content__connector').css({ top: offset.top + 10, backgroundColor: backgroundColor });
+    })
+  </script>
+  <%= javascript_include_tag 'components/service_standards' %>
+  <%= javascript_include_tag 'components/articles/home' %>
 <% end %>
 
 <div class="home-banner">
@@ -73,7 +111,7 @@
         </ul>
       </div>
     </div>
-    <div class="home-approach">
+    <div class="home-approach home-approach--orange">
       <div class="home-approach__step">
         Step
       </div>
@@ -105,7 +143,7 @@
         </ul>
       </div>
     </div>
-    <div class="home-approach">
+    <div class="home-approach home-approach--green">
       <div class="home-approach__step">
         Step
       </div>
@@ -136,6 +174,119 @@
           </li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-pyramid">
+  <div class="home-pyramid-content">
+    <div class="home-pyramid-content__pyramid">
+      <ul class="home-pyramid-content-structure">
+        <%= render partial: 'services/shared/pyramid_strip', collection: @facade.services, as: :service, locals: { parent_class: 'home-pyramid-content-structure' } %>
+      </ul>
+    </div>
+
+    <div class="home-pyramid-content__connector">
+    </div>
+
+    <div class="home-pyramid-content__content">
+      <%= render partial: 'services/shared/pyramid_content', collection: @facade.services, as: :service, locals: { parent_class: 'home-pyramid-content-overlay' } %>
+    </div>
+  </div>
+</section>
+
+<%= render @facade.affiliates, current_service: @facade.service if @facade.affiliates? %>
+
+<section class="home-service-standards">
+  <div class="home-service-standards__content">
+    <h2 class="home-service-standards__title">Service Standards</h2>
+  </div>
+
+  <div class="home-service-standards__inner">
+    <%= render @facade.service_standards %>
+  </div>
+</section>
+
+<%= render @facade.clients, current_service: @facade.service if @facade.clients? %>
+<%= render @facade.testimonials, current_service: @facade.service if @facade.testimonials? %>
+
+<section class="home-resources">
+  <%= image_tag 'layout/home/curvy-mask--footer.png', alt: '' %>
+
+  <div class="home-resources-grid home-resources-grid--negative-margin">
+    <div class="home-resources-grid__inner">
+      <h2 class="home-resources-grid__title">Resources for your employees</h2>
+    </div>
+  </div>
+
+  <div class="home-resources-grid">
+    <div class="home-resources-grid__layout">
+      <div class="home-resource">
+        <%= link_to '#', class: 'home-resource__inner' do %>
+          <%= image_tag 'https://placehold.it/400x300', alt: '' %>
+
+          <h3 class="home-resource__title">
+            Employee Health and Wellbeing Zone
+          </h3>
+        <% end %>
+      </div>
+      <div class="home-resource">
+        <%= link_to '#', class: 'home-resource__inner' do %>
+          <%= image_tag 'https://placehold.it/400x300', alt: '' %>
+
+          <h3 class="home-resource__title">
+            Employee Health and Wellbeing Zone
+          </h3>
+        <% end %>
+      </div>
+      <div class="home-resource">
+        <%= link_to '#', class: 'home-resource__inner' do %>
+          <%= image_tag 'https://placehold.it/400x300', alt: '' %>
+
+          <h3 class="home-resource__title">
+            Employee Health and Wellbeing Zone
+          </h3>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="home-find-a-physio">
+  <div class="home-find-a-physio-content">
+    <div class="home-find-a-physio-content__inner">
+      <p>Find a Physio from our network of <strong>2,500</strong> approved Physiotherapists</p>
+
+      <div class="home-find-a-physio-search">
+        <%= render 'physio_searches/shared/search', parent_class: 'home-find-a-physio-search' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="home-articles">
+  <div class="home-articles__inner">
+    <h2 class="home-articles__title">
+      Latest News
+    </h2>
+
+    <div class="home-articles-slick">
+      <%= button_tag(type: 'button', class: "slick-articles slick-prev") do %>
+        <
+      <% end %>
+
+      <div class="articles">
+        <%= render(
+          partial: "articles/home_article",
+          collection: @facade.articles,
+          as: :article,
+          cache: @facade.articles
+        ) %>
+      </div>
+
+      <%= button_tag(type: 'button', class: "slick-articles slick-next") do %>
+        >
+      <% end %>
     </div>
   </div>
 </section>
