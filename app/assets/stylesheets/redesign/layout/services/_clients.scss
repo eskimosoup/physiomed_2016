@@ -14,12 +14,7 @@
   }
 
   &__title {
-    border-bottom: 3px solid $color--green;
-    font-size: rem(20px);
-    font-weight: $font--open-sans--bold;
-    margin-bottom: rem(30px);
-    padding-bottom: rem(30px);
-    text-transform: none;
+    @include generic-bottom-bordered-title;
   }
 }
 
