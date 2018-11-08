@@ -9,10 +9,13 @@
   }
 
   &__inner {
-    position: absolute;
     top: 0;
     z-index: 2;
     width: 100%;
+
+    @include breakpoint(medium) {
+      position: absolute;
+    }
   }
 
   &__mask {

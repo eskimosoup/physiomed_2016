@@ -2,8 +2,8 @@
 
 `rake db:reset db:seed`
 
-
-rake pg_search:multisearch:rebuild[Article]
-rake pg_search:multisearch:rebuild[LandingPage]
-rake pg_search:multisearch:rebuild[Page]
-rake pg_search:multisearch:rebuild[Service]
+ 
+bundle exec rake pg_search:multisearch:rebuild[Article] RAILS_ENV=staging
+bundle exec rake pg_search:multisearch:rebuild[LandingPage] RAILS_ENV=staging
+bundle exec rake pg_search:multisearch:rebuild[Page] RAILS_ENV=staging
+bundle exec rake pg_search:multisearch:rebuild[Service] RAILS_ENV=staging

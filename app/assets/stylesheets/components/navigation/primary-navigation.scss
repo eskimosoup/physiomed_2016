@@ -52,6 +52,10 @@
       font-weight: $ubuntu-light;
       line-height: 1;
       padding: rem(0 5px 15px);
+
+      @include breakpoint(medium down) {
+        border-bottom: 1px solid $color--brown--beige;
+      }
     }
 
     &.active {
@@ -153,7 +157,7 @@
 
 // Stop the two line content flash, until the font has loaded
 .wf-active .primary-header-navigation .menu-link {
-  padding: rem(7px 15px);
+  padding: rem(15px);
 
   @include media('>=768px') {
     padding: rem(0 4px 15px);
