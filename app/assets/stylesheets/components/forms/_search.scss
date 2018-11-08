@@ -1,6 +1,9 @@
 .header-search-form {
+  display: inline-block;
+
   &__field {
     display: inline-block;
+    margin: 0;
     vertical-align: top;
     width: 100%;
   }
@@ -13,8 +16,8 @@
   }
 
   &__input {
-    background: asset-data-url('components/icons/search.png') no-repeat center right 5px;
-    padding-right: rem(25px);
+    //background: asset-data-url('components/icons/search.png') no-repeat center right 5px;
+    //padding-right: rem(25px);
   }
 
   &__submit {

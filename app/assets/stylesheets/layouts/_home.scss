@@ -37,6 +37,7 @@
 .home-approach {
   padding-left: rem(10px);
   padding-right: rem(10px);
+  text-align: center;
 
   &--orange {
     .home-approach__number {
@@ -96,7 +97,10 @@
   &__styles {
     font-size: rem(17px);
     font-weight: $font--open-sans--extrabold;
-    text-align: center;
+  }
+
+  &__button {
+    @include generic-grey-button;
   }
 }
 
@@ -105,6 +109,7 @@
   font-weight: $font--open-sans--bold;
   list-style: none;
   margin: rem(20px 20px 0);
+  text-align: left;
 
   &__item {
     margin-bottom: rem(25px);
@@ -401,21 +406,6 @@
   }
 
   &__button {
-    background-color: $color--brown--beige;
-    border-radius: $global-border-radius--small / 2;
-    color: $color--white;
-    display: inline-block;
-    font-family: $font--ubuntu;
-    margin-top: rem(20px);
-    padding: rem(6px 8px);
-
-    &:hover,
-    &:focus {
-      background-color: $color--brown--light;
-    }
-
-    &:active {
-      background-color: $color--brown--dark;
-    }
+    @include generic-grey-button;
   }
 }

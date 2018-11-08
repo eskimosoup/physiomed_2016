@@ -12,7 +12,7 @@
   @include media('>=768px') {
     border: 0;
     height: auto;
-    margin: 0;
+    margin: rem(0 0 25px);
     padding: 0;
     position: static;
     width: auto;
@@ -144,5 +144,48 @@
 
   &:hover {
     cursor: pointer; // not that it matters
+  }
+}
+
+.primary-header-search-phone-toggle {
+  color: $color--white;
+  display: inline-block;
+  vertical-align: text-top;
+
+  &__phone {
+    background: image-url('icons/phone.png') right 10px center no-repeat;
+    display: inline-block;
+    padding: rem(5px 10px);
+  }
+
+  &__calltracks {
+    font-family: $font--ubuntu;
+    font-size: rem(14px);
+    font-weight: $font--ubuntu--bold;
+    color: $color--green;
+    padding-right: rem(35px);
+  }
+}
+
+.primary-header-search-toggle {
+  display: inline-block;
+  vertical-align: top;
+
+  &__button {
+    display: inline-block;
+    cursor: pointer;
+    min-height: 33px;
+    min-width: 30px;
+    text-align: center;
+    vertical-align: sub;
+  }
+
+  .header-search-form {
+    display: none;
+    vertical-align: top;
+
+    &__field {
+      color: $color--brown--dark;
+    }
   }
 }

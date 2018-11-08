@@ -184,6 +184,25 @@
   text-transform: none;
 }
 
+@mixin generic-grey-button {
+  background-color: $color--brown--beige;
+  border-radius: $global-border-radius--small / 2;
+  color: $color--white;
+  display: inline-block;
+  font-family: $font--ubuntu;
+  margin-top: rem(20px);
+  padding: rem(6px 8px);
+
+  &:hover,
+  &:focus {
+    background-color: $color--brown--light;
+  }
+
+  &:active {
+    background-color: $color--brown--dark;
+  }
+}
+
 @mixin triangle($direction, $color, $size: 6px) {
   content: '';
   display: block;
