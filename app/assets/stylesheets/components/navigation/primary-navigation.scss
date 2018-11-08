@@ -53,7 +53,7 @@
       line-height: 1;
       padding: rem(0 5px 15px);
 
-      @include breakpoint(medium down) {
+      @include media('<768px') {
         border-bottom: 1px solid $color--brown--beige;
       }
     }
