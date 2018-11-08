@@ -67,18 +67,6 @@
   }
 
   &__link {
-    background-color: $color--brown--beige;
-    border-radius: $global-border-radius / 2;
-    color: $color--white;
-    display: inline-block;
-    font-family: $font--myriad-pro;
-    font-size: rem(14px);
-    padding: rem(6px 9px);
-    margin-top: rem(18px);
-    transition: background-color .25s linear;
-
-    &:hover {
-      background-color: $color--brown--dark;
-    }
+    @include generic-grey-button;
   }
 }
