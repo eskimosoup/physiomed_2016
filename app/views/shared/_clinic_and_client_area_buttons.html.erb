@@ -1,5 +1,6 @@
 <%= link_to 'Client Area', 'http://clients.physiomed.co.uk/client-centre', class: 'client-area-button' %>
-<%= link_to 'http://www.physiotherapyinleeds.co.uk/', class: 'clinic-button' do  %>
+<%= link_to 'http://www.physiotherapyinleeds.co.uk/', class: 'clinic-button ga-vent',
+            data: { event_category: 'Header', event_label: 'Local to leeds', event_action: 'Click' } do  %>
   <strong>Local to Leeds?</strong>
   Book an appointment at our Head Office clinic
 <% end %>
