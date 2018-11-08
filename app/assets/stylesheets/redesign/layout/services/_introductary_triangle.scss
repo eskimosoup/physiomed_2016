@@ -27,7 +27,10 @@
       position: absolute;
       right: 0;
       top: 0;
-      transform: perspective(4em) rotateX(1deg);
+
+      @include breakpoint(large) {
+        transform: perspective(4em) rotateX(1deg);
+      }
     }
   }
 
@@ -51,13 +54,26 @@
 
   &__text {
     @include service-colours-text(color);
-    padding: rem(40px);
     position: relative;
     z-index: 2;
+
+    @include breakpoint(medium down) {
+      padding: rem(15px);
+    }
+
+    @include breakpoint(large) {
+      padding: rem(40px);
+    }
   }
 
   &__content {
-    margin-left: rem(40px);
-    margin-right: rem(40px);
+    @include breakpoint(medium down) {
+      text-align: left;
+    }
+
+    @include breakpoint(large) {
+      margin-left: rem(40px);
+      margin-right: rem(40px);
+    }
   }
 }

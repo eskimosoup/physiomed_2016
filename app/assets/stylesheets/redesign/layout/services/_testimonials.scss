@@ -18,10 +18,17 @@
               image-url('components/services/testimonials/quote--closed.png') no-repeat bottom right;
   margin-bottom: rem(20px);
 
+  @include breakpoint(medium down) {
+    background-size: 20px;
+  }
+
   &__item {
     display: inline-block;
-    margin-left: rem(20px);
-    margin-right: rem(20px);
+
+    @include breakpoint(large) {
+      margin-left: rem(20px);
+      margin-right: rem(20px);
+    }
   }
 
   .slick-dots {
@@ -32,9 +39,12 @@
 
 .services-tesimonials-list-testimonial {
   &__content {
-    max-width: calc(100% - 200px);
     margin-left: auto;
     margin-right: auto;
+
+    @include breakpoint(large) {
+      max-width: calc(100% - 200px);
+    }
   }
 
   &__author {

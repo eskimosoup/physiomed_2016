@@ -2,7 +2,14 @@
   background-attachment: fixed;
   background-position: top center;
   background-repeat: no-repeat;
-  padding: rem(50px);
+
+  @include breakpoint(medium down) {
+    padding: rem(15px);
+  }
+
+  @include breakpoint(large) {
+    padding: rem(50px);
+  }
 }
 
 .services-cta-list-service-colour {
@@ -61,10 +68,17 @@
     border-bottom-color: $color--brown--dark;
     border-bottom-style: solid;
     border-bottom-width: 3px;
-    font-size: rem(24px);
     font-weight: $font--open-sans--semibold;
     padding-bottom: rem(12px);
     text-transform: none;
+
+    @include breakpoint(medium down) {
+      font-size: rem(18px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(24px);
+    }
   }
 }
 
@@ -76,14 +90,23 @@
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 4));
     align-content: center;
-    font-size: rem(30px);
     padding-bottom: rem(20px);
     padding-top: rem(20px);
     text-align: center;
 
+    @include breakpoint(medium down) {
+      font-size: rem(22px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(30px);
+    }
+
     &:nth-child(2) {
-      border-left: 1px solid rgba($color--black, .75);
-      border-right: 1px solid rgba($color--black, .75);
+      @include breakpoint(large) {
+        border-left: 1px solid rgba($color--black, .75);
+        border-right: 1px solid rgba($color--black, .75);
+      }
     }
 
     strong {
@@ -96,19 +119,31 @@
 .services-turnaround {
   @include flex-grid-row(nest);
   @include service-colours(color);
-  margin-bottom: rem(30px);
-  margin-top: rem(30px);
+
+  @include breakpoint(large) {
+    margin-bottom: rem(30px);
+    margin-top: rem(30px);
+  }
 
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 6));
     align-content: center;
-    font-size: rem(30px);
     padding-bottom: rem(20px);
     padding-top: rem(20px);
     text-align: center;
 
+    @include breakpoint(medium down) {
+      font-size: rem(22px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(30px);
+    }
+
     &:nth-child(2) {
-      border-left: 1px solid rgba($color--black, .75);
+      @include breakpoint(large) {
+        border-left: 1px solid rgba($color--black, .75);
+      }
     }
 
     strong {

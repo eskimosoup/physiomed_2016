@@ -20,7 +20,7 @@
   }
 
   &__introduction {
-    @include responsive-flex-grid-column((medium down: 6, large: 4));
+    @include responsive-flex-grid-column((medium down: 12, large: 4));
     font-weight: $font--open-sans--semibold;
 
     p {
@@ -31,13 +31,20 @@
 }
 
 .services-abstract-lines-point {
-  @include responsive-flex-grid-column((medium down: 6, large: 4));
+  @include responsive-flex-grid-column((medium down: 12, large: 4));
   @include flex-grid-row(collapse);
   @include service-colours(border-left-color);
 
+  @include breakpoint(medium down) {
+    margin-top: rem(20px);
+  }
+
+
   &:last-of-type {
-    border-left-width: 1px;
-    border-left-style: solid;
+    @include breakpoint(large) {
+      border-left-width: 1px;
+      border-left-style: solid;
+    }
   }
 
   &__title {

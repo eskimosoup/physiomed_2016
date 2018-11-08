@@ -17,9 +17,16 @@
   }
 
   &__content {
-    font-size: rem(26px);
     font-weight: $font--open-sans--semibold;
     margin: 0;
+
+    @include breakpoint(large) {
+      font-size: rem(26px);
+    }
+
+    @include breakpoint(medium down) {
+      font-size: rem(22px);
+    }
   }
 
   &__emphasis {
@@ -28,9 +35,12 @@
 
   &__list {
     @include flex-grid-column(12);
-    @include flex-grid-layout(3, '.home-approach');
-    display: flex;
     padding-top: rem(30px);
+
+    @include breakpoint(large) {
+      display: flex;
+      @include flex-grid-layout(3, '.home-approach');
+    }
   }
 }
 
@@ -38,6 +48,10 @@
   padding-left: rem(10px);
   padding-right: rem(10px);
   text-align: center;
+
+  @include breakpoint(medium down) {
+    margin-bottom: rem(20px);
+  }
 
   &--orange {
     .home-approach__number {
@@ -144,22 +158,39 @@
 
   &__inner {
     @include generic-light-box-shadow;
-    @include flex-grid-row;
-    @include flex-grid-layout(7, '.service-standard');
-    display: flex;
+
+    @include breakpoint(medium down) {
+      @include flex-grid-column(12);
+      text-align: center;
+    }
+
+    @include breakpoint(large) {
+      @include flex-grid-row;
+      @include flex-grid-layout(7, '.service-standard');
+      display: flex;
+    }
   }
 }
 
 .home-resources {
   background: image-url('layout/home/resources-background.jpg') center no-repeat fixed;
-  padding-bottom: rem(150px);
+
+  @include breakpoint(large) {
+    padding-bottom: rem(150px);
+  }
 }
 
 .home-resources-grid {
   @include flex-grid-row;
 
   &--negative-margin {
-    margin-top: rem(-120px);
+    @include breakpoint(medium down) {
+      margin-top: rem(-60px);
+    }
+
+    @include breakpoint(large) {
+      margin-top: rem(-120px);
+    }
   }
 
   &__inner {
@@ -169,8 +200,15 @@
 
   &__layout {
     @include flex-grid-column(12);
-    @include flex-grid-layout(3, '.home-resource');
-    display: flex;
+
+    @include breakpoint(medium down) {
+      @include flex-grid-row;
+    }
+
+    @include breakpoint(large) {
+      @include flex-grid-layout(3, '.home-resource');
+      display: flex;
+    }
   }
 
   &__title {
@@ -181,6 +219,11 @@
 .home-resource {
   padding-left: rem(15px);
   padding-right: rem(15px);
+
+  @include breakpoint(medium down) {
+    @include flex-grid-column(12);
+    margin-bottom: rem(20px);
+  }
 
   &__inner {
     @include generic-light-box-shadow;
@@ -225,12 +268,21 @@
     text-align: center;
 
     p {
-      font-size: rem(24px);
+      @include breakpoint(medium down) {
+        font-size: rem(18px);
+      }
+
+      @include breakpoint(large) {
+        font-size: rem(24px);
+      }
     }
 
     strong {
-      font-size: rem(41px);
       font-weight: $font--open-sans--extrabold;
+
+      @include breakpoint(large) {
+        font-size: rem(41px);
+      }
     }
   }
 }
@@ -252,6 +304,10 @@
     border-radius: 30px;
     font-size: rem(18px);
     padding: rem(16px 24px);
+
+    @include breakpoint(medium down) {
+      width: auto;
+    }
 
     &:focus {
       border-color: $color--brown--light;
@@ -277,11 +333,19 @@
   position: relative;
 
   .slick-prev {
-    left: -80px;
+    left: 0;
+
+    @include breakpoint(large) {
+      left: -80px;
+    }
   }
 
   .slick-next {
-    right: -80px;
+    right: 0;
+
+    @include breakpoint(large) {
+      right: -80px;
+    }
   }
 }
 
@@ -309,6 +373,7 @@
 
   &__connector {
     background-color: transparent;
+    display: none;
     height: 32px;
     left: 50%;
     position: absolute;
@@ -317,6 +382,10 @@
     width: 50%;
     z-index: 1;
     transition: all .25s linear;
+
+    @include breakpoint(large) {
+      display: block;
+    }
   }
 }
 

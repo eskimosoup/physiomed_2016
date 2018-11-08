@@ -1,9 +1,16 @@
 .services-days-overview-background {
   @include service-colours(background-color);
   @include service-colours-text(color);
-  padding-bottom: rem(60px);
   padding-top: rem(60px);
   margin-top: rem(80px);
+
+  @include breakpoint(medium down) {
+    padding-bottom: rem(30px);
+  }
+
+  @include breakpoint(large) {
+    padding-bottom: rem(60px);
+  }
 }
 
 .services-days-overview {

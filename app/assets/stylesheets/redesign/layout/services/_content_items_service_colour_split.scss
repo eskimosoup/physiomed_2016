@@ -1,7 +1,15 @@
 .services-content-items-colour-split {
   background-position: top right;
   background-repeat: no-repeat;
-  padding: rem(50px);
+
+  @include breakpoint(medium down) {
+    padding-bottom: rem(50px);
+    padding-top: rem(50px);
+  }
+
+  @include breakpoint(large) {
+    padding: rem(50px);
+  }
 
   &__inner {
     @include flex-grid-row;
@@ -22,3 +30,4 @@
     @include responsive-flex-grid-column((medium down: 12, large: 5));
   }
 }
+
