@@ -23,11 +23,11 @@
   }
 
   .services-section-item-basic {
-    @include responsive-flex-grid-column((medium down: 12, large: 6));
+    @include responsive-flex-grid-column((small only: 12, medium: 6));
   }
 
   .services-section-item-colour {
-    @include responsive-flex-grid-column((medium down: 12, large: 5));
+    @include responsive-flex-grid-column((small only: 12, medium: 6, large: 5));
   }
 }
 

@@ -12,7 +12,7 @@
   }
 
   &__image {
-    @include responsive-flex-grid-column((medium down: 12, large: 4));
+    @include responsive-flex-grid-column((small only: 12, medium: 4));
     //position: relative;
   }
 
@@ -30,7 +30,7 @@
   }
 
   &__content {
-    @include responsive-flex-grid-column((medium down: 12, large: 8));
+    @include responsive-flex-grid-column((small only: 12, medium: 8));
 
     ul {
       list-style-position: outside;

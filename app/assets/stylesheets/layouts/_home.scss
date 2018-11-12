@@ -37,7 +37,7 @@
     @include flex-grid-column(12);
     padding-top: rem(30px);
 
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       display: flex;
       @include flex-grid-layout(3, '.home-approach');
     }
@@ -125,14 +125,26 @@
   margin: rem(20px 20px 0);
   text-align: left;
 
+  @include breakpoint(medium only) {
+    text-align: center;
+  }
+
   &__item {
     margin-bottom: rem(25px);
     overflow: hidden;
   }
 
   &__image {
-    float: left;
-    margin-right: rem(15px);
+    @include breakpoint(medium only) {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include breakpoint(large) {
+      float: left;
+      margin-right: rem(15px);
+    }
   }
 }
 
@@ -159,12 +171,12 @@
   &__inner {
     @include generic-light-box-shadow;
 
-    @include breakpoint(medium down) {
+    @include breakpoint(small only) {
       @include flex-grid-column(12);
       text-align: center;
     }
 
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       @include flex-grid-row;
       @include flex-grid-layout(7, '.service-standard');
       display: flex;
@@ -201,11 +213,11 @@
   &__layout {
     @include flex-grid-column(12);
 
-    @include breakpoint(medium down) {
+    @include breakpoint(small only) {
       @include flex-grid-row;
     }
 
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       @include flex-grid-layout(3, '.home-resource');
       display: flex;
     }
