@@ -88,7 +88,7 @@
   margin-top: rem(30px);
 
   &__inner {
-    @include responsive-flex-grid-column((medium down: 12, large: 4));
+    @include responsive-flex-grid-column((small only: 12, medium: 4));
     align-content: center;
     padding-bottom: rem(20px);
     padding-top: rem(20px);
@@ -126,7 +126,7 @@
   }
 
   &__inner {
-    @include responsive-flex-grid-column((medium down: 12, large: 6));
+    @include responsive-flex-grid-column((small only: 12, medium: 6));
     align-content: center;
     padding-bottom: rem(20px);
     padding-top: rem(20px);

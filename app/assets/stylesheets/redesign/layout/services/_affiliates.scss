@@ -33,7 +33,7 @@
 }
 
 .services-affiliates-item {
-  @include responsive-flex-grid-column((medium down: 12, large: 6));
+  @include responsive-flex-grid-column((small only: 12, medium: 6));
   text-align: center;
 
   &__title {
