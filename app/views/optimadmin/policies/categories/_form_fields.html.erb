@@ -1,0 +1,26 @@
+<div class="field">
+  <%= f.label :title %><br />
+  <%= f.text_field :title %>
+</div>
+
+<div class="tabs prevent-flash">
+  <ul class="tab-list">
+    <li><a href="#tabs-1">Settings</a></li>
+    <li>
+      <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+        <%= octicon('chevron-down') %>
+      <% end %>
+    </li>
+  </ul>
+
+
+  <%= field_set_tag nil, id: 'tabs-1' do %>
+        <%= render 'optimadmin/shared/suggested_url_field', f: f %>
+
+
+        <div class="field">
+      <%= f.label :display %><br>
+      <%= f.check_box :display %>
+    </div>
+      <% end %>
+</div>

@@ -1,0 +1,34 @@
+
+<% present policies_category do |policies_category_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" id="item_<%= policies_category_presenter.id %>">
+          <div class="large-1 hide-for-medium-down columns">
+        <span class="drag-helper"></span>
+      </div>
+
+    <div class="columns">
+      <%= policies_category_presenter.title %>
+    </div>
+
+    <div class="columns">
+      <%= policies_category_presenter.documents_count %>
+    </div>
+
+
+    <div class="large-1 small-4 text-center columns">
+      <%= policies_category_presenter.toggle_link %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= policies_category_presenter.view_link %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= policies_category_presenter.edit_link %>
+    </div>
+
+    <div class="large-1 text-center columns last">
+      <%= policies_category_presenter.delete_link %>
+    </div>
+  </div>
+<% end %>
+

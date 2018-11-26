@@ -1,0 +1,6 @@
+<%= render 'optimadmin/shared/help_guides/sidebar', object: Policies::Category, area: 'new' %>
+<%= render 'optimadmin/shared/header/main_title', title: "New #{Policies::Category.model_name.human.titleize}" %>
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: policies_categories_path, title: Policies::Category.model_name.human.titleize %>
+  <%= render 'form', model: @policies_category %>
+</div>
