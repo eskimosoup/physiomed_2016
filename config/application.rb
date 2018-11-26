@@ -34,6 +34,7 @@ module Physiomed2016
     end
 
     config.i18n.default_locale = :'en-GB'
+    config.i18n.fallbacks = true
     config.force_ssl = true
 
     # Settings in config/environments/* take precedence over those specified here.

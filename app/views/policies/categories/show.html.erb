@@ -1,0 +1,37 @@
+<div class="hero-section standard-page-background">
+  <div class="hero-section-header">
+    <h1 class="hero-section-title page">
+      <%= @facade.category_title %>
+    </h1>
+  </div>
+  <div class="hero-section-primary-content">
+    <div class="hero-navigation-wrap">
+      <div class="hero-navigation">
+        <div class="policies-categories">
+          <ul class="policies-categories__list">
+            <%= render_cached_partial(partial: 'policies/categories/category', collection: @facade.categories, as: :category, locals: { parent_class: 'policies-categories'}) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-content-wrap">
+      <div class="page-content">
+        <%= render_cached_partial(partial: 'policies/documents/document', collection: @facade.policies, as: :document, locals: { parent_class: 'policies-document' }) %>
+      </div>
+    </div>
+    <div class="page-contact-methods-wrap">
+      <%= render(
+        partial: 'shared/sidebar',
+        locals: {
+          call_to_action: true,
+          testimonials: nil,
+          team_members: nil,
+          health_zone: wellbeing_zone_health_zone,
+          case_studies: nil,
+          articles: nil,
+        },
+        cache: [Policies::Document.all.map(&:updated_at).max]
+      ) %>
+    </div>
+  </div>
+</div>

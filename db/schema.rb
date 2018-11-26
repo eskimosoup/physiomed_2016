@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181106153303) do
+ActiveRecord::Schema.define(version: 20181122105006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -650,6 +650,32 @@ ActiveRecord::Schema.define(version: 20181106153303) do
 
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
+  create_table "policies_categories", force: :cascade do |t|
+    t.integer  "position",        default: 0,    null: false
+    t.string   "title",                          null: false
+    t.integer  "documents_count", default: 0
+    t.boolean  "display",         default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "policies_categories", ["slug"], name: "index_policies_categories_on_slug", using: :btree
+
+  create_table "policies_documents", force: :cascade do |t|
+    t.integer  "policies_category_id"
+    t.integer  "position",             default: 0,    null: false
+    t.string   "title",                               null: false
+    t.text     "summary"
+    t.string   "file"
+    t.boolean  "display",              default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "policies_documents", ["policies_category_id"], name: "index_policies_documents_on_policies_category_id", using: :btree
+
   create_table "practice_applications_contacts", force: :cascade do |t|
     t.integer  "practice_id"
     t.string   "name",        null: false
@@ -972,6 +998,7 @@ ActiveRecord::Schema.define(version: 20181106153303) do
   add_foreign_key "pages_testimonials", "pages", on_delete: :cascade
   add_foreign_key "pages_testimonials", "testimonials", on_delete: :cascade
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
+  add_foreign_key "policies_documents", "policies_categories"
   add_foreign_key "practice_applications_contacts", "practice_applications_practices", column: "practice_id", on_delete: :cascade
   add_foreign_key "practice_applications_practitioners", "practice_applications_practices", column: "practice_id", on_delete: :cascade
   add_foreign_key "services_section_items", "services_sections"

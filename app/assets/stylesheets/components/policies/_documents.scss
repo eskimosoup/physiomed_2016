@@ -1,0 +1,31 @@
+.policies-document {
+  border-bottom: 1px dotted $brown;
+  padding-bottom: rem(20px);
+
+  &__button {
+    background: $brown;
+    border: 0;
+    border-radius: 2px;
+    color: $white;
+    display: inline-block;
+    font-family: $ubuntu;
+    font-size: rem(14px);
+    padding: rem(8px);
+    transition: color .25s ease, background .25s ease;
+
+    &:link {
+      color: $color--white;
+    }
+
+    &:hover {
+      background: $light-mud-brown;
+      color: $dark-brown-offset;
+    }
+  }
+
+  &__contact {
+    p {
+      margin: 0;
+    }
+  }
+}

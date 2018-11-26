@@ -16,6 +16,15 @@ Rails.application.routes.draw do
   resources :partners, only: :index
   resources :services, only: :show
 
+  resources :policies, only: :index do
+    collection do
+      resources :categories,
+                only: :show,
+                as: :policy_categories,
+                controller: 'policies/categories'
+    end
+  end
+
   resources :landing_pages,
             only: :show,
             path: '',
@@ -114,6 +123,11 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module resources go below concerns
+  namespace :policies do
+    resources :categories, concerns: %i[orderable toggleable]
+    resources :documents, concerns: %i[orderable toggleable]
+  end
+
   resources :partners, concerns: %i[imageable toggleable]
   resources :services, concerns: %i[imageable toggleable] do
     scope module: :services do
