@@ -16,5 +16,9 @@ module Optimadmin
     def optimadmin_summary
       # h.simple_format service.summary
     end
+
+    def copy_link
+      h.link_to 'Copy', h.new_service_path(service_id: service.id)
+    end
   end
 end
