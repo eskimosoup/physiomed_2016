@@ -39,12 +39,19 @@
       var backgroundColor = shadeColor2(hexColor, -0.25);
       $('.home-pyramid-content__connector').css({ top: offset.top + 10, backgroundColor: backgroundColor });
     });
+    $(document).on('mouseout', '.home-pyramid-content__pyramid', function() {
+      $('.home-pyramid-content__connector').css({ backgroundColor: 'transparent' });
+      $('.home-pyramid-content-overlay').hide();
+      $('.home-pyramid-content-overlay--0').show();
+    });
     $(document).ready(function() {
+      /*
       var $item = $('.home-pyramid-content-structure__text:first');
       var offset = $item.parent().position();
       var hexColor = rgb2hex($item.css('background-color'));
       var backgroundColor = shadeColor2(hexColor, -0.25);
       $('.home-pyramid-content__connector').css({ top: offset.top + 10, backgroundColor: backgroundColor });
+      */
     })
   </script>
   <%= javascript_include_tag 'components/service_standards' %>
@@ -66,14 +73,13 @@
 <section class="home-approaches">
   <div class="home-approaches__inner">
     <h2 class="home-approaches__title">
-      What We Do
+      Award Winning Occupational Health Services
     </h2>
 
     <p class="home-approaches__content">
-      Our 3 Step Approach to
+      That keep your
       <span class="home-approaches__emphasis">
-        <strong>Occupational</strong>
-        Physiotherapy
+        workforce fit and well
       </span>
     </p>
   </div>
@@ -81,11 +87,7 @@
   <div class="home-approaches__list">
     <div class="home-approach" data-animation-type="zoomIn">
       <div class="home-approach__step">
-        Step
-      </div>
-
-      <div class="home-approach__number">
-        1
+        Prevention
       </div>
 
       <div class="home-approach__content">
@@ -116,11 +118,7 @@
     </div>
     <div class="home-approach home-approach--orange"  data-animation-type="zoomIn" data-animation-delay="500">
       <div class="home-approach__step">
-        Step
-      </div>
-
-      <div class="home-approach__number">
-        2
+        Treatment
       </div>
 
       <div class="home-approach__content">
@@ -151,11 +149,7 @@
     </div>
     <div class="home-approach home-approach--green" data-animation-type="zoomIn" data-animation-delay="750">
       <div class="home-approach__step">
-        Step
-      </div>
-
-      <div class="home-approach__number">
-        3
+        Support
       </div>
 
       <div class="home-approach__content">
@@ -188,6 +182,13 @@
 </section>
 
 <section class="home-pyramid">
+  <div class="home-pyramid-title">
+    <div class="home-pyramid-title__content">
+      <h2 class="home-pyramid-title__text">
+        Choose only the services that you need
+      </h2>
+    </div>
+  </div>
   <div class="home-pyramid-content">
     <div class="home-pyramid-content__pyramid">
       <div class="home-pyramid-content-structure">
@@ -199,6 +200,11 @@
     </div>
 
     <div class="home-pyramid-content__content">
+      <div class="home-pyramid-content-overlay home-pyramid-content-overlay--blue home-pyramid-content-overlay--0" id="service-0">
+        <%= raw @facade.pyramid_introduction_content %>
+        <%= link_to 'Learn more', '#test', class: 'home-pyramid-content-overlay__button' %>
+      </div>
+
       <%= render partial: 'services/shared/pyramid_content', collection: @facade.services, as: :service, locals: { parent_class: 'home-pyramid-content-overlay' } %>
     </div>
   </div>
@@ -231,11 +237,11 @@
   <div class="home-resources-grid">
     <div class="home-resources-grid__layout">
       <div class="home-resource" data-animation-type="fadeIn">
-        <%= link_to wellbeing_zone_root_path, class: 'home-resource__inner' do %>
-          <%= image_tag 'layout/home/cta-3.jpg', alt: '' %>
+        <%= link_to '/categorisation/feeling-fab-exercises', class: 'home-resource__inner' do %>
+          <%= image_tag 'layout/home/cta-1.jpg', alt: '' %>
 
           <h3 class="home-resource__title">
-            Employee Health and Wellbeing Zone
+            Preventing Injury
           </h3>
         <% end %>
       </div>
@@ -244,16 +250,16 @@
           <%= image_tag 'layout/home/cta-2.jpg', alt: '' %>
 
           <h3 class="home-resource__title">
-            Employee Managing Musculoskeletal Conditions
+            Self-help for musculoskeletal conditions
           </h3>
         <% end %>
       </div>
       <div class="home-resource" data-animation-type="fadeIn">
-        <%= link_to '/categorisation/feeling-fab-exercises', class: 'home-resource__inner' do %>
-          <%= image_tag 'layout/home/cta-1.jpg', alt: '' %>
+        <%= link_to wellbeing_zone_root_path, class: 'home-resource__inner' do %>
+          <%= image_tag 'layout/home/cta-3.jpg', alt: '' %>
 
           <h3 class="home-resource__title">
-            Employee Feeling Fab Exercises
+            Well-being Resources
           </h3>
         <% end %>
       </div>

@@ -1,4 +1,6 @@
 class HomeFacade
+  delegate :title, :content, to: :pyramid_introduction, prefix: true, allow_nil: true
+
   def banners
     @banners ||= Banner.displayed.ordered_by_position
   end
@@ -74,5 +76,9 @@ class HomeFacade
 
   def pal_content
     @pal_content ||= AdditionalContent.displayed.find_by(area: 'home_pal_video')
+  end
+
+  def pyramid_introduction
+    @pyramid_introduction ||= AdditionalContent.displayed.find_by(area: 'pyramid_introduction')
   end
 end

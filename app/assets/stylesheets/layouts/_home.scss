@@ -54,8 +54,8 @@
   }
 
   &--orange {
-    .home-approach__number {
-      background-color: $color--orange;
+    .home-approach__step {
+      color: $color--orange;
     }
 
     .home-approach__content {
@@ -64,8 +64,8 @@
   }
 
   &--green {
-    .home-approach__number {
-      background-color: $color--green;
+    .home-approach__step {
+      color: $color--green;
     }
 
     .home-approach__content {
@@ -76,27 +76,9 @@
   &__step {
     color: $color--brown--dark;
     font-size: rem(30px);
-    font-weight: $font--open-sans--light;
+    font-weight: $font--open-sans--semibold;
     margin-bottom: rem(16px);
     text-align: center;
-  }
-
-  &__number {
-    @include generic-service-box-shadow;
-    background-color: $color--black;
-    border: 6px solid $color--white;
-    border-radius: 50%;
-    color: $color--white;
-    font-size: rem(26px);
-    font-weight: $font--open-sans--bold;
-    height: 61px;
-    line-height: 51px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    text-align: center;
-    width: 61px;
-    z-index: 1;
   }
 
   &__content {
@@ -104,7 +86,6 @@
     background-color: $color--white;
     border-bottom: 6px solid $color--black;
     color: $color--brown--dark;
-    margin-top: rem(-25px);
     padding: rem(30px 20px 20px);
   }
 
@@ -365,6 +346,23 @@
   background: image-url('layout/content/lines-background.png') no-repeat center;
   margin-bottom: rem(60px);
   margin-top: rem(40px);
+}
+
+.home-pyramid-title {
+  @include flex-grid-row;
+
+  &__content {
+    @include flex-grid-column(12);
+  }
+
+  &__text {
+    color: $color--brown--dark;
+    font-size: rem(30px);
+    font-weight: $font--open-sans--light;
+    margin-bottom: rem(32px);
+    text-align: left;
+    text-transform: none;
+  }
 }
 
 .home-pyramid-content {
