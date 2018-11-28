@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181122105006) do
+ActiveRecord::Schema.define(version: 20181128145403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -802,6 +802,65 @@ ActiveRecord::Schema.define(version: 20181122105006) do
   add_index "services", ["slug"], name: "index_services_on_slug", using: :btree
   add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
 
+  create_table "services_categories", force: :cascade do |t|
+    t.integer  "position",           default: 0,       null: false
+    t.integer  "parent_id"
+    t.string   "colour"
+    t.string   "title",                                null: false
+    t.text     "summary"
+    t.text     "content"
+    t.boolean  "display",            default: true
+    t.string   "style",              default: "basic"
+    t.string   "suggested_url"
+    t.string   "slug",                                 null: false
+    t.boolean  "homepage_highlight", default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "services_categories", ["parent_id"], name: "index_services_categories_on_parent_id", using: :btree
+  add_index "services_categories", ["slug"], name: "index_services_categories_on_slug", using: :btree
+  add_index "services_categories", ["suggested_url"], name: "index_services_categories_on_suggested_url", using: :btree
+
+  create_table "services_category_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "services_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "category_anc_desc_idx", unique: true, using: :btree
+  add_index "services_category_hierarchies", ["descendant_id"], name: "category_desc_idx", using: :btree
+
+  create_table "services_category_section_items", force: :cascade do |t|
+    t.integer  "services_category_section_id"
+    t.string   "title"
+    t.text     "context"
+    t.string   "image"
+    t.string   "style",                        default: "basic", null: false
+    t.boolean  "display",                      default: true
+    t.string   "subtitle"
+    t.string   "button_text"
+    t.string   "button_link"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "services_category_section_items", ["services_category_section_id"], name: "index_srvcs_category_section_items_on_srvcs_category_section_id", using: :btree
+
+  create_table "services_category_sections", force: :cascade do |t|
+    t.integer  "services_category_id"
+    t.integer  "position",             default: 0
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.boolean  "display",              default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "style",                default: "basic"
+  end
+
+  add_index "services_category_sections", ["services_category_id"], name: "index_services_category_sections_on_services_category_id", using: :btree
+
   create_table "services_section_items", force: :cascade do |t|
     t.integer  "services_section_id"
     t.integer  "position",            default: 0,       null: false
@@ -1001,6 +1060,8 @@ ActiveRecord::Schema.define(version: 20181122105006) do
   add_foreign_key "policies_documents", "policies_categories"
   add_foreign_key "practice_applications_contacts", "practice_applications_practices", column: "practice_id", on_delete: :cascade
   add_foreign_key "practice_applications_practitioners", "practice_applications_practices", column: "practice_id", on_delete: :cascade
+  add_foreign_key "services_category_section_items", "services_category_sections"
+  add_foreign_key "services_category_sections", "services_categories"
   add_foreign_key "services_section_items", "services_sections"
   add_foreign_key "services_sections", "services"
   add_foreign_key "subcategories_guides", "guides"

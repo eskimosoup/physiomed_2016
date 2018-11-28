@@ -1,6 +1,10 @@
 class HomeFacade
   delegate :title, :content, to: :pyramid_introduction, prefix: true, allow_nil: true
 
+  def categories
+    @categories ||= Services::Category.displayed.homepage_highlight
+  end
+
   def banners
     @banners ||= Banner.displayed.ordered_by_position
   end

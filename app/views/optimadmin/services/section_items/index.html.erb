@@ -1,4 +1,4 @@
-<%= render 'optimadmin/shared/header/main_title', title: "Manage #{Services::SectionItem.model_name.human.pluralize.titleize} for #{content_tag :strong, @section.title} (#{@section.service_title})".html_safe %>
+<%= render 'optimadmin/shared/header/main_title', title: "Manage #{Services::SectionItem.model_name.human.pluralize.titleize} for #{content_tag :strong, @section.title} #{@section.service_title}".html_safe %>
 <div class="main-content">
   <div class="row module-header collapse">
     <%= render 'optimadmin/shared/module/index/new_item', title: Services::SectionItem.model_name.human.titleize, object: Services::SectionItem, path: new_section_item_path(@section) %>

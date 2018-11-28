@@ -39,7 +39,7 @@
       var backgroundColor = shadeColor2(hexColor, -0.25);
       $('.home-pyramid-content__connector').css({ top: offset.top + 10, backgroundColor: backgroundColor });
     });
-    $(document).on('mouseout', '.home-pyramid-content__pyramid', function() {
+    $(document).on('mouseleave', '.home-pyramid', function() {
       $('.home-pyramid-content__connector').css({ backgroundColor: 'transparent' });
       $('.home-pyramid-content-overlay').hide();
       $('.home-pyramid-content-overlay--0').show();
@@ -85,39 +85,14 @@
   </div>
 
   <div class="home-approaches__list">
-    <div class="home-approach" data-animation-type="zoomIn">
-      <div class="home-approach__step">
-        We prevent people going off work
-      </div>
-
-      <div class="home-approach__content">
-        <!--
-          <div class="home-approach__styles">
-            <p>.</p>
-          </div>
-        -->
-
-        <ul class="home-approach-benefits">
-          <li class="home-approach-benefits__item">
-            <%= image_tag 'components/icons/home-cta/1.png', class: 'home-approach-benefits__image' %>
-            Job Analysis
-          </li>
-
-          <li class="home-approach-benefits__item">
-            <%= image_tag 'components/icons/home-cta/2.png', class: 'home-approach-benefits__image' %>
-            DSE, Ergonomic and Functional Capacity Assessments
-          </li>
-
-          <li class="home-approach-benefits__item">
-            <%= image_tag 'components/icons/home-cta/3.png', class: 'home-approach-benefits__image' %>
-            Health Checks and MSK Screening
-          </li>
-        </ul>
-
-        <% # TODO: Link somewhere %>
-        <%= link_to 'Learn more', '#', class: 'home-approach__button' %>
-      </div>
-    </div>
+    <%= render_cached_partial(
+          partial: 'services/categories/category',
+          collection: @facade.categories,
+          as: :category,
+          locals: {
+            parent_class: 'home-approach'
+          }
+        ) %>
     <div class="home-approach home-approach--orange"  data-animation-type="zoomIn" data-animation-delay="500">
       <div class="home-approach__step">
         We get people back to work

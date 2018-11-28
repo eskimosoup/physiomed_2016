@@ -1,0 +1,10 @@
+<div class="<%= parent_class %> <%= parent_class %>--<%= category.colour %>" data-animation-type="zoomIn">
+  <div class="<%= parent_class %>__step">
+    <%= category.title %>
+  </div>
+  <div class="<%= parent_class %>__content">
+    <%= raw category.summary %>
+    <% # TODO: Link somewhere %>
+    <%= link_to 'Learn more', service_category_path(category), class: "#{parent_class}__button" %>
+  </div>
+</div>

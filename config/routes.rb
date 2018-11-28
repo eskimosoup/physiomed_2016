@@ -14,7 +14,16 @@ Rails.application.routes.draw do
 
   resources :searches, only: :new, path: 'search'
   resources :partners, only: :index
-  resources :services, only: :show
+
+  resources :services, only: :show do
+    scope module: :services do
+      collection do
+        resources :categories, only: [:index, :show],
+                  path: 'what-we-do',
+                  as: :service_categories
+      end
+    end
+  end
 
   resources :policies, only: :index do
     collection do
@@ -122,7 +131,7 @@ Optimadmin::Engine.routes.draw do
     end
   end
 
-  # Module resources go below concerns
+  # Module routes go below concerns
   namespace :policies do
     resources :categories, concerns: %i[orderable toggleable]
     resources :documents, concerns: %i[orderable toggleable]
@@ -132,8 +141,18 @@ Optimadmin::Engine.routes.draw do
   resources :services, concerns: %i[imageable toggleable] do
     scope module: :services do
       resources :sections, concerns: %i[imageable toggleable]
+
+      collection do
+        resources :categories, concerns: %i[imageable toggleable], as: :service_categories do
+          resources :category_sections, except: :show, concerns: %i[orderable toggleable imageable], as: :sections, path: 'sections' do
+            resources :category_section_items, except: :show, concerns: %i[orderable toggleable imageable], as: :items, path: 'items'
+          end
+        end
+      end
     end
   end
+
+
 
   resources :sections, only: [] do
     resources :items, concerns: %i[imageable toggleable], path: 'items', controller: 'services/section_items'
