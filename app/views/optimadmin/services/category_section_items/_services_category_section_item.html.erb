@@ -1,7 +1,9 @@
 
 <% present services_category_section_item do |services_category_section_item_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" id="item_<%= services_category_section_item_presenter.id %>">
-
+ <div class="large-1 hide-for-medium-down columns">
+        <span class="drag-helper"></span>
+      </div>
     <div class="columns">
       <%= services_category_section_item_presenter.title %>
     </div>

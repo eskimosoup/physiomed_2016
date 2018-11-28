@@ -27,7 +27,7 @@
     </div>
     <div class="field">
       <%= f.label :style %><br>
-      <%= f.select :style, Services::CategorySectionItem::STYLES.map { |x| [x.humanize, x] } %>
+      <%= f.select :style, Services::CategorySectionItem::STYLES %>
     </div>
         <div class="field">
       <%= f.label :button_text %><br>

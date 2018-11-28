@@ -833,6 +833,7 @@ ActiveRecord::Schema.define(version: 20181128145403) do
 
   create_table "services_category_section_items", force: :cascade do |t|
     t.integer  "services_category_section_id"
+    t.integer  "position",                     default: 0
     t.string   "title"
     t.text     "context"
     t.string   "image"
