@@ -18,6 +18,7 @@ class AdditionalContent < ActiveRecord::Base
 
   AREAS = %w[
     error_404 error_422 error_400 error_500 error_403 home_pal_video
+    pyramid_introduction
   ].freeze
 
   validates :area, inclusion: { in: AREAS }

@@ -77,3 +77,5 @@ group :test do
   gem 'shoulda-callback-matchers'
   gem 'simplecov', require: false
 end
+
+gem 'deep_cloneable', '~> 2.3.2'
