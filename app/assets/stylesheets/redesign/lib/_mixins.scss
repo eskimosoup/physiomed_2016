@@ -11,6 +11,10 @@
 }
 
 @mixin service-colours($property) {
+  &--lilac--alternative {
+    #{$property}: $color--service-lilac--alternative;
+  }
+
   &--orange {
     #{$property}: $color--service-orange;
   }
@@ -57,6 +61,12 @@
 }
 
 @mixin service-colours-pseudo($element, $property) {
+  &--lilac--alternative {
+    &:#{$element} {
+      #{$property}: $color--service-lilac--alternative;
+    }
+  }
+
   &--orange {
     &:#{$element} {
       #{$property}: $color--service-orange;
@@ -134,6 +144,7 @@
   //$color--service-blue--slate-text: choose-contrast-color($color--service-blue--slate);
   //$color--service-blue--light-text: choose-contrast-color($color--service-blue--light);
 
+  $color--service-lilac--alternative-text: $color--white;
   $color--service-orange-text: $color--white;
   $color--service-green-text: $color--white;
   $color--service-black--offset-text: $color--white;
@@ -145,6 +156,10 @@
   $color--service-lilac-text: $color--white;
   $color--service-blue--slate-text: $color--white;
   $color--service-blue--light-text: $color--white;
+
+  &--lilac--alternative {
+    #{$property}: $color--service-lilac--alternative-text;
+  }
 
   &--orange {
     #{$property}: $color--service-orange-text;
