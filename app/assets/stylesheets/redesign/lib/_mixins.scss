@@ -11,6 +11,18 @@
 }
 
 @mixin service-colours($property) {
+  &--orange {
+    #{$property}: $color--service-orange;
+  }
+
+  &--green {
+    #{$property}: $color--service-green;
+  }
+
+  &--black--offset {
+    #{$property}: $color--service-black--offset;
+  }
+
   &--purple--dark {
     #{$property}: $color--service-purple--dark;
   }
@@ -45,6 +57,24 @@
 }
 
 @mixin service-colours-pseudo($element, $property) {
+  &--orange {
+    &:#{$element} {
+      #{$property}: $color--service-orange;
+    }
+  }
+
+  &--green {
+    &:#{$element} {
+      #{$property}: $color--service-green;
+    }
+  }
+
+  &--black--offset {
+    &:#{$element} {
+      #{$property}: $color--service-black--offset;
+    }
+  }
+
   &--purple--dark {
     &:#{$element} {
       #{$property}: $color--service-purple--dark;
@@ -104,6 +134,9 @@
   //$color--service-blue--slate-text: choose-contrast-color($color--service-blue--slate);
   //$color--service-blue--light-text: choose-contrast-color($color--service-blue--light);
 
+  $color--service-orange-text: $color--white;
+  $color--service-green-text: $color--white;
+  $color--service-black--offset-text: $color--white;
   $color--service-purple--dark-text: $color--white;
   $color--service-blue--regular-text: $color--white;
   $color--service-green--light-text: $color--white;
@@ -112,6 +145,18 @@
   $color--service-lilac-text: $color--white;
   $color--service-blue--slate-text: $color--white;
   $color--service-blue--light-text: $color--white;
+
+  &--orange {
+    #{$property}: $color--service-orange-text;
+  }
+
+  &--green {
+    #{$property}: $color--service-green-text;
+  }
+
+  &--black--offset {
+    #{$property}: $color--service-black--offset-text;
+  }
 
   &--purple--dark {
     #{$property}: $color--service-purple--dark-text;

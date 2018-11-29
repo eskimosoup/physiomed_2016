@@ -68,7 +68,7 @@ end
       params.require(:services_category_section).permit(
         :position, :title, :content, :image, :display,
         :remove_image, :remote_image_url, :image_cache,
-        :style
+        :style, :button_link, :button_text
       )
     end
   end

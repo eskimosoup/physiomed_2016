@@ -22,9 +22,20 @@ module Services
 
     scope :displayed, -> { where(display: true) }
 
-    STYLES = ['introductary_triangle'].freeze
+    STYLES = [
+      ['Introductary triangle', 'introductary_triangle'],
+      ['Itemised triangle with images', 'itemised_triangle_images'],
+      ['Abstract lines background with items', 'abstract_lines_background_with_items'],
+      ['Days overview', 'days_overview'],
+      ['Content items split with service colour (1 white, 1 service colour)', 'content_items_service_colour_split'],
+      ['Content items with background image and timeframes', 'content_items_background_image'],
+      ['Informative with icon (e.g. referral guidance)', 'informative_with_icon'],
+      ['Affiliates', 'affiliates'],
+      ['Clients', 'clients'],
+      ['Tesitmonials', 'testimonials'],
+    ].freeze
 
-    validates :style, inclusion: { in: STYLES }
+    # validates :style, inclusion: { in: STYLES }
 
     has_many :items,
              class_name: '::Services::CategorySectionItem',

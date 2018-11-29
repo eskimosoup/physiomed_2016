@@ -4,7 +4,7 @@ class CreateServicesCategorySectionItems < ActiveRecord::Migration
       t.belongs_to :services_category_section, index: { name: 'index_srvcs_category_section_items_on_srvcs_category_section_id' } , foreign_key: true
       t.integer :position, default: 0
       t.string :title
-      t.text :context
+      t.text :content
       t.string :image
       t.string :style, null: false, default: 'basic'
       t.boolean :display, default: true
