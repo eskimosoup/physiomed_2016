@@ -1,7 +1,11 @@
-<%= render partial: 'services/sections/section',
-           collection: facade.sections,
-           as: :section,
-           cache: true,
-           locals: {
-             current_service: facade.category
-           } %>
+<div class="content-mask-wrap">
+  <%= render 'services/categories/shared/navigation', facade: facade %>
+
+  <%= render partial: 'services/sections/section',
+            collection: facade.sections,
+            as: :section,
+            cache: true,
+            locals: {
+              current_service: facade.category
+            } %>
+</div>

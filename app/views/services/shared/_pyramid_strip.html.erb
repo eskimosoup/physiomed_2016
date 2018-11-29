@@ -1,5 +1,5 @@
 <div class="<%= parent_class %>__item <%= parent_class %>__item--<%= service.colour %>">
-  <div class="<%= parent_class %>__text <%= parent_class %>__text--<%= service.colour %>" data-service-id="<%= service.id %>">
+  <%= link_to service, class: "#{parent_class}__text #{parent_class}__text--#{service.colour}", data: { service_id: service.id } do %>
     <%= service.title %>
-  </div>
+  <% end %>
 </div>

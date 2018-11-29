@@ -132,6 +132,8 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module routes go below concerns
+  resources :offerings, except: :show, concerns: %i[orderable toggleable imageable]
+
   namespace :policies do
     resources :categories, concerns: %i[orderable toggleable]
     resources :documents, concerns: %i[orderable toggleable]
@@ -143,6 +145,7 @@ Optimadmin::Engine.routes.draw do
       resources :sections, concerns: %i[imageable toggleable]
 
       collection do
+        resources :affiliates, except: :show, concerns: %i[orderable toggleable imageable], as: :service_affiliates
         resources :categories, concerns: %i[imageable toggleable], as: :service_categories do
           resources :category_sections, except: :show, concerns: %i[orderable toggleable imageable], as: :sections, path: 'sections' do
             resources :category_section_items, except: :show, concerns: %i[orderable toggleable imageable], as: :items, path: 'items'

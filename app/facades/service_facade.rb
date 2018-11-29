@@ -1,4 +1,4 @@
-class ServiceFacade
+class ServiceFacade < Services::CategoryFacade
   attr_reader :service
 
   delegate :style, :layout, to: :service, prefix: true
