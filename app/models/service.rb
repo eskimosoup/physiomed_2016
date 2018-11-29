@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: services
@@ -20,7 +19,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 
 class Service < ActiveRecord::Base
   include OptimadminScopes

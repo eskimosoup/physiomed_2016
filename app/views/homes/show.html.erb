@@ -39,7 +39,7 @@
       var backgroundColor = shadeColor2(hexColor, -0.25);
       $('.home-pyramid-content__connector').css({ top: offset.top + 10, backgroundColor: backgroundColor });
     });
-    $(document).on('mouseout', '.home-pyramid-content__pyramid', function() {
+    $(document).on('mouseleave', '.home-pyramid', function() {
       $('.home-pyramid-content__connector').css({ backgroundColor: 'transparent' });
       $('.home-pyramid-content-overlay').hide();
       $('.home-pyramid-content-overlay--0').show();
@@ -85,7 +85,16 @@
   </div>
 
   <div class="home-approaches__list">
-    <div class="home-approach" data-animation-type="zoomIn">
+    <%= render_cached_partial(
+          partial: 'services/categories/category',
+          collection: @facade.categories,
+          as: :category,
+          locals: {
+            parent_class: 'home-approach'
+          }
+        ) %>
+
+        <div class="home-approach" data-animation-type="zoomIn">
       <div class="home-approach__step">
         We prevent people going off work
       </div>

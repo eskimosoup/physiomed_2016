@@ -40,6 +40,7 @@
 #  domiciliary_visits             :boolean
 #  public_liability_expiry_date   :date
 #  employee_liability_expiry_date :date
+#  document                       :string
 #
 
 class PracticeApplications::Practice < ActiveRecord::Base

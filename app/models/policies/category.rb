@@ -1,5 +1,21 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: policies_categories
+#
+#  id              :integer          not null, primary key
+#  position        :integer          default(0), not null
+#  title           :string           not null
+#  documents_count :integer          default(0)
+#  display         :boolean          default(TRUE)
+#  suggested_url   :string
+#  slug            :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+
 module Policies
   class Category < ActiveRecord::Base
     include OptimadminScopes

@@ -59,6 +59,7 @@
         Service Pyramid
       </div>
       <ul class="content-category-list">
+        <%= module_link(content: Services::Category.model_name.human.pluralize.titleize, model: Services::Category, path: service_categories_path) %>
         <%= module_link(content: Service.model_name.human.pluralize.titleize, model: Service, path: services_path) %>
       </ul>
       <div class="content-category-type">

@@ -1,0 +1,14 @@
+<%= link_to Services::Category.displayed.roots.first.title, service_categories_path %>
+
+<div>
+  <% Services::Category.displayed.roots.first.children.displayed.each do |child| %>
+    <%= link_to child.title, service_category_path(child) %>
+  <% end %>
+</div>
+
+<div>
+  <% Service.all.displayed.each do |service| %>
+    <%= link_to service.title, service %>
+  <% end %>
+</div>
+
