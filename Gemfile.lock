@@ -1,17 +1,7 @@
 GIT
-  remote: git@github.com:eskimosoup/cookie_consent.git
-  revision: 40cfa8514a4e5a3946afbb52a5f995e13ff0cdbc
+  remote: git@github.com:eskimosoup/Optimadmin.git
+  revision: 9f4eee10b8f6531a18cc9a15edad5dd2838a2b41
   branch: master
-  specs:
-    cookie_consent (1.2.1.1)
-
-PATH
-  remote: ../optimadmin_generators
-  specs:
-    optimadmin_generators (1.2.4)
-
-PATH
-  remote: ../optimadmin
   specs:
     optimadmin (1.4.4)
       bcrypt
@@ -25,6 +15,19 @@ PATH
       mini_magick
       rails
       sass-rails
+
+GIT
+  remote: git@github.com:eskimosoup/cookie_consent.git
+  revision: 40cfa8514a4e5a3946afbb52a5f995e13ff0cdbc
+  branch: master
+  specs:
+    cookie_consent (1.2.1.1)
+
+GIT
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: 81f811847c11e51947fba88eaf92a7b2f7c72dd6
+  specs:
+    optimadmin_generators (1.2.4)
 
 GEM
   remote: https://rubygems.org/
