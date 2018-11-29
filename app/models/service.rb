@@ -41,6 +41,7 @@ class Service < ActiveRecord::Base
     ['Blue dark', 'blue--dark'],
     ['Green pastel', 'green--pastel'],
     ['Lilac', 'lilac'],
+    ['Lilac alternative', 'lilac--alternative'],
     ['Blue slate', 'blue--slate'],
     ['Blue light', 'blue--light'],
   ].freeze

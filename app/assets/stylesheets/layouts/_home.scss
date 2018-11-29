@@ -587,6 +587,31 @@
           background-image: image-url('components/pyramid/triangle--purple-right.png');
         }
       }
+    }
+
+    &:nth-child(9) {
+      margin-left: -30px;
+      width: calc(100% + 60px);
+
+      @include breakpoint(small only) {
+        margin-left: -10px;
+        width: calc(100% + 20px);
+
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+
+      @include breakpoint(medium) {
+        .home-pyramid-content-structure__text:before {
+          background-image: image-url('components/pyramid/triangle--lilac-alternative-left.png');
+        }
+
+        .home-pyramid-content-structure__text:after {
+          background-image: image-url('components/pyramid/triangle--lilac-alternative-right.png');
+        }
+      }
 
       &:before,
       &:after {

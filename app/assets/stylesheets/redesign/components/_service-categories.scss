@@ -61,14 +61,17 @@
   }
 
   &__link {
+    border-bottom: 1px solid darken($color--brown--dark, 15%);
     color: $color--brown--dark;
     display: block;
     line-height: 1.25;
-    padding: rem(2px 20px);
+    margin: rem(2px 20px);
+    padding-bottom: rem(2px);
     transition: color .15s linear;
 
     &:hover {
       color: darken($color--brown--dark, 15%);
+      border-bottom-color: $color--brown--dark;
     }
   }
 }

@@ -1,19 +1,26 @@
 .services-navigation {
-  list-style: none;
   font-size: 0;
+  list-style: none;
 
   &__item {
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
     display: inline-block;
+    transition: all .15s linear;
     vertical-align: top;
     white-space: nowrap;
+
+    &:hover {
+      border: 0;
+    }
   }
 
   &__link {
     @include service-colours(background);
     color: $color--white;
     display: block;
-    font-size: rem(16px);
-    padding: rem(20px);
+    font-size: rem(14px);
+    padding: rem(18px 14px);
     transition: all .15s linear;
 
     &--active {
