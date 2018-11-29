@@ -24,13 +24,13 @@
     transition: all .15s linear;
 
     &--active {
-      margin-top: rem(-10px);
-      padding: rem(30px 20px);
+      margin-top: rem(-5px);
+      padding: rem(23px 14px);
     }
 
     &:hover {
       margin-top: rem(-5px);
-      padding: rem(25px 20px);
+      padding: rem(23px 14px);
     }
   }
 }
