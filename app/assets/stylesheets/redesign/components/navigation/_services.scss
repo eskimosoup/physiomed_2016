@@ -14,10 +14,16 @@
     display: block;
     font-size: rem(16px);
     padding: rem(20px);
+    transition: all .15s linear;
 
     &--active {
       margin-top: rem(-10px);
       padding: rem(30px 20px);
+    }
+
+    &:hover {
+      margin-top: rem(-5px);
+      padding: rem(25px 20px);
     }
   }
 }

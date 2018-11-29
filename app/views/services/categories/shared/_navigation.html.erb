@@ -1,0 +1,34 @@
+<div class="service-categories-navigation <%= "service-categories-navigation--service service-categories-navigation--service--#{current_service.colour}" if defined?(current_service) %>">
+  <div class="service-categories-navigation__inner">
+    <h2 class="service-categories-navigation__title"><%= link_to facade.parent_category_title, service_categories_path %></h2>
+
+    <% if facade.parent_category? && !defined?(current_service) %>
+      <% cache ['service-categories-navigation', facade.parent_category.children.displayed] do %>
+        <ul class="service-categories-navigation-categories">
+          <% facade.parent_category.children.displayed.each do |child| %>
+            <li class="service-categories-navigation-categories__item">
+              <%= link_to child.title,
+                          service_category_path(child),
+                          class: "service-categories-navigation-categories__link  service-categories-navigation-categories__link--#{child.colour}" %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+
+    <%= render 'services/shared/navigation', services: facade.services, current_service: (defined?(current_service) ? current_service : nil) if facade.services? %>
+
+    <% if facade.offerings? && !defined?(current_service) %>
+      <ul class="service-categories-navigation-tools">
+        <%= render_cached_partial(
+              partial: 'offerings/offering',
+              collection: facade.offerings,
+              as: :offering,
+              locals: {
+                parent_class: 'service-categories-navigation-tools'
+              }
+            ) %>
+      </ul>
+    <% end %>
+  </div>
+</div>

@@ -9,10 +9,6 @@ class HomeFacade
     @banners ||= Banner.displayed.ordered_by_position
   end
 
-  def affiliates
-    @affiliates ||= service.sections.displayed.find_by(style: 'affiliates')
-  end
-
   def clients
     @clients ||= service.sections.displayed.find_by(style: 'clients')
   end
@@ -23,10 +19,6 @@ class HomeFacade
 
   def service
     @service ||= services.first
-  end
-
-  def affiliates?
-    affiliates.present?
   end
 
   def testimonials?

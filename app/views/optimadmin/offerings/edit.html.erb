@@ -1,0 +1,6 @@
+<%= render 'optimadmin/shared/help_guides/sidebar', object: Offering, area: 'edit' %>
+<%= render 'optimadmin/shared/header/main_title', title: "Edit #{Offering.model_name.human.titleize}" %>
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: { action: :index }, title: Offering.model_name.human.titleize %>
+  <%= render 'form', model: @offering %>
+</div>

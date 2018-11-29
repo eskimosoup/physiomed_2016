@@ -32,7 +32,7 @@ module Services
       ['Content items split with service colour (1 white, 1 service colour)', 'content_items_service_colour_split'],
       ['Content items with background image and timeframes', 'content_items_background_image'],
       ['Informative with icon (e.g. referral guidance)', 'informative_with_icon'],
-      ['Affiliates', 'affiliates'],
+      ['Affiliates (uses Service Pyramid > Affiliates content)', 'affiliates'],
       ['Clients', 'clients'],
       ['Tesitmonials', 'testimonials'],
     ].freeze

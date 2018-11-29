@@ -61,6 +61,8 @@
       <ul class="content-category-list">
         <%= module_link(content: Services::Category.model_name.human.pluralize.titleize, model: Services::Category, path: service_categories_path) %>
         <%= module_link(content: Service.model_name.human.pluralize.titleize, model: Service, path: services_path) %>
+        <%= module_link(content: Offering.model_name.human.pluralize.titleize, model: Offering, path: offerings_path) %>
+        <%= module_link(content: Services::Affiliate.model_name.human.pluralize.titleize, model: Services::Affiliate, path: service_affiliates_path) %>
       </ul>
       <div class="content-category-type">
         Wellbeing Zone Content

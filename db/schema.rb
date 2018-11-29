@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181129091740) do
+ActiveRecord::Schema.define(version: 20181129120404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -492,6 +492,15 @@ ActiveRecord::Schema.define(version: 20181129091740) do
     t.float    "longitude"
   end
 
+  create_table "offerings", force: :cascade do |t|
+    t.integer  "position",   default: 0
+    t.string   "title",                     null: false
+    t.string   "link",                      null: false
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
     t.string   "email",                  null: false
@@ -801,6 +810,20 @@ ActiveRecord::Schema.define(version: 20181129091740) do
 
   add_index "services", ["slug"], name: "index_services_on_slug", using: :btree
   add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
+
+  create_table "services_affiliates", force: :cascade do |t|
+    t.integer  "position",    default: 0
+    t.string   "title",                      null: false
+    t.text     "content"
+    t.string   "image"
+    t.string   "icon"
+    t.boolean  "display",     default: true
+    t.string   "subtitle"
+    t.string   "button_text"
+    t.string   "button_link"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "services_categories", force: :cascade do |t|
     t.integer  "position",           default: 0,       null: false

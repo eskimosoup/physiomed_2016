@@ -30,9 +30,7 @@ module Services
       ['Basic', 'basic'],
       ['Service colour', 'service_colour'],
       ['CTA list - service colour', 'cta_list_service_colour'],
-      ['CTA list - white', 'cta_list_white'],
-      ['Affiliate - Star bookmark icon', 'affiliate_star_bookmark_icon'],
-      ['Affiliate - NHS', 'affiliate_nhs']
+      ['CTA list - white', 'cta_list_white']
     ].freeze
 
     # validates :style, inclusion: { in: STYLES }
