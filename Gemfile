@@ -24,8 +24,7 @@ gem 'dotenv-rails'
 # gem 'autoprefixer-rails'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'lograge', '~> 0.3.5'
-# gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
-gem 'optimadmin', path: '../optimadmin'
+gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: :master
 gem 'cookie_consent', git: 'git@github.com:eskimosoup/cookie_consent.git', branch: :master
 gem 'friendly_id', '~> 5.1'
 gem 'geocoder', '~> 1.3', '>= 1.3.4'
@@ -48,8 +47,7 @@ gem 'render_anywhere'
 gem 'fog-aws'
 
 group :development do
-  # gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
-  gem 'optimadmin_generators', path: '../optimadmin_generators'
+  gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
   gem 'puma'
   gem 'quiet_assets'
   gem 'spring'
