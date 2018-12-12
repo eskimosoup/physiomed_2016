@@ -1,7 +1,7 @@
 .home-approaches {
   @include flex-grid-row;
   margin-bottom: rem(60px);
-  margin-top: rem(30px);
+  margin-top: rem(60px);
 
   &__inner {
     @include flex-grid-column(12);
