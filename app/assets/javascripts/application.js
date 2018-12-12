@@ -18,6 +18,7 @@
 //= require components/primary-navigation
 //= require components/google-analytics-events
 //= require components/gated-guide
+//= require components/header
 //= require vendor/jquery.doubletaptogo
 //= require vendor/jquery.colorbox-min.js
 //= require cocoon

@@ -1,3 +1,20 @@
+.primary-header-wrap {
+  transition: all .25s linear;
+
+  &.scroll {
+    @include generic-light-box-shadow($opacity: .25);
+    position: fixed;
+    top: 0;
+    transition: all .25s linear;
+    width: 100%;
+    z-index: 1000;
+
+    .primary-header {
+      padding-bottom: 0;
+    }
+  }
+}
+
 .primary-header-wrap,
 .primary-header {
   background-color: $color--white;
