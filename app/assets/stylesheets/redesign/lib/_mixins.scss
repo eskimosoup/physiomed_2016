@@ -227,12 +227,12 @@
   }
 }
 
-@mixin generic-service-box-shadow {
-  box-shadow: 11px 11px 57px 1px rgba($color--brown--light, .38);
+@mixin generic-service-box-shadow($opacity: .38) {
+  box-shadow: 11px 11px 57px 1px rgba($color--brown--light, $opacity);
 }
 
-@mixin generic-light-box-shadow {
-  box-shadow: 1px 2px 6px 0 $color--brown--dark;
+@mixin generic-light-box-shadow($opacity: 1) {
+  box-shadow: 1px 2px 6px 0 rgba($color--brown--dark, $opacity);
 }
 
 @mixin generic-bottom-bordered-title {
