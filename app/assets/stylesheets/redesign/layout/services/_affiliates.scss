@@ -45,14 +45,14 @@
 
   &__image {
     margin-bottom: rem(40px);
-    margin-top: rem(70px);
-    min-height: 200px;
+    margin-top: rem(40px);
+    // min-height: 200px;
+    min-height: 50px;
     position: relative;
   }
 
   &__icon {
     bottom: 0;
-    margin-top: rem(30px);
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
