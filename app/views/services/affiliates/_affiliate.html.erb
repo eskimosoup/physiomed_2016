@@ -4,7 +4,9 @@
   </h3>
 
   <div class="<%= parent_class %>__image">
-    <%= image_tag affiliate.image.url, alt: '' %>
+    <% if affiliate.image? %>
+      <%= image_tag affiliate.image.url, alt: '' %>
+    <% end %>
 
     <div class="<%= parent_class %>__icon">
       <%= image_tag affiliate.icon.url, alt: '' %>
