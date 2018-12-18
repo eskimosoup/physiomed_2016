@@ -18,8 +18,7 @@
       </li>
     </ul>
 
-
-    <% if facade.parent_category? && !defined?(current_service) && facade.category.show_children? %>
+    <% if facade.parent_category? && (facade.category.present? && facade.category.show_children?) %>
       <% cache ['service-categories-navigation', facade.parent_category.children.displayed] do %>
         <ul class="service-categories-navigation-categories">
           <% facade.parent_category.children.displayed.each do |child| %>
@@ -33,7 +32,7 @@
       <% end %>
     <% end %>
 
-    <%= render 'services/shared/navigation', services: facade.services, current_service: (defined?(current_service) ? current_service : nil) if facade.services? && facade.category.show_children? %>
+    <%= render 'services/shared/navigation', services: facade.services, current_service: (defined?(current_service) ? current_service : nil) if facade.services? &&  (facade.category.present? && facade.category.show_children?) %>
 
     <!--
       <% if facade.offerings? && !defined?(current_service) %>

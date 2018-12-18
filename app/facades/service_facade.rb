@@ -3,8 +3,9 @@ class ServiceFacade < Services::CategoryFacade
 
   delegate :style, :layout, to: :service, prefix: true
 
-  def initialize(service)
+  def initialize(service, category)
     @service = service
+    @category = category
   end
 
   def services
