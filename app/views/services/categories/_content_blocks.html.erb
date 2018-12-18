@@ -1,0 +1,161 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.home-banner__slick').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 8000,
+        arrows: false,
+        fade: true
+      });
+    });
+  </script>
+  <%= javascript_include_tag 'components/service_standards' %>
+  <%= javascript_include_tag 'components/articles/home' %>
+<% end %>
+<div class="home-banner">
+  <%= image_tag 'banner/mask.png', alt: '', class: 'banner-mask' %>
+  <%= image_tag 'layout/home/banner-images.jpg', alt: '', class: 'home-banner__image' %>
+  <div class="home-banner__inner">
+    <div class="home-banner__slick">
+      <div>
+        <div class="home-banner-content">
+          <div class="home-banner-content__inner">
+            <h1 class="home-banner-content__title">
+              We look after your staff, so your business looks after itself.
+            </h1>
+            <div class="home-banner-content__text">
+              By providing a single point of contact for the provision of
+              physiotherapy solutions, Physio Med helps employees to access
+              high quality occupational physiotherapy quickly and easily and,
+              in turn, assists businesses in reducing sickness absence levels
+              and associated costs.
+            </div>
+            <%#= link_to banner.button_text,
+                        banner.link,
+                        class: 'home-banner-content__button' if banner.link? %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="home-approaches">
+  <div class="home-approaches__inner">
+    <h2 class="home-approaches__title">
+      Award Winning Occupational Health Services
+    </h2>
+    <p class="home-approaches__content">
+      That keep your
+      <span class="home-approaches__emphasis">
+        workforce fit and well
+      </span>
+    </p>
+  </div>
+</section>
+
+<div class="what-we-do-usps">
+  <section class="what-we-do-usps__content what-we-do-usps__content--green"   data-animation-type="slideInLeft">
+    <%= link_to '#', class: 'what-we-do-usps__link' do %>
+      <h2 class="what-we-do-usps__title">
+        What
+      </h2>
+
+      <ul class="what-we-do-usps-list">
+        <li class="what-we-do-usps-list__item">
+          We prevent people going off work
+        </li>
+        <li class="what-we-do-usps-list__item">
+          We get people back to work
+        </li>
+        <li class="what-we-do-usps-list__item">
+          We keep people fit and well
+        </li>
+      </ul>
+    <% end %>
+  </section>
+  <section class="what-we-do-usps__content what-we-do-usps__content--clinical-grey what-we-do-usps__content--expanded" data-animation-type="fadeIn" data-animation-delay="400">
+    <h2 class="what-we-do-usps__title">
+      How
+    </h2>
+
+    <p class="what-we-do-usps__introduction">Choose only the services you need</p>
+
+    <div class="home-pyramid-content-structure">
+      <%= render partial: 'services/shared/pyramid_strip', collection: Service.displayed, as: :service, locals: { parent_class: 'home-pyramid-content-structure' } %>
+    </div>
+  </section>
+  <section class="what-we-do-usps__content what-we-do-usps__content--brown-light"  data-animation-type="fadeIn" data-animation-delay="800">
+    <%= link_to '#', class: 'what-we-do-usps__link' do %>
+      <h2 class="what-we-do-usps__title">
+        Why
+      </h2>
+
+      <ul class="what-we-do-usps-list">
+        <li class="what-we-do-usps-list__item">
+          Active, healthy and productive employees
+        </li>
+      </ul>
+    <% end %>
+  </section>
+  <section class="what-we-do-usps__content what-we-do-usps__content--orange"  data-animation-type="fadeIn" data-animation-delay="1200">
+    <%= link_to '#', class: 'what-we-do-usps__link' do %>
+      <h2 class="what-we-do-usps__title">
+        Benefits
+      </h2>
+
+      <ul class="what-we-do-usps-list">
+        <li class="what-we-do-usps-list__item">
+          Reduced absenteeism
+        </li>
+        <li class="what-we-do-usps-list__item">
+          Increased productivity
+        </li>
+        <li class="what-we-do-usps-list__item">
+          Visible duty of care
+        </li>
+        <li class="what-we-do-usps-list__item">
+          Employer of choice
+        </li>
+        <li class="what-we-do-usps-list__item">
+          Zero Risk
+        </li>
+        <li class="what-we-do-usps-list__item">
+          ROI 10:1
+        </li>
+      </ul>
+    <% end %>
+  </section>
+</div>
+
+<div class="what-we-do-supports">
+  <div class="what-we-do-supports__inner">
+    <div class="what-we-do-supports__content">
+      <p>
+        <strong>
+          This is an ongoing process that is supported by:
+        </strong>
+      </p>
+
+      <ul class="what-we-do-supports-technique">
+        <li class="what-we-do-supports-technique__item">
+          <p class="what-we-do-supports-technique__inner what-we-do-supports-technique__inner--secure-online-portal">
+            Secure Online Portal
+          </p>
+        </li>
+        <li class="what-we-do-supports-technique__item">
+          <p class="what-we-do-supports-technique__inner what-we-do-supports-technique__inner--clinical-governance">
+            Clinical Governance
+          </p>
+        </li>
+        <li class="what-we-do-supports-technique__item what-we-do-supports-technique__item--management-information">
+          <p class="what-we-do-supports-technique__inner what-we-do-supports-technique__inner--management-information">
+            Management Information
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
