@@ -1,5 +1,31 @@
 <%= content_for :javascript do %>
   <script>
+    var animatePyramid1, animatePyramid2, animatePyramid3;
+
+    function animatePyramid() {
+      $('.home-pyramid-content-structure__item:nth-child(8)').addClass('home-pyramid-content-structure__item--greyscale');
+      $('.home-pyramid-content-structure__item:nth-child(2)').addClass('home-pyramid-content-structure__item--greyscale');
+      $('.home-pyramid-content-structure__item:nth-child(4)').addClass('home-pyramid-content-structure__item--greyscale');
+
+      animatePyramid1 = setTimeout(function() {
+        $('.home-pyramid-content-structure__item').removeClass('home-pyramid-content-structure__item--greyscale');
+        $('.home-pyramid-content-structure__item:nth-child(1)').addClass('home-pyramid-content-structure__item--greyscale');
+        $('.home-pyramid-content-structure__item:nth-child(3)').addClass('home-pyramid-content-structure__item--greyscale');
+        $('.home-pyramid-content-structure__item:nth-child(5)').addClass('home-pyramid-content-structure__item--greyscale');
+      }, 4000);
+
+      animatePyramid2 = setTimeout(function() {
+        $('.home-pyramid-content-structure__item').removeClass('home-pyramid-content-structure__item--greyscale');
+        $('.home-pyramid-content-structure__item:nth-child(9)').addClass('home-pyramid-content-structure__item--greyscale');
+        $('.home-pyramid-content-structure__item:nth-child(4)').addClass('home-pyramid-content-structure__item--greyscale');
+        $('.home-pyramid-content-structure__item:nth-child(7)').addClass('home-pyramid-content-structure__item--greyscale');
+      }, 8000);
+
+      animatePyramid3 = setTimeout(function() {
+        $('.home-pyramid-content-structure__item').removeClass('home-pyramid-content-structure__item--greyscale');
+      }, 12000);
+    }
+
     $(document).ready(function() {
       $('.home-banner__slick').slick({
         slidesToShow: 1,
@@ -9,6 +35,14 @@
         arrows: false,
         fade: true
       });
+      animatePyramid();
+    });
+
+    $(document).on('mouseover', '.home-pyramid-content-structure__item', function() {
+      $('.home-pyramid-content-structure__item').removeClass('home-pyramid-content-structure__item--greyscale');
+      clearTimeout(animatePyramid1);
+      clearTimeout(animatePyramid2);
+      clearTimeout(animatePyramid3);
     });
   </script>
   <%= javascript_include_tag 'components/service_standards' %>
