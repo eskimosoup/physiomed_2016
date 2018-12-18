@@ -124,6 +124,7 @@
   @include media('>=1024px') {
     float: right;
     padding: rem(10px 40px 9px);
+    margin-right: rem(10px);
   }
 
   &:link,

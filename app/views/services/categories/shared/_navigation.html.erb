@@ -2,7 +2,24 @@
   <div class="service-categories-navigation__inner">
     <h2 class="service-categories-navigation__title"><%= link_to facade.parent_category_title, service_categories_path %></h2>
 
-    <% if facade.parent_category? && !defined?(current_service) %>
+
+    <ul class="service-categories-top-level-usps">
+      <li class="service-categories-top-level-usps__item">
+        <%= link_to 'What', '/services/what-we-do/we-prevent-people-going-off-work', class: 'service-categories-top-level-usps__link service-categories-top-level-usps__link--green' %>
+      </li>
+      <li class="service-categories-top-level-usps__item">
+        <%= link_to 'How', '/services/what-we-do', class: 'service-categories-top-level-usps__link service-categories-top-level-usps__link--clinical-grey' %>
+      </li>
+      <li class="service-categories-top-level-usps__item">
+        <%= link_to 'Why', '/services/what-we-do/why', class: 'service-categories-top-level-usps__link service-categories-top-level-usps__link--orange' %>
+      </li>
+      <li class="service-categories-top-level-usps__item">
+        <%= link_to 'Benefits', '/services/what-we-do/benefits', class: 'service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light' %>
+      </li>
+    </ul>
+
+
+    <% if facade.parent_category? && !defined?(current_service) && facade.category.show_children? %>
       <% cache ['service-categories-navigation', facade.parent_category.children.displayed] do %>
         <ul class="service-categories-navigation-categories">
           <% facade.parent_category.children.displayed.each do |child| %>
@@ -16,19 +33,21 @@
       <% end %>
     <% end %>
 
-    <%= render 'services/shared/navigation', services: facade.services, current_service: (defined?(current_service) ? current_service : nil) if facade.services? %>
+    <%= render 'services/shared/navigation', services: facade.services, current_service: (defined?(current_service) ? current_service : nil) if facade.services? && facade.category.show_children? %>
 
-    <% if facade.offerings? && !defined?(current_service) %>
-      <ul class="service-categories-navigation-tools">
-        <%= render_cached_partial(
-              partial: 'offerings/offering',
-              collection: facade.offerings,
-              as: :offering,
-              locals: {
-                parent_class: 'service-categories-navigation-tools'
-              }
-            ) %>
-      </ul>
-    <% end %>
+    <!--
+      <% if facade.offerings? && !defined?(current_service) %>
+        <ul class="service-categories-navigation-tools">
+          <%= render_cached_partial(
+                partial: 'offerings/offering',
+                collection: facade.offerings,
+                as: :offering,
+                locals: {
+                  parent_class: 'service-categories-navigation-tools'
+                }
+              ) %>
+        </ul>
+      <% end %>
+    -->
   </div>
 </div>
