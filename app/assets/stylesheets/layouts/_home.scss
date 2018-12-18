@@ -15,6 +15,10 @@
     padding: 0;
     text-transform: none;
 
+    @include breakpoint(medium down) {
+      font-size: rem(26px);
+    }
+
     &--centered {
       text-align: center;
       margin-bottom: rem(40px);
@@ -660,7 +664,16 @@
     margin-right: auto;
     //transform: perspective(25px) rotateX(1deg);
     text-align: center;
+    transition: all 0.5s;
     z-index: 2;
+
+    &:hover {
+      text-shadow: 0 0 5px $color--white;
+    }
+
+    @include breakpoint(medium down) {
+      font-size: rem(14px);
+    }
   }
 }
 

@@ -287,6 +287,30 @@
   }
 }
 
+@mixin triangle-large($direction, $color, $size: 6px) {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  } @else if ($direction == 'down'){
+    border-left: 1 / 1.5 * $size solid transparent;
+    border-right: 1 / 1.5 * $size solid transparent;
+    border-top: $size solid $color;
+  } @else if ($direction == 'left'){
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    border-top: $size solid transparent;
+  } @else if ($direction == 'right'){
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    border-top: $size solid transparent;
+  }
+}
+
 // https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
 
 /**

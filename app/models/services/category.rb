@@ -43,7 +43,7 @@ module Services
       ['Green', 'green']
     ].freeze
 
-    STYLES = ['basic'].freeze
+    STYLES = ['basic', 'content_blocks'].freeze
 
     validates :title, presence: true
     validates :style, inclusion: { in: STYLES }
