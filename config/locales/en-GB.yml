@@ -71,6 +71,7 @@ en-GB:
           prefix: Visit our dedicated
           suffix: Leeds Clinics website
         client_area: Client Area
+        physios_area: Physio Area
         employee_resources: Employee Resources
     pagination:
         first: "&laquo; First"
