@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'sitemap', to: 'application#sitemap'
   get 'physios', to: 'physios#index', as: :physios
 
-  get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
+  #get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
+  get 'what-we-do', to: redirect('/services/what-we-do')
 
   resources :searches, only: :new, path: 'search'
   resources :partners, only: :index

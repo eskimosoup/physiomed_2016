@@ -35,6 +35,8 @@ module Services
       ['Affiliates (uses Service Pyramid > Affiliates content)', 'affiliates'],
       ['Clients', 'clients'],
       ['Tesitmonials', 'testimonials'],
+      ['Case Studies', 'case_studies'],
+      ['Service Pyramid', 'pyramid'],
     ].freeze
 
     # TODO: Validate inclusion of array
