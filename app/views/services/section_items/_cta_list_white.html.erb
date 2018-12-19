@@ -5,21 +5,8 @@
         <%= item.title %>
       </h2>
 
-      <%#= raw item.content %>
-
-      <% # TODO: Import to TinyMCE %>
       <div class="services-turnaround services-turnaround--<%= current_service.colour %>">
-        <div class="services-turnaround__inner">
-          <p>Assessment within</p>
-          <strong>1.4</strong>
-          Working Days on Average
-          <p>Within a maximum of 3 working days</p>
-        </div>
-        <div class="services-turnaround__inner">
-          <p>Expected report return date within</p>
-          <strong>2</strong>
-          Days Normally
-        </div>
+        <%= raw item.content %>
       </div>
     </div>
   </div>
