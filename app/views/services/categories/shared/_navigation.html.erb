@@ -32,7 +32,9 @@
       <% end %>
     <% end %>
 
-    <%= render 'services/shared/navigation', services: facade.services.reorder(position: :desc), current_service: (defined?(current_service) ? current_service : nil) if facade.services? &&  facade.category.blank? %>
+    <div class="service-categories-navigation-services">
+      <%= render 'services/shared/navigation', services: facade.services.reorder(position: :desc), current_service: (defined?(current_service) ? current_service : nil) if facade.services? &&  facade.category.blank? %>
+    </div>
 
     <!--
       <% if facade.offerings? && !defined?(current_service) %>

@@ -42,6 +42,10 @@
   }
 }
 
+.service-categories-navigation-services {
+  margin: rem(20px) (map-get($grid-column-gutter, medium) / 2);
+}
+
 .service-categories-navigation-tools {
   background-color: $color--clinical-grey;
   font-family: $font--ubuntu;
