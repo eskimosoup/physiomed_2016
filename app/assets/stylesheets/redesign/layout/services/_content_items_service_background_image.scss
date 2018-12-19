@@ -84,6 +84,7 @@
 
 .services-time-required {
   @include flex-grid-row(nest);
+  justify-content: center;
   margin-bottom: rem(30px);
   margin-top: rem(30px);
 
