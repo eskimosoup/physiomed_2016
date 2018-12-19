@@ -14,7 +14,7 @@
         <%= link_to 'Why', '/services/what-we-do/why', class: 'service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light' %>
       </li>
       <li class="service-categories-top-level-usps__item">
-        <%= link_to 'Benefits', '/services/what-we-do/benefits', class: 'service-categories-top-level-usps__link service-categories-top-level-usps__link--orange' %>
+        <%= link_to 'Results', '/services/what-we-do/benefits', class: 'service-categories-top-level-usps__link service-categories-top-level-usps__link--orange' %>
       </li>
     </ul>
 
@@ -32,7 +32,7 @@
       <% end %>
     <% end %>
 
-    <%= render 'services/shared/navigation', services: facade.services, current_service: (defined?(current_service) ? current_service : nil) if facade.services? &&  (facade.category.present? && facade.category.show_children?) %>
+    <%= render 'services/shared/navigation', services: facade.services.reorder(position: :desc), current_service: (defined?(current_service) ? current_service : nil) if facade.services? &&  facade.category.blank? %>
 
     <!--
       <% if facade.offerings? && !defined?(current_service) %>

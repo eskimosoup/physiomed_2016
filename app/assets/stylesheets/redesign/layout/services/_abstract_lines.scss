@@ -69,3 +69,38 @@
     font-weight: $font--open-sans--extrabold;
   }
 }
+
+.services-case-studies {
+  margin-top: rem(40px);
+
+  @include breakpoint(large) {
+    @include flex-grid-layout(3, '.case-study');
+    display: flex;
+
+    .case-study {
+      border-bottom: 0;
+      padding-bottom: rem(60px);
+      padding-left: rem(10px);
+      padding-right: rem(10px);
+      position: relative;
+
+      .title {
+        font-size: rem(16px);
+      }
+
+      p {
+        font-size: rem(14px);
+      }
+
+      &:nth-child(2) {
+        border-left: 1px solid $color--clinical-grey;
+        border-right: 1px solid $color--clinical-grey;
+      }
+    }
+
+    .button {
+      bottom: 0;
+      position: absolute;
+    }
+  }
+}

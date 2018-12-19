@@ -1,0 +1,33 @@
+<%= content_for :head do %>
+  <%= javascript_include_tag 'components/service-pyramid' %>
+<% end %>
+
+<section class="service-pyramid">
+  <div class="home-pyramid-title">
+    <div class="home-pyramid-title__content">
+      <!-- <h2 class="home-pyramid-title__text"> -->
+      <h2 class="home-approaches__title home-approaches__title--centered">
+        <%= AdditionalContent.displayed.find_by(area: 'pyramid_introduction').title %>
+      </h2>
+    </div>
+  </div>
+  <div class="home-pyramid-content">
+    <div class="home-pyramid-content__pyramid">
+      <div class="home-pyramid-content-structure">
+        <%= render partial: 'services/shared/pyramid_strip', collection: Service.displayed, as: :service, locals: { parent_class: 'home-pyramid-content-structure' } %>
+      </div>
+    </div>
+
+    <div class="home-pyramid-content__connector">
+    </div>
+
+    <div class="home-pyramid-content__content">
+      <div class="home-pyramid-content-overlay home-pyramid-content-overlay--blue home-pyramid-content-overlay--0" id="service-0">
+        <%= raw AdditionalContent.displayed.find_by(area: 'pyramid_introduction').content %>
+        <%= link_to 'Learn more', '#test', class: 'home-pyramid-content-overlay__button' %>
+      </div>
+
+      <%= render partial: 'services/shared/pyramid_content', collection: Service.displayed, as: :service, locals: { parent_class: 'home-pyramid-content-overlay' } %>
+    </div>
+  </div>
+</section>
