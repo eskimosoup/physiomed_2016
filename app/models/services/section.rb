@@ -37,6 +37,7 @@ module Services
       ['Tesitmonials', 'testimonials'],
       ['Case Studies', 'case_studies'],
       ['Service Pyramid', 'pyramid'],
+      ['Content block with shadow', 'content_block_with_shadow'],
     ].freeze
 
     # TODO: Validate inclusion of array
