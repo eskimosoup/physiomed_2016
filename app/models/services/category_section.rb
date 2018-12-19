@@ -15,6 +15,8 @@
 
 module Services
   class CategorySection < ActiveRecord::Base
+    default_scope { order(:position) }
+
     include OptimadminScopes
 
     belongs_to :category, foreign_key: :services_category_id
