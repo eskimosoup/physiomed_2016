@@ -281,6 +281,10 @@
   margin: 0 auto;
   max-width: 98%;
 
+  @include breakpoint(medium down) {
+    margin-bottom: rem(40px);
+  }
+
   &__item {
     display: inline-block;
     font-size: rem(17px);
@@ -288,7 +292,9 @@
 
     &:last-of-type {
       .service-categories-top-level-usps__link::after {
-        display: none;
+        @include breakpoint(large) {
+          display: none;
+        }
       }
     }
   }
@@ -298,6 +304,7 @@
     padding: rem(12px);
     position: relative;
     width: 100%;
+    transition: none;
 
     &::after {
       position: absolute;
@@ -336,6 +343,22 @@
           @include triangle-large('right', $color--green, 24px);
         }
       }
+
+      &:hover {
+        background: darken($color--green, 5%);
+        color: $color--white;
+
+
+        &::after {
+          @include breakpoint(medium down) {
+            @include triangle-large('down', darken($color--green, 5%), 24px);
+          }
+
+          @include breakpoint(large) {
+            @include triangle-large('right', darken($color--green, 5%), 24px);
+          }
+        }
+      }
     }
 
     &--clinical-grey {
@@ -351,6 +374,22 @@
           @include triangle-large('right', $color--clinical-grey, 24px);
         }
       }
+
+      &:hover {
+        background: lighten($color--clinical-grey, 5%);
+        color: $color--brown--light;
+
+
+        &::after {
+          @include breakpoint(medium down) {
+            @include triangle-large('down', lighten($color--clinical-grey, 5%), 24px);
+          }
+
+          @include breakpoint(large) {
+            @include triangle-large('right', lighten($color--clinical-grey, 5%), 24px);
+          }
+        }
+      }
     }
 
     &--brown-light {
@@ -364,6 +403,22 @@
 
         @include breakpoint(large) {
           @include triangle-large('right', $color--brown--light, 24px);
+        }
+      }
+
+      &:hover {
+        background: darken($color--brown--light, 5%);
+        color: $color--white;
+
+
+        &::after {
+          @include breakpoint(medium down) {
+            @include triangle-large('down', darken($color--brown--light, 5%), 24px);
+          }
+
+          @include breakpoint(large) {
+            @include triangle-large('right', darken($color--brown--light, 5%), 24px);
+          }
         }
       }
     }
@@ -382,6 +437,27 @@
           @include triangle-large('right', $color--orange, 24px);
         }
       }
+
+      &:hover {
+        background: darken($color--orange, 5%);
+        color: $color--white;
+
+
+        &::after {
+          @include breakpoint(medium down) {
+            @include triangle-large('down', darken($color--orange, 5%), 24px);
+          }
+
+          @include breakpoint(large) {
+            @include triangle-large('right', darken($color--orange, 5%), 24px);
+          }
+        }
+      }
+    }
+
+    &:active,
+    &:focus {
+      text-decoration: underline;
     }
   }
 }

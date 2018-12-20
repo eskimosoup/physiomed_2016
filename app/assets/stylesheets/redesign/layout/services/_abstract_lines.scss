@@ -73,6 +73,12 @@
 .services-case-studies {
   margin-top: rem(40px);
 
+  @include breakpoint(medium down) {
+    .aside-wrap {
+      margin-bottom: rem(20px);
+    }
+  }
+
   @include breakpoint(large) {
     @include flex-grid-layout(3, '.case-study');
     display: flex;
