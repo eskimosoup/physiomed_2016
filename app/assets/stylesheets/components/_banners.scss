@@ -64,6 +64,10 @@
     margin-bottom: rem(10px);
     margin-top: 0;
     padding-top: 0;
+
+    &--small {
+      font-size: rem(25px);
+    }
   }
 
   &__text {
