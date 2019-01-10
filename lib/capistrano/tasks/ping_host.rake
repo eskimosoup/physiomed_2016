@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Send HEAD request to host to pre-load app for quick visiting
 namespace :ping_host do
   task :request do
     on roles(:app) do
