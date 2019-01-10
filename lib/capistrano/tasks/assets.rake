@@ -1,5 +1,3 @@
-
-
 # frozen_string_literal: true
 
 # https://gist.github.com/twetzel/66de336327f79beac0e0#gistcomment-1787791
@@ -81,4 +79,3 @@ namespace :deploy do
     end
   end
 end
-

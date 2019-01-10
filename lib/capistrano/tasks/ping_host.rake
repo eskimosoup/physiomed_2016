@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# frozen_string_literal: true
 
 # Send HEAD request to host to pre-load app for quick visiting
 namespace :ping_host do
