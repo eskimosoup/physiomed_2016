@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # https://stackoverflow.com/questions/9569070/how-to-enter-rails-console-on-production-via-capistrano
 # https://gist.github.com/joost/9343156
 namespace :rails do
@@ -7,6 +5,7 @@ namespace :rails do
 
   task :console do
     server = roles(:app)[ARGV[2].to_i]
+
 
     on roles(:app) do
       bundle_exec = "bundle exec rails console -e #{fetch(:rails_env)}"
