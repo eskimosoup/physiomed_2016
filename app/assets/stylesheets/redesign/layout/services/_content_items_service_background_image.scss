@@ -156,4 +156,11 @@
       color: $color--brown--dark;
     }
   }
+
+  &__inner-12 {
+    @include flex-grid-column(12);
+    padding-bottom: rem(20px);
+    padding-top: rem(20px);
+    text-align: left;
+  }
 }

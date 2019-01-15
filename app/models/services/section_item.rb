@@ -31,6 +31,7 @@ module Services
       ['Service colour', 'service_colour'],
       ['CTA list - service colour', 'cta_list_service_colour'],
       ['CTA list - white', 'cta_list_white']
+      ['CTA list - white 12 cols', 'cta_list_white_12_cols']
     ].freeze
 
     # validates :style, inclusion: { in: STYLES }
