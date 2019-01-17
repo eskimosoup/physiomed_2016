@@ -1,3 +1,4 @@
+/*
 if (Modernizr.mq('only screen and (min-width: 1200px)')) {
   var offsetHeight, $header, $offsetBase;
 
@@ -27,3 +28,4 @@ if (Modernizr.mq('only screen and (min-width: 1200px)')) {
     setFixedHeader();
   });
 }
+*/
