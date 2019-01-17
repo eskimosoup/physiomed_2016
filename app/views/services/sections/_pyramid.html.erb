@@ -24,7 +24,7 @@
     <div class="home-pyramid-content__content">
       <div class="home-pyramid-content-overlay home-pyramid-content-overlay--blue home-pyramid-content-overlay--0" id="service-0">
         <%= raw AdditionalContent.displayed.find_by(area: 'pyramid_introduction').content %>
-        <%= link_to 'Learn more', '#test', class: 'home-pyramid-content-overlay__button' %>
+        <%= link_to 'Learn more', '/services/what-we-do/how#section-7-34', class: 'home-pyramid-content-overlay__button' %>
       </div>
 
       <%= render partial: 'services/shared/pyramid_content', collection: Service.displayed, as: :service, locals: { parent_class: 'home-pyramid-content-overlay' } %>
