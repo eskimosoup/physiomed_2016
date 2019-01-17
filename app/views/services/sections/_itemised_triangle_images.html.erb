@@ -7,7 +7,7 @@
       </div>
     <% end %>
 
-    <div class="services-itemised-triangles">
+    <div class="services-itemised-triangles <%= 'services-itemised-triangles--continued' unless section.content? %>">
       <%= render partial: 'services/section_items/section_item',
                 collection: section.items.displayed.limit(3),
                 as: :item,
