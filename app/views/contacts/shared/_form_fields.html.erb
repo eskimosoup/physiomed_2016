@@ -3,6 +3,7 @@
   <%= f.input :telephone, as: :tel %>
   <%= f.input :email, as: :email %>
   <%= f.input :message, as: :text %>
+  <%= recaptcha_tags %>
   <div class="actions">
     <%= f.button :submit, 'Send', class: 'submit-button' %>
   </div>
