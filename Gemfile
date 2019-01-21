@@ -79,3 +79,4 @@ group :test do
 end
 
 gem 'deep_cloneable', '~> 2.3.2'
+gem "recaptcha", require: "recaptcha/rails"

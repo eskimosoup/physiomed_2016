@@ -312,6 +312,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (4.3.0)
+    recaptcha (4.13.1)
+      json
     render_anywhere (0.0.12)
       rails (>= 3.0.7)
     retriable (1.4.1)
@@ -463,6 +465,7 @@ DEPENDENCIES
   quiet_assets
   rack-mini-profiler
   rails (= 4.2.10)
+  recaptcha
   render_anywhere
   rspec-rails (~> 3.4.0)
   sassc-rails
