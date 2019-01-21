@@ -34,6 +34,7 @@ gem 'bcrypt'
 
 gem 'gibbon'
 gem 'whenever', require: false
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
