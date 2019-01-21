@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        if @contact.valid?
+        if verify_recaptcha(model: @contact) && @contact.valid?
           ContactMailer.new_contact(@contact).deliver_now
           redirect_to new_contact_path,
             notice: I18n.t('contacts.create.flash')
@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
         end
       end
       format.js do
-        if @contact.valid?
+        if verify_recaptcha(model: @contact) && @contact.valid?
           ContactMailer.new_contact(@contact).deliver_now
           @success = true
         end

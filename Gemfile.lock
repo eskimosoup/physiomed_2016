@@ -249,6 +249,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (4.3.0)
+    recaptcha (4.13.1)
+      json
     retriable (1.4.1)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
@@ -363,6 +365,7 @@ DEPENDENCIES
   quiet_assets
   rack-mini-profiler
   rails (= 4.2.9)
+  recaptcha
   rspec-rails (~> 3.4.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

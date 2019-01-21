@@ -10,12 +10,6 @@ class Contact
 
   validates :telephone, telephone: true
 
-  validate :captcha_check
-
-  def captcha_check
-    errors.add(:captcha, 'must be empty') if captcha.present?
-  end
-
 
   # validate :email_or_telephone
 
