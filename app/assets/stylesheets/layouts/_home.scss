@@ -84,6 +84,7 @@
 
   &__step {
     color: $color--brown--dark;
+    display: block;
     font-size: rem(22px);
     font-weight: $font--open-sans--semibold;
     margin-bottom: rem(16px);
