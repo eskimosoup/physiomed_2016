@@ -117,6 +117,7 @@
 
     @include breakpoint(medium down) {
       display: none;
+      // text-align: center;
     }
 
     @include breakpoint(large) {
@@ -128,6 +129,13 @@
   .page-contact-method-links {
     font-size: 0;
     margin-top: 0;
+
+    @include breakpoint(medium down) {
+      a {
+        background-image: none;
+        text-align: center;
+      }
+    }
 
     li {
       @include breakpoint(medium down) {
