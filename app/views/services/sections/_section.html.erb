@@ -1,4 +1,4 @@
-<%#= section.style if Rails.env.development? %>
+<%= section.style if Rails.env.development? %>
 <div id="section-<%= current_service.id %>-<%= section.id %>">
   <%= render "services/sections/#{section.style}", section: section, current_service: current_service %>
 </div>

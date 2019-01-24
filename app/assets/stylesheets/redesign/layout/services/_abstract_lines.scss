@@ -23,7 +23,8 @@
     @include responsive-flex-grid-column((medium down: 12, large: 4));
     font-weight: $font--open-sans--semibold;
 
-    p {
+    p,
+    li {
       font-size: rem(22px);
       margin: 0;
     }

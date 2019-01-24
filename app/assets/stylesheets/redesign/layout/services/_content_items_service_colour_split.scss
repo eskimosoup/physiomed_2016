@@ -22,6 +22,18 @@
     }
   }
 
+  &__title {
+    @include flex-grid-row;
+    @include service-colours(color);
+    font-size: rem(18px);
+    font-weight: $font--open-sans--bold;
+    text-transform: none;
+  }
+
+  &_full {
+    @include flex-grid-column(12);
+  }
+
   .services-section-item-basic {
     @include responsive-flex-grid-column((small only: 12, medium: 6));
   }

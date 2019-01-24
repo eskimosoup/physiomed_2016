@@ -7,6 +7,8 @@
 <li>
   <%= link_to 'Email us', new_contact_path, class: 'contact-method email' %>
 </li>
-<li>
-  <%= link_to 'Find a Physio', '#', class: 'contact-method find-a-physio toggle-class', data: { container: '.find-a-physio-wrap', class: 'visible', return: false } %>
-</li>
+<% unless defined?(contact_only) %>
+  <li>
+    <%= link_to 'Find a Physio', '#', class: 'contact-method find-a-physio toggle-class', data: { container: '.find-a-physio-wrap', class: 'visible', return: false } %>
+  </li>
+<% end %>

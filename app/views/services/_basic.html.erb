@@ -11,3 +11,15 @@
               current_service: facade.service
             } %>
 </div>
+
+<%= content_for :social do %>
+  <div class="service-sticky-cta">
+    <h4 class="service-sticky-cta__title">
+      Talk to our team
+    </h4>
+
+    <ul class="page-contact-method-links">
+      <%= render 'shared/contact_method_items', contact_only: true %>
+    </ul>
+  </div>
+<% end %>
