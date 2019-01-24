@@ -97,6 +97,7 @@
   z-index: 1000;
 
   @include breakpoint(large) {
+    padding: rem(15px);
     right: 0;
     top: 50%;
     transform: translateY(-50%);
@@ -109,9 +110,8 @@
 
   &__title {
     color: $color--white;
-    margin-bottom: 0;
     margin-left: rem(5px);
-    padding-bottom: rem(5px);
+    padding-bottom: rem(10px);
     padding-right: rem(40px);
     text-align: left;
 
@@ -130,8 +130,6 @@
     margin-top: 0;
 
     li {
-      padding: rem(5px);
-
       @include breakpoint(medium down) {
         display: inline-block;
         font-size: rem(12px);
@@ -139,7 +137,6 @@
       }
 
       @include breakpoint(large) {
-        border-top: 1px solid $color--white;
         font-size: rem(15px);
       }
 
