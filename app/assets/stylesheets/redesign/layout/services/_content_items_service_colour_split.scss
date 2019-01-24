@@ -24,14 +24,22 @@
 
   &__title {
     @include flex-grid-row;
-    @include service-colours(color);
-    font-size: rem(18px);
-    font-weight: $font--open-sans--bold;
-    text-transform: none;
   }
 
-  &_full {
+  &__full {
     @include flex-grid-column(12);
+  }
+
+  &__title-text {
+    border-bottom: 3px solid $color--brown--beige;
+    color: $color--brown--dark;
+    display: block;
+    font-size: rem(24px);
+    font-weight: $font--open-sans--semibold;
+    padding-bottom: rem(20px);
+    margin-bottom: rem(40px);
+    text-align: center;
+    width: 100%;
   }
 
   .services-section-item-basic {
