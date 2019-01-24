@@ -5,6 +5,7 @@
 
   p {
     font-size: rem(24px);
+    margin-bottom: rem(20px);
   }
 }
 
@@ -12,7 +13,7 @@
   @include flex-grid-row(nest);
   border-top: 3px solid $color--brown--beige;
   margin-bottom: rem(50px);
-  margin-top: rem(50px);
+  //margin-top: rem(50px);
   padding-top: rem(50px);
 
   &--continued {
