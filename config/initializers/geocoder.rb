@@ -3,6 +3,6 @@
 Geocoder.configure(
   lookup: :google,
   use_https: true,
-  api_key: ENV['GOOGLE_GEOCODER_API_KEY'],
+  api_key: ENV['PHYSIOMED_GOOGLE_GEOCODER_API_KEY'],
   timeout: 5
 )
