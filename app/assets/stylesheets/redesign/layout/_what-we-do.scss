@@ -515,6 +515,11 @@
   margin: 0 auto;
   max-width: 98%;
 
+  &--home {
+    text-align: center;
+    margin-top: rem(20px);
+  }
+
   @include breakpoint(medium down) {
     margin-bottom: rem(40px);
   }

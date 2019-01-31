@@ -18,22 +18,18 @@
 <div class="home-banner">
   <%= image_tag 'banner/mask.png', alt: '', class: 'banner-mask' %>
   <%= image_tag 'layout/home/banner-images.jpg', alt: '', class: 'home-banner__image' %>
-
   <div class="home-banner__inner">
     <div class="home-banner__slick">
       <%= render @facade.banners %>
     </div>
   </div>
-
   <%#= image_tag 'layout/home/curvy-mask.png', alt: '', class: 'home-banner__mask' %>
 </div>
-
 <section class="home-approaches">
   <div class="home-approaches__inner">
     <h2 class="home-approaches__title">
       Award Winning Occupational Health Services
     </h2>
-
     <p class="home-approaches__content">
       That keep your
       <span class="home-approaches__emphasis">
@@ -41,7 +37,6 @@
       </span>
     </p>
   </div>
-
   <div class="home-approaches__list">
     <%= render_cached_partial(
           partial: 'services/categories/category',
@@ -51,130 +46,129 @@
             parent_class: 'home-approach'
           }
         ) %>
-</section>
-
-<section class="home-pyramid">
-  <div class="home-pyramid-title">
-    <div class="home-pyramid-title__content">
-      <!-- <h2 class="home-pyramid-title__text"> -->
-      <h2 class="home-approaches__title home-approaches__title--centered">
-        <%= @facade.pyramid_introduction_title %>
+  </section>
+  <section class="home-pyramid">
+    <div class="home-pyramid-title">
+      <div class="home-pyramid-title__content">
+        <!-- <h2 class="home-pyramid-title__text"> -->
+        <h2 class="home-approaches__title home-approaches__title--centered">
+          <%= @facade.pyramid_introduction_title %>
+        </h2>
+      </div>
+    </div>
+    <div class="home-pyramid-content">
+      <div class="home-pyramid-content__pyramid">
+        <div class="home-pyramid-content-structure">
+          <%= render partial: 'services/shared/pyramid_strip', collection: @facade.services, as: :service, locals: { parent_class: 'home-pyramid-content-structure' } %>
+        </div>
+      </div>
+      <div class="home-pyramid-content__connector">
+      </div>
+      <div class="home-pyramid-content__content">
+        <div class="home-pyramid-content-overlay home-pyramid-content-overlay--blue home-pyramid-content-overlay--0" id="service-0">
+          <%= raw @facade.pyramid_introduction_content %>
+          <%= link_to 'Learn more', '#test', class: 'home-pyramid-content-overlay__button' %>
+        </div>
+        <%= render partial: 'services/shared/pyramid_content', collection: @facade.services, as: :service, locals: { parent_class: 'home-pyramid-content-overlay' } %>
+      </div>
+    </div>
+    <div class="home-pyramid-title">
+      <div class="home-pyramid-title__content">
+        <ul class="service-categories-top-level-usps-old service-categories-top-level-usps-old--home">
+          <li class="service-categories-top-level-usps-old__item">
+            <%= link_to 'What', '/services/what-we-do/we-prevent-people-going-off-work', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--green" %>
+          </li>
+          <li class="service-categories-top-level-usps-old__item ">
+            <%= link_to 'How', '/services/what-we-do/how', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--clinical-grey" %>
+          </li>
+          <li class="service-categories-top-level-usps-old__item">
+            <%= link_to 'Why', '/services/what-we-do/why', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light" %>
+          </li>
+          <li class="service-categories-top-level-usps-old__item">
+            <%= link_to 'Results', '/services/what-we-do/results', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--orange" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <%= render 'services/sections/affiliates' %>
+  <section class="home-service-standards">
+    <div class="home-service-standards__content">
+      <h2 class="home-service-standards__title">Service Standards</h2>
+    </div>
+    <div class="home-service-standards__inner">
+      <%= render @facade.service_standards %>
+    </div>
+  </section>
+  <%= render @facade.clients, current_service: @facade.service if @facade.clients? %>
+  <%= render @facade.testimonials, current_service: @facade.service if @facade.testimonials? %>
+  <section class="home-resources">
+    <%= image_tag 'layout/home/curvy-mask--footer.png', alt: '' %>
+    <div class="home-resources-grid home-resources-grid--negative-margin">
+      <div class="home-resources-grid__inner">
+        <h2 class="home-resources-grid__title" data-animation-type="slideInDown">Resources for your employees</h2>
+      </div>
+    </div>
+    <div class="home-resources-grid">
+      <div class="home-resources-grid__layout">
+        <div class="home-resource" data-animation-type="fadeIn">
+          <%= link_to '/categorisation/feeling-fab-exercises', class: 'home-resource__inner' do %>
+            <%= image_tag 'layout/home/cta-1.jpg', alt: '' %>
+            <h3 class="home-resource__title">
+              Preventing Injury
+            </h3>
+          <% end %>
+        </div>
+        <div class="home-resource" data-animation-type="fadeIn">
+          <%= link_to '/categorisation/managing-conditions', class: 'home-resource__inner' do %>
+            <%= image_tag 'layout/home/cta-2.jpg', alt: '' %>
+            <h3 class="home-resource__title">
+              Self-help for musculoskeletal conditions
+            </h3>
+          <% end %>
+        </div>
+        <div class="home-resource" data-animation-type="fadeIn">
+          <%= link_to wellbeing_zone_root_path, class: 'home-resource__inner' do %>
+            <%= image_tag 'layout/home/cta-3.jpg', alt: '' %>
+            <h3 class="home-resource__title">
+              Well-being Resources
+            </h3>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="home-find-a-physio">
+    <div class="home-find-a-physio-content">
+      <div class="home-find-a-physio-content__inner">
+        <p>Find a Physio from our network of <strong>2,500</strong> approved Physiotherapists</p>
+        <div class="home-find-a-physio-search">
+          <%= render 'physio_searches/shared/search', parent_class: 'home-find-a-physio-search' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="home-articles">
+    <div class="home-articles__inner">
+      <h2 class="home-articles__title">
+        Latest News
       </h2>
-    </div>
-  </div>
-  <div class="home-pyramid-content">
-    <div class="home-pyramid-content__pyramid">
-      <div class="home-pyramid-content-structure">
-        <%= render partial: 'services/shared/pyramid_strip', collection: @facade.services, as: :service, locals: { parent_class: 'home-pyramid-content-structure' } %>
-      </div>
-    </div>
-
-    <div class="home-pyramid-content__connector">
-    </div>
-
-    <div class="home-pyramid-content__content">
-      <div class="home-pyramid-content-overlay home-pyramid-content-overlay--blue home-pyramid-content-overlay--0" id="service-0">
-        <%= raw @facade.pyramid_introduction_content %>
-        <%= link_to 'Learn more', '#test', class: 'home-pyramid-content-overlay__button' %>
-      </div>
-
-      <%= render partial: 'services/shared/pyramid_content', collection: @facade.services, as: :service, locals: { parent_class: 'home-pyramid-content-overlay' } %>
-    </div>
-  </div>
-</section>
-
-<%= render 'services/sections/affiliates' %>
-
-<section class="home-service-standards">
-  <div class="home-service-standards__content">
-    <h2 class="home-service-standards__title">Service Standards</h2>
-  </div>
-
-  <div class="home-service-standards__inner">
-    <%= render @facade.service_standards %>
-  </div>
-</section>
-
-<%= render @facade.clients, current_service: @facade.service if @facade.clients? %>
-<%= render @facade.testimonials, current_service: @facade.service if @facade.testimonials? %>
-
-<section class="home-resources">
-  <%= image_tag 'layout/home/curvy-mask--footer.png', alt: '' %>
-
-  <div class="home-resources-grid home-resources-grid--negative-margin">
-    <div class="home-resources-grid__inner">
-      <h2 class="home-resources-grid__title" data-animation-type="slideInDown">Resources for your employees</h2>
-    </div>
-  </div>
-
-  <div class="home-resources-grid">
-    <div class="home-resources-grid__layout">
-      <div class="home-resource" data-animation-type="fadeIn">
-        <%= link_to '/categorisation/feeling-fab-exercises', class: 'home-resource__inner' do %>
-          <%= image_tag 'layout/home/cta-1.jpg', alt: '' %>
-
-          <h3 class="home-resource__title">
-            Preventing Injury
-          </h3>
-        <% end %>
-      </div>
-      <div class="home-resource" data-animation-type="fadeIn">
-        <%= link_to '/categorisation/managing-conditions', class: 'home-resource__inner' do %>
-          <%= image_tag 'layout/home/cta-2.jpg', alt: '' %>
-
-          <h3 class="home-resource__title">
-            Self-help for musculoskeletal conditions
-          </h3>
-        <% end %>
-      </div>
-      <div class="home-resource" data-animation-type="fadeIn">
-        <%= link_to wellbeing_zone_root_path, class: 'home-resource__inner' do %>
-          <%= image_tag 'layout/home/cta-3.jpg', alt: '' %>
-
-          <h3 class="home-resource__title">
-            Well-being Resources
-          </h3>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="home-find-a-physio">
-  <div class="home-find-a-physio-content">
-    <div class="home-find-a-physio-content__inner">
-      <p>Find a Physio from our network of <strong>2,500</strong> approved Physiotherapists</p>
-
-      <div class="home-find-a-physio-search">
-        <%= render 'physio_searches/shared/search', parent_class: 'home-find-a-physio-search' %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section class="home-articles">
-  <div class="home-articles__inner">
-    <h2 class="home-articles__title">
-      Latest News
-    </h2>
-
-    <div class="home-articles-slick">
-      <%= button_tag(type: 'button', class: "slick-articles slick-prev") do %>
-        <
+      <div class="home-articles-slick">
+        <%= button_tag(type: 'button', class: "slick-articles slick-prev") do %>
+          <
       <% end %>
 
       <div class="articles">
-        <%= render(
+            <%= render(
           partial: "articles/home_article",
           collection: @facade.articles,
           as: :article,
           cache: @facade.articles
         ) %>
+          </div>
+          <%= button_tag(type: 'button', class: "slick-articles slick-next") do %>
+            >
+          <% end %>
+        </div>
       </div>
-
-      <%= button_tag(type: 'button', class: "slick-articles slick-next") do %>
-        >
-      <% end %>
-    </div>
-  </div>
-</section>
+    </section>
