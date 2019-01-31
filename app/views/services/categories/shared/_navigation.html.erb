@@ -35,18 +35,16 @@
     <% end %>
 
     <% if facade.parent_category? && (facade.category.present? && facade.category.show_children?) %>
-      <% cache ['service-categories-navigation', facade.parent_category.children.displayed, facade.category] do %>
-        <ul class="service-categories-navigation-categories">
-          <% facade.parent_category.children.displayed.each do |child| %>
-            <li class="service-categories-navigation-categories__item">
-              <%= link_to child.title,
-                          service_category_path(child),
-                          # class: "service-categories-navigation-categories__link  service-categories-navigation-categories__link--#{child.colour}"
-                          class: "service-categories-navigation-categories__link service-categories-navigation-categories__link--green #{'service-categories-navigation-categories__link--active' if url_for(only_path: true) == service_category_path(child)}" %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
+      <ul class="service-categories-navigation-categories">
+        <% facade.parent_category.children.displayed.each do |child| %>
+          <li class="service-categories-navigation-categories__item">
+            <%= link_to child.title,
+                        service_category_path(child),
+                        # class: "service-categories-navigation-categories__link  service-categories-navigation-categories__link--#{child.colour}"
+                        class: "service-categories-navigation-categories__link service-categories-navigation-categories__link--green #{'service-categories-navigation-categories__link--active' if url_for(only_path: true) == service_category_path(child)}" %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
 
     <div class="service-categories-navigation-services">
