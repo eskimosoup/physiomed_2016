@@ -2,19 +2,18 @@
   <div class="service-categories-navigation__inner">
     <h2 class="service-categories-navigation__title"><%= link_to facade.parent_category_title, service_categories_path %></h2>
 
-
     <ul class="service-categories-top-level-usps">
-      <li class="service-categories-top-level-usps__item  <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/we-prevent-people-going-off-work' %>">
-        <%= link_to 'What', '/services/what-we-do/we-prevent-people-going-off-work', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--green #{'service-categories-top-level-usps__link--active' if facade.category.present? && facade.category == 1}" %>
+      <li class="service-categories-top-level-usps__item  <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && facade.category == 1 || (facade.category.root.present? && facade.category.root.id == 1) %>">
+        <%= link_to 'What', '/services/what-we-do/we-prevent-people-going-off-work', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--green" %>
       </li>
-      <li class="service-categories-top-level-usps__item  <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/how' %>">
-        <%= link_to 'How', '/services/what-we-do/how', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--clinical-grey #{'service-categories-top-level-usps__link--active' if facade.category.present? && facade.category == 2}" %>
+      <li class="service-categories-top-level-usps__item  <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && facade.category.id == 7 %>">
+        <%= link_to 'How', '/services/what-we-do/how', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--clinical-grey" %>
       </li>
-      <li class="service-categories-top-level-usps__item <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/why' %>">
-        <%= link_to 'Why', '/services/what-we-do/why', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light #{'service-categories-top-level-usps__link--active' if facade.category.present? && facade.category == 3}" %>
+      <li class="service-categories-top-level-usps__item <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && facade.category.id == 5 %>">
+        <%= link_to 'Why', '/services/what-we-do/why', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light" %>
       </li>
-      <li class="service-categories-top-level-usps__item <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/results' %>">
-        <%= link_to 'Results', '/services/what-we-do/results', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--orange #{'service-categories-top-level-usps__link--active' if facade.category.present? && facade.category == 4}" %>
+      <li class="service-categories-top-level-usps__item <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && facade.category.id == 6 %>">
+        <%= link_to 'Results', '/services/what-we-do/results', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--orange" %>
       </li>
     </ul>
 
