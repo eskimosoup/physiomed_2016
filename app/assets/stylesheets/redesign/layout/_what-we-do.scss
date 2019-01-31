@@ -285,10 +285,26 @@
     margin-bottom: rem(40px);
   }
 
+
   &__item {
     display: inline-block;
     font-size: rem(17px);
-    width: 25%;
+
+    @include breakpoint(medium down) {
+      width: 25%;
+    }
+
+    &:not(&--active) {
+      @include breakpoint(large) {
+        width: 10%;
+      }
+    }
+
+    &--active {
+      @include breakpoint(large) {
+        width: 70%;
+      }
+    }
 
     &:last-of-type {
       .service-categories-top-level-usps__link::after {
@@ -306,26 +322,57 @@
     width: 100%;
     transition: none;
 
-    &::after {
-      position: absolute;
+    &--active {
+      font-size: rem(18px);
+      font-weight: $font--open-sans--extrabold;
 
-      @include breakpoint(medium down) {
-        content: ' ';
-        bottom: -23px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 100;
+      &::after {
+        position: absolute;
+
+        @include breakpoint(medium down) {
+          content: ' ';
+          bottom: -23px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 100;
+        }
+
+        @include breakpoint(large) {
+          content: ' ';
+          right: -24px;
+          top: 1px;
+          z-index: 100;
+        }
+
+        @include breakpoint(xlarge) {
+          top: 1px;
+        }
       }
+    }
 
-      @include breakpoint(large) {
-        content: ' ';
-        right: -24px;
-        top: 1px;
-        z-index: 100;
-      }
 
-      @include breakpoint(xlarge) {
-        top: 1px;
+    &:not(&--active) {
+      &::after {
+        position: absolute;
+
+        @include breakpoint(medium down) {
+          content: ' ';
+          bottom: -23px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 100;
+        }
+
+        @include breakpoint(large) {
+          content: ' ';
+          right: -24px;
+          top: 1px;
+          z-index: 100;
+        }
+
+        @include breakpoint(xlarge) {
+          top: 1px;
+        }
       }
     }
 
