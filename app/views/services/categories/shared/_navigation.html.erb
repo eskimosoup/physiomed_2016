@@ -5,16 +5,16 @@
 
     <ul class="service-categories-top-level-usps">
       <li class="service-categories-top-level-usps__item  <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/we-prevent-people-going-off-work' %>">
-        <%= link_to 'What', '/services/what-we-do/we-prevent-people-going-off-work', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--green #{'service-categories-top-level-usps__link--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/we-prevent-people-going-off-work'}" %>
+        <%= link_to 'What', '/services/what-we-do/we-prevent-people-going-off-work', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--green #{'service-categories-top-level-usps__link--active' if facade.category.present? && facade.category == 1}" %>
       </li>
       <li class="service-categories-top-level-usps__item  <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/how' %>">
-        <%= link_to 'How', '/services/what-we-do/how', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--clinical-grey #{'service-categories-top-level-usps__link--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/how'}" %>
+        <%= link_to 'How', '/services/what-we-do/how', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--clinical-grey #{'service-categories-top-level-usps__link--active' if facade.category.present? && facade.category == 2}" %>
       </li>
       <li class="service-categories-top-level-usps__item <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/why' %>">
-        <%= link_to 'Why', '/services/what-we-do/why', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light #{'service-categories-top-level-usps__link--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/why'}" %>
+        <%= link_to 'Why', '/services/what-we-do/why', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light #{'service-categories-top-level-usps__link--active' if facade.category.present? && facade.category == 3}" %>
       </li>
       <li class="service-categories-top-level-usps__item <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/results' %>">
-        <%= link_to 'Results', '/services/what-we-do/results', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--orange #{'service-categories-top-level-usps__link--active' if facade.category.present? && service_category_path(facade.category) == '/services/what-we-do/results'}" %>
+        <%= link_to 'Results', '/services/what-we-do/results', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--orange #{'service-categories-top-level-usps__link--active' if facade.category.present? && facade.category == 4}" %>
       </li>
     </ul>
 
@@ -26,7 +26,7 @@
               <%= link_to child.title,
                           service_category_path(child),
                           # class: "service-categories-navigation-categories__link  service-categories-navigation-categories__link--#{child.colour}"
-                          class: "service-categories-navigation-categories__link  service-categories-navigation-categories__link--green" %>
+                          class: "service-categories-navigation-categories__link service-categories-navigation-categories__link--green #{'service-categories-navigation-categories__link--active' if url_for(only_path: true) == service_category_path(child)}" %>
             </li>
           <% end %>
         </ul>
