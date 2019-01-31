@@ -508,3 +508,222 @@
     }
   }
 }
+
+.service-categories-top-level-usps-old {
+  font-size: 0;
+  list-style: none;
+  margin: 0 auto;
+  max-width: 98%;
+
+  @include breakpoint(medium down) {
+    margin-bottom: rem(40px);
+  }
+
+
+  &__item {
+    display: inline-block;
+    font-size: rem(17px);
+    width: 25%;
+
+    &:last-of-type {
+      .service-categories-top-level-usps__link::after {
+        @include breakpoint(large) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: rem(12px);
+    position: relative;
+    width: 100%;
+    transition: none;
+
+    &--active {
+      font-size: rem(18px);
+      font-weight: $font--open-sans--extrabold;
+
+      &::after {
+        position: absolute;
+
+        @include breakpoint(medium down) {
+          content: ' ';
+          bottom: -23px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 100;
+        }
+
+        @include breakpoint(large) {
+          content: ' ';
+          right: -24px;
+          top: 1px;
+          z-index: 100;
+        }
+
+        @include breakpoint(xlarge) {
+          top: 1px;
+        }
+      }
+    }
+
+
+    &:not(&--active) {
+      &::after {
+        position: absolute;
+
+        @include breakpoint(medium down) {
+          content: ' ';
+          bottom: -23px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 100;
+        }
+
+        @include breakpoint(large) {
+          content: ' ';
+          right: -24px;
+          top: 1px;
+          z-index: 100;
+        }
+
+        @include breakpoint(xlarge) {
+          top: 1px;
+        }
+      }
+    }
+
+    &--green {
+      background: $color--green;
+      color: $color--white;
+
+
+      &::after {
+        @include breakpoint(medium down) {
+          @include triangle-large('down', $color--green, 24px);
+        }
+
+        @include breakpoint(large) {
+          @include triangle-large('right', $color--green, 24px);
+        }
+      }
+
+      &:hover {
+        background: darken($color--green, 5%);
+        color: $color--white;
+
+
+        &::after {
+          @include breakpoint(medium down) {
+            @include triangle-large('down', darken($color--green, 5%), 24px);
+          }
+
+          @include breakpoint(large) {
+            @include triangle-large('right', darken($color--green, 5%), 24px);
+          }
+        }
+      }
+    }
+
+    &--clinical-grey {
+      background-color: $color--clinical-grey;
+      color: $color--brown--light;
+
+      &::after {
+        @include breakpoint(medium down) {
+          @include triangle-large('down', $color--clinical-grey, 24px);
+        }
+
+        @include breakpoint(large) {
+          @include triangle-large('right', $color--clinical-grey, 24px);
+        }
+      }
+
+      &:hover {
+        background: lighten($color--clinical-grey, 5%);
+        color: $color--brown--light;
+
+
+        &::after {
+          @include breakpoint(medium down) {
+            @include triangle-large('down', lighten($color--clinical-grey, 5%), 24px);
+          }
+
+          @include breakpoint(large) {
+            @include triangle-large('right', lighten($color--clinical-grey, 5%), 24px);
+          }
+        }
+      }
+    }
+
+    &--brown-light {
+      background: $color--brown--light;
+      color: $color--white;
+
+      &::after {
+        @include breakpoint(medium down) {
+          @include triangle-large('down', $color--brown--light, 24px);
+        }
+
+        @include breakpoint(large) {
+          @include triangle-large('right', $color--brown--light, 24px);
+        }
+      }
+
+      &:hover {
+        background: darken($color--brown--light, 5%);
+        color: $color--white;
+
+
+        &::after {
+          @include breakpoint(medium down) {
+            @include triangle-large('down', darken($color--brown--light, 5%), 24px);
+          }
+
+          @include breakpoint(large) {
+            @include triangle-large('right', darken($color--brown--light, 5%), 24px);
+          }
+        }
+      }
+    }
+
+    &--orange {
+      background: $color--orange;
+      color: $color--white;
+
+
+      &::after {
+        @include breakpoint(medium down) {
+          @include triangle-large('down', $color--orange, 24px);
+        }
+
+        @include breakpoint(large) {
+          @include triangle-large('right', $color--orange, 24px);
+        }
+      }
+
+      &:hover {
+        background: darken($color--orange, 5%);
+        color: $color--white;
+
+
+        &::after {
+          @include breakpoint(medium down) {
+            @include triangle-large('down', darken($color--orange, 5%), 24px);
+          }
+
+          @include breakpoint(large) {
+            @include triangle-large('right', darken($color--orange, 5%), 24px);
+          }
+        }
+      }
+    }
+
+    &:active,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
