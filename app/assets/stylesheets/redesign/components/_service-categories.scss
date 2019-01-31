@@ -39,6 +39,11 @@
     &:hover {
       color: $color--white;
     }
+
+    &--active {
+      background-color: $color--green;
+      color: $color--white;
+    }
   }
 }
 
