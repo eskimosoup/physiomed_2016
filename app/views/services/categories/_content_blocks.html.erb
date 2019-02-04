@@ -1,31 +1,31 @@
 <%= content_for :javascript do %>
   <script>
     var animatePyramid1, animatePyramid2, animatePyramid3;
-    
+
     function animatePyramid() {
       $('.home-pyramid-content-structure__item:nth-child(8)').addClass('home-pyramid-content-structure__item--greyscale');
       $('.home-pyramid-content-structure__item:nth-child(2)').addClass('home-pyramid-content-structure__item--greyscale');
       $('.home-pyramid-content-structure__item:nth-child(4)').addClass('home-pyramid-content-structure__item--greyscale');
-    
+
       animatePyramid1 = setTimeout(function() {
         $('.home-pyramid-content-structure__item').removeClass('home-pyramid-content-structure__item--greyscale');
         $('.home-pyramid-content-structure__item:nth-child(1)').addClass('home-pyramid-content-structure__item--greyscale');
         $('.home-pyramid-content-structure__item:nth-child(3)').addClass('home-pyramid-content-structure__item--greyscale');
         $('.home-pyramid-content-structure__item:nth-child(5)').addClass('home-pyramid-content-structure__item--greyscale');
       }, 4000);
-    
+
       animatePyramid2 = setTimeout(function() {
         $('.home-pyramid-content-structure__item').removeClass('home-pyramid-content-structure__item--greyscale');
         $('.home-pyramid-content-structure__item:nth-child(9)').addClass('home-pyramid-content-structure__item--greyscale');
         $('.home-pyramid-content-structure__item:nth-child(4)').addClass('home-pyramid-content-structure__item--greyscale');
         $('.home-pyramid-content-structure__item:nth-child(7)').addClass('home-pyramid-content-structure__item--greyscale');
       }, 8000);
-    
+
       animatePyramid3 = setTimeout(function() {
         $('.home-pyramid-content-structure__item').removeClass('home-pyramid-content-structure__item--greyscale');
       }, 12000);
     }
-    
+
     $(document).ready(function() {
       $('.home-banner__slick').slick({
         slidesToShow: 1,
@@ -37,7 +37,7 @@
       });
       animatePyramid();
     });
-    
+
     $(document).on('mouseover', '.home-pyramid-content-structure__item', function() {
       $('.home-pyramid-content-structure__item').removeClass('home-pyramid-content-structure__item--greyscale');
       clearTimeout(animatePyramid1);
@@ -108,7 +108,7 @@
       <h2 class="what-we-do-usps__title">
         How
       </h2>
-      <p class="what-we-do-usps__introduction">Choose only the services you need</p>
+      <p class="what-we-do-usps__introduction">Tailored occupational health solutions</p>
     <% end %>
     <div class="home-pyramid-content-structure">
       <%= render partial: 'services/shared/pyramid_strip', collection: Service.displayed, as: :service, locals: { parent_class: 'home-pyramid-content-structure' } %>
@@ -121,7 +121,7 @@
       </h2>
       <ul class="what-we-do-usps-list">
         <li class="what-we-do-usps-list__item">
-          Active, healthy and productive employees
+          To maintain active, active, healthy and productive employees
         </li>
       </ul>
     <% end %>

@@ -9,3 +9,32 @@
   top: 0;
   z-index: 10;
 }
+
+// https://stackoverflow.com/questions/29648924/using-jquery-scroll-on-ie11-issues-with-jittery-elements
+/*Edge - works to 41.16299.402.0*/
+@supports (-ms-ime-align:auto) {
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+  }
+}
+
+/*Ie 10/11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+  }
+}
