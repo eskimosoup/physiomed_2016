@@ -14,13 +14,11 @@
 /*Edge - works to 41.16299.402.0*/
 @supports (-ms-ime-align:auto) {
   html {
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
   }
 
   body {
-    height: 100%;
-    overflow: auto;
+    min-height: 100%;
     position: relative;
   }
 }
@@ -28,13 +26,11 @@
 /*Ie 10/11*/
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   html {
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
   }
 
   body {
-    height: 100%;
-    overflow: auto;
+    min-height: 100%;
     position: relative;
   }
 }
