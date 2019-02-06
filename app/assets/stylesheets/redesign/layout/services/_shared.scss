@@ -96,14 +96,14 @@
   position: fixed;
   z-index: 1000;
 
-  @include breakpoint(large) {
+  @include breakpoint(xlarge) {
     padding: rem(15px);
     right: 0;
     top: 50%;
     transform: translateY(-50%);
   }
 
-  @include breakpoint(medium down) {
+  @include breakpoint(large down) {
     bottom: 0;
     width: 100%;
   }
@@ -115,12 +115,12 @@
     padding-right: rem(40px);
     text-align: left;
 
-    @include breakpoint(medium down) {
+    @include breakpoint(large down) {
       display: none;
       // text-align: center;
     }
 
-    @include breakpoint(large) {
+    @include breakpoint(xlarge) {
       border-bottom: 1px solid $color--white;
       font-size: rem(17px);
     }
@@ -130,7 +130,7 @@
     font-size: 0;
     margin-top: 0;
 
-    @include breakpoint(medium down) {
+    @include breakpoint(large down) {
       a {
         background-image: none;
         text-align: center;
@@ -138,13 +138,13 @@
     }
 
     li {
-      @include breakpoint(medium down) {
+      @include breakpoint(large down) {
         display: inline-block;
         font-size: rem(12px);
         width: 33%;
       }
 
-      @include breakpoint(large) {
+      @include breakpoint(xlarge) {
         font-size: rem(15px);
       }
 
