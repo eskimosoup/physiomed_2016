@@ -92,7 +92,7 @@ module Mailchimp
     end
 
     def self.gibbon
-      @gibbon ||= Gibbon::Request.new(api_key: ENV['MAILCHIMP_API_KEY'])
+      @gibbon ||= Gibbon::Request.new(api_key: ENV['PHYSIOMED_2016_MAILCHIMP_API_KEY'])
     end
 
     def self.members
