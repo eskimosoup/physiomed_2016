@@ -1,10 +1,10 @@
 @mixin border-radius-with-dark-box-shadow {
-  border-radius: 6px;
+  // border-radius: 6px;
   box-shadow: 1px 3px 3px 0 $brown;
 }
 
 @mixin border-radius-with-box-shadow {
-  border-radius: 6px;
+  // border-radius: 6px;
   box-shadow: 3px 3px 8px 4px #ccc;
 }
 

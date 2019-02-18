@@ -1,20 +1,23 @@
 .primary-header-cta {
-  margin: rem(15px);
+  margin: rem(5px);
 
   @include media('>=768px') {
-    margin: rem(25px 0 0);
+    margin: rem(21px 0 0);
   }
 
+  /*
   a {
     color: $green;
     display: inline-block;
     font-family: $open-sans;
-    font-size: rem(13px);
+    font-size: rem(14px);
     font-weight: $open-sans-bold;
     line-height: 24px;
     min-height: 24px;
   }
+  */
 }
+
 
 .primary-header-call-us {
   background: image-url('icons/phone.png') right center no-repeat;

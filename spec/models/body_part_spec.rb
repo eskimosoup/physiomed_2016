@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: body_parts
+#
+#  id                       :integer          not null, primary key
+#  tagline                  :string
+#  position                 :integer          default(0), not null
+#  display                  :boolean          default(TRUE), not null
+#  slug                     :string
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  summary                  :text
+#  body_part_sections_count :integer          default(0), not null
+#  category_id              :integer
+#
+
 require 'rails_helper'
 
 RSpec.describe BodyPart, type: :model do

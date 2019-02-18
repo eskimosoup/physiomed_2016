@@ -1,0 +1,27 @@
+<% present services_category do |services_category_presenter| %>
+  <div class="row collapse <%= cycle('odd', 'even') %>" id="item_<%= services_category_presenter.id %>">
+    <div class="columns">
+      <div class="row module-list-index collapse">
+        <div class="large-1 hide-for-medium-down columns">
+          <span class="drag-helper"></span>
+        </div>
+        <div class="columns">
+          <%= services_category_presenter.title_with_hierarchy %><br />
+          <%= services_category_presenter.manage_sections %>
+        </div>
+        <div class="large-1 small-4 text-center columns">
+          <%= services_category_presenter.toggle_link %>
+        </div>
+        <div class="large-1 small-4 text-center columns">
+          <%= services_category_presenter.view_link %>
+        </div>
+        <div class="large-1 small-4 text-center columns">
+          <%= services_category_presenter.edit_link %>
+        </div>
+        <div class="large-1 text-center columns last">
+          <%= services_category_presenter.delete_link %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

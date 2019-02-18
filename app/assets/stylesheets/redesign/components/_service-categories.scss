@@ -1,0 +1,86 @@
+.service-categories-navigation {
+  @include flex-grid-row;
+
+  &__inner {
+    @include flex-grid-column(12);
+    text-align: center;
+  }
+
+  &__title {
+    font-family: $font--ubuntu;
+    font-weight: $font--ubuntu--light;
+    margin-bottom: rem(20px);
+    text-transform: none;
+  }
+}
+
+.service-categories-navigation-categories {
+  @include flex-grid-row;
+  font-size: rem(16px);
+  font-weight: $font--ubuntu--bold;
+  list-style: none;
+  margin: rem(20px 0);
+
+  &__item {
+    @include responsive-flex-grid-column((medium down: 12, large: 4));
+  }
+
+  &__link {
+    @include service-colours(border-color);
+    @include service-colours(color);
+    @include service-colours-pseudo(hover, background-color);
+    border-style: solid;
+    border-width: 2px;
+    display: block;
+    line-height: 1.25;
+    padding: rem(10px);
+    transition: background-color .15s linear;
+
+    &:hover {
+      color: $color--white;
+    }
+
+    &--active {
+      background-color: $color--green;
+      color: $color--white;
+    }
+  }
+}
+
+.service-categories-navigation-services {
+  margin: rem(20px) (map-get($grid-column-gutter, medium) / 2);
+}
+
+.service-categories-navigation-tools {
+  background-color: $color--clinical-grey;
+  font-family: $font--ubuntu;
+  font-size: rem(14px);
+  list-style: none;
+  margin: rem(20px) (map-get($grid-column-gutter, medium) / 2);
+
+  &__item {
+    display: inline-block;
+    line-height: 1;
+    margin-bottom: rem(8px);
+    margin-top: rem(8px);
+
+    &:not(:last-of-type) {
+      border-right: 1px solid $color--brown--dark;
+    }
+  }
+
+  &__link {
+    border-bottom: 1px solid darken($color--brown--dark, 15%);
+    color: $color--brown--dark;
+    display: block;
+    line-height: 1.25;
+    margin: rem(2px 20px);
+    padding-bottom: rem(2px);
+    transition: color .15s linear;
+
+    &:hover {
+      color: darken($color--brown--dark, 15%);
+      border-bottom-color: $color--brown--dark;
+    }
+  }
+}

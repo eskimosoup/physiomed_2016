@@ -1,0 +1,31 @@
+<%= render 'optimadmin/shared/header/main_title', title: t('optimadmin.views.module.index.title', model_name: Services::CategorySectionItem.model_name.human.pluralize.titleize) %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: Services::CategorySectionItem.model_name.human.titleize, object: Services::CategorySectionItem, path: { action: :new } %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!-- <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Displayed', 'display DESC'], ['Hidden', 'display ASC']] %> -->
+    <!-- <%= render 'optimadmin/shared/module/index/recycle_bin', items: @services_category_section_items.size, path: root_url %> -->
+  </div>
+  <div class="row collapse">
+    <div class="columns">
+      <%= render 'optimadmin/shared/module/form/back', path: service_category_sections_path(@services_category_section.category), title: Services::CategorySection.model_name.human.titleize %>
+      <%= content_tag :p, @services_category_section.title %>
+    </div>
+  </div>
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    <%= list_item('') { 'Title' } %>
+    <%= list_item('large-2 hide-for-medium-down') { 'Image' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Display' } %>
+    <%= list_item('large-1 small-4 text-center') { 'View' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Edit' } %>
+    <%= list_item('large-1 text-center last') { 'Delete' } %>
+  </div>
+  <div class="module-sortable" data-module="Services::CategorySectionItem">
+    <%= render partial: 'services_category_section_item', collection: @services_category_section_items, as: :services_category_section_item, cached: true %>
+  </div>
+  <%= paginate @services_category_section_items %>
+</div>

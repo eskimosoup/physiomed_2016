@@ -1,0 +1,69 @@
+<div class="service-categories-navigation <%= "service-categories-navigation--service service-categories-navigation--service--#{current_service.colour}" if defined?(current_service) %>">
+  <div class="service-categories-navigation__inner">
+    <h2 class="service-categories-navigation__title"><%= link_to facade.parent_category_title, service_categories_path %></h2>
+
+    <% if params[:old].present? %>
+    <ul class="service-categories-top-level-usps-old">
+        <li class="service-categories-top-level-usps-old__item  <%= 'service-categories-top-level-usps-old__item--active' if facade.category.present? && facade.category == 1 || (facade.category.present? && facade.category.root.present? && facade.category.root.id == 1) %>">
+          <%= link_to 'What', '/services/what-we-do/we-prevent-people-going-off-work', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--green" %>
+        </li>
+        <li class="service-categories-top-level-usps-old__item  <%= 'service-categories-top-level-usps-old__item--active' if facade.category.present? && facade.category.id == 7 || defined?(service_show) %>">
+          <%= link_to 'How', '/services/what-we-do/how', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--clinical-grey" %>
+        </li>
+        <li class="service-categories-top-level-usps-old__item <%= 'service-categories-top-level-usps-old__item--active' if facade.category.present? && facade.category.id == 5 %>">
+          <%= link_to 'Why', '/services/what-we-do/why', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light" %>
+        </li>
+        <li class="service-categories-top-level-usps-old__item <%= 'service-categories-top-level-usps-old__item--active' if facade.category.present? && facade.category.id == 6 %>">
+          <%= link_to 'Results', '/services/what-we-do/results', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--orange" %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="service-categories-top-level-usps">
+        <li class="service-categories-top-level-usps__item  <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && facade.category == 1 || (facade.category.present? && facade.category.root.present? && facade.category.root.id == 1) %>">
+          <%= link_to 'What', '/services/what-we-do/we-prevent-people-going-off-work', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--green" %>
+        </li>
+        <li class="service-categories-top-level-usps__item  <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && facade.category.id == 7 || defined?(service_show) %>">
+          <%= link_to 'How', '/services/what-we-do/how', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--clinical-grey" %>
+        </li>
+        <li class="service-categories-top-level-usps__item <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && facade.category.id == 5 %>">
+          <%= link_to 'Why', '/services/what-we-do/why', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--brown-light" %>
+        </li>
+        <li class="service-categories-top-level-usps__item <%= 'service-categories-top-level-usps__item--active' if facade.category.present? && facade.category.id == 6 %>">
+          <%= link_to 'Results', '/services/what-we-do/results', class: "service-categories-top-level-usps__link service-categories-top-level-usps__link--orange" %>
+        </li>
+      </ul>
+    <% end %>
+
+    <% if facade.parent_category? && (facade.category.present? && facade.category.show_children?) %>
+      <ul class="service-categories-navigation-categories">
+        <% facade.parent_category.children.displayed.each do |child| %>
+          <li class="service-categories-navigation-categories__item">
+            <%= link_to child.title,
+                        service_category_path(child),
+                        # class: "service-categories-navigation-categories__link  service-categories-navigation-categories__link--#{child.colour}"
+                        class: "service-categories-navigation-categories__link service-categories-navigation-categories__link--green #{'service-categories-navigation-categories__link--active' if url_for(only_path: true) == service_category_path(child)}" %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="service-categories-navigation-services">
+      <%= render 'services/shared/navigation', services: facade.services.reorder(position: :desc), current_service: (defined?(current_service) ? current_service : nil) if (facade.services? &&  facade.category.blank?) || (facade.category.present? && facade.category.slug == 'how') %>
+    </div>
+
+    <!--
+      <% if facade.offerings? && !defined?(current_service) %>
+        <ul class="service-categories-navigation-tools">
+          <%= render_cached_partial(
+                partial: 'offerings/offering',
+                collection: facade.offerings,
+                as: :offering,
+                locals: {
+                  parent_class: 'service-categories-navigation-tools'
+                }
+              ) %>
+        </ul>
+      <% end %>
+    -->
+  </div>
+</div>

@@ -3,8 +3,8 @@
 }
 
 .social-links-inner {
-  background: image-url('banner/colour-bg.jpg') no-repeat top center;
-  background-size: 1366px 100%;
+  // background: image-url('banner/colour-bg.jpg') no-repeat top center;
+  // background-size: 1366px 100%;
   padding: rem(15px 0);
 
   @include media('>=768px') {
@@ -37,7 +37,7 @@
   position: fixed;
   right: 0;
   text-align: right;
-  z-index: 2;
+  z-index: 100;
 
   @media screen and (max-width: 1023px) and (min-height: 400px) {
     bottom: 110px;

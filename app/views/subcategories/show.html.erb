@@ -15,9 +15,9 @@
         </div>
       </div>
 
-      <% @subcategory.videos.each do |video| %>
+      <% @subcategory.subcategory_videos.order(:position).each do |subcategory_videos| %>
         <%= render partial: 'subcategories/shared/video_with_guide',
-          locals: { video: video, guide: video.guide }, cache: [@subcategory, video] %>
+          locals: { video: subcategory_videos.video, guide: subcategory_videos.video.guide }, cache: [@subcategory, subcategory_videos] %>
       <% end %>
 
       <% @subcategory.guides.each do |guide| %>

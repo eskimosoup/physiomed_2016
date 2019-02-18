@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.9'
+gem 'rails', '4.2.10'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'dotenv-rails'
 
 # gem 'autoprefixer-rails'
 gem 'normalize-rails', '~> 3.0.0'
@@ -34,7 +35,16 @@ gem 'bcrypt'
 
 gem 'gibbon'
 gem 'whenever', require: false
-gem "recaptcha", require: "recaptcha/rails"
+gem 'thin'
+
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-rbenv'
+gem 'capistrano-passenger'
+gem 'pg_search'
+gem 'pdfkit'
+gem 'render_anywhere'
+gem 'fog-aws'
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
@@ -44,13 +54,14 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'web-console'
   gem 'rack-mini-profiler'
+  gem 'letter_opener'
+  gem 'annotate'
 end
 
 group :development, :test do
   gem 'awesome_print'
   gem 'bullet'
   gem 'bundler-audit', '>= 0.5.0', require: false
-  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -66,3 +77,6 @@ group :test do
   gem 'shoulda-callback-matchers'
   gem 'simplecov', require: false
 end
+
+gem 'deep_cloneable', '~> 2.3.2'
+gem "recaptcha", require: "recaptcha/rails"

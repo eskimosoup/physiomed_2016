@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713120031) do
+ActiveRecord::Schema.define(version: 20181218162514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,14 +71,15 @@ ActiveRecord::Schema.define(version: 20180713120031) do
   add_index "articles_guides", ["guide_id"], name: "index_articles_guides_on_guide_id", using: :btree
 
   create_table "banners", force: :cascade do |t|
-    t.string   "title",                     null: false
-    t.string   "image",                     null: false
-    t.integer  "position",   default: 0,    null: false
-    t.boolean  "display",    default: true, null: false
+    t.string   "title",                             null: false
+    t.string   "image",                             null: false
+    t.integer  "position",    default: 0,           null: false
+    t.boolean  "display",     default: true,        null: false
     t.text     "summary"
     t.string   "link"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "button_text", default: "Read more"
   end
 
   create_table "body_part_sections", force: :cascade do |t|
@@ -491,6 +492,15 @@ ActiveRecord::Schema.define(version: 20180713120031) do
     t.float    "longitude"
   end
 
+  create_table "offerings", force: :cascade do |t|
+    t.integer  "position",   default: 0
+    t.string   "title",                     null: false
+    t.string   "link",                      null: false
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
     t.string   "email",                  null: false
@@ -614,6 +624,18 @@ ActiveRecord::Schema.define(version: 20180713120031) do
   add_index "pages_testimonials", ["page_id"], name: "index_pages_testimonials_on_page_id", using: :btree
   add_index "pages_testimonials", ["testimonial_id"], name: "index_pages_testimonials_on_testimonial_id", using: :btree
 
+  create_table "partners", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "image"
+    t.string   "website_url"
+    t.boolean  "display",     default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "people_helped_sections", force: :cascade do |t|
     t.string   "title",                      null: false
     t.integer  "number",                     null: false
@@ -626,6 +648,42 @@ ActiveRecord::Schema.define(version: 20180713120031) do
   end
 
   add_index "people_helped_sections", ["category_id"], name: "index_people_helped_sections_on_category_id", unique: true, using: :btree
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+
+  create_table "policies_categories", force: :cascade do |t|
+    t.integer  "position",        default: 0,    null: false
+    t.string   "title",                          null: false
+    t.integer  "documents_count", default: 0
+    t.boolean  "display",         default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "policies_categories", ["slug"], name: "index_policies_categories_on_slug", using: :btree
+
+  create_table "policies_documents", force: :cascade do |t|
+    t.integer  "policies_category_id"
+    t.integer  "position",             default: 0,    null: false
+    t.string   "title",                               null: false
+    t.text     "summary"
+    t.string   "file"
+    t.boolean  "display",              default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "policies_documents", ["policies_category_id"], name: "index_policies_documents_on_policies_category_id", using: :btree
 
   create_table "practice_applications_contacts", force: :cascade do |t|
     t.integer  "practice_id"
@@ -675,6 +733,7 @@ ActiveRecord::Schema.define(version: 20180713120031) do
     t.boolean  "domiciliary_visits"
     t.date     "public_liability_expiry_date"
     t.date     "employee_liability_expiry_date"
+    t.string   "document"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|
@@ -731,6 +790,139 @@ ActiveRecord::Schema.define(version: 20180713120031) do
     t.string   "link"
     t.string   "icon_text"
   end
+
+  create_table "services", force: :cascade do |t|
+    t.integer  "position",       default: 0
+    t.string   "title",                                  null: false
+    t.string   "colour"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "image"
+    t.boolean  "display",        default: true
+    t.string   "slug",                                   null: false
+    t.string   "suggested_url"
+    t.string   "style",          default: "basic",       null: false
+    t.string   "layout",         default: "application", null: false
+    t.integer  "sections_count", default: 0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "services", ["slug"], name: "index_services_on_slug", using: :btree
+  add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
+
+  create_table "services_affiliates", force: :cascade do |t|
+    t.integer  "position",    default: 0
+    t.string   "title",                      null: false
+    t.text     "content"
+    t.string   "image"
+    t.string   "icon"
+    t.boolean  "display",     default: true
+    t.string   "subtitle"
+    t.string   "button_text"
+    t.string   "button_link"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "services_categories", force: :cascade do |t|
+    t.integer  "position",           default: 0,       null: false
+    t.integer  "parent_id"
+    t.string   "colour"
+    t.string   "title",                                null: false
+    t.text     "summary"
+    t.text     "content"
+    t.boolean  "display",            default: true
+    t.string   "style",              default: "basic"
+    t.string   "suggested_url"
+    t.string   "slug",                                 null: false
+    t.boolean  "homepage_highlight", default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "show_children",      default: true
+  end
+
+  add_index "services_categories", ["parent_id"], name: "index_services_categories_on_parent_id", using: :btree
+  add_index "services_categories", ["slug"], name: "index_services_categories_on_slug", using: :btree
+  add_index "services_categories", ["suggested_url"], name: "index_services_categories_on_suggested_url", using: :btree
+
+  create_table "services_category_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "services_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "category_anc_desc_idx", unique: true, using: :btree
+  add_index "services_category_hierarchies", ["descendant_id"], name: "category_desc_idx", using: :btree
+
+  create_table "services_category_section_items", force: :cascade do |t|
+    t.integer  "services_category_section_id"
+    t.integer  "position",                     default: 0
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.string   "style",                        default: "basic", null: false
+    t.boolean  "display",                      default: true
+    t.string   "subtitle"
+    t.string   "button_text"
+    t.string   "button_link"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "services_category_section_items", ["services_category_section_id"], name: "index_srvcs_category_section_items_on_srvcs_category_section_id", using: :btree
+
+  create_table "services_category_sections", force: :cascade do |t|
+    t.integer  "services_category_id"
+    t.integer  "position",             default: 0
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.boolean  "display",              default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "style",                default: "basic"
+    t.string   "button_link"
+    t.string   "button_text"
+    t.string   "subtitle"
+  end
+
+  add_index "services_category_sections", ["services_category_id"], name: "index_services_category_sections_on_services_category_id", using: :btree
+
+  create_table "services_section_items", force: :cascade do |t|
+    t.integer  "services_section_id"
+    t.integer  "position",            default: 0,       null: false
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.string   "style",               default: "basic", null: false
+    t.boolean  "display",             default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "subtitle"
+    t.string   "button_text"
+    t.string   "button_link"
+  end
+
+  add_index "services_section_items", ["services_section_id"], name: "index_services_section_items_on_services_section_id", using: :btree
+
+  create_table "services_sections", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "position",            default: 0,    null: false
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.string   "style"
+    t.boolean  "display",             default: true
+    t.integer  "section_items_count", default: 0,    null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "subtitle"
+    t.string   "button_link"
+    t.string   "button_text"
+  end
+
+  add_index "services_sections", ["service_id"], name: "index_services_sections_on_service_id", using: :btree
 
   create_table "subcategories", force: :cascade do |t|
     t.string   "title",                        null: false
@@ -893,8 +1085,13 @@ ActiveRecord::Schema.define(version: 20180713120031) do
   add_foreign_key "pages_testimonials", "pages", on_delete: :cascade
   add_foreign_key "pages_testimonials", "testimonials", on_delete: :cascade
   add_foreign_key "people_helped_sections", "categories", on_delete: :cascade
+  add_foreign_key "policies_documents", "policies_categories"
   add_foreign_key "practice_applications_contacts", "practice_applications_practices", column: "practice_id", on_delete: :cascade
   add_foreign_key "practice_applications_practitioners", "practice_applications_practices", column: "practice_id", on_delete: :cascade
+  add_foreign_key "services_category_section_items", "services_category_sections"
+  add_foreign_key "services_category_sections", "services_categories"
+  add_foreign_key "services_section_items", "services_sections"
+  add_foreign_key "services_sections", "services"
   add_foreign_key "subcategories_guides", "guides"
   add_foreign_key "subcategories_guides", "subcategories"
   add_foreign_key "subcategories_videos", "subcategories"

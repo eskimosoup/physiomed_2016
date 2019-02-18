@@ -1,0 +1,31 @@
+<%= render 'cookie_consent/message', date_cookies_changed: DateTime.new(2018, 8, 20, 9, 00, 0).strftime("%Y-%m-%d %H:%M") %>
+<header class="primary-header-wrap">
+  <div class="primary-header">
+    <div class="primary-header__inner">
+      <%= link_to root_url,
+                title: global_site_settings['Name'],
+                class: 'primary-header__logo' do %>
+        <%= image_tag "logo.jpg", alt: global_site_settings['Name'] %>
+      <% end %>
+      <div class="primary-navigation">
+        <nav>
+          <ul class="primary-navigation__list">
+            <%= header_menu_items(menu_items: header_menu.menu_items) %>
+            <li class="menu-item">
+              <%= link_to 'Call Us', "tel:#{global_site_settings['Phone'].remove(' ')}", class: 'primary-navigation__call-us' %>
+            </li>
+          </ul>
+          <%= link_to t('views.header.call_to_actions.employee_resources'), '#', target: '_blank', rel: 'noopener', class: 'primary-header__resources' %>
+        </nav>
+
+        <div class="primary-header__call-to-actions">
+          <%= link_to 'https://physiotherapyinleeds.co.uk', target: '_blank', rel: 'noopener', class: 'primary-header__leeds' do %>
+            <%= t('views.header.call_to_actions.leeds_clinic.prefix') %> <strong><%= t('views.header.call_to_actions.leeds_clinic.suffix') %></strong>
+          <% end %>
+          <%= link_to t('views.header.call_to_actions.client_area'), 'http://clients.physiomed.co.uk/client-centre', target: '_blank', rel: 'noopener', class: 'primary-header__clinic-area' %>
+          <% # TODO: Find this link %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

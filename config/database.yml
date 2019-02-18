@@ -82,6 +82,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: physiomed_2016_staging
+  username: physiomed_2016_staging
+  password: <%= ENV['PHYSIOMED_2016_STAGING_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
   database: physiomed_2016_production

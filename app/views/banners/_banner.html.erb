@@ -1,14 +1,17 @@
 <% cache banner do %>
-  <div class="banner">
-    <% present banner do |banner_presenter| %>
-      <div class="banner-content-wrap">
-        <div class="banner-content">
-          <%= banner_presenter.title %>
-          <%= banner_presenter.summary %>
-          <%= banner_presenter.link(class: 'banner-read-more') %>
+  <div>
+    <div class="home-banner-content">
+      <div class="home-banner-content__inner">
+        <h1 class="home-banner-content__title">
+          <%= banner.title %>
+        </h1>
+        <div class="home-banner-content__text">
+          <%= simple_format banner.summary %>
         </div>
+        <%= link_to banner.button_text,
+                        banner.link,
+                        class: 'home-banner-content__button' if banner.link? %>
       </div>
-      <%= banner_presenter.show_image(alt: '') %>
-    <% end %>
+    </div>
   </div>
 <% end %>

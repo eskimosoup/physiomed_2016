@@ -16,16 +16,14 @@
       <% end %>
     </div>
   </div>
-
   <div class="row collapse">
     <div class="large-12 small-8 left content-categories columns">
       <div class="content-category-type">
         General Content
       </div>
-
       <ul id="modules" class="content-category-list">
-<%= module_link(content: AdditionalContent.model_name.human.pluralize.titleize, model: AdditionalContent, path: additional_contents_path) %>
-
+        <%= module_link(content: Partner.model_name.human.pluralize.titleize, model: Partner, path: partners_path) %>
+        <%= module_link(content: AdditionalContent.model_name.human.pluralize.titleize, model: AdditionalContent, path: additional_contents_path) %>
         <%= module_link(content: 'Pages', model: Page, path: pages_path) %>
         <%= module_link(content: "Articles", model: Article, path: articles_path) %>
         <%= module_link(
@@ -50,11 +48,25 @@
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>
       </ul>
-
+      <div class="content-category-type">
+        Policies
+      </div>
+      <ul class="content-category-list">
+        <%= module_link(content: Policies::Document.model_name.human.pluralize.titleize, model: Policies::Document, path: policies_documents_path) %>
+        <%= module_link(content: Policies::Category.model_name.human.pluralize.titleize, model: Policies::Category, path: policies_categories_path) %>
+      </ul>
+      <div class="content-category-type">
+        Service Pyramid
+      </div>
+      <ul class="content-category-list">
+        <%= module_link(content: Services::Category.model_name.human.pluralize.titleize, model: Services::Category, path: service_categories_path) %>
+        <%= module_link(content: Service.model_name.human.pluralize.titleize, model: Service, path: services_path) %>
+        <%= module_link(content: Offering.model_name.human.pluralize.titleize, model: Offering, path: offerings_path) %>
+        <%= module_link(content: Services::Affiliate.model_name.human.pluralize.titleize, model: Services::Affiliate, path: service_affiliates_path) %>
+      </ul>
       <div class="content-category-type">
         Wellbeing Zone Content
       </div>
-
       <ul class="content-category-list">
         <%= module_link(content: "Subcategories", model: Subcategory, path: subcategories_path) %>
         <%= module_link(content: "Categories", model: Category, path: categories_path) %>
@@ -68,30 +80,23 @@
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>
       </ul>
-
-
       <div class="content-category-type">
         Client Zone Content
       </div>
-
       <ul class="content-category-list">
         <%= module_link(content: "Additional Contents", model: ClientZone::AdditionalContent, path: client_zone_additional_contents_path) %>
         <%= module_link(content: "Services", model: ClientZone::Service, path: client_zone_services_path) %>
         <%= module_link(content: "Users", model: ClientZone::User, path: client_zone_users_path) %>
       </ul>
-
       <div class="content-category-type">
         Jobs
       </div>
-
       <ul class="content-category-list">
         <%= module_link(content: "Job Listings", model: JobListing, path: job_listings_path) %>
       </ul>
-
       <div class="content-category-type">
         Manage SEO
       </div>
-
       <ul class="content-category-list">
         <li><%= link_to 'Mailchimp (CQUIN)', mailchimp_root_path %></li>
         <%= module_link(content: "Landing Pages", model: LandingPage, path: landing_pages_path) %>

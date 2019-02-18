@@ -1,0 +1,30 @@
+
+<% present offering do |offering_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" id="item_<%= offering_presenter.id %>">
+          <div class="large-1 hide-for-medium-down columns">
+        <span class="drag-helper"></span>
+      </div>
+    
+    <div class="columns">
+      <%= offering_presenter.title %>
+    </div>
+
+    
+    <div class="large-1 small-4 text-center columns">
+      <%= offering_presenter.toggle_link %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= offering_presenter.view_link %>
+    </div>
+
+    <div class="large-1 small-4 text-center columns">
+      <%= offering_presenter.edit_link %>
+    </div>
+
+    <div class="large-1 text-center columns last">
+      <%= offering_presenter.delete_link %>
+    </div>
+  </div>
+<% end %>
+

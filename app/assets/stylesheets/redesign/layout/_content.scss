@@ -1,0 +1,36 @@
+.content-mask-wrap {
+  background: image-url('banner/mask.png') no-repeat top center;
+  padding-top: rem(140px);
+}
+
+.banner-mask {
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+// https://stackoverflow.com/questions/29648924/using-jquery-scroll-on-ie11-issues-with-jittery-elements
+/*Edge - works to 41.16299.402.0*/
+@supports (-ms-ime-align:auto) {
+  html {
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    position: relative;
+  }
+}
+
+/*Ie 10/11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  html {
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    position: relative;
+  }
+}

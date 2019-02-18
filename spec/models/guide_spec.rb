@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: guides
+#
+#  id               :integer          not null, primary key
+#  title            :string           not null
+#  content          :text
+#  image            :string
+#  file             :string           not null
+#  display          :boolean          default(TRUE), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  video_id         :integer
+#  gated            :boolean          default(FALSE)
+#  optionally_gated :boolean
+#
+
 require 'rails_helper'
 
 RSpec.describe Guide, type: :model do

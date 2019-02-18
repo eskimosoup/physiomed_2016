@@ -1,0 +1,32 @@
+<%= render 'optimadmin/shared/header/main_title', title: "Manage #{Services::SectionItem.model_name.human.pluralize.titleize} for #{content_tag :strong, @section.title} #{@section.service_title}".html_safe %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: Services::SectionItem.model_name.human.titleize, object: Services::SectionItem, path: new_section_item_path(@section) %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!-- <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Displayed', 'display DESC'], ['Hidden', 'display ASC']] %> -->
+    <!-- <%= render 'optimadmin/shared/module/index/recycle_bin', items: @services_section_items.size, path: root_url %> -->
+  </div>
+  <div class="row collapse">
+    <div class="columns">
+      <%= render 'optimadmin/shared/module/form/back', path: service_sections_path(@section.service), title: Services::Section.model_name.human.titleize %>
+      <%= content_tag :h1, @section.service_title %>
+      <%= content_tag :h2, @section.title %>
+    </div>
+  </div>
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    <%= list_item('') { 'Title' } %>
+    <%= list_item('large-2 hide-for-medium-down') { 'Image' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Display' } %>
+    <%= list_item('large-1 small-4 text-center') { 'View' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Edit' } %>
+    <%= list_item('large-1 text-center last') { 'Delete' } %>
+  </div>
+  <div class="module-sortable" data-module="Services::SectionItem">
+    <%= render partial: 'services_section_item', collection: @services_section_items, as: :services_section_item, cached: true %>
+  </div>
+  <%= paginate @services_section_items %>
+</div>

@@ -1,0 +1,25 @@
+<div class="content-mask-wrap">
+  <%= render 'services/categories/shared/navigation', facade: facade, current_service: facade.service, service_show: true %>
+
+  <%#= render 'services/shared/navigation', services: facade.services, current_service: facade.service %>
+
+  <%= render partial: 'services/sections/section',
+            collection: facade.sections,
+            as: :section,
+            cache: true,
+            locals: {
+              current_service: facade.service
+            } %>
+</div>
+
+<%= content_for :social do %>
+  <div class="service-sticky-cta">
+    <h4 class="service-sticky-cta__title">
+      Talk to our team
+    </h4>
+
+    <ul class="page-contact-method-links">
+      <%= render 'shared/contact_method_items', contact_only: true %>
+    </ul>
+  </div>
+<% end %>

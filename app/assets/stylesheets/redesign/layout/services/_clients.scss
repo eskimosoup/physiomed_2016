@@ -1,0 +1,35 @@
+.services-clients-overview {
+  @include flex-grid-row;
+  margin-bottom: rem(30px);
+  margin-top: rem(60px);
+  text-align: center;
+
+  &__inner {
+    @include flex-grid-column(12);
+
+    p {
+      font-size: rem(24px);
+      font-weight: $font--open-sans--semibold;
+    }
+  }
+
+  &__title {
+    @include generic-bottom-bordered-title;
+  }
+}
+
+.services-clients-overview-list {
+  list-style: none;
+  margin-bottom: rem(20px);
+
+  &__item {
+    display: inline-block;
+    margin-left: rem(20px);
+    margin-right: rem(20px);
+
+    img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

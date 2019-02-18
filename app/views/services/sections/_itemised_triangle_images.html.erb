@@ -1,0 +1,21 @@
+<div class="services-content">
+  <div class="services-content__inner">
+
+    <% if section.content? %>
+      <div class="services-itemised-triangle-images-content" data-animation-type="slideInDown">
+        <%= raw section.content %>
+      </div>
+    <% end %>
+
+    <div class="services-itemised-triangles <%= 'services-itemised-triangles--continued' unless section.content? %>">
+      <%= render partial: 'services/section_items/section_item',
+                collection: section.items.displayed.limit(3),
+                as: :item,
+                cache: true,
+                locals: {
+                  current_service: current_service,
+                  parent_class: 'services-itemised-triangles'
+                } %>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: client_zone_additional_contents
+#
+#  id         :integer          not null, primary key
+#  area       :string           not null
+#  title      :string
+#  content    :text
+#  display    :boolean          default(TRUE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe ClientZone::AdditionalContent, type: :model, client_zone_additional_content: true do

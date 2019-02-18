@@ -1,0 +1,113 @@
+.services-abstract-lines-background {
+  background: image-url('layout/content/lines-background.png') no-repeat center;
+  margin: rem(40px 0);
+  min-height: 153px;
+}
+
+.services-abstract-lines {
+  @include flex-grid-row;
+
+  &__inner {
+    @include flex-grid-column(12);
+  }
+
+  &__content {
+    @include flex-grid-row(collapse);
+    @include service-colours(color);
+    @include generic-service-box-shadow;
+    background-color: $color--white;
+    padding: rem(40px 25px);
+  }
+
+  &__introduction {
+    @include responsive-flex-grid-column((medium down: 12, large: 4));
+    font-weight: $font--open-sans--semibold;
+
+    p,
+    li {
+      font-size: rem(22px);
+      margin: 0;
+    }
+  }
+}
+
+.services-abstract-lines-point {
+  @include responsive-flex-grid-column((medium down: 12, large: 4));
+  @include flex-grid-row(collapse);
+  @include service-colours(border-left-color);
+
+  @include breakpoint(medium down) {
+    margin-top: rem(20px);
+  }
+
+
+  &:last-of-type {
+    @include breakpoint(large) {
+      border-left-width: 1px;
+      border-left-style: solid;
+    }
+  }
+
+  &__title {
+    @include responsive-flex-grid-column((medium down: 12, large: 2));
+    @include service-colours(color);
+    font-size: rem(65px);
+    font-weight: $font--open-sans--extrabold;
+    line-height: 1;
+    margin: 0;
+  }
+
+  &__content {
+    @include responsive-flex-grid-column((medium down: 12, large: 10));
+
+    p {
+      font-size: rem(14px);
+      margin: 0;
+    }
+  }
+
+  &__subtitle {
+    font-weight: $font--open-sans--extrabold;
+  }
+}
+
+.services-case-studies {
+  margin-top: rem(40px);
+
+  @include breakpoint(medium down) {
+    .aside-wrap {
+      margin-bottom: rem(20px);
+    }
+  }
+
+  @include breakpoint(large) {
+    @include flex-grid-layout(3, '.case-study');
+    display: flex;
+
+    .case-study {
+      border-bottom: 0;
+      padding-bottom: rem(60px);
+      padding-left: rem(10px);
+      padding-right: rem(10px);
+      position: relative;
+
+      .title {
+        font-size: rem(16px);
+      }
+
+      p {
+        font-size: rem(14px);
+      }
+
+      &:nth-child(2) {
+        border-left: 1px solid $color--clinical-grey;
+        border-right: 1px solid $color--clinical-grey;
+      }
+    }
+
+    .button {
+      bottom: 0;
+      position: absolute;
+    }
+  }
+}

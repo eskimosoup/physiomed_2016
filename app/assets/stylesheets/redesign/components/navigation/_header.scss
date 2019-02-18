@@ -1,0 +1,47 @@
+.primary-navigation {
+  padding-top: rem(68px);
+  position: relative;
+
+  @include breakpoint(medium down) {
+    @include flex-grid-column(12);
+  }
+
+  @include breakpoint(large) {
+    @include flex-grid-column(9, (large: 0));
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+  }
+
+  // EWWW. :puke:
+  .menu-item {
+    display: inline-block;
+    font-size: rem(14px);
+    padding-right: rem(14px);
+
+    .dropdown {
+      display: none;
+    }
+  }
+
+  .menu-link {
+    border-bottom: 3px solid transparent;
+    color: $color--brown--dark;
+    display: block;
+    font-family: $font--myriad-pro;
+    font-size: rem(16px);
+    transition: border .15s linear;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: $color--brown--dark;
+    }
+
+    &:active,
+    &.active {
+      border-bottom-color: $color--orange;
+    }
+  }
+}

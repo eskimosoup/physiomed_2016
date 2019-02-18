@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: people_helped_sections
+#
+#  id          :integer          not null, primary key
+#  title       :string           not null
+#  number      :integer          not null
+#  content     :text
+#  link        :string
+#  display     :boolean          default(TRUE), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#
+
 class PeopleHelpedSection < ActiveRecord::Base
   SECTIONS = [
     *BodyPart::BODY_PARTS, "Wellbeing Zone"

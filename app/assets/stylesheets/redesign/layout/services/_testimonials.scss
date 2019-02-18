@@ -1,0 +1,57 @@
+.services-testimonials {
+  @include flex-grid-row;
+  margin-bottom: rem(30px);
+  margin-top: rem(60px);
+  text-align: center;
+
+  &__inner {
+    @include flex-grid-column(12);
+  }
+
+  &__title {
+    @include generic-bottom-bordered-title;
+  }
+}
+
+.services-testimonials-list {
+  background: image-url('components/services/testimonials/quote--open.png') no-repeat top left,
+              image-url('components/services/testimonials/quote--closed.png') no-repeat bottom right;
+  margin-bottom: rem(20px);
+
+  @include breakpoint(medium down) {
+    background-size: 20px;
+  }
+
+  &__item {
+    display: inline-block;
+
+    @include breakpoint(large) {
+      margin-left: rem(20px);
+      margin-right: rem(20px);
+    }
+  }
+
+  .slick-dots {
+    position: static;
+    margin-top: rem(25px);
+  }
+}
+
+.services-tesimonials-list-testimonial {
+  &__content {
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint(large) {
+      max-width: calc(100% - 200px);
+    }
+  }
+
+  &__author {
+    font-weight: $font--open-sans--semibold;
+  }
+
+  &__role {
+    font-weight: $font--open-sans--bold;
+  }
+}
