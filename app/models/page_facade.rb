@@ -43,6 +43,10 @@ class PageFacade
     @team_members ||= page.team_members.displayed
   end
 
+  def job_listings
+    @job_listings = JobListing.displayed
+  end
+
   private
 
   def display_articles?

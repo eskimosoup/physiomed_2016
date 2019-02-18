@@ -1,0 +1,3 @@
+<%= form_for physio_search, url: physio_search_path, html: { class: "#{parent_class}__form" } do |f| %>
+  <%= f.search_field :post_code, placeholder: "Enter postcode", class: "#{parent_class}__input" %>
+<% end %>

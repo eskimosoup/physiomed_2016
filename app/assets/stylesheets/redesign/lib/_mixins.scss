@@ -1,0 +1,352 @@
+@mixin responsive-flex-grid-column($breakpoints) {
+  @each $breakpoint, $size in $breakpoints {
+    @if $breakpoint == null {
+      @include flex-grid-column($size);
+    } @else {
+      @include breakpoint($breakpoint) {
+        @include flex-grid-column($size);
+      }
+    }
+  }
+}
+
+@mixin service-colours($property) {
+  &--lilac--alternative {
+    #{$property}: $color--service-lilac--alternative;
+  }
+
+  &--orange {
+    #{$property}: $color--service-orange;
+  }
+
+  &--green {
+    #{$property}: $color--service-green;
+  }
+
+  &--black--offset {
+    #{$property}: $color--service-black--offset;
+  }
+
+  &--purple--dark {
+    #{$property}: $color--service-purple--dark;
+  }
+
+  &--blue--regular {
+    #{$property}: $color--service-blue--regular;
+  }
+
+  &--green--light {
+    #{$property}: $color--service-green--light;
+  }
+
+  &--blue--dark {
+    #{$property}: $color--service-blue--dark;
+  }
+
+  &--green--pastel {
+    #{$property}: $color--service-green--pastel;
+  }
+
+  &--lilac {
+    #{$property}: $color--service-lilac;
+  }
+
+  &--blue--slate {
+    #{$property}: $color--service-blue--slate;
+  }
+
+  &--blue--light {
+    #{$property}: $color--service-blue--light;
+  }
+}
+
+@mixin service-colours-pseudo($element, $property) {
+  &--lilac--alternative {
+    &:#{$element} {
+      #{$property}: $color--service-lilac--alternative;
+    }
+  }
+
+  &--orange {
+    &:#{$element} {
+      #{$property}: $color--service-orange;
+    }
+  }
+
+  &--green {
+    &:#{$element} {
+      #{$property}: $color--service-green;
+    }
+  }
+
+  &--black--offset {
+    &:#{$element} {
+      #{$property}: $color--service-black--offset;
+    }
+  }
+
+  &--purple--dark {
+    &:#{$element} {
+      #{$property}: $color--service-purple--dark;
+    }
+  }
+
+  &--blue--regular {
+    &:#{$element} {
+      #{$property}: $color--service-blue--regular;
+    }
+  }
+
+  &--green--light {
+    &:#{$element} {
+      #{$property}: $color--service-green--light;
+    }
+  }
+
+  &--blue--dark {
+    &:#{$element} {
+      #{$property}: $color--service-blue--dark;
+    }
+  }
+
+  &--green--pastel {
+    &:#{$element} {
+      #{$property}: $color--service-green--pastel;
+    }
+  }
+
+  &--lilac {
+    &:#{$element} {
+      #{$property}: $color--service-lilac;
+    }
+  }
+
+  &--blue--slate {
+    &:#{$element} {
+      #{$property}: $color--service-blue--slate;
+    }
+  }
+
+  &--blue--light {
+    &:#{$element} {
+      #{$property}: $color--service-blue--light;
+    }
+  }
+}
+
+@mixin service-colours-text($property) {
+  //$color--service-purple--dark-text: choose-contrast-color($color--service-purple--dark);
+  //$color--service-blue--regular-text: choose-contrast-color($color--service-blue--regular);
+  //$color--service-green--light-text: choose-contrast-color($color--service-green--light);
+  //$color--service-blue--dark-text: choose-contrast-color($color--service-blue--dark);
+  //$color--service-green--pastel-text: choose-contrast-color($color--service-green--pastel);
+  //$color--service-lilac-text: choose-contrast-color($color--service-lilac);
+  //$color--service-blue--slate-text: choose-contrast-color($color--service-blue--slate);
+  //$color--service-blue--light-text: choose-contrast-color($color--service-blue--light);
+
+  $color--service-lilac--alternative-text: $color--white;
+  $color--service-orange-text: $color--white;
+  $color--service-green-text: $color--white;
+  $color--service-black--offset-text: $color--white;
+  $color--service-purple--dark-text: $color--white;
+  $color--service-blue--regular-text: $color--white;
+  $color--service-green--light-text: $color--white;
+  $color--service-blue--dark-text: $color--white;
+  $color--service-green--pastel-text: $color--white;
+  $color--service-lilac-text: $color--white;
+  $color--service-blue--slate-text: $color--white;
+  $color--service-blue--light-text: $color--white;
+
+  &--lilac--alternative {
+    #{$property}: $color--service-lilac--alternative-text;
+  }
+
+  &--orange {
+    #{$property}: $color--service-orange-text;
+  }
+
+  &--green {
+    #{$property}: $color--service-green-text;
+  }
+
+  &--black--offset {
+    #{$property}: $color--service-black--offset-text;
+  }
+
+  &--purple--dark {
+    #{$property}: $color--service-purple--dark-text;
+  }
+
+  &--blue--regular {
+    #{$property}: $color--service-blue--regular-text;
+  }
+
+  &--green--light {
+    #{$property}: $color--service-green--light-text;
+  }
+
+  &--blue--dark {
+    #{$property}: $color--service-blue--dark-text;
+  }
+
+  &--green--pastel {
+    #{$property}: $color--service-green--pastel-text;
+  }
+
+  &--lilac {
+    #{$property}: $color--service-lilac-text;
+  }
+
+  &--blue--slate {
+    #{$property}: $color--service-blue--slate-text;
+  }
+
+  &--blue--light {
+    #{$property}: $color--service-blue--light-text;
+  }
+}
+
+@mixin green-title-box {
+  @include generic-light-box-shadow;
+  background-color: $color--green;
+  border-radius: $global-border-radius / 2;
+  color: $color--white;
+  display: inline-block;
+  font-size: rem(22px);
+  font-weight: $font--open-sans--semibold;
+  margin-bottom: rem(90px);
+  padding: rem(30px 35px);
+  position: relative;
+  text-transform: none;
+
+  &::after {
+    @include triangle('down', $color--green, 32px);
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@mixin generic-service-box-shadow($opacity: .38) {
+  box-shadow: 11px 11px 57px 1px rgba($color--brown--light, $opacity);
+}
+
+@mixin generic-light-box-shadow($opacity: 1) {
+  box-shadow: 1px 2px 6px 0 rgba($color--brown--dark, $opacity);
+}
+
+@mixin generic-bottom-bordered-title {
+  border-bottom: 3px solid $color--green;
+  font-size: rem(24px);
+  font-weight: $font--open-sans--semibold;
+  margin-bottom: rem(20px);
+  padding-bottom: rem(20px);
+  text-transform: none;
+}
+
+@mixin generic-grey-button {
+  background-color: $color--brown--beige;
+  border-radius: $global-border-radius--small / 2;
+  color: $color--white;
+  display: inline-block;
+  font-family: $font--ubuntu;
+  margin-top: rem(20px);
+  padding: rem(6px 8px);
+
+  &:hover,
+  &:focus {
+    background-color: $color--brown--light;
+  }
+
+  &:active {
+    background-color: $color--brown--dark;
+  }
+}
+
+@mixin triangle($direction, $color, $size: 6px) {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: 1 / 2 * $size solid transparent;
+    border-right: 1 / 2 * $size solid transparent;
+  } @else if ($direction == 'down'){
+    border-left: 1 / 1.5 * $size solid transparent;
+    border-right: 1 / 1.5 * $size solid transparent;
+    border-top: $size solid $color;
+  } @else if ($direction == 'left'){
+    border-bottom: 1 / 2 * $size solid transparent;
+    border-right: $size solid $color;
+    border-top: 1 / 2 * $size solid transparent;
+  } @else if ($direction == 'right'){
+    border-bottom: 1 / 2 * $size solid transparent;
+    border-left: $size solid $color;
+    border-top: 1 / 2 * $size solid transparent;
+  }
+}
+
+@mixin triangle-large($direction, $color, $size: 6px) {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  } @else if ($direction == 'down'){
+    border-left: 1 / 1.5 * $size solid transparent;
+    border-right: 1 / 1.5 * $size solid transparent;
+    border-top: $size solid $color;
+  } @else if ($direction == 'left'){
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    border-top: $size solid transparent;
+  } @else if ($direction == 'right'){
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    border-top: $size solid transparent;
+  }
+}
+
+// https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+@function luminance($color) {
+  $red: nth($linear-channel-values, red($color) + 1);
+  $green: nth($linear-channel-values, green($color) + 1);
+  $blue: nth($linear-channel-values, blue($color) + 1);
+
+  @return .2126 * $red + .7152 * $green + .0722 * $blue;
+}
+
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+@function contrast($back, $front) {
+  $back-lum: luminance($back) + .05;
+  $fore-lum: luminance($front) + .05;
+
+  @return max($back-lum, $fore-lum) / min($back-lum, $fore-lum);
+}
+
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns black for dark text and white for light text.
+ */
+@function choose-contrast-color($color) {
+  $light-contrast: contrast($color, $color--white);
+  $dark-contrast: contrast($color, $color--black);
+
+  @if ($light-contrast > $dark-contrast) {
+    @return $color--white;
+  } @else {
+    @return $color--black;
+  }
+}

@@ -12,19 +12,27 @@
 @mixin prev-button {
   position: absolute;
   top: 50%;
-  left: 0;
   z-index: 1;
+}
+
+@mixin next-button {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+button.slick-prev.slick-health-zone,
+button.slick-prev.slick-team-members {
+  left: 0;
 
   @include media('>=768px') {
     left: 1%;
   }
 }
 
-@mixin next-button {
-  position: absolute;
-  top: 50%;
+button.slick-next.slick-health-zone,
+button.slick-next.slick-team-members {
   right: 0;
-  z-index: 1;
 
   @include media('>=768px') {
     right: 1%;

@@ -11,7 +11,7 @@
   @include media('>=1024px') {
     padding: rem(60px 0 70px);
     height: 489px;
-    overflow: hidden;    
+    overflow: hidden;
   }
 }
 
@@ -40,7 +40,7 @@
   img {
     @include media('<768px') {
       float: left;
-      margin: rem(-10px 15px 0 0);
+      margin-right: rem(15px);
     }
   }
 
@@ -49,11 +49,8 @@
     text-align: left;
 
     @include media('>=768px') {
-      text-align: center;
-    }
-
-    @include media('>=1024px') {
       font-size: rem(16px);
+      text-align: center;
     }
   }
 

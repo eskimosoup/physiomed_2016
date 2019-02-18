@@ -1,0 +1,32 @@
+<%= render 'optimadmin/shared/header/main_title', title: "Manage #{Services::Section.model_name.human.pluralize.titleize} for #{content_tag :strong, @service.title}".html_safe %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: Services::Section.model_name.human.titleize, object: Services::Section, path: new_service_section_path(@service) %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!-- <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Displayed', 'display DESC'], ['Hidden', 'display ASC']] %> -->
+    <!-- <%= render 'optimadmin/shared/module/index/recycle_bin', items: @services_sections.size, path: root_url %> -->
+  </div>
+
+  <div class="row collapse">
+    <div class="columns">
+      <%= content_tag :h1, @service.title %>
+    </div>
+  </div>
+
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    <%= list_item('') { 'Title' } %>
+    <%= list_item('large-2 hide-for-medium-down') { 'Image' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Display' } %>
+    <%= list_item('large-1 small-4 text-center') { 'View' } %>
+    <%= list_item('large-1 small-4 text-center') { 'Edit' } %>
+    <%= list_item('large-1 text-center last') { 'Delete' } %>
+  </div>
+  <div class="module-sortable" data-module="Services::Section">
+    <%= render partial: 'services_section', collection: @services_sections, as: :services_section, cached: true %>
+  </div>
+  <%= paginate @services_sections %>
+</div>

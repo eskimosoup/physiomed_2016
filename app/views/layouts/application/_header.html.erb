@@ -25,11 +25,24 @@
         }
       }, '.primary-header-navigation li');
     }
+    $(document).on('click', '.primary-header-search-toggle__button', function() {
+      if($('.primary-header-search-phone-toggle__phone').is(':visible')) {
+        $('.primary-header-search-phone-toggle__phone').fadeToggle(125, function() {
+          $('.header-search-form').fadeToggle().css('display', 'inline-block');
+        })
+      } else {
+        $('.header-search-form').fadeToggle(125, function() {
+          $('.primary-header-search-phone-toggle__phone').fadeToggle().css('display', 'inline-block');
+        })
+      }
+
+      return false;
+    });
   </script>
 <% end %>
 
-
-<header class="primary-header">
+<header class="primary-header-wrap">
+<div class="primary-header">
   <div class="primary-header-content-wrap">
     <div class="primary-header-branding">
       <%= link_to root_url, title: "Physio Med" do %>
@@ -54,10 +67,20 @@
         </nav>
 
         <div class="primary-header-cta">
-          <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'primary-header-call-us' %>
-          <%= link_to 'Find Us', new_contact_path(anchor: 'map-canvas'), class: 'primary-header-find-us' %>
+          <div class="primary-header-search-phone-toggle">
+            <div class="primary-header-search-phone-toggle__phone">
+              <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}", class: 'primary-header-search-phone-toggle__calltracks' %>
+            </div>
+            <div class="primary-header-search-toggle">
+              <%= render 'searches/shared/header_form' %>
+              <%= link_to (image_tag 'components/icons/search.png', alt: 'Search'), '#header-search-form', class: 'primary-header-search-toggle__button' %>
+            </div>
+          </div>
+
+          <%#= link_to 'Find Us', new_contact_path(anchor: 'map-canvas'), class: 'primary-header-find-us' %>
         </div>
       </div>
     </div>
   </div>
+</div>
 </header>

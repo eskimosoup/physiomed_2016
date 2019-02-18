@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: service_standards
+#
+#  id            :integer          not null, primary key
+#  icon          :string           not null
+#  content       :text             not null
+#  hover_content :text             not null
+#  position      :integer          default(0), not null
+#  display       :boolean          default(TRUE), not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  link          :string
+#  icon_text     :string
+#
+
 class ServiceStandard < ActiveRecord::Base
   ICONS = %w( calendar clock document flexible heart map_pin stopwatch none ).freeze
 

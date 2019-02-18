@@ -1,0 +1,32 @@
+Service
+- position
+- title
+- colour
+- summary
+- content
+- image
+- display
+- slug
+- suggested url
+- style
+- layout
+- sections_count
+
+Services::Section
+- service: belongs_to
+- position
+- title
+- content
+- image
+- style
+- display
+- section_items_count
+
+Services::SectionItem
+- services_section: belongs_to
+- position
+- title
+- content
+- image
+- style
+- display:boolean

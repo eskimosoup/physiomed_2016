@@ -1,0 +1,76 @@
+
+<footer>
+  <div class="mobile-clinic-and-client-area-buttons">
+    <%= render 'shared/clinic_and_client_area_buttons' %>
+  </div>
+
+  <!--
+  <div class="social-links-wrap">
+    <div class="social-links-inner">
+      <div class="social-links">
+        <ul class="social-links-list">
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/facebook.png', alt: 'Facebook'), global_site_settings['Facebook'], title: 'Facebook') if global_site_settings['Facebook'] %>
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/twitter.png', alt: 'Twitter'), "http://twitter.com/#{global_site_settings['Twitter'].tr('@', '')}", title: 'Twitter') if global_site_settings['Twitter'] %>
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/pinterest.png', alt: 'Pinterest'), global_site_settings['Pinterest'], title: 'Pinterest') if global_site_settings['Pinterest'] %>
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/linked-in.png', alt: 'LinkedIn'), global_site_settings['LinkedIn'], title: 'LinkedIn') if global_site_settings['LinkedIn'] %>
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/youtube.png', alt: 'YouTube'), global_site_settings['YouTube'], title: 'YouTube') if global_site_settings['YouTube'] %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <div class="footer-container">
+    <h2 class="text-center awards-title">Awards & Memberships</h2>
+  </div>
+
+  <div class="awards-container">
+    <%= image_tag 'placeholders/awards-and-accreditations.jpg', alt: '' %>
+  </div>
+
+  <div class="footer-container small-print">
+    <p>
+      &copy; <%= Date.today.year %> Physio Med Limited
+    </p>
+
+    <ul class="footer-navigation">
+      <%= nested_menu_items(menu_items: footer_menu.menu_items) %>
+    </ul>
+
+    <p class="physiotherapists-small-print">
+      All of our Physiotherapists are registered with the health and Care Professional Council
+      and meet their standards.  Our Physiotherapists are registered with the Chartered Society
+      of Physiotherapy and meet their standards.
+    </p>
+  </div>
+</footer>
+
+<% if content_for?(:social) %>
+  <%= yield :social %>
+<% else %>
+  <div class="social-methods">
+    <%= link_to 'Get in Touch',  new_contact_path, class: 'get-in-touch-action contact-action' %>
+    <%= link_to 'Find a Physio', '#', class: 'find-a-physio-action contact-action toggle-class', data: { container: '.find-a-physio-wrap', class: 'visible', return: false } %>
+  </div>
+<% end %>
+
+<div class="inline-modal find-a-physio-wrap">
+  <div class="inline-modal-content find-a-physio">
+    <%= button_tag class: 'inline-modal-close-button toggle-class', data: { class: 'visible', container: '.find-a-physio-wrap', return: false }, aria: { label: 'Close modal' }, type: 'button' do %>
+      <span aria-hidden="true">&times;</span>
+    <% end %>
+
+    <h2 class="white">
+      Find a Physiotherapist<br>
+      <span class="green">Near you</span>
+    </h2>
+    <%= render(
+      partial: "physio_searches/form",
+      locals:
+      {
+        physio_search: @physio_search
+      }
+    ) %>
+  </div>
+</div>
+

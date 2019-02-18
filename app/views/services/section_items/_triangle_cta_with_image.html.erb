@@ -1,0 +1,16 @@
+<div class="<%= parent_class %>__inner" data-animation-type="slideInUp" data-animation-delay="<%= item_counter * 250 %>">
+  <div class="<%= parent_class %>__content <%= parent_class %>__content--<%= current_service.colour %>">
+
+    <div class="<%= parent_class %>-image <%= parent_class %>-image--<%= current_service.colour %>">
+      <div class="<%= parent_class %>-image__inner">
+        <%= image_tag item.image.triangle.url, alt: item.title %>
+      </div>
+    </div>
+
+    <div class="<%= parent_class %>__title <%= parent_class %>__title--<%= current_service.colour %>">
+      <%= item.title %>
+    </div>
+
+    <%= raw item.content %>
+  </div>
+</div>

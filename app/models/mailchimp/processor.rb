@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: mailchimp_processors
+#
+#  id          :integer          not null, primary key
+#  in_progress :boolean
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 module Mailchimp
   class Processor < ActiveRecord::Base
     MAILCHIMP_LIST = '86b326da38'
@@ -82,7 +92,7 @@ module Mailchimp
     end
 
     def self.gibbon
-      @gibbon ||= Gibbon::Request.new(api_key: ENV['MAILCHIMP_API_KEY'])
+      @gibbon ||= Gibbon::Request.new(api_key: ENV['PHYSIOMED_2016_MAILCHIMP_API_KEY'])
     end
 
     def self.members

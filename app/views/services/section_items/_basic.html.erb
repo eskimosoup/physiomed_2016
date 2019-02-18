@@ -1,0 +1,11 @@
+<div class="services-section-item-basic" data-animation-type="zoomIn">
+  <div class="services-section-item-basic__inner">
+    <% if item.title? %>
+      <h2 class="services-section-item-basic__title services-section-item-basic__title--<%= current_service.colour %>">
+        <%= item.title %>
+      </h2>
+    <% end %>
+
+    <%= raw item.content %>
+  </div>
+</div>

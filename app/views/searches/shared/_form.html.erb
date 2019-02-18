@@ -1,0 +1,10 @@
+<%= form_tag new_search_path, method: :get, class: 'search-form' do %>
+  <div class="field search-form__field">
+    <%= label_tag :query, 'Search term' %>
+    <%= text_field_tag :query, params[:query], class: 'search-form__input' %>
+  </div>
+
+  <div class="actions search-form__actions">
+    <%= submit_tag 'Search', class: 'search-form__submit' %>
+  </div>
+<% end %>

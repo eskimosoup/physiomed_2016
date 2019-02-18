@@ -1,0 +1,21 @@
+<div class="<%= parent_class %>">
+  <h3 class="<%= parent_class %>__title">
+    <%= affiliate.title %>
+  </h3>
+
+  <div class="<%= parent_class %>__image">
+    <% if affiliate.image? %>
+      <%= image_tag affiliate.image.url, alt: '' %>
+    <% end %>
+
+    <div class="<%= parent_class %>__icon">
+      <%= image_tag affiliate.icon.url, alt: '' %>
+    </div>
+  </div>
+
+  <div class="<%= parent_class %>__content">
+    <%= raw affiliate.content %>
+  </div>
+
+  <%= link_to affiliate.button_text, affiliate.button_link, class: "#{parent_class}__link" if affiliate.button_link? %>
+</div>

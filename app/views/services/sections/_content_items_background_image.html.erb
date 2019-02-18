@@ -1,0 +1,12 @@
+<div class="services-content-items-background-image" <%= "style=background-image:url(#{section.image.url})" if section.image? %>>
+  <div class="services-content-items-background-image__inner">
+    <%= render partial: 'services/section_items/section_item',
+                    collection: section.items.displayed.limit(2),
+                    as: :item,
+                    cache: true,
+                    locals: {
+                      current_service: current_service,
+                        parent_class: 'services-abstract-lines'
+                    } %>
+  </div>
+</div>

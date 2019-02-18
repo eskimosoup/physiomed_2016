@@ -1,0 +1,20 @@
+
+<div class="services-content-items-colour-split" <%= "style=background-image:url(#{section.image.url})" if section.image? %>>
+  <% if section.title? %>
+    <div class="services-content-items-colour-split__title services-content-items-colour-split__title--<%= current_service.colour %>">
+      <div class="services-content-items-colour-split__title-text">
+        <%= section.title %>
+      </div>
+    </div>
+  <% end %>
+  <div class="services-content-items-colour-split__inner">
+    <%= render partial: 'services/section_items/section_item',
+                    collection: section.items.displayed.limit(2),
+                    as: :item,
+                    cache: true,
+                    locals: {
+                      current_service: current_service,
+                        parent_class: 'services-abstract-lines'
+                    } %>
+  </div>
+</div>

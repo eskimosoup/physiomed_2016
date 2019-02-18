@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: landing_pages
+#
+#  id             :integer          not null, primary key
+#  title          :string           not null
+#  content        :text
+#  image          :string
+#  style          :string           not null
+#  layout         :string           not null
+#  display        :boolean          default(TRUE), not null
+#  slug           :string
+#  suggested_url  :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  sections_count :integer          default(0), not null
+#
+
 require 'rails_helper'
 
 RSpec.describe LandingPage, type: :model do

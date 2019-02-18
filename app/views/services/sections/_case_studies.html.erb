@@ -1,0 +1,19 @@
+<div class="services-abstract-lines-background">
+  <div class="services-abstract-lines" data-animation-type="fadeIn" data-animation-delay="250">
+    <div class="services-abstract-lines__inner">
+      <div class="services-abstract-lines__content">
+        <div class="services-abstract-lines__introduction">
+          <h1><%= link_to 'Case Studies', case_studies_path %></h1>
+        </div>
+
+        <div class="services-case-studies">
+          <%= render(
+              partial: "case_studies/case_study",
+              collection: CaseStudy.displayed.order(date: :desc).limit(3),
+              as: :case_study
+            ) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

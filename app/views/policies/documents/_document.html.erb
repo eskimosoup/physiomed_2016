@@ -1,0 +1,25 @@
+<div class="<%= parent_class %>">
+  <h2 class="<%= parent_class %>__title">
+    <%= document.title %>
+  </h2>
+
+  <% if document.category.present? %>
+    <%= link_to document.category_title, policy_category_path(document.category) %>
+  <% end %>
+
+  <div class="<%= parent_class %>__summary">
+    <%= raw document.summary %>
+  </div>
+
+  <% if document.file? %>
+    <%= link_to document.file.url, class: "#{parent_class}__button button" do %>
+      Download
+    <% end %>
+  <% else %>
+    <div class="<%= parent_class %>__contact">
+      <p>
+        This policy is restricted. Please <%= link_to 'contact us', new_contact_path, class: "#{parent_class}__link" %> to obtain a copy.
+      </p>
+    </div>
+  <% end %>
+</div>

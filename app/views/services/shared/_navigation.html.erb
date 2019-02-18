@@ -1,0 +1,10 @@
+<ul class="services-navigation">
+  <%= render partial: 'services/shared/link',
+            collection: services,
+            as: :service,
+            cached: true,
+            locals: {
+              parent_class: 'services-navigation',
+              current_service: current_service
+            } %>
+</ul>

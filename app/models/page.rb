@@ -1,8 +1,31 @@
+# frozen_string_literal: true
+# == Schema Information
+#
+# Table name: pages
+#
+#  id                   :integer          not null, primary key
+#  title                :string           not null
+#  slug                 :string
+#  suggested_url        :string
+#  image                :string
+#  style                :string           not null
+#  layout               :string           not null
+#  display              :boolean          default(TRUE)
+#  content              :text             not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  display_case_studies :boolean          default(FALSE)
+#  display_news         :boolean          default(FALSE)
+#
+
 class Page < ActiveRecord::Base
   include MenuResourceable
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :history]
+  friendly_id :slug_candidates, use: %i[slugged history]
+
+  include PgSearch
+  multisearchable against: %i[title content], if: :display?
 
   mount_uploader :image, PageUploader
 
@@ -32,7 +55,7 @@ class Page < ActiveRecord::Base
     [
       :suggested_url,
       :title,
-      [:suggested_url, :title]
+      %i[suggested_url title]
     ]
   end
 
@@ -45,11 +68,11 @@ class Page < ActiveRecord::Base
   end
 
   def self.layouts
-    %w( application )
+    %w[application]
   end
 
   def self.styles
-    %w( basic )
+    %w[basic careers]
   end
 
   def store_image

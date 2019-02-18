@@ -1,0 +1,15 @@
+.policies-categories {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: rem(0 15px);
+  }
+
+  &__item {
+    display: block;
+  }
+
+  &__link {
+    display: block;
+  }
+}

@@ -1,0 +1,27 @@
+<% # TODO: Search results %>
+<% document = document.searchable %>
+<% cache ['document', document, document.cache_key] do %>
+  <div class="search-result">
+    <% if (document.respond_to?('image.index') && document.image.present?) || (document.respond_to?('author') && document.author.present?) %>
+      <div class="search-result__aside">
+        <%= image_tag document.image.index, alt: document.title, class: 'entry-image' if document.respond_to?('image.index') && document.image.present? %>
+        <%= render(
+            partial: "team_members/author",
+            locals: {
+              team_member: document.author
+            }
+          ) if document.respond_to?('author') && document.author %>
+      </div>
+    <% end %>
+    <div class="<%= (document.respond_to?('image.index') && document.image.present?) || (document.respond_to?('author') && document.author.present?) ? 'search-result__content--with-aside' :  'search-result__content' %>">
+      <%= link_to document.title, document, class: 'search-result__title' %>
+      <% if document.respond_to?('date') %>
+        <div class="search-result__microcopy">
+          <%= l document.date, format: :short %>
+        </div>
+      <% end %>
+      <%= content_tag :div, (simple_format document.summary), class: 'search-result__summary' if document.respond_to?('summary') %>
+      <%= link_to 'Read more', document, class: 'button' %>
+    </div>
+  </div>
+<% end %>

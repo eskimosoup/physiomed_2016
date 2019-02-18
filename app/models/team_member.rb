@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: team_members
+#
+#  id         :integer          not null, primary key
+#  forename   :string           not null
+#  surname    :string           not null
+#  image      :string
+#  bio        :text
+#  email      :string
+#  phone      :string
+#  role       :string           not null
+#  display    :boolean          default(TRUE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  slug       :string
+#  position   :integer          default(0), not null
+#
+
 class TeamMember < ActiveRecord::Base
   default_scope { positioned }
 

@@ -18,6 +18,10 @@
 //= require components/primary-navigation
 //= require components/google-analytics-events
 //= require components/gated-guide
+//= require components/header
+//= require components/anchors-offset
 //= require vendor/jquery.doubletaptogo
 //= require vendor/jquery.colorbox-min.js
 //= require cocoon
+//= require jquery.onscreen
+//= require animate
