@@ -20,7 +20,7 @@
             <%= raw iframe_for(video, width: 345, height: 248) %>
           </div>
           <div class="youtube-title">
-            <%= video.title %>
+            <%= video.title %>: <%= video.categories.first.name.titleize %>
           </div>
         </div>
         <div class="guide guide-subcategory">
