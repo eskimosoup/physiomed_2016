@@ -25,7 +25,17 @@
     {
       "label": "beautify",
       "type": "shell",
-      "command": "htmlbeautifier ${relativeFile}",
+      "command": "htmlbeautifier ${relativeFile} --keep-blank-lines 1",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "batch rubocop",
+      "type": "shell",
+      "command": "rubocop app/ lib/ --auto-correct",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",

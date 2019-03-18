@@ -6,14 +6,15 @@
 # https://stackoverflow.com/a/45236293
 # https://github.com/capistrano/rails/blob/660e9ba03d161b93d5fb00537de1a8158bb9a44d/lib/capistrano/tasks/assets.rake#L122
 # https://github.com/stve/capistrano-local-precompile/blob/master/lib/capistrano/local_precompile.rb
+
 Rake::Task['deploy:compile_assets'].clear
 Rake::Task['deploy:set_linked_dirs'].clear
 
 namespace :load do
   task :defaults do
-    set :rsync, 'rsync -a --delete'
-    set :jpegoptim_flags, '--max=70 --strip-all --all-progressive'
-    set :optipng_flags, '-quiet -strip all -o7'
+    set :rsync, 'rsync --archive --compress --delete'
+    set :jpegoptim_flags, '--max=90 --strip-all --all-progressive'
+    set :optipng_flags, '-quiet -strip all -o2'
   end
 end
 
@@ -26,7 +27,7 @@ namespace :deploy do
   desc 'Compile assets'
   task compile_assets: [:set_rails_env] do
     # invoke 'deploy:assets:precompile'
-    invoke 'deploy:assets:prepare'
+    invoke 'deploy:assets:exec'
     invoke 'deploy:assets:compress_images'
     invoke 'deploy:assets:sync'
     invoke 'deploy:assets:cleanup'
@@ -34,11 +35,10 @@ namespace :deploy do
   end
 
   namespace :assets do
-    desc 'Prepare to precompile'
-    task :prepare do
+    desc 'Precompile'
+    task :exec do
       run_locally do
-        execute "bundle exec rake assets:clean RAILS_ENV=#{fetch(:stage)}"
-        execute "bundle exec rake assets:precompile RAILS_ENV=#{fetch(:stage)}"
+        execute "bundle exec rake assets:clobber assets:precompile RAILS_ENV=#{fetch(:stage)}"
       end
     end
 
@@ -49,6 +49,7 @@ namespace :deploy do
 
         directories.each do |local, _remote|
           next unless File.directory?(local)
+
           execute "find #{local} -type f \\( -name '*.JPG' -or -name '*.jpg' \\) -exec jpegoptim #{fetch(:jpegoptim_flags)} {} \\;" if jpegoptim
           execute "find #{local} -type f \\( -name '*.PNG' -or -name '*.png' \\) -exec optipng #{fetch(:optipng_flags)} {} \\;" if optipng
         end
@@ -60,21 +61,15 @@ namespace :deploy do
         path = "#{server.user}@#{server.hostname}:#{release_path}/"
         directories.each do |local, remote|
           next unless File.directory?(local)
-          run_locally do
-            execute "#{fetch(:rsync)} #{local} #{path}#{remote}"
-          end
+
+          run_locally { execute "#{fetch(:rsync)} #{local} #{path}#{remote}" }
         end
       end
     end
 
     task :cleanup do
       run_locally do
-        directories.each do |local, _remote|
-          next unless File.directory?(local)
-          execute :rm,
-                  '-rf',
-                  local
-        end
+        execute "bundle exec rake assets:clobber RAILS_ENV=#{fetch(:stage)}"
       end
     end
   end

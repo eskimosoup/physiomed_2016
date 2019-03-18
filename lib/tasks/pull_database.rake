@@ -8,10 +8,10 @@ namespace :db do
 
   desc 'Dump remote postgres database'
   task :dump do
-    production = Rails.application.config.database_configuration['staging']
+    production = Rails.application.config.database_configuration['production']
     export_dump_file_command = "su - postgres bash -c \"PGPASSFILE=~/.pgpassfile.conf pg_dump -U postgres #{production['database']} --host=localhost --format=tar --file=#{dumpfile}\""
 
-    puts 'Running PG_DUMP on staging'
+    puts 'Running PG_DUMP on production'
 
     system "ssh root@postgres.allofmy.co.uk -t '#{export_dump_file_command}'"
     system "scp root@postgres.allofmy.co.uk:/var/lib/pgsql/#{dumpfile} #{Rails.root}"
@@ -42,9 +42,9 @@ namespace :db do
 
   desc 'Set database environment and update any environment based settings'
   task :site_settings do
-    system("rails runner \"Optimadmin::SiteSetting.where.not(environment: 'staging').destroy_all\"")
+    system("rails runner \"Optimadmin::SiteSetting.where.not(environment: 'production').destroy_all\"")
     system("rails runner \"Optimadmin::SiteSetting.where(key: 'Cache').destroy_all\"")
-    system("rails runner \"Optimadmin::SiteSetting.where(environment: 'staging').update_all(environment: 'development')\"")
+    system("rails runner \"Optimadmin::SiteSetting.where(environment: 'production').update_all(environment: 'development')\"")
     system('RAILS_ENV=development bin/rails db:environment:set')
   end
 end
