@@ -6,6 +6,7 @@ namespace :ping_host do
     on roles(:app) do
       within release_path do
         with rails_env: fetch(:rails_env) do
+	  execute :rake, 'tmp:cache:clear'
           execute :rake, 'ping_host:request'
         end
       end

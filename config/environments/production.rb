@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.cache_store = :file_store, Rails.root.join('tmp', 'cache'), { expires_in: 24.hours }
   config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
   Rails.application.routes.default_url_options[:host] = 'www.physiomed.co.uk'
