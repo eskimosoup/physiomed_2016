@@ -25,7 +25,7 @@
     {
       "label": "beautify",
       "type": "shell",
-      "command": "htmlbeautifier ${relativeFile} --keep-blank-lines 1",
+      "command": "htmlbeautifier \"${relativeFile}\" --keep-blank-lines 1",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
@@ -45,7 +45,7 @@
     {
       "label": "rubocop",
       "type": "shell",
-      "command": "rubocop --auto-correct ${relativeFile}",
+      "command": "rubocop --auto-correct \"${relativeFile}\"",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
@@ -65,7 +65,7 @@
     {
       "label": "rspec file",
       "type": "shell",
-      "command": "bundle exec rspec ${relativeFile}",
+      "command": "bundle exec rspec \"${relativeFile}\"",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
