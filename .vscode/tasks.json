@@ -165,7 +165,7 @@
     {
       "label": "configure",
       "type": "shell",
-      "command": "gem install ruby-debug-ide:0.6.0 debase:0.2.2.beta10 solargraph rubocop fastri htmlbeautifier scss_lint --no-ri --no-rdoc",
+      "command": "gem install ruby-debug-ide:0.6.0 debase:0.2.2.beta10 solargraph rubocop fastri htmlbeautifier scss_lint --no-document",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
