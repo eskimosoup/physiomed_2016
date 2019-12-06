@@ -1,125 +1,26 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or create!d alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create!([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create!(name: 'Emanuel', city: cities.first)
-#
-image = File.open(File.join(Rails.root, "spec/support/images/landscape_image.jpg"))
-
-puts "Creating Admin"
-Optimadmin::Administrator.create!(
-  username: 'optimised', email: 'support@optimised.today',
-  password: 'optipoipoip', password_confirmation: 'optipoipoip', role: 'master')
-
-puts "Creating pages"
-page = Page.create!(title: "page 1", image: image, content: "Content", style: "basic", layout: "application")
-
-puts "Creating main navigation"
-wellbeing_zone = Optimadmin::ModulePage.create!(name: "WellBeing Zone", route: "wellbeing_path")
-wellbeing_zone_link = Optimadmin::Link.create!(menu_resource: wellbeing_zone)
-wellbeing_menu_item = Optimadmin::MenuItem.create!(link: wellbeing_zone_link, name: "Wellbeing Zone", menu_name: "header")
-page_link = Optimadmin::Link.create!(menu_resource: page)
-page_menu_item = Optimadmin::MenuItem.create!(link: page_link, name: "Page", menu_name: "header")
-
-puts "Creating health zones"
-HealthZone.create!(title: "Know your body", home_image: image, hover_text: "Visit our know your body section", link: "http://www.google.co.uk")
-HealthZone.create!(title: "Feeling Fab exercises", home_image: image, hover_text: "Visit our exercises section", link: "http://www.google.com")
-HealthZone.create!(title: "Managing Conditions", home_image: image, hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk")
-HealthZone.create!(title: "Other", home_image: image, hover_text: "Learn how to manage your conditions", link: "http://www.bbc.co.uk/sport")
-
-puts "creating videos" #used in additional home content and in wellbeing zone
-video = Video.create!(title: "Ain't no sunshine", youtube_identifier: "tIdIqbv7SPo",
-                     subtitle: "Some subtitle", content: "Some content")
-video = Video.create!(title: "Ain't no sunshine", youtube_identifier: "tIdIqbv7SPo")
-
-puts "creating additional home content"
-text_content = <<-RUBY
-  <ul>
-    <li>We prevent people going off work</li>
-    <li>Getting people back to work</li>
-    <li>Keeping people fit and well</li>
-  </ul>
-RUBY
-AdditionalHomeContent.create!(title: "What we do", content_type: "text_content", content: text_content)
-AdditionalHomeContent.create!(title: "b", video: video, content_type: "video_content")
-AdditionalHomeContent.create!(title: "ROI Savings Calculator", content_type: "savings_calculator")
-
-puts "Creating banners"
-Banner.create!(title: "Banner", image: image)
-Banner.create!(title: "Banner with summary", image: image, summary: "Summary text")
-Banner.create!(title: "Banner with link", image: image, link: "http://www.google.co.uk")
-
-puts "Creating Quick Links"
-8.times do
-  EmployerQuickLink.create!(link: "http://www.google.co.uk", link_text: "Read more")
-  EmployeeQuickLink.create!(link: "http://www.google.co.uk", link_text: "Read more")
-end
-
-puts "Creating service standards"
-ServiceStandard.create!(icon: "clock", content: "Patients receive personal attention within four hours", hover_content: "We provide a single point of contact for the provision of physiotherapy care")
-ServiceStandard.create!(icon: "calendar", content: "Guaranteed treatment within three days", hover_content: "Much quicker than the national average of 12 weeks")
-ServiceStandard.create!(icon: "map_pin", content: "Easy to access clinics within 30 minutes travelling", hover_content: "700 clinics and 2,500 chartered physiotherapists nationwide")
-ServiceStandard.create!(icon: "flexible", content: "Flexible treatment options to suit each patient",hover_content: "Hands on treatment, support and condition management")
-ServiceStandard.create!(icon: "document", content: "High quality patient support resources", hover_content: "Online patient treatment centre.  Narrated videos for specific injuries.  Illustrated exercise guides")
-ServiceStandard.create!(icon: "stopwatch", content: "Fast and safe patient recovery time", hover_content: "On average patients are fit to return to work in ten days")
-ServiceStandard.create!(icon: "heart", content: "Post injury care", hover_content: "After care health and wellbeing support includes access to educational and exercise material")
-
-puts "Creating practices"
-Practice.create!(name: "Hull", post_code: "HU1 1NQ")
-
-puts "Creating clients"
-client = Client.create!(name: "Client 1", logo: image, display: true)
-Client.create!(name: "Client 2", logo: image, display: true)
-
-puts "Creating case studies"
-CaseStudy.create!(title: "Case Study #1", image: image, summary: "Some content", content: "Some more content", display: true, date: Date.yesterday) 
-CaseStudy.create!(title: "Case Study #2", summary: "A longer summary... let's shorten me because I am going to be way too long blah blah blah blah blah blah", content: "Some content", display: true, date: Date.today)
-
-puts "Creating testimonials"
-Testimonial.create!(title: "My title", content: "Some content", author: "John Simms")
-Testimonial.create!(title: "Testimonial 2", content: "Some content", author: "Beth Norman")
-
-puts "Creating team members"
-team_member = TeamMember.create!(forename: "Joe", surname: "Bloggs", image: image, bio: "Biography", email: "joe.bloggs@example.com", phone: "01234 567890", role: "Some role")
-8.times do
-  TeamMember.create!(forename: "Jane", surname: "Bloggs", image: image, bio: "Biography", email: "jane.bloggs@example.com", phone: "01234 567890", role: "Some role")
-end
-TeamMember.create!(forename: "Jane", surname: "Has no image", bio: "Biography", email: "jane.bloggs@example.com", phone: "01234 567890", role: "Some role")
-  
-puts "Creating articles"
-Article.create!(title: "Article 1", image: image, summary: "Summary", content: "Content", date: Date.today, author: team_member)
-Article.create!(title: "Article 2", summary: "Summary", content: "Content", date: Date.today)
-Article.create!(title: "Article 3", summary: "Summary", content: "Content", date: Date.today)
-Article.create!(title: "Article 4", summary: "Summary", content: "Content", date: Date.today)
-
-puts "Creating Categories and people helped sections"
-Category::NAMES.each do |name|
-  category = Category.create!(name: name)
-  PeopleHelpedSection.create!(category: category, title: "Some title", number: 7,
-                              content: "some content", link: "http://www.google.co.uk")
-end
-
-puts "Creating body parts"
-body_parts = []
-BodyPart::BODY_PARTS.each_with_index do |name, i|
-  body_parts << if i % 2 == 0
-    BodyPart.create!(category: Category.find_by(name: name), tagline: "Some tagline")
-  else
-    BodyPart.create!(category: Category.find_by(name: name))
-  end
-end
-
-BodyPartSection.create!(title: "Some title", sub_title: "Some subtitle",
-                        content: "blah", body_part: body_parts.first)
-BodyPartSection.create!(title: "Some title", image: image,
-                        content: "blah", body_part: body_parts.first)
-
-puts "Creating FAQs"
-6.times do
-  FrequentlyAskedQuestion.create!(question: "Really?", answer: "Sure")
-end
-
-
-image.close
+Guide.import([:id, :title, :content, :image, :file, :display, :created_at, :updated_at, :video_id, :gated, :optionally_gated], [
+  [10, "Managing Musculoskeletal Complaints: Foot Problems", "<p><em>Foot Stretching and Strengthening Exercises: Occupational Physiotherapy - Getting You Back To Work </em></p>", "foot-pain-article-cover.JPG", "PhysioMed_Book_Foot_Problems_Digital.pdf", true, "2016-07-04 11:04:55", "2016-07-04 21:41:12", 11, false, nil],
+  [9, "Managing Musculoskeletal Complaints: Knee Problems", "<p><em>Knee Stretching and Strengthening Exercises: Occupational Physiotherapy - Getting You Back To Work </em></p>", "knee-pain-article-cover.JPG", "PhysioMed_Book_Knee_Problems_Digital.pdf", true, "2016-07-04 10:59:34", "2016-07-04 21:50:13", 14, false, nil],
+  [5, "Shoulder: Stretching and Strengthening", "<p><em>Shoulder Stretching and Strengthening Exercises: Occupational Physiotherapy - Don&rsquo;t 'Shoulder' the Burden of Pain </em></p>", "Physiomed_Covers_shoulder.jpg", "Physio_Med_Infographic_Shoulder.pdf", true, "2016-07-04 10:49:08", "2016-07-19 15:59:40", 8, false, nil],
+  [6, "Elbow: Stretching and Strengthening", "<p><em>Elbow Stretching and Strengthening Exercises: Occupational Physiotherapy - Help Give Stiffness the 'Elbow' </em></p>", "Physiomed_Covers_elbow.jpg", "Physio_Med_Infographic_Elbow.pdf", true, "2016-07-04 10:53:40", "2016-07-19 15:52:23", 7, false, nil],
+  [3, "Hip: Stretching and Strengthening", "<p><em>Hip Stretching and Strengthening Exercises: Occupational Physiotherapy - How to Stay 'Hip' and Mobile at Any Age </em></p>", "Physiomed_Covers_hip.jpg", "Physio_Med_Infographic_Hip.pdf", true, "2016-06-30 13:14:10", "2016-07-19 15:53:15", 6, false, nil],
+  [4, "Knee: Stretching and Strengthening", "<p><em>Knee Stretching and Strengthening Exercises: Occupational Physiotherapy - There is No 'Knee'-d to Suffer </em></p>", "Physiomed_Covers_knee.jpg", "Physio_Med_Infographic_Knee.pdf", true, "2016-06-30 13:30:14", "2016-07-19 15:54:11", 4, false, nil],
+  [2, "Managing Musculoskeletal Complaints: Neck and Upper Back Pain", "<p><em>Neck and Upper Back Stretching Exercises: Occupational Physiotherapy - Getting You Back To Work </em></p>", "neck-article-cover.JPG", "PhysioMed_Book_Neck_and_Upper_Back_Pain_Digital.pdf", true, "2016-06-30 12:43:33", "2016-07-04 21:13:47", 13, false, nil],
+  [8, "Wrist: Stretching and Strengthening", "<p><em>Wrist Stretching and Strengthening Exercises: Occupational Physiotherapy - 'Wrist'-Watch; Advice for Pain-Free Wrists </em></p>", "Physiomed_Covers_wrist.jpg", "Physio_Med_Infographic_Wrist.pdf", true, "2016-07-04 10:56:57", "2016-07-19 16:01:42", 9, false, nil],
+  [1, "Lower Back: Stretching and Strengthening", "<p><em>Lower Back Stretching and Strengthening Exercises: Occupational Physiotherapy - Physio Med Helps You Get &lsquo;Back&rsquo; to Fitness </em></p>", "Physiomed_Covers_lower_back.jpg", "Physio_Med_Infographic_Lower_Back.pdf", true, "2016-06-30 10:46:08", "2016-07-19 15:58:47", 2, false, nil],
+  [13, "Neck: Stretching and Strengthening", "<p>There are certain activities in the workplace that may contribute to developing a sore neck. These could include repetitive activities at work, sitting or standing for long periods of time, lifting objects or operating machine tools. The nature of these activities can, if not addressed lead to the gradual build up and tension and sti\u001Fness in the neck, upper back and shoulder area.</p>\r\n<p>These exercises have been designed by our team of Chartered Physiotherapists to assist in preventing the onset of the tension and sti\u001Fness or to ease any pain if it occurs.</p>", "Physiomed_Covers_neck.jpg", "Physio_Med_Infographic_Neck_and_Upper_Back.pdf", true, "2016-07-04 21:18:53", "2016-07-19 15:59:05", 3, false, nil],
+  [11, "Maintaining a fit and healthy workforce", "<p><em>Full Body Stretching and Strengthening Exercises: Occupational Physiotherapy - Getting You Back To Work </em></p>", "Maintainingafitandhealthyworkforce.JPG", "PhysioMed_-_Fit___Healthy_Workforce_Book_Digital.pdf", true, "2016-07-04 11:14:50", "2016-07-20 09:55:09", nil, false, nil],
+  [14, "Managing Musculoskeletal Complaints: Lower Back", "", "PhysioMed_Book_Lower-back_Problems_Digital.jpg", "PhysioMed_Lower_Back_Pain_Digital_2017.pdf", true, "2016-07-04 22:05:25", "2017-06-07 08:02:44", 12, false, nil],
+  [19, "Managing Musculoskeletal Complaints: Elbow Problems & Conditions", "<p><em>The two most common elbow problems are similar in nature and are most frequently referred to by their non-medical names - tennis and golfer&rsquo;s elbow.</em></p>", "guide-elbow.jpg", "Physiomed__Elbow_Problems_Digital.pdf", true, "2016-07-20 11:46:35", "2017-03-07 16:07:10", 15, false, nil],
+  [15, "How to choose an office chair", "<p><em>There are many types of office chairs and many factors that influence the choice of which chair to use. Ergonomic chairs that offer better leg, pelvic and lumbar positioning have become popular, but they still have their own drawbacks.</em></p>", "office-chair-cover.jpg", "Physiomed_Sitting_Guide_-_Buying_a_Chair_Digital.pdf", true, "2016-07-05 08:53:37", "2017-03-07 16:15:36", nil, false, nil],
+  [18, "Managing Musculoskeletal Complaints: Achilles Problems", "<p style=\"text-align: left;\"><em>Achilles tendon problems are extremely common, affecting 8-12% of people at some point in their lives. This number rises to 40% amongst people who play sport - particularly sports which include jumping/landing and lunging.</em></p>", "guide-achillies.jpg", "Physiomed_Achilles_Problems_Digital.pdf", true, "2016-07-20 11:44:53", "2017-03-07 16:13:51", 16, false, nil],
+  [22, "Correct Sitting Posture: Working at a Desk", "<p><em>Achieving the correct sitting posture is only the beginning when you work at a desk and use other equipment such as computer screens, laptops, phones and a mouse.</em></p>", "guide-sitting-posture-desk.jpg", "Physiomed_Sitting_Guide_-_Working_at_a_Desk_Digital.pdf", true, "2016-07-20 11:52:22", "2017-08-21 14:24:12", 19, false, nil],
+  [21, "Correct Sitting Posture: Driving", "<p><em>Sitting in a car is no different to sitting in an office, so you should still try to take regular breaks &ndash; ideally every 20 minutes, where practical.</em></p>", "guide-sitting-posture-drive.jpg", "Physiomed_Sitting_Guide_-_Driving_Digital.pdf", true, "2016-07-20 11:50:54", "2017-08-21 14:28:28", 18, false, nil],
+  [16, "Help Guide: Sleeping Posture & Positions", "<p><em>We spend 40% of our lives in bed - so the right bed and sleeping position are important to help when you have neck, back, shoulder and hip problems. The right sleeping posture can also prevent problems from developing, and stop reoccurrence.</em></p>", "guide-sleeping.jpg", "Physiomed_Sleeping_Posture_Digital.pdf", true, "2016-07-20 09:51:36", "2017-08-21 14:28:52", 17, false, nil],
+  [7, "Ankle: Stretching and Strengthening", "<p><em>Ankle Stretching and Strengthening Exercises: Occupational Physiotherapy - How to Achieve a Well-Turned 'Ankle' (Not a Twisted Ankle) </em></p>", "Physiomed_Covers_ankle.jpg", "Physio_Med_Infographic_Ankle.pdf", true, "2016-07-04 10:55:17", "2018-01-25 13:46:32", 5, false, false],
+  [20, "Correct Sitting Posture: Office", "<p><em>As more jobs become desk based or sedentary, more and more people are spending long periods of time sitting in chairs. Sitting for five hours a day, five days a week equates to 1,175 hours &ndash; or almost 50 days - every year. Multiply that by the number of years you work, then add the time you are seated at home and many people will spend more time sitting than in bed!</em></p>", "guide-sitting-posture-office.jpg", "Physiomed_Sitting_Guide_-_Correct_Sitting_Posture_Digital.pdf", true, "2016-07-20 11:49:31", "2018-02-12 15:57:44", nil, false, false],
+  [17, "Help Guide: Soft Tissue Injury", "<p><em>A soft tissue injury is any injury that creates damage to any muscle, ligament, tendon or combination of the above.</em></p>", "guide-soft-tissue.jpg", "Physiomed_Sitting_Guide_-_Soft_Tissue_V3.pdf", true, "2016-07-20 11:42:46", "2016-08-22 11:25:38", nil, false, nil],
+  [12, "Managing Musculoskeletal Complaints: Shoulder Pain", "<p>The shoulder is an elegant piece of machinery. It has the greatest range of motion of any joint in the body, however; this large range of motion can lead to joint problems.</p>\r\n<p>&nbsp;</p>\r\n<p>Our shoulder exercises will help you to target and reduce common shoulder conditions. The exercises are simple, effective and can be performed in the workplace.</p>\r\n<p>The exercises have been designed by our team of senior Chartered Physiotherapists to assist in preventing the onset of tension and stiffness or to combat any pain if it occurs.</p>", "PhysioMed_Book_Shoulder_Problems_Digital.jpg", "PhysioMed_Book_Shoulder_Problems_Digital.pdf", true, "2016-07-04 20:50:21", "2019-03-12 15:01:22", 10, false, false],
+  [24, "FREE GUIDE - A blended approach to occupational physiotherapy: A pay-per-case CQUIN support service", "<p>We are often asked what the key benefits are of providing Occupational Physiotherapy as a service. The answer is simple. Having happy and healthy employees increases overall productivity, reduces sickness absence and contributes directly to the bottom line.<br /><br />The NHS knows this only too well and health and wellbeing is officially recognised as part of the CQUIN requirements.<br />As innovators, we are always looking at how we can take positive action on employee health and wellbeing. We provide industry leading reactive care for patients with musculoskeletal problems, using our award winning blended approach to occupational physiotherapy; as well as proactive intervention to reduce the onset of musculoskeletal conditions.&nbsp;</p>\r\n<p>Read our free guide packed with business case studies and see the results from NHS trusts around the country.&nbsp;</p>", "CQUIN-Cover.JPG", "A_blended_approach_to_occupational_physiotheraphy_CQUIN_Support_Service.pdf", true, "2017-07-27 10:35:07", "2017-09-01 10:51:04", nil, false, nil],
+  [25, "Whose responsibility is it to get an employee back to work guide?", "<p>No-one wants to suffer an injury, but it happens. However if, during their leisure time, an employee sustains an injury that prevents them from working, whose problem is it? Does the employer have any obligation to help them recover from their injury and return to work?</p>\r\n<p>Paul Wimpenny, Clinical Governance Officer at Physio Med, explains more in our free downloadable guide.&nbsp;</p>\r\n<p>&nbsp;</p>", "front-cover.JPG", "Physiomed_Whose_Responsibility_Guide_2018.pdf", true, "2018-02-09 14:11:58", "2018-02-09 14:15:59", nil, false, false]
+])

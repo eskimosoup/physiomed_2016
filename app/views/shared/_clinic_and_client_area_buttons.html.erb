@@ -1,5 +1,15 @@
-<%= link_to "Physios' Area", 'https://physiotherapists.physiomed.co.uk/sessions/new', target: '_blank', rel: 'noopener', class: 'client-area-button' %>
-<%= link_to 'Client Area', 'https://clients.allofmy.co.uk/sessions/new', class: 'client-area-button' %>
+<div class="client-area-tab">
+  <%= image_tag 'icons/login-icon.gif', alt: 'Login', style: 'height:16px' %>
+
+  <strong class="client-area-tab__title">
+    Login:
+  </strong>
+
+  <%= link_to 'Client', 'https://clientsnew.physiomed.co.uk/sessions/new', class: 'client-area-tab__link' %>
+  <%= link_to "Patient", 'https://clientsnew.physiomed.co.uk/patients/sessions/new', target: '_blank', rel: 'noopener', class: 'client-area-tab__link' %>
+  <%= link_to "Physio", 'https://physiotherapists.physiomed.co.uk/sessions/new', target: '_blank', rel: 'noopener', class: 'client-area-tab__link' %>
+</div>
+
 <%= link_to 'http://www.physiotherapyinleeds.co.uk/', class: 'clinic-button ga-vent',
             data: { event_category: 'Header', event_label: 'Local to leeds', event_action: 'Click' } do  %>
   <strong>Local to Leeds?</strong>
