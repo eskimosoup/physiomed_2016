@@ -45,6 +45,7 @@ gem 'pg_search'
 gem 'pdfkit'
 gem 'render_anywhere'
 gem 'fog-aws'
+gem 'rails-erd', group: :development
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
@@ -80,3 +81,4 @@ end
 
 gem 'deep_cloneable', '~> 2.3.2'
 gem "recaptcha", require: "recaptcha/rails"
+gem 'seed_dump'
