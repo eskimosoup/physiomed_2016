@@ -67,7 +67,7 @@
       <div class="home-pyramid-content__content">
         <div class="home-pyramid-content-overlay home-pyramid-content-overlay--blue home-pyramid-content-overlay--0" id="service-0">
           <%= raw @facade.pyramid_introduction_content %>
-          <%= link_to 'Learn more', '#test', class: 'home-pyramid-content-overlay__button' %>
+          <%#= link_to 'Learn more', '#test', class: 'home-pyramid-content-overlay__button' %>
         </div>
         <%= render partial: 'services/shared/pyramid_content', collection: @facade.services, as: :service, locals: { parent_class: 'home-pyramid-content-overlay' } %>
       </div>
