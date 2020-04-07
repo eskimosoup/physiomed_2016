@@ -55,6 +55,7 @@ body {
     max-height: 95vh;
     overflow: auto;
     word-wrap: break-word;
+    max-width: 98vw;
   }
 
   @media screen and (min-width: 767px) {
@@ -73,7 +74,13 @@ body {
     }
 
     p {
-      font-size: 18px;
+      @include breakpoint(medium down) {
+        font-size: 15px;
+      }
+
+      @include breakpoint(large) {
+        font-size: 18px;
+      }
     }
 
     ul {
