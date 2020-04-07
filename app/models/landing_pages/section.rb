@@ -26,7 +26,7 @@ module LandingPages
 
     scope :displayed, -> { where(display: true) }
 
-    STYLES = %w[basic choice_cta].freeze
+    STYLES = %w[basic choice_cta cta_points banner_cta banner_cta_link].freeze
 
     validates :landing_page, presence: true
     validates :content, presence: true

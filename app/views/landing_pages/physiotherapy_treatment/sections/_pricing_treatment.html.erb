@@ -1,0 +1,33 @@
+<%= content_for :head do %>
+  <script>
+    $(document).ready(function() {
+      $('.landing-page-pricing-breakdown__title').matchHeight();
+    });
+  </script>
+<% end %>
+<div class="landing-page-pricing-breakdown__inner">
+  <div class="landing-page-pricing-breakdown__item <%= cycle('landing-page-pricing-breakdown__item--light-grey', 'landing-page-pricing-breakdown__item--orange', 'landing-page-pricing-breakdown__item--dark-grey') %>">
+    <div class="landing-page-pricing-breakdown__title <%#= cycle('landing-page-pricing-breakdown__title--light-grey', 'landing-page-pricing-breakdown__title--orange', 'landing-page-pricing-breakdown__title--dark-grey') %>">
+      <%= pricing_treatment.title %>
+      <span class="landing-page-pricing-breakdown__subtitle">
+        <%= pricing_treatment.sub_title %>
+      </span>
+    </div>
+    <div class="landing-page-pricing-breakdown__content">
+      <%= raw pricing_treatment.content %>
+      <% if pricing_treatment != pricing_treatments.last %>
+        <%= link_to 'Book now', '#new_booking', class: 'generic-orange-button' %>
+      <% else %>
+        <%= link_to "tel:#{global_site_settings['Phone'].gsub(/\s+/, '')}", class: 'generic-orange-button' do %>
+          Call now on <%= content_tag :span, global_site_settings['Phone'], class: 'calltracks_physiotherapyinleedscouk-main' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% if pricing_treatment_counter == 1 %>
+    <div class="landing-page-pricing-breakdown__callout">
+      <%= image_tag 'components/landing-pages/physiotherapy-treatment/pricing/checkmark.png', alt: '' %>
+      Most Popular Package
+    </div>
+  <% end %>
+</div>

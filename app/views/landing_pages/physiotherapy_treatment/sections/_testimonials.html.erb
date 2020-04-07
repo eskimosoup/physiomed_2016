@@ -1,0 +1,40 @@
+<section class="landing-page-testimonials">
+  <div class="landing-page-testimonials__inner">
+    <div class="landing-page-testimonials__content">
+      <div class="landing-page-testimonials-content">
+        <div class="landing-page-testimonials-content__inner">
+          <h1 class="green-border-bottom content-box-title home-testimonials__title content-section__title">
+          What People Say
+          </h1>
+          <script src="https://widget.reviews.co.uk/rich-snippet-reviews-widgets/dist.js"></script>
+          <div id="carousel-widget-810" style="width:100%;margin:0 auto;"></div>
+          <script>
+          richSnippetReviewsWidgets('carousel-widget-810', {
+          store: 'physiotherapyinleeds-co-uk',
+          widgetName: 'carousel',
+          primaryClr: '#f47e27',
+          neutralClr: '#f4f4f4',
+          buttonClr: '#494949',
+          textClr: '#333',
+          layout: 'fullWidth',
+          numReviews: 30,
+          hideDates : false,
+          });
+          </script>
+        </div>
+      </div>
+
+      <% cache "physiotherapy_treatment_#{testimonials}" do %>
+        <div class="landing-page-testimonials-cta">
+          <div class="landing-page-testimonials-cta__inner">
+            <%= raw testimonial_text.content if testimonial_text.present? %>
+
+            <p class="landing-page-testimonials-cta__strong">
+              Call now on <%= calltracks(class: 'calltracks-telephone ga-event', data: { event_category: 'Offline contact', event_action: 'Phone call' }) %> to book your appointment.
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

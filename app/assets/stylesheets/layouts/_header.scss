@@ -1,3 +1,43 @@
+.primary-header-notice-bar {
+  @include flex-grid-row(null, expand);
+  background-color: $beige;
+  border-bottom: 1px solid $dark-brown;
+  color: $black;
+  padding: rem(10px 0);
+
+  @include breakpoint(large) {
+    text-align: center;
+  }
+
+  &__inner {
+    @include flex-grid-column(12);
+  }
+
+  p {
+    font-size: rem(15px);
+    display: inline-block;
+    margin: 0;
+  }
+
+  &__button {
+    background-color: $orange;
+    border-radius: 3px;
+    color: $white;
+    display: inline-block;
+    font-size: rem(14px);
+    padding: rem(8px 16px);
+
+    &:hover,
+    &:focus {
+      background-color: darken($orange, 12%);
+    }
+
+    &:active {
+      background-color: darken($orange, 17%);
+    }
+  }
+}
+
 .primary-header {
   background: $white;
   border-bottom: 1px solid $mud-brown;

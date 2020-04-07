@@ -37,6 +37,10 @@ class HomeFacade
     @services ||= Service.displayed
   end
 
+  def landing_page
+    @landing_page ||= LandingPage.find(3)
+  end
+
   # --- OLD
   def additional_contents
     @additional_contents ||= AdditionalHomeContent.includes(:video).displayed.ordered_by_position

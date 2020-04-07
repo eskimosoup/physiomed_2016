@@ -5,7 +5,7 @@ namespace :db do
   task pull: %i[dump restore:local site_settings remote_assets]
 
   dumpfile = 'db.dump'
-  env_to_pull_from = 'staging'
+  env_to_pull_from = 'production'
   host = 'postgres.allofmy.co.uk'
 
   desc 'Dump remote postgres database'

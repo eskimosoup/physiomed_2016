@@ -1,0 +1,30 @@
+<%= content_for :head do %>
+  <script>
+    $(document).ready(function() {
+      $('.clinic__address').matchHeight();
+    });
+  </script>
+<% end %>
+
+<% cache "physiotherapy_treatment_#{clinics}" do %>
+  <section class="landing-page-content-wrap">
+    <div class="landing-page-content-wrap__inner">
+      <div class="landing-page-content-box">
+        <div class="landing-page-content-box__inner">
+          <h1 class="landing-page-content-box__title">
+            Our Clinics
+          </h1>
+
+          <div class="landing-page-clinics home-clinics">
+            <%= render partial: 'clinics/shared/home',
+                  collection: clinics,
+                  as: :clinic %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+
+

@@ -2,7 +2,7 @@
   position: relative;
 
   &__image {
-    position: relative;
+    position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
@@ -14,9 +14,8 @@
     width: 100%;
 
     @include breakpoint(medium) {
-      position: absolute;
-      top: 60%;
-      transform: translateY(-50%);
+      position: relative;
+      top: 0;
     }
   }
 
@@ -28,9 +27,22 @@
   }
 }
 
+.home-banner-content-wrap {
+  @include breakpoint(medium) {
+    min-height: 537px;
+  }
+}
+
 .home-banner-content {
   @include flex-grid-row;
   color: $color--white;
+
+  @include breakpoint(medium) {
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);
+    z-index: 2;
+  }
 
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 5));

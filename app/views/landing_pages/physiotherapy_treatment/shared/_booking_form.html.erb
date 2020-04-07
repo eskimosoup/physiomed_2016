@@ -1,0 +1,39 @@
+
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/bookings.js' %>
+  <%= javascript_include_tag 'vendor/jquery-ui' %>
+  <script>
+    $(document).on('change', '#booking_treatment_id', function () {
+      var label = $(this.options[this.selectedIndex]).closest('optgroup').prop('label');
+      $('#booking_clinic').val(label);
+    })
+
+    <% if defined?(landing_page) %>
+      $(function() {
+        $('#booking_additional_information').val('Landing  page - <%= landing_page.title %>');
+        // $('.treatment-id').hide();
+      });
+    <% end %>
+  </script>
+<% end %>
+
+<section class="landing-page-booking-form-cta">
+  <div class="landing-page-booking-form-cta__orb">
+    <div class="landing-page-booking-form-cta__orb-text">
+      Book Now
+    </div>
+  </div>
+
+  <div class="landing-page-booking-form-cta__inner">
+    <div class="landing-page-booking-form-cta__content">
+      <p class="landing-page-booking-form-cta__paragraph">
+        Call now on <%= calltracks(class: 'landing-page-booking-form-cta__calltracks') %> to book your appointment or complete our booking form below
+      </p>
+
+      <%= render 'landing_pages/shared/booking_form',
+                  clinics: clinics,
+                  event_label: (defined?(event_label) ? event_label : 'Landing page')  %>
+    </div>
+  </div>
+</section>
+

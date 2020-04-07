@@ -1,0 +1,33 @@
+<% if pricing_grid_cta.present? %>
+  <% cache "physiotherapy_treatment_#{pricing_grid_cta}" do %>
+    <section class="landing-page-content-wrap landing-page-pricing-grid-cta">
+      <div class="landing-page-content-wrap__inner">
+        <div class="landing-page-content-box">
+          <div class="landing-page-content-box__inner landing-page-pricing-grid-cta__content">
+            <h1 class="landing-page-pricing-grid-cta__title">
+              <%= pricing_grid_cta.title %>
+            </h1>
+            <p class="landing-page-pricing-grid-cta__subtitle">
+              <%= pricing_grid_cta.sub_title %>
+            </p>
+            <%= raw pricing_grid_cta.content %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-page-content-wrap landing-page-pricing-grid-booking">
+      <div class="landing-page-content-wrap__inner">
+        <div class="landing-page-content-box landing-page-pricing-grid-booking__content-box">
+          <div class="landing-page-content-box__inner">
+            <p>
+              To book your appointment call now on <%= calltracks(class: 'landing-page-pricing-grid-booking__calltracks') %>
+            </p>
+
+            <%= link_to 'Register your interest today', '#new_booking', class: 'generic-orange-button' %>
+          </div>
+        </div>
+      </div>
+    </section>
+  <% end %>
+<% end %>

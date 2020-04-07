@@ -13,8 +13,11 @@
 
 
     <%= list_item 'large-5 small-8' do %>
-      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
       Title
+    <% end %>
+
+    <%= list_item '' do %>
+      Image
     <% end %>
 
     <%= list_item { 'Display' } %>

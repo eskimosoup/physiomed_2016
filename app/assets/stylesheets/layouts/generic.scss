@@ -194,3 +194,21 @@ h2 {
     }
   }
 }
+
+.generic-orange-button {
+  background-color: $orange;
+  border-radius: 3px;
+  color: $white;
+  display: inline-block;
+  font-size: rem(14px);
+  padding: rem(8px 16px);
+
+  &:hover,
+  &:focus {
+    background-color: darken($orange, 12%);
+  }
+
+  &:active {
+    background-color: darken($orange, 17%);
+  }
+}

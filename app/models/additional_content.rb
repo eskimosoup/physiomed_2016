@@ -18,10 +18,14 @@ class AdditionalContent < ActiveRecord::Base
 
   AREAS = %w[
     error_404 error_422 error_400 error_500 error_403 home_pal_video
-    pyramid_introduction
+    pyramid_introduction notice_bar notice_modal
   ].freeze
 
   validates :area, inclusion: { in: AREAS }
 
   scope :displayed, (-> { where(display: true) })
+
+  def button?
+    button_link? && button_text?
+  end
 end

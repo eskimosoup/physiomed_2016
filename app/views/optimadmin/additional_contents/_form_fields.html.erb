@@ -21,6 +21,14 @@
       <%= f.label :content, for: :content %><br>
       <%= f.text_area :content, id: :content , class: 'tinymce' %>
     </div>
+    <div class="field">
+      <%= f.label :button_text %><br />
+      <%= f.text_field :button_text %>
+    </div>
+    <div class="field">
+      <%= f.label :button_link %><br />
+      <%= f.text_field :button_link %>
+    </div>
   <% end %>
   <%= field_set_tag nil, id: 'tabs-3' do %>
     <div class="field">

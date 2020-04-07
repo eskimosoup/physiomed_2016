@@ -35,6 +35,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def shared_facade
+    @shared_facade ||= SharedFacade.new
+  end
+  helper_method :shared_facade
+
   def header_menu
     @header_menu ||= Optimadmin::Menu.new(name: 'header')
   end

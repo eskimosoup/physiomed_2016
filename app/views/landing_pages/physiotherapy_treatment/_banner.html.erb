@@ -1,0 +1,53 @@
+<% cache "banner_#{banner_cta}" do %>
+  <div class="landing-page-banner" style="background-image:url(<%= landing_page.image.url %>)">
+    <%= image_tag 'banner/mask.png', alt: '', class: 'landing-page-banner__mask' %>
+    <div class="landing-page-banner-content">
+      <div class="landing-page-banner-content__inner">
+        <div class="landing-page-banner-content__content">
+          <h1 class="landing-page-banner-content__title"><%= @facade.landing_page.title %></h1>
+          <%= raw @facade.landing_page.content %>
+        </div>
+      </div>
+      <div class="landing-page-banner-content__reviews">
+        <script src="https://widget.reviews.co.uk/badge/dist.js"></script>
+        <div id="badge-250" style="max-width:270px;"></div>
+        <script>
+        reviewsBadge('badge-250',{
+          store: 'physiotherapyinleeds-co-uk',
+          primaryClr: '#12d06c',
+          neutralClr: '#f4f4f4',
+          starsClr: '#fff',
+          textClr: '#fff'
+        });
+        </script>
+      </div>
+    </div>
+    <div class="landing-page-banner-content">
+      <div class="landing-page-banner-content__inner landing-page-banner-content__inner--cta">
+        <% if banner_cta.present? %>
+          <div class="landing-page-banner-cta">
+            <div class="landing-page-banner-cta__inner">
+              <h2 class="landing-page-banner-cta__title">
+                <%= banner_cta.title %>
+                <span class="landing-page-banner-cta__title--emphasis">
+                  <%= banner_cta.sub_title %>
+                </span>
+              </h2>
+              <div class="landing-page-banner-cta__content">
+                <%= raw banner_cta.content %>
+              </div>
+              <div class="landing-page-banner-cta__contact">
+                <p class="landing-page-banner-cta__contact-inner">
+                  For over <strong>25 years</strong> our friendly team of highly
+                  experienced physios have helped
+                  <span class="landing-page-banner-cta__contact--emphasis">1000’s</span>
+                  of patients.
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

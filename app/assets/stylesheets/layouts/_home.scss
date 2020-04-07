@@ -714,3 +714,339 @@
     @include generic-grey-button;
   }
 }
+
+.home-cta {
+  @include flex-grid-row;
+  margin-top: rem(40px);
+
+  &__inner {
+    @include breakpoint(medium down) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(large) {
+      @include flex-grid-column(9, (large: 0))
+    }
+  }
+
+  &__aside {
+    @include responsive-flex-grid-column((medium down: 12, large: 3));
+
+    @include breakpoint(large) {
+      padding-right: 0;
+    }
+  }
+
+  &__aside-inner {
+    @include content-box-style;
+
+    @include breakpoint(medium down) {
+      margin-top: rem(20px);
+    }
+
+    @include breakpoint(large) {
+      height: 100%;
+    }
+  }
+}
+
+.home-cta-slider {
+  @include content-box-style;
+  height: 100%;
+
+  @include breakpoint(large) {
+    padding-left: 0;
+  }
+
+  &__content-wrap {
+    @include flex-grid-row;
+  }
+
+  .slick-dots {
+    position: static;
+
+    @include breakpoint(large down) {
+      margin: rem(15px) 0;
+    }
+
+    @include breakpoint(xlarge) {
+      margin: rem(50px) 0 0;
+    }
+
+    li button:before {
+      color: $brown;
+      font-size: 11px;
+      opacity: 1;
+    }
+
+    li.slick-active button:before {
+      color: $green;
+    }
+  }
+
+  &__heading {
+    @include responsive-flex-grid-column((medium down: 12, large: 12));
+  }
+
+  &__title {
+    border-bottom: 4px solid $green;
+    clear: right;
+    font-size: rem(22px);
+    font-weight: 400;
+    padding-bottom: rem(15px);
+
+    &--emphasis {
+      font-size: rem(27px);
+      font-weight: $open-sans-bold;
+    }
+
+    @include breakpoint(medium down) {
+      .generic-orange-button {
+        margin-top: rem(10px);
+      }
+    }
+
+    @include breakpoint(large) {
+      .generic-orange-button {
+        float: right;
+      }
+    }
+  }
+
+  &__controls {
+    @include responsive-flex-grid-column((medium down: 12, large: 4));
+    list-style: none;
+    margin: rem(10px 0 0);
+
+    .slick-list {
+      padding: 0;
+    }
+  }
+
+  &__item {
+    display: block;
+
+    &:not(.slick-current) a {
+      background-image: image-url('components/landing-pages/physiotherapy-treatment/cta-slider/checkmark.png');
+    }
+
+    &.slick-current a {
+      background-image: image-url('components/landing-pages/physiotherapy-treatment/cta-slider/checkmark-active.png');
+    }
+  }
+
+  &__link {
+    background-position: center left;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid $brown-offset;
+    display: block;
+    font-size: rem(14px);
+    font-weight: $open-sans-bold;
+    padding-bottom: rem(10px);
+    padding-left: rem(25px);
+    padding-top: rem(10px);
+
+    &:link,
+    &:visited {
+      color: $brown;
+    }
+
+    &:hover,
+    &:focus {
+      border-bottom-color: $black;
+      color: $black;
+    }
+  }
+
+  &__content {
+    @include responsive-flex-grid-column((medium down: 12, large: 8));
+
+    &.slick-dotted.slick-slider {
+      margin: 0;
+    }
+  }
+}
+
+.home-cta-slider-content {
+  margin-top: rem(20px);
+
+  &__title {
+    color: $green;
+    font-size: rem(23px);
+    font-weight: $open-sans-extrabold;
+    line-height: 1;
+    margin: 0;
+    text-transform: none;
+  }
+
+  &__sub-title {
+    font-size: rem(19px);
+    font-weight: $open-sans-bold;
+    line-height: 1.25;
+    margin-bottom: 0;
+    margin-top: rem(5px);
+  }
+
+  &__inner {
+    p {
+      font-size: rem(14px);
+    }
+  }
+}
+
+.home-cta-banner {
+  @include flex-grid-row;
+  justify-content: space-between;
+  height: 100%;
+
+  &__title {
+    font-size: rem(24px);
+    font-weight: $open-sans-semibold;
+    margin: 0;
+    padding: rem(15px);
+    text-transform: none;
+
+    &--emphasis {
+      color: $orange;
+    }
+  }
+
+  &__content {
+    padding: rem(15px);
+
+    p {
+      font-size: rem(14px);
+    }
+  }
+}
+
+.landing-page-cta-slider {
+  @include flex-grid-row;
+
+  @include breakpoint(large) {
+    margin-top: rem(30px);
+  }
+
+  .slick-dots {
+    position: static;
+
+    @include breakpoint(large down) {
+      margin: rem(15px) 0;
+    }
+
+    @include breakpoint(xlarge) {
+      margin: rem(50px) 0;
+    }
+
+    li button:before {
+      color: $brown;
+      font-size: 11px;
+      opacity: 1;
+    }
+
+    li.slick-active button:before {
+      color: $green;
+    }
+  }
+
+  &__heading {
+    @include responsive-flex-grid-column((medium down: 12, large: 3));
+  }
+
+  &__title {
+    background-image: image-url('components/landing-pages/physiotherapy-treatment/physiomed-branding.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    border-bottom: 4px solid $green;
+    font-size: rem(22px);
+    font-weight: 400;
+    padding-bottom: rem(25px);
+    padding-left: rem(90px);
+
+    &--emphasis {
+      display: block;
+      font-size: rem(27px);
+      font-weight: $open-sans-bold;
+    }
+  }
+
+  &__controls {
+    @include responsive-flex-grid-column((medium down: 12, large: 4));
+    list-style: none;
+    margin: rem(10px 0 0);
+
+    .slick-list {
+      padding: 0;
+    }
+  }
+
+  &__item {
+    display: block;
+
+    &:not(.slick-current) a {
+      background-image: asset-data-url('components/landing-pages/physiotherapy-treatment/cta-slider/checkmark.png');
+    }
+
+    &.slick-current a {
+      background-image: asset-data-url('components/landing-pages/physiotherapy-treatment/cta-slider/checkmark-active.png');
+    }
+  }
+
+  &__link {
+    background-position: center left;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid $brown-offset;
+    display: block;
+    font-size: rem(14px);
+    font-weight: $open-sans-bold;
+    padding-bottom: rem(10px);
+    padding-left: rem(25px);
+    padding-top: rem(10px);
+
+    &:link,
+    &:visited {
+      color: $brown;
+    }
+
+    &:hover,
+    &:focus {
+      border-bottom-color: $black;
+      color: $black;
+    }
+  }
+
+  &__content {
+    @include responsive-flex-grid-column((medium down: 12, large: 5));
+
+    &.slick-dotted.slick-slider {
+      margin: 0;
+    }
+  }
+}
+
+.landing-page-cta-slider-content {
+  margin-top: rem(20px);
+
+  &__title {
+    color: $green;
+    font-size: rem(23px);
+    font-weight: $open-sans-extrabold;
+    line-height: 1;
+    margin: 0;
+    text-transform: none;
+  }
+
+  &__sub-title {
+    font-size: rem(19px);
+    font-weight: $open-sans-bold;
+    line-height: 1.25;
+    margin-bottom: 0;
+    margin-top: rem(5px);
+  }
+
+  &__inner {
+    p {
+      font-size: rem(14px);
+    }
+  }
+}

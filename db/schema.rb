@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181218162514) do
+ActiveRecord::Schema.define(version: 20200407094808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(version: 20181218162514) do
     t.string   "area"
     t.string   "title"
     t.text     "content"
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "display",     default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "button_link"
+    t.string   "button_text"
   end
 
   add_index "additional_contents", ["area"], name: "index_additional_contents_on_area", using: :btree

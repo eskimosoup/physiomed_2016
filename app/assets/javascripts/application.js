@@ -22,6 +22,7 @@
 //= require components/anchors-offset
 //= require vendor/jquery.doubletaptogo
 //= require vendor/jquery.colorbox-min.js
+//= require vendor/inline-modal
 //= require cocoon
 //= require jquery.onscreen
 //= require animate

@@ -17,7 +17,7 @@
 <% end %>
 <div class="home-banner">
   <%= image_tag 'banner/mask.png', alt: '', class: 'banner-mask' %>
-  <%= image_tag 'layout/home/banner-images.jpg', alt: '', class: 'home-banner__image' %>
+  <%#= image_tag 'layout/home/banner-images.jpg', alt: '', class: 'home-banner__image' %>
   <div class="home-banner__inner">
     <div class="home-banner__slick">
       <%= render @facade.banners %>
@@ -25,6 +25,14 @@
   </div>
   <%#= image_tag 'layout/home/curvy-mask.png', alt: '', class: 'home-banner__mask' %>
 </div>
+
+
+<%= render partial: 'homes/shared/landing_page',
+              locals: {
+                facade: LandingPageFacade.new(@facade.landing_page),
+                landing_page: @facade.landing_page
+              } %>
+
 <section class="home-approaches">
   <div class="home-approaches__inner">
     <h2 class="home-approaches__title">

@@ -285,3 +285,9 @@
     }
   }
 }
+
+@mixin content-box-style($background: $white) {
+  background-color: $background;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px 0 rgba($brown, .35);
+}

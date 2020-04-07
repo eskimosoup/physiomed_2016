@@ -1,0 +1,16 @@
+<li class="landing-page-treatments-sessions-list__item">
+  <div class="landing-page-treatments-sessions-list__counter">
+    <div class="landing-page-treatments-sessions-list__counter-inner landing-page-treatments-sessions-list__counter-inner--<%= cycle('0', '1', '2') %>">
+      <%= treatment_counter + 1 %>
+    </div>
+  </div>
+
+  <div class="landing-page-treatments-sessions-list__content">
+    <%= content_tag :strong,
+                    treatment.title,
+                    class: 'landing-page-treatments-sessions-list__title' if treatment.title.present? %>
+
+    <%= raw treatment.content %>
+  </div>
+</li>
+

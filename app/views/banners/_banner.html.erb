@@ -1,17 +1,20 @@
 <% cache banner do %>
   <div>
-    <div class="home-banner-content">
-      <div class="home-banner-content__inner">
-        <h1 class="home-banner-content__title">
-          <%= banner.title %>
-        </h1>
-        <div class="home-banner-content__text">
-          <%= simple_format banner.summary %>
-        </div>
-        <%= link_to banner.button_text,
+    <div class="home-banner-content-wrap">
+      <div class="home-banner-content">
+        <div class="home-banner-content__inner">
+          <h1 class="home-banner-content__title">
+            <%= banner.title %>
+          </h1>
+          <div class="home-banner-content__text">
+            <%= simple_format banner.summary %>
+          </div>
+          <%= link_to banner.button_text,
                         banner.link,
                         class: 'home-banner-content__button' if banner.link? %>
+        </div>
       </div>
+      <%= image_tag banner.image.show.url, alt: '', class: 'home-banner__image' %>
     </div>
   </div>
 <% end %>

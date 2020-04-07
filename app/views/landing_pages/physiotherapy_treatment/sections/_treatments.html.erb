@@ -1,0 +1,41 @@
+<% cache "physiotherapy_treatment_#{overview}_#{treatments}_#{breakdown}" do %>
+  <section class="landing-page-content-wrap">
+    <div class="landing-page-content-wrap__inner">
+      <div class="landing-page-content-box">
+        <div class="landing-page-content-box__inner">
+          <% if overview.present? %>
+            <h1 class="landing-page-content-box__title">
+              <%= overview.title %>
+              <%= content_tag :span, overview.sub_title, class: 'landing-page-content-box__title--emphasis' %>
+            </h1>
+          <% end %>
+
+          <div class="landing-page-treatments">
+            <div class="landing-page-treatments__overview">
+              <% if overview.present? %>
+                <%= raw overview.content %>
+              <% end %>
+            </div>
+            <div class="landing-page-treatments__sessions">
+              <div class="landing-page-treatments__sessions-title">
+                Session
+              </div>
+              <ul class="landing-page-treatments-sessions-list">
+                <%= render partial: 'landing_pages/physiotherapy_treatment/sections/treatment_session',
+                          collection: treatments,
+                          as: :treatment,
+                          cached: true %>
+              </ul>
+            </div>
+            <div class="landing-page-treatments__breakdown">
+              <% if breakdown.present? %>
+                <h2 class="landing-page-treatments__breakdown-title"><%= breakdown.title %></h2>
+                <%= raw breakdown.content %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

@@ -1,0 +1,77 @@
+<%= content_for :head do %>
+<script>
+  $(function() {
+    $('.home-cta-slider__content').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      dots: true,
+      asNavFor: '.home-cta-slider__controls'
+    });
+    $('.home-cta-slider__controls').slick({
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      asNavFor: '.home-cta-slider__content',
+      dots: false,
+      focusOnSelect: true,
+      vertical: true
+    });
+  });
+</script>
+<% end %>
+
+<% if facade.sections.where(style: 'cta_points').present? %>
+  <div class="home content first">
+    <div class="wellbeing content">
+      <div class="home-cta">
+        <div class="home-cta__inner">
+          <div class="home-cta-slider">
+              <div class="home-cta-slider__content-wrap">
+                <div class="home-cta-slider__heading">
+                  <h1 class="home-cta-slider__title">
+                    What is the
+                    <strong class="home-cta-slider__title--emphasis">Physio Med Telehealth Service?</strong>
+
+                    <%= link_to 'Contact Us', new_contact_path, class: 'generic-orange-button' %>
+                  </h1>
+                </div>
+              </div>
+              <div class="home-cta-slider__content-wrap">
+                <ul class="home-cta-slider__controls">
+                  <%= render partial: 'landing_pages/physiotherapy_treatment/sections/cta_points_title',
+                            collection: facade.sections.where(style: 'cta_points'),
+                            as: :cta_point,
+                            cached: true %>
+                </ul>
+                <div class="home-cta-slider__content slick-wrap">
+                  <%= render partial: 'landing_pages/physiotherapy_treatment/sections/cta_points_content',
+                            collection: facade.sections.where(style: 'cta_points'),
+                            as: :cta_point,
+                            cached: true %>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <% if facade.sections.where(style: 'banner_cta').present? %>
+          <div class="home-cta__aside">
+            <div class="home-cta__aside-inner">
+              <h2 class="home-cta-banner__title">
+                <%= facade.sections.where(style: 'banner_cta').first.title %>
+                <span class="home-cta-banner__title--emphasis">
+                  <%= facade.sections.where(style: 'banner_cta').first.sub_title %>
+                </span>
+              </h2>
+              <%= image_tag facade.image.home.url, alt: facade.title if facade.image? %>
+              <div class="home-cta-banner__content">
+                <%= raw facade.sections.where(style: 'banner_cta').first.content %>
+                <%= link_to facade.sections.where(style: 'banner_cta_link').first.title, facade.sections.where(style: 'banner_cta_link').first.sub_title, class: 'generic-orange-button' if facade.sections.where(style: 'banner_cta_link').present? %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

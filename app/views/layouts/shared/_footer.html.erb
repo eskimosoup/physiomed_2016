@@ -67,3 +67,19 @@
     ) %>
   </div>
 </div>
+
+<% if shared_facade.notice_modal? %>
+  <div class="inline-notice-modal" id="inline-notice-modal">
+    <div class="inline-notice-modal-content">
+      <div class="inline-notice-modal-content__inner">
+        <%= content_tag :h2, shared_facade.notice_modal.title %>
+
+        <%= raw shared_facade.notice_modal.content %>
+
+        <%= link_to shared_facade.notice_modal.button_text,
+                    shared_facade.notice_modal.button_link,
+                    class: 'inline-notice-modal-content__button' %>
+      </div>
+    </div>
+  </div>
+<% end %>

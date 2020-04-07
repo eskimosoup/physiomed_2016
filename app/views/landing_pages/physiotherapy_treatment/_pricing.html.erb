@@ -1,0 +1,47 @@
+<section class="landing-page-pricing">
+  <div class="landing-page-pricing-title">
+    <div class="landing-page-pricing-title__inner">
+      <div class="landing-page-pricing-title__box">
+        <h1 class="landing-page-pricing-title__title">
+          We offer outstanding value
+        </h1>
+
+        <p class="landing-page-pricing-title__content">
+          See our packages.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="landing-page-pricing-grid">
+    <div class="landing-page-pricing-grid-offer">
+      <div class="landing-page-pricing-grid-offer__inner">
+        <div class="landing-page-pricing-grid-offer__left"></div>
+        <div class="landing-page-pricing-grid-offer__center"></div>
+        <div class="landing-page-pricing-grid-offer__right"></div>
+
+
+        <h2 class="landing-page-pricing-grid-offer__title">
+          <div class="landing-page-pricing-grid-offer__text">
+            Initial Assessment
+            <span class="landing-page-pricing-grid-offer__price">
+            £35
+            </span>
+          </div>
+        </h2>
+      </div>
+    </div>
+
+    <%#= image_tag 'components/landing-pages/physiotherapy-treatment/placeholders/initial-assessment.png', alt: 'Initial Assessment £35' %>
+
+    <div class="landing-page-pricing-breakdown">
+      <%= render partial: 'landing_pages/physiotherapy_treatment/sections/pricing_treatment',
+                 collection: pricing_treatments,
+                 as: :pricing_treatment,
+                 cached: true,
+                 locals: {
+                   pricing_treatments: pricing_treatments
+                 } %>
+    </div>
+  </div>
+</section>

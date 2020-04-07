@@ -2,7 +2,7 @@ module Optimadmin
   class LandingPagesController < Optimadmin::ApplicationController
     before_action :set_landing_page, only: [:show, :edit, :update, :destroy]
     edit_images_for LandingPage, [
-      [:image, { background: ['fit', 1920, 400] }]
+      [:image, { background: ['fit', 1920, 400] }, home: ['fill', 285, 205]]
     ]
 
     def index

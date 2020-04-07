@@ -1,5 +1,18 @@
 <%= render 'cookie_consent/message', date_cookies_changed: DateTime.new(2018, 8, 20, 9, 00, 0).strftime("%Y-%m-%d %H:%M") %>
 
+<% if shared_facade.notice_bar? %>
+  <div class="primary-header-notice-bar">
+    <div class="primary-header-notice-bar__inner">
+      <%= raw shared_facade.notice_bar.content %>
+
+      <%= link_to shared_facade.notice_bar.button_text,
+                  shared_facade.notice_bar.button_link,
+                  class: 'primary-header-notice-bar__button toggle-class',
+                  data: { container: '.inline-notice-modal', class: 'visible', return: false } if shared_facade.notice_bar.button? %>
+    </div>
+  </div>
+<% end %>
+
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'vendor/modernizr' %>
   <script>
