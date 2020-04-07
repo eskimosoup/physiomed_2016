@@ -48,7 +48,7 @@ body {
   padding-bottom: 10px;
   padding-top: 10px;
   width: 90%;
-  max-width: 640px;
+  max-width: 75vw;
 
   @include breakpoint(medium down) {
     margin-top: 10px;

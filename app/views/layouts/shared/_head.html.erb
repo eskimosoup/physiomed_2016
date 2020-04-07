@@ -4,13 +4,13 @@
 <%= tag :meta, name: 'keywords', content: @meta_tags if @meta_tags %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<%= stylesheet_link_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css' %>
-<%= stylesheet_link_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css' %>
+<%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css' %>
+<%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css' %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
 
 <%= javascript_include_tag 'application' %>
 <%= csrf_meta_tags %>
-<%= javascript_include_tag 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js' %>
+<%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js' %>
 <%= javascript_include_tag 'cookie-consent/consent' %>
 
 <%= yield :head %>

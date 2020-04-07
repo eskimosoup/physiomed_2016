@@ -78,7 +78,7 @@
 
         <%= link_to shared_facade.notice_modal.button_text,
                     shared_facade.notice_modal.button_link,
-                    class: 'inline-notice-modal-content__button' %>
+                    class: 'inline-notice-modal-content__button' if shared_facade.notice_modal.button? %>
       </div>
     </div>
   </div>
