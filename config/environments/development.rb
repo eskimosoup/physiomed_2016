@@ -5,7 +5,7 @@ Rails.application.configure do
   # Mailer
   config.action_mailer.delivery_method = :letter_opener
 
-  Rails.application.routes.default_url_options[:host] = 'localhost.ssl:3000'
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   Rails.application.routes.default_url_options[:protocol] = 'https'
 
   config.action_mailer.default_url_options = {
