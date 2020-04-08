@@ -1,3 +1,42 @@
+// Only used on pages as a static copy of the code
+.body-part-inline {
+  margin: rem-calc(20px) 0;
+  position: relative;
+  width: 100%;
+
+  @include breakpoint(small only) {
+    border: 1px solid $mud-brown;
+    margin-bottom: rem(10px);
+    margin-top: rem(10px);
+  }
+
+  @include media('>=768px') {
+    min-height: 150px;
+    max-width: 260px;
+    display: inline-block;
+  }
+
+  .name {
+    color: $white;
+    padding: rem-calc(15px 5px);
+  }
+
+  .tagline {
+    background-color: rgba($beige, .75);
+    bottom: 0;
+    color: $brown;
+    font-size: rem(16px);
+    font-weight: $open-sans-semibold;
+    padding: rem(20px) 0;
+    position: absolute;
+    width: 100%;
+
+    @include media('>=768px') {
+      width: calc(100% - 30px);
+    }
+  }
+}
+
 .body-part {
   margin: rem-calc(20px) auto;
   position: relative;

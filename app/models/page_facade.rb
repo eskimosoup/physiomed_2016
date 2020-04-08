@@ -39,6 +39,10 @@ class PageFacade
     @side_menus ||= page.side_menus
   end
 
+  def side_menus?
+    page.side_menus.present? && side_menus.last.root_menu_items(page).present? && page.side_menus.last.has_children?(page)
+  end
+
   def team_members
     @team_members ||= page.team_members.displayed
   end
