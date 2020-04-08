@@ -29,7 +29,7 @@
       </div>
     <% end %>
 
-    <div class="page-content-wrap <%= 'full-width' if @page_facade.side_menus.blank? %>">
+    <div class="page-content-wrap <%= 'full-width' if @page_facade.side_menus? %>">
       <div class="page-content">
         <% present @page_facade.page do |page_presenter| %>
           <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-image') %>
