@@ -45,7 +45,7 @@
   }
 
   &__inner {
-    @include responsive-flex-grid-column((medium down: 12, large: 5));
+    @include responsive-flex-grid-column((small only: 12, medium only: 8, large: 5));
     background-color: rgba($color--green, .85);
     padding-bottom: map-get($grid-column-gutter, medium);
     padding-top: map-get($grid-column-gutter, medium);

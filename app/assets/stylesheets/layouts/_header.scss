@@ -83,6 +83,12 @@
   }
 
   @include media('>=768px') {
+    @include flex-grid-column(2, $gutter: (small: 0));
+    clear: right;
+    width: 100%;
+  }
+
+  @include media('>=1200px') {
     @include flex-grid-column(3, $gutter: (small: 0));
     clear: right;
     width: 100%;
@@ -104,6 +110,10 @@
   }
 
   @include media('>=768px') {
+    @include flex-grid-column(10);
+  }
+
+  @include media('>=1200px') {
     @include flex-grid-column(9);
   }
 }
