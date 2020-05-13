@@ -47,22 +47,18 @@ body {
   height: auto;
   padding-bottom: 10px;
   padding-top: 10px;
-  padding-right: 45px;
+  padding-right: 33px;
   width: 90%;
-  max-width: 75vw;
+  max-width: 800px;
 
-  @media screen and (max-width: 1199px) {
+  @include breakpoint(medium down) {
     margin-top: 10px;
     max-height: 95vh;
     overflow: auto;
     word-wrap: break-word;
-    max-width: 99vw;
-    left: 10px;
-    padding-bottom: rem(75px);
-    position: absolute;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 767px) {
     left: 50%;
     position: absolute;
     top: 50%;
@@ -78,18 +74,8 @@ body {
       padding-bottom: rem(100px);
     }
 
-    h2 {
-      text-transform: none;
-    }
-
     p {
-      @include breakpoint(medium down) {
-        font-size: 15px;
-      }
-
-      @include breakpoint(large) {
-        font-size: 18px;
-      }
+      font-size: 16px;
     }
 
     ul {
@@ -101,9 +87,9 @@ body {
 
   &__floating-button {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 20px;
-    background: $orange;
+    background: $green;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -113,20 +99,16 @@ body {
   }
 
   &__button {
-    background-color: $orange;
-    border-radius: 3px;
+    background-color: $green;
     color: $white;
     display: inline-block;
-    font-size: rem(14px);
-    padding: rem(8px 16px);
+    padding: 5px 10px;
 
     &:hover,
-    &:focus {
-      background-color: darken($orange, 12%);
-    }
-
+    &:focus,
     &:active {
-      background-color: darken($orange, 17%);
+      background-color: $dark-green;
+      color: $white;
     }
   }
 }
