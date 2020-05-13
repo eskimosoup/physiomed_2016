@@ -51,16 +51,18 @@ body {
   width: 90%;
   max-width: 75vw;
 
-  @include breakpoint(medium down) {
+  @media screen and (max-width: 1199px) {
     margin-top: 10px;
     max-height: 95vh;
     overflow: auto;
     word-wrap: break-word;
-    max-width: 98vw;
+    max-width: 99vw;
+    left: 10px;
     padding-bottom: rem(75px);
+    position: absolute;
   }
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: 1200px) {
     left: 50%;
     position: absolute;
     top: 50%;
