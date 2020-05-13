@@ -21,6 +21,11 @@ document.addEventListener('click',
       Cookies.set('inline-notice-modal', '1', { expires: 7 });
       window.location.href = event.target.getAttribute('href');
     }
+    if (event.target.matches('.inline-notice-modal-content__large-button')) {
+      document.querySelector('.inline-notice-modal').classList.remove('visible');
+      Cookies.set('inline-notice-modal', '1', { expires: 7 });
+      window.location.href = event.target.getAttribute('href');
+    }
   },
   false
 );

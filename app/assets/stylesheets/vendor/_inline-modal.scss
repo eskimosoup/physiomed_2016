@@ -111,4 +111,22 @@ body {
       color: $white;
     }
   }
+
+  &__large-button {
+    background-color: $green;
+    bottom: 0;
+    color: $white;
+    display: block;
+    padding: 5px 10px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $dark-green;
+      color: $white;
+    }
+  }
 }
