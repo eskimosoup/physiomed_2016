@@ -15,7 +15,7 @@ module CacheHelper
     render partial: partial,
            collection: collection,
            as: as,
-           cache: true,
+           cached: true,
            locals: locals
   end
 

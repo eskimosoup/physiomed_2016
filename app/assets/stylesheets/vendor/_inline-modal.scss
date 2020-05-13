@@ -47,6 +47,7 @@ body {
   height: auto;
   padding-bottom: 10px;
   padding-top: 10px;
+  padding-right: 45px;
   width: 90%;
   max-width: 75vw;
 
@@ -70,6 +71,11 @@ body {
   &__inner {
     @include flex-grid-column(12);
 
+
+    @include breakpoint(medium down) {
+      padding-bottom: rem(100px);
+    }
+
     h2 {
       text-transform: none;
     }
@@ -89,6 +95,19 @@ body {
       margin-left: 20px;
       padding-left: 0;
     }
+  }
+
+  &__floating-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: $orange;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: $white;
+    line-height: 40px;
+    text-align: center;
   }
 
   &__button {

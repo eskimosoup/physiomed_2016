@@ -72,6 +72,10 @@
   <div class="inline-notice-modal" id="inline-notice-modal">
     <div class="inline-notice-modal-content">
       <div class="inline-notice-modal-content__inner">
+      <%= link_to "X",
+                  shared_facade.notice_modal.button_link,
+                  class: 'inline-notice-modal-content__floating-button' if shared_facade.notice_modal.button? %>
+
         <%= content_tag :h2, shared_facade.notice_modal.title if shared_facade.notice_modal.title? %>
 
         <%= raw shared_facade.notice_modal.content %>
