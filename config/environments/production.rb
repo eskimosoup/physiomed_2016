@@ -21,14 +21,13 @@ Rails.application.configure do
   #  '://',
   #  Rails.application.routes.default_url_options[:host]
   # ].join
-  config.action_mailer.smtp_settings = { enable_starttls_auto: false }
-
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: 'mail.optimised.today',
     authentication: :plain,
     user_name: 'noreply@optimised.today',
-    password: ENV['NOREPLY_PASSWORD']
+    password: ENV['NOREPLY_PASSWORD'],
+    enable_starttls_auto: false
   }
 
   # Settings specified here will take precedence over those in config/application.rb.
