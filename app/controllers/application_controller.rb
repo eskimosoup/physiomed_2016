@@ -1,18 +1,5 @@
 class ApplicationController < ActionController::Base
-  unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception, with: ->(e) { render_error(500, e) }
-    rescue_from ActiveRecord::RecordNotFound, with: ->(e) { render_error(404, e) }
-    rescue_from ActionController::RoutingError, with: ->(e) { render_error(404, e) }
-  end
-
-  def render_error(status, error)
-    logger.error error.message
-    logger.error error.backtrace.join("\n")
-    respond_to do |format|
-      format.html { render "errors/#{status}", status: status }
-      format.all { render nothing: true, status: status }
-    end
-  end
+  include Optimadmin::ErrorReporting
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
