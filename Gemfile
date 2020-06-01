@@ -46,6 +46,7 @@ gem 'pdfkit'
 gem 'render_anywhere'
 gem 'fog-aws'
 gem 'rails-erd', group: :development
+gem 'wkhtmltopdf-binary'
 
 group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
