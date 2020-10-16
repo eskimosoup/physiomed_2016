@@ -6,7 +6,7 @@ module TwitterHelper
       config.access_token        = '2250321354-N1SAGmbNdOtLnoJeva3AhTD5DORGXd6unggtBTG'
       config.access_token_secret = '5aRup8mz4tBs2cE2ycyCHUypEi1edLCgOMi0B3i8HsDul'
     end
-  rescue
+  rescue StandardError
     nil
   end
 
@@ -16,6 +16,8 @@ module TwitterHelper
 
   def twitter_timeline(twitter, limit)
     twitter_connect.user_timeline(twitter.delete('@'), count: limit) if twitter_connect
+  rescue StandardError
+    nil
   end
 
   def tweet_text(text)
