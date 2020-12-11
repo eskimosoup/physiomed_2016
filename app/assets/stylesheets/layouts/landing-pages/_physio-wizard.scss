@@ -1,0 +1,121 @@
+.physiomed-online-assessment-landing-page-banner-wrap {
+  margin-bottom: rem(20px);
+  min-height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.physiomed-online-assessment-landing-page-banner {
+  @include flex-grid-row;
+  color: $color--white;
+  position: relative;
+  z-index: 2;
+
+  @include breakpoint(medium) {
+    top: 50%;
+    transform: translateY(50%);
+  }
+
+  &--margin {
+    transform: translateY(100%);
+  }
+
+  &__inner {
+    @include responsive-flex-grid-column((small only: 12, medium only: 8, large: 5));
+    background-color: rgba($color--green, .85);
+    padding-bottom: map-get($grid-column-gutter, medium);
+    padding-top: map-get($grid-column-gutter, medium);
+  }
+
+  &__button {
+    background-color: $color--orange;
+    border-radius: $global-border-radius--small;
+    color: $color--white;
+    display: inline-block;
+    font-family: $font--ubuntu;
+    font-weight: $font--ubuntu--light;
+    padding: rem(6px 12px);
+    transition: background-color .25s ease-in-out;
+    margin-top: rem(16px);
+
+    &:hover,
+    &:focus {
+      background-color: $color--brown--dark;
+      color: $color--white;
+    }
+  }
+
+  &__title {
+    font-size: rem(30px);
+    font-weight: $font--open-sans--bold;
+    line-height: 1.1;
+    margin-bottom: rem(10px);
+    margin-top: 0;
+    padding-top: 0;
+
+    &--small {
+      font-size: rem(25px);
+    }
+  }
+
+  &__text {
+    p {
+      font-size: rem(14px);
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.physiomed-online-assessment-landing-page {
+  @include flex-grid-row;
+  margin-top: rem(40px);
+
+  &__inner {
+    @include flex-grid-column(12, 0);
+  }
+
+  &__title {
+    @include generic-bottom-bordered-title;
+    text-align: center;
+  }
+
+  &__content-box {
+    @include content-box-style;
+    background: $white;
+    margin: 0 rem(10px);
+    position: relative;
+    padding: rem(15px) rem(30px);
+    overflow: hidden;
+
+    &--styles {
+      @include page-styles;
+    }
+  }
+}
+
+.physiomed-online-assessment-service-overview-item {
+  @include flex-grid-row;
+
+  &__inner {
+    @include responsive-flex-grid-column((medium down: 12, large: 4));
+  }
+}
+
+.physiomed-online-assessment-sign-up-item {
+  @include flex-grid-row;
+
+  &__inner {
+    @include responsive-flex-grid-column((medium down: 12, large: 6));
+  }
+}
+
+.physiomed-online-assessment-team-members {
+  @include flex-grid-row;
+
+  &__inner {
+    @include responsive-flex-grid-column((medium down: 12, large: 3));
+  }
+}

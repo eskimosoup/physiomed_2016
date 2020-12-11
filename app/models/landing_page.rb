@@ -31,8 +31,8 @@ class LandingPage < ActiveRecord::Base
 
   mount_uploader :image, LandingPageUploader
 
-  STYLE = %w[cquin moving_is_key].freeze
-  LAYOUT = %w[application].freeze
+  STYLE = %w[cquin physio_wizard moving_is_key].freeze
+  LAYOUT = %w[application minimal].freeze
 
   validates :title, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: {

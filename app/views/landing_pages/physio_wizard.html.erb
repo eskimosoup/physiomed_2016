@@ -1,0 +1,16 @@
+<% @facade.sections.displayed.each do |section| %>
+  <% next if section.style.include?('__') %>
+
+  <% if Rails.env.development? %>
+    <!-- BEGIN <%= section.style %> -->
+  <% end %>
+
+  <%= render partial: "landing_pages/physio_wizard/sections/#{section.style}", locals: {
+        facade: @facade,
+        section: section
+      } %>
+
+  <% if Rails.env.development? %>
+    <!-- END <%= section.style %> -->
+  <% end %>
+<% end %>

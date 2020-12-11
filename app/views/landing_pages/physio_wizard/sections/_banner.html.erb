@@ -1,0 +1,16 @@
+<%#= debug facade %>
+
+<% present section do |presenter| %>
+  <div>
+    <div class="physiomed-online-assessment-landing-page-banner-wrap">
+      <div class="physiomed-online-assessment-landing-page-banner">
+        <div class="physiomed-online-assessment-landing-page-banner__inner">
+          <%= presenter.header(:h1, class: 'physiomed-online-assessment-landing-page-banner__title') %>
+          <%= presenter.content %>
+          <%= presenter.button(class: 'physiomed-online-assessment-landing-page-banner__button') %>
+        </div>
+      </div>
+      <%= presenter.image(nil, class: 'home-banner__image') %>
+    </div>
+  </div>
+<% end %>

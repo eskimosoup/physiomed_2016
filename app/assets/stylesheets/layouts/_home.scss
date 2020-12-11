@@ -865,6 +865,14 @@
       margin: 0;
     }
   }
+
+  &__content-full {
+    @include flex-grid-column(12);
+
+    &.slick-dotted.slick-slider {
+      margin: 0;
+    }
+  }
 }
 
 .home-cta-slider-content {

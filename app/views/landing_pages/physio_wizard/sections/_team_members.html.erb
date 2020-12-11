@@ -1,0 +1,34 @@
+<%#= debug facade %>
+
+<% present section do |presenter| %>
+  <div class="physiomed-online-assessment-landing-page">
+    <div class="physiomed-online-assessment-landing-page__inner">
+      <div class="physiomed-online-assessment-landing-page__content-box physiomed-online-assessment-landing-page__content-box--styles">
+        <%= presenter.header(:h1, class: 'physiomed-online-assessment-landing-page__title') %>
+        <% if presenter.sub_title? %>
+          <h2><%= presenter.sub_title %></h2>
+        <% end %>
+        <%= presenter.content %>
+        <%= presenter.button(class: 'generic-orange-button') %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if facade.sections.where(style: 'team_members__member').present? %>
+  <div class="physiomed-online-assessment-team-members">
+    <% facade.sections.where(style: 'team_members__member').each do |column| %>
+      <% present column do |presenter| %>
+        <div class="physiomed-online-assessment-team-members__inner">
+          <%= presenter.header(:h2) %>
+          <% if presenter.sub_title? %>
+            <h2><%= presenter.sub_title %></h2>
+          <% end %>
+          <%= presenter.content %>
+          <%= presenter.image(nil) %>
+          <%= presenter.button(class: 'generic-orange-button') %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,41 @@
+<%#= debug facade %>
+
+<div class="home content first">
+  <div class="wellbeing content">
+    <div class="home-cta">
+      <% present section do |presenter| %>
+
+        <div class="home-cta__inner">
+          <div class="home-cta-slider">
+            <div class="home-cta-slider__content-wrap">
+              <div class="home-cta-slider__heading">
+                <%= presenter.header(:h1, class: 'home-cta-slider__title') %>
+                <%= presenter.button %>
+              </div>
+            </div>
+            <div class="home-cta-slider__content-wrap">
+              <div class="home-cta-slider__content-full">
+                <%= presenter.content %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if facade.sections.find_by(style: 'banner_introduction__video').present? %>
+        <% present facade.sections.find_by(style: 'banner_introduction__video') do |presenter| %>
+          <div class="home-cta__aside">
+            <div class="home-cta__aside-inner">
+              <%= presenter.header(:h2, class: 'home-cta-banner__title') %>
+              <%= presenter.image(nil, alt: presenter.title) %>
+              <div class="home-cta-banner__content">
+                <%= presenter.content %>
+                <%= presenter.button(class: 'generic-orange-button') %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

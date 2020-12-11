@@ -1,0 +1,56 @@
+<%= render 'cookie_consent/message', date_cookies_changed: DateTime.new(2018, 8, 20, 9, 00, 0).strftime("%Y-%m-%d %H:%M") %>
+
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/modernizr' %>
+  <script>
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      $(document).on({
+        mouseenter: function (e) {
+          var widthOffset = 0;
+
+          var index = $(this).find('a').parent().index();
+          $(".primary-header-navigation li").slice(0, index).each(function(index, element) {
+            widthOffset += parseInt($(element).width());
+          });
+
+          widthOffset += parseInt($(this).find('a').parent().width()) / 2;
+
+          $(this).find('a').css('border-bottom', 0);
+          var $dropdown = $(this).find('.dropdown-arrow');
+          $dropdown.css('margin-left', widthOffset);
+        },
+        mouseleave: function () {
+          $(this).find('a').removeAttr('style');
+          $(this).find('.dropdown-arrow').removeAttr('style');
+        }
+      }, '.primary-header-navigation li');
+    }
+    $(document).on('click', '.primary-header-search-toggle__button', function() {
+      if($('.primary-header-search-phone-toggle__phone').is(':visible')) {
+        $('.primary-header-search-phone-toggle__phone').fadeToggle(125, function() {
+          $('.header-search-form').fadeToggle().css('display', 'inline-block');
+        })
+      } else {
+        $('.header-search-form').fadeToggle(125, function() {
+          $('.primary-header-search-phone-toggle__phone').fadeToggle().css('display', 'inline-block');
+        })
+      }
+
+      return false;
+    });
+  </script>
+<% end %>
+
+<header class="primary-header-wrap">
+<div class="primary-header">
+  <div class="primary-header-content-wrap">
+    <div class="primary-header-branding">
+      <%= link_to root_url, title: "Physio Med" do %>
+        <%= image_tag "logo.jpg", alt: "Physio Med", id: "physiomed-logo" %>
+      <% end %>
+      <%= link_to (image_tag 'icons/menu-icon.png', alt: 'Menu'), '#', class: 'toggle-menu toggle-class',
+                  data: { container: '.primary-header-navigation', class: 'visible', return: false } %>
+    </div>
+  </div>
+</div>
+</header>

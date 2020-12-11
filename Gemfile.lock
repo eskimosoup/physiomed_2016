@@ -1,11 +1,11 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: e661d6c29ecc266e30c75d90be3a8f11e9a8b1d5
+  revision: 66ae72a079f9daf49ee93b3cb88b8840a93911c4
   branch: master
   specs:
-    optimadmin (2.0.7)
+    optimadmin (2.3.5)
       bcrypt
-      cancancan (~> 3.0)
+      cancancan (~> 3.1)
       carrierwave
       closure_tree
       fastimage
@@ -24,11 +24,13 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: dbb0477fc772ad2541645c5f092a48a890b7aefd
+  revision: 9e8f1a205104032d2c4684e9b3a33ac4778fc5e5
   specs:
-    optimadmin_generators (2.1.1)
+    optimadmin_generators (2.2.6)
       htmlbeautifier
       rubocop
+      rubocop-performance
+      rubocop-rails
 
 GEM
   remote: https://rubygems.org/
@@ -75,13 +77,13 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     arel (6.0.4)
-    ast (2.4.0)
+    ast (2.4.1)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
     awesome_print (1.8.0)
-    bcrypt (3.1.13)
+    bcrypt (3.1.16)
     buftok (0.2.0)
     builder (3.2.4)
     bullet (6.1.0)
@@ -113,12 +115,12 @@ GEM
       mime-types (>= 1.16)
     choice (0.2.0)
     chronic (0.10.2)
-    closure_tree (7.1.0)
+    closure_tree (7.2.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     cocoon (1.2.14)
     coderay (1.1.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     crass (1.0.6)
     daemons (1.3.1)
     database_cleaner (1.8.5)
@@ -150,8 +152,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.17.3)
       multipart-post (>= 1.2, < 3)
-    fastimage (2.1.7)
-    ffi (1.13.0)
+    fastimage (2.2.0)
+    ffi (1.13.1)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -191,7 +193,7 @@ GEM
       multi_json (~> 1.10)
       retriable (~> 1.4)
       signet (~> 0.6)
-    googleauth (0.12.0)
+    googleauth (0.14.0)
       faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.4, < 3.0)
       memoist (~> 0.16)
@@ -221,7 +223,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
-    jwt (2.2.1)
+    jwt (2.2.2)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -242,7 +244,7 @@ GEM
       actionpack (>= 3)
       activesupport (>= 3)
       railties (>= 3)
-    loofah (2.5.0)
+    loofah (2.8.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -253,25 +255,25 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.0512)
-    mini_magick (4.10.1)
+    mime-types-data (3.2020.1104)
+    mini_magick (4.11.0)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.14.1)
-    multi_json (1.14.1)
+    minitest (5.14.2)
+    multi_json (1.15.0)
     multipart-post (2.1.1)
     naught (1.1.0)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.0.2)
     nio4r (2.5.2)
-    nokogiri (1.10.9)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     normalize-rails (3.0.3)
-    os (1.1.0)
-    parallel (1.19.1)
-    parser (2.7.1.3)
-      ast (~> 2.4.0)
+    os (1.1.1)
+    parallel (1.20.1)
+    parser (2.7.2.0)
+      ast (~> 2.4.1)
     pdfkit (0.8.4.2)
     pg (0.21.0)
     pg_search (2.3.0)
@@ -285,7 +287,7 @@ GEM
       pry (~> 0.13.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     puma (4.3.5)
       nio4r (~> 2.0)
     quiet_assets (1.1.0)
@@ -329,6 +331,7 @@ GEM
     rdoc (4.3.0)
     recaptcha (5.5.0)
       json
+    regexp_parser (2.0.0)
     render_anywhere (0.0.12)
       rails (>= 3.0.7)
     retriable (1.4.1)
@@ -350,22 +353,30 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    rubocop (0.84.0)
+    rubocop (1.6.1)
       parallel (~> 1.10)
-      parser (>= 2.7.0.1)
+      parser (>= 2.7.1.5)
       rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 0.0.3)
+      rubocop-ast (>= 1.2.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (0.0.3)
-      parser (>= 2.7.0.1)
+    rubocop-ast (1.3.0)
+      parser (>= 2.7.1.5)
+    rubocop-performance (1.9.1)
+      rubocop (>= 0.90.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.9.0)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 0.90.0, < 2.0)
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.10.1)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.3.0)
+    sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -400,7 +411,7 @@ GEM
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.1)
+    sprockets-rails (3.2.2)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
@@ -425,7 +436,7 @@ GEM
       multipart-post (~> 2.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
-    tzinfo (1.2.7)
+    tzinfo (1.2.8)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)

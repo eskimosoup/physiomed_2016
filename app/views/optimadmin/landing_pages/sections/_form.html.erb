@@ -43,6 +43,16 @@
         <%= f.label :style %><br>
         <%= f.select :style, LandingPages::Section::STYLES.map { |x| [x.humanize, x] } %>
       </div>
+
+      <div class="field">
+        <%= f.label :button_link %><br>
+        <%= f.text_field :button_link %>
+      </div>
+
+      <div class="field">
+        <%= f.label :button_text %><br>
+        <%= f.text_field :button_text %>
+      </div>
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>

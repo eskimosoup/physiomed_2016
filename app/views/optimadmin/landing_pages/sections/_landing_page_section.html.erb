@@ -1,6 +1,10 @@
 <% present landing_page_section do |landing_page_section_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= landing_page_section_presenter.id %>">
-    <div class="large-6 small-8 columns" data-equalizer-watch="module-list">
+    <div class="large-3 columns" data-equalizer-watch="module-list">
+      <%= landing_page_section_presenter.style %>
+    </div>
+
+    <div class="large-4 small-8 columns" data-equalizer-watch="module-list">
       <%= landing_page_section_presenter.toggle_title %>
     </div>
 
@@ -14,10 +18,6 @@
 
     <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
       <%= landing_page_section_presenter.toggle_link %>
-    </div>
-
-    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-      <%= landing_page_section_presenter.view_link %>
     </div>
 
     <div class="large-1 small-4 columns" data-equalizer-watch="module-list">

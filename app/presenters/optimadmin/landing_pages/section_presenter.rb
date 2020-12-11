@@ -6,6 +6,10 @@ module Optimadmin
       presents :section
       delegate :id, :title, to: :section
 
+      def style
+        section.style.humanize
+      end
+
       def toggle_title
         inline_detail_toggle_link(title)
       end

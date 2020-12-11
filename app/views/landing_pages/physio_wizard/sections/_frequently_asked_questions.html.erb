@@ -1,0 +1,16 @@
+<%#= debug facade %>
+
+<% present section do |presenter| %>
+  <div class="physiomed-online-assessment-landing-page">
+    <div class="physiomed-online-assessment-landing-page__inner">
+      <div class="physiomed-online-assessment-landing-page__content-box physiomed-online-assessment-landing-page__content-box--styles">
+        <%= presenter.header(:h1, class: 'physiomed-online-assessment-landing-page__title') %>
+        <% if presenter.sub_title? %>
+          <h2><%= presenter.sub_title %></h2>
+        <% end %>
+        <%= presenter.content %>
+        <%= presenter.button(class: 'generic-orange-button') %>
+      </div>
+    </div>
+  </div>
+<% end %>
