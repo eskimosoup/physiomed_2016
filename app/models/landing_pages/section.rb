@@ -39,6 +39,7 @@ module LandingPages
       'service_overview',
       'service_overview__column',
       'service_timeline',
+      'service_timeline__column',
       'testimonials',
       'content_overview',
       'organisations',

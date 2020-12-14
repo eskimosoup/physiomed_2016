@@ -1,16 +1,48 @@
 <%#= debug facade %>
 
 <% present section do |presenter| %>
-  <div class="physiomed-online-assessment-landing-page">
-    <div class="physiomed-online-assessment-landing-page__inner">
-      <div class="physiomed-online-assessment-landing-page__content-box physiomed-online-assessment-landing-page__content-box--styles">
-        <%= presenter.header(:h1, class: 'physiomed-online-assessment-landing-page__title') %>
-        <% if presenter.sub_title? %>
-          <h2><%= presenter.sub_title %></h2>
-        <% end %>
-        <%= presenter.content %>
-        <%= presenter.button(class: 'generic-orange-button') %>
+  <% if section.content? %>
+    <div class="physiomed-online-assessment-landing-page">
+      <div class="physiomed-online-assessment-landing-page__inner">
+        <div class="physiomed-online-assessment-landing-page__content-box physiomed-online-assessment-landing-page__content-box--styles">
+          <%= presenter.header(:h2, class: 'physiomed-online-assessment-landing-page__title') %>
+          <% if presenter.sub_title? %>
+            <h3><%= presenter.sub_title %></h3>
+          <% end %>
+          <%= presenter.content %>
+          <%= presenter.button(class: 'generic-orange-button') %>
+        </div>
       </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if facade.sections.where(style: 'service_timeline__column').present? %>
+  <div class="physiomed-online-assessment-service-timeline-item-wrap">
+    <div class="physiomed-online-assessment-service-timeline-item">
+      <% facade.sections.where(style: 'service_timeline__column').each_with_index do |column, index| %>
+        <% present column do |presenter| %>
+          <div class="physiomed-online-assessment-service-timeline-item__inner">
+            <div class="physiomed-online-assessment-service-timeline-item__content">
+              <div class="physiomed-online-assessment-service-timeline-item__content-inner">
+                <%= presenter.header(:h2, class: 'physiomed-online-assessment-service-timeline-item__title') %>
+                <% if presenter.sub_title? %>
+                  <h3><%= presenter.sub_title %></h3>
+                <% end %>
+
+                <div class="physiomed-online-assessment-service-timeline-item__text">
+                  <%= presenter.content %>
+                  <%= presenter.image(nil) %>
+
+                  <div class="physiomed-online-assessment-service-timeline-item__button-wrap">
+                    <%= presenter.button(class: 'generic-orange-button') %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 <% end %>

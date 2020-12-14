@@ -52,6 +52,7 @@
     margin-bottom: rem(10px);
     margin-top: 0;
     padding-top: 0;
+    text-transform: none;
 
     &--small {
       font-size: rem(25px);
@@ -80,6 +81,7 @@
   &__title {
     @include generic-bottom-bordered-title;
     text-align: center;
+    text-transform: none;
   }
 
   &__content-box {
@@ -98,6 +100,7 @@
 
 .physiomed-online-assessment-service-overview-item-wrap {
   background-color: $brown;
+  color: $white;
   margin-bottom: rem(40px);
   margin-top: rem(40px);
   padding-bottom: rem(40px);
@@ -109,6 +112,16 @@
 
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 4));
+  }
+
+  &__button-wrap {
+    font-weight: 700;
+    margin-top: rem(20px);
+    text-align: center;
+  }
+
+  .generic-orange-button {
+    font-size: 21px;
   }
 }
 
@@ -123,13 +136,115 @@
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 6));
   }
+
+  &__button-wrap {
+    margin-top: rem(20px);
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  li {
+    background-image: asset-data-url('components/landing-pages/physiotherapy-treatment/cta-slider/checkmark.png');
+    background-position: top 15px left;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid $brown-offset;
+    display: block;
+    font-size: rem(14px);
+    font-weight: $open-sans-bold;
+    padding-bottom: rem(10px);
+    padding-left: rem(25px);
+    padding-top: rem(10px);
+  }
+
+  .generic-orange-button {
+    display: block;
+    font-size: 28px;
+  }
 }
+
+.physiomed-online-assessment-service-timeline-wrap {
+  margin-bottom: rem(40px);
+  margin-top: rem(40px);
+}
+
+.physiomed-online-assessment-service-timeline-item {
+  @include flex-grid-row;
+
+  &__inner {
+    @include responsive-flex-grid-column((medium down: 12, large: 6));
+  }
+
+  &__button-wrap {
+    margin-top: rem(20px);
+    text-align: center;
+  }
+
+  &__content {
+    background-color: $green;
+    border-radius: 50%;
+    box-shadow: 3px 3px 8px 4px #ccc;
+    height: 300px;
+    margin: rem(20px) auto;
+    padding: rem(35px);
+    position: relative;
+    text-align: center;
+    width: 300px;
+  }
+
+  &__content-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__title {
+    color: $white;
+    text-transform: none;
+  }
+
+  &__text p {
+    color: $black;
+    font-size: 28px;
+    font-weight: 700;
+  }
+}
+
+/*
+.physiomed-online-assessment-team-members-wrap {
+
+}
+*/
 
 .physiomed-online-assessment-team-members {
   @include flex-grid-row;
 
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 3));
+  }
+
+  &__title {
+    text-transform: none;
+  }
+
+  &__sub-title {
+    color: $green;
+    font-size: 14px;
+  }
+
+  &__content {
+    @include content-box-style;
+    margin: rem(20px 0);
+    padding: rem(15px);
+    text-align: center;
+  }
+
+  &__image {
+    border-radius: 50%;
   }
 }
 
