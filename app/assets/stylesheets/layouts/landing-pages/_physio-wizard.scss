@@ -96,12 +96,25 @@
   }
 }
 
+.physiomed-online-assessment-service-overview-item-wrap {
+  background-color: $brown;
+  margin-bottom: rem(40px);
+  margin-top: rem(40px);
+  padding-bottom: rem(40px);
+  padding-top: rem(40px);
+}
+
 .physiomed-online-assessment-service-overview-item {
   @include flex-grid-row;
 
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 4));
   }
+}
+
+.physiomed-online-assessment-sign-up-item-wrap {
+  margin-bottom: rem(40px);
+  margin-top: rem(40px);
 }
 
 .physiomed-online-assessment-sign-up-item {
@@ -117,5 +130,13 @@
 
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 3));
+  }
+}
+
+.physiomed-online-frequently-asked-questions-list {
+  @include flex-grid-row;
+
+  &__group {
+    @include responsive-flex-grid-column((medium down: 12, large: 6));
   }
 }
