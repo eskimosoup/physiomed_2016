@@ -5,13 +5,15 @@
     <div class="physiomed-online-assessment-landing-page-banner-wrap">
       <div class="physiomed-online-assessment-landing-page-banner">
         <div class="physiomed-online-assessment-landing-page-banner__inner">
-          <div class="physiomed-online-assessment-landing-page-banner__sub-title">
-            <%= presenter.sub_title %>
-          </div>
+          <div class="physiomed-online-assessment-landing-page-banner__inner-content">
+            <div class="physiomed-online-assessment-landing-page-banner__sub-title">
+              <%= presenter.sub_title %>
+            </div>
 
-          <%= presenter.header(:h1, class: 'physiomed-online-assessment-landing-page-banner__title') %>
-          <%= presenter.content %>
-          <%= presenter.button(class: 'physiomed-online-assessment-landing-page-banner__button') %>
+            <%= presenter.header(:h1, class: 'physiomed-online-assessment-landing-page-banner__title') %>
+            <%= presenter.content %>
+            <%= presenter.button(class: 'physiomed-online-assessment-landing-page-banner__button') %>
+          </div>
         </div>
 
         <% if facade.sections.find_by(style: 'banner_introduction__video').present? %>
