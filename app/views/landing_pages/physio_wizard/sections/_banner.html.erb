@@ -5,10 +5,25 @@
     <div class="physiomed-online-assessment-landing-page-banner-wrap">
       <div class="physiomed-online-assessment-landing-page-banner">
         <div class="physiomed-online-assessment-landing-page-banner__inner">
+          <div class="physiomed-online-assessment-landing-page-banner__sub-title">
+            <%= presenter.sub_title %>
+          </div>
+
           <%= presenter.header(:h1, class: 'physiomed-online-assessment-landing-page-banner__title') %>
           <%= presenter.content %>
           <%= presenter.button(class: 'physiomed-online-assessment-landing-page-banner__button') %>
         </div>
+
+        <% if facade.sections.find_by(style: 'banner_introduction__video').present? %>
+          <% present facade.sections.find_by(style: 'banner_introduction__video') do |presenter| %>
+            <div class="physiomed-online-assessment-landing-page-banner__aside">
+              <%= presenter.header(:h2, class: 'home-cta-banner__title') %>
+              <%= presenter.image(nil, alt: presenter.title) %>
+              <%= presenter.content %>
+              <%= presenter.button(class: 'generic-orange-button') %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
       <%= presenter.image(nil, class: 'home-banner__image') %>
     </div>

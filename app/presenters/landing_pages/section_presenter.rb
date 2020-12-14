@@ -35,5 +35,11 @@ module LandingPages
     def button(options = {})
       h.link_to(section.button_text, section.button_link, options) if button?
     end
+
+    def background_image_styles
+      return unless section.image?
+
+      "style=background:url('#{section.image.url}') no-repeat center;"
+    end
   end
 end

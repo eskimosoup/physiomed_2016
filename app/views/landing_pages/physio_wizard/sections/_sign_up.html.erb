@@ -22,9 +22,9 @@
       <% facade.sections.where(style: 'sign_up__column').each_with_index do |column, index| %>
         <% present column do |presenter| %>
           <div class="physiomed-online-assessment-sign-up-item__inner <%= 'text-center' if index.zero? %>">
-            <%= presenter.header(:h2, class: 'physiomed-online-assessment-landing-page__title') %>
+            <%= presenter.header(:h2, class: 'physiomed-online-assessment-sign-up-item__title') %>
             <% if presenter.sub_title? %>
-              <h3><%= presenter.sub_title %></h3>
+              <h3 class="physiomed-online-assessment-sign-up-item__sub-title"><%= presenter.sub_title %></h3>
             <% end %>
             <%= presenter.content %>
             <%= presenter.image(nil) %>

@@ -1,15 +1,17 @@
 <%#= debug facade %>
 
 <% present section do |presenter| %>
-  <div class="physiomed-online-assessment-landing-page">
-    <div class="physiomed-online-assessment-landing-page__inner">
-      <div class="physiomed-online-assessment-landing-page__content-box physiomed-online-assessment-landing-page__content-box--styles">
-        <%= presenter.header(:h2, class: 'physiomed-online-assessment-landing-page__title') %>
-        <% if presenter.sub_title? %>
-          <h3><%= presenter.sub_title %></h3>
-        <% end %>
-        <%= presenter.content %>
-        <%= presenter.button(class: 'generic-orange-button') %>
+  <div class="physiomed-online-assessment-organisations-wrap">
+    <div class="physiomed-online-assessment-organisations">
+      <div class="physiomed-online-assessment-organisations__inner">
+        <div class="physiomed-online-assessment-organisations__content-box physiomed-online-assessment-organisations__content-box--styles">
+          <%= presenter.header(:h2, class: 'physiomed-online-assessment-organisations__title') %>
+          <% if presenter.sub_title? %>
+            <h3><%= presenter.sub_title %></h3>
+          <% end %>
+          <%= presenter.content %>
+          <%= presenter.button(class: 'generic-orange-button') %>
+        </div>
       </div>
     </div>
   </div>

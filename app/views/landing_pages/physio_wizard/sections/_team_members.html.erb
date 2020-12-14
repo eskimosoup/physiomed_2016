@@ -1,38 +1,42 @@
 <%#= debug facade %>
 
-<% present section do |presenter| %>
-  <div class="physiomed-online-assessment-landing-page">
-    <div class="physiomed-online-assessment-landing-page__inner">
-      <div class="physiomed-online-assessment-landing-page__content-box physiomed-online-assessment-landing-page__content-box--styles">
-        <%= presenter.header(:h2, class: 'physiomed-online-assessment-landing-page__title') %>
-        <% if presenter.sub_title? %>
-          <h3><%= presenter.sub_title %></h3>
-        <% end %>
-        <%= presenter.content %>
-        <%= presenter.button(class: 'generic-orange-button') %>
+<% present section do |team_member_presenter| %>
+<div class="physiomed-online-assessment-team-members-content-wrap" <%= team_member_presenter.background_image_styles %>>
+    <% if section.content? %>
+    <div class="physiomed-online-assessment-team-members-content">
+      <div class="physiomed-online-assessment-team-members-content__inner">
+        <div class="physiomed-online-assessment-team-members-content__content-box physiomed-online-assessment-team-members-content__content-box--styles">
+          <%= team_member_presenter.header(:h2, class: 'physiomed-online-assessment-team-members-content__title') %>
+          <% if team_member_presenter.sub_title? %>
+            <h3><%= presenter.sub_title %></h3>
+          <% end %>
+          <%= team_member_presenter.content %>
+          <%= team_member_presenter.button(class: 'generic-orange-button') %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
-<% if facade.sections.where(style: 'team_members__member').present? %>
-  <div class="physiomed-online-assessment-team-members-wrap">
-    <div class="physiomed-online-assessment-team-members">
-      <% facade.sections.where(style: 'team_members__member').each do |column| %>
-        <% present column do |presenter| %>
-          <div class="physiomed-online-assessment-team-members__inner">
-            <div class="physiomed-online-assessment-team-members__content">
-              <%= presenter.image(nil, class: 'physiomed-online-assessment-team-members__image') %>
-              <%= presenter.header(:h2, class: 'physiomed-online-assessment-team-members__title') %>
-              <% if presenter.sub_title? %>
-                <h3 class="physiomed-online-assessment-team-members__sub-title"><%= presenter.sub_title %></h3>
-              <% end %>
-              <%= presenter.content %>
-              <%= presenter.button(class: 'generic-orange-button') %>
+  <% if facade.sections.where(style: 'team_members__member').present? %>
+    <div class="physiomed-online-assessment-team-members-wrap">
+      <div class="physiomed-online-assessment-team-members">
+        <% facade.sections.where(style: 'team_members__member').each do |column| %>
+          <% present column do |presenter| %>
+            <div class="physiomed-online-assessment-team-members__inner">
+              <div class="physiomed-online-assessment-team-members__content">
+                <%= presenter.image(nil, class: 'physiomed-online-assessment-team-members__image') %>
+                <%= presenter.header(:h2, class: 'physiomed-online-assessment-team-members__title') %>
+                <% if presenter.sub_title? %>
+                  <h3 class="physiomed-online-assessment-team-members__sub-title"><%= presenter.sub_title %></h3>
+                <% end %>
+                <%= presenter.content %>
+                <%= presenter.button(class: 'generic-orange-button') %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
+</div>
 <% end %>
