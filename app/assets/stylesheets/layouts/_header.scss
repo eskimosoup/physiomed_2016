@@ -59,7 +59,9 @@
   @include flex-grid-row;
 
   &--minimal {
-    padding-top: rem(52px);
+    @include breakpoint(large) {
+      padding-top: rem(52px);
+    }
   }
 }
 
@@ -87,13 +89,13 @@
   }
 
   @include media('>=768px') {
-    @include flex-grid-column(2, $gutter: (small: 0));
+    @include flex-grid-column(2);
     clear: right;
     width: 100%;
   }
 
   @include media('>=1200px') {
-    @include flex-grid-column(3, $gutter: (small: 0));
+    @include flex-grid-column(3);
     clear: right;
     width: 100%;
   }
