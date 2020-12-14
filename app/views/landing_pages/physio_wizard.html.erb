@@ -9,10 +9,12 @@
     <!-- BEGIN <%= section.style %> -->
   <% end %>
 
-  <%= render partial: "landing_pages/physio_wizard/sections/#{section.style}", locals: {
-        facade: @facade,
-        section: section
-      } %>
+  <div id="section-<%= section.id %>">
+    <%= render partial: "landing_pages/physio_wizard/sections/#{section.style}", locals: {
+          facade: @facade,
+          section: section
+        } %>
+  </div>
 
   <% if Rails.env.development? %>
     <!-- END <%= section.style %> -->

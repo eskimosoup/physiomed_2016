@@ -262,46 +262,74 @@
   margin-top: rem(40px);
 }
 
+
+.physiomed-online-assessment-service-timeline-content {
+  @include flex-grid-row;
+  margin-top: rem(40px);
+
+  &__inner {
+    @include flex-grid-column(12, 0);
+
+    @include breakpoint(large) {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: none;
+    font-size: rem(124px);
+    font-weight: $font--open-sans--extrabold;
+  }
+
+  &__sub-title {
+    color: $color--green;
+    display: block;
+    text-align: center;
+    text-transform: none;
+    font-size: rem(48px);
+    font-weight: $font--open-sans--extrabold;
+  }
+
+  &__content-box {
+    @include content-box-style;
+    background: $color--white;
+    margin: 0 rem(10px);
+    overflow: hidden;
+    padding: rem(15px) rem(30px);
+    position: relative;
+
+    &--styles {
+      @include page-styles;
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 .physiomed-online-assessment-service-timeline-item {
   @include flex-grid-row;
 
   &__inner {
     @include responsive-flex-grid-column((medium down: 12, large: 6));
-  }
+    color: $black;
+    font-weight: 700;
 
-  &__button-wrap {
-    margin-top: rem(20px);
-    text-align: center;
-  }
-
-  &__content {
-    background-color: $color--green;
-    border-radius: 50%;
-    box-shadow: 3px 3px 8px 4px #ccc;
-    height: 300px;
-    margin: rem(20px) auto;
-    padding: rem(35px);
-    position: relative;
-    text-align: center;
-    width: 300px;
-  }
-
-  &__content-inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @include breakpoint(large) {
+      text-align: center;
+    }
   }
 
   &__title {
-    color: $color--white;
     text-transform: none;
+    font-weight: 400;
   }
 
-  &__text p {
-    color: $black;
+  p {
     font-size: 28px;
-    font-weight: 700;
+    margin: rem(10px 0);
   }
 }
 
