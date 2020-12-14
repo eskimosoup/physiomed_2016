@@ -323,8 +323,9 @@
   }
 
   &__title {
-    text-transform: none;
     font-weight: 400;
+    margin-top: rem(20px);
+    text-transform: none;
   }
 
   p {
