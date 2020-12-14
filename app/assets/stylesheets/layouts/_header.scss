@@ -57,6 +57,10 @@
 
 .primary-header-content-wrap {
   @include flex-grid-row;
+
+  &--minimal {
+    padding-top: rem(52px);
+  }
 }
 
 .primary-header-content {

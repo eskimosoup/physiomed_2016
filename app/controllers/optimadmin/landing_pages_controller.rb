@@ -52,7 +52,7 @@ module Optimadmin
     def landing_page_params
       params.require(:landing_page).permit(
         :title, :content, :style, :layout, :display, :suggested_url,
-        :image, :remote_image_url, :image_cache, :remove_image,
+        :image, :remote_image_url, :image_cache, :remove_image, :header_text,
         article_ids: [], case_study_ids: [], frequently_asked_question_ids: [],
         guide_ids: [], testimonial_ids: [], video_ids: [], service_standard_ids: []
       )

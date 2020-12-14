@@ -42,15 +42,23 @@
 <% end %>
 
 <header class="primary-header-wrap">
-<div class="primary-header">
-  <div class="primary-header-content-wrap">
-    <div class="primary-header-branding">
-      <%= link_to root_url, title: "Physio Med" do %>
-        <%= image_tag "logo.jpg", alt: "Physio Med", id: "physiomed-logo" %>
-      <% end %>
-      <%= link_to (image_tag 'icons/menu-icon.png', alt: 'Menu'), '#', class: 'toggle-menu toggle-class',
+  <div class="primary-header">
+    <div class="primary-header-content-wrap">
+      <div class="primary-header-branding">
+        <%= link_to root_url, title: "Physio Med" do %>
+          <%= image_tag "logo.jpg", alt: "Physio Med", id: "physiomed-logo" %>
+        <% end %>
+        <%= link_to (image_tag 'icons/menu-icon.png', alt: 'Menu'), '#', class: 'toggle-menu toggle-class',
                   data: { container: '.primary-header-navigation', class: 'visible', return: false } %>
+      </div>
+
+      <div class="primary-header-navigation-content">
+        <div class="primary-header-content-wrap primary-header-content-wrap--minimal">
+          <nav class="primary-header-navigation-wrap">
+            <%= yield :header %>
+          </nav>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </header>

@@ -31,6 +31,10 @@
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
       <div class="field">
+        <%= f.label :header_text %><br>
+        <%= f.text_area :header_text, class: 'tinymce' %>
+      </div>
+      <div class="field">
         <%= f.label :style %><br>
         <%= f.select :style, LandingPage::STYLE.map { |x| [x.humanize, x] } %>
       </div>

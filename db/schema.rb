@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201211163257) do
+ActiveRecord::Schema.define(version: 20201214153025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -352,6 +352,7 @@ ActiveRecord::Schema.define(version: 20201211163257) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "sections_count", default: 0,    null: false
+    t.text     "header_text"
   end
 
   add_index "landing_pages", ["slug"], name: "index_landing_pages_on_slug", using: :btree

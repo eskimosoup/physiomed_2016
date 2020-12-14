@@ -1,3 +1,7 @@
+<%= content_for :header do %>
+  <%= raw @facade.landing_page.header_text %>
+<% end %>
+
 <% @facade.sections.displayed.each do |section| %>
   <% next if section.style.include?('__') %>
 

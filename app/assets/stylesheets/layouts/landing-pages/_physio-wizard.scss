@@ -114,10 +114,13 @@
     background-color: $color--orange;
     color: $color--white;
     margin: 0;
-    max-width: 45%;
     padding: rem(15px);
     text-align: left;
     text-transform: none;
+
+    @include breakpoint(large) {
+      max-width: 45%;
+    }
   }
 
   &__content-box {
