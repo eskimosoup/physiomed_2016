@@ -178,6 +178,29 @@
   padding-top: rem(40px);
 }
 
+.physiomed-online-assessment-service-overview-content {
+  @include flex-grid-row;
+
+  &__inner {
+    @include flex-grid-column(12);
+
+    p {
+      font-size: rem(18px);
+    }
+  }
+
+  &__title {
+    border-bottom: 3px solid $color--green;
+    color: $color--white;
+    font-size: rem(24px);
+    font-weight: $font--open-sans--semibold;
+    margin-bottom: rem(20px);
+    padding-bottom: rem(20px);
+    text-align: center;
+    text-transform: none;
+  }
+}
+
 .physiomed-online-assessment-service-overview-item {
   @include flex-grid-row;
 

@@ -1,24 +1,22 @@
 <%#= debug facade %>
-
-<% present section do |presenter| %>
-  <% if section.content? %>
-    <div class="physiomed-online-assessment-landing-page">
-      <div class="physiomed-online-assessment-landing-page__inner">
-        <div class="physiomed-online-assessment-landing-page__content-box physiomed-online-assessment-landing-page__content-box--styles">
-          <%= presenter.header(:h2, class: 'physiomed-online-assessment-landing-page__title') %>
+<div class="physiomed-online-assessment-service-overview-item-wrap">
+  <% present section do |presenter| %>
+    <div class="physiomed-online-assessment-service-overview-content">
+      <div class="physiomed-online-assessment-service-overview-content__inner">
+          <%= presenter.header(:h2, class: 'physiomed-online-assessment-service-overview-content__title') %>
           <% if presenter.sub_title? %>
             <h3><%= presenter.sub_title %></h3>
           <% end %>
+        <div class="physiomed-online-assessment-service-overview-content__content-box--styles">
           <%= presenter.content %>
           <%= presenter.button(class: 'generic-orange-button') %>
         </div>
       </div>
     </div>
   <% end %>
-<% end %>
 
-<% if facade.sections.where(style: 'service_overview__column').present? %>
-  <div class="physiomed-online-assessment-service-overview-item-wrap">
+  <% if facade.sections.where(style: 'service_overview__column').present? %>
+
     <div class="physiomed-online-assessment-service-overview-item">
       <% facade.sections.where(style: 'service_overview__column').each_with_index do |column, index| %>
         <% present column do |presenter| %>
@@ -39,5 +37,5 @@
         <% end %>
       <% end %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
