@@ -97,7 +97,9 @@
 }
 
 .physiomed-online-assessment-landing-page-introduction-wrap {
-  background: image-url('layout/content/landing-page--bg.jpg') no-repeat center;
+  background-image: image-url('layout/content/landing-page--bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
@@ -107,7 +109,7 @@
   padding-top: rem(80px);
 
   &__inner {
-    @include flex-grid-column(12);
+    @include flex-grid-column(5);
   }
 
   &__title {
@@ -117,10 +119,6 @@
     padding: rem(15px);
     text-align: left;
     text-transform: none;
-
-    @include breakpoint(large) {
-      max-width: 45%;
-    }
   }
 
   &__content-box {
@@ -172,7 +170,6 @@
 .physiomed-online-assessment-service-overview-item-wrap {
   background-color: $color--black;
   color: $color--white;
-  margin-bottom: rem(40px);
   margin-top: rem(40px);
   padding-bottom: rem(40px);
   padding-top: rem(40px);
@@ -417,7 +414,7 @@
   @include flex-grid-row;
 
   &__inner {
-    @include responsive-flex-grid-column((medium down: 12, large: 3));
+    @include responsive-flex-grid-column((medium down: 12, large: 4));
   }
 
   &__title {
@@ -438,8 +435,8 @@
 
   &__image {
     border-radius: 50%;
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 150px;
+    max-width: 150px;
   }
 }
 

@@ -30,9 +30,20 @@
         <%= f.label :content %><br>
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
+      <p class="admin-note">This field is only used on the 'minimal' style.</p>
       <div class="field">
         <%= f.label :header_text %><br>
         <%= f.text_area :header_text, class: 'tinymce' %>
+      </div>
+      <p class="admin-note">This field is only used on the 'minimal' style.</p>
+      <div class="field">
+        <%= f.label :call_to_action_button_link %><br />
+        <%= f.text_field :call_to_action_button_link %>
+      </div>
+      <p class="admin-note">This field is only used on the 'minimal' style.</p>
+      <div class="field">
+        <%= f.label :call_to_action_button_text %><br />
+        <%= f.text_field :call_to_action_button_text %>
       </div>
       <div class="field">
         <%= f.label :style %><br>

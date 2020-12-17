@@ -20,3 +20,13 @@
     <!-- END <%= section.style %> -->
   <% end %>
 <% end %>
+
+<% if @facade.landing_page.call_to_action_button? %>
+  <%= content_for :call_to_action_button do %>
+    <%= link_to @facade.landing_page.call_to_action_button_text,
+                @facade.landing_page.call_to_action_button_link,
+                class: 'get-in-touch-action-large',
+                target: '_blank',
+                rel: 'noopener' %>
+  <% end %>
+<% end %>

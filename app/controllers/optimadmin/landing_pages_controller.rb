@@ -1,25 +1,24 @@
 module Optimadmin
   class LandingPagesController < Optimadmin::ApplicationController
-    before_action :set_landing_page, only: [:show, :edit, :update, :destroy]
-    edit_images_for LandingPage, [
-      [:image, { background: ['fit', 1920, 400] }, home: ['fill', 285, 205]]
-    ]
+    before_action :set_landing_page, only: %i[show edit update destroy]
+    edit_images_for LandingPage,
+                    [
+                      [:image, { background: ['fit', 1920, 400] }, { home: ['fill', 285, 205] }]
+                    ]
 
     def index
-              @landing_pages = LandingPage.field_order(params[:order])
-                                              .field_search(params[:search])
-                                              .pagination(params[:page], params[:per_page])
-          end
-
-    def show
+      @landing_pages = LandingPage.field_order(params[:order])
+                                  .field_search(params[:search])
+                                  .pagination(params[:page], params[:per_page])
     end
+
+    def show; end
 
     def new
       @landing_page = LandingPage.new
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @landing_page = LandingPage.new(landing_page_params)
@@ -40,7 +39,7 @@ module Optimadmin
 
     def destroy
       @landing_page.destroy
-      redirect_to landing_pages_url, notice: 'Landing page was successfully destroyed.'
+      redirect_to(landing_pages_url, notice: 'Landing page was successfully destroyed.')
     end
 
     private
@@ -51,10 +50,26 @@ module Optimadmin
 
     def landing_page_params
       params.require(:landing_page).permit(
-        :title, :content, :style, :layout, :display, :suggested_url,
-        :image, :remote_image_url, :image_cache, :remove_image, :header_text,
-        article_ids: [], case_study_ids: [], frequently_asked_question_ids: [],
-        guide_ids: [], testimonial_ids: [], video_ids: [], service_standard_ids: []
+        :title,
+        :content,
+        :style,
+        :layout,
+        :display,
+        :suggested_url,
+        :image,
+        :remote_image_url,
+        :image_cache,
+        :remove_image,
+        :header_text,
+        :call_to_action_button_text,
+        :call_to_action_button_link,
+        article_ids: [],
+        case_study_ids: [],
+        frequently_asked_question_ids: [],
+        guide_ids: [],
+        testimonial_ids: [],
+        video_ids: [],
+        service_standard_ids: []
       )
     end
   end

@@ -1,0 +1,74 @@
+<footer>
+  <div class="mobile-clinic-and-client-area-buttons">
+    <%= render 'shared/clinic_and_client_area_buttons' %>
+  </div>
+
+  <div class="social-links-wrap">
+    <div class="social-links-inner">
+      <div class="social-links">
+        <ul class="social-links-list">
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/facebook.png', alt: 'Facebook'), global_site_settings['Facebook'], title: 'Facebook') if global_site_settings['Facebook'] %>
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/twitter.png', alt: 'Twitter'), "http://twitter.com/#{global_site_settings['Twitter'].tr('@', '')}", title: 'Twitter') if global_site_settings['Twitter'] %>
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/pinterest.png', alt: 'Pinterest'), global_site_settings['Pinterest'], title: 'Pinterest') if global_site_settings['Pinterest'] %>
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/linked-in.png', alt: 'LinkedIn'), global_site_settings['LinkedIn'], title: 'LinkedIn') if global_site_settings['LinkedIn'] %>
+          <%= content_tag :li, (link_to (image_tag 'icons/footer-social/youtube.png', alt: 'YouTube'), global_site_settings['YouTube'], title: 'YouTube') if global_site_settings['YouTube'] %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer-container">
+    <h2 class="text-center awards-title">Awards & Memberships</h2>
+  </div>
+
+  <div class="awards-container">
+    <%= image_tag 'placeholders/awards-and-accreditations.jpg', alt: '' %>
+  </div>
+
+  <div class="footer-container small-print">
+    <p>
+      &copy; <%= Date.today.year %> Physio Med Limited
+    </p>
+
+    <ul class="footer-navigation">
+      <%= nested_menu_items(menu_items: footer_menu.menu_items) %>
+    </ul>
+
+    <p class="physiotherapists-small-print">
+      All of our Physiotherapists are registered with the health and Care Professional Council
+      and meet their standards.  Our Physiotherapists are registered with the Chartered Society
+      of Physiotherapy and meet their standards.
+    </p>
+  </div>
+</footer>
+
+<% if content_for?(:call_to_action_button) %>
+  <div class="social-methods">
+      <%= yield :call_to_action_button %>
+  </div>
+<% end %>
+
+<% if shared_facade.notice_modal? %>
+  <div class="inline-notice-modal" id="inline-notice-modal">
+    <div class="inline-notice-modal-content">
+      <div class="inline-notice-modal-content__inner">
+      <%= link_to "X",
+                  shared_facade.notice_modal.button_link,
+                  class: 'inline-notice-modal-content__floating-button' if shared_facade.notice_modal.button? %>
+
+        <%= content_tag :h2, shared_facade.notice_modal.title if shared_facade.notice_modal.title? %>
+
+        <%= raw shared_facade.notice_modal.content %>
+
+        <%= link_to shared_facade.notice_modal.button_text,
+                    shared_facade.notice_modal.button_link,
+                    class: 'inline-notice-modal-content__button' if shared_facade.notice_modal.button? %>
+      </div>
+    </div>
+
+    <%= link_to "Continue to website",
+                shared_facade.notice_modal.button_link,
+                class: 'inline-notice-modal-content__large-button' if shared_facade.notice_modal.button? %>
+  </div>
+<% end %>

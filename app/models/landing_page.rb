@@ -41,6 +41,8 @@ class LandingPage < ActiveRecord::Base
   }
   validates :style, inclusion: { in: STYLE }
   validates :layout, inclusion: { in: LAYOUT }
+  validates :call_to_action_button_link, presence: true, if: :call_to_action_button_text?
+  validates :call_to_action_button_text, presence: true, if: :call_to_action_button_link?
 
   scope :displayed, (-> { where(display: true) })
 
@@ -89,6 +91,10 @@ class LandingPage < ActiveRecord::Base
   has_many :sections,
            class_name: 'LandingPages::Section',
            dependent: :destroy
+
+  def call_to_action_button?
+    call_to_action_button_link? && call_to_action_button_text?
+  end
 
   def slug_candidates
     [
