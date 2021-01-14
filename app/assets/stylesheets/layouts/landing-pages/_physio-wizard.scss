@@ -38,6 +38,11 @@
     color: $color--black;
   }
 
+  &__button-wrap {
+    text-align: center;
+    margin: rem(15px 0 5px);
+  }
+
   &__button {
     background-color: $color--orange;
     border-radius: $global-border-radius--small;
@@ -60,8 +65,8 @@
     font-size: rem(30px);
     font-weight: $font--open-sans--bold;
     line-height: 1.1;
-    margin-bottom: rem(10px);
-    margin-top: 0;
+    margin-bottom: rem(15px);
+    margin-top: rem(5px);
     padding-top: 0;
     text-transform: none;
 
@@ -109,7 +114,7 @@
   padding-top: rem(80px);
 
   &__inner {
-    @include flex-grid-column(5);
+    @include responsive-flex-grid-column((medium down: 12, large: 5));
   }
 
   &__title {
