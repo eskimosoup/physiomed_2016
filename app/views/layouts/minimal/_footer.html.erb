@@ -48,27 +48,3 @@
       <%= yield :call_to_action_button %>
   </div>
 <% end %>
-
-<% if shared_facade.notice_modal? %>
-  <div class="inline-notice-modal" id="inline-notice-modal">
-    <div class="inline-notice-modal-content">
-      <div class="inline-notice-modal-content__inner">
-      <%= link_to "X",
-                  shared_facade.notice_modal.button_link,
-                  class: 'inline-notice-modal-content__floating-button' if shared_facade.notice_modal.button? %>
-
-        <%= content_tag :h2, shared_facade.notice_modal.title if shared_facade.notice_modal.title? %>
-
-        <%= raw shared_facade.notice_modal.content %>
-
-        <%= link_to shared_facade.notice_modal.button_text,
-                    shared_facade.notice_modal.button_link,
-                    class: 'inline-notice-modal-content__button' if shared_facade.notice_modal.button? %>
-      </div>
-    </div>
-
-    <%= link_to "Continue to website",
-                shared_facade.notice_modal.button_link,
-                class: 'inline-notice-modal-content__large-button' if shared_facade.notice_modal.button? %>
-  </div>
-<% end %>
