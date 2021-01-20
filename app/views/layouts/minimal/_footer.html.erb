@@ -31,9 +31,11 @@
       &copy; <%= Date.today.year %> Physio Med Limited
     </p>
 
-    <ul class="footer-navigation">
-      <%= nested_menu_items(menu_items: footer_menu.menu_items) %>
-    </ul>
+    <% if request.host.include?(Rails.application.routes.default_url_options[:host]) %>
+      <ul class="footer-navigation">
+        <%= nested_menu_items(menu_items: footer_menu.menu_items) %>
+      </ul>
+    <% end %>
 
     <p class="physiotherapists-small-print">
       All of our Physiotherapists are registered with the health and Care Professional Council
