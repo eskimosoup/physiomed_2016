@@ -39,7 +39,7 @@ let initializer = turbolinksCheck();
 document.addEventListener(
   initializer,
   function () {
-    if (Cookies.get('inline-notice-modal') != 1) {
+    if (Cookies.get('inline-notice-modal') != 1 && document.querySelector('.inline-notice-modal')) {
       document.querySelector('.inline-notice-modal').classList.add('visible');
     }
   }

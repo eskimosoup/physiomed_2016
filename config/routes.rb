@@ -1,105 +1,111 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  if Rails.env.development?
-    %w[400 403 404 422 500].each do |code|
-      get code, to: 'errors#show', code: code
-    end
+  mount Optimadmin::Engine => '/admin'
+
+  constraints(->(request) { WebsiteConstraint.microsite?(request) }) do
+    root to: 'landing_pages#show', id: '4', as: :microsite_root
   end
 
-  get 'sitemap', to: 'application#sitemap'
-  get 'physios', to: 'physios#index', as: :physios
-
-  #get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
-  get 'what-we-do', to: redirect('/services/what-we-do')
-
-  resources :searches, only: :new, path: 'search'
-  resources :partners, only: :index
-
-  resources :services, only: :show do
-    scope module: :services do
-      collection do
-        resources :categories, only: [:index, :show],
-                  path: 'what-we-do',
-                  as: :service_categories
+  constraints(->(request) { WebsiteConstraint.main_site?(request) }) do
+    if Rails.env.development?
+      %w[400 403 404 422 500].each do |code|
+        get code, to: 'errors#show', code: code
       end
     end
-  end
 
-  resources :policies, only: :index do
-    collection do
-      resources :categories,
-                only: :show,
-                as: :policy_categories,
-                controller: 'policies/categories'
-    end
-  end
+    get 'sitemap', to: 'application#sitemap'
+    get 'physios', to: 'physios#index', as: :physios
 
-  resources :landing_pages,
-            only: :show,
-            path: '',
-            constraints: SlugConstraint.new(LandingPage)
+    #get 'what-we-do' => 'static_pages#show', id: 'what_we_do', as: 'what_we_do'
+    get 'what-we-do', to: redirect('/services/what-we-do')
 
-  resource :physio_search, only: %i[create show], path: 'find-a-physio'
+    resources :searches, only: :new, path: 'search'
+    resources :partners, only: :index
 
-  resources :articles, only: %i[index show]
-  resources :case_studies, only: %i[index show], path: 'case-studies'
-  resources :contacts, only: %i[new create]
-  resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
-  resources :job_listings, only: %i[index show], path: 'job-listings' do
-    resources :job_applications, only: [:create], path: 'job-applications'
-  end
-  resources :pages, only: :show
-
-  resources :practice_applications, only: %i[new create], path: 'practice-applications' do
-    get 'thank-you', on: :collection
-  end
-
-  resources :subcategories, only: %i[index show], path: 'categorisation'
-  resources :team_members, only: %i[index show], path: 'team-members'
-  resources :testimonials, only: [:index]
-
-  namespace :wellbeing_zone, path: 'well-being-zone' do
-    get 'general-well-being', to: 'general_wellbeings#show', as: :general_wellbeing
-
-    get 'general-well-being/guides', to: 'guides#general_wellbeing'
-
-    resources :body_parts, only: [:show], path: '', constraints: SlugConstraint.new(BodyPart) do
-      resources :guides, only: :index
+    resources :services, only: :show do
+      scope module: :services do
+        collection do
+          resources :categories, only: [:index, :show],
+                    path: 'what-we-do',
+                    as: :service_categories
+        end
+      end
     end
 
-    root to: 'wellbeings#show'
-  end
-
-  namespace :client_zone, path: 'client-zone' do
-    resources :sessions, only: %i[new create] do
-      get 'logout', on: :collection
+    resources :policies, only: :index do
+      collection do
+        resources :categories,
+                  only: :show,
+                  as: :policy_categories,
+                  controller: 'policies/categories'
+      end
     end
 
-    resources :services, only: :index
+    resources :landing_pages,
+              only: :show,
+              path: '',
+              constraints: SlugConstraint.new(LandingPage)
+
+    resource :physio_search, only: %i[create show], path: 'find-a-physio'
+
     resources :articles, only: %i[index show]
+    resources :case_studies, only: %i[index show], path: 'case-studies'
+    resources :contacts, only: %i[new create]
+    resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
+    resources :job_listings, only: %i[index show], path: 'job-listings' do
+      resources :job_applications, only: [:create], path: 'job-applications'
+    end
+    resources :pages, only: :show
 
-    resources :guides, only: %i[index show] do
-      get 'general-well-being', on: :collection
+    resources :practice_applications, only: %i[new create], path: 'practice-applications' do
+      get 'thank-you', on: :collection
     end
 
-    resources :videos, only: :index
+    resources :subcategories, only: %i[index show], path: 'categorisation'
+    resources :team_members, only: %i[index show], path: 'team-members'
+    resources :testimonials, only: [:index]
+
+    namespace :wellbeing_zone, path: 'well-being-zone' do
+      get 'general-well-being', to: 'general_wellbeings#show', as: :general_wellbeing
+
+      get 'general-well-being/guides', to: 'guides#general_wellbeing'
+
+      resources :body_parts, only: [:show], path: '', constraints: SlugConstraint.new(BodyPart) do
+        resources :guides, only: :index
+      end
+
+      root to: 'wellbeings#show'
+    end
+
+    namespace :client_zone, path: 'client-zone' do
+      resources :sessions, only: %i[new create] do
+        get 'logout', on: :collection
+      end
+
+      resources :services, only: :index
+      resources :articles, only: %i[index show]
+
+      resources :guides, only: %i[index show] do
+        get 'general-well-being', on: :collection
+      end
+
+      resources :videos, only: :index
+
+      root to: 'homes#show'
+    end
+
+    resources :guides, only: [] do
+      resources :guide_downloads, only: %i[new create], path: 'download', as: :downloads do
+        get 'optional', on: :collection
+      end
+    end
+
+    # This has to be the last route in your list
+    match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
 
     root to: 'homes#show'
   end
-
-  resources :guides, only: [] do
-    resources :guide_downloads, only: %i[new create], path: 'download', as: :downloads do
-      get 'optional', on: :collection
-    end
-  end
-
-  mount Optimadmin::Engine => '/admin'
-
-  # This has to be the last route in your list
-  match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
-
-  root to: 'homes#show'
 end
 
 Optimadmin::Engine.routes.draw do
