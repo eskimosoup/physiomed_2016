@@ -8,8 +8,18 @@ $(document).on('click', '.ga-event', function(e) {
   var actionName = $(this).data('item-name');
 
   if(actionName === undefined) {
+    eventName = $(this).data('event-category');
+  }
+
+  if (itemName === undefined) {
+    itemName = $(this).data('event-action');
+  }
+
+  if (actionName === undefined) {
     actionName = 'click';
   }
+
+  console.log('Event begin: ' + eventName + ' ' + itemName);
 
 	if ( eventName && itemName && typeof ga === 'function') {
     ga('send', {

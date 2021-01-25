@@ -1,3 +1,15 @@
+<%= content_for :head do %>
+  <script>
+  $(function() {
+    $("a[href^='https://pm.physiomedics.com/']:not(.ga-event)").each(function() {
+      $(this).addClass('ga-event');
+      $(this).attr('data-event-category', 'Assessment');
+      $(this).attr('data-event-action', 'Start Assessment Button');
+    });
+  });
+  </script>
+<% end %>
+
 <%= content_for :header do %>
   <%= raw @facade.landing_page.header_text %>
 <% end %>

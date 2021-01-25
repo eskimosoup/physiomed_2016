@@ -10,8 +10,7 @@ class WebsiteConstraint
   # @return [boolean]
   #
   def self.microsite?(request)
-
-    Rails.env.development? ? true : request.domain(2).include?('physioondemand.co.uk')
+    Rails.env.development? ? false : request.domain(2).include?('physioondemand.co.uk')
   end
 
   #
