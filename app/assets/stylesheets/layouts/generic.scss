@@ -211,4 +211,10 @@ h2 {
   &:active {
     background-color: darken($orange, 17%);
   }
+
+  &--full {
+    font-size: rem(21px);
+    text-align: center;
+    width: 100%;
+  }
 }

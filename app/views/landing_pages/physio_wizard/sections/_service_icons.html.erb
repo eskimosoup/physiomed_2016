@@ -9,6 +9,69 @@
       <% end %>
       <%= presenter.content %>
       <%= presenter.button(class: 'generic-orange-button') %>
+
+      <% if Rails.env.development? %>
+        <ul class="physiomed-online-assessment-points-list">
+          <li class="physiomed-online-assessment-points-list__item">
+            <span class="physiomed-online-assessment-points-list__number physiomed-online-assessment-points-list__number--emphasis">
+              1
+            </span>
+            <div class="physiomed-online-assessment-points-list__content">
+              <h2>Create an account</h2>
+              <p>Hello world.</p>
+            </div>
+          </li>
+
+          <li class="physiomed-online-assessment-points-list__item">
+            <span class="physiomed-online-assessment-points-list__number physiomed-online-assessment-points-list__number--emphasis">
+              2
+            </span>
+
+            <h2>Create an account</h2>
+            <p>Hello world.</p>
+          </li>
+        </ul>
+
+        <ul class="physiomed-online-assessment-points-list">
+          <li class="physiomed-online-assessment-points-list__item">
+            <span class="physiomed-online-assessment-points-list__number">
+              1
+            </span>
+            Hello world
+          </li>
+
+          <li class="physiomed-online-assessment-points-list__item">
+            <span class="physiomed-online-assessment-points-list__number">
+              2
+            </span>
+            Hello world
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if facade.sections.find_by(style: 'service_icons__process').present? %>
+  <div class="physiomed-online-assessment-landing-page">
+    <div class="physiomed-online-assessment-landing-page__split">
+      <% present facade.sections.find_by(style: 'service_icons__process') do |presenter| %>
+        <%= presenter.header(:h2, class: 'physiomed-online-assessment-landing-page__subtitle') %>
+        <% if presenter.sub_title? %>
+          <h3><%= presenter.sub_title %></h3>
+        <% end %>
+        <%= presenter.content %>
+      <% end %>
+    </div>
+    <div class="physiomed-online-assessment-landing-page__split">
+      <% present facade.sections.find_by(style: 'service_icons__video') do |presenter| %>
+        <%= presenter.header(:h2, class: 'physiomed-online-assessment-landing-page__subtitle') %>
+        <% if presenter.sub_title? %>
+          <h3><%= presenter.sub_title %></h3>
+        <% end %>
+        <%= presenter.content %>
+        <%= presenter.button(class: 'generic-orange-button generic-orange-button--full') %>
+      <% end %>
     </div>
   </div>
 <% end %>

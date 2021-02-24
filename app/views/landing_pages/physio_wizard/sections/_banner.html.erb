@@ -1,5 +1,18 @@
 <%#= debug facade %>
 
+<%= content_for :javascript do %>
+  <script>
+  $(".js--banner-testimonials").slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: false,
+    dots: true
+  });
+  </script>
+<% end %>
+
 <% present section do |presenter| %>
   <div>
     <div class="physiomed-online-assessment-landing-page-banner-wrap">
@@ -17,19 +30,18 @@
           </div>
         </div>
 
-        <% if facade.sections.find_by(style: 'banner_introduction__video').present? %>
-          <% present facade.sections.find_by(style: 'banner_introduction__video') do |presenter| %>
-            <div class="physiomed-online-assessment-landing-page-banner__aside">
-              <%= presenter.header(:h2, class: 'home-cta-banner__title') %>
-              <%= presenter.image(nil, alt: presenter.title) %>
-              <%= presenter.content %>
-              <% if presenter.button? %>
-                <div class="physiomed-online-assessment-landing-page-banner__button-wrap">
-                  <%= presenter.button(class: 'generic-orange-button') %>
+        <% if facade.sections.where(style: 'banner_introduction__testimonial').present? %>
+          <div class="physiomed-online-assessment-landing-page-banner__aside">
+            <div class="physiomed-online-assessment-landing-page-banner__testimonials js--banner-testimonials">
+            <% facade.sections.where(style: 'banner_introduction__testimonial').each do |testimonial| %>
+              <% present testimonial do |presenter| %>
+                <div>
+                  <%= presenter.content %>
                 </div>
               <% end %>
+            <% end %>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
       <%= presenter.image(nil, class: 'home-banner__image') %>
