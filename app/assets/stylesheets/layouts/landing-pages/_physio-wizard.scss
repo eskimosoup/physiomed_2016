@@ -172,6 +172,7 @@
 
   &__subtitle {
     color: $color--green;
+    margin-top: 0;
   }
 
   &__content-box {
@@ -506,6 +507,7 @@
 
   &__content {
     float: left;
+    max-width: 90%;
 
     h2 {
       color: $color--green;
@@ -514,7 +516,7 @@
     }
 
     p {
-      margin-top: rem(10px);
+      margin: rem(10px 0);
     }
   }
 }

@@ -36,6 +36,7 @@
             <% facade.sections.where(style: 'banner_introduction__testimonial').each do |testimonial| %>
               <% present testimonial do |presenter| %>
                 <div>
+                  <p><strong><%= presenter.title %></strong></p>
                   <%= presenter.content %>
                 </div>
               <% end %>
