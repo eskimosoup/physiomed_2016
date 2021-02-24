@@ -69,13 +69,13 @@
   }
 
   &__title {
-    font-size: rem(30px);
+    font-size: rem(38px);
     font-weight: $font--open-sans--bold;
     line-height: 1.1;
     margin-bottom: rem(15px);
     margin-top: rem(5px);
     padding-top: 0;
-    text-transform: none;
+    text-transform: uppercase;
 
     &--small {
       font-size: rem(25px);
@@ -173,6 +173,8 @@
   &__subtitle {
     color: $color--green;
     margin-top: 0;
+    text-transform: uppercase;
+    font-size: rem(54x);
   }
 
   &__content-box {
