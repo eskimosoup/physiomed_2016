@@ -43,6 +43,7 @@ module LandingPages
       'service_timeline',
       'service_timeline__column',
       'testimonials',
+      'testimonials__testimonial',
       'content_overview',
       'organisations',
       'team_members',

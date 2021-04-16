@@ -66,7 +66,7 @@ group :development, :test do
   gem 'bundler-audit', '>= 0.5.0', require: false
   gem 'factory_girl_rails'
   gem 'pry-byebug'
-  gem 'pry-rails'
+  # gem 'pry-rails'
   gem 'rspec-rails', '~> 3.4.0'
 end
 

@@ -43,6 +43,10 @@
             <% end %>
             </div>
           </div>
+        <% else %>
+          <div class="physiomed-online-assessment-landing-page-banner__aside">
+            <%= image_tag('placeholders/physio-on-demand.png', alt: 'Physio on Demand') %>
+          </div>
         <% end %>
       </div>
       <%= presenter.image(nil, class: 'home-banner__image') %>

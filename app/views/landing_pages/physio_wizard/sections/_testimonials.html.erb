@@ -8,8 +8,22 @@
         <% if presenter.sub_title? %>
           <h3><%= presenter.sub_title %></h3>
         <% end %>
+
         <%= presenter.content %>
         <%= presenter.button(class: 'generic-orange-button') %>
+
+        <% if facade.sections.where(style: 'testimonials__testimonial').present? %>
+          <div class="physiomed-online-assessment-landing-page__testimonials js--banner-testimonials">
+            <% facade.sections.where(style: 'testimonials__testimonial').each do |testimonial| %>
+              <% present testimonial do |presenter| %>
+                <div>
+                  <p><strong><%= presenter.title %></strong></p>
+                  <%= presenter.content %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
