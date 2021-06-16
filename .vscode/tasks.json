@@ -42,6 +42,16 @@
       }
     },
     {
+      "label": "rubocop unsafe",
+      "type": "shell",
+      "command": "rubocop --require rubocop-rails --require rubocop-performance --auto-correct-all \"${relativeFile}\"",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
+    },
+    {
       "label": "erb-lint",
       "type": "shell",
       "command": "erblint --autocorrect \"${relativeFile}\"",
