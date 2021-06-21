@@ -1,0 +1,6 @@
+<%= form_for physio_search, url: detailed_physio_searches_path do |f| %>
+  <div class="input-add-on">
+    <%= f.text_field :post_code, placeholder: "Enter postcode", class: "input-add-on-field" %>
+    <%= f.submit "", id: "physio-search", class: "input-add-on-item" %>
+  </div>
+<% end %>

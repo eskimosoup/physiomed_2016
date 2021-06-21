@@ -175,3 +175,8 @@
     }
   }
 }
+
+.physio-searches {
+  @include physio-search;
+  background: none;
+}

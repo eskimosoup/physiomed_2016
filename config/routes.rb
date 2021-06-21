@@ -49,6 +49,8 @@ Rails.application.routes.draw do
 
     resource :physio_search, only: %i[create show], path: 'find-a-physio'
 
+    resource :detailed_physio_searches, only: %i[new create show], path: 'physio-searches'
+
     resources :articles, only: %i[index show]
     resources :case_studies, only: %i[index show], path: 'case-studies'
     resources :contacts, only: %i[new create]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201217132520) do
+ActiveRecord::Schema.define(version: 20210621094921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -755,16 +755,17 @@ ActiveRecord::Schema.define(version: 20201217132520) do
   add_index "practice_applications_practitioners", ["practice_id"], name: "index_practice_applications_practitioners_on_practice_id", using: :btree
 
   create_table "practices", force: :cascade do |t|
-    t.string   "name",                      null: false
+    t.string   "name",                       null: false
     t.string   "address"
     t.string   "town"
     t.string   "county"
-    t.string   "post_code",                 null: false
+    t.string   "post_code",                  null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "display",    default: true, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "display",     default: true, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "details_url"
   end
 
   create_table "quick_links", force: :cascade do |t|

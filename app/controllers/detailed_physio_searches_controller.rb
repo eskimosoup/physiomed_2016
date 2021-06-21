@@ -1,6 +1,9 @@
-class PhysioSearchesController < ApplicationController
+class DetailedPhysioSearchesController < ApplicationController
+  def new
+  end
+
   def create
-    redirect_to physio_search_path(physio_search: query)
+    redirect_to(detailed_physio_searches_path(physio_search: query))
   end
 
   def show

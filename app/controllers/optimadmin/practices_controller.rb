@@ -47,7 +47,7 @@ module Optimadmin
 
     def practice_params
       params.require(:practice)
-            .permit(:name, :address, :town, :county, :post_code, :display)
+            .permit(:name, :address, :town, :county, :post_code, :display, :details_url)
     end
   end
 end

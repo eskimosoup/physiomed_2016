@@ -53,6 +53,10 @@ en:
     general_wellbeings:
       show:
         title: "General Well-Being"
+  activerecord:
+    attributes:
+      practice:
+        details_url: Details URL
   views:
     errors:
       '403':

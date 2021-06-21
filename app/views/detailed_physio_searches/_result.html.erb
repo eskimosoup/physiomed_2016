@@ -1,0 +1,13 @@
+<div class="physio-search-result physio-search-result-<%= practice_counter %>">
+  <div class="physio-search-result-name">
+    <%= "#{practice_counter + 1}." %>  <%= practice.name %>
+
+    <span class="physio-search-result-distance">
+      <%= practice.distance.round(2) %> miles
+    </span>
+  </div>
+
+  <% if practice.details_url? %>
+    <%= link_to(practice.details_url, practice.details_url, target: '_blank', rel: 'noopener') %>
+  <% end %>
+</div>

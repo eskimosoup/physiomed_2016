@@ -3,8 +3,12 @@ class PhysioSearch
 
   attr_accessor :post_code
 
+  def location
+    Geocoder.search(coordinates)
+  end
+
   def results
-    Practice.displayed.near(coordinates, 20).limit(5)
+    Practice.displayed.near(coordinates, 20).limit(7)
   end
 
   private

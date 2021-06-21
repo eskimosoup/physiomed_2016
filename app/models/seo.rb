@@ -80,6 +80,7 @@ class SEO
 
     # Reject admin routes
     routes = routes.reject { |route| route[:controller].include?('admin') }
+    routes = routes.reject { |route| route[:controller].include?('physio-searches') }
 
     # SITE SPECIFIC
     # unwanted_controllers = %w( job_applications event_bookings )
