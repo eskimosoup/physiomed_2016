@@ -1,0 +1,73 @@
+<div class="page-contact-methods" data-role="sidebar-cta">
+  <h4>
+    Find a Physio
+  </h4>
+
+  <ul class="page-contact-method-links">
+    <li>
+      <%= link_to('New Search', new_detailed_physio_searches_path, class: 'contact-method find-a-physio') %>
+    </li>
+  </ul>
+</div>
+
+<%= render(
+  partial: 'shared/sidebar_testimonials',
+  locals: {
+    testimonials: testimonials
+  }
+) if testimonials.present? %>
+
+<% if team_members.present? %>
+  <div class="page-author-information" data-role="sidebar-team-members">
+    <%= render(
+      partial: "team_members/author",
+      collection: team_members,
+      as: :team_member
+    ) %>
+  </div>
+<% end %>
+
+<% if defined?(guides) %>
+  <div class="page-sidebar-information" data-role="sidebar-health-zone">
+    <%= render(
+      partial: "guides/aside_guide",
+      collection: guides,
+      as: :guide
+    ) if guides.present? %>
+  </div>
+<% end %>
+
+<% if health_zone.present? %>
+  <%= content_for :javascript do %>
+    <%= javascript_include_tag "components/health_zones.js" %>
+  <% end %>
+
+  <div class="page-sidebar-information" data-role="sidebar-health-zone">
+    <%= render(
+      partial: "health_zones/sidebar_health_zone",
+      locals: { health_zone: health_zone }
+    ) %>
+  </div>
+<% end %>
+
+<% if case_studies.present? %>
+  <div class="page-sidebar-information" data-role="sidebar-case-studies">
+    <h6><%= link_to "Case Studies", case_studies_path %></h6>
+    <%= render(
+      partial: "case_studies/sidebar_case_study",
+      collection: case_studies,
+      as: :case_study
+    ) %>
+  </div>
+<% end %>
+
+<% if articles.present? %>
+  <div class="page-sidebar-information" data-role="sidebar-articles">
+    <h6><%= link_to "Latest News", articles_path %></h6>
+    <%= render(
+      partial: "articles/sidebar_article",
+      collection: articles,
+      as: :article
+    ) %>
+  </div>
+<% end %>
