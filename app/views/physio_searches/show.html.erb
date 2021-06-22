@@ -19,15 +19,9 @@
     }
 
     function createLocationMarker(currentMap, lat, long) {
-      return new MarkerWithLabel({
+       new google.maps.Marker({
         position: new google.maps.LatLng(lat, long),
-        map: currentMap,
-        icon: "<%= asset_path 'icons/google-map-pin.png' %>",
-        labelContent: '',
-        labelAnchor: new google.maps.Point(10, 35),
-        labelClass: "map-icon-label", // the CSS class for the label
-        labelInBackground: false,
-        zIndex: 0,
+        map: currentMap
       });
     }
 
