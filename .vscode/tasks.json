@@ -18,6 +18,7 @@
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
+        // "close": true,
         "panel": "shared"
       }
     },
@@ -38,6 +39,7 @@
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
+        // "close": true,
         "panel": "shared"
       }
     },
@@ -48,6 +50,7 @@
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
+        // "close": true,
         "panel": "shared"
       }
     },
@@ -58,6 +61,7 @@
       "problemMatcher": [],
       "presentation": {
         "reveal": "never",
+        // "close": true,
         "panel": "shared"
       }
     },

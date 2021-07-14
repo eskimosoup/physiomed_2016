@@ -1,5 +1,6 @@
 class DetailedPhysioSearchesController < ApplicationController
   def new
+    @disable_notice_modal = true
   end
 
   def create
@@ -7,6 +8,7 @@ class DetailedPhysioSearchesController < ApplicationController
   end
 
   def show
+    @disable_notice_modal = true
     @search = PhysioSearch.new(query)
     @location = PhysioSearch.new(query).location
     @results = PhysioSearch.new(query).results

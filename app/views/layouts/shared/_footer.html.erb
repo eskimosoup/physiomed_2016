@@ -68,7 +68,7 @@
   </div>
 </div>
 
-<% if shared_facade.notice_modal? %>
+<% if shared_facade.notice_modal? && @disable_notice_modal.blank? %>
   <div class="inline-notice-modal" id="inline-notice-modal">
     <div class="inline-notice-modal-content">
       <div class="inline-notice-modal-content__inner">

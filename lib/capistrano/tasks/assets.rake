@@ -20,7 +20,7 @@ namespace :deploy do
   desc 'Compile assets'
   task compile_assets: [:set_rails_env] do
     # invoke 'deploy:assets:precompile'
-    invoke 'deploy:assets:download'
+    # invoke 'deploy:assets:download'
     invoke 'deploy:assets:exec'
     invoke 'deploy:assets:compress_images'
     invoke 'deploy:assets:sync'
