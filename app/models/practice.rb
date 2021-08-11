@@ -17,7 +17,7 @@
 
 class Practice < ActiveRecord::Base
   geocoded_by :post_code
-  after_validation :geocode, if: :post_code_changed?
+  after_validation :geocode, if: proc { post_code_changed? || latitude.blank? || longitude.blank? }
 
   validates :name, presence: true
   validates :post_code, presence: true
