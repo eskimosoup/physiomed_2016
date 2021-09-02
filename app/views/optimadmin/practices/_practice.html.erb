@@ -1,15 +1,15 @@
 <% present practice do |practice_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= practice_presenter.id %>">
-    <div class="large-8 small-8 columns" data-equalizer-watch="module-list">
+    <div class="columns" data-equalizer-watch="module-list">
       <%= practice_presenter.toggle_title %>
+    </div>
+
+    <div class="large-3 columns" data-equalizer-watch="module-list">
+      <%= practice_presenter.post_code %>
     </div>
 
     <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
       <%= practice_presenter.toggle_link %>
-    </div>
-
-    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-      <%= practice_presenter.view_link %>
     </div>
 
     <div class="large-1 small-4 columns" data-equalizer-watch="module-list">

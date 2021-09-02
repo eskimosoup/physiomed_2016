@@ -4,7 +4,7 @@ module Optimadmin
 
     def index
       @practices = Practice.order_by(params[:order])
-        .search(params[:search]).page(params[:page]).per(params[:per_page] || 15)
+        .field_search(params[:search]).page(params[:page]).per(params[:per_page] || 15)
     end
 
     def show

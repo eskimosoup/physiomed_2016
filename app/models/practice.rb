@@ -16,6 +16,8 @@
 #
 
 class Practice < ActiveRecord::Base
+  include OptimadminScopes
+
   geocoded_by :post_code
   after_validation :geocode, if: proc { post_code_changed? || latitude.blank? || longitude.blank? }
 
