@@ -3,7 +3,7 @@ module Optimadmin
     include Optimadmin::PresenterMethods
 
     presents :practice
-    delegate :id, :name, :post_code, to: :practice
+    delegate :id, :name, :post_code, :details_url, to: :practice
 
     def toggle_title
       inline_detail_toggle_link(name)

@@ -38,7 +38,7 @@ class HomeFacade
   end
 
   def landing_page
-    @landing_page ||= LandingPage.find(3)
+   @landing_page ||= LandingPage.find(3)
   end
 
   # --- OLD
