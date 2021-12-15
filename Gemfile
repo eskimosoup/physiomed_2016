@@ -75,7 +75,7 @@ group :test do
   # gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'launchy'
-  # rbenvgem 'shoulda-matchers'
+  # gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers'
   gem 'simplecov', require: false
 end
