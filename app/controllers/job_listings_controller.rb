@@ -6,5 +6,10 @@ class JobListingsController < ApplicationController
 
   def show
     @job_listing_facade = JobListingFacade.new(job_listing: JobListing.find(params[:id]))
+
+    respond_to do |format|
+      format.html
+      format.all { head(:unprocessable_entity) }
+    end
   end
 end
