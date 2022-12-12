@@ -14,6 +14,12 @@ class PhysioSearch
   private
 
   def coordinates
-    Geocoder.coordinates(post_code)
+    split_post_code = if post_code.length > 7
+      post_code.gsub(' ', '')
+    else
+      post_code
+    end
+
+    Geocoder.coordinates(split_post_code)
   end
 end
