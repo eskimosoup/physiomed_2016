@@ -35,7 +35,7 @@ set :repo_url, "git@github.com:eskimosoup/physiomed_2016.git"
 
 
 # Default value for linked_dirs is []
-append :linked_dirs, '.bundle', 'vendor/bundle', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/uploads', 'public/uploads', 'public/.well-known', 'public/emails'
+append :linked_dirs, '.bundle', 'vendor/bundle', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/uploads', 'public/uploads', 'public/.well-known'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
