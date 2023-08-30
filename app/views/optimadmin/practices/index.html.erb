@@ -9,13 +9,15 @@
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @practices.size, path: root_url %>
   </div>
 
+  <%= link_to('Download CSV', practices_path(format: :csv), { data: { disable_with: 'Please wait...' }}) %>
+
   <div class="row collapse module-list-index header">
     <%= list_item '' do %>
       <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
       Title
     <% end %>
     <%= list_item('large-3') { 'Postcode' } %>
-	<%= list_item('large-3') { 'Details URL' } %>
+    <%= list_item('large-3') { 'Details URL' } %>
     <%= list_item{ 'Display' } %>
     <%= list_item { 'Edit' } %>
     <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
