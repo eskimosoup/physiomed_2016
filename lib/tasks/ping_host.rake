@@ -3,7 +3,6 @@
 namespace :ping_host do
   desc 'Send a HEAD request to preload the application'
   task request: :environment do
-  begin
     require 'net/http'
     include Rails.application.routes.url_helpers
 
@@ -19,6 +18,5 @@ namespace :ping_host do
     puts [uri, response.code].join(' ')
   rescue StandardError => e
     puts e
-  end
   end
 end

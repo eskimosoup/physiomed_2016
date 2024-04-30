@@ -9,7 +9,8 @@ namespace :rails do
     server = roles(:app)[ARGV[2].to_i]
 
     on roles(:app) do
-      bundle_exec = "bundle exec rails console -e #{fetch(:rails_env)}"
+      # @see https://docs.ruby-lang.org/en/master/IRB.html
+      bundle_exec = "bundle exec rails console -e #{fetch(:rails_env)} -- --nomultiline"
       ssh = ["ssh #{server.user}@#{server.hostname}"]
       ssh << "-t '"
       ssh << "cd #{current_path}"
