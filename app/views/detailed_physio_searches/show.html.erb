@@ -141,6 +141,20 @@
   </script>
 <% end %>
 
+<%= content_for(:javascript) do %>
+  <script>
+    function loadPractices() {
+      $.post('https://portal.physiomed.co.uk/practices/searches', { 'practices_searches_form[query]': "<%= @search.post_code %>",'practices_searches_form[detailed]': true } );
+      $('.find-a-physio-map-canvas').show();
+    };
+
+    $(function() {
+      $('.find-a-physio-map-canvas').hide();
+      loadPractices();
+    });
+  </script>
+<% end %>
+
 <div class="hero-section standard-page-background">
   <div class="hero-section-header">
     <h1 class="hero-section-title page full-width">
@@ -151,21 +165,10 @@
   <div class="hero-section-primary-content">
     <div class="page-content-wrap full-width">
       <div class="page-content">
-        <p>We have found <%= pluralize(@results.size, 'result') %> for your search (<%= @search.post_code %>).</p>
 
-        <% if @results.present? %>
-          <div id="physio-search-map-canvas" class="find-a-physio-map-canvas" data-locations="<%= @results.to_json %>">
-          </div>
-
-          <div class="physio-search-results-list">
-            <%= render(
-              partial: "detailed_physio_searches/result",
-              collection: @results,
-              as: :practice,
-              cache:  @results
-            ) %>
-          </div>
-        <% end %>
+        <p class="js--practice-finder-results-title">Loading...</p>
+        <div id="physio-search-map-canvas" class="js--map-canvas find-a-physio-map-canvas"></div>
+        <div class="js--practice-finder-results physio-search-results-list"></div>
       </div>
     </div>
 

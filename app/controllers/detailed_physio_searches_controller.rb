@@ -10,8 +10,6 @@ class DetailedPhysioSearchesController < ApplicationController
   def show
     @disable_notice_modal = true
     @search = PhysioSearch.new(query)
-    @location = PhysioSearch.new(query).location
-    @results = PhysioSearch.new(query).results
   end
 
   private

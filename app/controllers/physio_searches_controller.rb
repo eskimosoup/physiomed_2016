@@ -5,8 +5,6 @@ class PhysioSearchesController < ApplicationController
 
   def show
     @search = PhysioSearch.new(query)
-    @location = PhysioSearch.new(query).location
-    @results = PhysioSearch.new(query).results
   end
 
   private
