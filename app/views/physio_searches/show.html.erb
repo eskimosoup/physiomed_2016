@@ -6,16 +6,18 @@
     var apiKey = 'AIzaSyBFde6cC1II90z76wul4pODSw31znwvnWQ';
 
     function createMarker(number, currentMap, lat, long) {
-      return new MarkerWithLabel({
-              position: new google.maps.LatLng(lat, long),
-                map: currentMap,
-                icon: "<%= asset_path 'icons/google-map-pin.png' %>",
-                labelContent: number,
-                labelAnchor: new google.maps.Point(10, 35),
-                labelClass: "map-icon-label", // the CSS class for the label
-                labelInBackground: false,
-                zIndex: number,
-              });
+      var image = '<%= image_url "icons/google-map-pin.png" %>';
+      var latLng = new google.maps.LatLng(lat, long);
+
+      var marker = new google.maps.Marker({
+        map: currentMap,
+        position: latLng,
+        title: number.toString(),
+        icon: image,
+        label: { color: '#000000', fontSize: '16px', fontWeight: '700', text: number.toString() }
+      });
+
+      return marker;
     }
 
     function createLocationMarker(currentMap, lat, long) {
@@ -26,7 +28,7 @@
     }
 
     function initialize() {
-      $.getScript("<%= asset_path 'vendor/marker-with-label.js' %>", function() {
+      // $.getScript("<%= asset_path 'vendor/marker-with-label.js' %>", function() {
         if (document.getElementById("physio-search-map-canvas")) {
           locations = $('.js--map-canvas').data('locations');
 
@@ -66,8 +68,6 @@
               var infowindow = new google.maps.InfoWindow({
                 content: contentString
               });
-
-              var image = '<%= image_url "icons/google-map-pin.png" %>';
 
               marker = createMarker(index + 1, map, value.latitude, value.longitude);
               markers.push(marker);
@@ -114,7 +114,7 @@
             }
           }
         }
-      })
+      // })
     }
 
     function closeInfoWindow() {
