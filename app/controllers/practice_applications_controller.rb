@@ -5,7 +5,7 @@ class PracticeApplicationsController < ApplicationController
 
   def create
     @practice_application = PracticeApplication.new(practice_application_params)
-    if @practice_application.save
+    if verify_recaptcha(model: @practice_application) && @practice_application.save
       PracticeApplicationFormCreator.new(@practice_application.practice).call
       redirect_to thank_you_practice_applications_path
     else
