@@ -5,7 +5,7 @@ class PracticeApplicationsController < ApplicationController
 
   def create
     @practice_application = PracticeApplication.new(practice_application_params)
-    if verify_recaptcha(model: @practice_application) && @practice_application.save
+    if (Rails.env.development? || verify_recaptcha(model: @practice_application)) && @practice_application.save
       PracticeApplicationFormCreator.new(@practice_application.practice).call
       redirect_to thank_you_practice_applications_path
     else
@@ -31,7 +31,18 @@ class PracticeApplicationsController < ApplicationController
       :subsequent_treatment_cost, :terms_and_conditions, :disabled_access,
       :bupa_registered, :domiciliary_visits, :employee_liability_expiry_date,
       :public_liability_expiry_date,
-      practitioners_attributes: [:name, :qualification_date, :years_practicing]
+      :mobile_number,
+      :other_locations,
+      :price_history,
+      :acupuncture_offered,
+      :womens_health_offered,
+      :shockwave_offered,
+      :other_treatments_offered,
+      :dse_offered,
+      :vehicle_assessments_offered,
+      :number_of_days_till_ia_booked,
+      :parking_facilities_information,
+      practitioners_attributes: [:name, :qualification_date, :years_practicing, :gender]
     )
   end
 end

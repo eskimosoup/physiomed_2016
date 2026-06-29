@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210621094921) do
+ActiveRecord::Schema.define(version: 20260629133759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -741,6 +741,17 @@ ActiveRecord::Schema.define(version: 20210621094921) do
     t.date     "public_liability_expiry_date"
     t.date     "employee_liability_expiry_date"
     t.string   "document"
+    t.string   "mobile_number"
+    t.text     "other_locations"
+    t.text     "price_history"
+    t.string   "acupuncture_offered"
+    t.string   "womens_health_offered"
+    t.string   "shockwave_offered"
+    t.string   "other_treatments_offered"
+    t.string   "dse_offered"
+    t.string   "vehicle_assessments_offered"
+    t.string   "number_of_days_till_ia_booked"
+    t.text     "parking_facilities_information"
   end
 
   create_table "practice_applications_practitioners", force: :cascade do |t|
@@ -750,6 +761,7 @@ ActiveRecord::Schema.define(version: 20210621094921) do
     t.string   "years_practicing"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "gender"
   end
 
   add_index "practice_applications_practitioners", ["practice_id"], name: "index_practice_applications_practitioners_on_practice_id", using: :btree

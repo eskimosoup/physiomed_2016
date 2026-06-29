@@ -29,6 +29,39 @@ class PracticeApplication
   attr_reader :second_contact
   attr_accessor :second_contact_name, :second_contact_position
 
+  attr_reader :mobile_number
+  attr_accessor :mobile_number
+
+  attr_reader :other_locations
+  attr_accessor :other_locations
+
+  attr_reader :price_history
+  attr_accessor :price_history
+
+  attr_reader :acupuncture_offered
+  attr_accessor :acupuncture_offered
+
+  attr_reader :womens_health_offered
+  attr_accessor :womens_health_offered
+
+  attr_reader :shockwave_offered
+  attr_accessor :shockwave_offered
+
+  attr_reader :other_treatments_offered
+  attr_accessor :other_treatments_offered
+
+  attr_reader :dse_offered
+  attr_accessor :dse_offered
+
+  attr_reader :vehicle_assessments_offered
+  attr_accessor :vehicle_assessments_offered
+
+  attr_reader :number_of_days_till_ia_booked
+  attr_accessor :number_of_days_till_ia_booked
+
+  attr_reader :parking_facilities_information
+  attr_accessor :parking_facilities_information
+
   def self.reflect_on_association(association)
     PracticeApplications::Practice.reflect_on_association(association)
   end
@@ -72,7 +105,18 @@ class PracticeApplication
       initial_assessment_duration: initial_assessment_duration,
       subsequent_treatment_duration: subsequent_treatment_duration,
       employee_liability_expiry_date: employee_liability_expiry_date,
-      public_liability_expiry_date: public_liability_expiry_date
+      public_liability_expiry_date: public_liability_expiry_date,
+      mobile_number: mobile_number,
+      other_locations: other_locations,
+      price_history: price_history,
+      acupuncture_offered: acupuncture_offered,
+      womens_health_offered: womens_health_offered,
+      shockwave_offered: shockwave_offered,
+      other_treatments_offered: other_treatments_offered,
+      dse_offered: dse_offered,
+      vehicle_assessments_offered: vehicle_assessments_offered,
+      number_of_days_till_ia_booked: number_of_days_till_ia_booked,
+      parking_facilities_information: parking_facilities_information
     )
   end
 

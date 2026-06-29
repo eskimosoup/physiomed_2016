@@ -10,6 +10,7 @@
     </div>
 
     <%= f.input :name %>
+    <%= f.input :gender %>
     <%= f.input :qualification_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year - 50, end_year: Date.today.year %>
     <%= f.input :years_practicing %>
   <% end %>

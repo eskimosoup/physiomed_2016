@@ -23,6 +23,7 @@
     <%= f.input :county %>
     <%= f.input :postcode %>
     <%= f.input :telephone, as: :tel %>
+    <%= f.input :mobile_number, as: :tel %>
     <%= f.input :fax, as: :tel %>
     <%= f.input :email, as: :email %>
     <%= f.input :first_contact_name %>
@@ -30,6 +31,7 @@
     <%= f.input :second_contact_name %>
     <%= f.input :second_contact_position %>
     <%= f.input :established %>
+    <%= f.input :other_locations, as: :text %>
   <% end %>
 
   <%= field_set_tag 'Opening Hours' do %>
@@ -47,6 +49,7 @@
     <%= f.input :initial_assessment_duration %>
     <%= f.input :subsequent_treatment_cost %>
     <%= f.input :subsequent_treatment_duration %>
+    <%= f.input :price_history, as: :text %>
   <% end %>
 
   <%= field_set_tag 'Practitioners' do %>
@@ -64,19 +67,28 @@
     </div>
   <% end %>
 
+  <%= field_set_tag 'Additional Treatments / Services' do %>
+    <%= f.input :acupuncture_offered, collection: ["Yes", "No"] %>
+    <%= f.input :womens_health_offered, collection: ["Yes", "No"] %>
+    <%= f.input :shockwave_offered, collection: ["Yes", "No"] %>
+    <%= f.input :other_treatments_offered, as: :text %>
+    <%= f.input :dse_offered, collection: ["Yes", "No"] %>
+    <%= f.input :vehicle_assessments_offered, collection: ["Yes", "No"] %>
+  <% end %>
+
   <%= field_set_tag 'Additional required information' do %>
     <%= f.input :manual_therapy, collection: PracticeApplication.percentages %>
-    <%= f.input :capacity, collection: PracticeApplication.percentages %>
+    <%#= f.input :capacity, collection: PracticeApplication.percentages %>
     <%= f.input :treatment_rooms, collection: PracticeApplication::NUMBERS %>
     <%= f.input :parking_facilities, collection: [["Yes", true], ["No", false]] %>
     <%= f.input :receptionist, collection: [["Yes", true], ["No", false]] %>
     <%= f.input :disabled_access, collection: [["Yes", true], ["No", false]] %>
-    <%= f.input :tm2_or_pps,
+    <%#= f.input :tm2_or_pps,
       collection: ['TM2', 'PPS', 'Both'], prompt: 'Please select' %>
-    <%= f.input :online_booking,
+    <%#= f.input :online_booking,
       collection: [['No', false], ['Yes', true]], prompt: 'Please select' %>
 
-      <%= f.input :bupa_registered, collection: [["Yes", true], ["No", false]] %>
+      <%#= f.input :bupa_registered, collection: [["Yes", true], ["No", false]] %>
       <%= f.input :domiciliary_visits, collection: [["Yes", true], ["No", false]] %>
 
     <%= f.input :cancellation_policy, as: :text %>

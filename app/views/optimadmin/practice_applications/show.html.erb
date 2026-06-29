@@ -38,6 +38,14 @@
   </div>
   <div class="row">
     <div class="large-3 columns">
+      Mobile number
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.mobile_number %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
       Fax
     </div>
     <div class="large-9 columns">
@@ -52,8 +60,17 @@
       <%= @practice_application.email %>
     </div>
   </div>
-  <%= render partial: 'optimadmin/practice_applications/contact', 
+  <%= render partial: 'optimadmin/practice_applications/contact',
     collection: @practice_application.contacts, as: :contact %>
+  <div class="row">
+    <div class="large-3 columns">
+      Other locations (inc Postcode)
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.other_locations %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="large-3 columns">
       Established
@@ -108,10 +125,74 @@
       <%= @practice_application.subsequent_treatment_duration %>
     </div>
   </div>
+  <div class="row">
+    <div class="large-3 columns">
+      History of price increases (date and price increase
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.price_history %>
+    </div>
+  </div>
 
   <h3>Practitioners</h3>
   <%= render partial: 'optimadmin/practice_applications/practitioner',
     collection: @practice_application.practitioners, as: :practitioner %>
+
+  <h3>Additional Treatments / Services</h3>
+
+  <div class="row">
+    <div class="large-3 columns">
+      Do you offer Acupuncture as part of treatment?
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.acupuncture_offered %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns">
+      Do you offer Women's Health as part of treatment?
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.womens_health_offered %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns">
+      Do you offer Shockwave as part of treatment?
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.shockwave_offered %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns">
+      Are there any other types of treatment you provide?
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.other_treatments_offered %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns">
+      Do you Provide DSE Assessments?
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.dse_offered %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns">
+      Do you Provide Vehicle Assessments?
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.vehicle_assessments_offered %>
+    </div>
+  </div>
 
   <h3>Additional required information</h3>
   <div class="row">
@@ -122,14 +203,16 @@
       <%= @practice_application.manual_therapy %>
     </div>
   </div>
-  <div class="row">
-    <div class="large-3 columns">
-      What % of capacity are you running at
+  <% if false %>
+    <div class="row">
+      <div class="large-3 columns">
+        What % of capacity are you running at
+      </div>
+      <div class="large-9 columns">
+        <%= @practice_application.capacity %>
+      </div>
     </div>
-    <div class="large-9 columns">
-      <%= @practice_application.capacity %>
-    </div>
-  </div>
+  <% end %>
   <div class="row">
     <div class="large-3 columns">
       Treatment rooms
@@ -154,14 +237,17 @@
       <%= @practice_application.receptionist %>
     </div>
   </div>
-  <div class="row">
-    <div class="large-3 columns">
-      Do you have TM2 or PPS?
+  <% if false %>
+    <div class="row">
+      <div class="large-3 columns">
+        Do you have TM2 or PPS?
+      </div>
+      <div class="large-9 columns">
+        <%= @practice_application.tm2_or_pps? ? "Yes" : "No" %>
+      </div>
     </div>
-    <div class="large-9 columns">
-      <%= @practice_application.tm2_or_pps? ? "Yes" : "No" %>
-    </div>
-  </div>
+  <% end %>
+  <% if false %>
   <div class="row">
     <div class="large-3 columns">
       Online booking
@@ -170,6 +256,7 @@
       <%= @practice_application.online_booking? ? "Yes" : "No" %>
     </div>
   </div>
+  <% end %>
   <div class="row">
     <div class="large-3 columns">
       Cancellation policy
@@ -197,7 +284,7 @@
   <div class="row">
     <div class="large-3 columns">
       <p>
-        Description
+        Describe your practice i.e. within gym, GP practice, converted building etc.
       </p>
     </div>
     <div class="large-9 columns">
