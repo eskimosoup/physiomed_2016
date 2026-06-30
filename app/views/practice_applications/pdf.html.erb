@@ -186,7 +186,7 @@
   </tr>
   <tr>
     <th align="left">Number of days on average until IA booked?</th>
-    <td align="left"><%= practice_application.manual_therapy %></td>
+    <td align="left"><%= practice_application.number_of_days_till_ia_booked %></td>
   </tr>
 
   <% if false %>
@@ -203,6 +203,10 @@
   <tr>
     <th align="left">Parking</th>
     <td align="left"><%= practice_application.parking_facilities? ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <th align="left">If not please provide details of the nearest parking facilities.</th>
+    <td align="left"><%= practice_application.parking_facilities_information %></td>
   </tr>
   <tr>
     <th align="left">Full time receptionist</th>

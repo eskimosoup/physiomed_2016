@@ -78,9 +78,11 @@
 
   <%= field_set_tag 'Additional required information' do %>
     <%= f.input :manual_therapy, collection: PracticeApplication.percentages %>
+    <%= f.input :number_of_days_till_ia_booked %>
     <%#= f.input :capacity, collection: PracticeApplication.percentages %>
     <%= f.input :treatment_rooms, collection: PracticeApplication::NUMBERS %>
     <%= f.input :parking_facilities, collection: [["Yes", true], ["No", false]] %>
+    <%= f.input :parking_facilities_information %>
     <%= f.input :receptionist, collection: [["Yes", true], ["No", false]] %>
     <%= f.input :disabled_access, collection: [["Yes", true], ["No", false]] %>
     <%#= f.input :tm2_or_pps,

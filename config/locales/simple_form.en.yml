@@ -59,6 +59,8 @@ en:
         other_treatments_offered: Are there any other types of treatment you provide?
         dse_offered: Do you Provide DSE Assessments?
         vehicle_assessments_offered: Do you Provide Vehicle Assessments?
+        number_of_days_till_ia_booked: Number of days on average until IA booked?
+        parking_facilities_information: If not please provide details of the nearest parking facilities.
         practitioners:
           name: Name of practitioner
           qualification_date: Date of qualifying

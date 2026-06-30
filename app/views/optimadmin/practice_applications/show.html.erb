@@ -203,6 +203,14 @@
       <%= @practice_application.manual_therapy %>
     </div>
   </div>
+  <div class="row">
+    <div class="large-3 columns">
+      Number of days on average until IA booked?
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.number_of_days_till_ia_booked %>
+    </div>
+  </div>
   <% if false %>
     <div class="row">
       <div class="large-3 columns">
@@ -227,6 +235,14 @@
     </div>
     <div class="large-9 columns">
       <%= @practice_application.parking_facilities %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      If not please provide details of the nearest parking facilities.
+    </div>
+    <div class="large-9 columns">
+      <%= @practice_application.parking_facilities_information %>
     </div>
   </div>
   <div class="row">
