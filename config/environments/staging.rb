@@ -22,14 +22,15 @@ Rails.application.configure do
   #  Rails.application.routes.default_url_options[:host]
   # ].join
 
-  config.action_mailer.smtp_settings = { enable_starttls_auto: false }
-
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    address: 'mail.optimised.today',
-    authentication: :plain,
-    user_name: 'noreply@optimised.today',
-    password: ENV['NOREPLY_PASSWORD']
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'website-mail.co.uk',
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
 
   # Settings specified here will take precedence over those in config/application.rb.
